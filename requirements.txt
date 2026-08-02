@@ -1,0 +1,14 @@
+# Runtime dependencies for the AlphaSpread data-generation scripts (scripts/).
+#
+# Everything else the scripts use is Python 3 standard library
+# (urllib, gzip, json, re, argparse, datetime, html).
+#
+# Install:  pip install -r requirements.txt
+
+# Interactive HTML charts (visualize.py).
+plotly>=6.0
+
+# Static PNG export of the same charts (visualize.plot_png).
+# NOTE: kaleido 0.2.x hangs with plotly 6.x on Windows — 1.0+ is required.
+# kaleido 1.x renders via a headless Chrome/Chromium it locates on the system.
+kaleido>=1.0.0
