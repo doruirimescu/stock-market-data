@@ -1,0 +1,76 @@
+name: Daily index analysis
+
+# Runs every morning, computes AlphaSpread valuations for the NASDAQ-100 and the
+# S&P 500, and commits the dated HTML + PNG charts (and valuation JSON) back into
+# generated/nasdaq/ and generated/sp500/.
+
+on:
+  schedule:
+    - cron: "30 6 * * *"     # 06:30 UTC daily (times are always UTC on GitHub)
+  workflow_dispatch: {}       # allow manual runs from the Actions tab
+
+permissions:
+  contents: write             # needed to push the generated files back
+
+concurrency:
+  group: daily-index-analysis
+  cancel-in-progress: false   # never abort a run midway through scraping
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120       # ~600 sequential scrapes with polite delays
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # kaleido>=1.0 renders the PNGs through a headless Chrome. If Chrome is
+      # unavailable the run still succeeds — the script writes the HTML and only
+      # warns about the missing PNG — but we install Chrome so PNGs are produced.
+      - name: Install Chrome for PNG export
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      - name: Fetch a kaleido-compatible Chrome (fallback, non-fatal)
+        run: plotly_get_chrome -y || true
+
+      - name: NASDAQ-100 analysis
+        run: |
+          DATE=$(date -u +%F)
+          python scripts/alphaspread_index.py --nasdaq100 --overwrite --date "$DATE" \
+            --out  generated/nasdaq100_valuations.json \
+            --html "generated/nasdaq/nasdaq_analysis_${DATE}.html" \
+            --png  "generated/nasdaq/nasdaq_analysis_${DATE}.png"
+
+      - name: S&P 500 analysis
+        run: |
+          DATE=$(date -u +%F)
+          python scripts/alphaspread_index.py --sp500 --overwrite --date "$DATE" \
+            --out  generated/sp500_valuations.json \
+            --html "generated/sp500/sp500_analysis_${DATE}.html" \
+            --png  "generated/sp500/sp500_analysis_${DATE}.png"
+
+      - name: Commit and push generated files
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          DATE=$(date -u +%F)
+          git add generated/nasdaq generated/sp500 \
+                  generated/nasdaq100_valuations.json generated/sp500_valuations.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Daily index analysis: ${DATE} [skip ci]"
+            git push
+          fi
