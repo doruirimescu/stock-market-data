@@ -295,7 +295,7 @@
     "valuation_score": -44.0,
     "intrinsic_value": 49.84,
     "current_price_approx": 71.77,
-    "solvency_score": 64,
+    "solvency_score": 63,
     "error": null
   },
   "ORCL": {
@@ -802,7 +802,7 @@
     "valuation_score": 9.0,
     "intrinsic_value": 239.52,
     "current_price_approx": 217.96,
-    "solvency_score": 56,
+    "solvency_score": 55,
     "error": null
   },
   "ABT": {
@@ -1023,7 +1023,7 @@
     "valuation_score": -21.0,
     "intrinsic_value": 384.96,
     "current_price_approx": 465.8,
-    "solvency_score": 36,
+    "solvency_score": 35,
     "error": null
   },
   "CRM": {
@@ -1270,7 +1270,7 @@
     "valuation_score": -25.0,
     "intrinsic_value": 70.33,
     "current_price_approx": 87.91,
-    "solvency_score": 86,
+    "solvency_score": 85,
     "error": null
   },
   "SPGI": {
@@ -1712,7 +1712,7 @@
     "valuation_score": -4.0,
     "intrinsic_value": 178.43,
     "current_price_approx": 185.57,
-    "solvency_score": 49,
+    "solvency_score": 50,
     "error": null
   },
   "FCX": {
@@ -2414,7 +2414,7 @@
     "valuation_score": 1.0,
     "intrinsic_value": 124.73,
     "current_price_approx": 123.48,
-    "solvency_score": 47,
+    "solvency_score": 48,
     "error": null
   },
   "TDG": {
@@ -2947,7 +2947,7 @@
     "valuation_score": 21.0,
     "intrinsic_value": 254.69,
     "current_price_approx": 201.21,
-    "solvency_score": 71,
+    "solvency_score": 72,
     "error": null
   },
   "EW": {
@@ -2986,7 +2986,7 @@
     "valuation_score": null,
     "intrinsic_value": null,
     "current_price_approx": null,
-    "solvency_score": null,
+    "solvency_score": 47,
     "error": null
   },
   "STT": {
@@ -3194,7 +3194,7 @@
     "valuation_score": 44.0,
     "intrinsic_value": 283.88,
     "current_price_approx": 158.97,
-    "solvency_score": 61,
+    "solvency_score": 64,
     "error": null
   },
   "FERG": {
@@ -3259,7 +3259,7 @@
     "valuation_score": -13.0,
     "intrinsic_value": 171.48,
     "current_price_approx": 193.77,
-    "solvency_score": 60,
+    "solvency_score": 63,
     "error": null
   },
   "EBAY": {
@@ -3337,7 +3337,7 @@
     "valuation_score": -4.0,
     "intrinsic_value": 93.65,
     "current_price_approx": 97.4,
-    "solvency_score": 49,
+    "solvency_score": 50,
     "error": null
   },
   "PRU": {
@@ -3363,7 +3363,7 @@
     "valuation_score": -17.0,
     "intrinsic_value": 52.86,
     "current_price_approx": 61.85,
-    "solvency_score": 47,
+    "solvency_score": 46,
     "error": null
   },
   "KDP": {
@@ -4071,7 +4071,7 @@
   "CBOE": {
     "symbol": "CBOE",
     "company": "Cboe Global Markets Inc",
-    "error": "No equity found for 'Cboe Global Markets Inc'."
+    "error": "Could not find 'Cboe Global Markets Inc' on AlphaSpread. Tried: nasdaq/cboe/summary, nyse/cboe/summary, amex/cboe/summary, nysearca/cboe/summary, otc/cboe/summary, pink/cboe/summary, lse/cboe/summary, xetra/cboe/summary"
   },
   "WTW": {
     "symbol": "WTW",
@@ -4473,7 +4473,7 @@
     "valuation_score": 14.0,
     "intrinsic_value": 117.56,
     "current_price_approx": 101.1,
-    "solvency_score": 25,
+    "solvency_score": 24,
     "error": null
   },
   "CTSH": {
@@ -4590,7 +4590,7 @@
     "valuation_score": 10.0,
     "intrinsic_value": 35.21,
     "current_price_approx": 31.69,
-    "solvency_score": 76,
+    "solvency_score": 79,
     "error": null
   },
   "TPR": {
@@ -4824,7 +4824,7 @@
     "valuation_score": -11.0,
     "intrinsic_value": 62.19,
     "current_price_approx": 69.03,
-    "solvency_score": 38,
+    "solvency_score": 39,
     "error": null
   },
   "VLTO": {
@@ -5123,7 +5123,7 @@
     "valuation_score": 38.0,
     "intrinsic_value": 233.35,
     "current_price_approx": 144.68,
-    "solvency_score": 38,
+    "solvency_score": 39,
     "error": null
   },
   "GIS": {
@@ -5409,7 +5409,7 @@
     "valuation_score": -8.0,
     "intrinsic_value": 92.45,
     "current_price_approx": 99.85,
-    "solvency_score": 59,
+    "solvency_score": 60,
     "error": null
   },
   "CF": {
@@ -5617,7 +5617,7 @@
     "valuation_score": -10.0,
     "intrinsic_value": 97.49,
     "current_price_approx": 107.24,
-    "solvency_score": 51,
+    "solvency_score": 52,
     "error": null
   },
   "HST": {
@@ -5955,7 +5955,7 @@
     "valuation_score": 46.0,
     "intrinsic_value": 492.58,
     "current_price_approx": 265.99,
-    "solvency_score": 75,
+    "solvency_score": 76,
     "error": null
   },
   "TRMB": {
@@ -6007,7 +6007,7 @@
     "valuation_score": 39.0,
     "intrinsic_value": 42.86,
     "current_price_approx": 26.14,
-    "solvency_score": 62,
+    "solvency_score": 63,
     "error": null
   },
   "BF.B": {
@@ -6137,7 +6137,7 @@
     "valuation_score": 7.0,
     "intrinsic_value": 32.77,
     "current_price_approx": 30.48,
-    "solvency_score": 16,
+    "solvency_score": 17,
     "error": null
   },
   "GDDY": {
@@ -6280,7 +6280,7 @@
     "valuation_score": -18.0,
     "intrinsic_value": 43.16,
     "current_price_approx": 50.93,
-    "solvency_score": 58,
+    "solvency_score": 59,
     "error": null
   },
   "WYNN": {
@@ -6309,19 +6309,6 @@
     "solvency_score": 17,
     "error": null
   },
-  "NWSA": {
-    "symbol": "NWSA",
-    "company": "News Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/nwsa/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 8.0,
-    "valuation_score": -8.0,
-    "intrinsic_value": 21.36,
-    "current_price_approx": 23.07,
-    "solvency_score": 62,
-    "error": null
-  },
   "SWKS": {
     "symbol": "SWKS",
     "company": "Skyworks Solutions Inc",
@@ -6333,6 +6320,19 @@
     "intrinsic_value": 70.26,
     "current_price_approx": 55.51,
     "solvency_score": 84,
+    "error": null
+  },
+  "NWSA": {
+    "symbol": "NWSA",
+    "company": "News Corp",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/nwsa/summary",
+    "valuation_type": "Overvalued",
+    "valuation_pct": 8.0,
+    "valuation_score": -8.0,
+    "intrinsic_value": 21.36,
+    "current_price_approx": 23.07,
+    "solvency_score": 62,
     "error": null
   },
   "APTV": {
@@ -6371,7 +6371,7 @@
     "valuation_score": 38.0,
     "intrinsic_value": 365.98,
     "current_price_approx": 226.91,
-    "solvency_score": 63,
+    "solvency_score": 64,
     "error": null
   },
   "UHS": {

@@ -204,7 +204,7 @@
     "valuation_score": -44.0,
     "intrinsic_value": 49.84,
     "current_price_approx": 71.77,
-    "solvency_score": 64,
+    "solvency_score": 63,
     "error": null
   },
   "COST": {
@@ -555,7 +555,7 @@
     "valuation_score": 50.0,
     "intrinsic_value": 135.38,
     "current_price_approx": 67.69,
-    "solvency_score": 71,
+    "solvency_score": 70,
     "error": null
   },
   "FTNT": {
@@ -841,7 +841,7 @@
     "valuation_score": null,
     "intrinsic_value": null,
     "current_price_approx": null,
-    "solvency_score": 56,
+    "solvency_score": 58,
     "error": null
   },
   "HON": {
@@ -984,7 +984,7 @@
     "valuation_score": null,
     "intrinsic_value": null,
     "current_price_approx": null,
-    "solvency_score": 12,
+    "solvency_score": 14,
     "error": null
   },
   "FANG": {
@@ -1023,7 +1023,7 @@
     "valuation_score": 21.0,
     "intrinsic_value": 254.69,
     "current_price_approx": 201.21,
-    "solvency_score": 71,
+    "solvency_score": 72,
     "error": null
   },
   "PYPL": {
@@ -1049,7 +1049,7 @@
     "valuation_score": null,
     "intrinsic_value": null,
     "current_price_approx": null,
-    "solvency_score": null,
+    "solvency_score": 47,
     "error": null
   },
   "RKLB": {
@@ -1101,7 +1101,7 @@
     "valuation_score": 44.0,
     "intrinsic_value": 283.88,
     "current_price_approx": 158.97,
-    "solvency_score": 61,
+    "solvency_score": 64,
     "error": null
   },
   "CCEP": {
@@ -1112,8 +1112,8 @@
     "valuation_type": "Overvalued",
     "valuation_pct": 33.0,
     "valuation_score": -33.0,
-    "intrinsic_value": 58.01,
-    "current_price_approx": 77.15,
+    "intrinsic_value": 57.97,
+    "current_price_approx": 77.1,
     "solvency_score": 44,
     "error": null
   },
@@ -1153,7 +1153,7 @@
     "valuation_score": -13.0,
     "intrinsic_value": 171.48,
     "current_price_approx": 193.77,
-    "solvency_score": 60,
+    "solvency_score": 63,
     "error": null
   },
   "TRI": {
@@ -1205,7 +1205,7 @@
     "valuation_score": -4.0,
     "intrinsic_value": 93.65,
     "current_price_approx": 97.4,
-    "solvency_score": 49,
+    "solvency_score": 50,
     "error": null
   },
   "MCHP": {
@@ -1218,7 +1218,7 @@
     "valuation_score": -17.0,
     "intrinsic_value": 52.86,
     "current_price_approx": 61.85,
-    "solvency_score": 47,
+    "solvency_score": 46,
     "error": null
   },
   "KDP": {
@@ -1253,10 +1253,10 @@
     "exchange": "nasdaq",
     "url": "https://www.alphaspread.com/security/nasdaq/mstr/summary",
     "valuation_type": "Undervalued",
-    "valuation_pct": 20.0,
-    "valuation_score": 20.0,
-    "intrinsic_value": 92.5,
-    "current_price_approx": 74.0,
+    "valuation_pct": 19.0,
+    "valuation_score": 19.0,
+    "intrinsic_value": 92.08,
+    "current_price_approx": 74.58,
     "solvency_score": 48,
     "error": null
   },
@@ -1296,7 +1296,7 @@
     "valuation_score": 28.0,
     "intrinsic_value": 252.19,
     "current_price_approx": 181.58,
-    "solvency_score": 52,
+    "solvency_score": 53,
     "error": null
   },
   "KHC": {
