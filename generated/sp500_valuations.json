@@ -542,7 +542,7 @@
     "valuation_score": -25.0,
     "intrinsic_value": 261.96,
     "current_price_approx": 327.45,
-    "solvency_score": 51,
+    "solvency_score": 53,
     "error": null
   },
   "RTX": {
@@ -685,7 +685,7 @@
     "valuation_score": -41.0,
     "intrinsic_value": 229.44,
     "current_price_approx": 323.51,
-    "solvency_score": 61,
+    "solvency_score": 62,
     "error": null
   },
   "IBM": {
@@ -915,11 +915,11 @@
     "exchange": "nasdaq",
     "url": "https://www.alphaspread.com/security/nasdaq/de/summary",
     "valuation_type": "Overvalued",
-    "valuation_pct": 26.0,
-    "valuation_score": -26.0,
-    "intrinsic_value": 384.96,
-    "current_price_approx": 485.05,
-    "solvency_score": 35,
+    "valuation_pct": 25.0,
+    "valuation_score": -25.0,
+    "intrinsic_value": 390.94,
+    "current_price_approx": 488.68,
+    "solvency_score": 36,
     "error": null
   },
   "NEE": {
@@ -1231,7 +1231,7 @@
     "valuation_score": -58.0,
     "intrinsic_value": 50.51,
     "current_price_approx": 79.81,
-    "solvency_score": 57,
+    "solvency_score": 59,
     "error": null
   },
   "PGR": {
@@ -1400,7 +1400,7 @@
     "valuation_score": -2.0,
     "intrinsic_value": 51.47,
     "current_price_approx": 52.5,
-    "solvency_score": 55,
+    "solvency_score": 57,
     "error": null
   },
   "ADBE": {
@@ -1450,8 +1450,8 @@
     "valuation_type": "Overvalued",
     "valuation_pct": 19.0,
     "valuation_score": -19.0,
-    "intrinsic_value": 103.4,
-    "current_price_approx": 123.05,
+    "intrinsic_value": 103.42,
+    "current_price_approx": 123.07,
     "solvency_score": null,
     "error": null
   },
@@ -1959,7 +1959,7 @@
     "valuation_score": -24.0,
     "intrinsic_value": 142.28,
     "current_price_approx": 176.43,
-    "solvency_score": 77,
+    "solvency_score": 80,
     "error": null
   },
   "SHW": {
@@ -2581,8 +2581,8 @@
     "valuation_type": "Undervalued",
     "valuation_pct": 10.0,
     "valuation_score": 10.0,
-    "intrinsic_value": 45.02,
-    "current_price_approx": 40.52,
+    "intrinsic_value": 44.83,
+    "current_price_approx": 40.35,
     "solvency_score": null,
     "error": null
   },
@@ -3311,7 +3311,7 @@
     "valuation_score": -10.0,
     "intrinsic_value": 114.88,
     "current_price_approx": 126.37,
-    "solvency_score": 75,
+    "solvency_score": 77,
     "error": null
   },
   "TTWO": {
@@ -3645,11 +3645,11 @@
     "exchange": "nasdaq",
     "url": "https://www.alphaspread.com/security/nasdaq/el/summary",
     "valuation_type": "Overvalued",
-    "valuation_pct": 25.0,
-    "valuation_score": -25.0,
-    "intrinsic_value": 60.27,
-    "current_price_approx": 75.34,
-    "solvency_score": 44,
+    "valuation_pct": 24.0,
+    "valuation_score": -24.0,
+    "intrinsic_value": 60.96,
+    "current_price_approx": 75.59,
+    "solvency_score": 45,
     "error": null
   },
   "HIG": {
@@ -4668,7 +4668,7 @@
     "valuation_score": -14.0,
     "intrinsic_value": 152.54,
     "current_price_approx": 173.9,
-    "solvency_score": 37,
+    "solvency_score": 36,
     "error": null
   },
   "VMRK": {
@@ -5175,7 +5175,7 @@
     "valuation_score": -15.0,
     "intrinsic_value": 94.02,
     "current_price_approx": 108.12,
-    "solvency_score": 44,
+    "solvency_score": 46,
     "error": null
   },
   "EVRG": {
@@ -5210,11 +5210,11 @@
     "exchange": "nasdaq",
     "url": "https://www.alphaspread.com/security/nasdaq/ndsn/summary",
     "valuation_type": "Overvalued",
-    "valuation_pct": 22.0,
-    "valuation_score": -22.0,
-    "intrinsic_value": 206.93,
-    "current_price_approx": 252.45,
-    "solvency_score": 59,
+    "valuation_pct": 19.0,
+    "valuation_score": -19.0,
+    "intrinsic_value": 214.41,
+    "current_price_approx": 255.15,
+    "solvency_score": 57,
     "error": null
   },
   "GPC": {
@@ -6028,11 +6028,11 @@
     "company": "Jack Henry & Associates Inc",
     "exchange": "nasdaq",
     "url": "https://www.alphaspread.com/security/nasdaq/jkhy/summary",
-    "valuation_type": "Undervalued",
+    "valuation_type": "Overvalued",
     "valuation_pct": 2.0,
-    "valuation_score": 2.0,
-    "intrinsic_value": 135.93,
-    "current_price_approx": 133.21,
+    "valuation_score": -2.0,
+    "intrinsic_value": 130.69,
+    "current_price_approx": 133.3,
     "solvency_score": 82,
     "error": null
   },
@@ -6072,7 +6072,7 @@
     "valuation_score": null,
     "intrinsic_value": null,
     "current_price_approx": null,
-    "solvency_score": 35,
+    "solvency_score": 22,
     "error": null
   },
   "ALGN": {
@@ -6137,7 +6137,7 @@
     "valuation_score": -11.0,
     "intrinsic_value": 31.05,
     "current_price_approx": 34.47,
-    "solvency_score": 32,
+    "solvency_score": 30,
     "error": null
   },
   "NWSA": {
@@ -6189,7 +6189,7 @@
     "valuation_score": 35.0,
     "intrinsic_value": 365.98,
     "current_price_approx": 237.89,
-    "solvency_score": 66,
+    "solvency_score": 64,
     "error": null
   },
   "AES": {

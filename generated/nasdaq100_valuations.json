@@ -360,7 +360,7 @@
     "valuation_score": -41.0,
     "intrinsic_value": 229.44,
     "current_price_approx": 323.51,
-    "solvency_score": 61,
+    "solvency_score": 62,
     "error": null
   },
   "MRVL": {
@@ -763,7 +763,7 @@
     "valuation_score": -24.0,
     "intrinsic_value": 142.28,
     "current_price_approx": 176.43,
-    "solvency_score": 77,
+    "solvency_score": 80,
     "error": null
   },
   "MDLZ": {
