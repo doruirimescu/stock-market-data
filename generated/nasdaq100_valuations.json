@@ -1,1328 +1,512 @@
 {
   "NVDA": {
     "symbol": "NVDA",
-    "company": "NVIDIA Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/nvda/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 5.0,
-    "valuation_score": 5.0,
-    "intrinsic_value": 181.19,
-    "current_price_approx": 172.13,
-    "solvency_score": 81,
-    "error": null
+    "company": "Nvidia Corp",
+    "error": "HTTP Error 403: Forbidden"
   },
   "AAPL": {
     "symbol": "AAPL",
-    "company": "Apple Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/aapl/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 28.0,
-    "valuation_score": -28.0,
-    "intrinsic_value": 179.14,
-    "current_price_approx": 229.3,
-    "solvency_score": 63,
-    "error": null
+    "company": "Apple Inc.",
+    "error": "HTTP Error 403: Forbidden"
   },
   "MSFT": {
     "symbol": "MSFT",
     "company": "Microsoft Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/msft/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 9.0,
-    "valuation_score": -9.0,
-    "intrinsic_value": 351.18,
-    "current_price_approx": 382.79,
-    "solvency_score": 81,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
   "AMZN": {
     "symbol": "AMZN",
-    "company": "Amazon.com Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/amzn/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 10.0,
-    "valuation_score": -10.0,
-    "intrinsic_value": 186.77,
-    "current_price_approx": 205.45,
-    "solvency_score": 78,
-    "error": null
+    "company": "Amazon.Com Inc",
+    "error": "HTTP Error 403: Forbidden"
   },
   "GOOGL": {
     "symbol": "GOOGL",
-    "company": "Alphabet Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/googl/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 31.0,
-    "valuation_score": -31.0,
-    "intrinsic_value": 189.69,
-    "current_price_approx": 248.49,
-    "solvency_score": 79,
-    "error": null
+    "company": "Alphabet Inc. Class A Common Stock",
+    "error": "No equity found for 'Alphabet Inc. Class A Common Stock'."
   },
   "GOOG": {
     "symbol": "GOOG",
-    "company": "Alphabet Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/goog/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 31.0,
-    "valuation_score": -31.0,
-    "intrinsic_value": 188.43,
-    "current_price_approx": 246.84,
-    "solvency_score": 79,
-    "error": null
+    "company": "Alphabet Inc. Class C Capital Stock",
+    "error": "No equity found for 'Alphabet Inc. Class C Capital Stock'."
   },
   "SPCX": {
     "symbol": "SPCX",
-    "company": "Space Exploration Technologies Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/spcx/summary",
-    "valuation_type": null,
-    "valuation_pct": null,
-    "valuation_score": null,
-    "intrinsic_value": null,
-    "current_price_approx": null,
-    "solvency_score": 68,
-    "error": null
+    "company": "Space Exploration Technologies Corp. Class A Common Stock",
+    "error": "No equity found for 'Space Exploration Technologies Corp. Class A Common Stock'."
   },
   "AVGO": {
     "symbol": "AVGO",
-    "company": "Broadcom Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/avgo/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 6.0,
-    "valuation_score": -6.0,
-    "intrinsic_value": 277.49,
-    "current_price_approx": 294.14,
-    "solvency_score": 67,
-    "error": null
-  },
-  "TSLA": {
-    "symbol": "TSLA",
-    "company": "Tesla Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/tsla/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 80.0,
-    "valuation_score": -80.0,
-    "intrinsic_value": 58.39,
-    "current_price_approx": 105.1,
-    "solvency_score": 86,
-    "error": null
+    "company": "Broadcom Inc. Common Stock",
+    "error": "No equity found for 'Broadcom Inc. Common Stock'."
   },
   "META": {
     "symbol": "META",
-    "company": "Meta Platforms Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/meta/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 19.0,
-    "valuation_score": 19.0,
-    "intrinsic_value": 546.08,
-    "current_price_approx": 442.32,
-    "solvency_score": 84,
-    "error": null
+    "company": "Meta Platforms, Inc. Class A Common Stock",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "TSLA": {
+    "symbol": "TSLA",
+    "company": "Tesla, Inc. Common Stock",
+    "error": "HTTP Error 403: Forbidden"
   },
   "MU": {
     "symbol": "MU",
-    "company": "Micron Technology Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/mu/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 43.0,
-    "valuation_score": -43.0,
-    "intrinsic_value": 440.99,
-    "current_price_approx": 630.62,
-    "solvency_score": 98,
-    "error": null
+    "company": "Micron Technology, Inc.",
+    "error": "HTTP Error 403: Forbidden"
   },
   "WMT": {
     "symbol": "WMT",
-    "company": "Walmart Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/wmt/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 13.0,
-    "valuation_score": -13.0,
-    "intrinsic_value": 71.4,
-    "current_price_approx": 80.68,
-    "solvency_score": 58,
-    "error": null
+    "company": "Walmart Inc. Common Stock",
+    "error": "No equity found for 'Walmart Inc. Common Stock'."
   },
   "AMD": {
     "symbol": "AMD",
-    "company": "Advanced Micro Devices Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/amd/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 42.0,
-    "valuation_score": -42.0,
-    "intrinsic_value": 217.06,
-    "current_price_approx": 308.23,
-    "solvency_score": 96,
-    "error": null
+    "company": "Advanced Micro Devices",
+    "error": "HTTP Error 403: Forbidden"
   },
   "ASML": {
     "symbol": "ASML",
     "company": "ASML Holding NV",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/asml/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 30.0,
-    "valuation_score": -30.0,
-    "intrinsic_value": 983.1,
-    "current_price_approx": 1278.03,
-    "solvency_score": 87,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
   "INTC": {
     "symbol": "INTC",
     "company": "Intel Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/intc/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 65.0,
-    "valuation_score": -65.0,
-    "intrinsic_value": 25.5,
-    "current_price_approx": 42.07,
-    "solvency_score": 48,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
   "CSCO": {
     "symbol": "CSCO",
-    "company": "Cisco Systems Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/csco/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 44.0,
-    "valuation_score": -44.0,
-    "intrinsic_value": 49.84,
-    "current_price_approx": 71.77,
-    "solvency_score": 63,
-    "error": null
-  },
-  "PLTR": {
-    "symbol": "PLTR",
-    "company": "Palantir Technologies Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/pltr/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 73.0,
-    "valuation_score": -73.0,
-    "intrinsic_value": 38.93,
-    "current_price_approx": 67.35,
-    "solvency_score": 81,
-    "error": null
+    "company": "Cisco Systems, Inc. Common Stock (DE)",
+    "error": "HTTP Error 403: Forbidden"
   },
   "COST": {
     "symbol": "COST",
     "company": "Costco Wholesale Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/cost/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 13.0,
-    "valuation_score": -13.0,
-    "intrinsic_value": 661.24,
-    "current_price_approx": 747.2,
-    "solvency_score": 85,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "PLTR": {
+    "symbol": "PLTR",
+    "company": "Palantir Technologies Inc. Class A Common Stock",
+    "error": "No equity found for 'Palantir Technologies Inc. Class A Common Stock'."
   },
   "LRCX": {
     "symbol": "LRCX",
     "company": "Lam Research Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/lrcx/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 38.0,
-    "valuation_score": -38.0,
-    "intrinsic_value": 155.6,
-    "current_price_approx": 214.73,
-    "solvency_score": 73,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
   "AMAT": {
     "symbol": "AMAT",
     "company": "Applied Materials Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/amat/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 57.0,
-    "valuation_score": -57.0,
-    "intrinsic_value": 169.16,
-    "current_price_approx": 265.58,
-    "solvency_score": 85,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
   "NFLX": {
     "symbol": "NFLX",
-    "company": "Netflix Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/nflx/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 8.0,
-    "valuation_score": 8.0,
-    "intrinsic_value": 69.42,
-    "current_price_approx": 63.87,
-    "solvency_score": 77,
-    "error": null
+    "company": "NetFlix Inc",
+    "error": "HTTP Error 403: Forbidden"
   },
   "PANW": {
     "symbol": "PANW",
-    "company": "Palo Alto Networks Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/panw/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 44.0,
-    "valuation_score": -44.0,
-    "intrinsic_value": 160.13,
-    "current_price_approx": 230.59,
-    "solvency_score": 85,
-    "error": null
+    "company": "Palo Alto Networks, Inc. Common Stock",
+    "error": "HTTP Error 403: Forbidden"
   },
   "ARM": {
     "symbol": "ARM",
-    "company": "Arm Holdings PLC",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/arm/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 82.0,
-    "valuation_score": -82.0,
-    "intrinsic_value": 34.55,
-    "current_price_approx": 62.88,
-    "solvency_score": 81,
-    "error": null
-  },
-  "TXN": {
-    "symbol": "TXN",
-    "company": "Texas Instruments Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/txn/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 27.0,
-    "valuation_score": -27.0,
-    "intrinsic_value": 155.06,
-    "current_price_approx": 196.93,
-    "solvency_score": 72,
-    "error": null
-  },
-  "KLAC": {
-    "symbol": "KLAC",
-    "company": "KLA Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/klac/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 32.0,
-    "valuation_score": -32.0,
-    "intrinsic_value": 100.6,
-    "current_price_approx": 132.79,
-    "solvency_score": 78,
-    "error": null
+    "company": "Arm Holdings plc American Depositary Shares",
+    "error": "No equity found for 'Arm Holdings plc American Depositary Shares'."
   },
   "AMGN": {
     "symbol": "AMGN",
     "company": "Amgen Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/amgn/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 15.0,
-    "valuation_score": -15.0,
-    "intrinsic_value": 297.35,
-    "current_price_approx": 341.95,
-    "solvency_score": 33,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
-  "SNDK": {
-    "symbol": "SNDK",
-    "company": "SanDisk Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/sndk/summary",
-    "valuation_type": null,
-    "valuation_pct": null,
-    "valuation_score": null,
-    "intrinsic_value": null,
-    "current_price_approx": null,
-    "solvency_score": 81,
-    "error": null
+  "KLAC": {
+    "symbol": "KLAC",
+    "company": "KLA Corporation Common Stock",
+    "error": "No equity found for 'KLA Corporation Common Stock'."
+  },
+  "TXN": {
+    "symbol": "TXN",
+    "company": "Texas Instruments Incorporated",
+    "error": "HTTP Error 403: Forbidden"
   },
   "LIN": {
     "symbol": "LIN",
-    "company": "Linde PLC",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/lin/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 41.0,
-    "valuation_score": -41.0,
-    "intrinsic_value": 229.44,
-    "current_price_approx": 323.51,
-    "solvency_score": 62,
-    "error": null
+    "company": "Linde plc Ordinary Share",
+    "error": "No equity found for 'Linde plc Ordinary Share'."
+  },
+  "SNDK": {
+    "symbol": "SNDK",
+    "company": "Sandisk Corporation Common Stock",
+    "error": "No equity found for 'Sandisk Corporation Common Stock'."
   },
   "MRVL": {
     "symbol": "MRVL",
-    "company": "Marvell Technology Group Ltd",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/mrvl/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 32.0,
-    "valuation_score": -32.0,
-    "intrinsic_value": 128.32,
-    "current_price_approx": 169.38,
-    "solvency_score": 72,
-    "error": null
-  },
-  "TMUS": {
-    "symbol": "TMUS",
-    "company": "T-Mobile US Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/tmus/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 29.0,
-    "valuation_score": 29.0,
-    "intrinsic_value": 205.51,
-    "current_price_approx": 145.91,
-    "solvency_score": 32,
-    "error": null
+    "company": "Marvell Technology, Inc. Common Stock",
+    "error": "HTTP Error 403: Forbidden"
   },
   "PEP": {
     "symbol": "PEP",
-    "company": "PepsiCo Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/pep/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 15.0,
-    "valuation_score": -15.0,
-    "intrinsic_value": 97.35,
-    "current_price_approx": 111.95,
-    "solvency_score": 46,
-    "error": null
+    "company": "PepsiCo, Inc.",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "TMUS": {
+    "symbol": "TMUS",
+    "company": "T-Mobile US, Inc.",
+    "error": "HTTP Error 403: Forbidden"
   },
   "CRWD": {
     "symbol": "CRWD",
-    "company": "CrowdStrike Holdings Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/crwd/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 47.0,
-    "valuation_score": -47.0,
-    "intrinsic_value": 81.17,
-    "current_price_approx": 119.32,
-    "solvency_score": 63,
-    "error": null
-  },
-  "STX": {
-    "symbol": "STX",
-    "company": "Seagate Technology Holdings PLC",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/stx/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 68.0,
-    "valuation_score": -68.0,
-    "intrinsic_value": 221.09,
-    "current_price_approx": 371.43,
-    "solvency_score": 60,
-    "error": null
+    "company": "CrowdStrike Holdings, Inc. Class A Common Stock",
+    "error": "HTTP Error 403: Forbidden"
   },
   "SHOP": {
     "symbol": "SHOP",
-    "company": "Shopify Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/shop/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 21.0,
-    "valuation_score": -21.0,
-    "intrinsic_value": 94.29,
-    "current_price_approx": 114.09,
-    "solvency_score": 93,
-    "error": null
-  },
-  "ADI": {
-    "symbol": "ADI",
-    "company": "Analog Devices Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/adi/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 16.0,
-    "valuation_score": 16.0,
-    "intrinsic_value": 356.22,
-    "current_price_approx": 299.22,
-    "solvency_score": 69,
-    "error": null
+    "company": "Shopify Inc. Class A subordinate voting shares",
+    "error": "No equity found for 'Shopify Inc. Class A subordinate voting shares'."
   },
   "GILD": {
     "symbol": "GILD",
     "company": "Gilead Sciences Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/gild/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 17.0,
-    "valuation_score": -17.0,
-    "intrinsic_value": 96.93,
-    "current_price_approx": 113.41,
-    "solvency_score": 51,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "ADI": {
+    "symbol": "ADI",
+    "company": "Analog Devices, Inc.",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "STX": {
+    "symbol": "STX",
+    "company": "Seagate Technology Holdings PLC Ordinary Shares (Ireland)",
+    "error": "No equity found for 'Seagate Technology Holdings PLC Ordinary Shares (Ireland)'."
   },
   "QCOM": {
     "symbol": "QCOM",
     "company": "Qualcomm Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/qcom/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 22.0,
-    "valuation_score": 22.0,
-    "intrinsic_value": 166.77,
-    "current_price_approx": 130.08,
-    "solvency_score": 68,
-    "error": null
-  },
-  "WDC": {
-    "symbol": "WDC",
-    "company": "Western Digital Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/wdc/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 17.0,
-    "valuation_score": -17.0,
-    "intrinsic_value": 307.34,
-    "current_price_approx": 359.59,
-    "solvency_score": 71,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
   "BKNG": {
     "symbol": "BKNG",
-    "company": "Booking Holdings Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/bkng/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 40.0,
-    "valuation_score": 40.0,
-    "intrinsic_value": 279.38,
-    "current_price_approx": 167.63,
-    "solvency_score": 64,
-    "error": null
+    "company": "Booking Holdings Inc. Common Stock",
+    "error": "No equity found for 'Booking Holdings Inc. Common Stock'."
+  },
+  "WDC": {
+    "symbol": "WDC",
+    "company": "Western Digital Corp.",
+    "error": "HTTP Error 403: Forbidden"
   },
   "VRTX": {
     "symbol": "VRTX",
     "company": "Vertex Pharmaceuticals Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/vrtx/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 17.0,
-    "valuation_score": -17.0,
-    "intrinsic_value": 362.63,
-    "current_price_approx": 424.28,
-    "solvency_score": 90,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
   "ISRG": {
     "symbol": "ISRG",
-    "company": "Intuitive Surgical Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/isrg/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 12.0,
-    "valuation_score": 12.0,
-    "intrinsic_value": 345.95,
-    "current_price_approx": 304.44,
-    "solvency_score": 81,
-    "error": null
+    "company": "Intuitive Surgical Inc.",
+    "error": "HTTP Error 403: Forbidden"
   },
   "PDD": {
     "symbol": "PDD",
-    "company": "PDD Holdings Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/pdd/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 48.0,
-    "valuation_score": 48.0,
-    "intrinsic_value": 135.38,
-    "current_price_approx": 70.4,
-    "solvency_score": 70,
-    "error": null
+    "company": "PDD Holdings Inc. American Depositary Shares",
+    "error": "No equity found for 'PDD Holdings Inc. American Depositary Shares'."
   },
   "SBUX": {
     "symbol": "SBUX",
     "company": "Starbucks Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/sbux/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 18.0,
-    "valuation_score": -18.0,
-    "intrinsic_value": 69.75,
-    "current_price_approx": 82.3,
-    "solvency_score": 48,
-    "error": null
-  },
-  "FTNT": {
-    "symbol": "FTNT",
-    "company": "Fortinet Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/ftnt/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 36.0,
-    "valuation_score": -36.0,
-    "intrinsic_value": 78.34,
-    "current_price_approx": 106.54,
-    "solvency_score": 72,
-    "error": null
-  },
-  "ABNB": {
-    "symbol": "ABNB",
-    "company": "Airbnb Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/abnb/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 40.0,
-    "valuation_score": -40.0,
-    "intrinsic_value": 89.81,
-    "current_price_approx": 125.73,
-    "solvency_score": 79,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
   "ADP": {
     "symbol": "ADP",
-    "company": "Automatic Data Processing Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/adp/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 10.0,
-    "valuation_score": -10.0,
-    "intrinsic_value": 201.36,
-    "current_price_approx": 221.5,
-    "solvency_score": 55,
-    "error": null
+    "company": "Automatic Data Processing",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "ABNB": {
+    "symbol": "ABNB",
+    "company": "Airbnb, Inc. Class A Common Stock",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "FTNT": {
+    "symbol": "FTNT",
+    "company": "Fortinet, Inc.",
+    "error": "HTTP Error 403: Forbidden"
   },
   "ADBE": {
     "symbol": "ADBE",
-    "company": "Adobe Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/adbe/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 52.0,
-    "valuation_score": 52.0,
-    "intrinsic_value": 463.6,
-    "current_price_approx": 222.53,
-    "solvency_score": 76,
-    "error": null
-  },
-  "APP": {
-    "symbol": "APP",
-    "company": "Applovin Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/app/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 34.0,
-    "valuation_score": 34.0,
-    "intrinsic_value": 370.43,
-    "current_price_approx": 244.48,
-    "solvency_score": 80,
-    "error": null
+    "company": "Adobe Inc.",
+    "error": "HTTP Error 403: Forbidden"
   },
   "INTU": {
     "symbol": "INTU",
     "company": "Intuit Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/intu/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 58.0,
-    "valuation_score": 58.0,
-    "intrinsic_value": 691.03,
-    "current_price_approx": 290.23,
-    "solvency_score": 78,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
-  "MELI": {
-    "symbol": "MELI",
-    "company": "Mercadolibre Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/meli/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 41.0,
-    "valuation_score": 41.0,
-    "intrinsic_value": 2.0,
-    "current_price_approx": 1.18,
-    "solvency_score": 49,
-    "error": null
+  "APP": {
+    "symbol": "APP",
+    "company": "Applovin Corporation Class A Common Stock",
+    "error": "No equity found for 'Applovin Corporation Class A Common Stock'."
   },
   "DASH": {
     "symbol": "DASH",
-    "company": "DoorDash Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/dash/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 30.0,
-    "valuation_score": 30.0,
-    "intrinsic_value": 255.53,
-    "current_price_approx": 178.87,
-    "solvency_score": 71,
-    "error": null
+    "company": "DoorDash, Inc. Class A Common Stock",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "MELI": {
+    "symbol": "MELI",
+    "company": "Mercado Libre, Inc",
+    "error": "HTTP Error 403: Forbidden"
   },
   "CEG": {
     "symbol": "CEG",
-    "company": "Constellation Energy Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/ceg/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 12.0,
-    "valuation_score": -12.0,
-    "intrinsic_value": 192.44,
-    "current_price_approx": 215.53,
-    "solvency_score": 44,
-    "error": null
-  },
-  "CSX": {
-    "symbol": "CSX",
-    "company": "CSX Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/csx/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 26.0,
-    "valuation_score": -26.0,
-    "intrinsic_value": 30.4,
-    "current_price_approx": 38.3,
-    "solvency_score": 38,
-    "error": null
+    "company": "Constellation Energy Corporation Common Stock",
+    "error": "No equity found for 'Constellation Energy Corporation Common Stock'."
   },
   "CMCSA": {
     "symbol": "CMCSA",
     "company": "Comcast Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/cmcsa/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 44.0,
-    "valuation_score": 44.0,
-    "intrinsic_value": 38.07,
-    "current_price_approx": 21.32,
-    "solvency_score": 33,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
   "MNST": {
     "symbol": "MNST",
-    "company": "Monster Beverage Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/mnst/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 23.0,
-    "valuation_score": -23.0,
-    "intrinsic_value": 29.72,
-    "current_price_approx": 36.56,
-    "solvency_score": 92,
-    "error": null
+    "company": "Monster Beverage Corporation",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "CSX": {
+    "symbol": "CSX",
+    "company": "CSX Corporation",
+    "error": "HTTP Error 403: Forbidden"
   },
   "MAR": {
     "symbol": "MAR",
-    "company": "Marriott International Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/mar/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 19.0,
-    "valuation_score": -19.0,
-    "intrinsic_value": 228.95,
-    "current_price_approx": 272.45,
-    "solvency_score": 46,
-    "error": null
+    "company": "Marriott International Class A Common Stock",
+    "error": "No equity found for 'Marriott International Class A Common Stock'."
   },
   "CDNS": {
     "symbol": "CDNS",
-    "company": "Cadence Design Systems Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/cdns/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 12.0,
-    "valuation_score": -12.0,
-    "intrinsic_value": 223.79,
-    "current_price_approx": 250.64,
-    "solvency_score": 75,
-    "error": null
+    "company": "Cadence Design Systems",
+    "error": "HTTP Error 403: Forbidden"
   },
   "REGN": {
     "symbol": "REGN",
     "company": "Regeneron Pharmaceuticals Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/regn/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 22.0,
-    "valuation_score": -22.0,
-    "intrinsic_value": 520.25,
-    "current_price_approx": 634.71,
-    "solvency_score": 98,
-    "error": null
-  },
-  "DDOG": {
-    "symbol": "DDOG",
-    "company": "Datadog Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/ddog/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 24.0,
-    "valuation_score": -24.0,
-    "intrinsic_value": 142.28,
-    "current_price_approx": 176.43,
-    "solvency_score": 80,
-    "error": null
-  },
-  "MDLZ": {
-    "symbol": "MDLZ",
-    "company": "Mondelez International Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/mdlz/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 3.0,
-    "valuation_score": 3.0,
-    "intrinsic_value": 53.36,
-    "current_price_approx": 51.76,
-    "solvency_score": 40,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
   "CTAS": {
     "symbol": "CTAS",
     "company": "Cintas Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/ctas/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 5.0,
-    "valuation_score": -5.0,
-    "intrinsic_value": 155.74,
-    "current_price_approx": 163.53,
-    "solvency_score": 61,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
-  "LITE": {
-    "symbol": "LITE",
-    "company": "Lumentum Holdings Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/lite/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 48.0,
-    "valuation_score": -48.0,
-    "intrinsic_value": 363.78,
-    "current_price_approx": 538.39,
-    "solvency_score": 91,
-    "error": null
+  "MDLZ": {
+    "symbol": "MDLZ",
+    "company": "Mondelez International, Inc. Class A",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "DDOG": {
+    "symbol": "DDOG",
+    "company": "Datadog, Inc. Class A Common Stock",
+    "error": "HTTP Error 403: Forbidden"
   },
   "ROST": {
     "symbol": "ROST",
     "company": "Ross Stores Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/rost/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 38.0,
-    "valuation_score": -38.0,
-    "intrinsic_value": 117.72,
-    "current_price_approx": 162.45,
-    "solvency_score": 87,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
   "SNPS": {
     "symbol": "SNPS",
     "company": "Synopsys Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/snps/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 10.0,
-    "valuation_score": -10.0,
-    "intrinsic_value": 285.56,
-    "current_price_approx": 314.12,
-    "solvency_score": 50,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "LITE": {
+    "symbol": "LITE",
+    "company": "Lumentum Holdings Inc. Common Stock",
+    "error": "No equity found for 'Lumentum Holdings Inc. Common Stock'."
   },
   "ORLY": {
     "symbol": "ORLY",
-    "company": "O'Reilly Automotive Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/orly/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 5.0,
-    "valuation_score": -5.0,
-    "intrinsic_value": 68.05,
-    "current_price_approx": 71.45,
-    "solvency_score": 58,
-    "error": null
+    "company": "O'Reilly Automotive, Inc.",
+    "error": "HTTP Error 403: Forbidden"
   },
   "WBD": {
     "symbol": "WBD",
-    "company": "Warner Bros Discovery Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/wbd/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 62.0,
-    "valuation_score": -62.0,
-    "intrinsic_value": 8.76,
-    "current_price_approx": 14.19,
-    "solvency_score": 38,
-    "error": null
+    "company": "Warner Bros. Discovery, Inc. Series A Common Stock",
+    "error": "HTTP Error 403: Forbidden"
   },
   "PCAR": {
     "symbol": "PCAR",
     "company": "Paccar Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/pcar/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 27.0,
-    "valuation_score": -27.0,
-    "intrinsic_value": 77.31,
-    "current_price_approx": 98.18,
-    "solvency_score": 50,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
   "HON": {
     "symbol": "HON",
-    "company": "Honeywell International Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/hon/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 16.0,
-    "valuation_score": -16.0,
-    "intrinsic_value": 146.0,
-    "current_price_approx": 169.36,
-    "solvency_score": 48,
-    "error": null
+    "company": "Honeywell International, Inc.",
+    "error": "HTTP Error 403: Forbidden"
   },
   "AEP": {
     "symbol": "AEP",
-    "company": "American Electric Power Company Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/aep/summary",
-    "valuation_type": null,
-    "valuation_pct": null,
-    "valuation_score": null,
-    "intrinsic_value": 96.55,
-    "current_price_approx": null,
-    "solvency_score": null,
-    "error": null
+    "company": "American Electric Power Company, Inc.",
+    "error": "HTTP Error 403: Forbidden"
   },
   "MPWR": {
     "symbol": "MPWR",
-    "company": "Monolithic Power Systems Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/mpwr/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 13.0,
-    "valuation_score": -13.0,
-    "intrinsic_value": 923.86,
-    "current_price_approx": 1043.96,
-    "solvency_score": 81,
-    "error": null
+    "company": "Monolithic Power Systems, Inc.",
+    "error": "HTTP Error 403: Forbidden"
   },
   "BKR": {
     "symbol": "BKR",
-    "company": "Baker Hughes Co",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/bkr/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 29.0,
-    "valuation_score": -29.0,
-    "intrinsic_value": 35.62,
-    "current_price_approx": 45.95,
-    "solvency_score": 52,
-    "error": null
-  },
-  "NBIS": {
-    "symbol": "NBIS",
-    "company": "Nebius Group NV",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/nbis/summary",
-    "valuation_type": null,
-    "valuation_pct": null,
-    "valuation_score": null,
-    "intrinsic_value": null,
-    "current_price_approx": null,
-    "solvency_score": 58,
-    "error": null
-  },
-  "FANG": {
-    "symbol": "FANG",
-    "company": "Diamondback Energy Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/fang/summary",
-    "valuation_type": null,
-    "valuation_pct": null,
-    "valuation_score": null,
-    "intrinsic_value": 169.02,
-    "current_price_approx": null,
-    "solvency_score": 55,
-    "error": null
+    "company": "Baker Hughes Company",
+    "error": "HTTP Error 403: Forbidden"
   },
   "FAST": {
     "symbol": "FAST",
     "company": "Fastenal Co",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/fast/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 19.0,
-    "valuation_score": -19.0,
-    "intrinsic_value": 33.2,
-    "current_price_approx": 39.51,
-    "solvency_score": 99,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "FANG": {
+    "symbol": "FANG",
+    "company": "Diamondback Energy, Inc.",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "NBIS": {
+    "symbol": "NBIS",
+    "company": "Nebius Group N.V. Class A Ordinary Shares",
+    "error": "No equity found for 'Nebius Group N.V. Class A Ordinary Shares'."
   },
   "TER": {
     "symbol": "TER",
-    "company": "Teradyne Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/ter/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 57.0,
-    "valuation_score": -57.0,
-    "intrinsic_value": 129.46,
-    "current_price_approx": 203.25,
-    "solvency_score": 87,
-    "error": null
+    "company": "Teradyne, Inc. Common Stock",
+    "error": "HTTP Error 403: Forbidden"
   },
   "NXPI": {
     "symbol": "NXPI",
-    "company": "NXP Semiconductors NV",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/nxpi/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 14.0,
-    "valuation_score": 14.0,
-    "intrinsic_value": 209.6,
-    "current_price_approx": 180.26,
-    "solvency_score": 57,
-    "error": null
+    "company": "NXP Semiconductors N.V.",
+    "error": "HTTP Error 403: Forbidden"
   },
   "ADSK": {
     "symbol": "ADSK",
     "company": "Autodesk Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/adsk/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 20.0,
-    "valuation_score": 20.0,
-    "intrinsic_value": 254.69,
-    "current_price_approx": 203.75,
-    "solvency_score": 72,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
   "PYPL": {
     "symbol": "PYPL",
-    "company": "PayPal Holdings Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/pypl/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 18.0,
-    "valuation_score": 18.0,
-    "intrinsic_value": 60.29,
-    "current_price_approx": 49.44,
-    "solvency_score": 56,
-    "error": null
+    "company": "PayPal Holdings, Inc. Common Stock",
+    "error": "HTTP Error 403: Forbidden"
   },
   "HONA": {
     "symbol": "HONA",
-    "company": "Honeywell Aerospace Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/hona/summary",
-    "valuation_type": null,
-    "valuation_pct": null,
-    "valuation_score": null,
-    "intrinsic_value": null,
-    "current_price_approx": null,
-    "solvency_score": 47,
-    "error": null
-  },
-  "AXON": {
-    "symbol": "AXON",
-    "company": "Axon Enterprise Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/axon/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 60.0,
-    "valuation_score": -60.0,
-    "intrinsic_value": 200.32,
-    "current_price_approx": 320.51,
-    "solvency_score": 55,
-    "error": null
-  },
-  "ALAB": {
-    "symbol": "ALAB",
-    "company": "Astera Labs Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/alab/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 40.0,
-    "valuation_score": -40.0,
-    "intrinsic_value": 136.86,
-    "current_price_approx": 191.6,
-    "solvency_score": 81,
-    "error": null
+    "company": "Honeywell Aerospace Inc. Common Stock",
+    "error": "No equity found for 'Honeywell Aerospace Inc. Common Stock'."
   },
   "WDAY": {
     "symbol": "WDAY",
-    "company": "Workday Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/wday/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 43.0,
-    "valuation_score": 43.0,
-    "intrinsic_value": 283.88,
-    "current_price_approx": 161.81,
-    "solvency_score": 64,
-    "error": null
-  },
-  "CRWV": {
-    "symbol": "CRWV",
-    "company": "CoreWeave Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/crwv/summary",
-    "valuation_type": null,
-    "valuation_pct": null,
-    "valuation_score": null,
-    "intrinsic_value": null,
-    "current_price_approx": null,
-    "solvency_score": 13,
-    "error": null
-  },
-  "CCEP": {
-    "symbol": "CCEP",
-    "company": "Coca-Cola Europacific Partners PLC",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/ccep/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 33.0,
-    "valuation_score": -33.0,
-    "intrinsic_value": 57.97,
-    "current_price_approx": 77.1,
-    "solvency_score": 44,
-    "error": null
-  },
-  "XEL": {
-    "symbol": "XEL",
-    "company": "Xcel Energy Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/xel/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 19.0,
-    "valuation_score": -19.0,
-    "intrinsic_value": 50.05,
-    "current_price_approx": 59.56,
-    "solvency_score": null,
-    "error": null
+    "company": "Workday, Inc. Class A Common Stock",
+    "error": "HTTP Error 403: Forbidden"
   },
   "MSTR": {
     "symbol": "MSTR",
-    "company": "Microstrategy Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/mstr/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 3.0,
-    "valuation_score": -3.0,
-    "intrinsic_value": 92.08,
-    "current_price_approx": 94.84,
-    "solvency_score": 48,
-    "error": null
+    "company": "Strategy Inc Common Stock Class A",
+    "error": "No equity found for 'Strategy Inc Common Stock Class A'."
   },
-  "RKLB": {
-    "symbol": "RKLB",
-    "company": "Rocket Lab USA Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/rklb/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 88.0,
-    "valuation_score": -88.0,
-    "intrinsic_value": 6.86,
-    "current_price_approx": 12.9,
-    "solvency_score": 75,
-    "error": null
+  "CCEP": {
+    "symbol": "CCEP",
+    "company": "Coca-Cola Europacific Partners plc Ordinary Shares",
+    "error": "No equity found for 'Coca-Cola Europacific Partners plc Ordinary Shares'."
+  },
+  "AXON": {
+    "symbol": "AXON",
+    "company": "Axon Enterprise, Inc. Common Stock",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "XEL": {
+    "symbol": "XEL",
+    "company": "Xcel Energy, Inc.",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "ALAB": {
+    "symbol": "ALAB",
+    "company": "Astera Labs, Inc. Common Stock",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "CRWV": {
+    "symbol": "CRWV",
+    "company": "CoreWeave, Inc. Class A Common Stock",
+    "error": "HTTP Error 403: Forbidden"
   },
   "TRI": {
     "symbol": "TRI",
-    "company": "Thomson Reuters Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/tri/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 10.0,
-    "valuation_score": 10.0,
-    "intrinsic_value": 93.19,
-    "current_price_approx": 83.87,
-    "solvency_score": 71,
-    "error": null
-  },
-  "FER": {
-    "symbol": "FER",
-    "company": "Ferrovial SE",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/fer/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 57.0,
-    "valuation_score": -57.0,
-    "intrinsic_value": 21.73,
-    "current_price_approx": 34.12,
-    "solvency_score": 34,
-    "error": null
+    "company": "Thomson Reuters Corporation Common Shares",
+    "error": "No equity found for 'Thomson Reuters Corporation Common Shares'."
   },
   "EXC": {
     "symbol": "EXC",
-    "company": "Exelon Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/exc/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 7.0,
-    "valuation_score": 7.0,
-    "intrinsic_value": 37.67,
-    "current_price_approx": 35.03,
-    "solvency_score": null,
-    "error": null
+    "company": "Exelon Corporation",
+    "error": "HTTP Error 403: Forbidden"
   },
-  "TTWO": {
-    "symbol": "TTWO",
-    "company": "Take-Two Interactive Software Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/ttwo/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 11.0,
-    "valuation_score": -11.0,
-    "intrinsic_value": 171.48,
-    "current_price_approx": 190.34,
-    "solvency_score": 63,
-    "error": null
+  "FER": {
+    "symbol": "FER",
+    "company": "Ferrovial N.V. Ordinary Shares",
+    "error": "No equity found for 'Ferrovial N.V. Ordinary Shares'."
   },
   "PAYX": {
     "symbol": "PAYX",
     "company": "Paychex Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/payx/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 5.0,
-    "valuation_score": -5.0,
-    "intrinsic_value": 93.65,
-    "current_price_approx": 98.33,
-    "solvency_score": 50,
-    "error": null
-  },
-  "IDXX": {
-    "symbol": "IDXX",
-    "company": "IDEXX Laboratories Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/idxx/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 1.0,
-    "valuation_score": -1.0,
-    "intrinsic_value": 438.54,
-    "current_price_approx": 442.93,
-    "solvency_score": 74,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
   "KDP": {
     "symbol": "KDP",
-    "company": "Keurig Dr Pepper Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/kdp/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 6.0,
-    "valuation_score": -6.0,
-    "intrinsic_value": 24.2,
-    "current_price_approx": 25.65,
-    "solvency_score": 31,
-    "error": null
+    "company": "Keurig Dr Pepper Inc.",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "IDXX": {
+    "symbol": "IDXX",
+    "company": "Idexx Laboratories Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "TTWO": {
+    "symbol": "TTWO",
+    "company": "Take-Two Interactive Software Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "RKLB": {
+    "symbol": "RKLB",
+    "company": "Rocket Lab Corporation Common Stock",
+    "error": "No equity found for 'Rocket Lab Corporation Common Stock'."
   },
   "ODFL": {
     "symbol": "ODFL",
-    "company": "Old Dominion Freight Line Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/odfl/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 19.0,
-    "valuation_score": -19.0,
-    "intrinsic_value": 133.75,
-    "current_price_approx": 159.16,
-    "solvency_score": 88,
-    "error": null
+    "company": "Old Dominion Freight Line",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "ROP": {
+    "symbol": "ROP",
+    "company": "Roper Technologies, Inc. Common Stock",
+    "error": "HTTP Error 403: Forbidden"
   },
   "MCHP": {
     "symbol": "MCHP",
     "company": "Microchip Technology Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/mchp/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 13.0,
-    "valuation_score": -13.0,
-    "intrinsic_value": 52.86,
-    "current_price_approx": 59.73,
-    "solvency_score": 46,
-    "error": null
-  },
-  "ROP": {
-    "symbol": "ROP",
-    "company": "Roper Technologies Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/rop/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 43.0,
-    "valuation_score": 43.0,
-    "intrinsic_value": 578.09,
-    "current_price_approx": 329.51,
-    "solvency_score": 42,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
   "DXCM": {
     "symbol": "DXCM",
-    "company": "Dexcom Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/dxcm/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 14.0,
-    "valuation_score": -14.0,
-    "intrinsic_value": 63.33,
-    "current_price_approx": 72.2,
-    "solvency_score": 80,
-    "error": null
+    "company": "DexCom, Inc.",
+    "error": "HTTP Error 403: Forbidden"
   },
   "GEHC": {
     "symbol": "GEHC",
-    "company": "GE Healthcare Technologies Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/gehc/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 19.0,
-    "valuation_score": 19.0,
-    "intrinsic_value": 73.82,
-    "current_price_approx": 59.79,
-    "solvency_score": 39,
-    "error": null
+    "company": "GE HealthCare Technologies Inc. Common Stock",
+    "error": "No equity found for 'GE HealthCare Technologies Inc. Common Stock'."
   },
   "ALNY": {
     "symbol": "ALNY",
-    "company": "Alnylam Pharmaceuticals Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/alny/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 25.0,
-    "valuation_score": 25.0,
-    "intrinsic_value": 252.19,
-    "current_price_approx": 189.14,
-    "solvency_score": 53,
-    "error": null
+    "company": "Alnylam Pharmaceuticals, Inc.",
+    "error": "HTTP Error 403: Forbidden"
   },
   "CPRT": {
     "symbol": "CPRT",
     "company": "Copart Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/cprt/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 23.0,
-    "valuation_score": 23.0,
-    "intrinsic_value": 35.15,
-    "current_price_approx": 27.07,
-    "solvency_score": 93,
-    "error": null
+    "error": "HTTP Error 403: Forbidden"
   },
   "KHC": {
     "symbol": "KHC",
-    "company": "Kraft Heinz Co",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/khc/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 15.0,
-    "valuation_score": 15.0,
-    "intrinsic_value": 24.03,
-    "current_price_approx": 20.43,
-    "solvency_score": 38,
-    "error": null
+    "company": "The Kraft Heinz Company Common Stock",
+    "error": "No equity found for 'The Kraft Heinz Company Common Stock'."
   }
 }
