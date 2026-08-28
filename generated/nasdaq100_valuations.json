@@ -42,7 +42,7 @@
   "META": {
     "symbol": "META",
     "company": "Meta Platforms, Inc. Class A Common Stock",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'Meta Platforms, Inc. Class A Common Stock'."
   },
   "TSLA": {
     "symbol": "TSLA",
@@ -119,29 +119,24 @@
     "company": "Texas Instruments Incorporated",
     "error": "HTTP Error 403: Forbidden"
   },
+  "AMGN": {
+    "symbol": "AMGN",
+    "company": "Amgen Inc",
+    "error": "No equity found for 'Amgen Inc'."
+  },
   "KLAC": {
     "symbol": "KLAC",
     "company": "KLA Corporation Common Stock",
     "error": "No equity found for 'KLA Corporation Common Stock'."
-  },
-  "AMGN": {
-    "symbol": "AMGN",
-    "company": "Amgen Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "CRWD": {
-    "symbol": "CRWD",
-    "company": "CrowdStrike Holdings, Inc. Class A Common Stock",
-    "error": "HTTP Error 403: Forbidden"
   },
   "LIN": {
     "symbol": "LIN",
     "company": "Linde plc Ordinary Share",
     "error": "No equity found for 'Linde plc Ordinary Share'."
   },
-  "MRVL": {
-    "symbol": "MRVL",
-    "company": "Marvell Technology, Inc. Common Stock",
+  "CRWD": {
+    "symbol": "CRWD",
+    "company": "CrowdStrike Holdings, Inc. Class A Common Stock",
     "error": "HTTP Error 403: Forbidden"
   },
   "SNDK": {
@@ -154,14 +149,19 @@
     "company": "Shopify Inc. Class A subordinate voting shares",
     "error": "No equity found for 'Shopify Inc. Class A subordinate voting shares'."
   },
-  "PEP": {
-    "symbol": "PEP",
-    "company": "PepsiCo, Inc.",
+  "MRVL": {
+    "symbol": "MRVL",
+    "company": "Marvell Technology, Inc. Common Stock",
     "error": "HTTP Error 403: Forbidden"
   },
   "TMUS": {
     "symbol": "TMUS",
     "company": "T-Mobile US, Inc.",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "PEP": {
+    "symbol": "PEP",
+    "company": "PepsiCo, Inc.",
     "error": "HTTP Error 403: Forbidden"
   },
   "STX": {
@@ -204,14 +204,14 @@
     "company": "Intuitive Surgical Inc.",
     "error": "HTTP Error 403: Forbidden"
   },
-  "FTNT": {
-    "symbol": "FTNT",
-    "company": "Fortinet, Inc.",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "SBUX": {
     "symbol": "SBUX",
     "company": "Starbucks Corp",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "FTNT": {
+    "symbol": "FTNT",
+    "company": "Fortinet, Inc.",
     "error": "HTTP Error 403: Forbidden"
   },
   "PDD": {
@@ -244,29 +244,19 @@
     "company": "DoorDash, Inc. Class A Common Stock",
     "error": "HTTP Error 403: Forbidden"
   },
-  "CEG": {
-    "symbol": "CEG",
-    "company": "Constellation Energy Corporation Common Stock",
-    "error": "No equity found for 'Constellation Energy Corporation Common Stock'."
-  },
   "MELI": {
     "symbol": "MELI",
     "company": "Mercado Libre, Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "CSX": {
-    "symbol": "CSX",
-    "company": "CSX Corporation",
-    "error": "HTTP Error 403: Forbidden"
+  "CEG": {
+    "symbol": "CEG",
+    "company": "Constellation Energy Corporation Common Stock",
+    "error": "No equity found for 'Constellation Energy Corporation Common Stock'."
   },
   "INTU": {
     "symbol": "INTU",
     "company": "Intuit Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "CDNS": {
-    "symbol": "CDNS",
-    "company": "Cadence Design Systems",
     "error": "HTTP Error 403: Forbidden"
   },
   "CMCSA": {
@@ -274,14 +264,29 @@
     "company": "Comcast Corp",
     "error": "HTTP Error 403: Forbidden"
   },
+  "CSX": {
+    "symbol": "CSX",
+    "company": "CSX Corporation",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "CDNS": {
+    "symbol": "CDNS",
+    "company": "Cadence Design Systems",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "MNST": {
+    "symbol": "MNST",
+    "company": "Monster Beverage Corporation",
+    "error": "HTTP Error 403: Forbidden"
+  },
   "MAR": {
     "symbol": "MAR",
     "company": "Marriott International Class A Common Stock",
     "error": "No equity found for 'Marriott International Class A Common Stock'."
   },
-  "MNST": {
-    "symbol": "MNST",
-    "company": "Monster Beverage Corporation",
+  "DDOG": {
+    "symbol": "DDOG",
+    "company": "Datadog, Inc. Class A Common Stock",
     "error": "HTTP Error 403: Forbidden"
   },
   "SNPS": {
@@ -289,25 +294,20 @@
     "company": "Synopsys Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "DDOG": {
-    "symbol": "DDOG",
-    "company": "Datadog, Inc. Class A Common Stock",
+  "CTAS": {
+    "symbol": "CTAS",
+    "company": "Cintas Corp",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "REGN": {
+    "symbol": "REGN",
+    "company": "Regeneron Pharmaceuticals Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "LITE": {
     "symbol": "LITE",
     "company": "Lumentum Holdings Inc. Common Stock",
     "error": "No equity found for 'Lumentum Holdings Inc. Common Stock'."
-  },
-  "REGN": {
-    "symbol": "REGN",
-    "company": "Regeneron Pharmaceuticals Inc",
-    "error": "No equity found for 'Regeneron Pharmaceuticals Inc'."
-  },
-  "CTAS": {
-    "symbol": "CTAS",
-    "company": "Cintas Corp",
-    "error": "HTTP Error 403: Forbidden"
   },
   "MDLZ": {
     "symbol": "MDLZ",
@@ -342,6 +342,11 @@
   "PCAR": {
     "symbol": "PCAR",
     "company": "Paccar Inc",
+    "error": "No equity found for 'Paccar Inc'."
+  },
+  "BKR": {
+    "symbol": "BKR",
+    "company": "Baker Hughes Company",
     "error": "HTTP Error 403: Forbidden"
   },
   "MPWR": {
@@ -349,24 +354,9 @@
     "company": "Monolithic Power Systems, Inc.",
     "error": "HTTP Error 403: Forbidden"
   },
-  "BKR": {
-    "symbol": "BKR",
-    "company": "Baker Hughes Company",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "NBIS": {
-    "symbol": "NBIS",
-    "company": "Nebius Group N.V. Class A Ordinary Shares",
-    "error": "No equity found for 'Nebius Group N.V. Class A Ordinary Shares'."
-  },
   "FAST": {
     "symbol": "FAST",
     "company": "Fastenal Co",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "TER": {
-    "symbol": "TER",
-    "company": "Teradyne, Inc. Common Stock",
     "error": "HTTP Error 403: Forbidden"
   },
   "NXPI": {
@@ -374,9 +364,14 @@
     "company": "NXP Semiconductors N.V.",
     "error": "HTTP Error 403: Forbidden"
   },
-  "ADSK": {
-    "symbol": "ADSK",
-    "company": "Autodesk Inc",
+  "NBIS": {
+    "symbol": "NBIS",
+    "company": "Nebius Group N.V. Class A Ordinary Shares",
+    "error": "No equity found for 'Nebius Group N.V. Class A Ordinary Shares'."
+  },
+  "TER": {
+    "symbol": "TER",
+    "company": "Teradyne, Inc. Common Stock",
     "error": "HTTP Error 403: Forbidden"
   },
   "FANG": {
@@ -384,19 +379,9 @@
     "company": "Diamondback Energy, Inc.",
     "error": "HTTP Error 403: Forbidden"
   },
-  "MSTR": {
-    "symbol": "MSTR",
-    "company": "Strategy Inc Common Stock Class A",
-    "error": "No equity found for 'Strategy Inc Common Stock Class A'."
-  },
-  "PYPL": {
-    "symbol": "PYPL",
-    "company": "PayPal Holdings, Inc. Common Stock",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "ALAB": {
-    "symbol": "ALAB",
-    "company": "Astera Labs, Inc. Common Stock",
+  "ADSK": {
+    "symbol": "ADSK",
+    "company": "Autodesk Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "HONA": {
@@ -404,24 +389,24 @@
     "company": "Honeywell Aerospace Inc. Common Stock",
     "error": "No equity found for 'Honeywell Aerospace Inc. Common Stock'."
   },
-  "AXON": {
-    "symbol": "AXON",
-    "company": "Axon Enterprise, Inc. Common Stock",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "CRWV": {
-    "symbol": "CRWV",
-    "company": "CoreWeave, Inc. Class A Common Stock",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "XEL": {
-    "symbol": "XEL",
-    "company": "Xcel Energy, Inc.",
-    "error": "HTTP Error 403: Forbidden"
+  "ALAB": {
+    "symbol": "ALAB",
+    "company": "Astera Labs, Inc. Common Stock",
+    "error": "No equity found for 'Astera Labs, Inc. Common Stock'."
   },
   "WDAY": {
     "symbol": "WDAY",
     "company": "Workday, Inc. Class A Common Stock",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "MSTR": {
+    "symbol": "MSTR",
+    "company": "Strategy Inc Common Stock Class A",
+    "error": "No equity found for 'Strategy Inc Common Stock Class A'."
+  },
+  "AXON": {
+    "symbol": "AXON",
+    "company": "Axon Enterprise, Inc. Common Stock",
     "error": "HTTP Error 403: Forbidden"
   },
   "CCEP": {
@@ -429,19 +414,34 @@
     "company": "Coca-Cola Europacific Partners plc Ordinary Shares",
     "error": "No equity found for 'Coca-Cola Europacific Partners plc Ordinary Shares'."
   },
+  "XEL": {
+    "symbol": "XEL",
+    "company": "Xcel Energy, Inc.",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "PYPL": {
+    "symbol": "PYPL",
+    "company": "PayPal Holdings, Inc. Common Stock",
+    "error": "HTTP Error 403: Forbidden"
+  },
   "TRI": {
     "symbol": "TRI",
     "company": "Thomson Reuters Corporation Common Shares",
     "error": "No equity found for 'Thomson Reuters Corporation Common Shares'."
   },
-  "EXC": {
-    "symbol": "EXC",
-    "company": "Exelon Corporation",
+  "CRWV": {
+    "symbol": "CRWV",
+    "company": "CoreWeave, Inc. Class A Common Stock",
     "error": "HTTP Error 403: Forbidden"
   },
   "PAYX": {
     "symbol": "PAYX",
     "company": "Paychex Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "EXC": {
+    "symbol": "EXC",
+    "company": "Exelon Corporation",
     "error": "HTTP Error 403: Forbidden"
   },
   "KDP": {
@@ -459,11 +459,6 @@
     "company": "Idexx Laboratories Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "RKLB": {
-    "symbol": "RKLB",
-    "company": "Rocket Lab Corporation Common Stock",
-    "error": "No equity found for 'Rocket Lab Corporation Common Stock'."
-  },
   "FER": {
     "symbol": "FER",
     "company": "Ferrovial N.V. Ordinary Shares",
@@ -478,6 +473,11 @@
     "symbol": "ODFL",
     "company": "Old Dominion Freight Line",
     "error": "HTTP Error 403: Forbidden"
+  },
+  "RKLB": {
+    "symbol": "RKLB",
+    "company": "Rocket Lab Corporation Common Stock",
+    "error": "No equity found for 'Rocket Lab Corporation Common Stock'."
   },
   "MCHP": {
     "symbol": "MCHP",
