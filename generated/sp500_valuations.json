@@ -127,7 +127,7 @@
   "COST": {
     "symbol": "COST",
     "company": "Costco Wholesale Corp",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'Costco Wholesale Corp'."
   },
   "CVX": {
     "symbol": "CVX",
@@ -197,7 +197,7 @@
   "GS": {
     "symbol": "GS",
     "company": "Goldman Sachs Group Inc/The",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'Goldman Sachs Group Inc/The'."
   },
   "PM": {
     "symbol": "PM",
@@ -249,14 +249,19 @@
     "company": "KLA Corp",
     "error": "HTTP Error 403: Forbidden"
   },
+  "LIN": {
+    "symbol": "LIN",
+    "company": "Linde PLC",
+    "error": "HTTP Error 403: Forbidden"
+  },
   "AXP": {
     "symbol": "AXP",
     "company": "American Express Co",
     "error": "HTTP Error 403: Forbidden"
   },
-  "LIN": {
-    "symbol": "LIN",
-    "company": "Linde PLC",
+  "CRWD": {
+    "symbol": "CRWD",
+    "company": "Crowdstrike Holdings Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "C": {
@@ -267,11 +272,6 @@
   "IBM": {
     "symbol": "IBM",
     "company": "International Business Machines Corp",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "CRWD": {
-    "symbol": "CRWD",
-    "company": "Crowdstrike Holdings Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "SNDK": {
@@ -289,9 +289,9 @@
     "company": "Verizon Communications Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "APH": {
-    "symbol": "APH",
-    "company": "Amphenol Corp",
+  "MRVL": {
+    "symbol": "MRVL",
+    "company": "Marvell Technology",
     "error": "HTTP Error 403: Forbidden"
   },
   "ABT": {
@@ -304,9 +304,9 @@
     "company": "T-Mobile US Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "MRVL": {
-    "symbol": "MRVL",
-    "company": "Marvell Technology",
+  "APH": {
+    "symbol": "APH",
+    "company": "Amphenol Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "PEP": {
@@ -339,14 +339,14 @@
     "company": "Union Pacific Corp",
     "error": "HTTP Error 403: Forbidden"
   },
-  "BLK": {
-    "symbol": "BLK",
-    "company": "Blackrock Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "GILD": {
     "symbol": "GILD",
     "company": "Gilead Sciences Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "BLK": {
+    "symbol": "BLK",
+    "company": "Blackrock Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "T": {
@@ -354,14 +354,14 @@
     "company": "AT&T Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "ADI": {
-    "symbol": "ADI",
-    "company": "Analog Devices Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "QCOM": {
     "symbol": "QCOM",
     "company": "QUALCOMM Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "ADI": {
+    "symbol": "ADI",
+    "company": "Analog Devices Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "WELL": {
@@ -379,14 +379,14 @@
     "company": "Deere & Co",
     "error": "HTTP Error 403: Forbidden"
   },
-  "WDC": {
-    "symbol": "WDC",
-    "company": "Western Digital Corp",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "BA": {
     "symbol": "BA",
     "company": "Boeing Co/The",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "WDC": {
+    "symbol": "WDC",
+    "company": "Western Digital Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "UBER": {
@@ -399,14 +399,14 @@
     "company": "Pfizer Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "ETN": {
-    "symbol": "ETN",
-    "company": "Eaton Corp PLC",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "COP": {
     "symbol": "COP",
     "company": "ConocoPhillips",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "ETN": {
+    "symbol": "ETN",
+    "company": "Eaton Corp PLC",
     "error": "HTTP Error 403: Forbidden"
   },
   "BKNG": {
@@ -509,25 +509,25 @@
     "company": "CVS Health Corp",
     "error": "HTTP Error 403: Forbidden"
   },
-  "LOW": {
-    "symbol": "LOW",
-    "company": "Lowe's Cos Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "MDT": {
     "symbol": "MDT",
     "company": "Medtronic PLC",
     "error": "HTTP Error 403: Forbidden"
   },
-  "ADBE": {
-    "symbol": "ADBE",
-    "company": "Adobe Inc",
+  "LOW": {
+    "symbol": "LOW",
+    "company": "Lowe's Cos Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "ACN": {
     "symbol": "ACN",
     "company": "Accenture PLC",
     "error": "HTTP Error 403: Forbidden"
+  },
+  "ADBE": {
+    "symbol": "ADBE",
+    "company": "Adobe Inc",
+    "error": "No equity found for 'Adobe Inc'."
   },
   "MO": {
     "symbol": "MO",
@@ -574,14 +574,9 @@
     "company": "McKesson Corp",
     "error": "HTTP Error 403: Forbidden"
   },
-  "GD": {
-    "symbol": "GD",
-    "company": "General Dynamics Corp",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "CME": {
-    "symbol": "CME",
-    "company": "CME Group Inc",
+  "MPC": {
+    "symbol": "MPC",
+    "company": "Marathon Petroleum Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "EQIX": {
@@ -589,9 +584,14 @@
     "company": "Equinix Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "MPC": {
-    "symbol": "MPC",
-    "company": "Marathon Petroleum Corp",
+  "CME": {
+    "symbol": "CME",
+    "company": "CME Group Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "GD": {
+    "symbol": "GD",
+    "company": "General Dynamics Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "DASH": {
@@ -619,11 +619,6 @@
     "company": "Trane Technologies PLC",
     "error": "HTTP Error 403: Forbidden"
   },
-  "KKR": {
-    "symbol": "KKR",
-    "company": "KKR & Co Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "CEG": {
     "symbol": "CEG",
     "company": "Constellation Energy Corp",
@@ -634,14 +629,19 @@
     "company": "Intuit Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "USB": {
-    "symbol": "USB",
-    "company": "US Bancorp",
+  "KKR": {
+    "symbol": "KKR",
+    "company": "KKR & Co Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "PSX": {
     "symbol": "PSX",
     "company": "Phillips 66",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "USB": {
+    "symbol": "USB",
+    "company": "US Bancorp",
     "error": "HTTP Error 403: Forbidden"
   },
   "PNC": {
@@ -659,11 +659,6 @@
     "company": "CSX Corp",
     "error": "HTTP Error 403: Forbidden"
   },
-  "HOOD": {
-    "symbol": "HOOD",
-    "company": "Robinhood Markets Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "DUK": {
     "symbol": "DUK",
     "company": "Duke Energy Corp",
@@ -672,6 +667,11 @@
   "CDNS": {
     "symbol": "CDNS",
     "company": "Cadence Design Systems Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "HOOD": {
+    "symbol": "HOOD",
+    "company": "Robinhood Markets Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "MRSH": {
@@ -764,11 +764,6 @@
     "company": "Sherwin-Williams Co/The",
     "error": "No equity found for 'Sherwin-Williams Co/The'."
   },
-  "CTAS": {
-    "symbol": "CTAS",
-    "company": "Cintas Corp",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "AMT": {
     "symbol": "AMT",
     "company": "American Tower Corp",
@@ -779,19 +774,9 @@
     "company": "Regeneron Pharmaceuticals Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "LITE": {
-    "symbol": "LITE",
-    "company": "Lumentum Holdings Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "ECL": {
-    "symbol": "ECL",
-    "company": "Ecolab Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "APO": {
-    "symbol": "APO",
-    "company": "Apollo Global Management Inc",
+  "CTAS": {
+    "symbol": "CTAS",
+    "company": "Cintas Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "MSI": {
@@ -799,9 +784,24 @@
     "company": "Motorola Solutions Inc",
     "error": "HTTP Error 403: Forbidden"
   },
+  "ECL": {
+    "symbol": "ECL",
+    "company": "Ecolab Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "LITE": {
+    "symbol": "LITE",
+    "company": "Lumentum Holdings Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
   "ITW": {
     "symbol": "ITW",
     "company": "Illinois Tool Works Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "APO": {
+    "symbol": "APO",
+    "company": "Apollo Global Management Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "MDLZ": {
@@ -834,14 +834,14 @@
     "company": "Travelers Cos Inc/The",
     "error": "No equity found for 'Travelers Cos Inc/The'."
   },
-  "AON": {
-    "symbol": "AON",
-    "company": "Aon PLC",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "GM": {
     "symbol": "GM",
     "company": "General Motors Co",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "AON": {
+    "symbol": "AON",
+    "company": "Aon PLC",
     "error": "HTTP Error 403: Forbidden"
   },
   "EOG": {
@@ -857,7 +857,7 @@
   "TGT": {
     "symbol": "TGT",
     "company": "Target Corp",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'Target Corp'."
   },
   "CI": {
     "symbol": "CI",
@@ -909,11 +909,6 @@
     "company": "Honeywell International Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "AJG": {
-    "symbol": "AJG",
-    "company": "Arthur J Gallagher & Co",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "DLR": {
     "symbol": "DLR",
     "company": "Digital Realty Trust Inc",
@@ -922,6 +917,11 @@
   "APD": {
     "symbol": "APD",
     "company": "Air Products and Chemicals Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "AJG": {
+    "symbol": "AJG",
+    "company": "Arthur J Gallagher & Co",
     "error": "HTTP Error 403: Forbidden"
   },
   "RSG": {
@@ -939,6 +939,11 @@
     "company": "American Electric Power Co Inc",
     "error": "HTTP Error 403: Forbidden"
   },
+  "PCAR": {
+    "symbol": "PCAR",
+    "company": "PACCAR Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
   "ALL": {
     "symbol": "ALL",
     "company": "Allstate Corp/The",
@@ -947,11 +952,6 @@
   "TDG": {
     "symbol": "TDG",
     "company": "TransDigm Group Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "PCAR": {
-    "symbol": "PCAR",
-    "company": "PACCAR Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "URI": {
@@ -969,19 +969,14 @@
     "company": "Baker Hughes Co",
     "error": "HTTP Error 403: Forbidden"
   },
-  "TRGP": {
-    "symbol": "TRGP",
-    "company": "Targa Resources Corp",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "MPWR": {
     "symbol": "MPWR",
     "company": "Monolithic Power Systems Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "MET": {
-    "symbol": "MET",
-    "company": "MetLife Inc",
+  "TRGP": {
+    "symbol": "TRGP",
+    "company": "Targa Resources Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "TFC": {
@@ -989,14 +984,19 @@
     "company": "Truist Financial Corp",
     "error": "HTTP Error 403: Forbidden"
   },
+  "GWW": {
+    "symbol": "GWW",
+    "company": "WW Grainger Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
   "COR": {
     "symbol": "COR",
     "company": "Cencora Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "GWW": {
-    "symbol": "GWW",
-    "company": "WW Grainger Inc",
+  "MET": {
+    "symbol": "MET",
+    "company": "MetLife Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "OKE": {
@@ -1009,9 +1009,9 @@
     "company": "Occidental Petroleum Corp",
     "error": "HTTP Error 403: Forbidden"
   },
-  "O": {
-    "symbol": "O",
-    "company": "Realty Income Corp",
+  "NKE": {
+    "symbol": "NKE",
+    "company": "NIKE Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "TEL": {
@@ -1019,9 +1019,9 @@
     "company": "TE Connectivity PLC",
     "error": "HTTP Error 403: Forbidden"
   },
-  "AFL": {
-    "symbol": "AFL",
-    "company": "Aflac Inc",
+  "O": {
+    "symbol": "O",
+    "company": "Realty Income Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "PSA": {
@@ -1029,9 +1029,9 @@
     "company": "Public Storage",
     "error": "HTTP Error 403: Forbidden"
   },
-  "NKE": {
-    "symbol": "NKE",
-    "company": "NIKE Inc",
+  "AFL": {
+    "symbol": "AFL",
+    "company": "Aflac Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "D": {
@@ -1054,11 +1054,6 @@
     "company": "NXP Semiconductors NV",
     "error": "HTTP Error 403: Forbidden"
   },
-  "TER": {
-    "symbol": "TER",
-    "company": "Teradyne Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "CTVA": {
     "symbol": "CTVA",
     "company": "Corteva Inc",
@@ -1067,6 +1062,11 @@
   "NDAQ": {
     "symbol": "NDAQ",
     "company": "Nasdaq Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "TER": {
+    "symbol": "TER",
+    "company": "Teradyne Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "FANG": {
@@ -1079,9 +1079,9 @@
     "company": "Ford Motor Co",
     "error": "HTTP Error 403: Forbidden"
   },
-  "GRMN": {
-    "symbol": "GRMN",
-    "company": "Garmin Ltd",
+  "SRE": {
+    "symbol": "SRE",
+    "company": "Sempra",
     "error": "HTTP Error 403: Forbidden"
   },
   "MRNA": {
@@ -1089,24 +1089,24 @@
     "company": "Moderna Inc",
     "error": "HTTP Error 403: Forbidden"
   },
+  "ADSK": {
+    "symbol": "ADSK",
+    "company": "Autodesk Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "GRMN": {
+    "symbol": "GRMN",
+    "company": "Garmin Ltd",
+    "error": "HTTP Error 403: Forbidden"
+  },
   "COHR": {
     "symbol": "COHR",
     "company": "Coherent Corp",
     "error": "HTTP Error 403: Forbidden"
   },
-  "SRE": {
-    "symbol": "SRE",
-    "company": "Sempra",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "CAH": {
     "symbol": "CAH",
     "company": "Cardinal Health Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "ADSK": {
-    "symbol": "ADSK",
-    "company": "Autodesk Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "KEYS": {
@@ -1117,7 +1117,7 @@
   "AME": {
     "symbol": "AME",
     "company": "AMETEK Inc",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'AMETEK Inc'."
   },
   "CIEN": {
     "symbol": "CIEN",
@@ -1164,14 +1164,14 @@
     "company": "Honeywell Aerospace",
     "error": "HTTP Error 403: Forbidden"
   },
-  "WDAY": {
-    "symbol": "WDAY",
-    "company": "Workday Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "XYZ": {
     "symbol": "XYZ",
     "company": "Block Inc",
+    "error": "No equity found for 'Block Inc'."
+  },
+  "FITB": {
+    "symbol": "FITB",
+    "company": "Fifth Third Bancorp",
     "error": "HTTP Error 403: Forbidden"
   },
   "AMP": {
@@ -1184,24 +1184,24 @@
     "company": "Westinghouse Air Brake Technologies Corp",
     "error": "HTTP Error 403: Forbidden"
   },
-  "FITB": {
-    "symbol": "FITB",
-    "company": "Fifth Third Bancorp",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "ETR": {
     "symbol": "ETR",
     "company": "Entergy Corp",
     "error": "HTTP Error 403: Forbidden"
   },
-  "AXON": {
-    "symbol": "AXON",
-    "company": "Axon Enterprise Inc",
+  "WDAY": {
+    "symbol": "WDAY",
+    "company": "Workday Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "LHX": {
     "symbol": "LHX",
     "company": "L3Harris Technologies Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "AXON": {
+    "symbol": "AXON",
+    "company": "Axon Enterprise Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "CARR": {
@@ -1229,6 +1229,11 @@
     "company": "Xcel Energy Inc",
     "error": "HTTP Error 403: Forbidden"
   },
+  "COIN": {
+    "symbol": "COIN",
+    "company": "Coinbase Global Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
   "VTR": {
     "symbol": "VTR",
     "company": "Ventas Inc",
@@ -1244,9 +1249,9 @@
     "company": "Humana Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "COIN": {
-    "symbol": "COIN",
-    "company": "Coinbase Global Inc",
+  "VST": {
+    "symbol": "VST",
+    "company": "Vistra Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "PYPL": {
@@ -1254,9 +1259,9 @@
     "company": "PayPal Holdings Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "VST": {
-    "symbol": "VST",
-    "company": "Vistra Corp",
+  "EXC": {
+    "symbol": "EXC",
+    "company": "Exelon Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "PAYX": {
@@ -1269,29 +1274,19 @@
     "company": "Veeva Systems",
     "error": "HTTP Error 403: Forbidden"
   },
-  "EXC": {
-    "symbol": "EXC",
-    "company": "Exelon Corp",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "FERG": {
     "symbol": "FERG",
     "company": "Ferguson Enterprises",
     "error": "HTTP Error 403: Forbidden"
   },
-  "KDP": {
-    "symbol": "KDP",
-    "company": "Keurig Dr Pepper Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "A": {
-    "symbol": "A",
-    "company": "Agilent Technologies Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "TTWO": {
     "symbol": "TTWO",
     "company": "Take-Two Interactive Software Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "KDP": {
+    "symbol": "KDP",
+    "company": "Keurig Dr Pepper Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "IDXX": {
@@ -1309,9 +1304,19 @@
     "company": "Interactive Brokers Group Inc",
     "error": "HTTP Error 403: Forbidden"
   },
+  "A": {
+    "symbol": "A",
+    "company": "Agilent Technologies Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
   "IQV": {
     "symbol": "IQV",
     "company": "IQVIA Holdings Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "LYV": {
+    "symbol": "LYV",
+    "company": "Live Nation Entertainment Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "ROP": {
@@ -1324,11 +1329,6 @@
     "company": "Yum! Brands Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "LYV": {
-    "symbol": "LYV",
-    "company": "Live Nation Entertainment Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "MSCI": {
     "symbol": "MSCI",
     "company": "MSCI Inc",
@@ -1339,14 +1339,14 @@
     "company": "Prudential Financial Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "ODFL": {
-    "symbol": "ODFL",
-    "company": "Old Dominion Freight Line Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "DHI": {
     "symbol": "DHI",
     "company": "DR Horton Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "ODFL": {
+    "symbol": "ODFL",
+    "company": "Old Dominion Freight Line Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "WAT": {
@@ -1359,14 +1359,14 @@
     "company": "American International Group Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "MCHP": {
-    "symbol": "MCHP",
-    "company": "Microchip Technology Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "ED": {
     "symbol": "ED",
     "company": "Consolidated Edison Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "MCHP": {
+    "symbol": "MCHP",
+    "company": "Microchip Technology Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "EXPE": {
@@ -1374,14 +1374,14 @@
     "company": "Expedia Group Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "SYY": {
-    "symbol": "SYY",
-    "company": "Sysco Corp",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "ADM": {
     "symbol": "ADM",
     "company": "Archer-Daniels-Midland Co",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "SYY": {
+    "symbol": "SYY",
+    "company": "Sysco Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "MLM": {
@@ -1404,11 +1404,6 @@
     "company": "Kenvue Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "KMB": {
-    "symbol": "KMB",
-    "company": "Kimberly-Clark Corp",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "NTAP": {
     "symbol": "NTAP",
     "company": "NetApp Inc",
@@ -1422,6 +1417,11 @@
   "PEG": {
     "symbol": "PEG",
     "company": "Public Service Enterprise Group Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "KMB": {
+    "symbol": "KMB",
+    "company": "Kimberly-Clark Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "HSY": {
@@ -1457,21 +1457,21 @@
   "WEC": {
     "symbol": "WEC",
     "company": "WEC Energy Group Inc",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'WEC Energy Group Inc'."
   },
   "RJF": {
     "symbol": "RJF",
     "company": "Raymond James Financial Inc",
     "error": "HTTP Error 403: Forbidden"
   },
+  "DXCM": {
+    "symbol": "DXCM",
+    "company": "Dexcom Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
   "MTB": {
     "symbol": "MTB",
     "company": "M&T Bank Corp",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "EQT": {
-    "symbol": "EQT",
-    "company": "EQT Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "HBAN": {
@@ -1484,9 +1484,9 @@
     "company": "Northern Trust Corp",
     "error": "HTTP Error 403: Forbidden"
   },
-  "DXCM": {
-    "symbol": "DXCM",
-    "company": "Dexcom Inc",
+  "EQT": {
+    "symbol": "EQT",
+    "company": "EQT Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "CCL": {
@@ -1494,14 +1494,14 @@
     "company": "Carnival Corp",
     "error": "HTTP Error 403: Forbidden"
   },
-  "STLD": {
-    "symbol": "STLD",
-    "company": "Steel Dynamics Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "ACGL": {
     "symbol": "ACGL",
     "company": "Arch Capital Group Ltd",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "STLD": {
+    "symbol": "STLD",
+    "company": "Steel Dynamics Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "EME": {
@@ -1519,11 +1519,6 @@
     "company": "GE HealthCare Technologies Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "CNC": {
-    "symbol": "CNC",
-    "company": "Centene Corp",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "CCI": {
     "symbol": "CCI",
     "company": "Crown Castle Inc",
@@ -1539,14 +1534,19 @@
     "company": "Ares Management Corp",
     "error": "HTTP Error 403: Forbidden"
   },
-  "WTW": {
-    "symbol": "WTW",
-    "company": "Willis Towers Watson PLC",
+  "CNC": {
+    "symbol": "CNC",
+    "company": "Centene Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "ZTS": {
     "symbol": "ZTS",
     "company": "Zoetis Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "WTW": {
+    "symbol": "WTW",
+    "company": "Willis Towers Watson PLC",
     "error": "HTTP Error 403: Forbidden"
   },
   "JBL": {
@@ -1569,14 +1569,14 @@
     "company": "Kraft Heinz Co/The",
     "error": "HTTP Error 403: Forbidden"
   },
-  "HAL": {
-    "symbol": "HAL",
-    "company": "Halliburton Co",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "EXR": {
     "symbol": "EXR",
     "company": "Extra Space Storage Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "HAL": {
+    "symbol": "HAL",
+    "company": "Halliburton Co",
     "error": "HTTP Error 403: Forbidden"
   },
   "RDDT": {
@@ -1584,14 +1584,14 @@
     "company": "Reddit",
     "error": "HTTP Error 403: Forbidden"
   },
-  "CFG": {
-    "symbol": "CFG",
-    "company": "Citizens Financial Group Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "AEE": {
     "symbol": "AEE",
     "company": "Ameren Corp",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "CFG": {
+    "symbol": "CFG",
+    "company": "Citizens Financial Group Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "LVS": {
@@ -1624,14 +1624,14 @@
     "company": "DTE Energy Co",
     "error": "HTTP Error 403: Forbidden"
   },
-  "ATO": {
-    "symbol": "ATO",
-    "company": "Atmos Energy Corp",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "ON": {
     "symbol": "ON",
     "company": "ON Semiconductor Corp",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "ATO": {
+    "symbol": "ATO",
+    "company": "Atmos Energy Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "MTD": {
@@ -1664,14 +1664,14 @@
     "company": "Otis Worldwide Corp",
     "error": "HTTP Error 403: Forbidden"
   },
-  "DG": {
-    "symbol": "DG",
-    "company": "Dollar General Corp",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "LH": {
     "symbol": "LH",
     "company": "Labcorp Holdings Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "DG": {
+    "symbol": "DG",
+    "company": "Dollar General Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "EIX": {
@@ -1689,14 +1689,14 @@
     "company": "Corpay Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "ES": {
-    "symbol": "ES",
-    "company": "Eversource Energy",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "DOV": {
     "symbol": "DOV",
     "company": "Dover Corp",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "ES": {
+    "symbol": "ES",
+    "company": "Eversource Energy",
     "error": "HTTP Error 403: Forbidden"
   },
   "FE": {
@@ -1707,7 +1707,7 @@
   "CINF": {
     "symbol": "CINF",
     "company": "Cincinnati Financial Corp",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'Cincinnati Financial Corp'."
   },
   "VRSN": {
     "symbol": "VRSN",
@@ -1739,24 +1739,24 @@
     "company": "PPL Corp",
     "error": "HTTP Error 403: Forbidden"
   },
-  "SYF": {
-    "symbol": "SYF",
-    "company": "Synchrony Financial",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "WRB": {
     "symbol": "WRB",
     "company": "W R Berkley Corp",
     "error": "HTTP Error 403: Forbidden"
   },
-  "SW": {
-    "symbol": "SW",
-    "company": "Smurfit Westrock PLC",
+  "SYF": {
+    "symbol": "SYF",
+    "company": "Synchrony Financial",
     "error": "HTTP Error 403: Forbidden"
   },
   "PPG": {
     "symbol": "PPG",
     "company": "PPG Industries Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "SW": {
+    "symbol": "SW",
+    "company": "Smurfit Westrock PLC",
     "error": "HTTP Error 403: Forbidden"
   },
   "ECHO": {
@@ -1784,19 +1784,14 @@
     "company": "Tapestry Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "FICO": {
-    "symbol": "FICO",
-    "company": "Fair Isaac Corp",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "VRSK": {
     "symbol": "VRSK",
     "company": "Verisk Analytics Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "DLTR": {
-    "symbol": "DLTR",
-    "company": "Dollar Tree Inc",
+  "FICO": {
+    "symbol": "FICO",
+    "company": "Fair Isaac Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "EXPD": {
@@ -1819,9 +1814,9 @@
     "company": "PulteGroup Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "HUBB": {
-    "symbol": "HUBB",
-    "company": "Hubbell Inc",
+  "DRI": {
+    "symbol": "DRI",
+    "company": "Darden Restaurants Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "GPN": {
@@ -1829,14 +1824,24 @@
     "company": "Global Payments Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "DRI": {
-    "symbol": "DRI",
-    "company": "Darden Restaurants Inc",
+  "HUBB": {
+    "symbol": "HUBB",
+    "company": "Hubbell Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "OMC": {
     "symbol": "OMC",
     "company": "Omnicom Group Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "DLTR": {
+    "symbol": "DLTR",
+    "company": "Dollar Tree Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "VLTO": {
+    "symbol": "VLTO",
+    "company": "Veralto Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "CHD": {
@@ -1852,11 +1857,6 @@
   "PFG": {
     "symbol": "PFG",
     "company": "Principal Financial Group Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "VLTO": {
-    "symbol": "VLTO",
-    "company": "Veralto Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "WST": {
@@ -1879,11 +1879,6 @@
     "company": "NRG Energy Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "EXE": {
-    "symbol": "EXE",
-    "company": "Expand Energy Corp",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "EFX": {
     "symbol": "EFX",
     "company": "Equifax Inc",
@@ -1894,9 +1889,14 @@
     "company": "STERIS PLC",
     "error": "HTTP Error 403: Forbidden"
   },
-  "STZ": {
-    "symbol": "STZ",
-    "company": "Constellation Brands Inc",
+  "EXE": {
+    "symbol": "EXE",
+    "company": "Expand Energy Corp",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "IFF": {
+    "symbol": "IFF",
+    "company": "International Flavors & Fragrances Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "L": {
@@ -1909,9 +1909,14 @@
     "company": "F5 Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "IFF": {
-    "symbol": "IFF",
-    "company": "International Flavors & Fragrances Inc",
+  "STZ": {
+    "symbol": "STZ",
+    "company": "Constellation Brands Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "ULTA": {
+    "symbol": "ULTA",
+    "company": "Ulta Beauty Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "GIS": {
@@ -1922,11 +1927,6 @@
   "BG": {
     "symbol": "BG",
     "company": "Bunge Global SA",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "ULTA": {
-    "symbol": "ULTA",
-    "company": "Ulta Beauty Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "DOW": {
@@ -1949,14 +1949,14 @@
     "company": "Packaging Corp of America",
     "error": "HTTP Error 403: Forbidden"
   },
-  "FIS": {
-    "symbol": "FIS",
-    "company": "Fidelity National Information Services Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "CMS": {
     "symbol": "CMS",
     "company": "CMS Energy Corp",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "FIS": {
+    "symbol": "FIS",
+    "company": "Fidelity National Information Services Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "RL": {
@@ -2024,14 +2024,14 @@
     "company": "CF Industries Holdings Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "VTRS": {
-    "symbol": "VTRS",
-    "company": "Viatris Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "GPC": {
     "symbol": "GPC",
     "company": "Genuine Parts Co",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "VTRS": {
+    "symbol": "VTRS",
+    "company": "Viatris Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "EVRG": {
@@ -2039,9 +2039,9 @@
     "company": "Evergy Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "CDW": {
-    "symbol": "CDW",
-    "company": "CDW Corp/DE",
+  "GEN": {
+    "symbol": "GEN",
+    "company": "Gen Digital Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "DD": {
@@ -2049,9 +2049,9 @@
     "company": "DuPont de Nemours Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "GEN": {
-    "symbol": "GEN",
-    "company": "Gen Digital Inc",
+  "CDW": {
+    "symbol": "CDW",
+    "company": "CDW Corp/DE",
     "error": "HTTP Error 403: Forbidden"
   },
   "CHTR": {
@@ -2089,14 +2089,14 @@
     "company": "Leidos Holdings Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "BEN": {
-    "symbol": "BEN",
-    "company": "Franklin Resources Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "LNT": {
     "symbol": "LNT",
     "company": "Alliant Energy Corp",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "BEN": {
+    "symbol": "BEN",
+    "company": "Franklin Resources Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "CHRW": {
@@ -2109,14 +2109,14 @@
     "company": "Rollins Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "INVH": {
-    "symbol": "INVH",
-    "company": "Invitation Homes Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "BBY": {
     "symbol": "BBY",
     "company": "Best Buy Co Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "INVH": {
+    "symbol": "INVH",
+    "company": "Invitation Homes Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "PTC": {
@@ -2124,14 +2124,14 @@
     "company": "PTC Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "WY": {
-    "symbol": "WY",
-    "company": "Weyerhaeuser Co",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "NVR": {
     "symbol": "NVR",
     "company": "NVR Inc",
+    "error": "No equity found for 'NVR Inc'."
+  },
+  "WY": {
+    "symbol": "WY",
+    "company": "Weyerhaeuser Co",
     "error": "HTTP Error 403: Forbidden"
   },
   "IEX": {
@@ -2184,29 +2184,19 @@
     "company": "Mid-America Apartment Communities Inc",
     "error": "HTTP Error 403: Forbidden"
   },
+  "APA": {
+    "symbol": "APA",
+    "company": "APA Corp",
+    "error": "No equity found for 'APA Corp'."
+  },
   "MKC": {
     "symbol": "MKC",
     "company": "McCormick & Co Inc/MD",
     "error": "No equity found for 'McCormick & Co Inc/MD'."
   },
-  "APA": {
-    "symbol": "APA",
-    "company": "APA Corp",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "SWK": {
     "symbol": "SWK",
     "company": "Stanley Black & Decker Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "DOC": {
-    "symbol": "DOC",
-    "company": "Healthpeak Properties Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "EG": {
-    "symbol": "EG",
-    "company": "Everest Group Ltd",
     "error": "HTTP Error 403: Forbidden"
   },
   "IVZ": {
@@ -2214,19 +2204,29 @@
     "company": "Invesco Ltd",
     "error": "HTTP Error 403: Forbidden"
   },
+  "EG": {
+    "symbol": "EG",
+    "company": "Everest Group Ltd",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "DOC": {
+    "symbol": "DOC",
+    "company": "Healthpeak Properties Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
   "MAS": {
     "symbol": "MAS",
     "company": "Masco Corp",
     "error": "HTTP Error 403: Forbidden"
   },
-  "TXT": {
-    "symbol": "TXT",
-    "company": "Textron Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "RVTY": {
     "symbol": "RVTY",
     "company": "Revvity Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "TXT": {
+    "symbol": "TXT",
+    "company": "Textron Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "TRMB": {
@@ -2259,6 +2259,11 @@
     "company": "Regency Centers Corp",
     "error": "HTTP Error 403: Forbidden"
   },
+  "LULU": {
+    "symbol": "LULU",
+    "company": "Lululemon Athletica Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
   "FOXA": {
     "symbol": "FOXA",
     "company": "Fox Corp",
@@ -2269,29 +2274,14 @@
     "company": "Erie Indemnity Co",
     "error": "HTTP Error 403: Forbidden"
   },
-  "FOX": {
-    "symbol": "FOX",
-    "company": "Fox Corp",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "LULU": {
-    "symbol": "LULU",
-    "company": "Lululemon Athletica Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "LII": {
     "symbol": "LII",
     "company": "Lennox International Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "AVY": {
-    "symbol": "AVY",
-    "company": "Avery Dennison Corp",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "TKO": {
-    "symbol": "TKO",
-    "company": "TKO Group Holdings Inc",
+  "FOX": {
+    "symbol": "FOX",
+    "company": "Fox Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "BAX": {
@@ -2299,14 +2289,19 @@
     "company": "Baxter International Inc",
     "error": "HTTP Error 403: Forbidden"
   },
+  "TKO": {
+    "symbol": "TKO",
+    "company": "TKO Group Holdings Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "AVY": {
+    "symbol": "AVY",
+    "company": "Avery Dennison Corp",
+    "error": "HTTP Error 403: Forbidden"
+  },
   "ALLE": {
     "symbol": "ALLE",
     "company": "Allegion plc",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "GL": {
-    "symbol": "GL",
-    "company": "Globe Life Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "HAS": {
@@ -2314,14 +2309,14 @@
     "company": "Hasbro Inc",
     "error": "HTTP Error 403: Forbidden"
   },
+  "GL": {
+    "symbol": "GL",
+    "company": "Globe Life Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
   "CSGP": {
     "symbol": "CSGP",
     "company": "CoStar Group Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "BF.B": {
-    "symbol": "BF.B",
-    "company": "Brown-Forman Corp",
     "error": "HTTP Error 403: Forbidden"
   },
   "IT": {
@@ -2329,19 +2324,24 @@
     "company": "Gartner Inc",
     "error": "HTTP Error 403: Forbidden"
   },
+  "BF.B": {
+    "symbol": "BF.B",
+    "company": "Brown-Forman Corp",
+    "error": "HTTP Error 403: Forbidden"
+  },
   "CLX": {
     "symbol": "CLX",
     "company": "Clorox Co/The",
     "error": "No equity found for 'Clorox Co/The'."
   },
-  "CPT": {
-    "symbol": "CPT",
-    "company": "Camden Property Trust",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "GDDY": {
     "symbol": "GDDY",
     "company": "GoDaddy Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "CPT": {
+    "symbol": "CPT",
+    "company": "Camden Property Trust",
     "error": "HTTP Error 403: Forbidden"
   },
   "PSKY": {
@@ -2364,14 +2364,19 @@
     "company": "UDR Inc",
     "error": "HTTP Error 403: Forbidden"
   },
+  "HRL": {
+    "symbol": "HRL",
+    "company": "Hormel Foods Corp",
+    "error": "HTTP Error 403: Forbidden"
+  },
   "PNW": {
     "symbol": "PNW",
     "company": "Pinnacle West Capital Corp",
     "error": "HTTP Error 403: Forbidden"
   },
-  "HRL": {
-    "symbol": "HRL",
-    "company": "Hormel Foods Corp",
+  "HII": {
+    "symbol": "HII",
+    "company": "Huntington Ingalls Industries Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "DPZ": {
@@ -2384,11 +2389,6 @@
     "company": "DaVita Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "HII": {
-    "symbol": "HII",
-    "company": "Huntington Ingalls Industries Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "TECH": {
     "symbol": "TECH",
     "company": "Bio-Techne Corp",
@@ -2399,24 +2399,24 @@
     "company": "Align Technology Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "BXP": {
-    "symbol": "BXP",
-    "company": "BXP Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "NWSA": {
     "symbol": "NWSA",
     "company": "News Corp",
     "error": "HTTP Error 403: Forbidden"
   },
-  "GNRC": {
-    "symbol": "GNRC",
-    "company": "Generac Holdings Inc",
+  "BXP": {
+    "symbol": "BXP",
+    "company": "BXP Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "FDS": {
     "symbol": "FDS",
     "company": "FactSet Research Systems Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "GNRC": {
+    "symbol": "GNRC",
+    "company": "Generac Holdings Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "MGM": {
@@ -2449,9 +2449,9 @@
     "company": "Henry Schein Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "WYNN": {
-    "symbol": "WYNN",
-    "company": "Wynn Resorts Ltd",
+  "SWKS": {
+    "symbol": "SWKS",
+    "company": "Skyworks Solutions Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "PNR": {
@@ -2459,9 +2459,9 @@
     "company": "Pentair PLC",
     "error": "HTTP Error 403: Forbidden"
   },
-  "SWKS": {
-    "symbol": "SWKS",
-    "company": "Skyworks Solutions Inc",
+  "WYNN": {
+    "symbol": "WYNN",
+    "company": "Wynn Resorts Ltd",
     "error": "HTTP Error 403: Forbidden"
   },
   "APTV": {
