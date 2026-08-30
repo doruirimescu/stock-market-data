@@ -127,7 +127,7 @@
   "COST": {
     "symbol": "COST",
     "company": "Costco Wholesale Corp",
-    "error": "No equity found for 'Costco Wholesale Corp'."
+    "error": "HTTP Error 403: Forbidden"
   },
   "CVX": {
     "symbol": "CVX",
@@ -197,7 +197,7 @@
   "GS": {
     "symbol": "GS",
     "company": "Goldman Sachs Group Inc/The",
-    "error": "No equity found for 'Goldman Sachs Group Inc/The'."
+    "error": "HTTP Error 403: Forbidden"
   },
   "PM": {
     "symbol": "PM",
@@ -527,7 +527,7 @@
   "ADBE": {
     "symbol": "ADBE",
     "company": "Adobe Inc",
-    "error": "No equity found for 'Adobe Inc'."
+    "error": "HTTP Error 403: Forbidden"
   },
   "MO": {
     "symbol": "MO",
@@ -857,7 +857,7 @@
   "TGT": {
     "symbol": "TGT",
     "company": "Target Corp",
-    "error": "No equity found for 'Target Corp'."
+    "error": "HTTP Error 403: Forbidden"
   },
   "CI": {
     "symbol": "CI",
@@ -1002,7 +1002,7 @@
   "OKE": {
     "symbol": "OKE",
     "company": "ONEOK Inc",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'ONEOK Inc'."
   },
   "OXY": {
     "symbol": "OXY",
@@ -1052,7 +1052,7 @@
   "NXPI": {
     "symbol": "NXPI",
     "company": "NXP Semiconductors NV",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'NXP Semiconductors NV'."
   },
   "CTVA": {
     "symbol": "CTVA",
@@ -1117,7 +1117,7 @@
   "AME": {
     "symbol": "AME",
     "company": "AMETEK Inc",
-    "error": "No equity found for 'AMETEK Inc'."
+    "error": "HTTP Error 403: Forbidden"
   },
   "CIEN": {
     "symbol": "CIEN",
@@ -1167,7 +1167,7 @@
   "XYZ": {
     "symbol": "XYZ",
     "company": "Block Inc",
-    "error": "No equity found for 'Block Inc'."
+    "error": "HTTP Error 403: Forbidden"
   },
   "FITB": {
     "symbol": "FITB",
@@ -1417,7 +1417,7 @@
   "PEG": {
     "symbol": "PEG",
     "company": "Public Service Enterprise Group Inc",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'Public Service Enterprise Group Inc'."
   },
   "KMB": {
     "symbol": "KMB",
@@ -1457,7 +1457,7 @@
   "WEC": {
     "symbol": "WEC",
     "company": "WEC Energy Group Inc",
-    "error": "No equity found for 'WEC Energy Group Inc'."
+    "error": "HTTP Error 403: Forbidden"
   },
   "RJF": {
     "symbol": "RJF",
@@ -1587,7 +1587,7 @@
   "AEE": {
     "symbol": "AEE",
     "company": "Ameren Corp",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'Ameren Corp'."
   },
   "CFG": {
     "symbol": "CFG",
@@ -1707,7 +1707,7 @@
   "CINF": {
     "symbol": "CINF",
     "company": "Cincinnati Financial Corp",
-    "error": "No equity found for 'Cincinnati Financial Corp'."
+    "error": "HTTP Error 403: Forbidden"
   },
   "VRSN": {
     "symbol": "VRSN",
@@ -1914,11 +1914,6 @@
     "company": "Constellation Brands Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "ULTA": {
-    "symbol": "ULTA",
-    "company": "Ulta Beauty Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "GIS": {
     "symbol": "GIS",
     "company": "General Mills Inc",
@@ -1927,6 +1922,11 @@
   "BG": {
     "symbol": "BG",
     "company": "Bunge Global SA",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "ULTA": {
+    "symbol": "ULTA",
+    "company": "Ulta Beauty Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "DOW": {
@@ -2127,7 +2127,7 @@
   "NVR": {
     "symbol": "NVR",
     "company": "NVR Inc",
-    "error": "No equity found for 'NVR Inc'."
+    "error": "HTTP Error 403: Forbidden"
   },
   "WY": {
     "symbol": "WY",
@@ -2187,7 +2187,7 @@
   "APA": {
     "symbol": "APA",
     "company": "APA Corp",
-    "error": "No equity found for 'APA Corp'."
+    "error": "HTTP Error 403: Forbidden"
   },
   "MKC": {
     "symbol": "MKC",

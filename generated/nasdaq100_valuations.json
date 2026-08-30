@@ -312,7 +312,7 @@
   "MDLZ": {
     "symbol": "MDLZ",
     "company": "Mondelez International, Inc. Class A",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'Mondelez International, Inc. Class A'."
   },
   "ROST": {
     "symbol": "ROST",
