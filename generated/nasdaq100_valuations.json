@@ -129,15 +129,15 @@
     "company": "CrowdStrike Holdings, Inc. Class A Common Stock",
     "error": "HTTP Error 403: Forbidden"
   },
-  "KLAC": {
-    "symbol": "KLAC",
-    "company": "KLA Corporation Common Stock",
-    "error": "No equity found for 'KLA Corporation Common Stock'."
-  },
   "LIN": {
     "symbol": "LIN",
     "company": "Linde plc Ordinary Share",
     "error": "No equity found for 'Linde plc Ordinary Share'."
+  },
+  "KLAC": {
+    "symbol": "KLAC",
+    "company": "KLA Corporation Common Stock",
+    "error": "No equity found for 'KLA Corporation Common Stock'."
   },
   "SNDK": {
     "symbol": "SNDK",
@@ -154,11 +154,6 @@
     "company": "PepsiCo, Inc.",
     "error": "HTTP Error 403: Forbidden"
   },
-  "MRVL": {
-    "symbol": "MRVL",
-    "company": "Marvell Technology, Inc. Common Stock",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "SHOP": {
     "symbol": "SHOP",
     "company": "Shopify Inc. Class A subordinate voting shares",
@@ -169,14 +164,19 @@
     "company": "Seagate Technology Holdings PLC Ordinary Shares (Ireland)",
     "error": "No equity found for 'Seagate Technology Holdings PLC Ordinary Shares (Ireland)'."
   },
-  "QCOM": {
-    "symbol": "QCOM",
-    "company": "Qualcomm Inc",
+  "MRVL": {
+    "symbol": "MRVL",
+    "company": "Marvell Technology, Inc. Common Stock",
     "error": "HTTP Error 403: Forbidden"
   },
   "GILD": {
     "symbol": "GILD",
     "company": "Gilead Sciences Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "QCOM": {
+    "symbol": "QCOM",
+    "company": "Qualcomm Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "ADI": {
@@ -249,14 +249,14 @@
     "company": "Constellation Energy Corporation Common Stock",
     "error": "No equity found for 'Constellation Energy Corporation Common Stock'."
   },
-  "INTU": {
-    "symbol": "INTU",
-    "company": "Intuit Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "MELI": {
     "symbol": "MELI",
     "company": "Mercado Libre, Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "INTU": {
+    "symbol": "INTU",
+    "company": "Intuit Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "CMCSA": {
@@ -284,14 +284,14 @@
     "company": "Marriott International Class A Common Stock",
     "error": "No equity found for 'Marriott International Class A Common Stock'."
   },
-  "SNPS": {
-    "symbol": "SNPS",
-    "company": "Synopsys Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "DDOG": {
     "symbol": "DDOG",
     "company": "Datadog, Inc. Class A Common Stock",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "SNPS": {
+    "symbol": "SNPS",
+    "company": "Synopsys Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "REGN": {
@@ -319,14 +319,14 @@
     "company": "Ross Stores Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "WBD": {
-    "symbol": "WBD",
-    "company": "Warner Bros. Discovery, Inc. Series A Common Stock",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "ORLY": {
     "symbol": "ORLY",
     "company": "O'Reilly Automotive, Inc.",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "WBD": {
+    "symbol": "WBD",
+    "company": "Warner Bros. Discovery, Inc. Series A Common Stock",
     "error": "HTTP Error 403: Forbidden"
   },
   "HON": {
@@ -354,11 +354,6 @@
     "company": "Monolithic Power Systems, Inc.",
     "error": "HTTP Error 403: Forbidden"
   },
-  "NXPI": {
-    "symbol": "NXPI",
-    "company": "NXP Semiconductors N.V.",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "FAST": {
     "symbol": "FAST",
     "company": "Fastenal Co",
@@ -369,14 +364,9 @@
     "company": "Diamondback Energy, Inc.",
     "error": "HTTP Error 403: Forbidden"
   },
-  "ADSK": {
-    "symbol": "ADSK",
-    "company": "Autodesk Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "TER": {
-    "symbol": "TER",
-    "company": "Teradyne, Inc. Common Stock",
+  "NXPI": {
+    "symbol": "NXPI",
+    "company": "NXP Semiconductors N.V.",
     "error": "HTTP Error 403: Forbidden"
   },
   "NBIS": {
@@ -384,9 +374,14 @@
     "company": "Nebius Group N.V. Class A Ordinary Shares",
     "error": "No equity found for 'Nebius Group N.V. Class A Ordinary Shares'."
   },
-  "ALAB": {
-    "symbol": "ALAB",
-    "company": "Astera Labs, Inc. Common Stock",
+  "TER": {
+    "symbol": "TER",
+    "company": "Teradyne, Inc. Common Stock",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "ADSK": {
+    "symbol": "ADSK",
+    "company": "Autodesk Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "MSTR": {
@@ -394,29 +389,39 @@
     "company": "Strategy Inc Common Stock Class A",
     "error": "No equity found for 'Strategy Inc Common Stock Class A'."
   },
+  "ALAB": {
+    "symbol": "ALAB",
+    "company": "Astera Labs, Inc. Common Stock",
+    "error": "HTTP Error 403: Forbidden"
+  },
   "HONA": {
     "symbol": "HONA",
     "company": "Honeywell Aerospace Inc. Common Stock",
     "error": "No equity found for 'Honeywell Aerospace Inc. Common Stock'."
-  },
-  "WDAY": {
-    "symbol": "WDAY",
-    "company": "Workday, Inc. Class A Common Stock",
-    "error": "HTTP Error 403: Forbidden"
   },
   "CCEP": {
     "symbol": "CCEP",
     "company": "Coca-Cola Europacific Partners plc Ordinary Shares",
     "error": "No equity found for 'Coca-Cola Europacific Partners plc Ordinary Shares'."
   },
-  "AXON": {
-    "symbol": "AXON",
-    "company": "Axon Enterprise, Inc. Common Stock",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "XEL": {
     "symbol": "XEL",
     "company": "Xcel Energy, Inc.",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "WDAY": {
+    "symbol": "WDAY",
+    "company": "Workday, Inc. Class A Common Stock",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "TRI": {
+    "symbol": "TRI",
+    "company": "Thomson Reuters Corporation Common Shares",
+    "error": "No equity found for 'Thomson Reuters Corporation Common Shares'."
+  },
+  "AXON": {
+    "symbol": "AXON",
+    "company": "Axon Enterprise, Inc. Common Stock",
     "error": "HTTP Error 403: Forbidden"
   },
   "CRWV": {
@@ -424,10 +429,10 @@
     "company": "CoreWeave, Inc. Class A Common Stock",
     "error": "HTTP Error 403: Forbidden"
   },
-  "TRI": {
-    "symbol": "TRI",
-    "company": "Thomson Reuters Corporation Common Shares",
-    "error": "No equity found for 'Thomson Reuters Corporation Common Shares'."
+  "EXC": {
+    "symbol": "EXC",
+    "company": "Exelon Corporation",
+    "error": "HTTP Error 403: Forbidden"
   },
   "PYPL": {
     "symbol": "PYPL",
@@ -437,11 +442,6 @@
   "PAYX": {
     "symbol": "PAYX",
     "company": "Paychex Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
-  "EXC": {
-    "symbol": "EXC",
-    "company": "Exelon Corporation",
     "error": "HTTP Error 403: Forbidden"
   },
   "IDXX": {
@@ -454,15 +454,15 @@
     "company": "Keurig Dr Pepper Inc.",
     "error": "HTTP Error 403: Forbidden"
   },
-  "FER": {
-    "symbol": "FER",
-    "company": "Ferrovial N.V. Ordinary Shares",
-    "error": "No equity found for 'Ferrovial N.V. Ordinary Shares'."
-  },
   "ROP": {
     "symbol": "ROP",
     "company": "Roper Technologies, Inc. Common Stock",
     "error": "HTTP Error 403: Forbidden"
+  },
+  "FER": {
+    "symbol": "FER",
+    "company": "Ferrovial N.V. Ordinary Shares",
+    "error": "No equity found for 'Ferrovial N.V. Ordinary Shares'."
   },
   "TTWO": {
     "symbol": "TTWO",
@@ -489,24 +489,24 @@
     "company": "DexCom, Inc.",
     "error": "HTTP Error 403: Forbidden"
   },
-  "ALNY": {
-    "symbol": "ALNY",
-    "company": "Alnylam Pharmaceuticals, Inc.",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "GEHC": {
     "symbol": "GEHC",
     "company": "GE HealthCare Technologies Inc. Common Stock",
     "error": "No equity found for 'GE HealthCare Technologies Inc. Common Stock'."
   },
-  "CPRT": {
-    "symbol": "CPRT",
-    "company": "Copart Inc",
+  "ALNY": {
+    "symbol": "ALNY",
+    "company": "Alnylam Pharmaceuticals, Inc.",
     "error": "HTTP Error 403: Forbidden"
   },
   "KHC": {
     "symbol": "KHC",
     "company": "The Kraft Heinz Company Common Stock",
     "error": "No equity found for 'The Kraft Heinz Company Common Stock'."
+  },
+  "CPRT": {
+    "symbol": "CPRT",
+    "company": "Copart Inc",
+    "error": "HTTP Error 403: Forbidden"
   }
 }
