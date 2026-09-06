@@ -1249,14 +1249,14 @@
     "company": "eBay Inc",
     "error": "HTTP Error 403: Forbidden"
   },
-  "CIEN": {
-    "symbol": "CIEN",
-    "company": "Ciena Corporation",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "ADSK": {
     "symbol": "ADSK",
     "company": "Autodesk Inc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "CIEN": {
+    "symbol": "CIEN",
+    "company": "Ciena Corporation",
     "error": "HTTP Error 403: Forbidden"
   },
   "EXC": {
@@ -2374,11 +2374,6 @@
     "company": "Henry (Jack) & Associates",
     "error": "HTTP Error 403: Forbidden"
   },
-  "LULU": {
-    "symbol": "LULU",
-    "company": "lululemon athletica inc.",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "TECH": {
     "symbol": "TECH",
     "company": "Bio-Techne Corp.",
@@ -2402,6 +2397,11 @@
   "CLX": {
     "symbol": "CLX",
     "company": "Clorox Company",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "LULU": {
+    "symbol": "LULU",
+    "company": "lululemon athletica inc.",
     "error": "HTTP Error 403: Forbidden"
   },
   "SWKS": {
@@ -2482,7 +2482,7 @@
   "AOS": {
     "symbol": "AOS",
     "company": "A.O. Smith Corporation",
-    "error": "No equity found for 'A.O. Smith Corporation'."
+    "error": "HTTP Error 403: Forbidden"
   },
   "MOS": {
     "symbol": "MOS",
