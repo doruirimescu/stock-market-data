@@ -31,10 +31,10 @@
     "exchange": "nasdaq",
     "url": "https://www.alphaspread.com/security/nasdaq/msft/summary",
     "valuation_type": "Overvalued",
-    "valuation_pct": 12.0,
-    "valuation_score": -12.0,
+    "valuation_pct": 11.0,
+    "valuation_score": -11.0,
     "intrinsic_value": 351.54,
-    "current_price_approx": 393.72,
+    "current_price_approx": 390.21,
     "solvency_score": 81,
     "error": null
   },
@@ -64,19 +64,6 @@
     "solvency_score": 79,
     "error": null
   },
-  "SPCX": {
-    "symbol": "SPCX",
-    "company": "Space Exploration Technologies Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/spcx/summary",
-    "valuation_type": null,
-    "valuation_pct": null,
-    "valuation_score": null,
-    "intrinsic_value": null,
-    "current_price_approx": null,
-    "solvency_score": 68,
-    "error": null
-  },
   "GOOG": {
     "symbol": "GOOG",
     "company": "Alphabet Inc",
@@ -90,17 +77,17 @@
     "solvency_score": 79,
     "error": null
   },
-  "AVGO": {
-    "symbol": "AVGO",
-    "company": "Broadcom Inc",
+  "SPCX": {
+    "symbol": "SPCX",
+    "company": "Space Exploration Technologies Corp",
     "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/avgo/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 10.0,
-    "valuation_score": 10.0,
-    "intrinsic_value": 321.54,
-    "current_price_approx": 289.39,
-    "solvency_score": 75,
+    "url": "https://www.alphaspread.com/security/nasdaq/spcx/summary",
+    "valuation_type": null,
+    "valuation_pct": null,
+    "valuation_score": null,
+    "intrinsic_value": null,
+    "current_price_approx": null,
+    "solvency_score": 68,
     "error": null
   },
   "META": {
@@ -114,6 +101,19 @@
     "intrinsic_value": 544.26,
     "current_price_approx": 517.05,
     "solvency_score": 84,
+    "error": null
+  },
+  "AVGO": {
+    "symbol": "AVGO",
+    "company": "Broadcom Inc",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/avgo/summary",
+    "valuation_type": "Undervalued",
+    "valuation_pct": 10.0,
+    "valuation_score": 10.0,
+    "intrinsic_value": 321.54,
+    "current_price_approx": 289.39,
+    "solvency_score": 75,
     "error": null
   },
   "TSLA": {
@@ -200,10 +200,10 @@
     "exchange": "nasdaq",
     "url": "https://www.alphaspread.com/security/nasdaq/csco/summary",
     "valuation_type": "Overvalued",
-    "valuation_pct": 42.0,
-    "valuation_score": -42.0,
+    "valuation_pct": 43.0,
+    "valuation_score": -43.0,
     "intrinsic_value": 51.55,
-    "current_price_approx": 73.2,
+    "current_price_approx": 73.72,
     "solvency_score": 61,
     "error": null
   },
@@ -272,6 +272,19 @@
     "solvency_score": 77,
     "error": null
   },
+  "PANW": {
+    "symbol": "PANW",
+    "company": "Palo Alto Networks Inc",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/panw/summary",
+    "valuation_type": "Overvalued",
+    "valuation_pct": 38.0,
+    "valuation_score": -38.0,
+    "intrinsic_value": 163.88,
+    "current_price_approx": 226.15,
+    "solvency_score": 71,
+    "error": null
+  },
   "ARM": {
     "symbol": "ARM",
     "company": "Arm Holdings PLC",
@@ -285,19 +298,6 @@
     "solvency_score": 81,
     "error": null
   },
-  "PANW": {
-    "symbol": "PANW",
-    "company": "Palo Alto Networks Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/panw/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 38.0,
-    "valuation_score": -38.0,
-    "intrinsic_value": 163.99,
-    "current_price_approx": 226.31,
-    "solvency_score": 83,
-    "error": null
-  },
   "TXN": {
     "symbol": "TXN",
     "company": "Texas Instruments Inc",
@@ -309,6 +309,19 @@
     "intrinsic_value": 157.16,
     "current_price_approx": 199.59,
     "solvency_score": 72,
+    "error": null
+  },
+  "CRWD": {
+    "symbol": "CRWD",
+    "company": "CrowdStrike Holdings Inc",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/crwd/summary",
+    "valuation_type": "Overvalued",
+    "valuation_pct": 54.0,
+    "valuation_score": -54.0,
+    "intrinsic_value": 75.87,
+    "current_price_approx": 116.84,
+    "solvency_score": 64,
     "error": null
   },
   "SNDK": {
@@ -343,37 +356,11 @@
     "exchange": "nasdaq",
     "url": "https://www.alphaspread.com/security/nasdaq/lin/summary",
     "valuation_type": "Overvalued",
-    "valuation_pct": 40.0,
-    "valuation_score": -40.0,
+    "valuation_pct": 39.0,
+    "valuation_score": -39.0,
     "intrinsic_value": 225.76,
-    "current_price_approx": 316.06,
+    "current_price_approx": 313.81,
     "solvency_score": 62,
-    "error": null
-  },
-  "MRVL": {
-    "symbol": "MRVL",
-    "company": "Marvell Technology Group Ltd",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/mrvl/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 30.0,
-    "valuation_score": -30.0,
-    "intrinsic_value": 133.37,
-    "current_price_approx": 173.38,
-    "solvency_score": 71,
-    "error": null
-  },
-  "CRWD": {
-    "symbol": "CRWD",
-    "company": "CrowdStrike Holdings Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/crwd/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 54.0,
-    "valuation_score": -54.0,
-    "intrinsic_value": 75.88,
-    "current_price_approx": 116.86,
-    "solvency_score": 64,
     "error": null
   },
   "AMGN": {
@@ -402,30 +389,17 @@
     "solvency_score": 32,
     "error": null
   },
-  "QCOM": {
-    "symbol": "QCOM",
-    "company": "Qualcomm Inc",
+  "MRVL": {
+    "symbol": "MRVL",
+    "company": "Marvell Technology Group Ltd",
     "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/qcom/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 13.0,
-    "valuation_score": 13.0,
-    "intrinsic_value": 168.47,
-    "current_price_approx": 146.57,
-    "solvency_score": 68,
-    "error": null
-  },
-  "STX": {
-    "symbol": "STX",
-    "company": "Seagate Technology Holdings PLC",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/stx/summary",
+    "url": "https://www.alphaspread.com/security/nasdaq/mrvl/summary",
     "valuation_type": "Overvalued",
-    "valuation_pct": 66.0,
-    "valuation_score": -66.0,
-    "intrinsic_value": 228.15,
-    "current_price_approx": 378.73,
-    "solvency_score": 60,
+    "valuation_pct": 29.0,
+    "valuation_score": -29.0,
+    "intrinsic_value": 133.37,
+    "current_price_approx": 172.05,
+    "solvency_score": 71,
     "error": null
   },
   "PEP": {
@@ -441,17 +415,17 @@
     "solvency_score": 46,
     "error": null
   },
-  "ADI": {
-    "symbol": "ADI",
-    "company": "Analog Devices Inc",
+  "QCOM": {
+    "symbol": "QCOM",
+    "company": "Qualcomm Inc",
     "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/adi/summary",
+    "url": "https://www.alphaspread.com/security/nasdaq/qcom/summary",
     "valuation_type": "Undervalued",
-    "valuation_pct": 8.0,
-    "valuation_score": 8.0,
-    "intrinsic_value": 327.04,
-    "current_price_approx": 300.88,
-    "solvency_score": 69,
+    "valuation_pct": 14.0,
+    "valuation_score": 14.0,
+    "intrinsic_value": 168.47,
+    "current_price_approx": 144.88,
+    "solvency_score": 68,
     "error": null
   },
   "GILD": {
@@ -465,6 +439,32 @@
     "intrinsic_value": 96.97,
     "current_price_approx": 112.49,
     "solvency_score": 52,
+    "error": null
+  },
+  "ADI": {
+    "symbol": "ADI",
+    "company": "Analog Devices Inc",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/adi/summary",
+    "valuation_type": "Undervalued",
+    "valuation_pct": 7.0,
+    "valuation_score": 7.0,
+    "intrinsic_value": 327.04,
+    "current_price_approx": 304.15,
+    "solvency_score": 69,
+    "error": null
+  },
+  "STX": {
+    "symbol": "STX",
+    "company": "Seagate Technology Holdings PLC",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/stx/summary",
+    "valuation_type": "Overvalued",
+    "valuation_pct": 66.0,
+    "valuation_score": -66.0,
+    "intrinsic_value": 228.15,
+    "current_price_approx": 378.73,
+    "solvency_score": 60,
     "error": null
   },
   "SHOP": {
@@ -506,6 +506,19 @@
     "solvency_score": 64,
     "error": null
   },
+  "ISRG": {
+    "symbol": "ISRG",
+    "company": "Intuitive Surgical Inc",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/isrg/summary",
+    "valuation_type": "Undervalued",
+    "valuation_pct": 15.0,
+    "valuation_score": 15.0,
+    "intrinsic_value": 346.02,
+    "current_price_approx": 294.12,
+    "solvency_score": 81,
+    "error": null
+  },
   "VRTX": {
     "symbol": "VRTX",
     "company": "Vertex Pharmaceuticals Inc",
@@ -517,19 +530,6 @@
     "intrinsic_value": 360.39,
     "current_price_approx": 407.24,
     "solvency_score": 90,
-    "error": null
-  },
-  "ISRG": {
-    "symbol": "ISRG",
-    "company": "Intuitive Surgical Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/isrg/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 14.0,
-    "valuation_score": 14.0,
-    "intrinsic_value": 346.02,
-    "current_price_approx": 297.58,
-    "solvency_score": 81,
     "error": null
   },
   "FTNT": {
@@ -597,17 +597,17 @@
     "solvency_score": 55,
     "error": null
   },
-  "CEG": {
-    "symbol": "CEG",
-    "company": "Constellation Energy Corp",
+  "ADBE": {
+    "symbol": "ADBE",
+    "company": "Adobe Inc",
     "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/ceg/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 15.0,
-    "valuation_score": -15.0,
-    "intrinsic_value": 193.12,
-    "current_price_approx": 222.09,
-    "solvency_score": 44,
+    "url": "https://www.alphaspread.com/security/nasdaq/adbe/summary",
+    "valuation_type": "Undervalued",
+    "valuation_pct": 57.0,
+    "valuation_score": 57.0,
+    "intrinsic_value": 466.89,
+    "current_price_approx": 200.76,
+    "solvency_score": 76,
     "error": null
   },
   "ABNB": {
@@ -623,17 +623,17 @@
     "solvency_score": 79,
     "error": null
   },
-  "ADBE": {
-    "symbol": "ADBE",
-    "company": "Adobe Inc",
+  "CEG": {
+    "symbol": "CEG",
+    "company": "Constellation Energy Corp",
     "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/adbe/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 56.0,
-    "valuation_score": 56.0,
-    "intrinsic_value": 463.43,
-    "current_price_approx": 203.91,
-    "solvency_score": 76,
+    "url": "https://www.alphaspread.com/security/nasdaq/ceg/summary",
+    "valuation_type": "Overvalued",
+    "valuation_pct": 15.0,
+    "valuation_score": -15.0,
+    "intrinsic_value": 193.12,
+    "current_price_approx": 222.09,
+    "solvency_score": 44,
     "error": null
   },
   "MELI": {
@@ -642,10 +642,10 @@
     "exchange": "nasdaq",
     "url": "https://www.alphaspread.com/security/nasdaq/meli/summary",
     "valuation_type": "Undervalued",
-    "valuation_pct": 41.0,
-    "valuation_score": 41.0,
+    "valuation_pct": 42.0,
+    "valuation_score": 42.0,
     "intrinsic_value": 2.0,
-    "current_price_approx": 1.18,
+    "current_price_approx": 1.16,
     "solvency_score": 49,
     "error": null
   },
@@ -675,6 +675,19 @@
     "solvency_score": 33,
     "error": null
   },
+  "INTU": {
+    "symbol": "INTU",
+    "company": "Intuit Inc",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/intu/summary",
+    "valuation_type": "Undervalued",
+    "valuation_pct": 64.0,
+    "valuation_score": 64.0,
+    "intrinsic_value": 712.23,
+    "current_price_approx": 256.4,
+    "solvency_score": 78,
+    "error": null
+  },
   "DASH": {
     "symbol": "DASH",
     "company": "DoorDash Inc",
@@ -694,24 +707,11 @@
     "exchange": "nasdaq",
     "url": "https://www.alphaspread.com/security/nasdaq/mar/summary",
     "valuation_type": "Overvalued",
-    "valuation_pct": 15.0,
-    "valuation_score": -15.0,
+    "valuation_pct": 14.0,
+    "valuation_score": -14.0,
     "intrinsic_value": 229.16,
-    "current_price_approx": 263.53,
+    "current_price_approx": 261.24,
     "solvency_score": 45,
-    "error": null
-  },
-  "INTU": {
-    "symbol": "INTU",
-    "company": "Intuit Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/intu/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 64.0,
-    "valuation_score": 64.0,
-    "intrinsic_value": 716.52,
-    "current_price_approx": 257.95,
-    "solvency_score": 78,
     "error": null
   },
   "MNST": {
@@ -727,19 +727,6 @@
     "solvency_score": 92,
     "error": null
   },
-  "LITE": {
-    "symbol": "LITE",
-    "company": "Lumentum Holdings Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/lite/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 45.0,
-    "valuation_score": -45.0,
-    "intrinsic_value": 411.85,
-    "current_price_approx": 597.18,
-    "solvency_score": 91,
-    "error": null
-  },
   "CTAS": {
     "symbol": "CTAS",
     "company": "Cintas Corp",
@@ -753,16 +740,29 @@
     "solvency_score": 61,
     "error": null
   },
+  "DDOG": {
+    "symbol": "DDOG",
+    "company": "Datadog Inc (Pre-Reincorporation)",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/ddog/summary",
+    "valuation_type": "Overvalued",
+    "valuation_pct": 23.0,
+    "valuation_score": -23.0,
+    "intrinsic_value": 135.94,
+    "current_price_approx": 167.21,
+    "solvency_score": 80,
+    "error": null
+  },
   "REGN": {
     "symbol": "REGN",
     "company": "Regeneron Pharmaceuticals Inc",
     "exchange": "nasdaq",
     "url": "https://www.alphaspread.com/security/nasdaq/regn/summary",
     "valuation_type": "Overvalued",
-    "valuation_pct": 18.0,
-    "valuation_score": -18.0,
+    "valuation_pct": 17.0,
+    "valuation_score": -17.0,
     "intrinsic_value": 515.96,
-    "current_price_approx": 608.83,
+    "current_price_approx": 603.67,
     "solvency_score": 98,
     "error": null
   },
@@ -785,24 +785,24 @@
     "exchange": "nasdaq",
     "url": "https://www.alphaspread.com/security/nasdaq/cdns/summary",
     "valuation_type": "Overvalued",
-    "valuation_pct": 5.0,
-    "valuation_score": -5.0,
+    "valuation_pct": 4.0,
+    "valuation_score": -4.0,
     "intrinsic_value": 222.02,
-    "current_price_approx": 233.12,
+    "current_price_approx": 230.9,
     "solvency_score": 75,
     "error": null
   },
-  "DDOG": {
-    "symbol": "DDOG",
-    "company": "Datadog Inc (Pre-Reincorporation)",
+  "LITE": {
+    "symbol": "LITE",
+    "company": "Lumentum Holdings Inc",
     "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/ddog/summary",
+    "url": "https://www.alphaspread.com/security/nasdaq/lite/summary",
     "valuation_type": "Overvalued",
-    "valuation_pct": 23.0,
-    "valuation_score": -23.0,
-    "intrinsic_value": 135.94,
-    "current_price_approx": 167.21,
-    "solvency_score": 80,
+    "valuation_pct": 44.0,
+    "valuation_score": -44.0,
+    "intrinsic_value": 411.85,
+    "current_price_approx": 593.06,
+    "solvency_score": 91,
     "error": null
   },
   "SNPS": {
@@ -896,58 +896,6 @@
     "solvency_score": 48,
     "error": null
   },
-  "NBIS": {
-    "symbol": "NBIS",
-    "company": "Nebius Group NV",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/nbis/summary",
-    "valuation_type": null,
-    "valuation_pct": null,
-    "valuation_score": null,
-    "intrinsic_value": null,
-    "current_price_approx": null,
-    "solvency_score": 58,
-    "error": null
-  },
-  "MPWR": {
-    "symbol": "MPWR",
-    "company": "Monolithic Power Systems Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/mpwr/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 17.0,
-    "valuation_score": -17.0,
-    "intrinsic_value": 815.0,
-    "current_price_approx": 953.55,
-    "solvency_score": 81,
-    "error": null
-  },
-  "NXPI": {
-    "symbol": "NXPI",
-    "company": "NXP Semiconductors NV",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/nxpi/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 9.0,
-    "valuation_score": 9.0,
-    "intrinsic_value": 206.16,
-    "current_price_approx": 187.61,
-    "solvency_score": 57,
-    "error": null
-  },
-  "TER": {
-    "symbol": "TER",
-    "company": "Teradyne Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/ter/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 58.0,
-    "valuation_score": -58.0,
-    "intrinsic_value": 128.73,
-    "current_price_approx": 203.39,
-    "solvency_score": 87,
-    "error": null
-  },
   "BKR": {
     "symbol": "BKR",
     "company": "Baker Hughes Co",
@@ -974,6 +922,32 @@
     "solvency_score": 55,
     "error": null
   },
+  "NXPI": {
+    "symbol": "NXPI",
+    "company": "NXP Semiconductors NV",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/nxpi/summary",
+    "valuation_type": "Undervalued",
+    "valuation_pct": 8.0,
+    "valuation_score": 8.0,
+    "intrinsic_value": 206.16,
+    "current_price_approx": 189.67,
+    "solvency_score": 57,
+    "error": null
+  },
+  "MPWR": {
+    "symbol": "MPWR",
+    "company": "Monolithic Power Systems Inc",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/mpwr/summary",
+    "valuation_type": "Overvalued",
+    "valuation_pct": 17.0,
+    "valuation_score": -17.0,
+    "intrinsic_value": 815.0,
+    "current_price_approx": 953.55,
+    "solvency_score": 81,
+    "error": null
+  },
   "FAST": {
     "symbol": "FAST",
     "company": "Fastenal Co",
@@ -985,6 +959,32 @@
     "intrinsic_value": 33.04,
     "current_price_approx": 38.33,
     "solvency_score": 99,
+    "error": null
+  },
+  "NBIS": {
+    "symbol": "NBIS",
+    "company": "Nebius Group NV",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/nbis/summary",
+    "valuation_type": null,
+    "valuation_pct": null,
+    "valuation_score": null,
+    "intrinsic_value": null,
+    "current_price_approx": null,
+    "solvency_score": 58,
+    "error": null
+  },
+  "TER": {
+    "symbol": "TER",
+    "company": "Teradyne Inc",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/ter/summary",
+    "valuation_type": "Overvalued",
+    "valuation_pct": 58.0,
+    "valuation_score": -58.0,
+    "intrinsic_value": 128.73,
+    "current_price_approx": 203.39,
+    "solvency_score": 87,
     "error": null
   },
   "MSTR": {
@@ -1000,19 +1000,6 @@
     "solvency_score": 50,
     "error": null
   },
-  "ALAB": {
-    "symbol": "ALAB",
-    "company": "Astera Labs, Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/alab/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 31.0,
-    "valuation_score": -31.0,
-    "intrinsic_value": 158.96,
-    "current_price_approx": 208.24,
-    "solvency_score": 81,
-    "error": null
-  },
   "HONA": {
     "symbol": "HONA",
     "company": "Honeywell Aerospace Inc",
@@ -1026,19 +1013,6 @@
     "solvency_score": 55,
     "error": null
   },
-  "CRWV": {
-    "symbol": "CRWV",
-    "company": "CoreWeave Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/crwv/summary",
-    "valuation_type": null,
-    "valuation_pct": null,
-    "valuation_score": null,
-    "intrinsic_value": null,
-    "current_price_approx": null,
-    "solvency_score": 13,
-    "error": null
-  },
   "XEL": {
     "symbol": "XEL",
     "company": "Xcel Energy Inc",
@@ -1050,6 +1024,32 @@
     "intrinsic_value": 50.49,
     "current_price_approx": 58.57,
     "solvency_score": null,
+    "error": null
+  },
+  "ALAB": {
+    "symbol": "ALAB",
+    "company": "Astera Labs, Inc",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/alab/summary",
+    "valuation_type": "Overvalued",
+    "valuation_pct": 32.0,
+    "valuation_score": -32.0,
+    "intrinsic_value": 158.96,
+    "current_price_approx": 209.83,
+    "solvency_score": 81,
+    "error": null
+  },
+  "WDAY": {
+    "symbol": "WDAY",
+    "company": "Workday Inc",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/wday/summary",
+    "valuation_type": "Undervalued",
+    "valuation_pct": 52.0,
+    "valuation_score": 52.0,
+    "intrinsic_value": 311.35,
+    "current_price_approx": 149.45,
+    "solvency_score": 64,
     "error": null
   },
   "PYPL": {
@@ -1078,17 +1078,30 @@
     "solvency_score": 44,
     "error": null
   },
-  "WDAY": {
-    "symbol": "WDAY",
-    "company": "Workday Inc",
+  "ADSK": {
+    "symbol": "ADSK",
+    "company": "Autodesk Inc",
     "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/wday/summary",
+    "url": "https://www.alphaspread.com/security/nasdaq/adsk/summary",
     "valuation_type": "Undervalued",
-    "valuation_pct": 52.0,
-    "valuation_score": 52.0,
-    "intrinsic_value": 311.35,
-    "current_price_approx": 149.45,
-    "solvency_score": 64,
+    "valuation_pct": 35.0,
+    "valuation_score": 35.0,
+    "intrinsic_value": 261.15,
+    "current_price_approx": 169.75,
+    "solvency_score": 69,
+    "error": null
+  },
+  "CRWV": {
+    "symbol": "CRWV",
+    "company": "CoreWeave Inc",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/crwv/summary",
+    "valuation_type": null,
+    "valuation_pct": null,
+    "valuation_score": null,
+    "intrinsic_value": null,
+    "current_price_approx": null,
+    "solvency_score": 13,
     "error": null
   },
   "EXC": {
@@ -1104,17 +1117,17 @@
     "solvency_score": null,
     "error": null
   },
-  "ADSK": {
-    "symbol": "ADSK",
-    "company": "Autodesk Inc",
+  "TRI": {
+    "symbol": "TRI",
+    "company": "Thomson Reuters Corp",
     "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/adsk/summary",
+    "url": "https://www.alphaspread.com/security/nasdaq/tri/summary",
     "valuation_type": "Undervalued",
-    "valuation_pct": 35.0,
-    "valuation_score": 35.0,
-    "intrinsic_value": 261.15,
-    "current_price_approx": 169.75,
-    "solvency_score": 69,
+    "valuation_pct": 16.0,
+    "valuation_score": 16.0,
+    "intrinsic_value": 93.21,
+    "current_price_approx": 78.3,
+    "solvency_score": 71,
     "error": null
   },
   "KDP": {
@@ -1130,19 +1143,6 @@
     "solvency_score": 31,
     "error": null
   },
-  "TRI": {
-    "symbol": "TRI",
-    "company": "Thomson Reuters Corp",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/tri/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 16.0,
-    "valuation_score": 16.0,
-    "intrinsic_value": 93.21,
-    "current_price_approx": 78.3,
-    "solvency_score": 71,
-    "error": null
-  },
   "PAYX": {
     "symbol": "PAYX",
     "company": "Paychex Inc",
@@ -1154,32 +1154,6 @@
     "intrinsic_value": 93.0,
     "current_price_approx": null,
     "solvency_score": 50,
-    "error": null
-  },
-  "FER": {
-    "symbol": "FER",
-    "company": "Ferrovial SE",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/fer/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 51.0,
-    "valuation_score": -51.0,
-    "intrinsic_value": 21.55,
-    "current_price_approx": 32.54,
-    "solvency_score": 33,
-    "error": null
-  },
-  "MCHP": {
-    "symbol": "MCHP",
-    "company": "Microchip Technology Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/mchp/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 11.0,
-    "valuation_score": -11.0,
-    "intrinsic_value": 52.81,
-    "current_price_approx": 58.62,
-    "solvency_score": 46,
     "error": null
   },
   "TTWO": {
@@ -1195,30 +1169,43 @@
     "solvency_score": 60,
     "error": null
   },
-  "RKLB": {
-    "symbol": "RKLB",
-    "company": "Rocket Lab USA Inc",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/rklb/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 87.0,
-    "valuation_score": -87.0,
-    "intrinsic_value": 6.6,
-    "current_price_approx": 12.34,
-    "solvency_score": 75,
-    "error": null
-  },
   "IDXX": {
     "symbol": "IDXX",
     "company": "IDEXX Laboratories Inc",
     "exchange": "nasdaq",
     "url": "https://www.alphaspread.com/security/nasdaq/idxx/summary",
     "valuation_type": "Undervalued",
-    "valuation_pct": 8.0,
-    "valuation_score": 8.0,
+    "valuation_pct": 7.0,
+    "valuation_score": 7.0,
     "intrinsic_value": 436.19,
-    "current_price_approx": 401.29,
+    "current_price_approx": 405.66,
     "solvency_score": 74,
+    "error": null
+  },
+  "ROP": {
+    "symbol": "ROP",
+    "company": "Roper Technologies Inc",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/rop/summary",
+    "valuation_type": "Undervalued",
+    "valuation_pct": 44.0,
+    "valuation_score": 44.0,
+    "intrinsic_value": 552.99,
+    "current_price_approx": 309.67,
+    "solvency_score": 43,
+    "error": null
+  },
+  "FER": {
+    "symbol": "FER",
+    "company": "Ferrovial SE",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/fer/summary",
+    "valuation_type": "Overvalued",
+    "valuation_pct": 52.0,
+    "valuation_score": -52.0,
+    "intrinsic_value": 21.55,
+    "current_price_approx": 32.76,
+    "solvency_score": 33,
     "error": null
   },
   "AXON": {
@@ -1234,17 +1221,30 @@
     "solvency_score": 55,
     "error": null
   },
-  "ROP": {
-    "symbol": "ROP",
-    "company": "Roper Technologies Inc",
+  "RKLB": {
+    "symbol": "RKLB",
+    "company": "Rocket Lab USA Inc",
     "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/rop/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 44.0,
-    "valuation_score": 44.0,
-    "intrinsic_value": 552.99,
-    "current_price_approx": 309.67,
-    "solvency_score": 43,
+    "url": "https://www.alphaspread.com/security/nasdaq/rklb/summary",
+    "valuation_type": "Overvalued",
+    "valuation_pct": 87.0,
+    "valuation_score": -87.0,
+    "intrinsic_value": 6.6,
+    "current_price_approx": 12.34,
+    "solvency_score": 75,
+    "error": null
+  },
+  "MCHP": {
+    "symbol": "MCHP",
+    "company": "Microchip Technology Inc",
+    "exchange": "nasdaq",
+    "url": "https://www.alphaspread.com/security/nasdaq/mchp/summary",
+    "valuation_type": "Overvalued",
+    "valuation_pct": 11.0,
+    "valuation_score": -11.0,
+    "intrinsic_value": 52.81,
+    "current_price_approx": 58.62,
+    "solvency_score": 46,
     "error": null
   },
   "ODFL": {
@@ -1266,10 +1266,10 @@
     "exchange": "nasdaq",
     "url": "https://www.alphaspread.com/security/nasdaq/alny/summary",
     "valuation_type": "Undervalued",
-    "valuation_pct": 21.0,
-    "valuation_score": 21.0,
+    "valuation_pct": 22.0,
+    "valuation_score": 22.0,
     "intrinsic_value": 256.0,
-    "current_price_approx": 202.24,
+    "current_price_approx": 199.68,
     "solvency_score": 56,
     "error": null
   },
@@ -1284,19 +1284,6 @@
     "intrinsic_value": 63.03,
     "current_price_approx": 66.18,
     "solvency_score": 80,
-    "error": null
-  },
-  "KHC": {
-    "symbol": "KHC",
-    "company": "Kraft Heinz Co",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/khc/summary",
-    "valuation_type": "Undervalued",
-    "valuation_pct": 19.0,
-    "valuation_score": 19.0,
-    "intrinsic_value": 24.02,
-    "current_price_approx": 19.46,
-    "solvency_score": 38,
     "error": null
   },
   "GEHC": {
@@ -1318,10 +1305,10 @@
     "exchange": "nasdaq",
     "url": "https://www.alphaspread.com/security/nasdaq/cprt/summary",
     "valuation_type": "Undervalued",
-    "valuation_pct": 33.0,
-    "valuation_score": 33.0,
+    "valuation_pct": 34.0,
+    "valuation_score": 34.0,
     "intrinsic_value": 36.4,
-    "current_price_approx": 24.39,
+    "current_price_approx": 24.02,
     "solvency_score": 93,
     "error": null
   }
