@@ -191,7 +191,7 @@
     "valuation_score": -71.0,
     "intrinsic_value": 25.28,
     "current_price_approx": 43.23,
-    "solvency_score": 47,
+    "solvency_score": 49,
     "error": null
   },
   "CSCO": {
@@ -204,7 +204,7 @@
     "valuation_score": -50.0,
     "intrinsic_value": 43.88,
     "current_price_approx": 65.82,
-    "solvency_score": 61,
+    "solvency_score": 62,
     "error": null
   },
   "PLTR": {
@@ -360,7 +360,7 @@
     "valuation_score": -33.0,
     "intrinsic_value": 127.33,
     "current_price_approx": 169.35,
-    "solvency_score": 72,
+    "solvency_score": 71,
     "error": null
   },
   "LIN": {
@@ -763,7 +763,7 @@
     "valuation_score": 50.0,
     "intrinsic_value": 36.41,
     "current_price_approx": 18.2,
-    "solvency_score": 33,
+    "solvency_score": 32,
     "error": null
   },
   "CTAS": {
@@ -815,7 +815,7 @@
     "valuation_score": null,
     "intrinsic_value": 309.81,
     "current_price_approx": null,
-    "solvency_score": 52,
+    "solvency_score": 51,
     "error": null
   },
   "ROST": {
@@ -919,7 +919,7 @@
     "valuation_score": null,
     "intrinsic_value": null,
     "current_price_approx": null,
-    "solvency_score": 58,
+    "solvency_score": 48,
     "error": null
   },
   "MPWR": {
@@ -1049,7 +1049,7 @@
     "valuation_score": 41.0,
     "intrinsic_value": 298.37,
     "current_price_approx": 176.04,
-    "solvency_score": 69,
+    "solvency_score": 68,
     "error": null
   },
   "XEL": {
