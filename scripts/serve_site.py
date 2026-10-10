@@ -9,12 +9,14 @@ design system can be previewed here before they are pushed. Nothing on disk chan
     python scripts/serve_site.py --design ~/x/nexus-design
     python scripts/serve_site.py --hosted           # use the published design system
 
-scripts/nexus.sh --start runs this for you.
+`mise run site` (or `mise run start`, with the backend) runs this for you.
 """
 import argparse
 import functools
 import http.server
 import io
+import signal
+import threading
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -70,6 +72,15 @@ def main():
     handler = functools.partial(Handler, directory=str(ROOT / "docs"))
     with http.server.ThreadingHTTPServer(("127.0.0.1", args.port), handler) as httpd:
         print(f"Serving docs/ on http://localhost:{args.port}", flush=True)
+
+        # Ctrl-C (SIGINT) and mise stopping the task (SIGTERM) both mean "stop", and
+        # often arrive together. Ask the server to stop instead of raising, so a
+        # second signal during shutdown is harmless and the exit status is 0.
+        def stop(*_):
+            threading.Thread(target=httpd.shutdown, daemon=True).start()
+
+        signal.signal(signal.SIGINT, stop)
+        signal.signal(signal.SIGTERM, stop)
         httpd.serve_forever()
 
 

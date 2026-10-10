@@ -2,7 +2,7 @@
  * Shared backend access for the calculator pages.
  *
  * Locally (localhost, 127.0.0.1 or file://) pages call the backend started by
- * scripts/nexus.sh on port 8000, which needs no token. On GitHub Pages they call
+ * `mise run start` on port 8000, which needs no token. On GitHub Pages they call
  * the hosted backend, which expects the token pasted into #api-token (kept in
  * localStorage).
  */
@@ -23,7 +23,7 @@
       response = await fetch(`${URL}${path}`, { ...options, headers: { ...(options.headers || {}), "X-API-Token": getToken() } });
     } catch (e) {
       throw new Error(IS_LOCAL
-        ? "Could not reach the local backend on port 8000. Start it with: scripts/nexus.sh --start"
+        ? "Could not reach the local backend on port 8000. Start it with: mise run start"
         : "Could not reach the backend. It may be waking up; try again in a minute.");
     }
     if (!response.ok) {

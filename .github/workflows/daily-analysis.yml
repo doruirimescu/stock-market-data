@@ -13,6 +13,9 @@ name: Daily index analysis
 #
 # The jobs run in parallel and write disjoint files (each source has its own
 # manifest), so each one rebases onto the other's commit before pushing.
+#
+# Tools and dependencies come from mise (mise.toml, fairvalue/mise.toml): the
+# steps run the same `mise run` tasks as a local checkout.
 
 on:
   schedule:
@@ -21,6 +24,10 @@ on:
 
 permissions:
   contents: write             # needed to push the generated files back
+
+env:
+  MISE_YES: "1"                                        # never prompt
+  MISE_TRUSTED_CONFIG_PATHS: ${{ github.workspace }}   # trust the repo's mise.toml files
 
 concurrency:
   group: daily-index-analysis
@@ -34,15 +41,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
+      - name: Set up mise (Python, uv)
+        uses: jdx/mise-action@v2
 
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+        run: mise run install
 
       # kaleido>=1.0 renders the PNGs through a headless Chrome. If Chrome is
       # unavailable the run still succeeds — the script writes the HTML and only
@@ -53,31 +56,19 @@ jobs:
           chrome-version: stable
 
       - name: Fetch a kaleido-compatible Chrome (fallback, non-fatal)
-        run: plotly_get_chrome -y || true
+        run: mise exec -- plotly_get_chrome -y || true
 
       - name: NASDAQ-100 analysis
-        run: |
-          DATE=$(date -u +%F)
-          python scripts/alphaspread_index.py --nasdaq100 --overwrite --date "$DATE" \
-            --out  generated/alphaspread/nasdaq100_valuations.json \
-            --html "generated/alphaspread/nasdaq/nasdaq_analysis_${DATE}.html" \
-            --png  "generated/alphaspread/nasdaq/nasdaq_analysis_${DATE}.png"
+        run: mise run alphaspread nasdaq100 --date "$(date -u +%F)" --overwrite
 
       - name: S&P 500 analysis
-        run: |
-          DATE=$(date -u +%F)
-          python scripts/alphaspread_index.py --sp500 --overwrite --date "$DATE" \
-            --out  generated/alphaspread/sp500_valuations.json \
-            --html "generated/alphaspread/sp500/sp500_analysis_${DATE}.html" \
-            --png  "generated/alphaspread/sp500/sp500_analysis_${DATE}.png"
+        run: mise run alphaspread sp500 --date "$(date -u +%F)" --overwrite
 
       - name: Publish dated snapshots for the site
         run: |
           DATE=$(date -u +%F)
-          python scripts/publish_site_data.py --source alphaspread --index nasdaq --date "$DATE" \
-            --src generated/alphaspread/nasdaq100_valuations.json
-          python scripts/publish_site_data.py --source alphaspread --index sp500 --date "$DATE" \
-            --src generated/alphaspread/sp500_valuations.json
+          mise run publish alphaspread nasdaq100 --date "$DATE"
+          mise run publish alphaspread sp500 --date "$DATE"
 
       - name: Commit and push generated files
         run: |
@@ -118,33 +109,23 @@ jobs:
         if: steps.guard.outputs.run == 'true'
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up mise (Python, uv)
         if: steps.guard.outputs.run == 'true'
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Install the Fair Value model
-        if: steps.guard.outputs.run == 'true'
-        run: |
-          python -m pip install --upgrade pip
-          pip install -e ./fairvalue
+        uses: jdx/mise-action@v2
 
       - name: Value the NASDAQ-100 and the S&P 500
         if: steps.guard.outputs.run == 'true'
         run: |
           DATE=$(date -u +%F)
-          python -m fvmodel index --index nasdaq100 --date "$DATE"
-          python -m fvmodel index --index sp500 --date "$DATE"
+          mise run fairvalue nasdaq100 --date "$DATE"
+          mise run fairvalue sp500 --date "$DATE"
 
       - name: Publish dated snapshots for the site
         if: steps.guard.outputs.run == 'true'
         run: |
           DATE=$(date -u +%F)
-          python scripts/publish_site_data.py --source fairvalue --index nasdaq --date "$DATE" \
-            --src generated/fairvalue/nasdaq100_valuations.json
-          python scripts/publish_site_data.py --source fairvalue --index sp500 --date "$DATE" \
-            --src generated/fairvalue/sp500_valuations.json
+          mise run publish fairvalue nasdaq100 --date "$DATE"
+          mise run publish fairvalue sp500 --date "$DATE"
 
       - name: Commit and push generated files
         if: steps.guard.outputs.run == 'true'

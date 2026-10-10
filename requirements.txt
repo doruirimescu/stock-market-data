@@ -3,7 +3,7 @@
 # Everything else the scripts use is Python 3 standard library
 # (urllib, gzip, json, re, argparse, datetime, html).
 #
-# Install:  pip install -r requirements.txt
+# Installed by mise into .venv/ (`mise run install`; tasks that need it run it).
 
 # Interactive HTML charts (visualize.py).
 plotly>=6.0

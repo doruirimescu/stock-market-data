@@ -1,0 +1,88 @@
+# Investing Nexus: everything runs through mise. `mise run` lists the tasks.
+#
+#   mise run start      site on http://localhost:8080 + backend on http://localhost:8000
+#   mise run site       just the static site (add `-- --hosted` for the published nexus-design)
+#   mise run backend    just the calculators' backend
+#   mise run test       backend unit tests
+#
+# mise installs Python and uv, creates .venv/ and installs the dependencies the
+# first time a task needs them (again only when a requirements file changes).
+# The Fair Value model has its own environment and tasks in fairvalue/mise.toml.
+
+[tools]
+python = "3.12.15"
+uv = "0.12.24"
+
+[env]
+_.python.venv = { path = ".venv", create = true }
+
+[tasks.install]
+description = "Install the backend and data-script dependencies into .venv"
+run = [
+  "uv pip install --quiet -r server/requirements.txt -r requirements.txt",
+  "touch .venv/.installed",
+]
+sources = ["server/requirements.txt", "requirements.txt"]
+outputs = [".venv/.installed"]
+
+[tasks.start]
+description = "Run the site (:8080) and the backend (:8000) together; Ctrl-C stops both"
+depends = ["site", "backend"]
+
+[tasks.site]
+description = "Serve docs/ on http://localhost:8080, using ../nexus-design when present"
+run = "exec python scripts/serve_site.py --port 8080"
+
+[tasks.backend]
+description = "Run the calculators' backend on http://localhost:8000"
+depends = ["install"]
+# The pages call port 8000 and the backend's CORS list expects these ports.
+# API_TOKEN is unset so the local backend needs no token.
+run = "exec env -u API_TOKEN uvicorn server.main:app --host 127.0.0.1 --port 8000 --lifespan off"
+
+[tasks.test]
+description = "Run the backend unit tests"
+depends = ["install"]
+run = "python -m unittest discover -s tests -t ."
+
+[tasks.alphaspread]
+description = "AlphaSpread valuation run for an index: JSON + dated HTML + PNG"
+depends = ["install"]
+usage = '''
+arg "<index>" help="Index to value" { choices "nasdaq100" "sp500" }
+flag "--date <date>" help="Run date, YYYY-MM-DD (default: today)"
+flag "--overwrite" help="Replace today's files if they exist"
+'''
+run = '''
+day=${usage_date:-$(date +%F)}
+case "$usage_index" in
+  nasdaq100) flag=--nasdaq100; dir=nasdaq ;;
+  sp500)     flag=--sp500;     dir=sp500 ;;
+esac
+python scripts/alphaspread_index.py "$flag" --date "$day" ${usage_overwrite:+--overwrite} \
+  --out  "generated/alphaspread/${usage_index}_valuations.json" \
+  --html "generated/alphaspread/$dir/${dir}_analysis_$day.html" \
+  --png  "generated/alphaspread/$dir/${dir}_analysis_$day.png"
+'''
+
+[tasks.fairvalue]
+description = "Fair Value run for an index (needs SEC_USER_AGENT): JSON + per-stock pages"
+usage = '''
+arg "<index>" help="Index to value" { choices "nasdaq100" "sp500" }
+flag "--date <date>" help="Run date, YYYY-MM-DD (default: today)"
+'''
+dir = "fairvalue"
+run = 'mise run install && mise exec -- python -m fvmodel index --index "$usage_index" ${usage_date:+--date "$usage_date"}'
+
+[tasks.publish]
+description = "Publish a run as a dated snapshot for the site"
+usage = '''
+arg "<source>" help="Valuation source" { choices "alphaspread" "fairvalue" }
+arg "<index>" help="Index" { choices "nasdaq100" "sp500" }
+flag "--date <date>" help="Snapshot date, YYYY-MM-DD (default: today)"
+'''
+run = '''
+case "$usage_index" in nasdaq100) site=nasdaq ;; *) site=sp500 ;; esac
+python scripts/publish_site_data.py --source "$usage_source" --index "$site" --date "${usage_date:-$(date +%F)}" \
+  --src "generated/$usage_source/${usage_index}_valuations.json"
+'''

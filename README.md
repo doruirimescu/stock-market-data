@@ -12,7 +12,7 @@ and loan tools.
 
 | Path         | Contents |
 | ------------ | -------- |
-| `scripts/`   | The AlphaSpread data-generation scripts — scrape index valuations and render the dated `nasdaq/` and `sp500/` charts. See [`scripts/README.md`](scripts/README.md). Also `nexus.sh`, the local launcher, and `publish_site_data.py`. |
+| `scripts/`   | The AlphaSpread data-generation scripts — scrape index valuations and render the dated `nasdaq/` and `sp500/` charts. See [`scripts/README.md`](scripts/README.md). Also `serve_site.py` (the local site server behind `mise run site`) and `publish_site_data.py`. |
 | `fairvalue/` | Fair Value valuation model (`fvmodel`): Fair Value, Quality Score, solvency and the full Fair Value summary metrics from SEC EDGAR filings and Yahoo prices. See [`fairvalue/README.md`](fairvalue/README.md). |
 | `server/`    | FastAPI backend for the calculators (PVGO, IV15, dividend sustainability) and loan tools. Fetches live data from Yahoo Finance. |
 | `tests/`     | Unit tests for the backend. |
@@ -23,65 +23,44 @@ and loan tools.
 
 ## Running locally
 
-One script starts the whole site, including the calculators' backend:
+Everything runs through [mise](https://mise.jdx.dev). It installs Python and uv,
+creates `.venv/` and installs the dependencies the first time a task needs them,
+and again only when a requirements file changes. `mise run` lists the tasks.
 
 ```bash
-scripts/nexus.sh --start     # site on http://localhost:8080, backend on http://localhost:8000
-scripts/nexus.sh --status    # what is running
-scripts/nexus.sh --stop      # stop both
-scripts/nexus.sh --restart   # stop, then start
+mise run start      # site on http://localhost:8080 + backend on http://localhost:8000; Ctrl-C stops both
+mise run site       # just the site (mise run site -- --hosted: use the published nexus-design)
+mise run backend    # just the calculators' backend
+mise run test       # backend unit tests
 ```
 
-The first `--start` creates `.venv/` and installs
-[`server/requirements.txt`](server/requirements.txt), which takes a minute. Later
-starts reinstall only if that file changed. The script needs Python 3.10 or
-newer with `venv` support; it skips a `python3` that can't create a venv (for
-example one from another project's activated venv). Set `NEXUS_PYTHON` to choose
-the interpreter yourself.
-
-Both servers run in the background and bind to `127.0.0.1` only. Logs go to
-`.run/site.log` and `.run/backend.log`. The ports are fixed: the pages call the
+Both servers bind to `127.0.0.1` only. The ports are fixed: the pages call the
 backend on 8000, and the backend accepts requests only from known origins
 (`localhost:8080`, `file://` and the GitHub Pages site).
 
 When a calculator page is opened on `localhost` or from disk it calls the local
 backend, which needs no API token. On GitHub Pages it calls the hosted backend on
 Render, which needs the token pasted into the page. The backend checks a token
-only if the `API_TOKEN` environment variable is set; the launcher always unsets it.
+only if the `API_TOKEN` environment variable is set; `mise run backend` unsets it.
 
-Interactive API docs are at <http://localhost:8000/docs>. To run the tests:
-
-```bash
-.venv/bin/python -m unittest discover -s tests -t .
-```
+Interactive API docs are at <http://localhost:8000/docs>.
 
 ## Generating the data
 
 ```bash
-pip install -r requirements.txt   # plotly + kaleido>=1.0
-
 # AlphaSpread: daily valuation run for an index → JSON + dated HTML + PNG
-python scripts/alphaspread_index.py --nasdaq100 \
-    --out  generated/alphaspread/nasdaq100_valuations.json \
-    --html generated/alphaspread/nasdaq/nasdaq_analysis_$(date +%F).html \
-    --png  generated/alphaspread/nasdaq/nasdaq_analysis_$(date +%F).png
-
-python scripts/alphaspread_index.py --sp500 \
-    --out  generated/alphaspread/sp500_valuations.json \
-    --html generated/alphaspread/sp500/sp500_analysis_$(date +%F).html \
-    --png  generated/alphaspread/sp500/sp500_analysis_$(date +%F).png
+mise run alphaspread nasdaq100      # or sp500
 
 # Fair Value: value every constituent → generated/fairvalue/ JSON and
-# docs/fairvalue/stocks/<TICKER>.html summary pages (needs SEC_USER_AGENT)
-cd fairvalue && mise run install
-mise exec -- python -m fvmodel index --index nasdaq100
-mise exec -- python -m fvmodel index --index sp500
-cd ..
+# docs/fairvalue/stocks/<TICKER>.html summary pages (needs SEC_USER_AGENT;
+# uses the environment and tasks in fairvalue/mise.toml)
+mise run fairvalue sp500            # or nasdaq100
 
-# Publish either source's run as a dated snapshot for the site
-python scripts/publish_site_data.py --source fairvalue --index sp500 --date $(date +%F) \
-    --src generated/fairvalue/sp500_valuations.json
+# Publish a run as today's dated snapshot for the site
+mise run publish fairvalue sp500    # source: alphaspread|fairvalue, index: nasdaq100|sp500
 ```
+
+The PNG export (kaleido) renders with a Chrome or Chromium it finds on the system.
 
 The runs are rate-limit-safe and resumable. Full usage, flags and the
 one-company lookup are documented in [`scripts/README.md`](scripts/README.md).
@@ -125,9 +104,9 @@ only add layout on top of the theme tokens, and reusable components belong in
 nexus-design.
 
 To preview changes to nexus-design before pushing them, keep a clone next to this
-repo (`../nexus-design`). `scripts/nexus.sh --start` (or
-`python scripts/serve_site.py`) then serves the site with every nexus-design link
-rewritten to that clone; `--hosted` uses the published version instead. Push
+repo (`../nexus-design`). `mise run start` (or `mise run site`) then serves the
+site with every nexus-design link rewritten to that clone; `mise run site -- --hosted`
+uses the published version instead. Push
 nexus-design before publishing pages here that rely on something new in it.
 
 ## Basket Rotation
@@ -160,7 +139,7 @@ Each run is one file, `docs/basket/data/runs/<run_id>.js`, listed newest-first i
 ./web.sh publish   # commit docs/basket/ here and push
 ```
 
-The pages also work from disk and under `scripts/nexus.sh` (`/basket/`). Like the
+The pages also work from disk and under `mise run start` (`/basket/`). Like the
 rest of the site they use nexus-design (see Design system above).
 
 ## Updating

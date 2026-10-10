@@ -1,7 +1,8 @@
 """
 Backend for the Investing Nexus calculators and loan tools.
 
-Run from the repository root (scripts/nexus.sh --start does this for you):
+Run it with `mise run backend` (or `mise run start` for the site too), which
+installs the dependencies and starts:
     uvicorn server.main:app --port 8000
 
 Set API_TOKEN to require an X-API-Token header; leave it unset locally.
