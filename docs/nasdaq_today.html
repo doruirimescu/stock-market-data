@@ -8,6 +8,17 @@
   <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
   <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
   <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
+  <style>
+    /* Chart sort buttons. On phones they take their own row as three equal
+       buttons that shrink to fit, so they never wrap whatever the font size. */
+    .chart-sort { display: flex; gap: 6px; align-items: center; }
+    .chart-sort .btn { white-space: nowrap; }
+    @media (max-width: 640px) {
+      .chart-sort { width: 100%; }
+      .chart-sort > span { display: none; }
+      .chart-sort .btn { flex: 1 1 0; min-width: 0; padding: 6px 4px; overflow: hidden; text-overflow: ellipsis; }
+    }
+  </style>
 </head>
 <body data-index="nasdaq" data-mode="full" data-title="NASDAQ-100 Valuation">
   <header class="topbar">
@@ -49,11 +60,11 @@
     <div class="panel chart-panel">
       <div class="chart-head">
         <div class="legend"><span><i class="sw-under"></i>Undervalued</span><span><i class="sw-over"></i>Overvalued</span></div>
-        <div class="chart-sort" role="group" aria-label="Sort the chart" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+        <div class="chart-sort" role="group" aria-label="Sort the chart">
           <span class="muted small">Sort</span>
-          <button class="btn primary sm" data-chart-sort="solvency" style="white-space:nowrap">Solvency</button>
-          <button class="btn sm" data-chart-sort="valuation" style="white-space:nowrap">Valuation</button>
-          <button class="btn sm" data-chart-sort="quality" style="white-space:nowrap" title="Fair Value score (only in Fair Value and Combined mode)">FV score</button>
+          <button class="btn primary sm" data-chart-sort="solvency">Solvency</button>
+          <button class="btn sm" data-chart-sort="valuation">Valuation</button>
+          <button class="btn sm" data-chart-sort="quality" title="Fair Value score (only in Fair Value and Combined mode)">FV score</button>
         </div>
       </div>
       <div id="chart" class="chart"></div>
