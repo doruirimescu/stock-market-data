@@ -1,1 +1,1 @@
-{"ticker": "LII", "name": "LENNOX INTERNATIONAL INC", "price": "356.44", "as_of": "2026-03-31", "gf_value": "$587.70", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "88", "pe": "15.83", "roic": "28.83%", "f_score": "6", "z_score": "6.26"}
+{"ticker": "LII", "name": "LENNOX INTERNATIONAL INC", "price": "356.44", "as_of": "2026-03-31", "fair_value": "$533.15", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "90", "pe": "15.83", "roic": "28.83%", "f_score": "6", "z_score": "6.26"}

@@ -1,1 +1,1 @@
-{"ticker": "VRSK", "name": "Verisk Analytics, Inc.", "price": "177.63", "as_of": "2026-03-31", "gf_value": "$259.12", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "84", "pe": "27.08", "roic": "23.56%", "f_score": "7", "z_score": "6.51"}
+{"ticker": "VRSK", "name": "Verisk Analytics, Inc.", "price": "177.63", "as_of": "2026-03-31", "fair_value": "$303.26", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "82", "pe": "27.08", "roic": "23.56%", "f_score": "7", "z_score": "6.51"}

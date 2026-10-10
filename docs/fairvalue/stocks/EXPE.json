@@ -1,1 +1,1 @@
-{"ticker": "EXPE", "name": "Expedia Group, Inc.", "price": "274.22", "as_of": "2026-06-30", "gf_value": "$318.65", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "93", "pe": "17.25", "roic": "7.74%", "f_score": "8", "z_score": "1.52"}
+{"ticker": "EXPE", "name": "Expedia Group, Inc.", "price": "274.22", "as_of": "2026-06-30", "fair_value": "$236.95", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "88", "pe": "17.25", "roic": "7.74%", "f_score": "8", "z_score": "1.52"}

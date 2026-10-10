@@ -1,1 +1,1 @@
-{"ticker": "HCA", "name": "HCA Healthcare, Inc.", "price": "451.09", "as_of": "2026-03-31", "gf_value": "$396.63", "verdict": "over", "verdict_text": "Modestly Overvalued", "gf_score": "81", "pe": "15.54", "roic": "17.38%", "f_score": "7", "z_score": "2.62"}
+{"ticker": "HCA", "name": "HCA Healthcare, Inc.", "price": "451.09", "as_of": "2026-03-31", "fair_value": "$442.23", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "84", "pe": "15.54", "roic": "17.38%", "f_score": "7", "z_score": "2.62"}

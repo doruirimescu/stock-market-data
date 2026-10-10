@@ -1,1 +1,1 @@
-{"ticker": "QCOM", "name": "QUALCOMM INC/DE", "price": "175.50", "as_of": "2026-06-28", "gf_value": "$173.54", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "89", "pe": "20.06", "roic": "19.04%", "f_score": "5", "z_score": "6.08"}
+{"ticker": "QCOM", "name": "QUALCOMM INC/DE", "price": "175.50", "as_of": "2026-06-28", "fair_value": "$181.06", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "90", "pe": "20.06", "roic": "19.04%", "f_score": "5", "z_score": "6.08"}

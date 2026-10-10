@@ -1,1 +1,1 @@
-{"ticker": "CINF", "name": "CINCINNATI FINANCIAL CORP", "price": "163.39", "as_of": "2026-06-30", "gf_value": "$175.71", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "92", "pe": "7.71", "roic": "8.21%", "f_score": "7", "z_score": "N/A (financial)"}
+{"ticker": "CINF", "name": "CINCINNATI FINANCIAL CORP", "price": "163.39", "as_of": "2026-06-30", "fair_value": "$183.16", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "92", "pe": "7.71", "roic": "8.21%", "f_score": "7", "z_score": "N/A (financial)"}

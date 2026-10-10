@@ -59,6 +59,9 @@ FLOWS: dict[str, tuple[Alt, ...]] = {
     "income_tax": ("IncomeTaxExpenseBenefit",),
     "net_income": ("NetIncomeLoss", "ProfitLoss", "NetIncomeLossAvailableToCommonStockholdersBasic"),
     "eps_diluted": ("EarningsPerShareDiluted", "EarningsPerShareBasicAndDiluted"),
+    # "Other income (expense)": investment gains and losses, FX, pension items.
+    # Interest is tagged separately and is not part of it.
+    "other_nonoperating": ("OtherNonoperatingIncomeExpense",),
     "interest_expense": (
         "InterestExpense",
         "InterestExpenseNonoperating",
@@ -233,6 +236,28 @@ class Fundamentals:
                 if v is not None:
                     self.stale_flows[name] = prev
         return v
+
+    def eps_without_nri(self, end: date | None = None) -> float | None:
+        """TTM diluted EPS without material other non-operating income.
+
+        Large mark-to-market gains on equity stakes (AMZN's Anthropic stake
+        in 2025-26) can double reported EPS for a few quarters. The reference
+        provider values stocks on "EPS without NRI"; this approximates it by
+        scaling EPS by (pretax - other non-operating) / pretax, i.e. at the
+        company's own tax rate, when that item exceeds
+        config.NRI_MIN_SHARE_OF_PRETAX of pretax income. Uses the exact TTM
+        only (no stale fallback): a missing tag means no adjustment.
+        """
+        end = end or self.as_of
+        eps = self.ttm("eps_diluted", end)
+        other = _resolve(FLOWS["other_nonoperating"], lambda t: self.book.ttm(t, end))
+        pretax = _resolve(FLOWS["pretax_income"], lambda t: self.book.ttm(t, end))
+        if eps is None or other is None or not pretax or pretax <= 0:
+            return eps
+        if abs(other) < config.NRI_MIN_SHARE_OF_PRETAX * pretax:
+            return eps
+        core = pretax - other
+        return eps * core / pretax if core > 0 else None
 
     def quarter(self, name: str, end: date | None = None) -> float | None:
         """Single fiscal-quarter flow ending at `end` (default: latest quarter)."""

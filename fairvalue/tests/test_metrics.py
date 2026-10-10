@@ -59,3 +59,30 @@ def test_share_count_outlier_is_rescaled():
     assert fixed["shares"].iloc[2] == pytest.approx(416e6, rel=0.01)
     assert fixed["book"].iloc[2] == pytest.approx(12.7, rel=0.02)
     assert fixed["eps"].iloc[2] == -2.89
+
+
+def _multiples(years, **cols):
+    import pandas as pd
+    idx = pd.bdate_range(end="2026-10-09", periods=int(years * 261))
+    return pd.DataFrame({k: v(idx) if callable(v) else v for k, v in cols.items()}, index=idx)
+
+
+def test_fair_value_uses_three_year_median_ps():
+    import numpy as np
+    from fvmodel.metrics.fairvalue import fair_value
+    # P/S was 10 more than three years ago and 4 within the last three: only the 4 counts.
+    ps = lambda idx: np.where(idx >= idx[-1] - np.timedelta64(3 * 365, "D"), 4.0, 10.0)
+    mult = _multiples(10, ps=ps, pe_nri=80.0, pb=15.0, pfcf=np.nan)
+    v, parts, _, adj = fair_value(mult, {"revenue": 50.0, "eps_nri": 5.0, "book": 20.0}, revenue_growth=0.2)
+    assert list(parts) == ["ps"]
+    assert adj == pytest.approx(1.05)  # 1 + 0.25 x 20%
+    assert v == pytest.approx(4.0 * 50.0 * 1.05)
+
+
+def test_fair_value_falls_back_to_median_without_revenue():
+    import numpy as np
+    from fvmodel.metrics.fairvalue import fair_value
+    mult = _multiples(4, ps=np.nan, pe_nri=20.0, pb=2.0, pfcf=25.0)
+    v, parts, _, adj = fair_value(mult, {"revenue": None, "eps_nri": 5.0, "book": 40.0, "fcf": 4.0}, None)
+    assert list(parts) == ["median"] and adj == 1.0
+    assert v == pytest.approx(np.median([100.0, 80.0, 100.0]))

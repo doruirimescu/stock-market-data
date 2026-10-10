@@ -1,1 +1,1 @@
-{"ticker": "KMB", "name": "KIMBERLY CLARK CORP", "price": "97.59", "as_of": "2026-06-30", "gf_value": "$127.52", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "69", "pe": "16.63", "roic": "13.85%", "f_score": "7", "z_score": "3.20"}
+{"ticker": "KMB", "name": "KIMBERLY CLARK CORP", "price": "97.59", "as_of": "2026-06-30", "fair_value": "$124.79", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "69", "pe": "16.63", "roic": "13.85%", "f_score": "7", "z_score": "3.20"}

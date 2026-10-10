@@ -1,1 +1,1 @@
-{"ticker": "EQT", "name": "EQT Corp", "price": "52.83", "as_of": "2026-06-30", "gf_value": "$57.29", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "85", "pe": "12.26", "roic": "8.00%", "f_score": "7", "z_score": "2.34"}
+{"ticker": "EQT", "name": "EQT Corp", "price": "52.83", "as_of": "2026-06-30", "fair_value": "$57.65", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "85", "pe": "12.26", "roic": "8.00%", "f_score": "7", "z_score": "2.34"}

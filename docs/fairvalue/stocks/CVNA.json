@@ -1,1 +1,1 @@
-{"ticker": "CVNA", "name": "CARVANA CO.", "price": "63.73", "as_of": "2026-06-30", "gf_value": "$70.61", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "74", "pe": "At loss", "roic": "\u2013", "f_score": "4", "z_score": "\u2013"}
+{"ticker": "CVNA", "name": "CARVANA CO.", "price": "63.73", "as_of": "2026-06-30", "fair_value": "$101.89", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "72", "pe": "At loss", "roic": "\u2013", "f_score": "4", "z_score": "\u2013"}

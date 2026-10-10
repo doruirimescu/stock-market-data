@@ -1,1 +1,1 @@
-{"ticker": "VTR", "name": "Ventas, Inc.", "price": "82.04", "as_of": "2026-06-30", "gf_value": "$59.75", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "71", "pe": "149.16", "roic": "2.99%", "f_score": "6", "z_score": "N/A (financial)"}
+{"ticker": "VTR", "name": "Ventas, Inc.", "price": "82.04", "as_of": "2026-06-30", "fair_value": "$74.72", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "75", "pe": "149.16", "roic": "2.99%", "f_score": "6", "z_score": "N/A (financial)"}

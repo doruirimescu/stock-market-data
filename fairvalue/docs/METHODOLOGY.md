@@ -74,7 +74,7 @@ Gross, operating, net and FCF margins are each divided by TTM revenue.
 
 | Model | Formula |
 | --- | --- |
-| **Fair Value** | 10-year median PE × TTM EPS (P/B × book for financials), when the PE history is ≥ 90% valid and the result is within 2× of the median of the other multiples' values (P/S, P/B, P/FCF). Otherwise the median of all available multiple-based values (each needs ≥ 3 years of history). Calibration is in VALIDATION.md. Price/Fair Value bands: > 1.3 significantly overvalued, 1.1–1.3 modestly overvalued, 0.9–1.1 fair, 0.7–0.9 modestly undervalued, < 0.7 significantly undervalued |
+| **Fair Value** | Median **P/S** over the last 3 years × TTM revenue per share × (1 + 0.25 × last year's revenue-per-share growth, clipped to ±50%). The P/S history must cover ≥ 90% of the window. Without it (no revenue tag, young listing), the median of the P/S, P/E (EPS without NRI), P/B and P/FCF values over the same window, each needing ≥ 1 year of history. Same rule for financials. Calibration is in VALIDATION.md. Price/Fair Value bands: > 1.3 significantly overvalued, 1.1–1.3 modestly overvalued, 0.9–1.1 fair, 0.7–0.9 modestly undervalued, < 0.7 significantly undervalued |
 | **Valuation gap** | (Fair Value − price) / Fair Value × 100; positive = undervalued. Same convention as AlphaSpread, so the two sources can be averaged |
 | **Solvency score** | 0–100: the five Financial Strength inputs mapped to 0–10 (same breakpoints as the rank) and averaged × 10, unrounded |
 | DCF (earnings) | EPS × [10 years at g + 10 years at 4%], both finite, discounted at d. g = 10-year EPS growth clipped to [5%, 20%]. d = 10Y Treasury rounded up to a whole % + 6% |
@@ -136,9 +136,9 @@ flagged as financial:
   show "N/A (financial)", as on the reference provider.
 - **Debt:** unclassified balance sheets fall back to `LongTermDebt`,
   `DebtLongtermAndShorttermCombinedAmount`, or secured + unsecured debt + notes payable.
-- **Fair Value:** uses the 10-year median **P/B** × book value per share
-  (`FAIR_VALUE_WEIGHTS_FINANCIAL`), because earnings swing with credit and
-  mark-to-market. Not validated against the reference provider.
+- **Fair Value:** the same P/S rule as other companies; it fits BAC, UNH and ARE
+  within 11%. Banks that tag no total revenue (JPM) use the median-of-multiples
+  fallback, which fits JPM within 2%.
 - **Peter Lynch fair value:** uses 5-year book-value growth, as the reference provider does for banks.
 
 ## Data hygiene
@@ -152,9 +152,13 @@ flagged as financial:
 
 ## Known deviations from the reference provider
 
-- **No analyst estimates.** the reference provider's Fair Value blends in forward estimates; ours is purely historical.
+- **No analyst estimates.** the reference provider's Fair Value blends in forward estimates; ours
+  approximates them with a quarter of last year's revenue growth.
 - **No industry or universe percentiles.** Ranks use fixed breakpoints.
-- **No "without NRI" adjustment.** EPS is GAAP diluted EPS.
+- **"Without NRI" is approximate.** Displayed EPS and PE are GAAP diluted. The
+  P/E fallback of Fair Value uses EPS without `OtherNonoperatingIncomeExpense`
+  when it exceeds 10% of pretax income (AMZN's 2026 mark-to-market gains on
+  its Anthropic stake: $53B in one quarter); other NRI items are not removed.
 - **Only standard XBRL tags.**
   - Company-specific items are invisible, e.g. AAPL and CAT interest expense, so
     their interest coverage is N/A.

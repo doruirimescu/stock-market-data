@@ -1,1 +1,1 @@
-{"ticker": "GLW", "name": "CORNING INC /NY", "price": "156.68", "as_of": "2026-06-30", "gf_value": "$78.99", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "77", "pe": "72.20", "roic": "9.40%", "f_score": "7", "z_score": "5.76"}
+{"ticker": "GLW", "name": "CORNING INC /NY", "price": "156.68", "as_of": "2026-06-30", "fair_value": "$64.76", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "77", "pe": "72.20", "roic": "9.40%", "f_score": "7", "z_score": "5.76"}

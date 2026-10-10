@@ -1,1 +1,1 @@
-{"ticker": "TMO", "name": "THERMO FISHER SCIENTIFIC INC.", "price": "658.02", "as_of": "2026-06-27", "gf_value": "$603.53", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "85", "pe": "35.42", "roic": "7.59%", "f_score": "4", "z_score": "3.95"}
+{"ticker": "TMO", "name": "THERMO FISHER SCIENTIFIC INC.", "price": "658.02", "as_of": "2026-06-27", "fair_value": "$607.51", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "85", "pe": "35.42", "roic": "7.59%", "f_score": "4", "z_score": "3.95"}

@@ -1,1 +1,1 @@
-{"ticker": "KO", "name": "COCA COLA CO", "price": "88.05", "as_of": "2026-04-03", "gf_value": "$86.96", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "83", "pe": "27.69", "roic": "14.61%", "f_score": "8", "z_score": "5.56"}
+{"ticker": "KO", "name": "COCA COLA CO", "price": "88.05", "as_of": "2026-04-03", "fair_value": "$73.21", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "79", "pe": "27.69", "roic": "14.61%", "f_score": "8", "z_score": "5.56"}

@@ -1,1 +1,1 @@
-{"ticker": "BEN", "name": "FRANKLIN TEMPLETON INC", "price": "32.00", "as_of": "2026-06-30", "gf_value": "$29.06", "verdict": "over", "verdict_text": "Modestly Overvalued", "gf_score": "76", "pe": "21.77", "roic": "1.97%", "f_score": "5", "z_score": "N/A (financial)"}
+{"ticker": "BEN", "name": "FRANKLIN TEMPLETON INC", "price": "32.00", "as_of": "2026-06-30", "fair_value": "$26.77", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "75", "pe": "21.77", "roic": "1.97%", "f_score": "5", "z_score": "N/A (financial)"}

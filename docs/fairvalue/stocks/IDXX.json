@@ -1,1 +1,1 @@
-{"ticker": "IDXX", "name": "IDEXX LABORATORIES INC /DE", "price": "518.00", "as_of": "2026-06-30", "gf_value": "$769.61", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "94", "pe": "36.40", "roic": "43.86%", "f_score": "9", "z_score": "19.03"}
+{"ticker": "IDXX", "name": "IDEXX LABORATORIES INC /DE", "price": "518.00", "as_of": "2026-06-30", "fair_value": "$633.87", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "94", "pe": "36.40", "roic": "43.86%", "f_score": "9", "z_score": "19.03"}

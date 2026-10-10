@@ -1,1 +1,1 @@
-{"ticker": "TECH", "name": "BIO-TECHNE Corp", "price": "72.46", "as_of": "2026-06-30", "gf_value": "$69.18", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "90", "pe": "62.47", "roic": "8.24%", "f_score": "8", "z_score": "12.35"}
+{"ticker": "TECH", "name": "BIO-TECHNE Corp", "price": "72.46", "as_of": "2026-06-30", "fair_value": "$69.59", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "90", "pe": "62.47", "roic": "8.24%", "f_score": "8", "z_score": "12.35"}

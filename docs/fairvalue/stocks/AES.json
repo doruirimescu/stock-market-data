@@ -1,1 +1,1 @@
-{"ticker": "AES", "name": "AES CORP", "price": "14.94", "as_of": "2026-06-30", "gf_value": "$24.13", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "71", "pe": "5.70", "roic": "4.53%", "f_score": "6", "z_score": "0.51"}
+{"ticker": "AES", "name": "AES CORP", "price": "14.94", "as_of": "2026-06-30", "fair_value": "$15.40", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "71", "pe": "5.70", "roic": "4.53%", "f_score": "6", "z_score": "0.51"}

@@ -1,1 +1,1 @@
-{"ticker": "DAL", "name": "DELTA AIR LINES, INC.", "price": "82.17", "as_of": "2026-09-30", "gf_value": "$90.35", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "89", "pe": "16.40", "roic": "5.15%", "f_score": "6", "z_score": "\u2013"}
+{"ticker": "DAL", "name": "DELTA AIR LINES, INC.", "price": "82.17", "as_of": "2026-09-30", "fair_value": "$66.78", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "82", "pe": "16.40", "roic": "5.15%", "f_score": "6", "z_score": "\u2013"}

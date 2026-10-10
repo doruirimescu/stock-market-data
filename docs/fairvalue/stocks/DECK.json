@@ -1,1 +1,1 @@
-{"ticker": "DECK", "name": "DECKERS OUTDOOR CORP", "price": "82.89", "as_of": "2026-06-30", "gf_value": "$158.81", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "96", "pe": "11.79", "roic": "\u2013", "f_score": "8", "z_score": "\u2013"}
+{"ticker": "DECK", "name": "DECKERS OUTDOOR CORP", "price": "82.89", "as_of": "2026-06-30", "fair_value": "$142.88", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "98", "pe": "11.79", "roic": "\u2013", "f_score": "8", "z_score": "\u2013"}

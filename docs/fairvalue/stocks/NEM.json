@@ -1,1 +1,1 @@
-{"ticker": "NEM", "name": "NEWMONT Corp /DE/", "price": "117.84", "as_of": "2026-06-30", "gf_value": "$118.81", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "93", "pe": "14.86", "roic": "16.69%", "f_score": "9", "z_score": "4.87"}
+{"ticker": "NEM", "name": "NEWMONT Corp /DE/", "price": "117.84", "as_of": "2026-06-30", "fair_value": "$93.83", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "87", "pe": "14.86", "roic": "16.69%", "f_score": "9", "z_score": "4.87"}

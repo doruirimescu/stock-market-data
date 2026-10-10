@@ -1,1 +1,1 @@
-{"ticker": "GEN", "name": "Gen Digital Inc.", "price": "23.25", "as_of": "2026-07-03", "gf_value": "$29.35", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "88", "pe": "13.60", "roic": "9.13%", "f_score": "7", "z_score": "1.32"}
+{"ticker": "GEN", "name": "Gen Digital Inc.", "price": "23.25", "as_of": "2026-07-03", "fair_value": "$34.02", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "88", "pe": "13.60", "roic": "9.13%", "f_score": "7", "z_score": "1.32"}

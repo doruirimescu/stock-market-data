@@ -1,1 +1,1 @@
-{"ticker": "IR", "name": "Ingersoll Rand Inc.", "price": "78.75", "as_of": "2026-06-30", "gf_value": "$85.46", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "85", "pe": "32.54", "roic": "7.64%", "f_score": "7", "z_score": "3.38"}
+{"ticker": "IR", "name": "Ingersoll Rand Inc.", "price": "78.75", "as_of": "2026-06-30", "fair_value": "$94.71", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "32.54", "roic": "7.64%", "f_score": "7", "z_score": "3.38"}

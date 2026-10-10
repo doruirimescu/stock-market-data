@@ -1,1 +1,1 @@
-{"ticker": "BNY", "name": "Bank of New York Mellon Corp", "price": "142.71", "as_of": "2026-06-30", "gf_value": "$74.11", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "69", "pe": "16.65", "roic": "\u2013", "f_score": "5", "z_score": "N/A (financial)"}
+{"ticker": "BNY", "name": "Bank of New York Mellon Corp", "price": "142.71", "as_of": "2026-06-30", "fair_value": "$101.54", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "72", "pe": "16.65", "roic": "\u2013", "f_score": "5", "z_score": "N/A (financial)"}

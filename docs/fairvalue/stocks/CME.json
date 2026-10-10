@@ -1,1 +1,1 @@
-{"ticker": "CME", "name": "CME GROUP INC.", "price": "280.56", "as_of": "2026-06-30", "gf_value": "$209.54", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "82", "pe": "23.80", "roic": "1.83%", "f_score": "5", "z_score": "N/A (financial)"}
+{"ticker": "CME", "name": "CME GROUP INC.", "price": "280.56", "as_of": "2026-06-30", "fair_value": "$274.33", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "88", "pe": "23.80", "roic": "1.83%", "f_score": "5", "z_score": "N/A (financial)"}

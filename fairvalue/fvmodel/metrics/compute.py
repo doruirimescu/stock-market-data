@@ -20,6 +20,7 @@ from ..fundamentals import Fundamentals
 from ..market import Market
 from . import scoring
 from .base import Metric, avg, cagr, clamp, div, pct
+from .fairvalue import COMPONENTS, FUNDAMENTAL, fair_value, window_medians
 from .history import multiple_series, per_share_history, range_stats
 
 
@@ -38,6 +39,7 @@ class Report:
     notes: list[str] = field(default_factory=list)
     closes: pd.Series | None = field(default=None, repr=False)
     financial: bool = False
+    fv_inputs: dict | None = field(default=None, repr=False)  # for calibration (metrics/fairvalue.py)
 
     def m(self, key: str) -> float | None:
         metric = self.metrics.get(key)
@@ -102,6 +104,15 @@ def _growth(values: list[float | None], ends: list[date], years: int) -> float |
     if abs((ends[-1] - ends[-1 - years]).days - 365.25 * years) > 30:
         return None
     return cagr(values, years)
+
+
+def _revenue_growth(hist, days: pd.DatetimeIndex) -> float | None:
+    """Revenue-per-share growth over the year to the last trading day (TTM vs TTM a year earlier)."""
+    rs = hist.daily(days)["revenue"].dropna() if len(days) and "revenue" in hist.frame else pd.Series(dtype=float)
+    if rs.empty:
+        return None
+    ago = rs[rs.index <= rs.index[-1] - pd.DateOffset(years=1)]
+    return None if ago.empty or ago.iloc[-1] <= 0 else float(rs.iloc[-1] / ago.iloc[-1] - 1)
 
 
 def _dcf_multiple(g: float, d: float) -> float:
@@ -530,41 +541,9 @@ def compute(ticker: str, name: str, f: Fundamentals, mk: Market, today: date | N
     put("forward_rate_of_return", "Forward Rate of Return (Yacktman)", frr, "%", "high")
 
     # ---- Fair Value ---------------------------------------------------
-    fund_now = {"pe": eps, "ps": rev_ps, "pb": bvps, "pfcf": fcf_ps}
-
-    def fv_component(k, strict):
-        series = mult[k]
-        valid = series.dropna()
-        min_years = 5 if strict else config.FAIR_VALUE_MIN_YEARS_FALLBACK
-        if len(valid) < 250 * min_years or fund_now[k] is None or fund_now[k] <= 0:
-            return None
-        if strict and len(valid) < config.FAIR_VALUE_MIN_VALID_SHARE * len(series):
-            return None
-        return float(valid.median()) * fund_now[k]
-
-    fv_weights = config.FAIR_VALUE_WEIGHTS_FINANCIAL if financial else config.FAIR_VALUE_WEIGHTS
-    components = {k: v for k in ("pe", "ps", "pb", "pfcf") if (v := fv_component(k, strict=False)) is not None}
-    parts, weights = {}, {}
-    for k, w in fv_weights.items():
-        v = fv_component(k, strict=True)
-        if v is not None:
-            parts[k], weights[k] = v, w
-    others = [v for k, v in components.items() if k not in parts]
-    if parts and others:
-        primary = sum(parts[k] * weights[k] for k in parts) / sum(weights.values())
-        ratio = primary / float(np.median(others))
-        if not (1 / config.FAIR_VALUE_CONSISTENCY <= ratio <= config.FAIR_VALUE_CONSISTENCY):
-            parts, weights = {}, {}  # primary is out of line with every other multiple
-    if not parts and components:
-        med = float(np.median(list(components.values())))
-        parts, weights = {"median": med}, {"median": 1.0}
-    gfv, adj = None, 1.0
-    if parts:
-        base = sum(parts[k] * weights[k] for k in parts) / sum(weights.values())
-        if config.FAIR_VALUE_GROWTH_ADJUSTMENT:
-            g_hist = g.get(("revenue", 5)) or 0
-            adj = clamp((1 + g_hist / 100) / (1 + config.FAIR_VALUE_BASELINE_GROWTH), *config.FAIR_VALUE_ADJ_CLIP)
-        gfv = base * adj
+    eps_nri = f.eps_without_nri()
+    fund_now = {"eps": eps, "eps_nri": eps_nri, "revenue": rev_ps, "book": bvps, "fcf": fcf_ps}
+    gfv, parts, weights, adj = fair_value(mult, fund_now, _revenue_growth(hist, mult.index))
     p2gf = div(price, gfv)
     if p2gf is None:
         label, verdict = "", None
@@ -642,7 +621,8 @@ def compute(ticker: str, name: str, f: Fundamentals, mk: Market, today: date | N
         })
 
     charts = _charts(c, hist, parts, weights, adj, mult, as_of, annual)
-    return Report(ticker.upper(), name, as_of, price, mk.price_date, mcap, ev, M, annual, charts, notes, c, financial)
+    return Report(ticker.upper(), name, as_of, price, mk.price_date, mcap, ev, M, annual, charts, notes, c, financial,
+                  {"mult": mult, "fund_now": fund_now})
 
 
 def _charts(closes, hist, parts, weights, adj, mult, as_of, annual) -> dict:
@@ -651,14 +631,17 @@ def _charts(closes, hist, parts, weights, adj, mult, as_of, annual) -> dict:
     gfv_line = None
     if parts:
         fund = hist.daily(monthly.index)
-        col = {"pe": "eps", "ps": "revenue", "pb": "book", "pfcf": "fcf"}
+        col = {k: FUNDAMENTAL[k] for k in COMPONENTS}
+
+        medians = window_medians(mult, strict=False)
 
         def comp_line(k):
-            # A non-positive fundamental (e.g. a loss year) leaves a gap, not a zero value.
-            return float(mult[k].dropna().median()) * fund[col[k]].where(fund[col[k]] > 0)
+            # Today's window median applied to each month's fundamental (the reference
+            # provider's chart shape). A non-positive fundamental leaves a gap, not a zero.
+            return medians[k] * fund[col[k]].where(fund[col[k]] > 0)
 
         if "median" in parts:
-            lines = [comp_line(k) for k in col if mult[k].dropna().size >= 250 * config.FAIR_VALUE_MIN_YEARS_FALLBACK]
+            lines = [comp_line(k) for k in col if k in medians]
             line = pd.concat(lines, axis=1).median(axis=1, skipna=True) if lines else None
         else:
             line = sum(comp_line(k) * weights[k] for k in parts) / sum(weights.values())

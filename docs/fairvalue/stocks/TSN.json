@@ -1,1 +1,1 @@
-{"ticker": "TSN", "name": "TYSON FOODS, INC.", "price": "53.43", "as_of": "2026-06-27", "gf_value": "$52.01", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "67", "pe": "32.98", "roic": "2.84%", "f_score": "6", "z_score": "\u2013"}
+{"ticker": "TSN", "name": "TYSON FOODS, INC.", "price": "53.43", "as_of": "2026-06-27", "fair_value": "$59.78", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "70", "pe": "32.98", "roic": "2.84%", "f_score": "6", "z_score": "\u2013"}

@@ -1,1 +1,1 @@
-{"ticker": "MELI", "name": "MERCADOLIBRE INC", "price": "1889.85", "as_of": "2026-06-30", "gf_value": "$5,434.88", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "81", "pe": "51.41", "roic": "6.30%", "f_score": "4", "z_score": "2.46"}
+{"ticker": "MELI", "name": "MERCADOLIBRE INC", "price": "1889.85", "as_of": "2026-06-30", "fair_value": "$3,707.86", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "84", "pe": "51.41", "roic": "6.30%", "f_score": "4", "z_score": "2.46"}

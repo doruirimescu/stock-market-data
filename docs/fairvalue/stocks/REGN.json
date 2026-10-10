@@ -1,1 +1,1 @@
-{"ticker": "REGN", "name": "REGENERON PHARMACEUTICALS, INC.", "price": "746.54", "as_of": "2026-06-30", "gf_value": "$801.12", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "93", "pe": "18.47", "roic": "10.29%", "f_score": "6", "z_score": "6.62"}
+{"ticker": "REGN", "name": "REGENERON PHARMACEUTICALS, INC.", "price": "746.54", "as_of": "2026-06-30", "fair_value": "$861.20", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "93", "pe": "18.47", "roic": "10.29%", "f_score": "6", "z_score": "6.62"}

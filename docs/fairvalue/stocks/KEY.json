@@ -1,1 +1,1 @@
-{"ticker": "KEY", "name": "KEYCORP /NEW/", "price": "19.97", "as_of": "2026-06-30", "gf_value": "$20.35", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "82", "pe": "11.68", "roic": "2.48%", "f_score": "6", "z_score": "N/A (financial)"}
+{"ticker": "KEY", "name": "KEYCORP /NEW/", "price": "19.97", "as_of": "2026-06-30", "fair_value": "$23.75", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "83", "pe": "11.68", "roic": "2.48%", "f_score": "6", "z_score": "N/A (financial)"}

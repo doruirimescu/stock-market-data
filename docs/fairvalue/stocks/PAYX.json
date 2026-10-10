@@ -1,1 +1,1 @@
-{"ticker": "PAYX", "name": "PAYCHEX INC", "price": "103.98", "as_of": "2026-08-31", "gf_value": "$141.66", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "95", "pe": "20.63", "roic": "13.34%", "f_score": "8", "z_score": "3.13"}
+{"ticker": "PAYX", "name": "PAYCHEX INC", "price": "103.98", "as_of": "2026-08-31", "fair_value": "$162.60", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "94", "pe": "20.63", "roic": "13.34%", "f_score": "8", "z_score": "3.13"}

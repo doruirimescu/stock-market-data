@@ -1,1 +1,1 @@
-{"ticker": "CHD", "name": "CHURCH & DWIGHT CO INC /DE/", "price": "98.11", "as_of": "2026-06-30", "gf_value": "$91.88", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "82", "pe": "31.45", "roic": "11.89%", "f_score": "7", "z_score": "5.11"}
+{"ticker": "CHD", "name": "CHURCH & DWIGHT CO INC /DE/", "price": "98.11", "as_of": "2026-06-30", "fair_value": "$105.45", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "86", "pe": "31.45", "roic": "11.89%", "f_score": "7", "z_score": "5.11"}

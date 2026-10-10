@@ -1,1 +1,1 @@
-{"ticker": "HON", "name": "HONEYWELL INTERNATIONAL INC", "price": "207.73", "as_of": "2026-06-30", "gf_value": "$430.71", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "77", "pe": "11.07", "roic": "11.68%", "f_score": "6", "z_score": "2.70"}
+{"ticker": "HON", "name": "HONEYWELL INTERNATIONAL INC", "price": "207.73", "as_of": "2026-06-30", "fair_value": "$507.50", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "76", "pe": "11.07", "roic": "11.68%", "f_score": "6", "z_score": "2.70"}

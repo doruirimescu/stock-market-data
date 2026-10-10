@@ -41,15 +41,15 @@
     <h1>Solventum Corp <span class="gradient-text">SOLV</span></h1>
     
     <p class="lead">Price <span class="hl-accent">$87.29</span> on 09 Oct 2026.
-      Not enough history to compute a Fair Value.</p>
+      The Fair Value is <span class="hl-accent">$73.30</span>, so the stock looks <mark>modestly overvalued</mark> at 1.19× its fair value.</p>
 
     <div class="kpis">
       <div class="panel kpi"><div class="label">Price</div><div class="value">$87.29</div>
         <div class="sub">5.57% below 52-week high</div></div>
-      <div class="panel kpi"><div class="label">Fair Value</div><div class="value">–</div>
-        <div class="sub">n/a</div></div>
+      <div class="panel kpi"><div class="label">Fair Value</div><div class="value">$73.30</div>
+        <div class="sub"><span class="verdict over">Modestly Overvalued</span></div></div>
       
-      <div class="panel kpi"><div class="label">Fair Value Score</div><div class="value">79</div>
+      <div class="panel kpi"><div class="label">Fair Value Score</div><div class="value">78</div>
         <div class="sub"><span class="verdict ">Average outperformance potential</span></div></div>
       <div class="panel kpi"><div class="label">Market cap</div><div class="value">$14.86B</div>
         <div class="sub">EV $19.75B · yield 0.00%</div></div>
@@ -77,8 +77,8 @@
           <div class="dist-count">–</div></div>
         
         <div class="dist-row"><div class="dist-label">Fair Value Rank</div>
-          <div class="dist-track"><div class="dist-bar" style="width:0%;background:var(--over)"></div></div>
-          <div class="dist-count">–</div></div>
+          <div class="dist-track"><div class="dist-bar" style="width:60%;background:var(--accent)"></div></div>
+          <div class="dist-count">6</div></div>
         
         <div class="dist-row"><div class="dist-label">Momentum Rank</div>
           <div class="dist-track"><div class="dist-bar" style="width:90%;background:var(--under)"></div></div>
@@ -91,7 +91,7 @@
   <h3 class="panel-title">Valuation verdicts</h3>
   <div class="table-wrap"><table class="data metric-table"><tbody>
   
-<tr><td>Price-to-Fair Value</td><td class="num">–</td></tr>
+<tr><td>Price-to-Fair Value</td><td class="num">1.19 <span class="verdict over">Modestly Overvalued</span></td></tr>
 <tr><td>Altman Z-Score</td><td class="num">2.11 <span class="verdict ">Grey zone</span></td></tr>
 <tr><td>Beneish M-Score</td><td class="num">-1.85 <span class="verdict under">Unlikely manipulator</span></td></tr>
 <tr><td>ROIC</td><td class="num">13.14% <span class="verdict under">ROIC &gt; WACC</span></td></tr>
@@ -259,7 +259,7 @@
           <td class="num muted">–</td><td class="num muted">–</td><td class="num muted">–</td><td class="muted small"></td></tr>
         
         <tr><td>PEG Ratio</td><td class="num">–</td>
-          <td class="num muted">–</td><td class="num muted">–</td><td class="num muted">–</td><td class="muted small">5-year EBITDA/share growth, as Fair Value</td></tr>
+          <td class="num muted">–</td><td class="num muted">–</td><td class="num muted">–</td><td class="muted small">5-year EBITDA/share growth, as the reference provider</td></tr>
         
         <tr><td>Shiller PE</td><td class="num">–</td>
           <td class="num muted">–</td><td class="num muted">–</td><td class="num muted">–</td><td class="muted small"></td></tr>
@@ -283,8 +283,8 @@
           <thead><tr><th>Model</th><th class="num">Value</th><th class="num">Price / value</th></tr></thead><tbody>
           
           
-          <tr><td>Fair Value (Fair Value)</td><td class="num">–</td>
-            <td class="num">–</td></tr>
+          <tr><td>Fair Value (Fair Value)</td><td class="num">$73.30</td>
+            <td class="num"><span class="verdict over">1.19× over</span></td></tr>
           
           
           <tr><td>DCF (Earnings Based)</td><td class="num">$87.54</td>
@@ -361,7 +361,7 @@
 
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 <script>
-  const D = {"dates": ["2024-03-31", "2024-04-30", "2024-05-31", "2024-06-30", "2024-07-31", "2024-08-31", "2024-09-30", "2024-10-31", "2024-11-30", "2024-12-31", "2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "price": [69.55, 65.01, 59.34, 52.88, 58.88, 64.11, 69.72, 72.58, 71.51, 66.06, 74.06, 79.75, 76.04, 66.12, 73.09, 75.84, 71.36, 73.09, 73.0, 69.04, 85.26, 79.24, 76.97, 74.2, 65.3, 67.36, 74.95, 77.15, 85.44, 91.06, 88.15, 87.29], "fair_value": null, "pe_dates": ["2024-03-31", "2024-04-30", "2024-05-31", "2024-06-30", "2024-07-31", "2024-08-31", "2024-09-30", "2024-10-31", "2024-11-30", "2024-12-31", "2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "pe": [8.93, 8.71, 7.95, 7.09, 9.64, 10.49, 16.8, 17.49, 17.23, 23.93, 26.83, 28.89, 35.04, 30.47, 33.68, 34.79, 32.73, 33.53, 8.38, 7.93, 9.79, 8.92, 8.67, 8.36, 7.99, 8.24, 9.17, 9.43, 10.44, 11.13, 10.78, 10.67], "fy": ["2022", "2023", "2024", "2025"], "revenue": [8130000000.0, 8197000000.0, 8254000000.0, 8325000000.0], "net_income": [1343000000.0, 1346000000.0, 479000000.0, 1556000000.0], "fcf": [1428000000.0, 1625000000.0, 805000000.0, -10000000.0]};
+  const D = {"dates": ["2024-03-31", "2024-04-30", "2024-05-31", "2024-06-30", "2024-07-31", "2024-08-31", "2024-09-30", "2024-10-31", "2024-11-30", "2024-12-31", "2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "price": [69.55, 65.01, 59.34, 52.88, 58.88, 64.11, 69.72, 72.58, 71.51, 66.06, 74.06, 79.75, 76.04, 66.12, 73.09, 75.84, 71.36, 73.09, 73.0, 69.04, 85.26, 79.24, 76.97, 74.2, 65.3, 67.36, 74.95, 77.15, 85.44, 91.06, 88.15, 87.29], "fair_value": [72.59, 72.59, 72.59, 72.3, 72.3, 72.3, 72.21, 72.21, 72.21, 72.63, 72.63, 72.63, 72.65, 72.65, 72.65, 73.18, 73.18, 73.18, 73.22, 73.22, 73.22, 72.59, 72.59, 72.59, 71.96, 71.96, 71.96, 73.3, 73.3, 73.3, 73.3, 73.3], "pe_dates": ["2024-03-31", "2024-04-30", "2024-05-31", "2024-06-30", "2024-07-31", "2024-08-31", "2024-09-30", "2024-10-31", "2024-11-30", "2024-12-31", "2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "pe": [8.93, 8.71, 7.95, 7.09, 9.64, 10.49, 16.8, 17.49, 17.23, 23.93, 26.83, 28.89, 35.04, 30.47, 33.68, 34.79, 32.73, 33.53, 8.38, 7.93, 9.79, 8.92, 8.67, 8.36, 7.99, 8.24, 9.17, 9.43, 10.44, 11.13, 10.78, 10.67], "fy": ["2022", "2023", "2024", "2025"], "revenue": [8130000000.0, 8197000000.0, 8254000000.0, 8325000000.0], "net_income": [1343000000.0, 1346000000.0, 479000000.0, 1556000000.0], "fcf": [1428000000.0, 1625000000.0, 805000000.0, -10000000.0]};
   const C = Nexus.colors;
   const GOLD = C.series2;
   const line = (x, y, name, color, extra) => Object.assign({ type: "scatter", mode: "lines", x, y, name, line: { color, width: 2 },

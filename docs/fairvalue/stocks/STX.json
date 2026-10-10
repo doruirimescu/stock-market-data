@@ -1,1 +1,1 @@
-{"ticker": "STX", "name": "Seagate Technology Holdings plc", "price": "783.00", "as_of": "2026-07-03", "gf_value": "$143.02", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "76", "pe": "56.33", "roic": "66.20%", "f_score": "8", "z_score": "15.60"}
+{"ticker": "STX", "name": "Seagate Technology Holdings plc", "price": "783.00", "as_of": "2026-07-03", "fair_value": "$188.42", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "76", "pe": "56.33", "roic": "66.20%", "f_score": "8", "z_score": "15.60"}

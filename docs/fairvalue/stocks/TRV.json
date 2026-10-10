@@ -1,1 +1,1 @@
-{"ticker": "TRV", "name": "TRAVELERS COMPANIES, INC.", "price": "368.75", "as_of": "2026-06-30", "gf_value": "$250.22", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "82", "pe": "9.91", "roic": "6.14%", "f_score": "5", "z_score": "N/A (financial)"}
+{"ticker": "TRV", "name": "TRAVELERS COMPANIES, INC.", "price": "368.75", "as_of": "2026-06-30", "fair_value": "$297.39", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "85", "pe": "9.91", "roic": "6.14%", "f_score": "5", "z_score": "N/A (financial)"}

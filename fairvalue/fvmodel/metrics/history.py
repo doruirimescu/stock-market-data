@@ -22,7 +22,7 @@ YEARS = 10
 class PerShareHistory:
     """Per-share fundamentals indexed by quarter end (TTM for flows, balance for stocks)."""
 
-    frame: pd.DataFrame  # columns: eps, revenue, fcf, book, ebitda, ebit, tbv
+    frame: pd.DataFrame  # columns: eps, eps_nri, revenue, fcf, book, ebitda, ebit, tbv
 
     def daily(self, index: pd.DatetimeIndex) -> pd.DataFrame:
         f = self.frame.copy()
@@ -42,6 +42,7 @@ def per_share_history(f: Fundamentals, years: int = YEARS + 1) -> PerShareHistor
         eps = f.ttm("eps_diluted", e)
         row = {
             "eps": eps,
+            "eps_nri": f.eps_without_nri(e),
             "revenue": _ps(f.ttm("revenue", e), shares),
             "fcf": _ps(f.ttm("fcf", e), shares),
             "ebitda": _ps(f.ttm("ebitda", e), shares),
@@ -69,7 +70,7 @@ def _fix_share_outliers(frame: pd.DataFrame) -> pd.DataFrame:
     bad = (ratio > 5) | (ratio < 0.2)
     if bad.any():
         frame = frame.copy()
-        per_share = [c for c in frame.columns if c not in ("shares", "eps")]  # EPS is reported per share directly
+        per_share = [c for c in frame.columns if c not in ("shares", "eps", "eps_nri")]  # EPS is reported per share directly
         frame.loc[bad, per_share] = frame.loc[bad, per_share].mul(ratio[bad], axis=0)
         frame.loc[bad, "shares"] = ref[bad]
     return frame
@@ -79,7 +80,7 @@ def _ps(v, shares):
     return None if v is None or not shares else v / shares
 
 
-MULTIPLES = {"pe": "eps", "ps": "revenue", "pb": "book", "pfcf": "fcf"}
+MULTIPLES = {"pe": "eps", "pe_nri": "eps_nri", "ps": "revenue", "pb": "book", "pfcf": "fcf"}
 
 
 def multiple_series(closes: pd.Series, hist: PerShareHistory, as_of: date, years: int = YEARS) -> pd.DataFrame:

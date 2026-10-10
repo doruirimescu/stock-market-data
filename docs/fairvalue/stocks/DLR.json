@@ -1,1 +1,1 @@
-{"ticker": "DLR", "name": "DIGITAL REALTY TRUST, INC.", "price": "178.76", "as_of": "2026-03-31", "gf_value": "$161.78", "verdict": "over", "verdict_text": "Modestly Overvalued", "gf_score": "70", "pe": "47.42", "roic": "1.52%", "f_score": "5", "z_score": "N/A (financial)"}
+{"ticker": "DLR", "name": "DIGITAL REALTY TRUST, INC.", "price": "178.76", "as_of": "2026-03-31", "fair_value": "$178.66", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "71", "pe": "47.42", "roic": "1.52%", "f_score": "5", "z_score": "N/A (financial)"}

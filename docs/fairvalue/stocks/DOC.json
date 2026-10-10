@@ -1,1 +1,1 @@
-{"ticker": "DOC", "name": "HEALTHPEAK PROPERTIES, INC.", "price": "18.80", "as_of": "2026-06-30", "gf_value": "$24.02", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "79", "pe": "53.71", "roic": "3.74%", "f_score": "5", "z_score": "N/A (financial)"}
+{"ticker": "DOC", "name": "HEALTHPEAK PROPERTIES, INC.", "price": "18.80", "as_of": "2026-06-30", "fair_value": "$20.58", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "79", "pe": "53.71", "roic": "3.74%", "f_score": "5", "z_score": "N/A (financial)"}

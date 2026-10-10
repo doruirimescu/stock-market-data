@@ -1,1 +1,1 @@
-{"ticker": "ALGN", "name": "ALIGN TECHNOLOGY INC", "price": "142.71", "as_of": "2026-06-30", "gf_value": "$254.02", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "91", "pe": "24.78", "roic": "7.94%", "f_score": "7", "z_score": "4.43"}
+{"ticker": "ALGN", "name": "ALIGN TECHNOLOGY INC", "price": "142.71", "as_of": "2026-06-30", "fair_value": "$203.53", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "93", "pe": "24.78", "roic": "7.94%", "f_score": "7", "z_score": "4.43"}

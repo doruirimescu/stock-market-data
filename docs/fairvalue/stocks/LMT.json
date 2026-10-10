@@ -1,1 +1,1 @@
-{"ticker": "LMT", "name": "LOCKHEED MARTIN CORP", "price": "509.59", "as_of": "2026-06-28", "gf_value": "$505.16", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "77", "pe": "18.79", "roic": "14.23%", "f_score": "8", "z_score": "3.44"}
+{"ticker": "LMT", "name": "LOCKHEED MARTIN CORP", "price": "509.59", "as_of": "2026-06-28", "fair_value": "$543.11", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "79", "pe": "18.79", "roic": "14.23%", "f_score": "8", "z_score": "3.44"}

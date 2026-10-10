@@ -1,1 +1,1 @@
-{"ticker": "CAH", "name": "CARDINAL HEALTH INC", "price": "237.57", "as_of": "2026-06-30", "gf_value": "$170.43", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "79", "pe": "32.86", "roic": "10.95%", "f_score": "8", "z_score": "5.08"}
+{"ticker": "CAH", "name": "CARDINAL HEALTH INC", "price": "237.57", "as_of": "2026-06-30", "fair_value": "$160.21", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "79", "pe": "32.86", "roic": "10.95%", "f_score": "8", "z_score": "5.08"}

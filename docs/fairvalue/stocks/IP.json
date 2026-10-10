@@ -1,1 +1,1 @@
-{"ticker": "IP", "name": "INTERNATIONAL PAPER CO /NEW/", "price": "32.12", "as_of": "2026-06-30", "gf_value": "$43.13", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "64", "pe": "At loss", "roic": "-6.64%", "f_score": "6", "z_score": "\u2013"}
+{"ticker": "IP", "name": "INTERNATIONAL PAPER CO /NEW/", "price": "32.12", "as_of": "2026-06-30", "fair_value": "$45.37", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "64", "pe": "At loss", "roic": "-6.64%", "f_score": "6", "z_score": "\u2013"}

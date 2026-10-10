@@ -1,1 +1,1 @@
-{"ticker": "SBUX", "name": "STARBUCKS CORP", "price": "90.75", "as_of": "2026-06-28", "gf_value": "$95.87", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "83", "pe": "52.16", "roic": "7.19%", "f_score": "6", "z_score": "2.98"}
+{"ticker": "SBUX", "name": "STARBUCKS CORP", "price": "90.75", "as_of": "2026-06-28", "fair_value": "$97.83", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "84", "pe": "52.16", "roic": "7.19%", "f_score": "6", "z_score": "2.98"}

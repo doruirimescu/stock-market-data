@@ -1,1 +1,1 @@
-{"ticker": "GRMN", "name": "GARMIN LTD", "price": "268.36", "as_of": "2026-03-28", "gf_value": "$184.18", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "70", "pe": "29.95", "roic": "22.27%", "f_score": "9", "z_score": "\u2013"}
+{"ticker": "GRMN", "name": "GARMIN LTD", "price": "268.36", "as_of": "2026-03-28", "fair_value": "$238.76", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "75", "pe": "29.95", "roic": "22.27%", "f_score": "9", "z_score": "\u2013"}

@@ -1,1 +1,1 @@
-{"ticker": "CASY", "name": "CASEYS GENERAL STORES INC", "price": "646.27", "as_of": "2026-07-31", "gf_value": "$492.42", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "82", "pe": "31.13", "roic": "\u2013", "f_score": "7", "z_score": "5.53"}
+{"ticker": "CASY", "name": "CASEYS GENERAL STORES INC", "price": "646.27", "as_of": "2026-07-31", "fair_value": "$546.71", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "85", "pe": "31.13", "roic": "\u2013", "f_score": "7", "z_score": "5.53"}

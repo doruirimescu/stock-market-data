@@ -1,1 +1,1 @@
-{"ticker": "AMGN", "name": "AMGEN INC", "price": "414.87", "as_of": "2026-06-30", "gf_value": "$337.98", "verdict": "over", "verdict_text": "Modestly Overvalued", "gf_score": "80", "pe": "25.77", "roic": "14.97%", "f_score": "8", "z_score": "\u2013"}
+{"ticker": "AMGN", "name": "AMGEN INC", "price": "414.87", "as_of": "2026-06-30", "fair_value": "$365.12", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "81", "pe": "25.77", "roic": "14.97%", "f_score": "8", "z_score": "\u2013"}

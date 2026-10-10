@@ -1,1 +1,1 @@
-{"ticker": "ISRG", "name": "INTUITIVE SURGICAL INC", "price": "423.96", "as_of": "2026-06-30", "gf_value": "$584.91", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "99", "pe": "48.62", "roic": "19.12%", "f_score": "8", "z_score": "36.87"}
+{"ticker": "ISRG", "name": "INTUITIVE SURGICAL INC", "price": "423.96", "as_of": "2026-06-30", "fair_value": "$625.94", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "99", "pe": "48.62", "roic": "19.12%", "f_score": "8", "z_score": "36.87"}

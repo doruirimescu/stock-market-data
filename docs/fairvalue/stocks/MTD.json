@@ -1,1 +1,1 @@
-{"ticker": "MTD", "name": "METTLER TOLEDO INTERNATIONAL INC/", "price": "1549.99", "as_of": "2026-06-30", "gf_value": "$1,577.81", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "90", "pe": "34.94", "roic": "31.89%", "f_score": "7", "z_score": "10.99"}
+{"ticker": "MTD", "name": "METTLER TOLEDO INTERNATIONAL INC/", "price": "1549.99", "as_of": "2026-06-30", "fair_value": "$1,447.24", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "87", "pe": "34.94", "roic": "31.89%", "f_score": "7", "z_score": "10.99"}

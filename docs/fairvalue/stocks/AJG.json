@@ -1,1 +1,1 @@
-{"ticker": "AJG", "name": "Arthur J. Gallagher & Co.", "price": "232.70", "as_of": "2026-06-30", "gf_value": "$324.13", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "83", "pe": "38.59", "roic": "2.86%", "f_score": "5", "z_score": "N/A (financial)"}
+{"ticker": "AJG", "name": "Arthur J. Gallagher & Co.", "price": "232.70", "as_of": "2026-06-30", "fair_value": "$342.07", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "83", "pe": "38.59", "roic": "2.86%", "f_score": "5", "z_score": "N/A (financial)"}

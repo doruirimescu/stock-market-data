@@ -1,1 +1,1 @@
-{"ticker": "NEE", "name": "NEXTERA ENERGY INC", "price": "77.38", "as_of": "2026-03-31", "gf_value": "$95.36", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "79", "pe": "19.64", "roic": "3.96%", "f_score": "4", "z_score": "1.05"}
+{"ticker": "NEE", "name": "NEXTERA ENERGY INC", "price": "77.38", "as_of": "2026-03-31", "fair_value": "$79.37", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "78", "pe": "19.64", "roic": "3.96%", "f_score": "4", "z_score": "1.05"}

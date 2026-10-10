@@ -1,1 +1,1 @@
-{"ticker": "PEG", "name": "PUBLIC SERVICE ENTERPRISE GROUP INC", "price": "72.28", "as_of": "2026-06-30", "gf_value": "$75.79", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "71", "pe": "17.98", "roic": "4.56%", "f_score": "5", "z_score": "1.24"}
+{"ticker": "PEG", "name": "PUBLIC SERVICE ENTERPRISE GROUP INC", "price": "72.28", "as_of": "2026-06-30", "fair_value": "$90.23", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "72", "pe": "17.98", "roic": "4.56%", "f_score": "5", "z_score": "1.24"}

@@ -1,1 +1,1 @@
-{"ticker": "PM", "name": "Philip Morris International Inc.", "price": "201.19", "as_of": "2026-06-30", "gf_value": "$130.65", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "71", "pe": "28.95", "roic": "19.86%", "f_score": "7", "z_score": "4.59"}
+{"ticker": "PM", "name": "Philip Morris International Inc.", "price": "201.19", "as_of": "2026-06-30", "fair_value": "$167.47", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "75", "pe": "28.95", "roic": "19.86%", "f_score": "7", "z_score": "4.59"}

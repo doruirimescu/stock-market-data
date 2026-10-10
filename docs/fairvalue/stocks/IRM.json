@@ -1,1 +1,1 @@
-{"ticker": "IRM", "name": "IRON MOUNTAIN INC", "price": "114.51", "as_of": "2026-06-30", "gf_value": "$74.92", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "68", "pe": "81.21", "roic": "6.44%", "f_score": "6", "z_score": "N/A (financial)"}
+{"ticker": "IRM", "name": "IRON MOUNTAIN INC", "price": "114.51", "as_of": "2026-06-30", "fair_value": "$118.88", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "78", "pe": "81.21", "roic": "6.44%", "f_score": "6", "z_score": "N/A (financial)"}

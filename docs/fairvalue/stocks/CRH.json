@@ -1,1 +1,1 @@
-{"ticker": "CRH", "name": "CRH PUBLIC LTD CO", "price": "81.54", "as_of": "2026-06-30", "gf_value": "$96.21", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "82", "pe": "14.41", "roic": "8.69%", "f_score": "7", "z_score": "2.72"}
+{"ticker": "CRH", "name": "CRH PUBLIC LTD CO", "price": "81.54", "as_of": "2026-06-30", "fair_value": "$104.67", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "82", "pe": "14.41", "roic": "8.69%", "f_score": "7", "z_score": "2.72"}

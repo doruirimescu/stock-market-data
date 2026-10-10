@@ -1,1 +1,1 @@
-{"ticker": "NI", "name": "NISOURCE INC.", "price": "40.76", "as_of": "2026-06-30", "gf_value": "$35.85", "verdict": "over", "verdict_text": "Modestly Overvalued", "gf_score": "68", "pe": "21.68", "roic": "\u2013", "f_score": "6", "z_score": "0.72"}
+{"ticker": "NI", "name": "NISOURCE INC.", "price": "40.76", "as_of": "2026-06-30", "fair_value": "$45.21", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "74", "pe": "21.68", "roic": "\u2013", "f_score": "6", "z_score": "0.72"}

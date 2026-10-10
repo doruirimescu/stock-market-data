@@ -1,1 +1,1 @@
-{"ticker": "ITW", "name": "ILLINOIS TOOL WORKS INC", "price": "264.13", "as_of": "2026-06-30", "gf_value": "$263.58", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "86", "pe": "23.92", "roic": "\u2013", "f_score": "7", "z_score": "7.85"}
+{"ticker": "ITW", "name": "ILLINOIS TOOL WORKS INC", "price": "264.13", "as_of": "2026-06-30", "fair_value": "$275.27", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "87", "pe": "23.92", "roic": "\u2013", "f_score": "7", "z_score": "7.85"}

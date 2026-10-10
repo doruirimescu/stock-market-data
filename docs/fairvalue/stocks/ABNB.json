@@ -1,1 +1,1 @@
-{"ticker": "ABNB", "name": "Airbnb, Inc.", "price": "165.87", "as_of": "2026-06-30", "gf_value": "$189.58", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "94", "pe": "At loss", "roic": "11.51%", "f_score": "6", "z_score": "\u2013"}
+{"ticker": "ABNB", "name": "Airbnb, Inc.", "price": "165.87", "as_of": "2026-06-30", "fair_value": "$172.07", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "92", "pe": "At loss", "roic": "11.51%", "f_score": "6", "z_score": "\u2013"}

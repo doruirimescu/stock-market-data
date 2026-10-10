@@ -1,1 +1,1 @@
-{"ticker": "MCK", "name": "MCKESSON CORP", "price": "938.84", "as_of": "2026-06-30", "gf_value": "$594.42", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "80", "pe": "25.18", "roic": "27.99%", "f_score": "8", "z_score": "5.88"}
+{"ticker": "MCK", "name": "MCKESSON CORP", "price": "938.84", "as_of": "2026-06-30", "fair_value": "$846.36", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "87", "pe": "25.18", "roic": "27.99%", "f_score": "8", "z_score": "5.88"}

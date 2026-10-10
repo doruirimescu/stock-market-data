@@ -1,1 +1,1 @@
-{"ticker": "BAC", "name": "BANK OF AMERICA CORP /DE/", "price": "54.32", "as_of": "2026-06-30", "gf_value": "$46.51", "verdict": "over", "verdict_text": "Modestly Overvalued", "gf_score": "86", "pe": "12.55", "roic": "0.97%", "f_score": "6", "z_score": "N/A (financial)"}
+{"ticker": "BAC", "name": "BANK OF AMERICA CORP /DE/", "price": "54.32", "as_of": "2026-06-30", "fair_value": "$55.11", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "90", "pe": "12.55", "roic": "0.97%", "f_score": "6", "z_score": "N/A (financial)"}

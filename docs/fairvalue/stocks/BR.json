@@ -1,1 +1,1 @@
-{"ticker": "BR", "name": "BROADRIDGE FINANCIAL SOLUTIONS, INC.", "price": "165.45", "as_of": "2026-06-30", "gf_value": "$310.47", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "87", "pe": "17.23", "roic": "\u2013", "f_score": "8", "z_score": "3.93"}
+{"ticker": "BR", "name": "BROADRIDGE FINANCIAL SOLUTIONS, INC.", "price": "165.45", "as_of": "2026-06-30", "fair_value": "$246.76", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "90", "pe": "17.23", "roic": "\u2013", "f_score": "8", "z_score": "3.93"}

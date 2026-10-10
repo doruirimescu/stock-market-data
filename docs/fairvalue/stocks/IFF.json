@@ -1,1 +1,1 @@
-{"ticker": "IFF", "name": "INTERNATIONAL FLAVORS & FRAGRANCES INC", "price": "84.55", "as_of": "2026-06-30", "gf_value": "$86.01", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "68", "pe": "79.02", "roic": "-1.23%", "f_score": "8", "z_score": "1.56"}
+{"ticker": "IFF", "name": "INTERNATIONAL FLAVORS & FRAGRANCES INC", "price": "84.55", "as_of": "2026-06-30", "fair_value": "$75.33", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "65", "pe": "79.02", "roic": "-1.23%", "f_score": "8", "z_score": "1.56"}

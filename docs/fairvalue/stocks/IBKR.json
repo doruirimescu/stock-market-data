@@ -1,1 +1,1 @@
-{"ticker": "IBKR", "name": "Interactive Brokers Group, Inc.", "price": "87.87", "as_of": "2026-06-30", "gf_value": "$104.57", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "89", "pe": "34.87", "roic": "4.16%", "f_score": "4", "z_score": "N/A (financial)"}
+{"ticker": "IBKR", "name": "Interactive Brokers Group, Inc.", "price": "87.87", "as_of": "2026-06-30", "fair_value": "$68.36", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "81", "pe": "34.87", "roic": "4.16%", "f_score": "4", "z_score": "N/A (financial)"}

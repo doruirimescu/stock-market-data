@@ -1,1 +1,1 @@
-{"ticker": "MCHP", "name": "MICROCHIP TECHNOLOGY INC", "price": "75.55", "as_of": "2026-06-30", "gf_value": "$40.04", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "59", "pe": "111.10", "roic": "5.04%", "f_score": "6", "z_score": "\u2013"}
+{"ticker": "MCHP", "name": "MICROCHIP TECHNOLOGY INC", "price": "75.55", "as_of": "2026-06-30", "fair_value": "$71.37", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "68", "pe": "111.10", "roic": "5.04%", "f_score": "6", "z_score": "\u2013"}

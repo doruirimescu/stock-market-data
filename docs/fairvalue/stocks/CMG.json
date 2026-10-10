@@ -1,1 +1,1 @@
-{"ticker": "CMG", "name": "CHIPOTLE MEXICAN GRILL INC", "price": "31.59", "as_of": "2026-06-30", "gf_value": "$67.88", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "93", "pe": "29.25", "roic": "16.73%", "f_score": "6", "z_score": "5.63"}
+{"ticker": "CMG", "name": "CHIPOTLE MEXICAN GRILL INC", "price": "31.59", "as_of": "2026-06-30", "fair_value": "$60.56", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "93", "pe": "29.25", "roic": "16.73%", "f_score": "6", "z_score": "5.63"}

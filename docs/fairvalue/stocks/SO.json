@@ -1,1 +1,1 @@
-{"ticker": "SO", "name": "SOUTHERN CO", "price": "86.17", "as_of": "2026-03-31", "gf_value": "$82.27", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "71", "pe": "22.04", "roic": "4.12%", "f_score": "4", "z_score": "0.96"}
+{"ticker": "SO", "name": "SOUTHERN CO", "price": "86.17", "as_of": "2026-03-31", "fair_value": "$94.08", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "74", "pe": "22.04", "roic": "4.12%", "f_score": "4", "z_score": "0.96"}

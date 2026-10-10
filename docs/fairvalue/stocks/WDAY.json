@@ -1,1 +1,1 @@
-{"ticker": "WDAY", "name": "Workday, Inc.", "price": "186.59", "as_of": "2026-07-31", "gf_value": "$420.53", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "90", "pe": "38.00", "roic": "7.73%", "f_score": "7", "z_score": "3.54"}
+{"ticker": "WDAY", "name": "Workday, Inc.", "price": "186.59", "as_of": "2026-07-31", "fair_value": "$332.46", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "93", "pe": "38.00", "roic": "7.73%", "f_score": "7", "z_score": "3.54"}

@@ -1,1 +1,1 @@
-{"ticker": "AXP", "name": "AMERICAN EXPRESS CO", "price": "308.17", "as_of": "2026-06-30", "gf_value": "$236.52", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "85", "pe": "18.70", "roic": "3.79%", "f_score": "7", "z_score": "N/A (financial)"}
+{"ticker": "AXP", "name": "AMERICAN EXPRESS CO", "price": "308.17", "as_of": "2026-06-30", "fair_value": "$331.88", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "93", "pe": "18.70", "roic": "3.79%", "f_score": "7", "z_score": "N/A (financial)"}

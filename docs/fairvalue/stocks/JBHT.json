@@ -1,1 +1,1 @@
-{"ticker": "JBHT", "name": "HUNT J B TRANSPORT SERVICES INC", "price": "229.26", "as_of": "2026-06-30", "gf_value": "$179.99", "verdict": "over", "verdict_text": "Modestly Overvalued", "gf_score": "80", "pe": "32.61", "roic": "9.83%", "f_score": "7", "z_score": "6.39"}
+{"ticker": "JBHT", "name": "HUNT J B TRANSPORT SERVICES INC", "price": "229.26", "as_of": "2026-06-30", "fair_value": "$199.70", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "83", "pe": "32.61", "roic": "9.83%", "f_score": "7", "z_score": "6.39"}

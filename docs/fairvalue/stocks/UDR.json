@@ -1,1 +1,1 @@
-{"ticker": "UDR", "name": "UDR, Inc.", "price": "34.12", "as_of": "2026-03-31", "gf_value": "$36.87", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "79", "pe": "23.21", "roic": "6.26%", "f_score": "6", "z_score": "N/A (financial)"}
+{"ticker": "UDR", "name": "UDR, Inc.", "price": "34.12", "as_of": "2026-03-31", "fair_value": "$39.54", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "79", "pe": "23.21", "roic": "6.26%", "f_score": "6", "z_score": "N/A (financial)"}

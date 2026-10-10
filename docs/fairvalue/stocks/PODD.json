@@ -1,1 +1,1 @@
-{"ticker": "PODD", "name": "INSULET CORP", "price": "135.28", "as_of": "2026-06-30", "gf_value": "$529.12", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "89", "pe": "25.38", "roic": "18.83%", "f_score": "8", "z_score": "5.40"}
+{"ticker": "PODD", "name": "INSULET CORP", "price": "135.28", "as_of": "2026-06-30", "fair_value": "$387.06", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "89", "pe": "25.38", "roic": "18.83%", "f_score": "8", "z_score": "5.40"}

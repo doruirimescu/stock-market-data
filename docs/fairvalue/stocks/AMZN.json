@@ -1,1 +1,1 @@
-{"ticker": "AMZN", "name": "AMAZON COM INC", "price": "262.43", "as_of": "2026-06-30", "gf_value": "$981.18", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "82", "pe": "21.11", "roic": "10.52%", "f_score": "6", "z_score": "\u2013"}
+{"ticker": "AMZN", "name": "AMAZON COM INC", "price": "262.43", "as_of": "2026-06-30", "fair_value": "$250.41", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "86", "pe": "21.11", "roic": "10.52%", "f_score": "6", "z_score": "\u2013"}

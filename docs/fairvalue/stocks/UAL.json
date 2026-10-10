@@ -1,1 +1,1 @@
-{"ticker": "UAL", "name": "United Airlines Holdings, Inc.", "price": "107.46", "as_of": "2026-06-30", "gf_value": "$99.97", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "80", "pe": "10.06", "roic": "5.04%", "f_score": "5", "z_score": "\u2013"}
+{"ticker": "UAL", "name": "United Airlines Holdings, Inc.", "price": "107.46", "as_of": "2026-06-30", "fair_value": "$97.63", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "80", "pe": "10.06", "roic": "5.04%", "f_score": "5", "z_score": "\u2013"}

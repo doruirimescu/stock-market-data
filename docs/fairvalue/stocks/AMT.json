@@ -1,1 +1,1 @@
-{"ticker": "AMT", "name": "AMERICAN TOWER CORP /MA/", "price": "182.24", "as_of": "2026-06-30", "gf_value": "$163.37", "verdict": "over", "verdict_text": "Modestly Overvalued", "gf_score": "75", "pe": "25.07", "roic": "7.03%", "f_score": "7", "z_score": "N/A (financial)"}
+{"ticker": "AMT", "name": "AMERICAN TOWER CORP /MA/", "price": "182.24", "as_of": "2026-06-30", "fair_value": "$212.30", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "79", "pe": "25.07", "roic": "7.03%", "f_score": "7", "z_score": "N/A (financial)"}

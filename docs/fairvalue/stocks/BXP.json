@@ -1,1 +1,1 @@
-{"ticker": "BXP", "name": "BXP, Inc.", "price": "59.05", "as_of": "2026-06-30", "gf_value": "$81.58", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "74", "pe": "31.75", "roic": "\u2013", "f_score": "5", "z_score": "N/A (financial)"}
+{"ticker": "BXP", "name": "BXP, Inc.", "price": "59.05", "as_of": "2026-06-30", "fair_value": "$68.62", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "74", "pe": "31.75", "roic": "\u2013", "f_score": "5", "z_score": "N/A (financial)"}

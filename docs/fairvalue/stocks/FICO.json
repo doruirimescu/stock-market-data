@@ -1,1 +1,1 @@
-{"ticker": "FICO", "name": "FAIR ISAAC CORP", "price": "667.58", "as_of": "2026-06-30", "gf_value": "$1,696.77", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "87", "pe": "19.33", "roic": "53.59%", "f_score": "8", "z_score": "8.27"}
+{"ticker": "FICO", "name": "FAIR ISAAC CORP", "price": "667.58", "as_of": "2026-06-30", "fair_value": "$2,299.13", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "85", "pe": "19.33", "roic": "53.59%", "f_score": "8", "z_score": "8.27"}

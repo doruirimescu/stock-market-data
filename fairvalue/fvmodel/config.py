@@ -20,31 +20,25 @@ DCF_ADD_TANGIBLE_BOOK = False
 PROJ_FCF_MULTIPLE = (8.35, 17.74)
 PROJ_FCF_EQUITY_WEIGHT = 0.8
 
-# Fair Value: 10-year median multiple x current TTM fundamental.
-# Calibrated against the reference provider-published Fair Values for 9 stocks (docs/VALIDATION.md):
-# the PE-based value alone fits best (mean abs error ~10%); an equal blend of
-# PE/PS/PB/P-FCF fits worse (~17%) because the other multiples sit
-# systematically below the reference provider. Fallbacks apply when EPS is negative or the
-# PE history is too short.
-FAIR_VALUE_YEARS = 10
-FAIR_VALUE_WEIGHTS = {"pe": 1.0}
-# Banks, insurers and REITs: earnings swing with credit and mark-to-market, and
-# book value is the usual anchor. Not validated against the reference provider.
-FAIR_VALUE_WEIGHTS_FINANCIAL = {"pb": 1.0}
-FAIR_VALUE_FALLBACK = ("pfcf", "ps")
+# Fair Value: median price-to-sales over the last 3 years x TTM revenue per
+# share x a forward-growth term (metrics/fairvalue.py). Calibrated on 2026-10-10
+# against 68 Fair Values the reference provider published in Sep-Oct 2026
+# (docs/VALIDATION.md): median gap 1.9%, 60 of 67 within 10%. The window is a
+# sharp optimum (24 months: 36 within 10%; 48 months: 41). The previous model,
+# a 10-year median PE, had 24 within 10%: decade-old multiples misprice
+# companies whose margins changed (AMZN: median PE 79 from its thin-margin
+# years, Fair Value 3.7x the price).
+FAIR_VALUE_MONTHS = 36
+FAIR_VALUE_WEIGHTS = {"ps": 1.0}  # also for financials: BAC, UNH, ARE fit within 9%
 FAIR_VALUE_MIN_VALID_SHARE = 0.9  # the primary multiple needs >= 90% valid days in the window
-# Robustness for a broad universe: the primary (PE, or PB for financials) value
-# is used only if it is within this factor of the median of the other
-# multiples' values; otherwise the median of all available components is used.
-# Catches distorted histories (AMZN's thin-margin years gave a 10y median PE of
-# ~80 and a "fair value" 4x the PS-based one). All 9 calibration stocks pass it.
-FAIR_VALUE_CONSISTENCY = 2.0
-# Young companies (recent IPOs and spin-offs) get a median-of-multiples value
-# from as little as 3 years of trading history.
-FAIR_VALUE_MIN_YEARS_FALLBACK = 3
-FAIR_VALUE_GROWTH_ADJUSTMENT = False
-FAIR_VALUE_ADJ_CLIP = (0.7, 1.3)
-FAIR_VALUE_BASELINE_GROWTH = 0.05  # growth that earns no adjustment
+# Forward-growth term: 1 + weight x last year's revenue-per-share growth (clipped).
+# Stands in for the provider's forward estimates (NVDA, AVGO, LLY, AMD were
+# 10-15% low without it). 0.25 fits best; 0 and 0.5 leave a -2.4% / +2.9% bias.
+FAIR_VALUE_GROWTH_WEIGHT = 0.25
+FAIR_VALUE_GROWTH_CLIP = (-0.5, 0.5)
+# EPS without NRI: other non-operating income below this share of pretax income
+# is treated as recurring and left in EPS (see Fundamentals.eps_without_nri).
+NRI_MIN_SHARE_OF_PRETAX = 0.10
 
 # Quality Score weights over the five 1-10 ranks (the reference provider: profitability and
 # growth weighted fully, the rest less).

@@ -1,1 +1,1 @@
-{"ticker": "AON", "name": "Aon plc", "price": "273.47", "as_of": "2026-06-30", "gf_value": "$426.20", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "83", "pe": "15.08", "roic": "7.20%", "f_score": "7", "z_score": "N/A (financial)"}
+{"ticker": "AON", "name": "Aon plc", "price": "273.47", "as_of": "2026-06-30", "fair_value": "$384.18", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "84", "pe": "15.08", "roic": "7.20%", "f_score": "7", "z_score": "N/A (financial)"}

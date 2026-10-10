@@ -1,1 +1,1 @@
-{"ticker": "UBER", "name": "Uber Technologies, Inc", "price": "71.51", "as_of": "2026-06-30", "gf_value": "$96.96", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "91", "pe": "15.68", "roic": "11.36%", "f_score": "6", "z_score": "3.33"}
+{"ticker": "UBER", "name": "Uber Technologies, Inc", "price": "71.51", "as_of": "2026-06-30", "fair_value": "$101.67", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "91", "pe": "15.68", "roic": "11.36%", "f_score": "6", "z_score": "3.33"}

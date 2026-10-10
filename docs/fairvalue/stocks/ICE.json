@@ -1,1 +1,1 @@
-{"ticker": "ICE", "name": "Intercontinental Exchange, Inc.", "price": "156.19", "as_of": "2026-06-30", "gf_value": "$151.46", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "82", "pe": "22.03", "roic": "2.67%", "f_score": "7", "z_score": "N/A (financial)"}
+{"ticker": "ICE", "name": "Intercontinental Exchange, Inc.", "price": "156.19", "as_of": "2026-06-30", "fair_value": "$182.96", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "22.03", "roic": "2.67%", "f_score": "7", "z_score": "N/A (financial)"}

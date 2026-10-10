@@ -1,1 +1,1 @@
-{"ticker": "EME", "name": "EMCOR Group, Inc.", "price": "789.45", "as_of": "2026-06-30", "gf_value": "$354.59", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "83", "pe": "24.58", "roic": "19.31%", "f_score": "6", "z_score": "6.99"}
+{"ticker": "EME", "name": "EMCOR Group, Inc.", "price": "789.45", "as_of": "2026-06-30", "fair_value": "$653.32", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "88", "pe": "24.58", "roic": "19.31%", "f_score": "6", "z_score": "6.99"}

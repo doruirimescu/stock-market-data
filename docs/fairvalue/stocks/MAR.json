@@ -1,1 +1,1 @@
-{"ticker": "MAR", "name": "MARRIOTT INTERNATIONAL INC /MD/", "price": "365.88", "as_of": "2026-06-30", "gf_value": "$292.42", "verdict": "over", "verdict_text": "Modestly Overvalued", "gf_score": "80", "pe": "37.88", "roic": "11.75%", "f_score": "7", "z_score": "\u2013"}
+{"ticker": "MAR", "name": "MARRIOTT INTERNATIONAL INC /MD/", "price": "365.88", "as_of": "2026-06-30", "fair_value": "$309.82", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "81", "pe": "37.88", "roic": "11.75%", "f_score": "7", "z_score": "\u2013"}

@@ -1,1 +1,1 @@
-{"ticker": "ES", "name": "EVERSOURCE ENERGY", "price": "65.73", "as_of": "2026-06-30", "gf_value": "$81.16", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "82", "pe": "17.03", "roic": "\u2013", "f_score": "7", "z_score": "\u2013"}
+{"ticker": "ES", "name": "EVERSOURCE ENERGY", "price": "65.73", "as_of": "2026-06-30", "fair_value": "$69.87", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "81", "pe": "17.03", "roic": "\u2013", "f_score": "7", "z_score": "\u2013"}

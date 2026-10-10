@@ -1,1 +1,1 @@
-{"ticker": "KKR", "name": "KKR & Co. Inc.", "price": "90.95", "as_of": "2026-06-30", "gf_value": "$89.38", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "81", "pe": "At loss", "roic": "1.98%", "f_score": "6", "z_score": "N/A (financial)"}
+{"ticker": "KKR", "name": "KKR & Co. Inc.", "price": "90.95", "as_of": "2026-06-30", "fair_value": "$132.33", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "85", "pe": "At loss", "roic": "1.98%", "f_score": "6", "z_score": "N/A (financial)"}

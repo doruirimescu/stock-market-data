@@ -1,1 +1,1 @@
-{"ticker": "TER", "name": "TERADYNE, INC", "price": "402.68", "as_of": "2026-06-28", "gf_value": "$202.72", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "73", "pe": "55.31", "roic": "31.37%", "f_score": "7", "z_score": "28.53"}
+{"ticker": "TER", "name": "TERADYNE, INC", "price": "402.68", "as_of": "2026-06-28", "fair_value": "$241.01", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "75", "pe": "55.31", "roic": "31.37%", "f_score": "7", "z_score": "28.53"}

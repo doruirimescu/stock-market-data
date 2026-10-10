@@ -1,1 +1,1 @@
-{"ticker": "AMD", "name": "ADVANCED MICRO DEVICES INC", "price": "608.10", "as_of": "2026-06-27", "gf_value": "$455.39", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "89", "pe": "155.92", "roic": "9.10%", "f_score": "8", "z_score": "\u2013"}
+{"ticker": "AMD", "name": "ADVANCED MICRO DEVICES INC", "price": "608.10", "as_of": "2026-06-27", "fair_value": "$277.83", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "85", "pe": "155.92", "roic": "9.10%", "f_score": "8", "z_score": "\u2013"}

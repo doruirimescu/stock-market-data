@@ -1,1 +1,1 @@
-{"ticker": "USB", "name": "US BANCORP DE", "price": "57.08", "as_of": "2026-06-30", "gf_value": "$62.48", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "92", "pe": "11.39", "roic": "1.16%", "f_score": "7", "z_score": "N/A (financial)"}
+{"ticker": "USB", "name": "US BANCORP DE", "price": "57.08", "as_of": "2026-06-30", "fair_value": "$50.34", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "86", "pe": "11.39", "roic": "1.16%", "f_score": "7", "z_score": "N/A (financial)"}

@@ -1,1 +1,1 @@
-{"ticker": "HST", "name": "HOST HOTELS & RESORTS, INC.", "price": "22.65", "as_of": "2026-06-30", "gf_value": "$17.42", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "73", "pe": "15.20", "roic": "6.58%", "f_score": "7", "z_score": "N/A (financial)"}
+{"ticker": "HST", "name": "HOST HOTELS & RESORTS, INC.", "price": "22.65", "as_of": "2026-06-30", "fair_value": "$20.40", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "77", "pe": "15.20", "roic": "6.58%", "f_score": "7", "z_score": "N/A (financial)"}

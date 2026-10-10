@@ -1,1 +1,1 @@
-{"ticker": "NSC", "name": "NORFOLK SOUTHERN CORP", "price": "317.79", "as_of": "2026-06-30", "gf_value": "$237.70", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "78", "pe": "27.12", "roic": "7.36%", "f_score": "7", "z_score": "2.48"}
+{"ticker": "NSC", "name": "NORFOLK SOUTHERN CORP", "price": "317.79", "as_of": "2026-06-30", "fair_value": "$268.00", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "81", "pe": "27.12", "roic": "7.36%", "f_score": "7", "z_score": "2.48"}

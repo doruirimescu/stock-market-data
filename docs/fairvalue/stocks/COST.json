@@ -1,1 +1,1 @@
-{"ticker": "COST", "name": "COSTCO WHOLESALE CORP /NEW", "price": "946.92", "as_of": "2026-08-30", "gf_value": "$788.47", "verdict": "over", "verdict_text": "Modestly Overvalued", "gf_score": "84", "pe": "45.61", "roic": "15.42%", "f_score": "6", "z_score": "9.08"}
+{"ticker": "COST", "name": "COSTCO WHOLESALE CORP /NEW", "price": "946.92", "as_of": "2026-08-30", "fair_value": "$1,058.53", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "91", "pe": "45.61", "roic": "15.42%", "f_score": "6", "z_score": "9.08"}

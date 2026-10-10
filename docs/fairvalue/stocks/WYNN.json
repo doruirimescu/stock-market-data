@@ -1,1 +1,1 @@
-{"ticker": "WYNN", "name": "WYNN RESORTS LTD", "price": "75.15", "as_of": "2026-06-30", "gf_value": "$135.77", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "78", "pe": "18.02", "roic": "7.75%", "f_score": "7", "z_score": "1.07"}
+{"ticker": "WYNN", "name": "WYNN RESORTS LTD", "price": "75.15", "as_of": "2026-06-30", "fair_value": "$109.35", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "79", "pe": "18.02", "roic": "7.75%", "f_score": "7", "z_score": "1.07"}

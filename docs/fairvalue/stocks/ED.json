@@ -1,1 +1,1 @@
-{"ticker": "ED", "name": "CONSOLIDATED EDISON INC", "price": "106.10", "as_of": "2026-03-31", "gf_value": "$113.02", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "74", "pe": "17.89", "roic": "3.25%", "f_score": "6", "z_score": "1.19"}
+{"ticker": "ED", "name": "CONSOLIDATED EDISON INC", "price": "106.10", "as_of": "2026-03-31", "fair_value": "$106.70", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "74", "pe": "17.89", "roic": "3.25%", "f_score": "6", "z_score": "1.19"}

@@ -1,1 +1,1 @@
-{"ticker": "LULU", "name": "lululemon athletica inc.", "price": "94.50", "as_of": "2026-08-02", "gf_value": "$496.88", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "87", "pe": "7.78", "roic": "23.81%", "f_score": "5", "z_score": "4.73"}
+{"ticker": "LULU", "name": "lululemon athletica inc.", "price": "94.50", "as_of": "2026-08-02", "fair_value": "$319.00", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "87", "pe": "7.78", "roic": "23.81%", "f_score": "5", "z_score": "4.73"}

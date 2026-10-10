@@ -1,1 +1,1 @@
-{"ticker": "XEL", "name": "XCEL ENERGY INC", "price": "73.78", "as_of": "2026-06-30", "gf_value": "$78.19", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "70", "pe": "20.21", "roic": "3.53%", "f_score": "4", "z_score": "0.69"}
+{"ticker": "XEL", "name": "XCEL ENERGY INC", "price": "73.78", "as_of": "2026-06-30", "fair_value": "$71.30", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "69", "pe": "20.21", "roic": "3.53%", "f_score": "4", "z_score": "0.69"}

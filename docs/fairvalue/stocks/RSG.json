@@ -1,1 +1,1 @@
-{"ticker": "RSG", "name": "REPUBLIC SERVICES, INC.", "price": "216.88", "as_of": "2026-06-30", "gf_value": "$214.88", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "85", "pe": "30.72", "roic": "8.71%", "f_score": "4", "z_score": "2.99"}
+{"ticker": "RSG", "name": "REPUBLIC SERVICES, INC.", "price": "216.88", "as_of": "2026-06-30", "fair_value": "$222.95", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "87", "pe": "30.72", "roic": "8.71%", "f_score": "4", "z_score": "2.99"}

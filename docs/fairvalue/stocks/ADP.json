@@ -1,1 +1,1 @@
-{"ticker": "ADP", "name": "AUTOMATIC DATA PROCESSING INC", "price": "270.88", "as_of": "2026-06-30", "gf_value": "$321.72", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "95", "pe": "24.76", "roic": "9.05%", "f_score": "6", "z_score": "2.45"}
+{"ticker": "ADP", "name": "AUTOMATIC DATA PROCESSING INC", "price": "270.88", "as_of": "2026-06-30", "fair_value": "$298.35", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "95", "pe": "24.76", "roic": "9.05%", "f_score": "6", "z_score": "2.45"}

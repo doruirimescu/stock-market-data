@@ -1,1 +1,1 @@
-{"ticker": "EXR", "name": "Extra Space Storage Inc.", "price": "134.65", "as_of": "2026-06-30", "gf_value": "$158.71", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "88", "pe": "29.72", "roic": "4.55%", "f_score": "5", "z_score": "N/A (financial)"}
+{"ticker": "EXR", "name": "Extra Space Storage Inc.", "price": "134.65", "as_of": "2026-06-30", "fair_value": "$150.95", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "88", "pe": "29.72", "roic": "4.55%", "f_score": "5", "z_score": "N/A (financial)"}

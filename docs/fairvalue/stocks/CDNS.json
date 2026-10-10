@@ -1,1 +1,1 @@
-{"ticker": "CDNS", "name": "CADENCE DESIGN SYSTEMS INC", "price": "352.84", "as_of": "2026-03-31", "gf_value": "$251.33", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "85", "pe": "82.25", "roic": "14.37%", "f_score": "4", "z_score": "\u2013"}
+{"ticker": "CDNS", "name": "CADENCE DESIGN SYSTEMS INC", "price": "352.84", "as_of": "2026-03-31", "fair_value": "$361.86", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "93", "pe": "82.25", "roic": "14.37%", "f_score": "4", "z_score": "\u2013"}

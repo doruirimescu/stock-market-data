@@ -1,1 +1,1 @@
-{"ticker": "AIG", "name": "AMERICAN INTERNATIONAL GROUP, INC.", "price": "77.04", "as_of": "2026-06-30", "gf_value": "$64.16", "verdict": "over", "verdict_text": "Modestly Overvalued", "gf_score": "62", "pe": "14.06", "roic": "2.00%", "f_score": "4", "z_score": "N/A (financial)"}
+{"ticker": "AIG", "name": "AMERICAN INTERNATIONAL GROUP, INC.", "price": "77.04", "as_of": "2026-06-30", "fair_value": "$88.01", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "69", "pe": "14.06", "roic": "2.00%", "f_score": "4", "z_score": "N/A (financial)"}

@@ -1,1 +1,1 @@
-{"ticker": "EL", "name": "ESTEE LAUDER COMPANIES INC", "price": "98.05", "as_of": "2026-06-30", "gf_value": "$132.38", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "71", "pe": "196.10", "roic": "1.64%", "f_score": "7", "z_score": "\u2013"}
+{"ticker": "EL", "name": "ESTEE LAUDER COMPANIES INC", "price": "98.05", "as_of": "2026-06-30", "fair_value": "$93.18", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "69", "pe": "196.10", "roic": "1.64%", "f_score": "7", "z_score": "\u2013"}

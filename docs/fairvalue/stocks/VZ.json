@@ -1,1 +1,1 @@
-{"ticker": "VZ", "name": "VERIZON COMMUNICATIONS INC", "price": "41.65", "as_of": "2026-06-30", "gf_value": "$45.80", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "75", "pe": "10.85", "roic": "5.81%", "f_score": "4", "z_score": "1.17"}
+{"ticker": "VZ", "name": "VERIZON COMMUNICATIONS INC", "price": "41.65", "as_of": "2026-06-30", "fair_value": "$44.00", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "73", "pe": "10.85", "roic": "5.81%", "f_score": "4", "z_score": "1.17"}

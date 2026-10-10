@@ -1,1 +1,1 @@
-{"ticker": "OXY", "name": "OCCIDENTAL PETROLEUM CORP /DE/", "price": "60.11", "as_of": "2026-06-30", "gf_value": "$67.97", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "79", "pe": "9.29", "roic": "6.78%", "f_score": "7", "z_score": "2.05"}
+{"ticker": "OXY", "name": "OCCIDENTAL PETROLEUM CORP /DE/", "price": "60.11", "as_of": "2026-06-30", "fair_value": "$54.92", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "75", "pe": "9.29", "roic": "6.78%", "f_score": "7", "z_score": "2.05"}

@@ -1,1 +1,1 @@
-{"ticker": "TSLA", "name": "Tesla, Inc.", "price": "382.70", "as_of": "2026-06-30", "gf_value": "$278.85", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "80", "pe": "354.35", "roic": "3.52%", "f_score": "4", "z_score": "16.34"}
+{"ticker": "TSLA", "name": "Tesla, Inc.", "price": "382.70", "as_of": "2026-06-30", "fair_value": "$355.76", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "84", "pe": "354.35", "roic": "3.52%", "f_score": "4", "z_score": "16.34"}

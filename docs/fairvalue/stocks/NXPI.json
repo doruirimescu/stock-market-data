@@ -1,1 +1,1 @@
-{"ticker": "NXPI", "name": "NXP Semiconductors N.V.", "price": "227.52", "as_of": "2026-03-29", "gf_value": "$231.08", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "86", "pe": "21.75", "roic": "14.41%", "f_score": "7", "z_score": "3.29"}
+{"ticker": "NXPI", "name": "NXP Semiconductors N.V.", "price": "227.52", "as_of": "2026-03-29", "fair_value": "$233.10", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "86", "pe": "21.75", "roic": "14.41%", "f_score": "7", "z_score": "3.29"}

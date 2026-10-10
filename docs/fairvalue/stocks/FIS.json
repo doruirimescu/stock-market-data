@@ -1,1 +1,1 @@
-{"ticker": "FIS", "name": "Fidelity National Information Services, Inc.", "price": "34.04", "as_of": "2026-06-30", "gf_value": "$101.43", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "60", "pe": "5.23", "roic": "3.91%", "f_score": "4", "z_score": "0.02"}
+{"ticker": "FIS", "name": "Fidelity National Information Services, Inc.", "price": "34.04", "as_of": "2026-06-30", "fair_value": "$91.06", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "61", "pe": "5.23", "roic": "3.91%", "f_score": "4", "z_score": "0.02"}

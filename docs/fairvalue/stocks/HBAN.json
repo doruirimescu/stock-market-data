@@ -1,1 +1,1 @@
-{"ticker": "HBAN", "name": "HUNTINGTON BANCSHARES INC /MD/", "price": "15.32", "as_of": "2026-03-31", "gf_value": "$18.23", "verdict": "under", "verdict_text": "Modestly Undervalued", "gf_score": "82", "pe": "11.78", "roic": "2.38%", "f_score": "4", "z_score": "N/A (financial)"}
+{"ticker": "HBAN", "name": "HUNTINGTON BANCSHARES INC /MD/", "price": "15.32", "as_of": "2026-03-31", "fair_value": "$13.55", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "78", "pe": "11.78", "roic": "2.38%", "f_score": "4", "z_score": "N/A (financial)"}

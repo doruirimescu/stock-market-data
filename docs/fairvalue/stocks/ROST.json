@@ -1,1 +1,1 @@
-{"ticker": "ROST", "name": "ROSS STORES, INC.", "price": "222.41", "as_of": "2026-08-01", "gf_value": "$199.73", "verdict": "over", "verdict_text": "Modestly Overvalued", "gf_score": "93", "pe": "26.89", "roic": "27.32%", "f_score": "9", "z_score": "\u2013"}
+{"ticker": "ROST", "name": "ROSS STORES, INC.", "price": "222.41", "as_of": "2026-08-01", "fair_value": "$187.53", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "92", "pe": "26.89", "roic": "27.32%", "f_score": "9", "z_score": "\u2013"}

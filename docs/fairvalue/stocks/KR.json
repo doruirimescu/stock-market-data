@@ -1,1 +1,1 @@
-{"ticker": "KR", "name": "KROGER CO", "price": "61.64", "as_of": "2026-08-15", "gf_value": "$28.44", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "60", "pe": "33.32", "roic": "4.13%", "f_score": "6", "z_score": "4.36"}
+{"ticker": "KR", "name": "KROGER CO", "price": "61.64", "as_of": "2026-08-15", "fair_value": "$70.03", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "72", "pe": "33.32", "roic": "4.13%", "f_score": "6", "z_score": "4.36"}

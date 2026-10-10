@@ -1,1 +1,1 @@
-{"ticker": "PYPL", "name": "PayPal Holdings, Inc.", "price": "55.53", "as_of": "2026-03-31", "gf_value": "$205.21", "verdict": "under", "verdict_text": "Significantly Undervalued", "gf_score": "82", "pe": "10.42", "roic": "\u2013", "f_score": "7", "z_score": "1.92"}
+{"ticker": "PYPL", "name": "PayPal Holdings, Inc.", "price": "55.53", "as_of": "2026-03-31", "fair_value": "$79.27", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "88", "pe": "10.42", "roic": "\u2013", "f_score": "7", "z_score": "1.92"}

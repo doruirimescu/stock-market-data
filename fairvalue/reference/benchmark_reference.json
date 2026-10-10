@@ -1,6 +1,6 @@
 {
  "collected_on": "2026-10-10",
- "method": "Values the reference provider published for each stock, collected from web-search result titles/snippets of the reference site term pages and the reference provider news articles (the reference site itself returns HTTP 403 to automated clients; archive.org was unreachable). Each value carries its as-of date and source URL. Undated values and values older than 2026-01 are listed under 'excluded'.",
+ "method": "Values the reference provider published for each stock, collected from web-search result titles/snippets of the reference site term pages and the reference provider news articles (the reference site itself returns HTTP 403 to automated clients; archive.org was unreachable). Each value carries its as-of date and source URL. Undated values and values older than 2026-01 are listed under 'excluded'. Extended on 2026-10-10 with Fair Values (and the quoted price) for 59 more S&P 500 stocks, from the same kind of search snippets; dates given as 'N days ago' were converted to calendar dates and marked lower confidence.",
  "stocks": {
   "AAPL": {
    "metrics": {
@@ -43,7 +43,7 @@
      "value": 111.36,
      "as_of": "2026-06",
      "source": "reference-site/term/roe/AAPL",
-     "note": "Title value = annualized ROE for quarter ended Jun. 2026 (title: 'ROE %: 111.36% (As of Jun. 2026) \u2014 Near Median'). Page range section reportedly shows 'Current: 145.93' (likely TTM); not verified.",
+     "note": "Title value = annualized ROE for quarter ended Jun. 2026 (title: 'ROE %: 111.36% (As of Jun. 2026) — Near Median'). Page range section reportedly shows 'Current: 145.93' (likely TTM); not verified.",
      "basis": "annualized quarter"
     },
     "wacc": {
@@ -90,7 +90,7 @@
      "value": 19.2,
      "as_of": "2026-10-07",
      "source": "reference-site/term/pb-ratio/CAT",
-     "note": "From the result title 'CATERPILLAR PB Ratio: 19.20 \u2014 193% Above Median'. Date from the summary. Book value per share 42.19 (Jun 2026); 10Y median 6.55"
+     "note": "From the result title 'CATERPILLAR PB Ratio: 19.20 — 193% Above Median'. Date from the summary. Book value per share 42.19 (Jun 2026); 10Y median 6.55"
     },
     "ev_to_ebitda": {
      "value": 24.51,
@@ -177,7 +177,7 @@
      "value": 13.43,
      "as_of": "2026-10-03",
      "source": "reference-site/term/enterprise-value-to-ebitda/HD",
-     "note": "From the result title 'HD EV-to-EBITDA: 13.43 \u2014 11% Below Median'. Date from the summary. EV $342,015 Mil; 10Y median 15.07"
+     "note": "From the result title 'HD EV-to-EBITDA: 13.43 — 11% Below Median'. Date from the summary. EV $342,015 Mil; 10Y median 15.07"
     }
    },
    "excluded": {
@@ -185,7 +185,7 @@
      "value": 8,
      "source": "reference-site/term/rank_fair_value/HD/Fair Value-Rank/The-Home-Depot",
      "confidence": "low",
-     "note": "From the result title 'HD Fair Value Rank: 8 \u2014 33% Above Median'. No date was shown, but the title uses the current format. An undated summary page showed Fair Value Rank 10/10"
+     "note": "From the result title 'HD Fair Value Rank: 8 — 33% Above Median'. No date was shown, but the title uses the current format. An undated summary page showed Fair Value Rank 10/10"
     }
    }
   },
@@ -213,7 +213,7 @@
      "value": 31.25,
      "as_of": "2026-08-18",
      "source": "reference-site/term/pe-ratio/JNJ",
-     "note": "Result title: 'JNJ (Johnson & Johnson) PE Ratio: 31.25 (As of Aug. 18, 2026) \u2014 29% Above Median'. Based on TTM diluted EPS $8.63 (Jun 2026). Forward PE 22.49 (Aug. 15, 2026) is separate."
+     "note": "Result title: 'JNJ (Johnson & Johnson) PE Ratio: 31.25 (As of Aug. 18, 2026) — 29% Above Median'. Based on TTM diluted EPS $8.63 (Jun 2026). Forward PE 22.49 (Aug. 15, 2026) is separate."
     },
     "roic": {
      "value": 14.78,
@@ -226,7 +226,7 @@
      "value": 0.58,
      "as_of": "2026-06",
      "source": "reference-site/term/debt-to-equity/JNJ",
-     "note": "Result title: 'Debt-to-Equity: 0.58 (As of Jun. 2026) \u2014 16% Above Median' (ST debt 11,692 + LT debt 37,344 / equity 84,971, $Mil)."
+     "note": "Result title: 'Debt-to-Equity: 0.58 (As of Jun. 2026) — 16% Above Median' (ST debt 11,692 + LT debt 37,344 / equity 84,971, $Mil)."
     },
     "wacc": {
      "value": 4.96,
@@ -527,7 +527,7 @@
      "as_of": "2026-08-19",
      "source": "reference-site/term/pettm/WMT",
      "confidence": "high",
-     "note": "Result title: 'Walmart (WMT) PE Ratio (TTM): 40.62 (As of Aug. 19, 2026) \u2014 31% Above Median'. 10y median 30.97. Separately an undated the reference provider Forward PE of 33.60 was seen (not used)."
+     "note": "Result title: 'Walmart (WMT) PE Ratio (TTM): 40.62 (As of Aug. 19, 2026) — 31% Above Median'. 10y median 30.97. Separately an undated the reference provider Forward PE of 33.60 was seen (not used)."
     },
     "ev_to_ebitda": {
      "value": 19.45,
@@ -577,6 +577,1086 @@
     }
    },
    "excluded": {}
+  },
+  "AMZN": {
+   "metrics": {
+    "fair_value": {
+     "value": 249.7,
+     "as_of": "2026-09-29",
+     "source": "reference-site/news/9102427/is-it-too-late-to-buy-amazoncom-inc-amzn-after-02-rally-gf-value-says-undervalued",
+     "confidence": "medium",
+     "note": "the reference provider news (search-summarized): GF Value $249.70 vs price $246.67, ~1.2% undervalued (article title says 'GF Value Says Undervalued'). Mid/late-Sep articles give $248.40-$249.26; term/gf-value/AMZN showed $236.24 as of 2026-07-30 (Fairly Valued)."
+    },
+    "price": {
+     "value": 246.67,
+     "as_of": "2026-09-29",
+     "source": "reference-site/news/9102427/is-it-too-late-to-buy-amazoncom-inc-amzn-after-02-rally-gf-value-says-undervalued",
+     "confidence": "medium",
+     "note": "Price quoted with the GF Value in the same article; label roughly Fairly Valued."
+    }
+   }
+  },
+  "CHTR": {
+   "metrics": {
+    "fair_value": {
+     "value": 375.78,
+     "as_of": "2026-10-02",
+     "source": "reference-site/term/volatility/CHTR",
+     "confidence": "medium",
+     "note": "Term-page sidebar: GF Value $375.78, price $109.29, label Possible Value Trap, GF Score 70. Search also reported $375.92 as of 2026-10-04 (page unidentified). term/gf-value/CHTR showed $381.23 as of 2026-07-23."
+    },
+    "price": {
+     "value": 109.29,
+     "as_of": "2026-10-02",
+     "source": "reference-site/term/volatility/CHTR",
+     "confidence": "medium",
+     "note": "Price quoted on same page; label Possible Value Trap."
+    }
+   }
+  },
+  "LULU": {
+   "metrics": {
+    "fair_value": {
+     "value": 314.17,
+     "as_of": "2026-10-09",
+     "source": "reference-site/term/peg-ratio/LULU",
+     "confidence": "medium",
+     "note": "Term-page sidebar (date ~Oct 9 per search summary): GF Value $314.17, price $92.61, 70.5% below, GF Score 71, Significantly Undervalued. Firmly dated alternative: term/gf-score/LULU as of 2026-09-13 GF Value $315.75, price $98.97, Significantly Undervalued."
+    },
+    "price": {
+     "value": 92.61,
+     "as_of": "2026-10-09",
+     "source": "reference-site/term/peg-ratio/LULU",
+     "confidence": "medium",
+     "note": "Price quoted on same page."
+    }
+   }
+  },
+  "PODD": {
+   "metrics": {
+    "fair_value": {
+     "value": 397.98,
+     "as_of": "2026-10-10",
+     "source": "reference-site/term/pe-ratio/PODD",
+     "confidence": "medium",
+     "note": "term/mktcap/PODD and term/pe-ratio/PODD both show GF Value $397.98 (dated 2026-10-10 per search summary). Another same-day page: GF Value $397.80 vs price $135.28, 66% below, Significantly Undervalued, GF Score 77. Aug 2026 news: $389.91."
+    },
+    "price": {
+     "value": 135.28,
+     "as_of": "2026-10-10",
+     "source": "reference-site term page (unidentified, same day)",
+     "confidence": "medium",
+     "note": "Price quoted alongside GF Value $397.80 (not the $397.98 pages); label Significantly Undervalued."
+    }
+   }
+  },
+  "BSX": {
+   "metrics": {
+    "fair_value": {
+     "value": 107.32,
+     "as_of": "2026-10-03",
+     "source": "reference-site/term/forward-pe-ratio/BSX",
+     "confidence": "high",
+     "note": "Term page 'Forward PE Ratio is 12.57 (Oct. 03, 2026)' sidebar: GF Value $107.32, price $42.60, 60.3% below, GF Score 79, Significantly Undervalued. Sep 8: $107.22 @ $44.98."
+    },
+    "price": {
+     "value": 42.6,
+     "as_of": "2026-10-03",
+     "source": "reference-site/term/forward-pe-ratio/BSX",
+     "confidence": "high",
+     "note": "Same page; Significantly Undervalued."
+    }
+   }
+  },
+  "PYPL": {
+   "metrics": {
+    "fair_value": {
+     "value": 85.85,
+     "as_of": "2026-10-04",
+     "source": "reference-site/term/gf-value/PYPL",
+     "confidence": "high",
+     "note": "term/gf-value/PYPL title 'GF Value: $85.85'; pettm page dated Oct. 04, 2026. Price $52.80, 38.5% below, GF Score 91, label (per news headlines) undervalued/Significantly Undervalued."
+    },
+    "price": {
+     "value": 52.8,
+     "as_of": "2026-10-04",
+     "source": "reference-site/term/gf-value/PYPL",
+     "confidence": "high",
+     "note": "Price quoted with the GF Value."
+    }
+   }
+  },
+  "ADBE": {
+   "metrics": {
+    "fair_value": {
+     "value": 537.69,
+     "as_of": "2026-10-08",
+     "source": "reference-site/term/pettm/ADBE",
+     "confidence": "high",
+     "note": "PE Ratio (TTM) page 'As of Oct. 08, 2026' sidebar: GF Value $537.69, GF Score 87, Significantly Undervalued. term/gf-value/ADBE: $540.50 as of 2026-09-29 (price $233.17). Note a Sep 22 news item cited $600.86."
+    },
+    "price": {
+     "value": 232.77,
+     "as_of": "2026-10-08",
+     "source": "reference-site/term/pettm/ADBE",
+     "confidence": "high",
+     "note": "Same page; Significantly Undervalued."
+    }
+   }
+  },
+  "ARE": {
+   "metrics": {
+    "fair_value": {
+     "value": 86.76,
+     "as_of": "2026-10-05",
+     "source": "reference-site/news/9110399/alexandria-real-estate-equities-inc-are-shares-fall-31-what-gf-score-of-64-tells-investors",
+     "confidence": "medium",
+     "note": "the reference provider news: price $45.88, ~47% below GF Value $86.76, GF Score 64; company labeled Possible Value Trap. Aug 2026: $88.32."
+    },
+    "price": {
+     "value": 45.88,
+     "as_of": "2026-10-05",
+     "source": "reference-site/news/9110399/alexandria-real-estate-equities-inc-are-shares-fall-31-what-gf-score-of-64-tells-investors",
+     "confidence": "medium",
+     "note": "Price quoted in same article; label Possible Value Trap."
+    }
+   }
+  },
+  "FISV": {
+   "metrics": {
+    "fair_value": {
+     "value": 174.14,
+     "as_of": "2026-09-24",
+     "source": "reference-site/term/gf-value/FISV",
+     "confidence": "high",
+     "note": "Listed as FISV on the reference provider. term/gf-value/FISV: 'GF Value is $174.14 (Sep. 24, 2026)', GF Score 71, label Possible Value Trap. Sep 20: $174.20 @ $47.19."
+    },
+    "price": {
+     "value": 45.95,
+     "as_of": "2026-09-24",
+     "source": "reference-site/term/gf-value/FISV",
+     "confidence": "high",
+     "note": "Same page; Possible Value Trap."
+    }
+   }
+  },
+  "MKC": {
+   "metrics": {
+    "fair_value": {
+     "value": 80.29,
+     "as_of": "2026-10-09",
+     "source": "reference-site/term/... MKC (page from search summary; likely one of gf-score/roic/pfcf term pages)",
+     "confidence": "medium",
+     "note": "GF Value $80.29 vs price $44.81, 44.2% below, GF Score 77, 6 warning signs, label Possible Value Trap. Oct 1: $81.89 @ $44.14 (Significantly Undervalued); Sep 30: $81.86 @ $46.40."
+    },
+    "price": {
+     "value": 44.81,
+     "as_of": "2026-10-09",
+     "source": "reference-site/term/... MKC (same page)",
+     "confidence": "medium",
+     "note": "Label Possible Value Trap (flips with Significantly Undervalued across pages)."
+    }
+   }
+  },
+  "ZTS": {
+   "metrics": {
+    "fair_value": {
+     "value": 180.78,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term/... ZTS (page from search summary; candidates term/gf-value/ZTS, zscore, wacc)",
+     "confidence": "medium",
+     "note": "GF Value $180.78 vs price $71.16, GF Score 71, Significantly Undervalued. Sep 11: $180.65 @ $72.44; Jul 31: $195.20."
+    },
+    "price": {
+     "value": 71.16,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term/... ZTS (same page)",
+     "confidence": "medium",
+     "note": "Significantly Undervalued."
+    }
+   }
+  },
+  "NFLX": {
+   "metrics": {
+    "fair_value": {
+     "value": 103.04,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term/gf-value/NFLX",
+     "confidence": "high",
+     "note": "term/gf-value/NFLX title 'NFLX GF Value: $103.04' (Oct. 07, 2026), GF Score 86, Significantly Undervalued. Post-split price scale. Sep 27: $102.68 @ $71.15."
+    },
+    "price": {
+     "value": 69.7,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term/gf-value/NFLX",
+     "confidence": "high",
+     "note": "Same page; Significantly Undervalued."
+    }
+   }
+  },
+  "INTU": {
+   "metrics": {
+    "fair_value": {
+     "value": 825.75,
+     "as_of": "2026-09-18",
+     "source": "reference-site/news/9088618/is-intuit-inc-intu-a-bargain-after-32-drop-gf-value-says-undervalued",
+     "confidence": "medium",
+     "note": "the reference provider news: GF Value $825.75 vs price $303.19, ~63% undervalued. Nothing dated October found. term/gf-value/INTU: $837.90 @ $334.43 as of 2026-08-11."
+    },
+    "price": {
+     "value": 303.19,
+     "as_of": "2026-09-18",
+     "source": "reference-site/news/9088618/is-intuit-inc-intu-a-bargain-after-32-drop-gf-value-says-undervalued",
+     "confidence": "medium",
+     "note": "Price quoted in same article; label undervalued (Significantly Undervalued implied)."
+    }
+   }
+  },
+  "CRM": {
+   "metrics": {
+    "fair_value": {
+     "value": 347.92,
+     "as_of": "2026-10-05",
+     "source": "reference-site/term/... CRM (page from search summary; likely mktcap or gf-score)",
+     "confidence": "medium",
+     "note": "GF Value $347.92 vs price $228.99, 34.2% below, GF Score 92. Firmly dated alternative: term/gf-value/CRM title 'GF Value: $346.37 (As of Sep. 29, 2026)', price $225.31, P/GF 0.65."
+    },
+    "price": {
+     "value": 228.99,
+     "as_of": "2026-10-05",
+     "source": "reference-site/term/... CRM (same page)",
+     "confidence": "medium",
+     "note": "Label likely Modestly/Significantly Undervalued (P/GF ~0.66); 'Significantly Undervalued' per valuation page title."
+    }
+   }
+  },
+  "CMCSA": {
+   "metrics": {
+    "fair_value": {
+     "value": 36.94,
+     "as_of": "2026-09-28",
+     "source": "reference-site/news/9097323/cmcsa-looks-418-undervalued-on-gf-value-amid-dividend-concerns",
+     "confidence": "medium",
+     "note": "the reference provider article 'CMCSA Looks 41.8% Undervalued on GF Value Amid Dividend Concerns'; date approximate (relative date ~late Sep 2026). Label: undervalued / Possible Value Trap. Cross-check: the reference provider page dated Sep 5, 2026 showed GF Value $37.06 (Modestly Undervalued)."
+    },
+    "price": {
+     "value": 21.5,
+     "as_of": "2026-09-28",
+     "source": "reference-site/news/9097323/cmcsa-looks-418-undervalued-on-gf-value-amid-dividend-concerns",
+     "confidence": "medium",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "HON": {
+   "metrics": {
+    "fair_value": {
+     "value": 163.13,
+     "as_of": "2026-10-05",
+     "source": "reference-site news article (via search snippet, exact URL not surfaced)",
+     "confidence": "medium",
+     "note": "the reference provider article dated Oct 5, 2026: GF Value $163.13 vs price $212.87, GF Score 68; overvalued. Another snippet cited GF Value $162.55 vs $206.24 as of Oct 8, 2026 (26.9% overvalued) without a URL. Earlier: Sep 4 $191.33 (Fairly Valued), Aug 12 $203.77 (Modestly Overvalued)."
+    },
+    "price": {
+     "value": 212.87,
+     "as_of": "2026-10-05",
+     "source": "reference-site news article (via search snippet, exact URL not surfaced)",
+     "confidence": "medium",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "CMG": {
+   "metrics": {
+    "fair_value": {
+     "value": 60.37,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term (CMG intrinsic value page sidebar)",
+     "confidence": "medium",
+     "note": "the reference provider page dated Oct 7, 2026: GF Value $60.37, label Significantly Undervalued, GF Score 88. A news item dated Oct 8 gave GF Value $60.40 vs price $32.68."
+    },
+    "price": {
+     "value": 30.9,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term (CMG intrinsic value page sidebar)",
+     "confidence": "medium",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "WDAY": {
+   "metrics": {
+    "fair_value": {
+     "value": 325.08,
+     "as_of": "2026-10-07",
+     "source": "reference-site/news/9116974/workday-wday-sees-189-million-in-net-etf-buying-on-oct-7",
+     "confidence": "high",
+     "note": "the reference provider article (Oct 7, 2026 ETF buying): GF Value $325.08 vs price $187.81, GF Score 84. Oct 3 page: $324.09 vs $186.14, Significantly Undervalued."
+    },
+    "price": {
+     "value": 187.81,
+     "as_of": "2026-10-07",
+     "source": "reference-site/news/9116974/workday-wday-sees-189-million-in-net-etf-buying-on-oct-7",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "ADSK": {
+   "metrics": {
+    "fair_value": {
+     "value": 360.66,
+     "as_of": "2026-10-05",
+     "source": "reference-site/news/9110215/a-look-at-autodesk-inc-adsk-after-45-gain-gf-value-36066-vs-price-22156",
+     "confidence": "high",
+     "note": "the reference provider article title 'GF Value $360.66 vs Price $221.56', dated Oct 5, 2026; GF Score 84. Sep 26 WACC page: $359.37 vs $209.40, Significantly Undervalued."
+    },
+    "price": {
+     "value": 221.56,
+     "as_of": "2026-10-05",
+     "source": "reference-site/news/9110215/a-look-at-autodesk-inc-adsk-after-45-gain-gf-value-36066-vs-price-22156",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "DXCM": {
+   "metrics": {
+    "fair_value": {
+     "value": 103.05,
+     "as_of": "2026-10-01",
+     "source": "reference-site/term/gf_value/DXCM/GF-Value/DXCM",
+     "confidence": "high",
+     "note": "the reference provider term page title 'DEXCOM GF Value: $103.05', as of Oct 1, 2026; label Modestly Undervalued, GF Score 96."
+    },
+    "price": {
+     "value": 86.29,
+     "as_of": "2026-10-01",
+     "source": "reference-site/term/gf_value/DXCM/GF-Value/DXCM",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "FICO": {
+   "metrics": {
+    "fair_value": {
+     "value": 2337.44,
+     "as_of": "2026-10-09",
+     "source": "reference-site/term/rank-gf-value/FICO",
+     "confidence": "high",
+     "note": "the reference provider GF Value Rank page sidebar, Oct 9, 2026: GF Value $2,337.44 vs price $707.43; label Significantly Undervalued, GF Score 83."
+    },
+    "price": {
+     "value": 707.43,
+     "as_of": "2026-10-09",
+     "source": "reference-site/term/rank-gf-value/FICO",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "IT": {
+   "metrics": {
+    "fair_value": {
+     "value": 491.5,
+     "as_of": "2026-10-05",
+     "source": "reference-site (Gartner analyst rating update, Oct 5, 2026)",
+     "confidence": "medium",
+     "note": "the reference provider update dated Oct 5, 2026: GF Value $491.50 vs price $186.99, 62% below; label Significantly Undervalued, GF Score 83. Sep 28 EV-to-FCF page: $490.51 vs $185.73."
+    },
+    "price": {
+     "value": 186.99,
+     "as_of": "2026-10-05",
+     "source": "reference-site (Gartner analyst rating update, Oct 5, 2026)",
+     "confidence": "medium",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "BAX": {
+   "metrics": {
+    "fair_value": {
+     "value": 31.71,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term (BAX page sidebar dated Oct 7, 2026)",
+     "confidence": "medium",
+     "note": "the reference provider page dated Oct 7, 2026: GF Value $31.71 vs price $23.97; label Modestly Undervalued, GF Score 70. Citigroup note (news/9110037, ~Oct 6) used $31.70 vs $24.21."
+    },
+    "price": {
+     "value": 23.97,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term (BAX page sidebar dated Oct 7, 2026)",
+     "confidence": "medium",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "APTV": {
+   "metrics": {
+    "fair_value": {
+     "value": 61.0,
+     "as_of": "2026-10-01",
+     "source": "reference-site/term (APTV pages dated Oct 1, 2026)",
+     "confidence": "medium",
+     "note": "the reference provider term page sidebar as of Oct 1, 2026: GF Value $61.00 vs price $44.17; label Modestly Undervalued, GF Score 79. Main GF Value page snapshot (Jul 17) showed $67.90."
+    },
+    "price": {
+     "value": 44.17,
+     "as_of": "2026-10-01",
+     "source": "reference-site/term (APTV pages dated Oct 1, 2026)",
+     "confidence": "medium",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "TKO": {
+   "metrics": {
+    "fair_value": {
+     "value": 274.46,
+     "as_of": "2026-09-11",
+     "source": "reference-site/term/enterprise-value-to-ebitda/TKO",
+     "confidence": "medium",
+     "note": "the reference provider EV-to-EBITDA page sidebar dated Sep 11, 2026: GF Value $274.46 vs price $189.86; label Possible Value Trap. Note: other TKO pages show inconsistent GF Values ($131 in Mar-Jun data, $311 on net margin page)."
+    },
+    "price": {
+     "value": 189.86,
+     "as_of": "2026-09-11",
+     "source": "reference-site/term/enterprise-value-to-ebitda/TKO",
+     "confidence": "medium",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "FIS": {
+   "metrics": {
+    "fair_value": {
+     "value": 94.71,
+     "as_of": "2026-10-05",
+     "source": "reference-site/news/9110329/fidelity-national-information-services-inc-fis-stock-up-35-and-still-undervalued-gf-score-65100",
+     "confidence": "high",
+     "note": "the reference provider article Oct 5, 2026: GF Value $94.71 vs price $33.58; label Possible Value Trap, GF Score 65."
+    },
+    "price": {
+     "value": 33.58,
+     "as_of": "2026-10-05",
+     "source": "reference-site/news/9110329/fidelity-national-information-services-inc-fis-stock-up-35-and-still-undervalued-gf-score-65100",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "COO": {
+   "metrics": {
+    "fair_value": {
+     "value": 93.25,
+     "as_of": "2026-09-19",
+     "source": "reference-site/news/9087306/coo-looks-423-undervalued-on-gf-value-amid-activist-pressure",
+     "confidence": "low",
+     "note": "the reference provider article 'COO Looks 42.3% Undervalued on GF Value Amid Activist Pressure'; date approximate (~3 weeks before Oct 10, 2026). Undervalued, GF Score 89."
+    },
+    "price": {
+     "value": 53.77,
+     "as_of": "2026-09-19",
+     "source": "reference-site/news/9087306/coo-looks-423-undervalued-on-gf-value-amid-activist-pressure",
+     "confidence": "low",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "CSGP": {
+   "metrics": {
+    "fair_value": {
+     "value": 105.92,
+     "as_of": "2026-10-08",
+     "source": "reference-site/news/9116402/is-it-too-late-to-buy-costar-group-inc-csgp-after-80-rally-gf-value-says-undervalued",
+     "confidence": "high",
+     "note": "the reference provider article Oct 8, 2026: GF Value $105.92 vs price $29.81; undervalued, GF Score 73."
+    },
+    "price": {
+     "value": 29.81,
+     "as_of": "2026-10-08",
+     "source": "reference-site/news/9116402/is-it-too-late-to-buy-costar-group-inc-csgp-after-80-rally-gf-value-says-undervalued",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "GOOGL": {
+   "metrics": {
+    "fair_value": {
+     "value": 256.9,
+     "as_of": "2026-10-09",
+     "source": "reference-site/term/gf-value/GOOGL",
+     "confidence": "high",
+     "note": "the reference provider GF Value term page (search snippet), price 37.9% above GF Value; label Significantly Overvalued; GF Score 93. Oct 5 forward-PE page showed $256.29."
+    },
+    "price": {
+     "value": 354.15,
+     "as_of": "2026-10-09",
+     "source": "reference-site/term/gf-value/GOOGL",
+     "confidence": "high",
+     "note": "Price quoted alongside GF Value on same page"
+    }
+   }
+  },
+  "META": {
+   "metrics": {
+    "fair_value": {
+     "value": 848.92,
+     "as_of": "2026-09-07",
+     "source": "reference-site/term/gf-value/META",
+     "confidence": "high",
+     "note": "GF Value term page title 'GF Value: $848.92 (As of Sep. 07, 2026)'. Later the reference provider news pieces (late Sep/early Oct 2026, exact date not seen) cite GF Value $857.84; label Modestly Undervalued."
+    },
+    "price": {
+     "value": 751.66,
+     "as_of": "2026-10-01",
+     "source": "reference-site news (Ark Invest / Meta Enterprise Platform articles, ~early Oct 2026)",
+     "confidence": "low",
+     "note": "Price quoted with GF Value $857.84 (12.4% margin of safety); article date approximate (late Sep/early Oct). Price for the Sep 7 term-page value not seen."
+    }
+   }
+  },
+  "AVGO": {
+   "metrics": {
+    "fair_value": {
+     "value": 421.8,
+     "as_of": "2026-10-08",
+     "source": "reference-site/term/forward-pe-ratio/AVGO",
+     "confidence": "high",
+     "note": "Forward PE term page sidebar: GF Score 98/100, GF Value $421.80 (Modestly Undervalued). Oct 3 projected-FCF page: $418.00."
+    },
+    "price": {
+     "value": 368.38,
+     "as_of": "2026-10-08",
+     "source": "reference-site/term/forward-pe-ratio/AVGO",
+     "confidence": "high",
+     "note": "Price on same page"
+    }
+   }
+  },
+  "TSLA": {
+   "metrics": {
+    "fair_value": {
+     "value": 335.56,
+     "as_of": "2026-10-09",
+     "source": "reference-site news article dated Oct 9, 2026 (URL not captured)",
+     "confidence": "medium",
+     "note": "'modestly overvalued by approximately 14.0%, GF Value $335.56'; GF Score 86. Term page /term/gf-value/TSLA: $334.00 as of Sep 20, 2026 (Fairly Valued, price $364.27)."
+    },
+    "price": {
+     "value": 382.7,
+     "as_of": "2026-10-09",
+     "source": "reference-site news article dated Oct 9, 2026",
+     "confidence": "medium",
+     "note": "Price quoted with GF Value in same article"
+    }
+   }
+  },
+  "JPM": {
+   "metrics": {
+    "fair_value": {
+     "value": 309.46,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term/rank-gf-value/JPM",
+     "confidence": "high",
+     "note": "GF Value Rank page: 6.3% above fair value, label Fairly Valued, GF Score 85. Oct 1 forward-PE page: $308.73."
+    },
+    "price": {
+     "value": 328.99,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term/rank-gf-value/JPM",
+     "confidence": "high",
+     "note": "Price on same page"
+    }
+   }
+  },
+  "V": {
+   "metrics": {
+    "fair_value": {
+     "value": 406.2,
+     "as_of": "2026-10-08",
+     "source": "reference-site/term/mktcap/V",
+     "confidence": "high",
+     "note": "Market cap term page sidebar: GF Value $406.20, Fairly Valued, GF Score 99. GF Value page Sep 22: $403.77 (Modestly Undervalued, price $362.04)."
+    },
+    "price": {
+     "value": 375.1,
+     "as_of": "2026-10-08",
+     "source": "reference-site/term/mktcap/V",
+     "confidence": "high",
+     "note": "Price on same page"
+    }
+   }
+  },
+  "MA": {
+   "metrics": {
+    "fair_value": {
+     "value": 686.88,
+     "as_of": "2026-10-03",
+     "source": "reference-site/term/... (MA term page, exact page not captured; candidates gf-score/MA, fcf-yield/MA)",
+     "confidence": "medium",
+     "note": "19.6% below fair value; label Modestly Undervalued; GF Score 98. Another page dated Oct 4 showed $687.14 at same price."
+    },
+    "price": {
+     "value": 552.26,
+     "as_of": "2026-10-03",
+     "source": "reference-site/term/... (MA)",
+     "confidence": "medium",
+     "note": "Price on same page"
+    }
+   }
+  },
+  "UNH": {
+   "metrics": {
+    "fair_value": {
+     "value": 591.6,
+     "as_of": "2026-10-09",
+     "source": "reference-site/term/rank-gf-value/UNH",
+     "confidence": "high",
+     "note": "GF Value Rank page; label Significantly Undervalued; GF Score 81. Oct 1-2 pages: $591.74."
+    },
+    "price": {
+     "value": 376.15,
+     "as_of": "2026-10-09",
+     "source": "reference-site/term/rank-gf-value/UNH",
+     "confidence": "high",
+     "note": "Price on same page"
+    }
+   }
+  },
+  "LLY": {
+   "metrics": {
+    "fair_value": {
+     "value": 1569.7,
+     "as_of": "2026-10-08",
+     "source": "reference-site/term/rank-gf-value/LLY",
+     "confidence": "high",
+     "note": "GF Value Rank page; label Modestly Undervalued; GF Score 98. Oct 7 news: $1,568.80 at price $1,186.43."
+    },
+    "price": {
+     "value": 1146.11,
+     "as_of": "2026-10-08",
+     "source": "reference-site/term/rank-gf-value/LLY",
+     "confidence": "high",
+     "note": "Price on same page"
+    }
+   }
+  },
+  "COST": {
+   "metrics": {
+    "fair_value": {
+     "value": 1048.55,
+     "as_of": "2026-10-02",
+     "source": "reference-site/term/... (COST term page, exact page not captured)",
+     "confidence": "medium",
+     "note": "Label Modestly Undervalued; GF Score 95. Recent SWOT news article cites $1,049.78 at price $942.25."
+    },
+    "price": {
+     "value": 914.94,
+     "as_of": "2026-10-02",
+     "source": "reference-site/term/... (COST)",
+     "confidence": "medium",
+     "note": "Price on same page"
+    }
+   }
+  },
+  "ORCL": {
+   "metrics": {
+    "fair_value": {
+     "value": 194.59,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term/... (ORCL term page, likely rank-gf-value/ORCL)",
+     "confidence": "medium",
+     "note": "Label Modestly Undervalued. Oct 2 analyst-update news: $193.78 at price $138.07."
+    },
+    "price": {
+     "value": 144.77,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term/... (ORCL)",
+     "confidence": "medium",
+     "note": "Price on same page"
+    }
+   }
+  },
+  "PEP": {
+   "metrics": {
+    "fair_value": {
+     "value": 164.66,
+     "as_of": "2026-10-05",
+     "source": "reference-site/term/... (PEP term page, e.g. rank-gf-value/PEP or forward-pe-ratio/PEP)",
+     "confidence": "medium",
+     "note": "Label Modestly Undervalued; GF Score 81. Oct 8-10 Q3 earnings news: $164.71 at prices $126.80/$123.73. Yield page Sep 28: $164.57 at $128.53."
+    },
+    "price": {
+     "value": 125.65,
+     "as_of": "2026-10-05",
+     "source": "reference-site/term/... (PEP)",
+     "confidence": "medium",
+     "note": "Price on same page"
+    }
+   }
+  },
+  "MRK": {
+   "metrics": {
+    "fair_value": {
+     "value": 120.93,
+     "as_of": "2026-10-06",
+     "source": "reference-site/term/mktcap/MRK",
+     "confidence": "high",
+     "note": "Market cap page sidebar; label Modestly Overvalued; GF Score 80. Oct 5 forward-PE page: $120.92."
+    },
+    "price": {
+     "value": 140.45,
+     "as_of": "2026-10-06",
+     "source": "reference-site/term/mktcap/MRK",
+     "confidence": "high",
+     "note": "Price on same page"
+    }
+   }
+  },
+  "ABBV": {
+   "metrics": {
+    "fair_value": {
+     "value": 221.76,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term/rank_gf_value/NYSE:ABBV/",
+     "confidence": "high",
+     "note": "GF Value Rank page: 22.8% above fair value; label Modestly Overvalued. Oct 8 news: $221.82."
+    },
+    "price": {
+     "value": 272.42,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term/rank_gf_value/NYSE:ABBV/",
+     "confidence": "high",
+     "note": "Price on same page"
+    }
+   }
+  },
+  "CVX": {
+   "metrics": {
+    "fair_value": {
+     "value": 168.55,
+     "as_of": "2026-10-09",
+     "source": "reference-site/term/rank-gf-value/CVX",
+     "confidence": "high",
+     "note": "the reference provider CVX term page (GF Value Rank / GF Value) dated Oct 9 2026: price trading 25.5% above GF Value. Label Modestly Overvalued (term/gf-value/CVX Oct 2: $166.39 vs $206.69)."
+    },
+    "price": {
+     "value": 211.55,
+     "as_of": "2026-10-09",
+     "source": "reference-site/term/rank-gf-value/CVX",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "BAC": {
+   "metrics": {
+    "fair_value": {
+     "value": 53.81,
+     "as_of": "2026-10-04",
+     "source": "reference-site/term/peter-lynch-fair-value/BAC",
+     "confidence": "high",
+     "note": "Peter Lynch Fair Value page dated Oct 4 2026: price 0.1% below GF Value. Label Fairly Valued. Oct 1 insider-ownership page: $53.79 vs $53.73."
+    },
+    "price": {
+     "value": 53.75,
+     "as_of": "2026-10-04",
+     "source": "reference-site/term/peter-lynch-fair-value/BAC",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "DIS": {
+   "metrics": {
+    "fair_value": {
+     "value": 118.12,
+     "as_of": "2026-10-10",
+     "source": "reference-site/term/mktcap/DIS",
+     "confidence": "high",
+     "note": "Market cap page dated Oct 10 2026: 8.5% below GF Value; header label Fairly Valued but body says undervalued. Oct 2 term/gf-value/DIS: $118.00 vs $102.14, Modestly Undervalued."
+    },
+    "price": {
+     "value": 108.05,
+     "as_of": "2026-10-10",
+     "source": "reference-site/term/mktcap/DIS",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "MCD": {
+   "metrics": {
+    "fair_value": {
+     "value": 325.99,
+     "as_of": "2026-10-06",
+     "source": "reference-site/term/mktcap/MCD",
+     "confidence": "high",
+     "note": "Market cap page dated Oct 6 2026, GF Score 72. Label Modestly Undervalued."
+    },
+    "price": {
+     "value": 233.78,
+     "as_of": "2026-10-06",
+     "source": "reference-site/term/mktcap/MCD",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "NKE": {
+   "metrics": {
+    "fair_value": {
+     "value": 69.21,
+     "as_of": "2026-10-05",
+     "source": "reference-site/news/9109794/nke-maintains-by-barclays-price-target-lowered-to-3700",
+     "confidence": "high",
+     "note": "the reference provider news (Barclays PT cut) Oct 5 2026: 51.8% undervalued, GF Score 66. Label: undervalued (significantly)."
+    },
+    "price": {
+     "value": 33.34,
+     "as_of": "2026-10-05",
+     "source": "reference-site/news/9109794/nke-maintains-by-barclays-price-target-lowered-to-3700",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "TXN": {
+   "metrics": {
+    "fair_value": {
+     "value": 238.18,
+     "as_of": "2026-10-10",
+     "source": "reference-site/term/gf-value/TXN",
+     "confidence": "high",
+     "note": "GF Value term page dated Oct 10 2026: 19.1% above GF Value, GF Score 83. Label Modestly Overvalued."
+    },
+    "price": {
+     "value": 283.74,
+     "as_of": "2026-10-10",
+     "source": "reference-site/term/gf-value/TXN",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "QCOM": {
+   "metrics": {
+    "fair_value": {
+     "value": 175.33,
+     "as_of": "2026-10-09",
+     "source": "reference-site/term/enterprise-value/QCOM",
+     "confidence": "high",
+     "note": "Enterprise value page dated Oct 9 2026: 1.2% below GF Value (mktcap page same date shows price $175.50). Label Fairly Valued. term/gf-value/QCOM Oct 6: $175.27 vs $180.80."
+    },
+    "price": {
+     "value": 173.21,
+     "as_of": "2026-10-09",
+     "source": "reference-site/term/enterprise-value/QCOM",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "AMD": {
+   "metrics": {
+    "fair_value": {
+     "value": 289.32,
+     "as_of": "2026-10-09",
+     "source": "reference-site/news/9117432/amd-stocks-slide-lower-despite-streethigh-800-ai-target",
+     "confidence": "medium",
+     "note": "the reference provider news article ~1 day old as of Oct 10 search (date inferred from relative age; URL attribution best guess among Oct articles): 114.5% premium. Label Significantly Overvalued."
+    },
+    "price": {
+     "value": 620.68,
+     "as_of": "2026-10-09",
+     "source": "reference-site/news/9117432/amd-stocks-slide-lower-despite-streethigh-800-ai-target",
+     "confidence": "medium",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "IBM": {
+   "metrics": {
+    "fair_value": {
+     "value": 243.12,
+     "as_of": "2026-10-06",
+     "source": "reference-site/term/peg-ratio/IBM",
+     "confidence": "high",
+     "note": "PEG ratio page dated Oct 6 2026. Sep 30 payout page labels IBM Fairly Valued ($242.99 vs $220.95). Truist initiation news (~Oct 9, news/9117141) cites $243.18 vs $226.61."
+    },
+    "price": {
+     "value": 222.57,
+     "as_of": "2026-10-06",
+     "source": "reference-site/term/peg-ratio/IBM",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "GE": {
+   "metrics": {
+    "fair_value": {
+     "value": 269.37,
+     "as_of": "2026-10-10",
+     "source": "reference-site/term/gf-score/GE",
+     "confidence": "high",
+     "note": "GF Score page dated Oct 10 2026: 14.4% above GF Value, GF Score 78. Label Modestly Overvalued (intrinsic-value page Oct 6: $269.26 vs $308.86)."
+    },
+    "price": {
+     "value": 308.2,
+     "as_of": "2026-10-10",
+     "source": "reference-site/term/gf-score/GE",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "BA": {
+   "metrics": {
+    "fair_value": {
+     "value": 211.06,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term/gf-value/BA",
+     "confidence": "high",
+     "note": "GF Value term page as of Oct 7 2026. Label Modestly Undervalued. A the reference provider note dated Oct 9 2026 cites $211.01 vs $190.48 (9.7% undervalued)."
+    },
+    "price": {
+     "value": 187.82,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term/gf-value/BA",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "UPS": {
+   "metrics": {
+    "fair_value": {
+     "value": 120.79,
+     "as_of": "2026-10-07",
+     "source": "reference-site/news/9112952/ups-plans-to-hire-100000-seasonal-workers-ahead-of-holiday-surge-ticker-ups",
+     "confidence": "medium",
+     "note": "the reference provider news ~3 days old as of Oct 10 search (date inferred): 22.8% discount, GF Score 77; label undervalued. Firmly dated alternative: Sep 24 2026 news/9096226 GF Value $120.59 vs $92.05."
+    },
+    "price": {
+     "value": 93.27,
+     "as_of": "2026-10-07",
+     "source": "reference-site/news/9112952/ups-plans-to-hire-100000-seasonal-workers-ahead-of-holiday-surge-ticker-ups",
+     "confidence": "medium",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "LOW": {
+   "metrics": {
+    "fair_value": {
+     "value": 254.05,
+     "as_of": "2026-10-08",
+     "source": "reference-site/news/9116264/is-it-too-late-to-buy-lowes-companies-inc-low-after-40-rally-gf-value-says-undervalued",
+     "confidence": "high",
+     "note": "the reference provider news Oct 8 2026: undervalued, GF Score 78. Earlier label Modestly Undervalued (term page Jul 8: $250.04)."
+    },
+    "price": {
+     "value": 188.85,
+     "as_of": "2026-10-08",
+     "source": "reference-site/news/9116264/is-it-too-late-to-buy-lowes-companies-inc-low-after-40-rally-gf-value-says-undervalued",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "SBUX": {
+   "metrics": {
+    "fair_value": {
+     "value": 97.84,
+     "as_of": "2026-10-04",
+     "source": "reference-site/term/ (SBUX term pages)",
+     "confidence": "medium",
+     "note": "the reference provider SBUX term pages dated Oct 4 2026, GF Score 82, label Fairly Valued; exact page not identified. term/gf-value/SBUX title: 'GF Value: $97.90 (As of Sep. 24, 2026)'."
+    },
+    "price": {
+     "value": 94.71,
+     "as_of": "2026-10-04",
+     "source": "reference-site/term/ (SBUX term pages)",
+     "confidence": "medium",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "PFE": {
+   "metrics": {
+    "fair_value": {
+     "value": 26.41,
+     "as_of": "2026-10-09",
+     "source": "reference-site/news/9117801/pfe-maintained-by-jp-morgan-price-target-raised-to-30",
+     "confidence": "high",
+     "note": "the reference provider news (JP Morgan PT raise) Oct 9 2026: ~6.7% overvalued; label Fairly Valued. Oct 6 projected-FCF page: $26.42 vs $27.50."
+    },
+    "price": {
+     "value": 28.19,
+     "as_of": "2026-10-09",
+     "source": "reference-site/news/9117801/pfe-maintained-by-jp-morgan-price-target-raised-to-30",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "VZ": {
+   "metrics": {
+    "fair_value": {
+     "value": 43.41,
+     "as_of": "2026-10-02",
+     "source": "reference-site/term/gf-value/VZ",
+     "confidence": "high",
+     "note": "GF Value term page Oct 2 2026: 5.9% above GF Value, GF Score 67, label Fairly Valued."
+    },
+    "price": {
+     "value": 45.98,
+     "as_of": "2026-10-02",
+     "source": "reference-site/term/gf-value/VZ",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "AMGN": {
+   "metrics": {
+    "fair_value": {
+     "value": 367.93,
+     "as_of": "2026-10-08",
+     "source": "reference-site/news/9115705/amgn-maintained-by-rbc-capital-price-target-raised-to-430",
+     "confidence": "high",
+     "note": "the reference provider news (RBC PT raise) Oct 8 2026: 9.3% overvalued, GF Score 85. Oct 6 quote page labels Fairly Valued ($367.86 vs $402.60)."
+    },
+    "price": {
+     "value": 402.06,
+     "as_of": "2026-10-08",
+     "source": "reference-site/news/9115705/amgn-maintained-by-rbc-capital-price-target-raised-to-430",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
+  },
+  "DE": {
+   "metrics": {
+    "fair_value": {
+     "value": 409.05,
+     "as_of": "2026-10-09",
+     "source": "reference-site/news/9117919/deere-co-de-shares-fall-48-gf-value-says-still-overvalued",
+     "confidence": "high",
+     "note": "the reference provider news Oct 9 2026: 51.8% premium, label Significantly Overvalued. Oct 8 JP Morgan note: $409.76 vs $652.58."
+    },
+    "price": {
+     "value": 620.93,
+     "as_of": "2026-10-09",
+     "source": "reference-site/news/9117919/deere-co-de-shares-fall-48-gf-value-says-still-overvalued",
+     "confidence": "high",
+     "note": "Price quoted by the reference provider alongside the GF Value."
+    }
+   }
   }
  }
 }

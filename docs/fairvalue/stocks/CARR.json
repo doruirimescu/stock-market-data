@@ -1,1 +1,1 @@
-{"ticker": "CARR", "name": "CARRIER GLOBAL Corp", "price": "55.56", "as_of": "2026-03-31", "gf_value": "$56.89", "verdict": "", "verdict_text": "Fairly Valued", "gf_score": "75", "pe": "36.31", "roic": "6.05%", "f_score": "5", "z_score": "2.42"}
+{"ticker": "CARR", "name": "CARRIER GLOBAL Corp", "price": "55.56", "as_of": "2026-03-31", "fair_value": "$67.80", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "76", "pe": "36.31", "roic": "6.05%", "f_score": "5", "z_score": "2.42"}

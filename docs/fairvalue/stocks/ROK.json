@@ -1,1 +1,1 @@
-{"ticker": "ROK", "name": "ROCKWELL AUTOMATION, INC", "price": "432.59", "as_of": "2026-06-30", "gf_value": "$317.38", "verdict": "over", "verdict_text": "Significantly Overvalued", "gf_score": "76", "pe": "40.50", "roic": "16.87%", "f_score": "8", "z_score": "5.81"}
+{"ticker": "ROK", "name": "ROCKWELL AUTOMATION, INC", "price": "432.59", "as_of": "2026-06-30", "fair_value": "$336.84", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "76", "pe": "40.50", "roic": "16.87%", "f_score": "8", "z_score": "5.81"}

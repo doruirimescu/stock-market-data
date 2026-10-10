@@ -41,16 +41,16 @@
     <h1>Astera Labs, Inc. <span class="gradient-text">ALAB</span></h1>
     
     <p class="lead">Price <span class="hl-accent">$342.21</span> on 09 Oct 2026.
-      Not enough history to compute a Fair Value.</p>
+      The Fair Value is <span class="hl-accent">$260.42</span>, so the stock looks <mark>significantly overvalued</mark> at 1.31× its fair value.</p>
 
     <div class="kpis">
       <div class="panel kpi"><div class="label">Price</div><div class="value">$342.21</div>
         <div class="sub">29.15% below 52-week high</div></div>
-      <div class="panel kpi"><div class="label">Fair Value</div><div class="value">–</div>
-        <div class="sub">n/a</div></div>
+      <div class="panel kpi"><div class="label">Fair Value</div><div class="value">$260.42</div>
+        <div class="sub"><span class="verdict over">Significantly Overvalued</span></div></div>
       
-      <div class="panel kpi"><div class="label">Fair Value Score</div><div class="value">85</div>
-        <div class="sub"><span class="verdict under">Good outperformance potential</span></div></div>
+      <div class="panel kpi"><div class="label">Fair Value Score</div><div class="value">79</div>
+        <div class="sub"><span class="verdict ">Average outperformance potential</span></div></div>
       <div class="panel kpi"><div class="label">Market cap</div><div class="value">$59.37B</div>
         <div class="sub">EV $58.16B · yield 0.00%</div></div>
       <div class="panel kpi"><div class="label">PE (TTM)</div><div class="value">168.58</div>
@@ -77,8 +77,8 @@
           <div class="dist-count">–</div></div>
         
         <div class="dist-row"><div class="dist-label">Fair Value Rank</div>
-          <div class="dist-track"><div class="dist-bar" style="width:0%;background:var(--over)"></div></div>
-          <div class="dist-count">–</div></div>
+          <div class="dist-track"><div class="dist-bar" style="width:40%;background:var(--accent)"></div></div>
+          <div class="dist-count">4</div></div>
         
         <div class="dist-row"><div class="dist-label">Momentum Rank</div>
           <div class="dist-track"><div class="dist-bar" style="width:60%;background:var(--accent)"></div></div>
@@ -91,7 +91,7 @@
   <h3 class="panel-title">Valuation verdicts</h3>
   <div class="table-wrap"><table class="data metric-table"><tbody>
   
-<tr><td>Price-to-Fair Value</td><td class="num">–</td></tr>
+<tr><td>Price-to-Fair Value</td><td class="num">1.31 <span class="verdict over">Significantly Overvalued</span></td></tr>
 <tr><td>Altman Z-Score</td><td class="num">175.36 <span class="verdict under">Safe zone</span></td></tr>
 <tr><td>Beneish M-Score</td><td class="num">2.31 <span class="verdict over">Possible manipulator</span></td></tr>
 <tr><td>ROIC</td><td class="num">89.05% <span class="verdict under">ROIC &gt; WACC</span></td></tr>
@@ -262,7 +262,7 @@
           <td class="num muted">–</td><td class="num muted">–</td><td class="num muted">–</td><td class="muted small"></td></tr>
         
         <tr><td>PEG Ratio</td><td class="num">–</td>
-          <td class="num muted">–</td><td class="num muted">–</td><td class="num muted">–</td><td class="muted small">5-year EBITDA/share growth, as Fair Value</td></tr>
+          <td class="num muted">–</td><td class="num muted">–</td><td class="num muted">–</td><td class="muted small">5-year EBITDA/share growth, as the reference provider</td></tr>
         
         <tr><td>Shiller PE</td><td class="num">–</td>
           <td class="num muted">–</td><td class="num muted">–</td><td class="num muted">–</td><td class="muted small"></td></tr>
@@ -286,8 +286,8 @@
           <thead><tr><th>Model</th><th class="num">Value</th><th class="num">Price / value</th></tr></thead><tbody>
           
           
-          <tr><td>Fair Value (Fair Value)</td><td class="num">–</td>
-            <td class="num">–</td></tr>
+          <tr><td>Fair Value (Fair Value)</td><td class="num">$260.42</td>
+            <td class="num"><span class="verdict over">1.31× over</span></td></tr>
           
           
           <tr><td>DCF (Earnings Based)</td><td class="num">$21.72</td>
@@ -364,7 +364,7 @@
 
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 <script>
-  const D = {"dates": ["2024-03-31", "2024-04-30", "2024-05-31", "2024-06-30", "2024-07-31", "2024-08-31", "2024-09-30", "2024-10-31", "2024-11-30", "2024-12-31", "2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "price": [74.19, 84.76, 64.54, 60.51, 43.84, 43.06, 52.39, 70.16, 103.25, 132.45, 101.42, 74.35, 59.67, 65.31, 90.72, 90.42, 136.73, 182.2, 195.8, 186.68, 157.57, 166.36, 150.62, 118.83, 109.6, 194.74, 342.85, 483.02, 311.23, 296.98, 355.97, 342.21], "fair_value": null, "pe_dates": ["2024-03-31", "2024-04-30", "2024-05-31", "2024-06-30", "2024-07-31", "2024-08-31", "2024-09-30", "2024-10-31", "2024-11-30", "2024-12-31", "2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "pe": [null, null, null, null, null, null, null, null, null, null, null, null, 45.55, 49.85, 69.25, 113.02, 170.91, 227.75, 160.49, 153.02, 129.16, 136.36, 123.46, 97.4, 74.05, 131.58, 231.66, 237.94, 153.32, 146.3, 175.35, 168.58], "fy": ["2022", "2023", "2024", "2025"], "revenue": [79872000.0, 115794000.0, 396290000.0, 852525000.0], "net_income": [-58345000.0, -26257000.0, -83421000.0, 219134000.0], "fcf": [-39771000.0, -15477000.0, 102431000.0, 281762000.0]};
+  const D = {"dates": ["2024-03-31", "2024-04-30", "2024-05-31", "2024-06-30", "2024-07-31", "2024-08-31", "2024-09-30", "2024-10-31", "2024-11-30", "2024-12-31", "2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "price": [74.19, 84.76, 64.54, 60.51, 43.84, 43.06, 52.39, 70.16, 103.25, 132.45, 101.42, 74.35, 59.67, 65.31, 90.72, 90.42, 136.73, 182.2, 195.8, 186.68, 157.57, 166.36, 150.62, 118.83, 109.6, 194.74, 342.85, 483.02, 311.23, 296.98, 355.97, 342.21], "fair_value": [123.55, 123.55, 123.55, 58.76, 58.76, 58.76, 77.43, 77.43, 77.43, 119.93, 119.93, 119.93, 109.39, 109.39, 109.39, 135.07, 135.07, 135.07, 159.01, 159.01, 159.01, 188.62, 188.62, 188.62, 219.6, 219.6, 219.6, 260.42, 260.42, 260.42, 260.42, 260.42], "pe_dates": ["2024-03-31", "2024-04-30", "2024-05-31", "2024-06-30", "2024-07-31", "2024-08-31", "2024-09-30", "2024-10-31", "2024-11-30", "2024-12-31", "2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "pe": [null, null, null, null, null, null, null, null, null, null, null, null, 45.55, 49.85, 69.25, 113.02, 170.91, 227.75, 160.49, 153.02, 129.16, 136.36, 123.46, 97.4, 74.05, 131.58, 231.66, 237.94, 153.32, 146.3, 175.35, 168.58], "fy": ["2022", "2023", "2024", "2025"], "revenue": [79872000.0, 115794000.0, 396290000.0, 852525000.0], "net_income": [-58345000.0, -26257000.0, -83421000.0, 219134000.0], "fcf": [-39771000.0, -15477000.0, 102431000.0, 281762000.0]};
   const C = Nexus.colors;
   const GOLD = C.series2;
   const line = (x, y, name, color, extra) => Object.assign({ type: "scatter", mode: "lines", x, y, name, line: { color, width: 2 },

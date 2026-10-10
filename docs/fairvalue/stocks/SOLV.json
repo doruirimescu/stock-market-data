@@ -1,1 +1,1 @@
-{"ticker": "SOLV", "name": "Solventum Corp", "price": "87.29", "as_of": "2026-06-30", "gf_value": "\u2013", "verdict": "", "verdict_text": "", "gf_score": "79", "pe": "10.67", "roic": "13.14%", "f_score": "7", "z_score": "2.11"}
+{"ticker": "SOLV", "name": "Solventum Corp", "price": "87.29", "as_of": "2026-06-30", "fair_value": "$73.30", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "78", "pe": "10.67", "roic": "13.14%", "f_score": "7", "z_score": "2.11"}

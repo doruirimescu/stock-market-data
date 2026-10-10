@@ -1,1 +1,1 @@
-{"ticker": "DGX", "name": "QUEST DIAGNOSTICS INC", "price": "230.97", "as_of": "2026-06-30", "gf_value": "$178.45", "verdict": "over", "verdict_text": "Modestly Overvalued", "gf_score": "75", "pe": "24.52", "roic": "8.63%", "f_score": "8", "z_score": "3.62"}
+{"ticker": "DGX", "name": "QUEST DIAGNOSTICS INC", "price": "230.97", "as_of": "2026-06-30", "fair_value": "$196.55", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "77", "pe": "24.52", "roic": "8.63%", "f_score": "8", "z_score": "3.62"}

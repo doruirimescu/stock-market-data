@@ -1,1 +1,1 @@
-{"ticker": "DOV", "name": "DOVER Corp", "price": "188.83", "as_of": "2026-06-30", "gf_value": "$161.72", "verdict": "over", "verdict_text": "Modestly Overvalued", "gf_score": "83", "pe": "22.72", "roic": "\u2013", "f_score": "8", "z_score": "\u2013"}
+{"ticker": "DOV", "name": "DOVER Corp", "price": "188.83", "as_of": "2026-06-30", "fair_value": "$210.58", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "89", "pe": "22.72", "roic": "\u2013", "f_score": "8", "z_score": "\u2013"}
