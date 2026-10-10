@@ -8,6 +8,7 @@ design system can be previewed here before they are pushed. Nothing on disk chan
     python scripts/serve_site.py                    # port 8080, ../nexus-design if present
     python scripts/serve_site.py --design ~/x/nexus-design
     python scripts/serve_site.py --hosted           # use the published design system
+    python scripts/serve_site.py --host 0.0.0.0     # reachable from a phone on the same network
 
 `mise run site` (or `mise run start`, with the backend) runs this for you.
 """
@@ -59,6 +60,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--port", type=int, default=8080)
+    ap.add_argument("--host", default="127.0.0.1", help="interface to bind (0.0.0.0 = all, for a phone on your Wi-Fi)")
     ap.add_argument("--design", type=Path, default=ROOT.parent / "nexus-design", help="local nexus-design clone")
     ap.add_argument("--hosted", action="store_true", help="don't use a local nexus-design")
     args = ap.parse_args()
@@ -70,8 +72,8 @@ def main():
     print(f"Design system: {design or HOSTED.decode()}", flush=True)
 
     handler = functools.partial(Handler, directory=str(ROOT / "docs"))
-    with http.server.ThreadingHTTPServer(("127.0.0.1", args.port), handler) as httpd:
-        print(f"Serving docs/ on http://localhost:{args.port}", flush=True)
+    with http.server.ThreadingHTTPServer((args.host, args.port), handler) as httpd:
+        print(f"Serving docs/ on http://{'localhost' if args.host == '127.0.0.1' else args.host}:{args.port}", flush=True)
 
         # Ctrl-C (SIGINT) and mise stopping the task (SIGTERM) both mean "stop", and
         # often arrive together. Ask the server to stop instead of raising, so a

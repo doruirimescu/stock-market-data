@@ -145,19 +145,24 @@
     return "alphaspread";
   }
 
+  // The switch in the page header, and its floating copy (#source-dock) that nexus.js
+  // shows once the header scrolls away. Both render the same buttons and stay in sync.
   function setupSourceSwitch() {
-    const el = $("source-switch");
-    if (!el) return;
-    el.innerHTML = '<label>Source</label>' + Object.entries(SOURCES)
+    const buttons = Object.entries(SOURCES)
       .map(([k, v]) => `<button class="btn" data-source="${k}" aria-pressed="false">${v.label}</button>`).join("");
-    el.addEventListener("click", (e) => {
-      const b = e.target.closest("button[data-source]");
-      if (b && b.dataset.source !== source) switchSource(b.dataset.source, true);
+    ["source-switch", "source-dock"].forEach((id) => {
+      const el = $(id);
+      if (!el) return;
+      el.innerHTML = '<label>Source</label>' + buttons;
+      el.addEventListener("click", (e) => {
+        const b = e.target.closest("button[data-source]");
+        if (b && b.dataset.source !== source) switchSource(b.dataset.source, true);
+      });
     });
   }
 
   function syncSourceSwitch() {
-    document.querySelectorAll("#source-switch button[data-source]").forEach((b) => {
+    document.querySelectorAll("#source-switch button[data-source], #source-dock button[data-source]").forEach((b) => {
       const on = b.dataset.source === source;
       b.classList.toggle("primary", on);
       b.setAttribute("aria-pressed", on ? "true" : "false");
