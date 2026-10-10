@@ -130,6 +130,7 @@
         current_price_approx: rg?.current_price_approx ?? ra?.current_price_approx,
         solvency_score: (() => { const v = mean([ra?.solvency_score, rg?.solvency_score]); return v === null ? null : Math.round(v); })(),
         market_cap: rg?.market_cap,
+        quality_score: rg?.quality_score ?? null,
         as_score: ra?.valuation_score ?? null,
         fair_val: rg?.valuation_score ?? null,
       });
@@ -168,6 +169,7 @@
       b.setAttribute("aria-pressed", on ? "true" : "false");
       b.disabled = b.dataset.source !== "combined" && !(manifests[b.dataset.source][INDEX] || []).length;
     });
+    syncChartSort();
     const note = $("source-note");
     if (note) note.innerHTML = `${SOURCES[source].note}, refreshed daily. Not investment advice.`;
   }
@@ -371,13 +373,29 @@
   }
 
   // ---------- chart ----------
+  // The Fair Value score only exists in Fair Value data (and Combined, which takes it
+  // from there), so that sort is grayed out in AlphaSpread mode.
+  const hasQuality = () => source !== "alphaspread";
+
+  function syncChartSort() {
+    if (chartSort === "quality" && !hasQuality()) chartSort = "solvency";
+    document.querySelectorAll("[data-chart-sort]").forEach((b) => {
+      b.classList.toggle("primary", b.dataset.chartSort === chartSort);
+      if (b.dataset.chartSort === "quality") b.disabled = !hasQuality();
+    });
+  }
+
+  const CHART_SORTS = {
+    solvency: { key: (r) => r.solvency_score, title: "Ticker (sorted by solvency ↑)" },
+    quality: { key: (r) => r.quality_score, title: "Ticker (sorted by Fair Value score ↑)" },
+  };
+
   function renderChart(s) {
     const C = Nexus.colors;
     if (!window.Plotly) return;
+    const by = CHART_SORTS[chartSort];
     const rs = [...records].sort((a, b) =>
-      chartSort === "solvency"
-        ? (a.solvency_score ?? 0) - (b.solvency_score ?? 0) || a.valuation_score - b.valuation_score
-        : b.valuation_score - a.valuation_score
+      by ? (by.key(a) ?? 0) - (by.key(b) ?? 0) || a.valuation_score - b.valuation_score : b.valuation_score - a.valuation_score
     );
     const custom = rs.map((r) => [
       r.company || r.symbol,
@@ -385,6 +403,7 @@
       num(r.intrinsic_value),
       num(r.current_price_approx),
       r.solvency_score ?? "n/a",
+      r.quality_score ?? "n/a",
     ]);
     const trace = {
       type: "bar",
@@ -394,19 +413,38 @@
       customdata: custom,
       hovertemplate:
         "<b>%{customdata[0]}</b> (%{x})<br>%{customdata[1]}<br>Intrinsic value: %{customdata[2]}<br>" +
-        "Price: ~%{customdata[3]}<br>Solvency: %{customdata[4]}/100<extra></extra>",
+        "Price: ~%{customdata[3]}<br>Solvency: %{customdata[4]}/100" +
+        (hasQuality() ? "<br>Fair Value score: %{customdata[5]}/100" : "") + "<extra></extra>",
     };
+    const traces = [trace];
+    // Sorted by Fair Value score: draw the score itself on a right-hand 0–100 axis,
+    // so valuation (bars) can be read against quality (line).
+    if (chartSort === "quality") {
+      traces.push({
+        type: "scatter",
+        mode: "lines",
+        x: trace.x,
+        y: rs.map((r) => r.quality_score ?? null),
+        yaxis: "y2",
+        line: { color: C.accent, width: 2 },
+        hoverinfo: "skip",
+      });
+    }
     const avgColor = s.mean >= 0 ? C.positiveInk : C.negativeInk;
     const layout = Nexus.plotlyLayout({
       margin: { l: 56, r: 16, t: 16, b: 70 },
       bargap: 0.15,
       showlegend: false,
-      xaxis: { tickangle: -90, tickfont: { size: rs.length > 150 ? 7 : 9 }, title: { text: chartSort === "solvency" ? "Ticker (sorted by solvency ↑)" : "Ticker (most undervalued → most overvalued)", standoff: 8 } },
+      xaxis: { tickangle: -90, tickfont: { size: rs.length > 150 ? 7 : 9 }, title: { text: by ? by.title : "Ticker (most undervalued → most overvalued)", standoff: 8 } },
       yaxis: { title: { text: "Valuation gap (%)" }, zeroline: true, ticksuffix: "%" },
+      ...(chartSort === "quality" && {
+        margin: { l: 56, r: 56, t: 16, b: 70 },
+        yaxis2: { title: { text: "Fair Value score" }, overlaying: "y", side: "right", range: [0, 105], showgrid: false, zeroline: false },
+      }),
       shapes: [{ type: "line", xref: "paper", x0: 0, x1: 1, y0: s.mean, y1: s.mean, line: { color: avgColor, width: 1.5, dash: "dash" } }],
       annotations: [{ xref: "paper", x: 1, y: s.mean, yanchor: "bottom", xanchor: "right", yshift: 2, showarrow: false, bgcolor: Nexus.rgba(C.surface, 0.9), borderpad: 3, text: `equal-weight avg ${s.mean >= 0 ? "+" : ""}${s.mean.toFixed(1)}%`, font: { color: avgColor, size: 12 } }],
     });
-    Plotly.react("chart", [trace], layout, Nexus.plotlyConfig);
+    Plotly.react("chart", traces, layout, Nexus.plotlyConfig);
   }
 
   // ---------- table ----------
@@ -488,7 +526,7 @@
     document.querySelectorAll("[data-chart-sort]").forEach((b) =>
       b.addEventListener("click", () => {
         chartSort = b.dataset.chartSort;
-        document.querySelectorAll("[data-chart-sort]").forEach((x) => x.classList.toggle("primary", x === b));
+        syncChartSort();
         renderChart(summarize(records));
       })
     );
