@@ -49,10 +49,11 @@
     <div class="panel chart-panel">
       <div class="chart-head">
         <div class="legend"><span><i class="sw-under"></i>Undervalued</span><span><i class="sw-over"></i>Overvalued</span></div>
-        <div style="display:flex;gap:6px">
-          <button class="btn primary small" data-chart-sort="solvency">Sort by solvency</button>
-          <button class="btn small" data-chart-sort="valuation">Sort by valuation</button>
-          <button class="btn small" data-chart-sort="quality" title="Fair Value Score — only in Fair Value and Combined mode">Sort by Fair Value score</button>
+        <div class="chart-sort" role="group" aria-label="Sort the chart" style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
+          <span class="muted small">Sort</span>
+          <button class="btn primary small" data-chart-sort="solvency" style="white-space:nowrap">Solvency</button>
+          <button class="btn small" data-chart-sort="valuation" style="white-space:nowrap">Valuation</button>
+          <button class="btn small" data-chart-sort="quality" style="white-space:nowrap" title="Fair Value score (only in Fair Value and Combined mode)">FV score</button>
         </div>
       </div>
       <div id="chart" class="chart"></div>
