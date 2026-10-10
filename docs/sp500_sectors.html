@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>S&amp;P 500 Valuation · Investing Nexus</title>
-  <meta name="description" content="Daily AlphaSpread and Fair Value valuation snapshot of every S&amp;P 500 stock.">
+  <title>S&amp;P 500 Sectors · Investing Nexus</title>
+  <meta name="description" content="Daily AlphaSpread and Fair Value valuation of the S&amp;P 500, sector by sector.">
   <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
   <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
   <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
@@ -18,18 +18,24 @@
       .chart-sort > span { display: none; }
       .chart-sort .btn { flex: 1 1 0; min-width: 0; padding: 6px 4px; overflow: hidden; text-overflow: ellipsis; }
     }
+    /* Sector overview: rows select a sector; the selected one stays highlighted. */
+    .sector-table tbody tr { cursor: pointer; }
+    .sector-table tbody tr.selected td { background: var(--accent-soft); }
+    .sector-table tbody tr.selected a { font-weight: 600; }
+    .sector-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; scroll-margin-top: 80px; }
+    .sector-bar .input { min-width: 240px; }
   </style>
 </head>
-<body data-index="sp500" data-mode="full" data-title="S&amp;P 500 Valuation">
+<body data-index="sp500" data-mode="full" data-sectors data-title="S&amp;P 500 Sectors">
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="index.html"><span class="brand-mark">N</span>Investing Nexus</a>
       <nav class="nav">
         <a href="nasdaq_today.html">NASDAQ-100</a>
-        <a href="sp500_today.html" class="active">S&amp;P 500</a>
+        <a href="sp500_today.html">S&amp;P 500</a>
         <a href="fairvalue/index.html">Fair Value stocks</a>
         <a href="sp500_valuation.html">S&amp;P 500 Summary</a>
-        <a href="sp500_sectors.html">S&amp;P 500 Sectors</a>
+        <a href="sp500_sectors.html" class="active">S&amp;P 500 Sectors</a>
       </nav>
     </div>
   </header>
@@ -37,8 +43,8 @@
   <main class="container">
     <div class="page-head">
       <div>
-        <div class="eyebrow">Daily snapshot</div>
-        <h1>S&amp;P 500 <span class="gradient-text">Valuation</span></h1>
+        <div class="eyebrow">Sector breakdown</div>
+        <h1>S&amp;P 500 <span class="gradient-text">Sectors</span></h1>
         <p class="lead" id="narrative">Loading the latest snapshot…</p>
       </div>
       <div class="page-controls">
@@ -55,6 +61,14 @@
     <div class="as-of" id="as-of"></div>
     <div class="notice" id="error" hidden></div>
 
+    <h2 class="section">Sectors at a glance</h2>
+    <p class="muted small">Valuation gap of each GICS sector's stocks, most undervalued first. Pick a sector for its full breakdown.</p>
+    <div id="sector-overview"></div>
+
+    <div class="sector-bar" id="sector-detail">
+      <h2 class="section"><span data-sector-name></span></h2>
+      <select class="input" id="sector-select" aria-label="Sector"></select>
+    </div>
     <div class="kpis" id="kpis"></div>
 
     <h2 class="section">Valuation by stock</h2>
@@ -80,9 +94,9 @@
       <div><div class="panel-title"><span class="verdict over">Most overvalued</span></div><div id="most-over"></div></div>
     </div>
 
-    <h2 class="section">All stocks</h2>
+    <h2 class="section">All <span data-sector-name></span> stocks</h2>
     <div class="toolbar">
-      <input class="input" id="search" type="search" placeholder="Search ticker or company…" aria-label="Search ticker or company">
+      <input class="input" id="search" type="search" placeholder="Search the sector's tickers or companies…" aria-label="Search ticker or company">
       <div style="display:flex;gap:10px;align-items:center">
         <span class="muted small" id="table-count"></span>
         <select class="input" id="filter" aria-label="Filter by verdict">

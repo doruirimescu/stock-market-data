@@ -58,6 +58,9 @@ mise run fairvalue sp500            # or nasdaq100
 
 # Publish a run as today's dated snapshot for the site
 mise run publish fairvalue sp500    # source: alphaspread|fairvalue, index: nasdaq100|sp500
+
+# S&P 500 GICS sectors (Wikipedia) → generated/sp500_sectors.json + docs/data/sp500_sectors.js
+mise run sectors
 ```
 
 The PNG export (kaleido) renders with a Chrome or Chromium it finds on the system.
@@ -84,6 +87,13 @@ Combined averages each stock's valuation gap and solvency over the sources that
 value it, pairing each source's newest snapshot on or before the chosen date.
 Both sources use the same record shape: valuation gap = (value − price) / value,
 positive when undervalued, and a 0–100 solvency score.
+
+`sp500_sectors.html` gives the same breakdown per GICS sector: a sector
+comparison table (equal-weight, median and market-cap-weighted gap, solvency),
+then the KPIs, chart, distribution, extremes and table for the selected sector
+(`?sector=energy`, `?sector=information-technology`, …). The sector of each
+stock comes from `docs/data/sp500_sectors.js` (`mise run sectors`, refreshed by
+the daily workflow).
 
 `docs/fairvalue/` holds a Fair Value summary page per stock
 (`stocks/<TICKER>.html`), an index of them, and the validation of the model

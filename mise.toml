@@ -86,3 +86,10 @@ case "$usage_index" in nasdaq100) site=nasdaq ;; *) site=sp500 ;; esac
 python scripts/publish_site_data.py --source "$usage_source" --index "$site" --date "${usage_date:-$(date +%F)}" \
   --src "generated/$usage_source/${usage_index}_valuations.json"
 '''
+
+[tasks.sectors]
+description = "Refresh the S&P 500 GICS sector map and publish it for the sector pages"
+run = [
+  "python scripts/sp500_sectors.py --out generated/sp500_sectors.json",
+  "python scripts/publish_site_data.py --sectors generated/sp500_sectors.json",
+]

@@ -70,12 +70,17 @@ jobs:
           mise run publish alphaspread nasdaq100 --date "$DATE"
           mise run publish alphaspread sp500 --date "$DATE"
 
+      # GICS sectors for the sector pages. Non-fatal: on failure the last
+      # published map stays in place.
+      - name: Refresh the S&P 500 sector map
+        run: mise run sectors || echo "::warning::Sector refresh failed; keeping the previous map."
+
       - name: Commit and push generated files
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           DATE=$(date -u +%F)
-          git add generated/alphaspread docs/data/alphaspread
+          git add generated/alphaspread docs/data/alphaspread generated/sp500_sectors.json docs/data/sp500_sectors.js
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0

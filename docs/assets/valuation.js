@@ -4,6 +4,9 @@
  * Page config lives on <body>:
  *   data-index = "nasdaq" | "sp500"     which docs/data/{source}/{index}/ to read
  *   data-mode  = "full"   | "summary"   full adds the chart and the all-stocks table
+ *   data-sectors                        sector pages: a sector overview, and every
+ *                                       section shows one GICS sector's stocks
+ *                                       (?sector=<slug>, from docs/data/sp500_sectors.js)
  *
  * Valuation source (switch on the page, ?source=, remembered per browser):
  *   alphaspread   AlphaSpread intrinsic value and solvency score
@@ -53,6 +56,14 @@
   let manifestDates = [];
   let weights = null;
   let records = [];
+
+  // Sector pages: allRecords is the whole snapshot, records the selected sector's stocks.
+  const SECTOR_MODE = "sectors" in body.dataset;
+  const DEFAULT_SECTOR = "Information Technology";
+  let sectorMap = null;
+  let sector = null;
+  let allRecords = [];
+  let snapshotDate = null;
   let chartSort = "solvency";
   let tableSort = { key: "valuation_score", dir: -1 };
 
@@ -68,6 +79,10 @@
     const word = score >= 0 ? "Undervalued" : "Overvalued";
     return `<span class="verdict ${cls}">${word} ${Math.abs(score).toFixed(digits)}%</span>`;
   }
+
+  const sectorSlug = (name) => name.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  const sectorOf = (r) => (sectorMap && sectorMap[r.symbol]) || "Unclassified";
+  const scope = () => (SECTOR_MODE ? `the ${sector} sector` : "the index");
 
   // ---------- data ----------
   // fresh: append a cache-buster for files that change between runs (the manifest).
@@ -227,6 +242,7 @@
     window.addEventListener("popstate", () => {
       const src = sourceFromURL();
       if (src !== source) { source = src; manifestDates = datesFor(src); fillPicker(); syncSourceSwitch(); }
+      if (SECTOR_MODE) sector = sectorFromURL();
       load(currentDateFromURL(), false);
     });
   }
@@ -254,23 +270,34 @@
       if (date === manifestDates[0]) url.searchParams.delete("date");
       else url.searchParams.set("date", date);
       url.searchParams.set("source", source);
+      if (SECTOR_MODE) url.searchParams.set("sector", sectorSlug(sector));
       history.pushState(null, "", url);
     }
     body.classList.add("loading");
     try {
-      records = await loadRecords(date);
+      allRecords = await loadRecords(date);
     } catch (e) {
       showError(`Could not load the snapshot for ${date}. ${e.message}`);
       return;
     } finally {
       body.classList.remove("loading");
     }
+    snapshotDate = date;
     renderAsOf(date);
-    if (!records.length) {
+    if (!allRecords.length) {
       showError(`The ${date} snapshot contains no valued stocks.`);
       return;
     }
     $("error").hidden = true;
+    if (SECTOR_MODE) renderSectorOverview();
+    render();
+  }
+
+  // Render every section from the loaded snapshot (sector pages: the selected sector's stocks).
+  function render() {
+    const date = snapshotDate;
+    records = SECTOR_MODE ? allRecords.filter((r) => sectorOf(r) === sector) : allRecords;
+    if (SECTOR_MODE) renderSectorHead();
     const s = summarize(records);
     renderKPIs(s);
     renderNarrative(s, date);
@@ -309,7 +336,7 @@
     $("kpis").innerHTML = [
       { label: "Stocks valued", value: s.n, sub: `<span class="verdict under">${s.under} under</span> &nbsp; <span class="verdict over">${s.over} over</span>` },
       { label: "Equal-weight", ...kpiGap(s.mean, "average gap") },
-      { label: "Median stock", ...kpiGap(s.median, "middle of the index") },
+      { label: "Median stock", ...kpiGap(s.median, `middle of ${SECTOR_MODE ? "the sector" : "the index"}`) },
       { label: "Market-cap weighted", ...kpiGap(s.capWeighted, capNote) },
       { label: "Avg. solvency", value: isFinite(s.avgSolvency) ? `${s.avgSolvency.toFixed(0)}<span class="muted small"> / 100</span>` : "—", sub: "balance-sheet strength" },
     ]
@@ -321,7 +348,7 @@
     const el = $("narrative");
     if (!el) return;
     const parts = [
-      `On <mark>${esc(shortDate(date))}</mark>, <span class="hl-accent">${s.under} of ${s.n}</span> stocks trade below their ${esc(SOURCES[source].value)}.`,
+      `On <mark>${esc(shortDate(date))}</mark>, <span class="hl-accent">${s.under} of ${s.n}</span> stocks${SECTOR_MODE ? ` in ${esc(scope())}` : ""} trade below their ${esc(SOURCES[source].value)}.`,
       `The equal-weight portfolio is <mark>${verdictWord(s.mean)} by ${Math.abs(s.mean).toFixed(1)}%</mark>`,
     ];
     if (isFinite(s.capWeighted)) {
@@ -532,6 +559,71 @@
     );
   }
 
+  // ---------- sectors ----------
+  function sectorNames() {
+    return [...new Set(Object.values(sectorMap || {}))].sort();
+  }
+
+  function sectorFromURL() {
+    const q = new URLSearchParams(location.search).get("sector");
+    const names = sectorNames();
+    return names.find((n) => sectorSlug(n) === q) || (names.includes(DEFAULT_SECTOR) ? DEFAULT_SECTOR : names[0]);
+  }
+
+  function selectSector(name) {
+    if (name === sector) return;
+    sector = name;
+    const url = new URL(location.href);
+    url.searchParams.set("sector", sectorSlug(sector));
+    history.pushState(null, "", url);
+    renderSectorOverview();
+    render();
+  }
+
+  function renderSectorHead() {
+    $("sector-select").value = sector;
+    document.querySelectorAll("[data-sector-name]").forEach((el) => (el.textContent = sector));
+    document.title = `${sector} · ${body.dataset.title} · ${snapshotDate}`;
+  }
+
+  // One row per sector, most undervalued (equal-weight) first; a click selects the sector.
+  function renderSectorOverview() {
+    const groups = new Map(sectorNames().map((n) => [n, []]));
+    for (const r of allRecords) {
+      const k = sectorOf(r);
+      if (!groups.has(k)) groups.set(k, []);
+      groups.get(k).push(r);
+    }
+    const rows = [...groups].filter(([, rs]) => rs.length).map(([name, rs]) => ({ name, ...summarize(rs) }));
+    rows.sort((a, b) => b.mean - a.mean);
+    $("sector-overview").innerHTML = `<div class="table-wrap"><table class="data sector-table">
+      <thead><tr><th>Sector</th><th class="num">Stocks</th><th class="num">Under / over</th><th class="num">Equal-weight</th>
+        <th class="num">Median</th><th class="num">Market-cap weighted</th><th class="num">Avg. solvency</th></tr></thead>
+      <tbody>${rows
+        .map((r) => `<tr data-sector="${esc(r.name)}"${r.name === sector ? ' class="selected" aria-selected="true"' : ""}>
+          <td><a href="?sector=${sectorSlug(r.name)}">${esc(r.name)}</a></td>
+          <td class="num">${r.n}</td>
+          <td class="num"><span class="verdict under">${r.under}</span> <span class="verdict over">${r.over}</span></td>
+          <td class="num">${verdictHTML(r.mean)}</td>
+          <td class="num">${verdictHTML(r.median)}</td>
+          <td class="num">${verdictHTML(r.capWeighted)}</td>
+          <td class="num">${isFinite(r.avgSolvency) ? r.avgSolvency.toFixed(0) : "—"}</td></tr>`)
+        .join("")}</tbody></table></div>`;
+  }
+
+  function setupSectors() {
+    sector = sectorFromURL();
+    $("sector-select").innerHTML = sectorNames().map((n) => `<option value="${esc(n)}">${esc(n)}</option>`).join("");
+    $("sector-select").addEventListener("change", (e) => selectSector(e.target.value));
+    $("sector-overview").addEventListener("click", (e) => {
+      const tr = e.target.closest("tr[data-sector]");
+      if (!tr) return;
+      e.preventDefault();
+      selectSector(tr.dataset.sector);
+      $("sector-detail").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
   function showError(msg) {
     const el = $("error");
     el.textContent = msg;
@@ -540,13 +632,15 @@
 
   async function init() {
     try {
-      const [ma, mg, w] = await Promise.all([
+      const [ma, mg, w, sm] = await Promise.all([
         loadData("alphaspread/manifest", true).then((m) => m).catch(() => ({})),
         loadData("fairvalue/manifest", true).then((m) => m).catch(() => ({})),
         loadData("sp500_weights").catch(() => null),
+        SECTOR_MODE ? loadData("sp500_sectors") : null,
       ]);
       manifests = { alphaspread: ma || {}, fairvalue: mg || {} };
       weights = w;
+      sectorMap = sm;
       source = sourceFromURL();
       if (source !== "combined" && !datesFor(source).length) source = datesFor("alphaspread").length ? "alphaspread" : "fairvalue";
       manifestDates = datesFor(source);
@@ -561,6 +655,7 @@
     setupSourceSwitch();
     syncSourceSwitch();
     setupPicker();
+    if (SECTOR_MODE) setupSectors();
     if (MODE === "full") setupTable();
     load(currentDateFromURL(), false);
   }

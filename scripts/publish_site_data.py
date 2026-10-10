@@ -8,6 +8,7 @@ docs/data/, one folder per valuation source (alphaspread, fairvalue):
     docs/data/{source}/{slug}/YYYY-MM-DD.js   one snapshot per index per day
     docs/data/{source}/manifest.js            {"nasdaq": [dates newest first], "sp500": [...]}
     docs/data/sp500_weights.js                market caps for the cap-weighted average
+    docs/data/sp500_sectors.js                GICS sector of each S&P 500 stock (sector pages)
 
 Each source has its own manifest, so the AlphaSpread and Fair Value jobs never
 write the same file and can publish independently.
@@ -30,6 +31,9 @@ Usage:
 
     # Refresh the market-cap weights
     python scripts/publish_site_data.py --weights generated/sp500_weights.json
+
+    # Refresh the sector map (from scripts/sp500_sectors.py)
+    python scripts/publish_site_data.py --sectors generated/sp500_sectors.json
 
     # Only rebuild the manifests from the snapshots on disk
     python scripts/publish_site_data.py --manifest-only
@@ -80,6 +84,13 @@ def write_weights(src):
     return write_js(os.path.join(DATA_DIR, "sp500_weights.js"), "sp500_weights", weights)
 
 
+def write_sectors(src):
+    """Publish {ticker: sector} only; the sub-industry is not used by the pages."""
+    with open(src, "r", encoding="utf-8") as f:
+        sectors = {k: v["sector"] for k, v in json.load(f).items()}
+    return write_js(os.path.join(DATA_DIR, "sp500_sectors.js"), "sp500_sectors", sectors)
+
+
 def build_manifest(source):
     manifest = {}
     for slug in SLUGS:
@@ -98,14 +109,17 @@ def main():
     ap.add_argument("--date", help="Snapshot date, YYYY-MM-DD.")
     ap.add_argument("--src", help="Valuations JSON to snapshot.")
     ap.add_argument("--weights", help="Market-cap weights JSON to publish (sp500_weights.json).")
+    ap.add_argument("--sectors", help="Sector map JSON to publish (sp500_sectors.json).")
     ap.add_argument("--manifest-only", action="store_true", help="Only rebuild the manifests.")
     args = ap.parse_args()
 
     if args.weights:
         print(f"[✓] Wrote weights -> {write_weights(args.weights)}")
-    if not (args.manifest_only or args.weights):
+    if args.sectors:
+        print(f"[✓] Wrote sectors -> {write_sectors(args.sectors)}")
+    if not (args.manifest_only or args.weights or args.sectors):
         if not (args.index and args.date and args.src):
-            ap.error("--index, --date and --src are required unless --manifest-only or --weights")
+            ap.error("--index, --date and --src are required unless --manifest-only, --weights or --sectors")
         out = write_snapshot(args.source, args.index, args.date, args.src)
         if out:
             print(f"[✓] Wrote snapshot -> {out}")
