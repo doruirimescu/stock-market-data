@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Strategy Lab · Basket Rotation · Investing Nexus</title>
+  <meta name="description" content="Edit the algorithm config and re-run the whole ratio scan and backtests in the browser.">
+  <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <link rel="stylesheet" href="assets/basket.css">
+  <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="index.html">Overview</a>
+        <a href="basket.html">Baskets</a>
+        <a href="lab.html" class="active">Strategy Lab</a>
+        <a href="trend.html">Sector Trend</a>
+        <a href="algorithm.html">Algorithm</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-head">
+      <div>
+        <div class="eyebrow">What-if engine</div>
+        <h1>Strategy <span class="gradient-text">Lab</span></h1>
+        <p class="lead">Change any parameter and re-run the <mark>full ratio scan and backtests</mark> right here in the browser, on the same price panel as the published run. When the results look right, export the <span class="hl-accent">config.yaml</span>.</p>
+      </div>
+      <div class="date-bar" id="run-picker" role="group" aria-label="Run"></div>
+    </div>
+    <div class="notice" id="error" hidden></div>
+
+    <div class="lab">
+      <aside class="panel lab-side" id="form" aria-label="Parameters"></aside>
+
+      <section style="min-width:0">
+        <div class="panel parity" id="parity"><span class="badge past">Checking parity…</span><span class="muted small">Re-running the published config in the browser and comparing with the Python results.</span></div>
+
+        <div class="kpis tight" id="kpis"></div>
+        <div class="progress" id="progress" hidden><div></div></div>
+
+        <h2 class="section">Lab leaderboard</h2>
+        <div class="table-wrap">
+          <table class="data board">
+            <thead><tr><th>#</th><th>Basket ratio</th><th class="num">Score</th><th class="num">Return</th><th class="num">Max DD</th>
+              <th class="num">Sharpe</th><th class="num">Trades</th><th class="num">Published rank</th><th>Equity</th></tr></thead>
+            <tbody id="board"><tr><td colspan="9" class="muted">Run the lab to see results.</td></tr></tbody>
+          </table>
+        </div>
+
+        <div class="panel chart-panel">
+          <div class="chart-head"><h3 id="eq-title">Equity: lab config vs published config</h3>
+            <div class="legend"><span><i class="ln" style="background:var(--text);height:3px"></i>Lab config</span><span><i class="ln" style="background:var(--faint)"></i>Published config</span></div>
+          </div>
+          <div id="c-eq" class="chart h-md"></div>
+        </div>
+
+        <h2 class="section">Robustness surface</h2>
+        <div class="panel chart-panel" style="margin-top:0">
+          <div class="chart-head"><h3 id="sweep-title">Parameter sweep for the selected basket</h3></div>
+          <div class="sweep-controls">
+            <label for="sw-x">X</label><select class="input" id="sw-x"></select>
+            <label for="sw-y">Y</label><select class="input" id="sw-y"></select>
+            <label for="sw-m">Metric</label>
+            <select class="input" id="sw-m">
+              <option value="total_return">Total return</option><option value="sharpe">Sharpe (ann.)</option>
+              <option value="max_dd">Max drawdown</option><option value="trades">Rotations</option><option value="score">Engine score</option>
+            </select>
+            <button class="btn sm primary" id="sw-run">Sweep</button>
+          </div>
+          <div id="c-sweep" class="chart" style="height:460px"></div>
+          <div class="chart-note">A 13 × 13 grid around the current settings, holding everything else fixed. A broad plateau of good cells suggests a robust edge; a lone bright cell suggests overfitting. Click a cell to load those two values into the form. The ✕ marks the current form values.</div>
+        </div>
+
+        <h2 class="section">Export</h2>
+        <div class="toolbar">
+          <span class="muted small" id="diff-count"></span>
+          <div style="display:flex;gap:8px"><button class="btn sm" id="copy-yaml">Copy</button><button class="btn sm primary" id="dl-yaml">Download config.yaml</button></div>
+        </div>
+        <pre class="code" id="yaml"></pre>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">The Lab runs a JavaScript port of <code>mrscore</code>; the published Python run stays the source of truth. Research tooling. Not investment advice.</div>
+  </footer>
+
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+  <script src="assets/mrscore.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+  (async function () {
+    const { fmt, sign, esc } = BN;
+    let ctx;
+    try { ctx = await BN.loadRun(); } catch (e) { BN.showError(e); return; }
+    const { run, manifest, id } = ctx;
+    BN.mountRunPicker(document.getElementById("run-picker"), manifest, id);
+    BN.wireNav(id);
+    const P = BN.palette(), panel = run.panel, N = panel.symbols.length;
+    const clone = (o) => JSON.parse(JSON.stringify(o));
+    const base = run.config;
+    let state = clone(base);
+    let mask = panel.symbols.map((s) => base.data.tickers.includes(s));
+
+    // ------------------------------------------------------------ schema
+    const DEFAULTS = {
+      mean: { rolling_sma: { window: 50 }, ema: { span: 50, min_periods: 10 },
+        kalman_mean: { process_var: 0.01, obs_var: 1.0, init_mean: 0.0, init_var: 10.0, min_periods: 5 } },
+      vol: { ewma: { span: 30, min_periods: 10, min_volatility: 0.0005, volatility_unit: "returns" },
+        rolling_std: { window: 30, min_periods: 10, ddof: 0, min_volatility: 0.0005, volatility_unit: "returns" },
+        garch11: { omega: 1e-6, alpha: 0.08, beta: 0.9, init_sigma2: null, min_volatility: 0.0005, min_periods: 10, enforce_stationarity: true, volatility_unit: "returns" } },
+    };
+    const get = (o, p) => p.split(".").reduce((a, k) => (a == null ? a : a[k]), o);
+    const set = (o, p, v) => { const ks = p.split("."); const last = ks.pop(); ks.reduce((a, k) => (a[k] = a[k] || {}), o)[last] = v; };
+    const numField = (path, label, step = "any", min) => ({ path, label, kind: "num", step, min });
+    const intField = (path, label, min = 1) => ({ path, label, kind: "int", min });
+    const boolField = (path, label) => ({ path, label, kind: "bool" });
+    const selField = (path, label, options) => ({ path, label, kind: "sel", options });
+
+    function paramFields(prefix, params) {
+      return Object.entries(params).filter(([k]) => k !== "volatility_unit" && k !== "init_sigma2").map(([k, v]) =>
+        typeof v === "boolean" ? boolField(`${prefix}.${k}`, k) : Number.isInteger(v) && !/var|volatility|omega|alpha|beta|mean/.test(k)
+          ? intField(`${prefix}.${k}`, k, k === "ddof" ? 0 : 1) : numField(`${prefix}.${k}`, k));
+    }
+
+    function groups() {
+      const g = [];
+      g.push({ title: "Universe", fields: [intField("ratio_universe.k_num", "k_num"), intField("ratio_universe.k_den", "k_den"),
+        boolField("ratio_universe.disallow_overlap", "disallow_overlap"), boolField("ratio_universe.unordered_if_equal_k", "unordered_if_equal_k"),
+        intField("ratio_universe.max_jobs", "max_jobs"), intField("visualization.top_k", "top_k")], tickers: true });
+      g.push({ title: "Mean estimator", fields: [selField("mean_estimator.type", "type", Object.keys(DEFAULTS.mean)), ...paramFields("mean_estimator.params", state.mean_estimator.params)] });
+      g.push({ title: "Volatility estimator", fields: [selField("volatility_estimator.type", "type", Object.keys(DEFAULTS.vol)),
+        selField("volatility_estimator.params.volatility_unit", "volatility_unit", ["returns", "price"]), ...paramFields("volatility_estimator.params", state.volatility_estimator.params)] });
+      g.push({ title: "Signal", fields: [numField("deviation_detector.params.threshold", "threshold", 0.05, 0), numField("deviation_detector.params.min_absolute_move", "min_absolute_move", 0.001, 0),
+        numField("reversion_criteria.params.z_tolerance", "z_tolerance", 0.05, 0), intField("failure_criteria.params.max_duration", "max_duration"),
+        numField("failure_criteria.params.max_zscore", "max_zscore", 0.1, 0)] });
+      g.push({ title: "Engine", fields: [boolField("engine.allow_overlapping_events", "allow_overlapping"), intField("engine.max_active_events", "max_active_events"),
+        boolField("engine.freeze_mean_on_event", "freeze_mean"), boolField("engine.freeze_volatility_on_event", "freeze_volatility"),
+        selField("data.returns_mode", "returns_mode", ["log", "simple", "none"]), intField("data.min_bars_required", "min_bars_required")] });
+      g.push({ title: "Scoring", fields: [selField("scoring.score_metric", "score_metric", ["sharpe", "reversion_rate", "direction", "volatility_bucket", "weighted_average"]),
+        boolField("scoring.compute_sharpe", "compute_sharpe"), boolField("scoring.by_direction", "by_direction"), boolField("scoring.by_volatility_bucket", "by_volatility_bucket"),
+        intField("scoring.volatility_buckets", "volatility_buckets"), boolField("scoring.record_empty_scores", "record_empty_scores")] });
+      if (state.backtest) g.push({ title: "Backtest", fields: [boolField("backtest.enabled", "enabled"), selField("backtest.strategy.params.signal_series", "signal_series", ["log_ratio", "ratio"]),
+        numField("backtest.initial_cash", "initial_cash", 1000, 0), numField("backtest.costs.commission_bps", "commission_bps", 0.1, 0), numField("backtest.costs.slippage_bps", "slippage_bps", 0.1, 0)] });
+      return g;
+    }
+
+    /** Mirrors the pydantic cross-field rules that matter for a run. */
+    function validate(c) {
+      const errs = [], sc = c.scoring;
+      if (sc.score_metric === "sharpe" && !sc.compute_sharpe) errs.push("score_metric=sharpe needs compute_sharpe");
+      if (sc.score_metric === "direction" && !sc.by_direction) errs.push("score_metric=direction needs by_direction");
+      if (sc.score_metric === "volatility_bucket" && !sc.by_volatility_bucket) errs.push("score_metric=volatility_bucket needs by_volatility_bucket");
+      if (sc.by_volatility_bucket && !(sc.volatility_buckets >= 1)) errs.push("volatility_buckets must be ≥ 1");
+      const n = mask.filter(Boolean).length;
+      if (c.ratio_universe.k_num + (c.ratio_universe.disallow_overlap ? c.ratio_universe.k_den : 0) > n || c.ratio_universe.k_den > n) errs.push(`not enough tickers (${n}) for k_num=${c.ratio_universe.k_num}, k_den=${c.ratio_universe.k_den}`);
+      if (c.volatility_estimator.params.volatility_unit === "returns" && c.data.returns_mode === "none") errs.push("volatility_unit=returns needs a returns_mode");
+      if (c.deviation_detector.params.threshold <= 0) errs.push("threshold must be > 0");
+      if (c.reversion_criteria.params.z_tolerance <= 0) errs.push("z_tolerance must be > 0");
+      const g = c.volatility_estimator;
+      if (g.type === "garch11" && g.params.enforce_stationarity && g.params.alpha + g.params.beta >= 1) errs.push("GARCH needs alpha + beta < 1");
+      return errs;
+    }
+
+    // -------------------------------------------------------------- form
+    const form = document.getElementById("form");
+    function renderForm() {
+      form.innerHTML = groups().map((g, gi) => `<div class="group"><h4>${g.title}</h4>
+        ${g.tickers ? `<div class="toggle-row" style="margin-bottom:8px">${panel.symbols.map((s, j) => `<span class="chip ${mask[j] ? "num" : "off"}" data-tk="${j}" role="switch" aria-checked="${mask[j]}" tabindex="0">${esc(s)}</span>`).join("")}</div>` : ""}
+        ${g.fields.map((f) => fieldHTML(f)).join("")}</div>`).join("") +
+        `<div class="lab-actions"><button class="btn" id="reset">Reset</button><button class="btn primary" id="run" title="Ctrl + Enter">Run scan</button></div>`;
+      form.querySelectorAll("[data-path]").forEach((el) => (el.onchange = () => onField(el)));
+      form.querySelectorAll("[data-tk]").forEach((el) => {
+        const flip = () => { const j = +el.dataset.tk; mask[j] = !mask[j]; renderForm(); refresh(); };
+        el.onclick = flip; el.onkeydown = (e) => (e.key === " " || e.key === "Enter") && (e.preventDefault(), flip());
+      });
+      document.getElementById("reset").onclick = () => { state = clone(base); mask = panel.symbols.map((s) => base.data.tickers.includes(s)); renderForm(); refresh(); runLab(); };
+      document.getElementById("run").onclick = runLab;
+    }
+    function fieldHTML(f) {
+      const v = get(state, f.path), b = get(base, f.path);
+      const changed = JSON.stringify(v) !== JSON.stringify(b);
+      let input;
+      if (f.kind === "bool") input = `<select class="input" data-path="${f.path}" data-kind="bool"><option value="true"${v ? " selected" : ""}>true</option><option value="false"${!v ? " selected" : ""}>false</option></select>`;
+      else if (f.kind === "sel") input = `<select class="input" data-path="${f.path}" data-kind="sel">${f.options.map((o) => `<option${o === v ? " selected" : ""}>${o}</option>`).join("")}</select>`;
+      else input = `<input class="input" type="number" data-path="${f.path}" data-kind="${f.kind}" value="${v ?? ""}" step="${f.kind === "int" ? 1 : f.step}"${f.min !== undefined ? ` min="${f.min}"` : ""}>`;
+      return `<div class="field${changed ? " changed" : ""}" title="${f.path}${changed ? ` · published: ${b}` : ""}"><label><code>${f.label}</code></label>${input}</div>`;
+    }
+    function onField(el) {
+      const p = el.dataset.path, k = el.dataset.kind;
+      let v = el.value;
+      if (k === "bool") v = v === "true";
+      else if (k === "int") v = v === "" ? null : parseInt(v, 10);
+      else if (k === "num") v = v === "" ? null : parseFloat(v);
+      if (p === "mean_estimator.type") state.mean_estimator = { type: v, params: clone(base.mean_estimator.type === v ? base.mean_estimator.params : DEFAULTS.mean[v]) };
+      else if (p === "volatility_estimator.type") state.volatility_estimator = { type: v, params: clone(base.volatility_estimator.type === v ? base.volatility_estimator.params : DEFAULTS.vol[v]) };
+      else set(state, p, v);
+      renderForm(); refresh(); fillSweepSelects();
+    }
+    document.addEventListener("keydown", (e) => { if ((e.ctrlKey || e.metaKey) && e.key === "Enter") { e.preventDefault(); runLab(); } });
+
+    // -------------------------------------------------------------- yaml
+    function yaml(o, ind = "") {
+      return Object.entries(o).map(([k, v]) => {
+        if (v && typeof v === "object" && !Array.isArray(v)) return `${ind}<span class="k">${k}</span>:\n${yaml(v, ind + "  ")}`;
+        if (Array.isArray(v)) return v.length && typeof v[0] !== "object" && k !== "tickers" ? `${ind}<span class="k">${k}</span>: <span class="v">[${v.join(", ")}]</span>`
+          : `${ind}<span class="k">${k}</span>:\n${v.map((x) => `${ind}  - <span class="v">${x}</span>`).join("\n")}`;
+        const s = v === null ? "null" : typeof v === "string" && /^\d{4}-\d\d-\d\d$/.test(v) ? `"${v}"` : String(v);
+        return `${ind}<span class="k">${k}</span>: <span class="v">${esc(s)}</span>`;
+      }).join("\n");
+    }
+    function exportConfig() { const c = clone(state); c.data.tickers = panel.symbols.filter((_, j) => mask[j]); return c; }
+    function diffs(a, b, p = "") {
+      if (a && b && typeof a === "object" && typeof b === "object" && !Array.isArray(a)) return [...new Set([...Object.keys(a), ...Object.keys(b)])].flatMap((k) => diffs(a[k], b[k], p ? p + "." + k : k));
+      return JSON.stringify(a) === JSON.stringify(b) ? [] : [p];
+    }
+    function refresh() {
+      const c = exportConfig(), d = diffs(c, base), errs = validate(state);
+      document.getElementById("yaml").innerHTML = `<span class="c"># Generated by Basket Rotation Strategy Lab from run ${esc(run.meta.id)}</span>\n` +
+        (d.length ? `<span class="c"># Changed: ${esc(d.join(", "))}</span>\n` : "") + yaml(c);
+      document.getElementById("diff-count").innerHTML = errs.length ? `<span class="neg">${esc(errs.join(" · "))}</span>`
+        : d.length ? `<mark>${d.length} change${d.length > 1 ? "s" : ""}</mark> vs the published config` : "Identical to the published config";
+      document.getElementById("run").disabled = errs.length > 0;
+    }
+    const plainYaml = () => document.getElementById("yaml").textContent;
+    document.getElementById("copy-yaml").onclick = async (e) => { try { await navigator.clipboard.writeText(plainYaml()); e.target.textContent = "Copied"; setTimeout(() => (e.target.textContent = "Copy"), 1200); } catch (_) { e.target.textContent = "Copy failed"; } };
+    document.getElementById("dl-yaml").onclick = () => { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([plainYaml()], { type: "text/yaml" })); a.download = "config.yaml"; a.click(); URL.revokeObjectURL(a.href); };
+
+    // ------------------------------------------------------------- run
+    const prog = document.getElementById("progress");
+    let lab = null, selected = null, running = null;
+    async function scan(cfg, m) {
+      if (running) running.abort();
+      const ac = (running = new AbortController());
+      prog.hidden = false;
+      const t0 = performance.now();
+      try {
+        const res = await mrscore.scanUniverse(cfg, panel, { symbolsMask: m, signal: ac.signal, onProgress: (f) => (prog.firstElementChild.style.width = f * 100 + "%") });
+        res.ms = performance.now() - t0;
+        return res;
+      } finally { if (running === ac) { running = null; prog.hidden = true; } }
+    }
+
+    async function runLab() {
+      if (validate(state).length) return;
+      try { lab = await scan(state, mask); } catch (e) { if (e.name !== "AbortError") BN.showError(e); return; }
+      selected = lab.top[0] || null;
+      renderResults();
+    }
+
+    // ------------------------------------------------------------ results
+    const pubRank = (t) => { const r = run.top.find((p) => p.num.join() === t.num.join() && p.den.join() === t.den.join()); return r ? r.rank : null; };
+    function renderResults() {
+      const pb = run.top[0], lb = lab.top[0];
+      const pm = pb && pb.backtest ? BN.derive(run, pb).metrics : {}, lm = lb && lb.backtest ? mrscore.metrics(lb.backtest) : {};
+      const med = (arr) => { const a = arr.filter(BN.isNum).sort((x, y) => x - y); return a.length ? a[Math.floor((a.length - 1) / 2)] : NaN; };
+      const lMed = med(lab.top.map((t) => t.backtest && t.backtest.total_return)), pMed = med(run.top.map((t) => t.backtest && t.backtest.total_return));
+      const delta = (a, b, f = fmt.spct) => (BN.isNum(a) && BN.isNum(b) && Math.abs(a - b) > 1e-6 * Math.max(1, Math.abs(b)) ? `<span class="delta ${sign(a - b)}">${a > b ? "▲" : "▼"} ${f(Math.abs(a - b)).replace(/^[+−]/, "")}</span>` : `<span class="delta dim">±0</span>`);
+      const kpi = (l, v, s) => `<div class="panel kpi"><div class="label">${l}</div><div class="value sm">${v}</div><div class="sub">${s}</div></div>`;
+      document.getElementById("kpis").innerHTML = [
+        kpi("Best score", `${fmt.sig(lb && lb.score, 4)}${delta(lb && lb.score, pb && pb.score, (x) => fmt.sig(x, 3))}`, `published ${fmt.sig(pb && pb.score, 4)}`),
+        kpi("Best return", `<span class="${sign(lm.total_return)}">${fmt.spct(lm.total_return)}</span>${delta(lm.total_return, pm.total_return)}`, `published ${fmt.spct(pm.total_return)}`),
+        kpi("Median top-k return", `<span class="${sign(lMed)}">${fmt.spct(lMed)}</span>${delta(lMed, pMed)}`, `published ${fmt.spct(pMed)}`),
+        kpi("Ratios scanned", fmt.int(lab.jobs.length), `${fmt.int(lab.scores.filter(Number.isFinite).length)} scored · ${fmt.num(lab.ms / 1000, 2)} s in browser`),
+      ].join("");
+
+      const board = document.getElementById("board");
+      board.innerHTML = lab.top.map((t, i) => {
+        const mt = t.backtest ? mrscore.metrics(t.backtest) : {}, pr = pubRank(t);
+        return `<tr data-i="${i}" class="${t === selected ? "selected" : ""}"><td class="rank">${t.rank}</td><td>${BN.ratioHTML(t)}</td>
+          <td class="num">${fmt.sig(t.score, 4)}</td><td class="num ${sign(mt.total_return)}">${fmt.spct(mt.total_return)}</td>
+          <td class="num">${fmt.pct(mt.max_dd)}</td><td class="num">${fmt.num(mt.sharpe)}</td><td class="num">${t.backtest ? t.backtest.trades.length : "–"}</td>
+          <td class="num">${pr ? `#${pr}` : `<span class="badge past">new</span>`}</td><td>${t.backtest ? BN.sparkline(t.backtest.equity.v) : ""}</td></tr>`;
+      }).join("") || `<tr><td colspan="9" class="muted">No basket produced a finite score with these settings.</td></tr>`;
+      board.querySelectorAll("tr[data-i]").forEach((tr) => (tr.onclick = () => { selected = lab.top[+tr.dataset.i]; renderResults(); }));
+      renderEquity();
+      fillSweepSelects();
+      runSweep();
+    }
+
+    function runOne(cfg, numIdx, denIdx) {
+      const comps = mrscore.buildComponents(cfg);
+      const norm = mrscore.normalizeCols(numIdx.concat(denIdx).map((j) => panel.close[j]));
+      const k = numIdx.length, T = panel.dates.length;
+      const ratio = mrscore.ratioSeries(norm, [...Array(k).keys()], [...Array(denIdx.length).keys()].map((x) => x + k), T);
+      const eng = mrscore.runEngine(cfg, comps, ratio, comps.volUnit === "price" ? null : mrscore.returnsOf(ratio, cfg.data.returns_mode));
+      const bt = cfg.backtest && cfg.backtest.enabled ? mrscore.runBacktest(cfg, comps, panel.close, numIdx, denIdx) : null;
+      return { eng, bt };
+    }
+
+    function renderEquity() {
+      if (!selected || !selected.backtest) { Plotly.purge("c-eq"); return; }
+      const pubCfg = clone(base);
+      const pub = runOne(pubCfg, selected.num_idx, selected.den_idx).bt;
+      const d = panel.dates, lb = selected.backtest;
+      document.getElementById("eq-title").innerHTML = `Equity: ${selected.num.join("+")} ÷ ${selected.den.join("+")}`;
+      const traces = [];
+      if (pub) traces.push({ x: pub.equity.i.map((i) => d[i]), y: pub.equity.v, name: "Published config", line: { color: P.faint, width: 1.4 }, hovertemplate: "%{y:,.0f}" });
+      traces.push({ x: lb.equity.i.map((i) => d[i]), y: lb.equity.v, name: "Lab config", line: { color: P.text, width: 2 }, hovertemplate: "%{y:,.0f}" });
+      Plotly.react("c-eq", traces, BN.layout({ showlegend: false, yaxis: { tickformat: ",.0f", title: { text: "Equity" } } }), BN.config());
+    }
+
+    // ------------------------------------------------------------- sweep
+    function sweepParams() {
+      const out = [];
+      const add = (path, label, lo, hi, opt = {}) => { const v = get(state, path); if (v !== undefined && v !== null) out.push({ path, label, lo, hi, ...opt }); };
+      add("deviation_detector.params.threshold", "threshold", 0.5, 3.5);
+      add("reversion_criteria.params.z_tolerance", "z_tolerance", 0.1, 1.5);
+      add("failure_criteria.params.max_duration", "max_duration", 5, 120, { int: true });
+      add("failure_criteria.params.max_zscore", "max_zscore", 2, 8);
+      const mp = state.mean_estimator.params, mpre = "mean_estimator.params.";
+      if ("window" in mp) add(mpre + "window", "mean window", 5, 200, { int: true });
+      if ("span" in mp) add(mpre + "span", "mean span", 5, 200, { int: true });
+      if ("process_var" in mp) add(mpre + "process_var", "kalman process_var", 1e-4, 1, { log: true });
+      if ("obs_var" in mp) add(mpre + "obs_var", "kalman obs_var", 0.01, 100, { log: true });
+      const vp = state.volatility_estimator.params, vpre = "volatility_estimator.params.";
+      if ("span" in vp) add(vpre + "span", "vol span", 5, 120, { int: true });
+      if ("window" in vp) add(vpre + "window", "vol window", 5, 120, { int: true });
+      if ("alpha" in vp) add(vpre + "alpha", "garch alpha", 0.01, 0.3);
+      add("deviation_detector.params.min_absolute_move", "min_absolute_move", 0, 0.05);
+      if (state.backtest) add("backtest.costs.slippage_bps", "slippage_bps", 0, 20);
+      return out;
+    }
+    const swX = document.getElementById("sw-x"), swY = document.getElementById("sw-y"), swM = document.getElementById("sw-m");
+    function fillSweepSelects() {
+      const ps = sweepParams(), keepX = swX.value, keepY = swY.value;
+      const opts = ps.map((p) => `<option value="${p.path}">${p.label}</option>`).join("");
+      swX.innerHTML = opts; swY.innerHTML = opts;
+      swX.value = ps.some((p) => p.path === keepX) ? keepX : ps[0].path;
+      const defY = ps.find((p) => /process_var|mean_estimator.*(window|span)/.test(p.path)) || ps[1];
+      swY.value = ps.some((p) => p.path === keepY) ? keepY : defY.path;
+    }
+    function axis(p) {
+      const n = 13;
+      return Array.from({ length: n }, (_, i) => {
+        const f = i / (n - 1);
+        let v = p.log ? Math.exp(Math.log(p.lo) + f * (Math.log(p.hi) - Math.log(p.lo))) : p.lo + f * (p.hi - p.lo);
+        return p.int ? Math.round(v) : Number(v.toPrecision(3));
+      });
+    }
+    function runSweep() {
+      if (!selected) return;
+      const ps = sweepParams(), px = ps.find((p) => p.path === swX.value), py = ps.find((p) => p.path === swY.value);
+      if (!px || !py || px === py) return;
+      const xs = axis(px), ys = axis(py), metric = swM.value;
+      const z = ys.map((yv) => xs.map((xv) => {
+        const c = clone(state); set(c, px.path, xv); set(c, py.path, yv);
+        if (validate(c).length) return null;
+        try {
+          const { eng, bt } = runOne(c, selected.num_idx, selected.den_idx);
+          if (metric === "score") return Number.isFinite(eng.score) ? eng.score : null;
+          if (!bt) return null;
+          const m = mrscore.metrics(bt);
+          const v = metric === "total_return" ? m.total_return * 100 : metric === "max_dd" ? m.max_dd * 100 : metric === "trades" ? m.trades : m.sharpe;
+          return Number.isFinite(v) ? v : null;
+        } catch (_) { return null; }
+      }));
+      const diverging = metric === "total_return" || metric === "sharpe" || metric === "score";
+      const scale = diverging ? [[0, P.negative], [0.5, "#24375f"], [1, P.positive]]
+        : metric === "max_dd" ? [[0, P.negative], [1, "#24375f"]] : [[0, P.surface2], [0.5, "#2a78d6"], [1, "#cde2fb"]];
+      const flat = z.flat().filter((v) => v !== null), amax = Math.max(...flat.map(Math.abs));
+      const unit = metric === "total_return" || metric === "max_dd" ? "%" : "";
+      const label = swM.options[swM.selectedIndex].text;
+      document.getElementById("sweep-title").innerHTML = `${esc(label)} · ${esc(selected.num.join("+"))} ÷ ${esc(selected.den.join("+"))}`;
+      const cx = get(state, px.path), cy = get(state, py.path);
+      Plotly.react("c-sweep", [
+        { type: "heatmap", x: xs.map(String), y: ys.map(String), z, colorscale: scale, xgap: 2, ygap: 2,
+          zmid: diverging ? 0 : undefined, zmin: diverging ? -amax : undefined, zmax: diverging ? amax : undefined,
+          hovertemplate: `${px.label} %{x}<br>${py.label} %{y}<br>${label} %{z:.2f}${unit}<extra></extra>`,
+          colorbar: { thickness: 10, outlinewidth: 0, ticksuffix: unit, tickfont: { color: P.muted } } },
+        { type: "scatter", mode: "markers", x: [String(nearest(xs, cx))], y: [String(nearest(ys, cy))], hoverinfo: "skip",
+          marker: { symbol: "x-thin", size: 16, line: { color: P.text, width: 2.5 } } },
+      ], BN.layout({ hovermode: "closest", showlegend: false, margin: { l: 70, b: 60 },
+        xaxis: { type: "category", title: { text: px.label }, showgrid: false, showspikes: false },
+        yaxis: { type: "category", title: { text: py.label }, showgrid: false } }), BN.config());
+      const el = document.getElementById("c-sweep");
+      el.removeAllListeners && el.removeAllListeners("plotly_click");
+      el.on("plotly_click", (ev) => {
+        const pt = ev.points[0]; if (pt.curveNumber !== 0) return;
+        set(state, px.path, px.int ? parseInt(pt.x, 10) : parseFloat(pt.x)); set(state, py.path, py.int ? parseInt(pt.y, 10) : parseFloat(pt.y));
+        renderForm(); refresh(); runLab();
+      });
+    }
+    const nearest = (arr, v) => arr.reduce((a, b) => (Math.abs(b - v) < Math.abs(a - v) ? b : a));
+    document.getElementById("sw-run").onclick = runSweep;
+    swM.onchange = runSweep;
+
+    // ------------------------------------------------------------ parity
+    async function parity() {
+      const el = document.getElementById("parity");
+      let res;
+      try { res = await scan(base, panel.symbols.map((s) => base.data.tickers.includes(s))); } catch (e) { el.innerHTML = `<span class="badge past">Parity check failed</span><span class="muted small">${esc(e.message)}</span>`; return null; }
+      const py = run.scan;
+      let same = 0, worst = 0, orderOk = res.jobs.length === py.num_id.length;
+      for (let q = 0; q < res.jobs.length; q++) {
+        if (orderOk && (res.jobs[q][0] !== py.num_id[q] || res.jobs[q][1] !== py.den_id[q])) orderOk = false;
+        const a = res.scores[q], b = py.score[q];
+        const ok = (b === null && !Number.isFinite(a)) || (b !== null && Math.abs(a - b) <= 1e-6 * Math.max(1, Math.abs(b)));
+        if (ok) same++;
+        if (b !== null && Number.isFinite(a)) worst = Math.max(worst, Math.abs(a - b));
+      }
+      const topOk = res.top.length === run.top.length && res.top.every((t, i) => t.num.join() === run.top[i].num.join() && t.den.join() === run.top[i].den.join());
+      const btOk = res.top.every((t, i) => !t.backtest || !run.top[i] || !run.top[i].backtest || Math.abs(t.backtest.final_equity - run.top[i].backtest.final_equity) < 1e-3);
+      const all = orderOk && same === res.jobs.length && topOk && btOk;
+      el.innerHTML = `<span class="badge ${all ? "live" : "past"}">${all ? "Matches the Python run" : "Differs from the Python run"}</span>
+        <span class="muted small">${fmt.int(same)}/${fmt.int(res.jobs.length)} scores match (max |Δ| ${worst.toExponential(1)}) · top-${run.top.length} ${topOk ? "identical" : "differs"} · backtest equity ${btOk ? "matches" : "differs"} · ${fmt.num(res.ms / 1000, 2)} s</span>`;
+      return res;
+    }
+
+    renderForm(); refresh(); fillSweepSelects();
+    lab = await parity();
+    if (lab) { selected = lab.top[0] || null; renderResults(); }
+  })();
+  </script>
+</body>
+</html>

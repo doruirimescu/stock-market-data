@@ -1,0 +1,8 @@
+# Backend for the calculators and loan tools (server/main.py).
+fastapi
+uvicorn
+numpy
+pandas
+yfinance==1.5.1
+python-multipart
+curl_cffi

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NASDAQ-100 Valuation · Investing Nexus</title>
+  <meta name="description" content="Daily AlphaSpread and Fair Value valuation snapshot of every NASDAQ-100 stock.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%232f6fea%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-family=%22Arial%22 font-weight=%22800%22 font-size=%2216%22 fill=%22white%22 text-anchor=%22middle%22%3EN%3C/text%3E%3C/svg%3E">
+</head>
+<body data-index="nasdaq" data-mode="full" data-title="NASDAQ-100 Valuation">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="nasdaq_today.html" class="active">NASDAQ-100</a>
+        <a href="sp500_today.html">S&amp;P 500</a>
+        <a href="fairvalue/index.html">Fair Value stocks</a>
+        <a href="sp500_valuation.html">S&amp;P 500 Summary</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-head">
+      <div>
+        <div class="eyebrow">Daily snapshot</div>
+        <h1>NASDAQ-100 <span class="gradient-text">Valuation</span></h1>
+        <p class="lead" id="narrative">Loading the latest snapshot…</p>
+      </div>
+      <div class="page-controls">
+      <div class="date-bar" id="source-switch" role="group" aria-label="Valuation source"></div>
+      <div class="date-bar" role="group" aria-label="Snapshot date">
+        <label for="date-select">Date</label>
+        <button class="btn" id="date-prev" title="Previous day" aria-label="Previous day">‹</button>
+        <select id="date-select"></select>
+        <button class="btn" id="date-next" title="Next day" aria-label="Next day">›</button>
+        <button class="btn primary" id="date-latest">Latest</button>
+      </div>
+      </div>
+    </div>
+    <div class="as-of" id="as-of"></div>
+    <div class="notice" id="error" hidden></div>
+
+    <div class="kpis" id="kpis"></div>
+
+    <h2 class="section">Valuation by stock</h2>
+    <div class="panel chart-panel">
+      <div class="chart-head">
+        <div class="legend"><span><i style="background:#14a088"></i>Undervalued</span><span><i style="background:#dd6a2c"></i>Overvalued</span></div>
+        <div style="display:flex;gap:6px">
+          <button class="btn primary small" data-chart-sort="solvency">Sort by solvency</button>
+          <button class="btn small" data-chart-sort="valuation">Sort by valuation</button>
+        </div>
+      </div>
+      <div id="chart"></div>
+    </div>
+
+    <h2 class="section">Distribution</h2>
+    <div class="panel" id="distribution"></div>
+
+    <h2 class="section">Extremes</h2>
+    <div class="two-col">
+      <div><div class="panel-title"><span class="verdict under">Most undervalued</span></div><div id="most-under"></div></div>
+      <div><div class="panel-title"><span class="verdict over">Most overvalued</span></div><div id="most-over"></div></div>
+    </div>
+
+    <h2 class="section">All stocks</h2>
+    <div class="toolbar">
+      <input class="input" id="search" type="search" placeholder="Search ticker or company…" aria-label="Search ticker or company">
+      <div style="display:flex;gap:10px;align-items:center">
+        <span class="muted small" id="table-count"></span>
+        <select class="input" id="filter" aria-label="Filter by verdict">
+          <option value="all">All verdicts</option>
+          <option value="Undervalued">Undervalued only</option>
+          <option value="Overvalued">Overvalued only</option>
+        </select>
+      </div>
+    </div>
+    <div class="table-wrap scroll-y">
+      <table class="data">
+        <thead id="table-head"></thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container" id="source-note">Valuations from <a href="https://www.alphaspread.com" target="_blank" rel="noopener">AlphaSpread</a>, refreshed daily. Not investment advice.</div>
+  </footer>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+  <script src="assets/valuation.js"></script>
+</body>
+</html>

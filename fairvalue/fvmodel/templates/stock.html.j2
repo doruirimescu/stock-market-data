@@ -1,0 +1,145 @@
+{% extends "base.html.j2" %}
+{% macro row(key) %}{% set m = r.metrics[key] %}
+<tr><td>{{ m.label }}</td><td class="num">{{ fmt(m) }}{% if m.verdict_text %} <span class="verdict {{ m.verdict or '' }}">{{ m.verdict_text }}</span>{% endif %}</td></tr>
+{%- endmacro %}
+{% macro table(title, keys) %}
+<div class="panel">
+  <h3 class="panel-title">{{ title }}</h3>
+  <div class="table-wrap"><table class="data metric-table"><tbody>
+  {% for k in keys %}{{ row(k) }}{% endfor %}
+  </tbody></table></div>
+</div>
+{% endmacro %}
+{% block title %}{{ r.ticker }} {{ r.name }}{% endblock %}
+{% block description %}Fair Value summary for {{ r.name }} ({{ r.ticker }}): Fair Value, Quality Score, financial strength, profitability, growth and valuation.{% endblock %}
+{% block body %}
+    <div class="eyebrow">Stock summary · fundamentals to {{ r.as_of.strftime('%d %b %Y') }}</div>
+    <h1>{{ r.name }} <span class="gradient-text">{{ r.ticker }}</span></h1>
+    {% set gv = r.metrics['fair_value'] %}{% set p2 = r.metrics['price_to_fair_value'] %}
+    <p class="lead">Price <span class="hl-accent">${{ "%.2f"|format(r.price) }}</span> on {{ r.price_date.strftime('%d %b %Y') }}.
+      {% if gv.ok %}The Fair Value is <span class="hl-accent">${{ "%.2f"|format(gv.value) }}</span>, so the stock looks <mark>{{ gv.verdict_text|lower }}</mark> at {{ "%.2f"|format(p2.value) }}× its fair value.{% else %}Not enough history to compute a Fair Value.{% endif %}</p>
+
+    <div class="kpis">
+      <div class="panel kpi"><div class="label">Price</div><div class="value">${{ "%.2f"|format(r.price) }}</div>
+        <div class="sub">{{ fmt(r.metrics['pct_below_high']) }} below 52-week high</div></div>
+      <div class="panel kpi"><div class="label">Fair Value</div><div class="value">{{ fmt(gv) }}</div>
+        <div class="sub">{% if gv.verdict_text %}<span class="verdict {{ gv.verdict or '' }}">{{ gv.verdict_text }}</span>{% else %}n/a{% endif %}</div></div>
+      {% set gs = r.metrics['quality_score'] %}
+      <div class="panel kpi"><div class="label">Fair Value Score</div><div class="value">{{ fmt(gs) }}</div>
+        <div class="sub">{% if gs.verdict_text %}<span class="verdict {{ gs.verdict or '' }}">{{ gs.verdict_text }}</span>{% endif %}</div></div>
+      <div class="panel kpi"><div class="label">Market cap</div><div class="value">{{ money(r.market_cap) }}</div>
+        <div class="sub">EV {{ money(r.enterprise_value) }} · yield {{ fmt(r.metrics['dividend_yield']) }}</div></div>
+      <div class="panel kpi"><div class="label">PE (TTM)</div><div class="value">{{ fmt(r.metrics['pe_ttm']) }}</div>
+        <div class="sub">Shiller PE {{ fmt(r.metrics['shiller_pe']) }}</div></div>
+    </div>
+
+    {% if r.notes %}<div class="notice">{% for n in r.notes %}{{ n }}{% if not loop.last %}<br>{% endif %}{% endfor %}</div>{% endif %}
+
+    <h2 class="section">Quality Score breakdown</h2>
+    <div class="two-col">
+      <div class="panel ranks">
+        <h3 class="panel-title">Ranks (1–10)</h3>
+        {% for k in ['rank_financial_strength','rank_profitability','rank_growth','rank_fair_value','rank_momentum'] %}{% set m = r.metrics[k] %}
+        <div class="dist-row"><div class="dist-label">{{ m.label }}</div>
+          <div class="dist-track"><div class="dist-bar" style="width:{{ (m.value or 0) * 10 }}%;background:var({{ '--under' if (m.value or 0) >= 7 else '--accent' if (m.value or 0) >= 4 else '--over' }})"></div></div>
+          <div class="dist-count">{{ m.value if m.ok else '–' }}</div></div>
+        {% endfor %}
+        <p class="muted small">Predictability {{ fmt(r.metrics['predictability']) }} stars. Ranks use Fair Value's published inputs with our own fixed breakpoints.</p>
+      </div>
+      {{ table("Valuation verdicts", ['price_to_fair_value','altman_z','beneish_m','roic','piotroski_f']) }}
+    </div>
+
+    <div class="panel chart-panel">
+      <div class="chart-head"><h3>Price vs Fair Value, 10 years</h3>
+        <div class="legend"><span><i style="background:var(--accent)"></i>Price</span><span><i style="background:var(--under)"></i>Fair Value</span></div></div>
+      <div id="chart-gfv" class="chart short"></div>
+    </div>
+
+    <h2 class="section">Fundamentals</h2>
+    <div class="two-col">
+      {{ table("Financial strength", ['cash_to_debt','equity_to_asset','debt_to_equity','debt_to_ebitda','interest_coverage','piotroski_f','altman_z','beneish_m','wacc','roic']) }}
+      {{ table("Profitability", ['gross_margin','operating_margin','net_margin','fcf_margin','roe','roa','roic','roc_greenblatt','roce','years_profitable']) }}
+      {{ table("Growth (per share, fiscal years)", ['revenue_growth_3y','revenue_growth_5y','revenue_growth_10y','ebitda_growth_3y','ebitda_growth_5y','eps_growth_3y','eps_growth_5y','fcf_growth_3y','fcf_growth_5y','book_growth_3y']) }}
+      {{ table("Liquidity", ['current_ratio','quick_ratio','cash_ratio','days_sales_outstanding','days_inventory','days_payable','cash_conversion_cycle']) }}
+      {{ table("Dividends & buybacks", ['dividend_yield','dividend_per_share','payout_ratio','dividend_growth_3y','yield_on_cost_5y','buyback_yield','buyback_ratio_3y','shareholder_yield']) }}
+      {{ table("Momentum", ['rsi_5','rsi_9','rsi_14','momentum_6_1','momentum_12_1','high_52w','low_52w','beta']) }}
+    </div>
+
+    <h2 class="section">Valuation</h2>
+    <div class="panel">
+      <h3 class="panel-title">Ratios against their own 10-year range</h3>
+      <div class="table-wrap"><table class="data metric-table">
+        <thead><tr><th>Ratio</th><th class="num">Current</th><th class="num">10y min</th><th class="num">Median</th><th class="num">10y max</th><th>Position in 10-year range</th></tr></thead>
+        <tbody>
+        {% for k in ['pe_ttm','ps','pb','price_to_fcf','price_to_tangible_book','price_to_ocf','ev_to_ebit','ev_to_ebitda','ev_to_revenue','ev_to_fcf','peg','shiller_pe','earnings_yield','fcf_yield','forward_rate_of_return'] %}{% set m = r.metrics[k] %}
+        <tr><td>{{ m.label }}</td><td class="num">{{ fmt(m) }}</td>
+          {% if m.hist %}<td class="num">{{ "%.2f"|format(m.hist.min) }}</td><td class="num">{{ "%.2f"|format(m.hist.median) }}</td><td class="num">{{ "%.2f"|format(m.hist.max) }}</td>
+          <td><div class="range"><div class="dist-track"><div class="tick" style="left:calc({{ m.hist.pct_rank|round(0) }}% - 1px)"></div></div>
+            <span class="verdict {{ 'under' if m.hist.pct_rank < 40 else 'over' if m.hist.pct_rank > 60 else '' }}">{{ 'Cheaper' if m.hist.pct_rank < 50 else 'Pricier' }} than {{ (m.hist.pct_rank if m.hist.pct_rank >= 50 else 100 - m.hist.pct_rank)|round(0)|int }}%</span></div></td>
+          {% else %}<td class="num muted">–</td><td class="num muted">–</td><td class="num muted">–</td><td class="muted small">{{ m.note }}</td>{% endif %}</tr>
+        {% endfor %}
+        </tbody></table></div>
+    </div>
+
+    <div class="two-col" style="margin-top:14px">
+      <div class="panel">
+        <h3 class="panel-title">Intrinsic value estimates</h3>
+        <div class="table-wrap"><table class="data metric-table">
+          <thead><tr><th>Model</th><th class="num">Value</th><th class="num">Price / value</th></tr></thead><tbody>
+          {% for v, p in [('fair_value','price_to_fair_value'),('dcf_earnings','price_to_dcf'),('projected_fcf_value','price_to_projected_fcf'),('median_ps_value','price_to_median_ps'),('peter_lynch_value','price_to_lynch'),('graham_number','price_to_graham'),('epv','price_to_epv'),('ncav','price_to_ncav')] %}
+          {% set mv = r.metrics[v] %}{% set mp = r.metrics[p] %}
+          <tr><td>{{ mv.label }}</td><td class="num">{{ fmt(mv) }}</td>
+            <td class="num">{% if mp.ok %}<span class="verdict {{ 'under' if mp.value < 0.9 else 'over' if mp.value > 1.1 else '' }}">{{ "%.2f"|format(mp.value) }}× {{ 'under' if mp.value < 0.9 else 'over' if mp.value > 1.1 else 'fair' }}</span>{% else %}–{% endif %}</td></tr>
+          {% endfor %}
+          <tr><td>Net-Net Working Capital</td><td class="num">{{ fmt(r.metrics['nnwc']) }}</td><td class="num">–</td></tr>
+          </tbody></table></div>
+        <p class="muted small">{{ r.metrics['dcf_earnings'].note }}.</p>
+      </div>
+      <div class="panel chart-panel" style="margin-top:0">
+        <div class="chart-head"><h3>PE ratio, 10 years</h3>
+          <div class="legend"><span><i style="background:var(--accent)"></i>PE (TTM)</span><span><i style="background:var(--faint)"></i>10y median</span></div></div>
+        <div id="chart-pe" class="chart short"></div>
+      </div>
+    </div>
+
+    <h2 class="section">Financials by fiscal year</h2>
+    <div class="panel chart-panel">
+      <div class="chart-head"><h3>Revenue, net income and free cash flow</h3>
+        <div class="legend"><span><i style="background:var(--accent)"></i>Revenue</span><span><i style="background:var(--under)"></i>Net income</span><span><i style="background:var(--hl-text)"></i>Free cash flow</span></div></div>
+      <div id="chart-fin" class="chart short"></div>
+    </div>
+    <div class="table-wrap" style="margin-top:14px"><table class="data">
+      <thead><tr><th>Fiscal year</th><th class="num">Revenue</th><th class="num">Gross margin</th><th class="num">Op. margin</th><th class="num">Net income</th><th class="num">EPS</th><th class="num">FCF</th><th class="num">DPS</th><th class="num">Shares</th><th class="num">Debt</th><th class="num">Equity</th><th class="num">ROE</th></tr></thead>
+      <tbody>{% for a in r.annual|reverse %}
+        <tr><td class="sym">{{ a.fy.strftime('%Y-%m') }}</td><td class="num">{{ money(a.revenue) }}</td><td class="num">{{ pctf(a.gross_margin) }}</td><td class="num">{{ pctf(a.operating_margin) }}</td>
+          <td class="num">{{ money(a.net_income) }}</td><td class="num">{{ num(a.eps) }}</td><td class="num">{{ money(a.fcf) }}</td><td class="num">{{ num(a.dps) }}</td>
+          <td class="num">{{ count(a.shares) }}</td><td class="num">{{ money(a.debt) }}</td><td class="num">{{ money(a.equity) }}</td><td class="num">{{ pctf(a.roe) }}</td></tr>
+      {% endfor %}</tbody></table></div>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
+<script>
+  const D = {{ charts_json }};
+  const C = Nexus.colors;
+  const GOLD = getComputedStyle(document.documentElement).getPropertyValue("--hl-text").trim();
+  const line = (x, y, name, color, extra) => Object.assign({ type: "scatter", mode: "lines", x, y, name, line: { color, width: 2 },
+    hovertemplate: "%{x|%b %Y}<br>" + name + ": %{y:.2f}<extra></extra>" }, extra || {});
+  const traces = [line(D.dates, D.price, "Price", C.accent)];
+  if (D.fair_value) traces.push(line(D.dates, D.fair_value, "Fair Value", C.positive, { line: { color: C.positive, width: 2, dash: "dot" } }));
+  Plotly.newPlot("chart-gfv", traces, Nexus.plotlyLayout({ showlegend: false, yaxis: { tickprefix: "$" }, hovermode: "x unified" }), Nexus.plotlyConfig);
+
+  const pe = D.pe.filter(v => v !== null).sort((a, b) => a - b);
+  const med = pe.length ? pe[Math.floor(pe.length / 2)] : null;
+  const peTraces = [line(D.pe_dates, D.pe, "PE", C.accent)];
+  if (med !== null) peTraces.push(line([D.pe_dates[0], D.pe_dates[D.pe_dates.length - 1]], [med, med], "10y median", C.faint, { line: { color: C.faint, width: 1.5, dash: "dash" } }));
+  Plotly.newPlot("chart-pe", peTraces, Nexus.plotlyLayout({ showlegend: false, hovermode: "x unified" }), Nexus.plotlyConfig);
+
+  const bar = (y, name, color) => ({ type: "bar", x: D.fy, y: y.map(v => v === null ? null : v / 1e9), name,
+    marker: { color, cornerradius: 3 }, hovertemplate: "FY%{x}<br>" + name + ": $%{y:.1f}B<extra></extra>" });
+  Plotly.newPlot("chart-fin", [bar(D.revenue, "Revenue", C.accent), bar(D.net_income, "Net income", C.positive), bar(D.fcf, "Free cash flow", GOLD)],
+    Nexus.plotlyLayout({ barmode: "group", showlegend: false, yaxis: { tickprefix: "$", ticksuffix: "B" } }), Nexus.plotlyConfig);
+  // Charts are drawn before the remote stylesheet settles the layout; fit them once it has.
+  window.addEventListener("load", () => document.querySelectorAll(".js-plotly-plot").forEach(el => Plotly.Plots.resize(el)));
+</script>
+{% endblock %}

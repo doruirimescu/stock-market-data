@@ -1,0 +1,30 @@
+[tools]
+python = "3.12.15"
+uv = "0.12.24"
+
+[env]
+_.python.venv = { path = ".venv", create = true }
+# SEC EDGAR rejects requests without a contact email in the User-Agent.
+# Set it in your shell or in mise.local.toml (git-ignored), e.g.
+#   SEC_USER_AGENT = "Your Name you@example.com"
+
+
+[tasks.install]
+description = "Install dependencies into .venv"
+run = "uv pip install -e '.[dev]'"
+
+[tasks.analyze]
+description = "Analyze tickers and build dashboards: mise run analyze AAPL MSFT"
+run = "python -m fvmodel analyze"
+
+[tasks.compare]
+description = "Compare our metrics against the Fair Value reference file"
+run = "python -m fvmodel compare"
+
+[tasks.serve]
+description = "Serve the generated site on http://localhost:8100 (override with FVMODEL_PORT)"
+run = "python -m http.server ${FVMODEL_PORT:-8100} --bind 127.0.0.1 -d site"
+
+[tasks.test]
+description = "Run the unit tests"
+run = "pytest -q"

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Algorithm · Basket Rotation · Investing Nexus</title>
+  <meta name="description" content="How the ratio-basket mean-reversion pipeline works, with this run's parameters.">
+  <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <link rel="stylesheet" href="assets/basket.css">
+  <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="index.html">Overview</a>
+        <a href="basket.html">Baskets</a>
+        <a href="lab.html">Strategy Lab</a>
+        <a href="trend.html">Sector Trend</a>
+        <a href="algorithm.html" class="active">Algorithm</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-head">
+      <div>
+        <div class="eyebrow">mrscore pipeline</div>
+        <h1>How the <span class="gradient-text">algorithm</span> works</h1>
+        <p class="lead" id="narrative">Loading…</p>
+      </div>
+      <div class="date-bar" id="run-picker" role="group" aria-label="Run"></div>
+    </div>
+    <div class="notice" id="error" hidden></div>
+
+    <h2 class="section">Pipeline · this run's parameters</h2>
+    <div class="flow" id="flow"></div>
+
+    <h2 class="section">Event lifecycle</h2>
+    <div class="two-col">
+      <div class="panel" id="lifecycle"></div>
+      <div class="panel prose" id="lifecycle-text"></div>
+    </div>
+
+    <h2 class="section">Rotation backtest</h2>
+    <div class="two-col">
+      <div class="panel" id="rotation"></div>
+      <div class="panel prose" id="rotation-text"></div>
+    </div>
+
+    <h2 class="section">Config</h2>
+    <div class="toolbar"><span class="muted small" id="cfg-meta"></span><a class="btn sm" href="lab.html" data-keep-run>Edit in the Strategy Lab</a></div>
+    <pre class="code" id="yaml"></pre>
+
+    <h2 class="section">Reproduce</h2>
+    <div class="panel prose">
+      <p>From the <code>basket/</code> folder, publish a new run for these pages. It reads <code>config.yaml</code> and reuses the yfinance cache:</p>
+      <pre class="code">PYTHONPATH=src python3 -m mrscore.cli.export_web
+# or another config / output folder
+./web.sh export   # same thing, writing into this site's docs/basket/data</pre>
+      <p>Then run <code>./web.sh start</code> to preview it, and <code>./web.sh publish</code> to commit and push it to this site. Each export adds a run to the picker; the newest is shown by default.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">Every value on this page is read from the selected run's validated config. Not investment advice.</div>
+  </footer>
+
+  <script src="assets/mrscore.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+  (async function () {
+    const { fmt, esc } = BN;
+    let ctx;
+    try { ctx = await BN.loadRun(); } catch (e) { BN.showError(e); return; }
+    const { run, manifest, id } = ctx;
+    BN.mountRunPicker(document.getElementById("run-picker"), manifest, id);
+    BN.wireNav(id);
+    const c = run.config, m = run.meta;
+    const thr = c.deviation_detector.params.threshold, tol = c.reversion_criteria.params.z_tolerance;
+    const fp = c.failure_criteria.params, bt = c.backtest;
+
+    document.getElementById("narrative").innerHTML =
+      `Every pair of disjoint ${c.ratio_universe.k_num}-stock baskets becomes a <mark>ratio series</mark>. A streaming engine measures how reliably each ratio snaps back to its mean. The best ratios are then traded as a rotation between the two baskets.`;
+
+    // ------------------------------------------------------------ pipeline
+    const kv = (o) => `<dl class="kv">${Object.entries(o).filter(([, v]) => v !== null && v !== undefined).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(typeof v === "number" ? fmt.sig(v, 6) : String(v))}</dd>`).join("")}</dl>`;
+    const MEAN = {
+      rolling_sma: ["Rolling SMA", "μₜ = mean(pₜ₋w₊₁ … pₜ)", "Simple average over a fixed window; ready once the window is full."],
+      ema: ["Exponential MA", "μₜ = α·pₜ + (1−α)·μₜ₋₁,  α = 2/(span+1)", "Running mean during warm-up, then exponential decay."],
+      kalman_mean: ["Kalman mean", "K = (P+q)/(P+q+r),  μₜ = μₜ₋₁ + K·(pₜ − μₜ₋₁)", "A local-level filter: q sets how fast the mean may drift, r how noisy prices are."],
+    };
+    const VOL = {
+      ewma: ["EWMA volatility", "σ²ₜ = λ·σ²ₜ₋₁ + (1−λ)·rₜ²,  λ = 1 − 2/(span+1)", "Running mean of r² during warm-up, floored at min_volatility."],
+      rolling_std: ["Rolling std-dev", "σₜ = std(rₜ₋w₊₁ … rₜ)", "Ring-buffer standard deviation over a fixed window."],
+      garch11: ["GARCH(1,1)", "σ²ₜ = ω + α·rₜ² + β·σ²ₜ₋₁", "Conditional volatility; α + β < 1 for stationarity."],
+    };
+    const mean = MEAN[c.mean_estimator.type] || [c.mean_estimator.type, "", ""];
+    const vol = VOL[c.volatility_estimator.type] || [c.volatility_estimator.type, "", ""];
+    const stage = (step, title, type, text, formula, params) => `<div class="panel stage"><div class="step">${step}</div><strong>${title}</strong>
+      ${type ? `<div class="type">${esc(type)}</div>` : ""}<p>${text}</p>${formula ? `<div class="formula">${esc(formula)}</div>` : ""}${params ? kv(params) : ""}</div>`;
+    const ru = c.ratio_universe;
+    document.getElementById("flow").innerHTML = [
+      stage("DATA", "Price panel", "yfinance · close", `${m.N} tickers aligned on common dates (${fmt.int(m.T)} bars), each divided by its first price.`, "",
+        { period: c.data.period, interval: c.data.interval, ending_date: c.data.ending_date, returns_mode: c.data.returns_mode, min_bars: c.data.min_bars_required }),
+      stage("UNIVERSE", "Basket ratios", `C(${m.N},${ru.k_num}) baskets`, `Equal-weight baskets, paired into NUM ÷ DEN ratios${ru.disallow_overlap ? " with no shared ticker" : ""}.`,
+        "ratioₜ = Σ NUM pᵢ,ₜ / Σ DEN pⱼ,ₜ", { k_num: ru.k_num, k_den: ru.k_den, jobs: m.jobs, max_jobs: ru.max_jobs }),
+      stage("MEAN", mean[0], c.mean_estimator.type, mean[2], mean[1], c.mean_estimator.params),
+      stage("VOLATILITY", vol[0], c.volatility_estimator.type, vol[2], vol[1], c.volatility_estimator.params),
+      stage("DEVIATION", "Open an event", c.deviation_detector.type, "Price far enough from the mean, in volatility units.", "z = (p − μ) / σ,  |z| ≥ threshold", c.deviation_detector.params),
+      stage("LIFECYCLE", "Revert or fail", `${c.reversion_criteria.type} · ${c.failure_criteria.type}`, "Each event is tracked until it resolves. Reversion wins a tie.",
+        `revert: |z| ≤ ${tol}`, { z_tolerance: tol, max_duration: fp.max_duration, max_zscore: fp.max_zscore }),
+      stage("SCORE", "Rank ratios", c.scoring.score_metric, "Events are aggregated into one score per ratio; a min-heap keeps the top-k.",
+        c.scoring.score_metric === "sharpe" ? "mean(rₑ)/std(rₑ) over event returns" : "", { top_k: c.visualization.top_k, by_direction: c.scoring.by_direction, vol_buckets: c.scoring.by_volatility_bucket ? c.scoring.volatility_buckets : "off" }),
+      bt && bt.enabled ? stage("BACKTEST", "Rotate", bt.strategy.type, "All-in on one basket at a time, switching on a signal from the other side.", `signal: ${bt.strategy.params.signal_series}`,
+        { initial_cash: bt.initial_cash, commission_bps: bt.costs.commission_bps, slippage_bps: bt.costs.slippage_bps }) : "",
+    ].join("");
+
+    // ------------------------------------------------------------ lifecycle
+    document.getElementById("lifecycle").innerHTML = `
+      <svg class="diagram" viewBox="0 0 560 300" width="100%" role="img" aria-label="Event state machine">
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker></defs>
+        <g font-size="13" fill="var(--text)">
+          <rect x="20" y="120" width="110" height="56" rx="12" fill="var(--surface-3)" stroke="var(--border-strong)"/>
+          <text x="75" y="145" text-anchor="middle" font-weight="600">Idle</text><text x="75" y="163" text-anchor="middle" font-size="11" fill="var(--muted)">no open event</text>
+          <rect x="220" y="120" width="120" height="56" rx="12" fill="var(--accent-soft)" stroke="var(--accent)"/>
+          <text x="280" y="145" text-anchor="middle" font-weight="600">Active</text><text x="280" y="163" text-anchor="middle" font-size="11" fill="var(--muted)">UP or DOWN</text>
+          <rect x="420" y="30" width="120" height="50" rx="12" fill="rgba(20,160,136,.14)" stroke="var(--under)"/>
+          <text x="480" y="60" text-anchor="middle" font-weight="600" fill="var(--under-ink)">Reverted</text>
+          <rect x="420" y="125" width="120" height="50" rx="12" fill="rgba(221,106,44,.14)" stroke="var(--over)"/>
+          <text x="480" y="155" text-anchor="middle" font-weight="600" fill="var(--over-ink)">Failed</text>
+          <rect x="420" y="220" width="120" height="50" rx="12" fill="var(--surface-3)" stroke="var(--border-strong)"/>
+          <text x="480" y="250" text-anchor="middle" font-weight="600" fill="var(--muted)">Expired</text>
+        </g>
+        <g stroke="var(--muted)" stroke-width="1.5" fill="none" marker-end="url(#ar)">
+          <path d="M130 148 H216"/><path d="M340 136 C380 110, 380 60, 416 55"/><path d="M340 148 H416"/><path d="M340 162 C380 190, 380 240, 416 245"/>
+        </g>
+        <g font-size="11.5" fill="var(--muted)" font-family="JetBrains Mono, monospace">
+          <text x="173" y="138" text-anchor="middle">|z| ≥ ${thr}</text>
+          <text x="352" y="84">|z| ≤ ${tol}</text>
+          <text x="352" y="170" font-size="10.5">${fp.max_duration ? `d ≥ ${fp.max_duration}` : ""}${fp.max_duration && fp.max_zscore ? " or " : ""}${fp.max_zscore ? `|z| ≥ ${fp.max_zscore}` : ""}</text>
+          <text x="352" y="226">data ends</text>
+        </g>
+      </svg>`;
+    document.getElementById("lifecycle-text").innerHTML = `
+      <p>The engine streams each ratio <strong>once, left to right</strong>: nothing at bar <em>t</em> uses data after <em>t</em>.
+      After ${c.data.min_bars_required} warm-up bars, and once both estimators are ready, every bar gets a z-score.</p>
+      <p>An event opens when <span class="hl-accent">|z| ≥ ${thr}</span> and the price is at least ${c.deviation_detector.params.min_absolute_move} from the mean.
+      Below the mean it is an <strong>UP</strong> event (expect a rise); above the mean it is a <strong>DOWN</strong> event.</p>
+      <p>It closes as <span class="verdict under">Reverted</span> when |z| falls to ${tol}, or as <span class="verdict over">Failed</span> after ${fp.max_duration ?? "∞"} bars or at |z| ≥ ${fp.max_zscore ?? "∞"}. If both happen on the same bar, reversion wins.</p>
+      <p class="small">${c.engine.allow_overlapping_events ? `Up to ${c.engine.max_active_events} events may overlap.` : "One event at a time."}
+      Mean ${c.engine.freeze_mean_on_event ? "is frozen" : "keeps updating"} and volatility ${c.engine.freeze_volatility_on_event ? "is frozen" : "keeps updating"} while an event is open.</p>`;
+
+    // ------------------------------------------------------------ rotation
+    const W = 560, X = (z) => 40 + ((z + thr * 2) / (thr * 4)) * (W - 80);
+    document.getElementById("rotation").innerHTML = `
+      <svg class="diagram" viewBox="0 0 ${W} 210" width="100%" role="img" aria-label="Rotation zones on the z axis">
+        <rect x="40" y="40" width="${X(-thr) - 40}" height="70" rx="8" fill="var(--leg-num-soft)" stroke="var(--leg-num)"/>
+        <rect x="${X(-thr)}" y="40" width="${X(thr) - X(-thr)}" height="70" fill="var(--surface-3)"/>
+        <rect x="${X(thr)}" y="40" width="${W - 40 - X(thr)}" height="70" rx="8" fill="var(--leg-den-soft)" stroke="var(--leg-den)"/>
+        <g font-size="13" font-weight="600" text-anchor="middle">
+          <text x="${(40 + X(-thr)) / 2}" y="72" fill="var(--text)">Buy NUM</text>
+          <text x="${(40 + X(-thr)) / 2}" y="92" font-size="11" font-weight="400" fill="var(--muted)">ratio cheap</text>
+          <text x="${(X(-thr) + X(thr)) / 2}" y="72" fill="var(--text)">Keep holding</text>
+          <text x="${(X(-thr) + X(thr)) / 2}" y="92" font-size="11" font-weight="400" fill="var(--muted)">no signal</text>
+          <text x="${(X(thr) + W - 40) / 2}" y="72" fill="var(--text)">Buy DEN</text>
+          <text x="${(X(thr) + W - 40) / 2}" y="92" font-size="11" font-weight="400" fill="var(--muted)">ratio rich</text>
+        </g>
+        <line x1="40" x2="${W - 40}" y1="140" y2="140" stroke="var(--border-strong)" stroke-width="1.5"/>
+        <g font-size="11.5" fill="var(--muted)" text-anchor="middle" font-family="JetBrains Mono, monospace">
+          ${[-2 * thr, -thr, 0, thr, 2 * thr].map((z) => `<line x1="${X(z)}" x2="${X(z)}" y1="134" y2="146" stroke="var(--border-strong)"/><text x="${X(z)}" y="164">${z === 0 ? "0" : (z > 0 ? "+" : "−") + fmt.sig(Math.abs(z), 3)}</text>`).join("")}
+          <text x="${W / 2}" y="192" fill="var(--faint)">z of the ${bt ? bt.strategy.params.signal_series.replace("_", " ") : "ratio"}</text>
+        </g>
+      </svg>`;
+    document.getElementById("rotation-text").innerHTML = bt && bt.enabled ? `
+      <p>The backtester never holds both baskets. Once warmed up it is <strong>always fully invested</strong> in one of them, defaulting to the numerator.</p>
+      <p>When z crosses <span class="hl-accent">−${thr}</span> it sells everything and buys the <strong>numerator</strong>. When z crosses <span class="hl-accent">+${thr}</span> it switches to the <strong>denominator</strong>. Inside the band it keeps what it holds, so reversion and failure rules don't trigger exits here.</p>
+      <p>Fills are close-to-close. Each side pays <span class="hl-accent">${bt.costs.commission_bps + bt.costs.slippage_bps} bps</span> (commission + slippage) on notional, and any open position is closed on the last bar.</p>
+      <p class="small"><strong>Two views of one ratio.</strong> The engine scores the ratio of <em>first-bar-normalized</em> baskets. The backtester signals on the ratio of <em>raw-price</em> baskets, where higher-priced stocks carry more weight. The Baskets page shows both.</p>`
+      : `<p>Backtesting is disabled in this run's config.</p>`;
+
+    // ------------------------------------------------------------ yaml
+    document.getElementById("cfg-meta").innerHTML = `<code>${esc(m.config_path)}</code> · sha1 <code>${esc(m.config_hash)}</code> · as used by run ${esc(m.id)}`;
+    document.getElementById("yaml").innerHTML = esc(run.config_yaml).split("\n").map((line) => {
+      const ci = line.indexOf("#");
+      const code = ci >= 0 ? line.slice(0, ci) : line, com = ci >= 0 ? `<span class="c">${line.slice(ci)}</span>` : "";
+      return code.replace(/^(\s*-?\s*)([\w.]+)(:)(.*)$/, (_, a, k, col, v) => `${a}<span class="k">${k}</span>${col}<span class="v">${v}</span>`) + com;
+    }).join("\n");
+  })();
+  </script>
+</body>
+</html>

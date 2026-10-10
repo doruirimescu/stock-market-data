@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dividend Sustainability · Investing Nexus</title>
+  <meta name="description" content="Score a batch of tickers on payout ratio, yield, debt, ROE, FCF, and 5-year dividend growth.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%232f6fea%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-family=%22Arial%22 font-weight=%22800%22 font-size=%2216%22 fill=%22white%22 text-anchor=%22middle%22%3EN%3C/text%3E%3C/svg%3E">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="nasdaq_today.html">NASDAQ-100</a>
+        <a href="sp500_today.html">S&amp;P 500</a>
+        <a href="sp500_valuation.html">S&amp;P 500 Summary</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container narrow">
+    <div class="eyebrow">Stock calculator</div>
+    <h1>Dividend <span class="gradient-text">Sustainability</span></h1>
+    <p class="lead">Scores dividend payers from <mark>0 to 100</mark> on payout ratio, yield, debt, ROE, liquidity, free cash flow and <span class="hl-accent">5-year dividend growth</span>. Tickers without dividend data are skipped.</p>
+
+    <div class="panel token-bar">
+      <label for="api-token">API token</label>
+      <input class="input" type="password" id="api-token" placeholder="Paste your token here" autocomplete="off">
+      <span class="hint" id="api-token-hint"></span>
+    </div>
+
+    <h2 class="section">Inputs</h2>
+    <form class="panel form-grid" id="div-form">
+      <label class="field full">Tickers
+        <span class="hint">Comma- or newline-separated Yahoo Finance symbols, e.g. AAPL, T, O, MO, SWKS</span>
+        <textarea class="input" id="tickers" rows="3" placeholder="AAPL, T, O, MO, SWKS" required></textarea>
+      </label>
+      <label class="field">Sustainability threshold
+        <span class="hint">Minimum score to rate a stock Sustainable (0–100)</span>
+        <input class="input" type="number" id="threshold" value="65" min="0" max="100" required>
+      </label>
+      <div class="form-actions"><button class="btn primary lg" type="submit">Analyze</button></div>
+    </form>
+
+    <div class="notice" id="error" hidden></div>
+
+    <section id="results" hidden>
+      <h2 class="section">Results</h2>
+      <p class="lead" id="results-summary" style="margin-bottom:14px"></p>
+      <div class="panel chart-panel">
+        <div class="chart-head">
+          <h3>Score vs. yield</h3>
+          <div class="legend"><span><i style="background:var(--under)"></i>Sustainable</span><span><i style="background:var(--over)"></i>Risky</span></div>
+        </div>
+        <div id="chart" style="height:480px"></div>
+      </div>
+      <div class="table-wrap" style="margin-top:14px">
+        <table class="data">
+          <thead><tr><th>Ticker</th><th>Company</th><th class="num">Yield</th><th class="num">Score</th><th>Status</th></tr></thead>
+          <tbody id="results-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="callout" id="skipped-section" hidden>
+      <strong>Skipped tickers</strong>
+      <ul id="skipped-list" style="margin:8px 0 0;padding-left:20px"></ul>
+    </div>
+
+    <h2 class="section">How the score works</h2>
+    <div class="prose">
+      <p>Each ticker is scored on seven factors, for a total of 0 to 100. A stock at or above the threshold is rated <strong>Sustainable</strong>.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="data">
+        <thead><tr><th>Factor</th><th class="num">Max pts</th><th>What it measures</th></tr></thead>
+        <tbody>
+          <tr><td>Payout ratio</td><td class="num">20</td><td class="company">Share of earnings paid as dividends; lower is safer</td></tr>
+          <tr><td>Dividend yield</td><td class="num">15</td><td class="company">Sweet spot 3–5%; penalises yield traps above 7%</td></tr>
+          <tr><td>Debt / equity</td><td class="num">15</td><td class="company">Financial leverage; lower leaves more room to keep paying</td></tr>
+          <tr><td>Return on equity</td><td class="num">15</td><td class="company">Profitability of the business</td></tr>
+          <tr><td>Current ratio</td><td class="num">10</td><td class="company">Short-term liquidity</td></tr>
+          <tr><td>Free cash flow</td><td class="num">10</td><td class="company">Positive FCF is the minimum bar</td></tr>
+          <tr><td>5-year dividend CAGR</td><td class="num">15</td><td class="company">Dividend growth over the past five years</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted small" style="margin-top:14px">Results depend on the completeness of Yahoo Finance's reported figures.</p>
+  </main>
+
+  <footer class="footer">
+    <div class="container narrow">Data fetched live from Yahoo Finance. Nothing here is investment advice.</div>
+  </footer>
+
+  <script src="assets/backend.js"></script>
+  <script>
+    const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const COLORS = { sustainable: "#14a088", risky: "#dd6a2c", text: "#e6edf7", muted: "#9fb0cf", grid: "#1f3460", surface: "#0f1b33" };
+    const form = document.getElementById("div-form");
+    const btn = form.querySelector("button[type=submit]");
+    const errorEl = document.getElementById("error");
+    const resultsEl = document.getElementById("results");
+    const skippedEl = document.getElementById("skipped-section");
+
+    document.getElementById("tickers").addEventListener("input", function () {
+      this.value = this.value.toUpperCase();
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorEl.hidden = true;
+      resultsEl.hidden = true;
+      skippedEl.hidden = true;
+
+      const rawTickers = document.getElementById("tickers").value;
+      const tickers = rawTickers.split(/[\s,]+/).filter(t => t).map(t => t.toUpperCase()).join(",");
+      const threshold = parseInt(document.getElementById("threshold").value, 10);
+
+      btn.disabled = true;
+      btn.textContent = "Fetching data…";
+      try {
+        const params = new URLSearchParams({ tickers, threshold });
+        const data = await Backend.call(`/dividend/sustainability?${params}`);
+        if (data.results && data.results.length > 0) {
+          renderResults(data.results, threshold);
+        } else {
+          errorEl.textContent = "No results returned: none of the tickers had dividend data.";
+          errorEl.hidden = false;
+        }
+        if (data.skipped && data.skipped.length > 0) renderSkipped(data.skipped);
+      } catch (err) {
+        errorEl.textContent = err.message;
+        errorEl.hidden = false;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Analyze";
+      }
+    });
+
+    function renderResults(results, threshold) {
+      const sorted = [...results].sort((a, b) => b.score - a.score);
+      const nOk = results.filter(r => r.status === "Sustainable").length;
+      document.getElementById("results-summary").innerHTML =
+        `<mark>${nOk} of ${results.length}</mark> stocks score at or above the threshold of <span class="hl-accent">${threshold}</span>.`;
+      document.getElementById("results-body").innerHTML = sorted.map(r => `<tr>
+          <td class="sym">${esc(r.ticker)}</td><td class="company">${esc(r.name)}</td>
+          <td class="num">${Number(r.yield_pct).toFixed(2)}%</td><td class="num">${esc(r.score)}</td>
+          <td><span class="verdict ${r.status === "Sustainable" ? "under" : "over"}">${esc(r.status)}</span></td></tr>`).join("");
+      resultsEl.hidden = false;
+      renderChart(results, threshold);
+    }
+
+    function renderChart(results, threshold) {
+      function makeTrace(status, color) {
+        const group = results.filter(r => r.status === status);
+        return {
+          x: group.map(r => r.score),
+          y: group.map(r => r.yield_pct),
+          mode: "markers+text",
+          type: "scatter",
+          name: status,
+          text: group.map(r => r.ticker),
+          textposition: "top center",
+          customdata: group.map(r => [r.ticker, r.yield_pct, r.score, r.status, r.name]),
+          hovertemplate:
+            "<b>%{customdata[0]}</b><br>%{customdata[4]}<br>Score: %{customdata[2]}<br>" +
+            "Yield: %{customdata[1]:.2f}%<br>Status: %{customdata[3]}<extra></extra>",
+          marker: { color, size: 12, line: { color: COLORS.surface, width: 2 } },
+          textfont: { size: 11, color: COLORS.text },
+        };
+      }
+
+      const layout = {
+        paper_bgcolor: "rgba(0,0,0,0)",
+        plot_bgcolor: "rgba(0,0,0,0)",
+        font: { family: "Inter, system-ui, sans-serif", color: COLORS.muted, size: 12 },
+        hoverlabel: { bgcolor: "#14244a", bordercolor: "#2b4680", font: { color: COLORS.text, family: "Inter, system-ui, sans-serif" } },
+        xaxis: { title: { text: "Score (0–100)" }, range: [0, 100], zeroline: false, gridcolor: COLORS.grid, linecolor: COLORS.grid },
+        yaxis: { title: { text: "Yield (%)" }, zeroline: false, gridcolor: COLORS.grid, linecolor: COLORS.grid, ticksuffix: "%" },
+        hovermode: "closest",
+        showlegend: false,
+        margin: { t: 20, r: 20, b: 56, l: 60 },
+        shapes: [{ type: "line", x0: threshold, x1: threshold, y0: 0, y1: 1, yref: "paper", line: { color: "#6b80a8", dash: "dot", width: 1.5 } }],
+        annotations: [{ x: threshold, y: 1, yref: "paper", text: `threshold (${threshold})`, showarrow: false, xanchor: "left", xshift: 4, font: { size: 11, color: COLORS.muted } }],
+      };
+
+      Plotly.newPlot("chart", [makeTrace("Sustainable", COLORS.sustainable), makeTrace("Risky", COLORS.risky)], layout,
+        { responsive: true, displaylogo: false, modeBarButtonsToRemove: ["lasso2d", "select2d"] });
+    }
+
+    function renderSkipped(skipped) {
+      document.getElementById("skipped-list").innerHTML =
+        skipped.map(s => `<li><span class="sym">${esc(s.ticker)}</span>: ${esc(s.reason)}</li>`).join("");
+      skippedEl.hidden = false;
+    }
+  </script>
+</body>
+</html>

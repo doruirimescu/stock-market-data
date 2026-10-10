@@ -1,0 +1,52 @@
+{% extends "base.html.j2" %}
+{% block title %}Validation against the reference provider{% endblock %}
+{% block body %}
+    <div class="eyebrow">Validation</div>
+    <h1>Our numbers vs <span class="gradient-text">the reference</span></h1>
+    <p class="lead">{{ summary.total }} values the reference provider published for {{ tickers|length }} stocks, compared with ours.
+      <mark>{{ summary.by_status.match }} match within tolerance</mark>, {{ summary.by_status.close }} are close and {{ summary.by_status.differs }} differ.
+      Each value is checked against our analysis re-run point-in-time on the reference provider's as-of date, using only filings and prices known then.
+      The Fair Value Score mapping is calibrated on these same stocks (leave-one-out error 4.4 points).</p>
+
+    <div class="kpis">
+      <div class="panel kpi"><div class="label">Match</div><div class="value">{{ summary.by_status.match }}</div><div class="sub"><span class="verdict under">Within 5%</span> or ±1 rank point</div></div>
+      <div class="panel kpi"><div class="label">Close</div><div class="value">{{ summary.by_status.close }}</div><div class="sub">Within 15% or ±2 points</div></div>
+      <div class="panel kpi"><div class="label">Differ</div><div class="value">{{ summary.by_status.differs }}</div><div class="sub"><span class="verdict over">Outside tolerance</span></div></div>
+      <div class="panel kpi"><div class="label">Not computed</div><div class="value">{{ summary.by_status.missing }}</div><div class="sub">The reference provider has a value, we don't</div></div>
+    </div>
+
+    <h2 class="section">By metric</h2>
+    <div class="panel">
+    {% for k, b in summary.by_metric.items()|sort(attribute='1.n', reverse=True) %}
+      <div class="dist-row"><div class="dist-label">{{ labels.get(k, k) }}{% if b.median_abs_rel_diff is not none %} <span class="muted small">· median gap {{ "%.1f"|format(b.median_abs_rel_diff * 100) }}%</span>{% endif %}</div>
+        <div class="dist-track"><div class="dist-bar" style="width:{{ (b.match / b.n * 100)|round(0) }}%;background:var(--under)"></div></div>
+        <div class="dist-count">{{ b.match }}/{{ b.n }}</div></div>
+    {% endfor %}
+      <p class="muted small">Bar = share of stocks where the metric matches within tolerance.</p>
+    </div>
+
+    <h2 class="section">Every comparison</h2>
+    <div class="toolbar"><input class="input" type="search" id="q" placeholder="Filter by ticker, metric or status…"><span class="muted small" id="count"></span></div>
+    <div class="table-wrap scroll-y"><table class="data" id="tbl">
+      <thead><tr><th>Symbol</th><th>Metric</th><th class="num">Reference</th><th class="num">Ours</th><th class="num">Gap</th><th>Status</th><th>As of</th><th>Note</th></tr></thead>
+      <tbody>{% for x in rows %}
+        <tr><td class="sym"><a href="stocks/{{ x.ticker }}.html">{{ x.ticker }}</a></td><td>{{ x.label }}</td>
+          <td class="num"><span title="{{ x.source }}">{{ num(x.theirs) }}</span></td><td class="num">{{ num(x.ours) }}</td>
+          <td class="num">{% if x.diff is none %}–{% elif x.diff_kind == 'rel' %}{{ "%+.1f"|format(x.diff * 100) }}%{% else %}{{ "%+.1f"|format(x.diff) }}{% endif %}</td>
+          <td><span class="verdict {{ 'under' if x.status == 'match' else 'over' if x.status == 'differs' else '' }}">{{ x.status|capitalize }}</span></td>
+          <td class="small">{{ x.as_of }}</td><td class="small muted">{{ x.note }}</td></tr>
+      {% endfor %}</tbody></table></div>
+    <p class="muted small">Reference values were collected from the reference provider's page titles and articles found by web search, because the reference site blocks automated access.
+      Each reference figure keeps its source path as a tooltip. See docs/VALIDATION.md for the analysis of each gap.</p>
+{% endblock %}
+{% block scripts %}
+<script>
+  const q = document.getElementById("q"), rows = [...document.querySelectorAll("#tbl tbody tr")], count = document.getElementById("count");
+  function apply() {
+    const s = q.value.trim().toLowerCase(); let n = 0;
+    rows.forEach(tr => { const show = !s || tr.textContent.toLowerCase().includes(s); tr.style.display = show ? "" : "none"; n += show; });
+    count.textContent = `Showing ${n} of ${rows.length}`;
+  }
+  q.addEventListener("input", apply); apply();
+</script>
+{% endblock %}

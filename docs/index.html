@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Investing Nexus</title>
+  <meta name="description" content="Daily index valuations, calculators and research for data-driven investing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%232f6fea%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-family=%22Arial%22 font-weight=%22800%22 font-size=%2216%22 fill=%22white%22 text-anchor=%22middle%22%3EN%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="nasdaq_today.html">NASDAQ-100</a>
+        <a href="sp500_today.html">S&amp;P 500</a>
+        <a href="sp500_valuation.html">S&amp;P 500 Summary</a>
+        <a href="fairvalue/index.html">Fair Value stocks</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container narrow">
+    <div class="eyebrow">Investing Nexus</div>
+    <h1>Data-driven tools for <span class="gradient-text">smarter investing</span></h1>
+    <p class="lead">Daily <mark>index valuations</mark>, stock calculators and research notes &mdash; built to replace gut feeling with <span class="hl-accent">numbers</span>.</p>
+
+    <h2 class="section">Market Analysis</h2>
+    <div class="card-grid">
+      <a class="card" href="nasdaq_today.html">
+        <em class="tag" data-latest="nasdaq" hidden></em>
+        <strong>NASDAQ-100 Valuation</strong>
+        <span>Daily snapshot of NASDAQ-100 valuations, solvency and extremes, with history. AlphaSpread, Fair Value, or both combined.</span>
+      </a>
+      <a class="card" href="sp500_today.html">
+        <em class="tag" data-latest="sp500" hidden></em>
+        <strong>S&amp;P 500 Valuation</strong>
+        <span>Daily snapshot of S&amp;P 500 valuations, solvency and extremes, with history. AlphaSpread, Fair Value, or both combined.</span>
+      </a>
+      <a class="card" href="sp500_valuation.html">
+        <em class="tag" data-latest="sp500" hidden></em>
+        <strong>S&amp;P 500 Valuation Summary</strong>
+        <span>Equal-weight and market-cap-weighted portfolio valuation, distribution, and extremes.</span>
+      </a>
+      <a class="card" href="fairvalue/index.html">
+        <em class="tag" data-latest="fairvalue:sp500" hidden></em>
+        <strong>Fair Value Stock Summaries</strong>
+        <span>A Fair Value summary page for every S&amp;P 500 and NASDAQ-100 stock: Fair Value, Quality Score, solvency, profitability, growth and valuation, from SEC filings.</span>
+      </a>
+    </div>
+
+    <h2 class="section">Strategy Research</h2>
+    <div class="card-grid">
+      <a class="card" href="basket/index.html">
+        <em class="tag" id="basket-latest" hidden></em>
+        <strong>Basket Rotation</strong>
+        <span>Mean-reversion rotation between equal-weight stock baskets: ranked basket ratios, backtests, and a strategy lab that re-runs the scan in your browser.</span>
+      </a>
+      <a class="card" href="basket/trend.html">
+        <strong>Sector Trend</strong>
+        <span>Nine sector ETFs with a 10-month trend filter: S&amp;P 500-like returns since 2000 with a third of the drawdown.</span>
+      </a>
+    </div>
+
+    <h2 class="section">Stock Calculators</h2>
+    <div class="card-grid">
+    <a class="card" href="dividend_sustainability.html">
+      <strong>Dividend Sustainability Analyzer</strong>
+      <span>Score a batch of tickers on payout ratio, yield, debt, ROE, FCF, and 5-year dividend growth.</span>
+    </a>
+    <a class="card" href="pvgo_calculator.html">
+      <strong>PVGO Calculator</strong>
+      <span>Estimate the present value of growth opportunities for any stock using CAPM.</span>
+    </a>
+    <a class="card" href="iv15_calculator.html">
+      <strong>IV15 Calculator</strong>
+      <span>Intrinsic value via 15-year discounted FCF, adjusted for stock-based compensation (the Tragic Algebra).</span>
+    </a>
+    </div>
+
+    <h2 class="section">Articles</h2>
+    <div class="card-grid">
+    <a class="card" href="articles/sector-rotation-big-money-analysis-2026-07-29.html">
+      <strong>Following the Big Money</strong>
+      <span>A data-backed analysis of July 2026 U.S. sector performance, ETF flows, hedge-fund positioning, dark-pool volume, and insider transactions.</span>
+    </a>
+    </div>
+
+    <h2 class="section">Research Papers</h2>
+    <div class="card-grid">
+    <a class="card" href="https://github.com/doruirimescu/stock-market-data/blob/master/papers/the_holy_grail.md">
+      <strong>The Holy Grail</strong>
+      <span>First-principles reasoning toward the ideal trading instrument — why a pure sinusoid with high amplitude and frequency represents the perfect graph.</span>
+    </a>
+    <a class="card" href="https://github.com/doruirimescu/stock-market-data/blob/master/papers/bounded_unbounded_trades.md">
+      <strong>Bounded and Unbounded Trades</strong>
+      <span>A risk-scoring framework that classifies trades by entry and exit conditions: bounded, unbounded, soft-bound, and hard-bounded.</span>
+    </a>
+    <a class="card" href="https://github.com/doruirimescu/stock-market-data/blob/master/papers/ranging_market.md">
+      <strong>Selecting Stocks in a Ranging Market</strong>
+      <span>Systematic Python-based methodology for identifying stocks near the bottom of a defined price band, scored by historical behavior and financial strength.</span>
+    </a>
+    <a class="card" href="https://github.com/doruirimescu/stock-market-data/blob/master/papers/ranging-market-a-mathematical-definition.md">
+      <strong>Ranging Market: A Mathematical Definition</strong>
+      <span>Formal derivation of a ranging score using percentile-based high/low compression and candle-level statistics.</span>
+    </a>
+    <a class="card" href="https://github.com/doruirimescu/stock-market-data/blob/master/papers/Sustainable%20Leverage%20in%20Global%20Equity%20ETFs.md">
+      <strong>Sustainable Leverage in Global Equity ETFs</strong>
+      <span>Derives the maximum sustainable leverage ratio for FWRA such that a specified drawdown does not trigger forced liquidation.</span>
+    </a>
+    </div>
+
+    <h2 class="section">Personal Finance</h2>
+    <div class="card-grid">
+    <a class="card" href="loan_simulation.html">
+      <strong>Loan vs Investment Simulator</strong>
+      <span>Find the optimal salary split between loan repayment and investing.</span>
+    </a>
+    <a class="card" href="loan_analysis.html">
+      <strong>Loan Analysis</strong>
+      <span>Upload your loan.json to visualise repayment progress, interest costs, and monthly breakdown.</span>
+    </a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container narrow">Valuations refreshed daily at 06:30 UTC. Nothing here is investment advice.</div>
+  </footer>
+
+  <script>
+    // Tag the valuation cards with the date of their newest snapshot. Loaded as a
+    // script (not fetch) so it also works when the page is opened from disk.
+    (function () {
+      // data-latest="<index>" uses the AlphaSpread manifest; "<source>:<index>" picks a source.
+      let pending = 2;
+      const onManifest = () => {
+        if (--pending) return;
+        const data = window.nexusData || {};
+        document.querySelectorAll("[data-latest]").forEach((tag) => {
+          const [src, idx] = tag.dataset.latest.includes(":") ? tag.dataset.latest.split(":") : ["alphaspread", tag.dataset.latest];
+          const d = ((data[src + "/manifest"] || {})[idx] || [])[0];
+          if (!d) return;
+          tag.textContent = new Date(d + "T00:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+          tag.hidden = false;
+        });
+      };
+      for (const src of ["alphaspread", "fairvalue"]) {
+        const el = document.createElement("script");
+        el.src = `data/${src}/manifest.js?v=` + Date.now();
+        el.onload = el.onerror = onManifest;
+        document.head.appendChild(el);
+      }
+
+      // Same for the newest Basket Rotation run.
+      const br = document.createElement("script");
+      br.src = "basket/data/manifest.js?v=" + Date.now();
+      br.onload = () => {
+        const run = ((window.nexusData || {}).basket_manifest || [])[0];
+        const tag = document.getElementById("basket-latest");
+        if (!run || !tag) return;
+        tag.textContent = new Date(run.created_at).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+        tag.hidden = false;
+      };
+      document.head.appendChild(br);
+    })();
+  </script>
+</body>
+</html>

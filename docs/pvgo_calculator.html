@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PVGO Calculator · Investing Nexus</title>
+  <meta name="description" content="Estimate the present value of growth opportunities for any stock using CAPM.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%232f6fea%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-family=%22Arial%22 font-weight=%22800%22 font-size=%2216%22 fill=%22white%22 text-anchor=%22middle%22%3EN%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="nasdaq_today.html">NASDAQ-100</a>
+        <a href="sp500_today.html">S&amp;P 500</a>
+        <a href="sp500_valuation.html">S&amp;P 500 Summary</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container narrow">
+    <div class="eyebrow">Stock calculator</div>
+    <h1>PVGO <span class="gradient-text">Calculator</span></h1>
+    <p class="lead">Splits a stock's price into what it is worth with <mark>no growth</mark> and what investors pay for <span class="hl-accent">expected growth</span>. The risk-free rate is the live 10-year US Treasury yield.</p>
+
+    <div class="panel token-bar">
+      <label for="api-token">API token</label>
+      <input class="input" type="password" id="api-token" placeholder="Paste your token here" autocomplete="off">
+      <span class="hint" id="api-token-hint"></span>
+    </div>
+
+    <h2 class="section">Inputs</h2>
+    <form class="panel form-grid" id="pvgo-form">
+      <label class="field">Ticker
+        <span class="hint">Yahoo Finance symbol, e.g. AAPL, MSFT, NVDA</span>
+        <input class="input" type="text" id="ticker" placeholder="AAPL" required>
+      </label>
+      <label class="field">Market risk premium (%)
+        <span class="hint">Equity risk premium; default 5%</span>
+        <input class="input" type="number" id="market_risk_premium" value="5" step="0.1" min="0" required>
+      </label>
+      <div class="form-actions"><button class="btn primary lg" type="submit">Calculate PVGO</button></div>
+    </form>
+
+    <div class="notice" id="error" hidden></div>
+
+    <section id="results" hidden>
+      <h2 class="section" id="results-title">Results</h2>
+      <p class="lead" id="results-summary" style="margin-bottom:14px"></p>
+      <div class="table-wrap"><table class="data kv" id="results-table"></table></div>
+    </section>
+
+    <h2 class="section">What is PVGO?</h2>
+    <div class="prose">
+      <p>A stock's price has two parts: what the company is worth if it <em>never grew again</em>, and what investors pay for <em>expected future growth</em>. The second part is the <strong>Present Value of Growth Opportunities (PVGO)</strong>.</p>
+      <div class="formula">No-Growth Value = Forward EPS ÷ Cost of Equity</div>
+      <p>What you would pay for a bond-like company that pays out all its earnings forever, with no reinvestment.</p>
+      <div class="formula">PVGO = Current Price − No-Growth Value</div>
+      <p>The remainder is what the market pays purely on the belief that the company will find profitable ways to reinvest and grow. <strong>PVGO %</strong> shows how much of the price is a growth bet:</p>
+      <ul>
+        <li><strong>High PVGO % (70–90%)</strong>: most of the price is growth expectations, so the stock is sensitive to whether they are met.</li>
+        <li><strong>Low or negative PVGO %</strong>: the stock trades near or below its no-growth earnings value. The market sees little growth ahead, or the stock may be undervalued.</li>
+      </ul>
+      <p class="small">Cost of Equity uses CAPM: Risk-Free Rate + Beta × Market Risk Premium. The risk-free rate is the 10-year US Treasury yield (^TNX on Yahoo Finance).</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container narrow">Data fetched live from Yahoo Finance. Nothing here is investment advice.</div>
+  </footer>
+
+  <script src="assets/backend.js"></script>
+  <script>
+    const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const form = document.getElementById("pvgo-form");
+    const btn = form.querySelector("button[type=submit]");
+    const errorEl = document.getElementById("error");
+    const resultsEl = document.getElementById("results");
+
+    document.getElementById("ticker").addEventListener("input", function () {
+      this.value = this.value.toUpperCase();
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorEl.hidden = true;
+      resultsEl.hidden = true;
+
+      const ticker = document.getElementById("ticker").value.trim();
+      const mrp = parseFloat(document.getElementById("market_risk_premium").value) / 100;
+      const params = new URLSearchParams({ ticker, market_risk_premium: mrp });
+
+      btn.disabled = true;
+      btn.textContent = "Fetching data…";
+      try {
+        const data = await Backend.call(`/pvgo/calculate?${params}`);
+        if (data.error) throw new Error(data.error);
+        displayResults(data);
+      } catch (err) {
+        errorEl.textContent = err.message;
+        errorEl.hidden = false;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Calculate PVGO";
+      }
+    });
+
+    function displayResults(data) {
+      document.getElementById("results-title").textContent = `Results — ${data["Ticker"]}`;
+      document.getElementById("results-summary").innerHTML =
+        `<span class="hl-accent">${esc(data["PVGO Percentage"])}</span> of ${esc(data["Ticker"])}'s ${esc(data["Current Price"])} price is a bet on growth; ` +
+        `the no-growth value is <mark>${esc(data["No-Growth Value"])}</mark>.`;
+
+      const keyRows = new Set(["PVGO", "PVGO Percentage", "No-Growth Value"]);
+      document.getElementById("results-table").innerHTML = Object.entries(data)
+        .filter(([k]) => k !== "Ticker")
+        .map(([k, v]) => `<tr${keyRows.has(k) ? ' class="key"' : ""}><td>${esc(k)}</td><td>${esc(v)}</td></tr>`)
+        .join("");
+      resultsEl.hidden = false;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,582 @@
+{
+ "collected_on": "2026-10-10",
+ "method": "Values the reference provider published for each stock, collected from web-search result titles/snippets of the reference site term pages and the reference provider news articles (the reference site itself returns HTTP 403 to automated clients; archive.org was unreachable). Each value carries its as-of date and source URL. Undated values and values older than 2026-01 are listed under 'excluded'.",
+ "stocks": {
+  "AAPL": {
+   "metrics": {
+    "fair_value": {
+     "value": 284.29,
+     "as_of": "2026-09-01",
+     "source": "reference-site/term/forward-pe-ratio/AAPL",
+     "confidence": "medium",
+     "note": "From page sidebar of term page titled 'Forward PE Ratio: 33.16 (As of Sep. 01, 2026)'; seen via search summary attributed to that URL. Rated Modestly Overvalued."
+    },
+    "price": {
+     "value": 316.85,
+     "as_of": "2026-09-01",
+     "source": "reference-site/term/forward-pe-ratio/AAPL",
+     "confidence": "medium",
+     "note": "Price shown on the Sep. 01, 2026 forward PE term page"
+    },
+    "quality_score": {
+     "value": 96,
+     "as_of": "2026-09-01",
+     "source": "reference-site/term/forward-pe-ratio/AAPL",
+     "confidence": "medium",
+     "note": "Also 96/100 in Aug 2026 Fair Value news articles (e.g. news/9029130, news/9034814). An undated stock page showed 95."
+    },
+    "pe_ttm": {
+     "value": 36.34,
+     "as_of": "2026-09-01",
+     "source": "reference-site/term/forward-pe-ratio/AAPL",
+     "confidence": "medium",
+     "note": "Trailing PE (TTM) listed on the forward PE term page; forward PE on same page is 33.16 (not used here)"
+    },
+    "roic": {
+     "value": 42.12,
+     "as_of": "2026-08-15",
+     "source": "reference-site/term/roic/AAPL",
+     "confidence": "medium",
+     "note": "TTM variant (page headline is annualized quarter: 37.68)"
+    },
+    "roe": {
+     "value": 111.36,
+     "as_of": "2026-06",
+     "source": "reference-site/term/roe/AAPL",
+     "note": "Title value = annualized ROE for quarter ended Jun. 2026 (title: 'ROE %: 111.36% (As of Jun. 2026) \u2014 Near Median'). Page range section reportedly shows 'Current: 145.93' (likely TTM); not verified.",
+     "basis": "annualized quarter"
+    },
+    "wacc": {
+     "value": 10.06,
+     "as_of": "2026-08-15",
+     "source": "reference-site/term/roic/AAPL",
+     "confidence": "medium",
+     "note": "WACC quoted in ROIC term page body (via search summary)"
+    }
+   },
+   "excluded": {}
+  },
+  "CAT": {
+   "metrics": {
+    "fair_value": {
+     "value": 461.18,
+     "as_of": "2026-09-25",
+     "source": "reference-site/term/gf-value/CAT",
+     "confidence": "medium",
+     "note": "From the extended-search summary of the reference provider pages dated Sep 24-25, 2026. Rated Significantly Overvalued"
+    },
+    "quality_score": {
+     "value": 85,
+     "as_of": "2026-09-25",
+     "source": "reference-site/term/gf-value/CAT",
+     "confidence": "medium",
+     "note": "From the summary: 'Quality Score 85/100 with 3 warning signs' (Sep 24-25, 2026)"
+    },
+    "price": {
+     "value": 810.045,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term/pb-ratio/CAT",
+     "confidence": "medium",
+     "note": "The share price used in the PB calculation, per the summary"
+    },
+    "pe_ttm": {
+     "value": 34.25,
+     "as_of": "2026-09-24",
+     "source": "the reference provider (search summary; likely reference-site/term/pettm/CAT)",
+     "confidence": "medium",
+     "note": "Quoted text: 'Caterpillar's PE Ratio (TTM) for today is 34.25'. Forward PE is 24.45 on Sep 24, 2026 and is not trailing"
+    },
+    "pb": {
+     "value": 19.2,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term/pb-ratio/CAT",
+     "note": "From the result title 'CATERPILLAR PB Ratio: 19.20 \u2014 193% Above Median'. Date from the summary. Book value per share 42.19 (Jun 2026); 10Y median 6.55"
+    },
+    "ev_to_ebitda": {
+     "value": 24.51,
+     "as_of": "2026-09-06",
+     "source": "reference-site/term/enterprise-value-to-ebitda/CAT",
+     "confidence": "medium",
+     "note": "From the summary: EV $412,580 Mil, TTM EBITDA $16,830 Mil (Jun 2026), 10Y median 13.16"
+    },
+    "rank_financial_strength": {
+     "value": 6,
+     "as_of": "2026-09",
+     "source": "the reference provider news/term pages (search summary)",
+     "confidence": "low",
+     "note": "From the 'most recent breakdown' in a summary of late-September 2026 the reference provider pages; the exact URL was not attributed"
+    },
+    "rank_profitability": {
+     "value": 9,
+     "as_of": "2026-09",
+     "source": "the reference provider news/term pages (search summary)",
+     "confidence": "low",
+     "note": "Same breakdown as rank_financial_strength"
+    },
+    "rank_growth": {
+     "value": 10,
+     "as_of": "2026-09",
+     "source": "the reference provider news/term pages (search summary)",
+     "confidence": "low",
+     "note": "Same breakdown as rank_financial_strength"
+    },
+    "rank_momentum": {
+     "value": 10,
+     "as_of": "2026-09",
+     "source": "the reference provider news/term pages (search summary)",
+     "confidence": "low",
+     "note": "Same breakdown. The breakdown also lists Valuation 1/10, which is the Quality Score valuation component, not necessarily rank_fair_value"
+    }
+   },
+   "excluded": {}
+  },
+  "HD": {
+   "metrics": {
+    "fair_value": {
+     "value": 386.99,
+     "as_of": "2026-10-09",
+     "source": "reference-site/term/fair_value/HD/Fair Value/The-Home-Depot",
+     "confidence": "medium",
+     "note": "386.99 and its date come from the search tool's summary, not from a URL-attributed title. The result title at this URL reads 'HD Fair Value: $386.21'. Rated Modestly Undervalued."
+    },
+    "quality_score": {
+     "value": 83,
+     "as_of": "2026-10-09",
+     "source": "reference-site/term/fair_value/HD/Fair Value/The-Home-Depot",
+     "confidence": "medium",
+     "note": "Appeared in the same summary snippet as the Fair Value of 386.99"
+    },
+    "price": {
+     "value": 292.04,
+     "as_of": "2026-10-09",
+     "source": "reference-site/term/fair_value/HD/Fair Value/The-Home-Depot",
+     "confidence": "medium",
+     "note": "Appeared in the same summary snippet as the Fair Value of 386.99"
+    },
+    "pe_ttm": {
+     "value": 23.49,
+     "as_of": "2026-08-24",
+     "source": "reference-site/term/pettm/HD",
+     "note": "From the result title 'The Home Depot (HD) PE Ratio (TTM): 23.49 (As of Aug. 24, 2026)'. Snippet: price 335.61, TTM EPS 14.29 (Jul 2026), 10Y median 23.15"
+    },
+    "pb": {
+     "value": 17.11,
+     "as_of": "2026-10-07",
+     "source": "reference-site/term/pb-ratio/HD",
+     "confidence": "medium",
+     "note": "From the extended-search summary, attributed to the reference provider; 10Y median 113.15. Related result title: 'HD Book Value per Share: $16.65'"
+    },
+    "ps": {
+     "value": 1.66,
+     "as_of": "2026-10-01",
+     "source": "the reference provider (ps-ratio page; URL not shown in results)",
+     "confidence": "low",
+     "note": "The summary attributes this to the reference provider, but no ps-ratio URL appeared in the results"
+    },
+    "ev_to_ebitda": {
+     "value": 13.43,
+     "as_of": "2026-10-03",
+     "source": "reference-site/term/enterprise-value-to-ebitda/HD",
+     "note": "From the result title 'HD EV-to-EBITDA: 13.43 \u2014 11% Below Median'. Date from the summary. EV $342,015 Mil; 10Y median 15.07"
+    }
+   },
+   "excluded": {
+    "rank_fair_value": {
+     "value": 8,
+     "source": "reference-site/term/rank_fair_value/HD/Fair Value-Rank/The-Home-Depot",
+     "confidence": "low",
+     "note": "From the result title 'HD Fair Value Rank: 8 \u2014 33% Above Median'. No date was shown, but the title uses the current format. An undated summary page showed Fair Value Rank 10/10"
+    }
+   }
+  },
+  "JNJ": {
+   "metrics": {
+    "fair_value": {
+     "value": 192.28,
+     "as_of": "2026-08-15",
+     "source": "reference-site/term/forward-pe-ratio/JNJ",
+     "note": "Value taken from search snippet of the Forward PE page (title dated Aug. 15, 2026): 'Quality Score 83/100 and a Fair Value of $192.28 (Significantly Overvalued)'."
+    },
+    "quality_score": {
+     "value": 83,
+     "as_of": "2026-08-15",
+     "source": "reference-site/term/forward-pe-ratio/JNJ",
+     "note": "From search snippet of the Forward PE page dated Aug. 15, 2026."
+    },
+    "price": {
+     "value": 269.67,
+     "as_of": "2026-08-18",
+     "source": "reference-site/term/pe-ratio/JNJ",
+     "note": "Snippet: 'As of today (2026-08-18), Johnson & Johnson's share price is $269.67'."
+    },
+    "pe_ttm": {
+     "value": 31.25,
+     "as_of": "2026-08-18",
+     "source": "reference-site/term/pe-ratio/JNJ",
+     "note": "Result title: 'JNJ (Johnson & Johnson) PE Ratio: 31.25 (As of Aug. 18, 2026) \u2014 29% Above Median'. Based on TTM diluted EPS $8.63 (Jun 2026). Forward PE 22.49 (Aug. 15, 2026) is separate."
+    },
+    "roic": {
+     "value": 14.78,
+     "as_of": "2026-06",
+     "source": "reference-site/term/roic/JNJ",
+     "note": "Result title: 'ROIC %: 14.78% (As of Jun. 2026)' - this is the annualized quarterly figure for Q ended Jun 2026; the same page reportedly gives TTM ROIC 14.10%.",
+     "basis": "annualized quarter"
+    },
+    "debt_to_equity": {
+     "value": 0.58,
+     "as_of": "2026-06",
+     "source": "reference-site/term/debt-to-equity/JNJ",
+     "note": "Result title: 'Debt-to-Equity: 0.58 (As of Jun. 2026) \u2014 16% Above Median' (ST debt 11,692 + LT debt 37,344 / equity 84,971, $Mil)."
+    },
+    "wacc": {
+     "value": 4.96,
+     "as_of": "2026-08-20",
+     "source": "reference-site/term/roic/JNJ",
+     "confidence": "low",
+     "note": "From search summary attributed to the JNJ ROIC page; the date Aug. 20, 2026 comes from the summary, not a result title."
+    },
+    "dividend_yield": {
+     "value": 2.04,
+     "as_of": "2026-03",
+     "source": "reference-site/term/dividends-per-share/JNJ",
+     "confidence": "low",
+     "note": "Search summary: 'Dividend Yield % is 2.04%' at price $256.98; exact as-of date unclear (page data through Mar 2026). Exact source page among the benchmark dividend results is uncertain."
+    }
+   },
+   "excluded": {}
+  },
+  "KO": {
+   "metrics": {
+    "fair_value": {
+     "value": 73.65,
+     "as_of": "2026-09-21",
+     "source": "reference-site/term/moat-score/KO",
+     "confidence": "medium",
+     "note": "From search summary of the Moat Score page (title dated Sep. 21, 2026); label 'Modestly Overvalued'."
+    },
+    "quality_score": {
+     "value": 77,
+     "as_of": "2026-09-21",
+     "source": "reference-site/term/moat-score/KO",
+     "confidence": "medium"
+    },
+    "price": {
+     "value": 88.25,
+     "as_of": "2026-09-21",
+     "source": "reference-site/term/moat-score/KO",
+     "confidence": "medium"
+    },
+    "pe_ttm": {
+     "value": 26.51,
+     "as_of": "2026-09-13",
+     "source": "reference-site/term/forward-pe-ratio/KO",
+     "confidence": "medium",
+     "note": "TTM PE from snippet of Forward PE page (Forward PE 25.00 as of Sep. 13, 2026; PE w/o NRI 27.33)."
+    }
+   },
+   "excluded": {
+    "beneish_m": {
+     "value": -2.64,
+     "as_of": "undated",
+     "source": "reference-site/term/mscore/KO",
+     "confidence": "low",
+     "note": "Page date not shown in search result."
+    }
+   }
+  },
+  "MSFT": {
+   "metrics": {
+    "fair_value": {
+     "value": 575.87,
+     "as_of": "2026-08-14",
+     "source": "reference-site/term/forward-pe-ratio/MSFT",
+     "confidence": "medium",
+     "note": "Sidebar of term page titled 'Forward PE Ratio: 25.33 (As of Aug. 14, 2026)'; rated Modestly Undervalued"
+    },
+    "price": {
+     "value": 494.25,
+     "as_of": "2026-08-26",
+     "source": "reference-site/term/cyclically-adjusted-ps-ratio/MSFT",
+     "confidence": "medium",
+     "note": "Price used on the CAPS term page dated Aug. 26, 2026"
+    },
+    "quality_score": {
+     "value": 97,
+     "as_of": "2026-08-14",
+     "source": "reference-site/term/forward-pe-ratio/MSFT",
+     "confidence": "medium"
+    },
+    "pe_ttm": {
+     "value": 27.79,
+     "as_of": "2026-08-14",
+     "source": "reference-site/term/forward-pe-ratio/MSFT",
+     "confidence": "medium",
+     "note": "Trailing PE (TTM) on forward PE term page; forward PE 25.33 and PE w/o NRI 29.58 on same page (not used)"
+    },
+    "ev_to_ebitda": {
+     "value": 12.76,
+     "as_of": "2026-06-25",
+     "source": "reference-site/term/enterprise-value/MSFT",
+     "confidence": "low",
+     "note": "Page text: EV $2,599,712 Mil (as of Jun. 25, 2026) / TTM EBITDA (Mar. 2026) $203,793 Mil = 12.76; at that time price was ~352.83, very different from Aug prices"
+    },
+    "roic": {
+     "value": 21.24,
+     "as_of": "2026-08-16",
+     "source": "reference-site/term/roic/MSFT",
+     "confidence": "medium",
+     "note": "TTM variant (page headline is annualized quarter: 20.46)"
+    },
+    "wacc": {
+     "value": 11.24,
+     "as_of": "2026-08-16",
+     "source": "reference-site/term/roic/MSFT",
+     "confidence": "medium",
+     "note": "WACC quoted in ROIC term page body"
+    },
+    "rank_financial_strength": {
+     "value": 8,
+     "as_of": "2026-08",
+     "source": "reference-site/news/9037996/ai-investment-drives-market-optimism-with-major-players-like-msft-and-amzn",
+     "confidence": "low",
+     "note": "Quality Score breakdown table (Quality Score 97) attributed by search summary to this article; exact date unknown"
+    },
+    "rank_profitability": {
+     "value": 10,
+     "as_of": "2026-08",
+     "source": "reference-site/news/9037996/ai-investment-drives-market-optimism-with-major-players-like-msft-and-amzn",
+     "confidence": "low",
+     "note": "see rank_financial_strength"
+    },
+    "rank_growth": {
+     "value": 10,
+     "as_of": "2026-08",
+     "source": "reference-site/news/9037996/ai-investment-drives-market-optimism-with-major-players-like-msft-and-amzn",
+     "confidence": "low",
+     "note": "see rank_financial_strength"
+    },
+    "rank_fair_value": {
+     "value": 10,
+     "as_of": "2026-08",
+     "source": "reference-site/news/9037996/ai-investment-drives-market-optimism-with-major-players-like-msft-and-amzn",
+     "confidence": "low",
+     "note": "'Valuation' component of Quality Score; see rank_financial_strength"
+    },
+    "rank_momentum": {
+     "value": 5,
+     "as_of": "2026-08",
+     "source": "reference-site/news/9037996/ai-investment-drives-market-optimism-with-major-players-like-msft-and-amzn",
+     "confidence": "low",
+     "note": "see rank_financial_strength"
+    }
+   },
+   "excluded": {}
+  },
+  "NVDA": {
+   "metrics": {
+    "fair_value": {
+     "value": 378.51,
+     "as_of": "2026-08-29",
+     "source": "reference-site/term/fscore/NVDA",
+     "confidence": "medium",
+     "note": "From search summary of the F-Score page (title dated Aug. 29, 2026); label 'Possible Value Trap'."
+    },
+    "quality_score": {
+     "value": 95,
+     "as_of": "2026-08-29",
+     "source": "reference-site/term/fscore/NVDA",
+     "confidence": "medium",
+     "note": "Consistently 95/100 across Aug 2026 news articles (9032307, 9040619)."
+    },
+    "price": {
+     "value": 208.48,
+     "as_of": "2026-08-25",
+     "source": "reference-site/term/ps-ratio/NVDA",
+     "note": "Price used on the PS Ratio page (title dated Aug. 25, 2026)."
+    },
+    "pe_ttm": {
+     "value": 26.81,
+     "as_of": "2026-09-15",
+     "source": "reference-site/term/forward-pe-ratio/NVDA",
+     "confidence": "medium",
+     "note": "TTM PE stated in snippet of Forward PE page (Forward PE 22.81 as of Sep. 15, 2026; PE w/o NRI 30.25)."
+    },
+    "ps": {
+     "value": 20.11,
+     "as_of": "2026-08-25",
+     "source": "reference-site/term/ps-ratio/NVDA",
+     "note": "From result title."
+    },
+    "roe": {
+     "value": 132.26,
+     "as_of": "2026-04",
+     "source": "reference-site/term/roe/NVDA",
+     "note": "From result title; quarter ended Apr. 2026 (likely annualized quarterly).",
+     "basis": "annualized quarter"
+    },
+    "piotroski_f": {
+     "value": 7,
+     "as_of": "2026-08-29",
+     "source": "reference-site/term/fscore/NVDA",
+     "note": "From result title. Summary page (undated) showed 8/9."
+    },
+    "debt_to_equity": {
+     "value": 0.06,
+     "as_of": "2026-04",
+     "source": "reference-site/term/debt-to-equity/NVDA",
+     "note": "From result title. Undated summary page showed 0.13."
+    },
+    "dividend_yield": {
+     "value": 0.13,
+     "as_of": "2026-08-10",
+     "source": "reference-site/term/ForwardDividendYield/NVDA",
+     "confidence": "medium",
+     "note": "Trailing yield from snippet of Forward Dividend Yield page; forward yield was 0.45 on same date."
+    }
+   },
+   "excluded": {
+    "rank_profitability": {
+     "value": 10,
+     "as_of": "undated",
+     "source": "reference-site/term/rank-profitability/NVDA",
+     "confidence": "low",
+     "note": "Page date not shown in search result."
+    },
+    "rank_growth": {
+     "value": 10,
+     "as_of": "undated",
+     "source": "reference-site/stock/NVDA/summary",
+     "confidence": "low",
+     "note": "Undated summary snapshot."
+    },
+    "rank_financial_strength": {
+     "value": 9,
+     "as_of": "undated",
+     "source": "reference-site/stock/NVDA/summary",
+     "confidence": "low",
+     "note": "Undated summary snapshot; mirror pages show 10."
+    },
+    "rank_momentum": {
+     "value": 10,
+     "as_of": "undated",
+     "source": "reference-site/stock/NVDA/summary",
+     "confidence": "low",
+     "note": "Undated summary snapshot; a mirror page shows 9."
+    }
+   }
+  },
+  "PG": {
+   "metrics": {
+    "fair_value": {
+     "value": 167.59,
+     "as_of": "2026-09-14",
+     "source": "reference-site/term/ForwardDividendYield/PG",
+     "confidence": "medium",
+     "note": "Banner on page titled 'Forward Dividend Yield %: 2.98% (As of Sep. 14, 2026)', via search summary; Modestly Undervalued"
+    },
+    "quality_score": {
+     "value": 86,
+     "as_of": "2026-09-14",
+     "source": "reference-site/term/ForwardDividendYield/PG",
+     "confidence": "medium",
+     "note": "Banner on page titled As of Sep. 14, 2026, via search summary"
+    },
+    "price": {
+     "value": 146.23,
+     "as_of": "2026-09-14",
+     "source": "reference-site/term/ForwardDividendYield/PG",
+     "confidence": "medium",
+     "note": "Banner price on page titled As of Sep. 14, 2026, via search summary"
+    }
+   },
+   "excluded": {
+    "beneish_m": {
+     "value": -2.56,
+     "as_of": "2024-03",
+     "source": "reference-site/term/mscore/PG",
+     "confidence": "low",
+     "note": "Stale cached term page; quarterly table ended around Mar 2024."
+    }
+   }
+  },
+  "WMT": {
+   "metrics": {
+    "fair_value": {
+     "value": 103.37,
+     "as_of": "2026-09-04",
+     "source": "reference-site/term/earning-yield/WMT",
+     "confidence": "medium",
+     "note": "From search summary attributed to the the reference provider Earnings Yield page titled 'As of Sep. 04, 2026' (page banner: Fair Value $103.37, Fairly Valued). Banner date assumed equal to title date."
+    },
+    "quality_score": {
+     "value": 86,
+     "as_of": "2026-09-04",
+     "source": "reference-site/term/earning-yield/WMT",
+     "confidence": "medium",
+     "note": "Banner on page titled As of Sep. 04, 2026, via search summary"
+    },
+    "price": {
+     "value": 107.14,
+     "as_of": "2026-09-04",
+     "source": "reference-site/term/earning-yield/WMT",
+     "confidence": "medium",
+     "note": "Banner price on page titled As of Sep. 04, 2026, via search summary"
+    },
+    "pe_ttm": {
+     "value": 40.62,
+     "as_of": "2026-08-19",
+     "source": "reference-site/term/pettm/WMT",
+     "confidence": "high",
+     "note": "Result title: 'Walmart (WMT) PE Ratio (TTM): 40.62 (As of Aug. 19, 2026) \u2014 31% Above Median'. 10y median 30.97. Separately an undated the reference provider Forward PE of 33.60 was seen (not used)."
+    },
+    "ev_to_ebitda": {
+     "value": 19.45,
+     "as_of": "2026-07-01",
+     "source": "reference-site/term/enterprise-value/WMT",
+     "confidence": "low",
+     "note": "Summary quoted 'EV-to-EBITDA ratio for today is 19.45', tied to EV $936,093M (title As of Jul. 01, 2026) and TTM EBITDA $48,139M (Apr. 2026). Exact page date uncertain. Undated key-ratio snapshot showed 19.50."
+    },
+    "dividend_yield": {
+     "value": 0.87,
+     "as_of": "2026-08-10",
+     "source": "reference-site/term/yield/WMT",
+     "confidence": "low",
+     "note": "Trailing yield 0.87% mentioned in summary alongside the forward yield page (Forward Dividend Yield 0.90% As of Aug. 10, 2026, reference-site/term/ForwardDividendYield/WMT). Attribution of 0.87 to a specific URL/date is uncertain."
+    }
+   },
+   "excluded": {
+    "operating_margin": {
+     "value": 4.35,
+     "as_of": "2025-01",
+     "source": "reference-site/term/operating-margin/WMT",
+     "confidence": "low",
+     "note": "Stale: quarterly figure for quarter ended Jan 2025 from cached term page. Undated summary snapshots showed 4.31, 4.27 and 4.16."
+    }
+   }
+  },
+  "XOM": {
+   "metrics": {
+    "quality_score": {
+     "value": 72,
+     "as_of": "2026-09-21",
+     "source": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQNWZGY2FfS2d5elRkNE5VMWJGTDRiMDN5RDhLa05sRnl2QnNUazBERUc2Tnp0UTRBNXJkdFp0VERMYVFiYUVIVnBTdFlpU2JnczlMWXVHdjduRlpGWGJ2YkR1d1ByNjRnckQtbGIyVHlnRngyb2k4TVBIQTB4RVZPbjNWY0dITXdKUXgyNE10OGtqeGtKc2VqT0tXZ1V0SDlzVXBQVndEWkMxS3UtS3NzZTVlVlJoOFZPYmc?oc=5",
+     "note": "the reference provider article title (listed on https://stockscan.io/de/stocks/XOM): 'ExxonMobil Holdings Corp (XOM) Shares Fall 3.2% -- What Quality Score of 72 Tells Investors', Sep 21, 2026."
+    },
+    "price": {
+     "value": 145.26,
+     "as_of": "2026-05-29",
+     "source": "reference-site/news/8892295/exxon-mobil-corp-xom-stock-down-12-but-still-overvalued-gf-score-64100",
+     "note": "Read via reprint https://allmind.ai/news/034e8cec0769f5a2a06a4c87dd1c44af84b9820e4901ab5664bb156bdd36cbcd: 'Exxon Mobil shares fell 1.2% to $145.26 on May 29, 2026'. Stale relative to 2026-10-10."
+    },
+    "pe_ttm": {
+     "value": 24.79,
+     "as_of": "2026-06-15",
+     "source": "reference-site/news/8915880/exxon-mobil-xom-faces-rising-oil-prices-amid-inventory-concerns",
+     "confidence": "low",
+     "note": "Search snippet: 'current P/E ratio stands at 24.79, nearing its 5-year high of 27.1'. The June 15, 2026 date came from one search summary; another summary said the date was not shown."
+    }
+   },
+   "excluded": {}
+  }
+ }
+}

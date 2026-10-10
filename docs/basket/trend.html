@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sector Trend · Basket Rotation · Investing Nexus</title>
+  <meta name="description" content="A trend-filtered sector portfolio vs the S&amp;P 500 since 2000: similar return, a third of the drawdown.">
+  <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <link rel="stylesheet" href="assets/basket.css">
+  <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="index.html">Overview</a>
+        <a href="basket.html">Baskets</a>
+        <a href="lab.html">Strategy Lab</a>
+        <a href="trend.html" class="active">Sector Trend</a>
+        <a href="algorithm.html">Algorithm</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="eyebrow">Strategy research · <span id="span">2000–2026</span></div>
+    <h1>S&amp;P 500 returns, a third of the <span class="gradient-text">drawdown</span></h1>
+    <p class="lead" id="narrative">Loading…</p>
+    <div class="as-of" id="as-of"></div>
+    <div class="notice" id="error" hidden></div>
+
+    <div class="kpis" id="kpis"></div>
+
+    <h2 class="section">The rule</h2>
+    <div class="panel prose" id="rule"></div>
+
+    <h2 class="section">Position now</h2>
+    <div class="panel" id="current"></div>
+
+    <h2 class="section">Growth and drawdowns</h2>
+    <div class="panel chart-panel" style="margin-top:0">
+      <div class="chart-head"><h3>Growth of 1 (log scale)</h3>
+        <div class="tools" role="group" aria-label="Leverage">
+          <span class="muted small" style="align-self:center">Strategy leverage</span>
+          <button class="btn sm on" data-lev="strategy">1×</button>
+          <button class="btn sm" data-lev="leverage_1.25">1.25×</button>
+          <button class="btn sm" data-lev="leverage_1.5">1.5×</button>
+        </div>
+      </div>
+      <div class="chart-head" style="padding-top:2px">
+        <div class="legend">
+          <span><i class="ln" style="background:var(--accent);height:3px"></i>Sector trend</span>
+          <span><i class="ln" style="background:var(--muted)"></i>S&amp;P 500 (SPY)</span>
+          <span><i class="ln" style="background:var(--faint)"></i>Same sectors, no filter</span>
+        </div>
+      </div>
+      <div id="c-growth" class="chart h-lg"></div>
+    </div>
+    <div class="panel chart-panel">
+      <div class="chart-head"><h3>Drawdown from peak</h3>
+        <div class="legend"><span><i class="ln" style="background:var(--accent);height:3px"></i>Sector trend</span><span><i class="ln" style="background:var(--muted)"></i>S&amp;P 500</span></div>
+      </div>
+      <div id="c-dd" class="chart h-md"></div>
+    </div>
+
+    <h2 class="section">Year by year</h2>
+    <div class="panel chart-panel" style="margin-top:0">
+      <div class="chart-head"><h3>Calendar-year returns</h3>
+        <div class="legend"><span><i style="background:var(--accent)"></i>Sector trend</span><span><i style="background:var(--muted)"></i>S&amp;P 500</span></div>
+      </div>
+      <div id="c-years" class="chart h-md"></div>
+      <div class="chart-note" id="years-note"></div>
+    </div>
+
+    <h2 class="section">Allocation history</h2>
+    <div class="panel chart-panel" style="margin-top:0">
+      <div class="chart-head"><h3>Sectors above their trend at each month-end</h3>
+        <div class="legend"><span><i style="background:var(--accent)"></i>Held (above average)</span><span><i style="background:var(--surface-3)"></i>In Treasuries</span></div>
+      </div>
+      <div id="c-alloc" class="chart" style="height:330px"></div>
+    </div>
+
+    <h2 class="section">Both halves, every lookback</h2>
+    <div class="two-col">
+      <div>
+        <div class="panel-title">By period</div>
+        <div class="table-wrap"><table class="data"><thead id="periods-head"></thead><tbody id="periods"></tbody></table></div>
+      </div>
+      <div>
+        <div class="panel-title">Lookback robustness · full period</div>
+        <div class="table-wrap"><table class="data"><thead><tr><th>Average</th><th class="num">CAGR</th><th class="num">Max DD</th><th class="num">Sharpe</th><th class="num" id="sw-h1">1st half</th><th class="num" id="sw-h2">2nd half</th></tr></thead><tbody id="sweep"></tbody></table></div>
+        <p class="small muted" style="margin:10px 0 0">Every lookback lands on the same plateau, so the 10-month choice isn't a lucky pick.</p>
+      </div>
+    </div>
+
+    <h2 class="section">What didn't work</h2>
+    <div class="panel prose">
+      <p>The same harness, rules and costs, over 2000–2026, all with parameters fixed in advance. The basket mean-reversion signal behind the other pages showed a small edge on country ETFs but none on sectors, so it isn't part of this strategy.</p>
+      <div class="table-wrap" style="margin-top:8px"><table class="data">
+        <thead><tr><th>Approach</th><th class="num">CAGR</th><th class="num">Max DD</th><th>Verdict</th></tr></thead>
+        <tbody>
+          <tr><td>Basket mean-reversion, ensemble of all 840 ratios (sectors)</td><td class="num">+8.8%</td><td class="num">−53%</td><td><span class="verdict over">No edge over holding the sectors</span></td></tr>
+          <tr><td>Basket mean-reversion, ensemble of all 840 ratios (country ETFs)</td><td class="num">+6.9%</td><td class="num">−59%</td><td><span class="verdict over">Small edge, far below SPY</span></td></tr>
+          <tr><td>Top-3 sector momentum (12-1 month)</td><td class="num">+9.2%</td><td class="num">−46%</td><td><span class="verdict over">Crash risk kept</span></td></tr>
+          <tr><td>Dual momentum, top-3 sectors</td><td class="num">+9.2%</td><td class="num">−30%</td><td><span class="verdict over">Weak 2000–2012</span></td></tr>
+          <tr><td>SPY with the same 10-month filter</td><td class="num">+9.0%</td><td class="num">−30%</td><td><span class="verdict over">Sensitive to the lookback</span></td></tr>
+          <tr><td>Sector trend with cash instead of Treasuries</td><td class="num">+7.3%</td><td class="num">−18%</td><td><span class="verdict over">Safer in 2022, −1.3%/yr overall</span></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <h2 class="section">Caveats</h2>
+    <div class="panel prose">
+      <p><strong>It lags in bull markets.</strong> The edge is avoiding crashes, not out-earning the index; it trails SPY in most strong years.</p>
+      <p><strong>Bonds are not always a haven.</strong> In 2022 Treasuries fell with stocks and the strategy lost about 10%.</p>
+      <p><strong>Search bias.</strong> About ten approaches were tried before this one. It is the simplest textbook rule (Faber, 2007) and sits on a plateau, which limits but doesn't remove the risk of a lucky pick.</p>
+      <p><strong>Not modelled:</strong> taxes on the monthly switches and the bid-ask spread beyond 5 bps per side. Before 2002 the Treasury leg is the VFITX mutual fund; IEF is the tradable ETF from 2002.</p>
+    </div>
+
+    <h2 class="section">Config &amp; reproduce</h2>
+    <div class="two-col">
+      <pre class="code" id="yaml"></pre>
+      <div class="panel prose">
+        <p>Implemented in <code>mrscore.backtest.trend_portfolio</code> (python-trading, <code>Trading/basket</code>) and exported for this page with:</p>
+        <pre class="code">./web.sh trend      # runs config_trend.yaml → docs/basket/data/trend_research.js
+./web.sh publish    # commit docs/basket/ and push</pre>
+        <p class="small" id="build"></p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">Backtest, not a recommendation. Signals use month-end closes and trade one day later; returns include dividends. Not investment advice.</div>
+  </footer>
+
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+  <script src="assets/mrscore.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+  (async function () {
+    const { fmt, sign, esc } = BN;
+    try {
+      await Promise.all([BN.ensureNexus(), BN.loadScript("data/trend_research.js?v=" + Date.now())]);
+    } catch (e) { BN.showError(new Error("No research data yet. From Trading/basket run: ./web.sh trend")); return; }
+    const D = window.nexusData.trend_research, P = BN.palette(), S = D.stats, cfg = D.config.trend_portfolio;
+    const strat = S.strategy.full, spy = S.benchmark.full, first = S.strategy.first, second = S.strategy.second;
+    const yr = (d) => d.slice(0, 4);
+    document.getElementById("span").textContent = `${yr(D.meta.start)}–${yr(D.meta.end)}`;
+
+    document.getElementById("narrative").innerHTML =
+      `Nine US sector ETFs, each held only while it trades above its ${cfg.sma_months}-month average, returned ` +
+      `<mark>${fmt.spct(strat.cagr)}/yr vs ${fmt.spct(spy.cagr)} for the S&amp;P 500</mark> since ${fmt.date(D.meta.start)}. ` +
+      `The worst drawdown was <span class="hl-accent">${fmt.pct(strat.max_dd, 0)}</span> instead of <span class="hl-accent">${fmt.pct(spy.max_dd, 0)}</span>, at half the volatility.`;
+    document.getElementById("as-of").innerHTML = `<span class="badge live">Backtest</span><span>${fmt.date(D.meta.start)} – ${fmt.date(D.meta.end)} · daily data · exported ${fmt.date(D.meta.created_at.slice(0, 10))}</span>`;
+
+    const kpi = (l, v, s, sm) => `<div class="panel kpi"><div class="label">${l}</div><div class="value${sm ? " sm" : ""}">${v}</div><div class="sub">${s}</div></div>`;
+    document.getElementById("kpis").innerHTML = [
+      kpi("Annual return", `<span class="${sign(strat.cagr)}">${fmt.spct(strat.cagr)}</span>`, `S&amp;P 500 ${fmt.spct(spy.cagr)}`),
+      kpi("Worst drawdown", fmt.pct(strat.max_dd, 0), `S&amp;P 500 ${fmt.pct(spy.max_dd, 0)}`),
+      kpi("Volatility", fmt.pct(strat.vol, 0), `S&amp;P 500 ${fmt.pct(spy.vol, 0)}`),
+      kpi("Sharpe", fmt.num(strat.sharpe), `S&amp;P 500 ${fmt.num(spy.sharpe)}`),
+      kpi("Both halves", `${fmt.pct(first.max_dd, 0)} / ${fmt.pct(second.max_dd, 0)}`, `worst drawdown ${yr(D.meta.start)}–${String(+yr(D.meta.split) - 1)} / ${yr(D.meta.split)}–${yr(D.meta.end)}`, true),
+    ].join("");
+
+    // ------------------------------------------------------------- rule + now
+    const names = { XLK: "Technology", XLF: "Financials", XLE: "Energy", XLV: "Health care", XLY: "Consumer discretionary",
+      XLP: "Consumer staples", XLI: "Industrials", XLU: "Utilities", XLB: "Materials" };
+    document.getElementById("rule").innerHTML = `
+      <p><strong>Universe.</strong> The nine original Select Sector SPDRs: ${D.assets.map((a) => `<span class="sym">${a}</span>`).join(" ")}.</p>
+      <p><strong>Monthly check.</strong> At each month-end close, compare every sector with the average of its last ${cfg.sma_months} month-end closes.</p>
+      <p><strong>Allocation.</strong> Above average: hold 1/${D.assets.length} in it. Below: put that 1/${D.assets.length} in intermediate Treasuries (<span class="sym">${esc(cfg.risk_off)}</span>; <span class="sym">IEF</span> is the ETF). Rebalance the whole portfolio back to these weights.</p>
+      <p><strong>Execution.</strong> Trade at the next day's close. Each side pays ${cfg.costs_bps} bps. Trading (buys plus sells) averages ${fmt.num(D.turnover_per_year * 100, 0)}% of the portfolio a year.</p>`;
+    const cur = D.current, pv = D.preview;
+    const rowsNow = D.assets.map((a, i) => {
+      const gap = cur.close[i] / cur.sma[i] - 1, on = cur.on[i];
+      const pvOn = pv ? pv.on[i] : on;
+      return `<tr><td class="sym">${a}</td><td class="company">${names[a] || ""}</td>
+        <td><span class="verdict ${on ? "under" : "over"}">${on ? "Hold" : "Treasuries"}</span></td>
+        <td class="num ${sign(gap)}">${fmt.spct(gap)}</td>
+        ${pv ? `<td class="num">${pvOn === on ? '<span class="dim">same</span>' : `<span class="${pvOn ? "pos" : "neg"}">${pvOn ? "→ hold" : "→ exit"}</span>`}</td>` : ""}</tr>`;
+    }).join("");
+    const offShare = cur.weights[cur.weights.length - 1];
+    document.getElementById("current").innerHTML = `
+      <div class="panel-title">Allocation from the ${fmt.date(cur.date)} signal</div>
+      <p class="small muted" style="margin:0 0 10px"><mark>${fmt.pct(1 - offShare, 0)} in sectors, ${fmt.pct(offShare, 0)} in Treasuries.</mark>${pv ? ` Last column: what the ${fmt.date(pv.date)} close would change if the month ended there.` : ""}</p>
+      <div class="table-wrap"><table class="data"><thead><tr><th>ETF</th><th>Sector</th><th>Position</th><th class="num">vs average</th>${pv ? "<th class='num'>Mid-month</th>" : ""}</tr></thead><tbody>${rowsNow}</tbody></table></div>`;
+
+    // ---------------------------------------------------------------- charts
+    const x = D.dates;
+    const series = D.series;
+    let lev = "strategy";
+    function growth() {
+      Plotly.react("c-growth", [
+        { x, y: series.equal_weight, name: "Same sectors, no filter", line: { color: P.faint, width: 1 }, hovertemplate: "%{y:.2f}×" },
+        { x, y: series.benchmark, name: "S&P 500", line: { color: P.muted, width: 1.4 }, hovertemplate: "%{y:.2f}×" },
+        { x, y: series[lev], name: lev === "strategy" ? "Sector trend" : "Sector trend " + lev.split("_")[1] + "×", line: { color: P.accent, width: 2.4 }, hovertemplate: "%{y:.2f}×" },
+      ], BN.layout({ showlegend: false, yaxis: { type: "log", tickformat: ".1f", ticksuffix: "×", title: { text: "Growth of 1" } } }), BN.config());
+    }
+    growth();
+    document.querySelectorAll("[data-lev]").forEach((b) => (b.onclick = () => {
+      lev = b.dataset.lev;
+      document.querySelectorAll("[data-lev]").forEach((o) => o.classList.toggle("on", o === b));
+      growth();
+    }));
+
+    const dd = (v) => { let pk = -Infinity; return v.map((y) => { pk = Math.max(pk, y); return (y / pk - 1) * 100; }); };
+    Plotly.newPlot("c-dd", [
+      { x, y: dd(series.benchmark), name: "S&P 500", line: { color: P.muted, width: 1.2 }, hovertemplate: "%{y:.1f}%" },
+      { x, y: dd(series.strategy), name: "Sector trend", line: { color: P.accent, width: 1.8 }, fill: "tozeroy", fillcolor: Nexus.rgba(P.accent, 0.18), hovertemplate: "%{y:.1f}%" },
+    ], BN.layout({ showlegend: false, yaxis: { ticksuffix: "%", title: { text: "From peak" } } }), BN.config());
+    BN.syncX(["c-growth", "c-dd"]);
+
+    // calendar years
+    const years = {};
+    x.forEach((d, i) => { const y = d.slice(0, 4); (years[y] = years[y] || { first: i, last: i }).last = i; });
+    const yk = Object.keys(years);
+    const yret = (s) => yk.map((y, k) => { const a = k ? years[yk[k - 1]].last : years[y].first; return (s[years[y].last] / s[a] - 1) * 100; });
+    const ys = yret(series.strategy), yb = yret(series.benchmark);
+    Plotly.newPlot("c-years", [
+      { type: "bar", name: "S&P 500", x: yk, y: yb, marker: { color: P.muted, cornerradius: 2 }, hovertemplate: "%{x} S&P 500 %{y:+.1f}%<extra></extra>" },
+      { type: "bar", name: "Sector trend", x: yk, y: ys, marker: { color: P.accent, cornerradius: 2 }, hovertemplate: "%{x} sector trend %{y:+.1f}%<extra></extra>" },
+    ], BN.layout({ barmode: "group", bargap: 0.25, bargroupgap: 0.08, hovermode: "x unified", showlegend: false, yaxis: { ticksuffix: "%" }, xaxis: { showspikes: false } }), BN.config());
+    const beat = ys.filter((v, i) => v > yb[i]).length;
+    const worst = yk.map((y, i) => [y, yb[i], ys[i]]).sort((a, b) => a[1] - b[1]).slice(0, 3);
+    document.getElementById("years-note").innerHTML = `Ahead of the S&amp;P 500 in ${beat} of ${yk.length} years. Its three worst years: ` +
+      worst.map(([y, b, s]) => `${y} (${fmt.spct(b / 100)} vs ${fmt.spct(s / 100)})`).join(", ") + ".";
+
+    // allocation heatmap
+    const sd = D.signals.dates, on = D.signals.on;
+    Plotly.newPlot("c-alloc", [{
+      type: "heatmap", x: sd, y: D.assets, z: D.assets.map((_, j) => on.map((s) => +s[j])), zmin: 0, zmax: 1, ygap: 2,
+      colorscale: [[0, P.surface3 || "#1a2d5a"], [0.5, P.surface3 || "#1a2d5a"], [0.5, P.accent], [1, P.accent]], showscale: false,
+      customdata: D.assets.map((_, j) => on.map((s) => (s[j] === "1" ? "held" : "in Treasuries"))),
+      hovertemplate: "%{y} · %{x}<br>%{customdata}<extra></extra>",
+    }], BN.layout({ hovermode: "closest", margin: { l: 56, b: 36 }, xaxis: { showgrid: false, showspikes: false },
+      yaxis: { autorange: "reversed", showgrid: false, tickfont: { family: "JetBrains Mono, monospace", size: 11 } } }), BN.config());
+
+    // ---------------------------------------------------------------- tables
+    const h1 = `${yr(D.meta.start)}–${String(+yr(D.meta.split) - 1)}`, h2 = `${yr(D.meta.split)}–${yr(D.meta.end)}`;
+    document.getElementById("periods-head").innerHTML = `<tr><th>Strategy</th><th class="num">CAGR</th><th class="num">Max DD</th><th class="num">${h1}</th><th class="num">${h2}</th></tr>`;
+    const label = { strategy: "Sector trend", "leverage_1.25": "Sector trend 1.25×", "leverage_1.5": "Sector trend 1.5×", equal_weight: "Sectors, no filter", benchmark: "S&P 500 (SPY)" };
+    const cell = (s) => `${fmt.spct(s.cagr)} <span class="dim small">${fmt.pct(s.max_dd, 0)}</span>`;
+    document.getElementById("periods").innerHTML = Object.keys(label).filter((k) => S[k]).map((k) =>
+      `<tr${k === "strategy" ? ' class="selected"' : ""}><td>${label[k]}</td><td class="num ${sign(S[k].full.cagr)}">${fmt.spct(S[k].full.cagr)}</td><td class="num">${fmt.pct(S[k].full.max_dd)}</td><td class="num">${cell(S[k].first)}</td><td class="num">${cell(S[k].second)}</td></tr>`).join("");
+    document.getElementById("sw-h1").textContent = h1; document.getElementById("sw-h2").textContent = h2;
+    document.getElementById("sweep").innerHTML = D.sweep.map((s) =>
+      `<tr${s.sma_months === cfg.sma_months ? ' class="selected"' : ""}><td>${s.sma_months} months</td><td class="num">${fmt.spct(s.full.cagr)}</td><td class="num">${fmt.pct(s.full.max_dd)}</td><td class="num">${fmt.num(s.full.sharpe)}</td><td class="num">${cell(s.first)}</td><td class="num">${cell(s.second)}</td></tr>`).join("");
+    document.querySelectorAll("table.data tr.selected td").forEach((td) => (td.style.background = "var(--accent-soft)"));
+
+    document.getElementById("yaml").innerHTML = esc(D.config_yaml).split("\n").map((line) => {
+      const ci = line.indexOf("#");
+      const code = ci >= 0 ? line.slice(0, ci) : line, com = ci >= 0 ? `<span class="c">${line.slice(ci)}</span>` : "";
+      return code.replace(/^(\s*-?\s*)([\w.]+)(:)(.*)$/, (_, a, k, c, v) => `${a}<span class="k">${k}</span>${c}<span class="v">${v}</span>`) + com;
+    }).join("\n");
+    document.getElementById("build").innerHTML = `Config <code>${esc(D.meta.config_path)}</code> · sha1 <code>${esc(D.meta.config_hash)}</code> · data from ${fmt.date(D.meta.data_start)} (the first months warm up the average).`;
+  })();
+  </script>
+</body>
+</html>

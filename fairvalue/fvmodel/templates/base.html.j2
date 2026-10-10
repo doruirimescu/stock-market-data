@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% endblock %} · Investing Nexus</title>
+  <meta name="description" content="{% block description %}Fair Value stock dashboards built from SEC filings and market prices.{% endblock %}">
+  <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
+  <style>
+    /* Layout only; colours and components come from nexus.css. */
+    .metric-table td:first-child { color: var(--muted); white-space: normal; }
+    .metric-table td.num { white-space: nowrap; }
+    .metric-table td.num .verdict { display: flex; justify-content: flex-end; margin-top: 2px; white-space: normal; font-size: 12px; }
+    .range { display: flex; align-items: center; gap: 8px; min-width: 120px; }
+    .range .dist-track { flex: 1; position: relative; }
+    .range .tick { position: absolute; top: -3px; bottom: -3px; width: 3px; border-radius: 2px; background: var(--text); }
+    .ranks .dist-label { width: 150px; }
+    .panel .table-wrap { margin: 0 -4px; }
+    .chart.short { height: 340px; }
+    @media (max-width: 640px) { .chart.short { height: 280px; } .ranks .dist-label { width: 110px; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="{{ root }}../index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="{{ root }}../sp500_today.html?source=fairvalue">S&amp;P 500</a>
+        <a href="{{ root }}../nasdaq_today.html?source=fairvalue">NASDAQ-100</a>
+        <a href="{{ root }}index.html" {% if nav == 'stocks' %}class="active"{% endif %}>Fair Value stocks</a>
+        <a href="{{ root }}validation.html" {% if nav == 'validation' %}class="active"{% endif %}>Validation</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+{% block body %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="container">Fundamentals from SEC EDGAR XBRL filings; prices and dividends from Yahoo Finance; CPI from FRED.
+      Metrics follow Fair Value definitions where published. Fair Value and Quality Score are Fair Value reconstructions, not Fair Value's numbers.
+      Generated {{ generated }}. Nothing here is investment advice.</div>
+  </footer>
+{% block scripts %}{% endblock %}
+</body>
+</html>

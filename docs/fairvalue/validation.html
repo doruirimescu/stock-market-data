@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Validation against the reference provider · Investing Nexus</title>
+  <meta name="description" content="Fair Value stock dashboards built from SEC filings and market prices.">
+  <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
+  <style>
+    /* Layout only; colours and components come from nexus.css. */
+    .metric-table td:first-child { color: var(--muted); white-space: normal; }
+    .metric-table td.num { white-space: nowrap; }
+    .metric-table td.num .verdict { display: flex; justify-content: flex-end; margin-top: 2px; white-space: normal; font-size: 12px; }
+    .range { display: flex; align-items: center; gap: 8px; min-width: 120px; }
+    .range .dist-track { flex: 1; position: relative; }
+    .range .tick { position: absolute; top: -3px; bottom: -3px; width: 3px; border-radius: 2px; background: var(--text); }
+    .ranks .dist-label { width: 150px; }
+    .panel .table-wrap { margin: 0 -4px; }
+    .chart.short { height: 340px; }
+    @media (max-width: 640px) { .chart.short { height: 280px; } .ranks .dist-label { width: 110px; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="../sp500_today.html?source=fairvalue">S&amp;P 500</a>
+        <a href="../nasdaq_today.html?source=fairvalue">NASDAQ-100</a>
+        <a href="index.html" >the reference provider stocks</a>
+        <a href="validation.html" class="active">Validation</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <div class="eyebrow">Validation</div>
+    <h1>Our numbers vs <span class="gradient-text">the reference</span></h1>
+    <p class="lead">69 values the reference provider published for 10 stocks, compared with ours.
+      <mark>52 match within tolerance</mark>, 14 are close and 3 differ.
+      Each value is checked against our analysis re-run point-in-time on the reference provider's as-of date, using only filings and prices known then.
+      The Fair Value Score mapping is calibrated on these same stocks (leave-one-out error 4.4 points).</p>
+
+    <div class="kpis">
+      <div class="panel kpi"><div class="label">Match</div><div class="value">52</div><div class="sub"><span class="verdict under">Within 5%</span> or ±1 rank point</div></div>
+      <div class="panel kpi"><div class="label">Close</div><div class="value">14</div><div class="sub">Within 15% or ±2 points</div></div>
+      <div class="panel kpi"><div class="label">Differ</div><div class="value">3</div><div class="sub"><span class="verdict over">Outside tolerance</span></div></div>
+      <div class="panel kpi"><div class="label">Not computed</div><div class="value">0</div><div class="sub">The reference provider has a value, we don't</div></div>
+    </div>
+
+    <h2 class="section">By metric</h2>
+    <div class="panel">
+    
+      <div class="dist-row"><div class="dist-label">Price <span class="muted small">· median gap 0.5%</span></div>
+        <div class="dist-track"><div class="dist-bar" style="width:100.0%;background:var(--under)"></div></div>
+        <div class="dist-count">10/10</div></div>
+    
+      <div class="dist-row"><div class="dist-label">Quality Score (Fair Value)</div>
+        <div class="dist-track"><div class="dist-bar" style="width:80.0%;background:var(--under)"></div></div>
+        <div class="dist-count">8/10</div></div>
+    
+      <div class="dist-row"><div class="dist-label">Fair Value (Fair Value) <span class="muted small">· median gap 9.8%</span></div>
+        <div class="dist-track"><div class="dist-bar" style="width:22.0%;background:var(--under)"></div></div>
+        <div class="dist-count">2/9</div></div>
+    
+      <div class="dist-row"><div class="dist-label">PE Ratio (TTM) <span class="muted small">· median gap 1.3%</span></div>
+        <div class="dist-track"><div class="dist-bar" style="width:100.0%;background:var(--under)"></div></div>
+        <div class="dist-count">9/9</div></div>
+    
+      <div class="dist-row"><div class="dist-label">EV-to-EBITDA <span class="muted small">· median gap 1.6%</span></div>
+        <div class="dist-track"><div class="dist-bar" style="width:75.0%;background:var(--under)"></div></div>
+        <div class="dist-count">3/4</div></div>
+    
+      <div class="dist-row"><div class="dist-label">ROIC <span class="muted small">· median gap 3.3%</span></div>
+        <div class="dist-track"><div class="dist-bar" style="width:67.0%;background:var(--under)"></div></div>
+        <div class="dist-count">2/3</div></div>
+    
+      <div class="dist-row"><div class="dist-label">WACC <span class="muted small">· median gap 5.0%</span></div>
+        <div class="dist-track"><div class="dist-bar" style="width:67.0%;background:var(--under)"></div></div>
+        <div class="dist-count">2/3</div></div>
+    
+      <div class="dist-row"><div class="dist-label">Dividend Yield <span class="muted small">· median gap 1.4%</span></div>
+        <div class="dist-track"><div class="dist-bar" style="width:67.0%;background:var(--under)"></div></div>
+        <div class="dist-count">2/3</div></div>
+    
+      <div class="dist-row"><div class="dist-label">ROE <span class="muted small">· median gap 0.0%</span></div>
+        <div class="dist-track"><div class="dist-bar" style="width:100.0%;background:var(--under)"></div></div>
+        <div class="dist-count">2/2</div></div>
+    
+      <div class="dist-row"><div class="dist-label">PB Ratio <span class="muted small">· median gap 0.5%</span></div>
+        <div class="dist-track"><div class="dist-bar" style="width:100.0%;background:var(--under)"></div></div>
+        <div class="dist-count">2/2</div></div>
+    
+      <div class="dist-row"><div class="dist-label">Financial Strength</div>
+        <div class="dist-track"><div class="dist-bar" style="width:100.0%;background:var(--under)"></div></div>
+        <div class="dist-count">2/2</div></div>
+    
+      <div class="dist-row"><div class="dist-label">Profitability Rank</div>
+        <div class="dist-track"><div class="dist-bar" style="width:100.0%;background:var(--under)"></div></div>
+        <div class="dist-count">2/2</div></div>
+    
+      <div class="dist-row"><div class="dist-label">Growth Rank</div>
+        <div class="dist-track"><div class="dist-bar" style="width:50.0%;background:var(--under)"></div></div>
+        <div class="dist-count">1/2</div></div>
+    
+      <div class="dist-row"><div class="dist-label">Momentum Rank</div>
+        <div class="dist-track"><div class="dist-bar" style="width:50.0%;background:var(--under)"></div></div>
+        <div class="dist-count">1/2</div></div>
+    
+      <div class="dist-row"><div class="dist-label">PS Ratio <span class="muted small">· median gap 1.9%</span></div>
+        <div class="dist-track"><div class="dist-bar" style="width:100.0%;background:var(--under)"></div></div>
+        <div class="dist-count">2/2</div></div>
+    
+      <div class="dist-row"><div class="dist-label">Debt-to-Equity <span class="muted small">· median gap 9.3%</span></div>
+        <div class="dist-track"><div class="dist-bar" style="width:50.0%;background:var(--under)"></div></div>
+        <div class="dist-count">1/2</div></div>
+    
+      <div class="dist-row"><div class="dist-label">Fair Value Rank</div>
+        <div class="dist-track"><div class="dist-bar" style="width:100.0%;background:var(--under)"></div></div>
+        <div class="dist-count">1/1</div></div>
+    
+      <div class="dist-row"><div class="dist-label">Piotroski F-Score</div>
+        <div class="dist-track"><div class="dist-bar" style="width:0.0%;background:var(--under)"></div></div>
+        <div class="dist-count">0/1</div></div>
+    
+      <p class="muted small">Bar = share of stocks where the metric matches within tolerance.</p>
+    </div>
+
+    <h2 class="section">Every comparison</h2>
+    <div class="toolbar"><input class="input" type="search" id="q" placeholder="Filter by ticker, metric or status…"><span class="muted small" id="count"></span></div>
+    <div class="table-wrap scroll-y"><table class="data" id="tbl">
+      <thead><tr><th>Symbol</th><th>Metric</th><th class="num">Reference</th><th class="num">Ours</th><th class="num">Gap</th><th>Status</th><th>As of</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td class="sym"><a href="stocks/AAPL.html">AAPL</a></td><td>Fair Value (Fair Value)</td>
+          <td class="num"><span title="reference-site/term/forward-pe-ratio/AAPL">284.29</span></td><td class="num">233.75</td>
+          <td class="num">-17.8%</td>
+          <td><span class="verdict over">Differs</span></td>
+          <td class="small">2026-09-01</td><td class="small muted">ours as of 2026-09-01, fundamentals to 2026-06-27</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/AAPL.html">AAPL</a></td><td>Price</td>
+          <td class="num"><span title="reference-site/term/forward-pe-ratio/AAPL">316.85</span></td><td class="num">325.13</td>
+          <td class="num">+2.6%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-09-01</td><td class="small muted">ours as of 2026-09-01, fundamentals to 2026-06-27</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/AAPL.html">AAPL</a></td><td>Quality Score (Fair Value)</td>
+          <td class="num"><span title="reference-site/term/forward-pe-ratio/AAPL">96.00</span></td><td class="num">91.00</td>
+          <td class="num">-5.0</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-09-01</td><td class="small muted">ours as of 2026-09-01, fundamentals to 2026-06-27</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/AAPL.html">AAPL</a></td><td>PE Ratio (TTM)</td>
+          <td class="num"><span title="reference-site/term/forward-pe-ratio/AAPL">36.34</span></td><td class="num">37.29</td>
+          <td class="num">+2.6%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-09-01</td><td class="small muted">ours as of 2026-09-01, fundamentals to 2026-06-27</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/AAPL.html">AAPL</a></td><td>ROIC</td>
+          <td class="num"><span title="reference-site/term/roic/AAPL">42.12</span></td><td class="num">42.73</td>
+          <td class="num">+1.5%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08-15</td><td class="small muted">ours as of 2026-08-15, fundamentals to 2026-06-27</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/AAPL.html">AAPL</a></td><td>ROE</td>
+          <td class="num"><span title="reference-site/term/roe/AAPL">111.36</span></td><td class="num">111.36</td>
+          <td class="num">-0.0%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-06</td><td class="small muted">ours as of 2026-09-13, fundamentals to 2026-06-27; both annualized from the latest quarter</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/AAPL.html">AAPL</a></td><td>WACC</td>
+          <td class="num"><span title="reference-site/term/roic/AAPL">10.06</span></td><td class="num">10.87</td>
+          <td class="num">+8.0%</td>
+          <td><span class="verdict ">Close</span></td>
+          <td class="small">2026-08-15</td><td class="small muted">ours as of 2026-08-15, fundamentals to 2026-06-27</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/CAT.html">CAT</a></td><td>Fair Value (Fair Value)</td>
+          <td class="num"><span title="reference-site/term/gf-value/CAT">461.18</span></td><td class="num">436.09</td>
+          <td class="num">-5.4%</td>
+          <td><span class="verdict ">Close</span></td>
+          <td class="small">2026-09-25</td><td class="small muted">ours as of 2026-09-25, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/CAT.html">CAT</a></td><td>Quality Score (Fair Value)</td>
+          <td class="num"><span title="reference-site/term/gf-value/CAT">85.00</span></td><td class="num">80.00</td>
+          <td class="num">-5.0</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-09-25</td><td class="small muted">ours as of 2026-09-25, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/CAT.html">CAT</a></td><td>Price</td>
+          <td class="num"><span title="reference-site/term/pb-ratio/CAT">810.04</span></td><td class="num">813.83</td>
+          <td class="num">+0.5%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-10-07</td><td class="small muted">ours as of 2026-10-07, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/CAT.html">CAT</a></td><td>PE Ratio (TTM)</td>
+          <td class="num"><a href="the reference provider (search summary; likely reference-site/term/pettm/CAT)" rel="noopener">34.25</a></td><td class="num">34.68</td>
+          <td class="num">+1.3%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-09-24</td><td class="small muted">ours as of 2026-09-24, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/CAT.html">CAT</a></td><td>PB Ratio</td>
+          <td class="num"><span title="reference-site/term/pb-ratio/CAT">19.20</span></td><td class="num">19.29</td>
+          <td class="num">+0.5%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-10-07</td><td class="small muted">ours as of 2026-10-07, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/CAT.html">CAT</a></td><td>EV-to-EBITDA</td>
+          <td class="num"><span title="reference-site/term/enterprise-value-to-ebitda/CAT">24.51</span></td><td class="num">24.81</td>
+          <td class="num">+1.2%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-09-06</td><td class="small muted">ours as of 2026-09-06, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/CAT.html">CAT</a></td><td>Financial Strength</td>
+          <td class="num"><a href="the reference provider news/term pages (search summary)" rel="noopener">6.00</a></td><td class="num">6.00</td>
+          <td class="num">+0.0</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-09</td><td class="small muted">ours as of 2026-10-10, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/CAT.html">CAT</a></td><td>Profitability Rank</td>
+          <td class="num"><a href="the reference provider news/term pages (search summary)" rel="noopener">9.00</a></td><td class="num">8.00</td>
+          <td class="num">-1.0</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-09</td><td class="small muted">ours as of 2026-10-10, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/CAT.html">CAT</a></td><td>Growth Rank</td>
+          <td class="num"><a href="the reference provider news/term pages (search summary)" rel="noopener">10.00</a></td><td class="num">8.00</td>
+          <td class="num">-2.0</td>
+          <td><span class="verdict ">Close</span></td>
+          <td class="small">2026-09</td><td class="small muted">ours as of 2026-10-10, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/CAT.html">CAT</a></td><td>Momentum Rank</td>
+          <td class="num"><a href="the reference provider news/term pages (search summary)" rel="noopener">10.00</a></td><td class="num">9.00</td>
+          <td class="num">-1.0</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-09</td><td class="small muted">ours as of 2026-10-10, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/HD.html">HD</a></td><td>Fair Value (Fair Value)</td>
+          <td class="num"><span title="reference-site/term/fair_value/HD/Fair Value/The-Home-Depot">386.99</span></td><td class="num">329.42</td>
+          <td class="num">-14.9%</td>
+          <td><span class="verdict ">Close</span></td>
+          <td class="small">2026-10-09</td><td class="small muted">ours as of 2026-10-09, fundamentals to 2026-08-02</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/HD.html">HD</a></td><td>Quality Score (Fair Value)</td>
+          <td class="num"><span title="reference-site/term/fair_value/HD/Fair Value/The-Home-Depot">83.00</span></td><td class="num">83.00</td>
+          <td class="num">+0.0</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-10-09</td><td class="small muted">ours as of 2026-10-09, fundamentals to 2026-08-02</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/HD.html">HD</a></td><td>Price</td>
+          <td class="num"><span title="reference-site/term/fair_value/HD/Fair Value/The-Home-Depot">292.04</span></td><td class="num">290.74</td>
+          <td class="num">-0.4%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-10-09</td><td class="small muted">ours as of 2026-10-09, fundamentals to 2026-08-02</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/HD.html">HD</a></td><td>PE Ratio (TTM)</td>
+          <td class="num"><span title="reference-site/term/pettm/HD">23.49</span></td><td class="num">23.97</td>
+          <td class="num">+2.0%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08-24</td><td class="small muted">ours as of 2026-08-24, fundamentals to 2026-05-03</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/HD.html">HD</a></td><td>PB Ratio</td>
+          <td class="num"><span title="reference-site/term/pb-ratio/HD">17.11</span></td><td class="num">17.16</td>
+          <td class="num">+0.3%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-10-07</td><td class="small muted">ours as of 2026-10-07, fundamentals to 2026-08-02</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/HD.html">HD</a></td><td>PS Ratio</td>
+          <td class="num"><a href="the reference provider (ps-ratio page; URL not shown in results)" rel="noopener">1.66</a></td><td class="num">1.66</td>
+          <td class="num">+0.2%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-10-01</td><td class="small muted">ours as of 2026-10-01, fundamentals to 2026-08-02</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/HD.html">HD</a></td><td>EV-to-EBITDA</td>
+          <td class="num"><span title="reference-site/term/enterprise-value-to-ebitda/HD">13.43</span></td><td class="num">13.65</td>
+          <td class="num">+1.6%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-10-03</td><td class="small muted">ours as of 2026-10-03, fundamentals to 2026-08-02</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/JNJ.html">JNJ</a></td><td>Fair Value (Fair Value)</td>
+          <td class="num"><span title="reference-site/term/forward-pe-ratio/JNJ">192.28</span></td><td class="num">207.67</td>
+          <td class="num">+8.0%</td>
+          <td><span class="verdict ">Close</span></td>
+          <td class="small">2026-08-15</td><td class="small muted">ours as of 2026-08-15, fundamentals to 2026-06-28</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/JNJ.html">JNJ</a></td><td>Quality Score (Fair Value)</td>
+          <td class="num"><span title="reference-site/term/forward-pe-ratio/JNJ">83.00</span></td><td class="num">83.00</td>
+          <td class="num">+0.0</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08-15</td><td class="small muted">ours as of 2026-08-15, fundamentals to 2026-06-28</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/JNJ.html">JNJ</a></td><td>Price</td>
+          <td class="num"><span title="reference-site/term/pe-ratio/JNJ">269.67</span></td><td class="num">271.11</td>
+          <td class="num">+0.5%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08-18</td><td class="small muted">ours as of 2026-08-18, fundamentals to 2026-06-28</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/JNJ.html">JNJ</a></td><td>PE Ratio (TTM)</td>
+          <td class="num"><span title="reference-site/term/pe-ratio/JNJ">31.25</span></td><td class="num">31.45</td>
+          <td class="num">+0.6%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08-18</td><td class="small muted">ours as of 2026-08-18, fundamentals to 2026-06-28</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/JNJ.html">JNJ</a></td><td>ROIC</td>
+          <td class="num"><span title="reference-site/term/roic/JNJ">14.78</span></td><td class="num">12.84</td>
+          <td class="num">-13.1%</td>
+          <td><span class="verdict ">Close</span></td>
+          <td class="small">2026-06</td><td class="small muted">ours as of 2026-09-13, fundamentals to 2026-06-28; both annualized from the latest quarter</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/JNJ.html">JNJ</a></td><td>Debt-to-Equity</td>
+          <td class="num"><span title="reference-site/term/debt-to-equity/JNJ">0.58</span></td><td class="num">0.59</td>
+          <td class="num">+2.3%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-06</td><td class="small muted">ours as of 2026-09-13, fundamentals to 2026-06-28</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/JNJ.html">JNJ</a></td><td>WACC</td>
+          <td class="num"><span title="reference-site/term/roic/JNJ">4.96</span></td><td class="num">4.71</td>
+          <td class="num">-5.0%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08-20</td><td class="small muted">ours as of 2026-08-20, fundamentals to 2026-06-28</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/JNJ.html">JNJ</a></td><td>Dividend Yield</td>
+          <td class="num"><span title="reference-site/term/dividends-per-share/JNJ">2.04</span></td><td class="num">2.18</td>
+          <td class="num">+6.6%</td>
+          <td><span class="verdict ">Close</span></td>
+          <td class="small">2026-03</td><td class="small muted">ours as of 2026-06-14, fundamentals to 2026-03-29</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/KO.html">KO</a></td><td>Fair Value (Fair Value)</td>
+          <td class="num"><span title="reference-site/term/moat-score/KO">73.65</span></td><td class="num">86.96</td>
+          <td class="num">+18.1%</td>
+          <td><span class="verdict over">Differs</span></td>
+          <td class="small">2026-09-21</td><td class="small muted">ours as of 2026-09-21, fundamentals to 2026-04-03</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/KO.html">KO</a></td><td>Quality Score (Fair Value)</td>
+          <td class="num"><span title="reference-site/term/moat-score/KO">77.00</span></td><td class="num">82.00</td>
+          <td class="num">+5.0</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-09-21</td><td class="small muted">ours as of 2026-09-21, fundamentals to 2026-04-03</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/KO.html">KO</a></td><td>Price</td>
+          <td class="num"><span title="reference-site/term/moat-score/KO">88.25</span></td><td class="num">87.12</td>
+          <td class="num">-1.3%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-09-21</td><td class="small muted">ours as of 2026-09-21, fundamentals to 2026-04-03</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/KO.html">KO</a></td><td>PE Ratio (TTM)</td>
+          <td class="num"><span title="reference-site/term/forward-pe-ratio/KO">26.51</span></td><td class="num">27.76</td>
+          <td class="num">+4.7%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-09-13</td><td class="small muted">ours as of 2026-09-13, fundamentals to 2026-04-03</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/MSFT.html">MSFT</a></td><td>Fair Value (Fair Value)</td>
+          <td class="num"><span title="reference-site/term/forward-pe-ratio/MSFT">575.87</span></td><td class="num">578.81</td>
+          <td class="num">+0.5%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08-14</td><td class="small muted">ours as of 2026-08-14, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/MSFT.html">MSFT</a></td><td>Price</td>
+          <td class="num"><span title="reference-site/term/cyclically-adjusted-ps-ratio/MSFT">494.25</span></td><td class="num">496.37</td>
+          <td class="num">+0.4%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08-26</td><td class="small muted">ours as of 2026-08-26, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/MSFT.html">MSFT</a></td><td>Quality Score (Fair Value)</td>
+          <td class="num"><span title="reference-site/term/forward-pe-ratio/MSFT">97.00</span></td><td class="num">96.00</td>
+          <td class="num">-1.0</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08-14</td><td class="small muted">ours as of 2026-08-14, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/MSFT.html">MSFT</a></td><td>PE Ratio (TTM)</td>
+          <td class="num"><span title="reference-site/term/forward-pe-ratio/MSFT">27.79</span></td><td class="num">27.60</td>
+          <td class="num">-0.7%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08-14</td><td class="small muted">ours as of 2026-08-14, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/MSFT.html">MSFT</a></td><td>EV-to-EBITDA</td>
+          <td class="num"><span title="reference-site/term/enterprise-value/MSFT">12.76</span></td><td class="num">13.51</td>
+          <td class="num">+5.9%</td>
+          <td><span class="verdict ">Close</span></td>
+          <td class="small">2026-06-25</td><td class="small muted">ours as of 2026-06-25, fundamentals to 2026-03-31</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/MSFT.html">MSFT</a></td><td>ROIC</td>
+          <td class="num"><span title="reference-site/term/roic/MSFT">21.24</span></td><td class="num">20.54</td>
+          <td class="num">-3.3%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08-16</td><td class="small muted">ours as of 2026-08-16, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/MSFT.html">MSFT</a></td><td>WACC</td>
+          <td class="num"><span title="reference-site/term/roic/MSFT">11.24</span></td><td class="num">11.23</td>
+          <td class="num">-0.1%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08-16</td><td class="small muted">ours as of 2026-08-16, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/MSFT.html">MSFT</a></td><td>Financial Strength</td>
+          <td class="num"><span title="reference-site/news/9037996/ai-investment-drives-market-optimism-with-major-players-like-msft-and-amzn">8.00</span></td><td class="num">9.00</td>
+          <td class="num">+1.0</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08</td><td class="small muted">ours as of 2026-10-10, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/MSFT.html">MSFT</a></td><td>Profitability Rank</td>
+          <td class="num"><span title="reference-site/news/9037996/ai-investment-drives-market-optimism-with-major-players-like-msft-and-amzn">10.00</span></td><td class="num">9.00</td>
+          <td class="num">-1.0</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08</td><td class="small muted">ours as of 2026-10-10, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/MSFT.html">MSFT</a></td><td>Growth Rank</td>
+          <td class="num"><span title="reference-site/news/9037996/ai-investment-drives-market-optimism-with-major-players-like-msft-and-amzn">10.00</span></td><td class="num">9.00</td>
+          <td class="num">-1.0</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08</td><td class="small muted">ours as of 2026-10-10, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/MSFT.html">MSFT</a></td><td>Fair Value Rank</td>
+          <td class="num"><span title="reference-site/news/9037996/ai-investment-drives-market-optimism-with-major-players-like-msft-and-amzn">10.00</span></td><td class="num">10.00</td>
+          <td class="num">+0.0</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08</td><td class="small muted">ours as of 2026-10-10, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/MSFT.html">MSFT</a></td><td>Momentum Rank</td>
+          <td class="num"><span title="reference-site/news/9037996/ai-investment-drives-market-optimism-with-major-players-like-msft-and-amzn">5.00</span></td><td class="num">7.00</td>
+          <td class="num">+2.0</td>
+          <td><span class="verdict ">Close</span></td>
+          <td class="small">2026-08</td><td class="small muted">ours as of 2026-10-10, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/NVDA.html">NVDA</a></td><td>Fair Value (Fair Value)</td>
+          <td class="num"><span title="reference-site/term/fscore/NVDA">378.51</span></td><td class="num">415.65</td>
+          <td class="num">+9.8%</td>
+          <td><span class="verdict ">Close</span></td>
+          <td class="small">2026-08-29</td><td class="small muted">ours as of 2026-08-29, fundamentals to 2026-07-26</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/NVDA.html">NVDA</a></td><td>Quality Score (Fair Value)</td>
+          <td class="num"><span title="reference-site/term/fscore/NVDA">95.00</span></td><td class="num">98.00</td>
+          <td class="num">+3.0</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08-29</td><td class="small muted">ours as of 2026-08-29, fundamentals to 2026-07-26</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/NVDA.html">NVDA</a></td><td>Price</td>
+          <td class="num"><span title="reference-site/term/ps-ratio/NVDA">208.48</span></td><td class="num">213.05</td>
+          <td class="num">+2.2%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08-25</td><td class="small muted">ours as of 2026-08-25, fundamentals to 2026-04-26</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/NVDA.html">NVDA</a></td><td>PE Ratio (TTM)</td>
+          <td class="num"><span title="reference-site/term/forward-pe-ratio/NVDA">26.81</span></td><td class="num">26.82</td>
+          <td class="num">+0.0%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-09-15</td><td class="small muted">ours as of 2026-09-15, fundamentals to 2026-07-26</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/NVDA.html">NVDA</a></td><td>PS Ratio</td>
+          <td class="num"><span title="reference-site/term/ps-ratio/NVDA">20.11</span></td><td class="num">20.50</td>
+          <td class="num">+1.9%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08-25</td><td class="small muted">ours as of 2026-08-25, fundamentals to 2026-04-26</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/NVDA.html">NVDA</a></td><td>ROE</td>
+          <td class="num"><span title="reference-site/term/roe/NVDA">132.26</span></td><td class="num">132.26</td>
+          <td class="num">-0.0%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-04</td><td class="small muted">ours as of 2026-07-14, fundamentals to 2026-04-26; both annualized from the latest quarter</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/NVDA.html">NVDA</a></td><td>Piotroski F-Score</td>
+          <td class="num"><span title="reference-site/term/fscore/NVDA">7.00</span></td><td class="num">5.00</td>
+          <td class="num">-2.0</td>
+          <td><span class="verdict ">Close</span></td>
+          <td class="small">2026-08-29</td><td class="small muted">ours as of 2026-08-29, fundamentals to 2026-07-26</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/NVDA.html">NVDA</a></td><td>Debt-to-Equity</td>
+          <td class="num"><span title="reference-site/term/debt-to-equity/NVDA">0.06</span></td><td class="num">0.07</td>
+          <td class="num">+9.3%</td>
+          <td><span class="verdict ">Close</span></td>
+          <td class="small">2026-04</td><td class="small muted">ours as of 2026-07-14, fundamentals to 2026-04-26</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/NVDA.html">NVDA</a></td><td>Dividend Yield</td>
+          <td class="num"><span title="reference-site/term/ForwardDividendYield/NVDA">0.13</span></td><td class="num">0.13</td>
+          <td class="num">-1.0%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08-10</td><td class="small muted">ours as of 2026-08-10, fundamentals to 2026-04-26</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/PG.html">PG</a></td><td>Fair Value (Fair Value)</td>
+          <td class="num"><span title="reference-site/term/ForwardDividendYield/PG">167.59</span></td><td class="num">164.87</td>
+          <td class="num">-1.6%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-09-14</td><td class="small muted">ours as of 2026-09-14, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/PG.html">PG</a></td><td>Quality Score (Fair Value)</td>
+          <td class="num"><span title="reference-site/term/ForwardDividendYield/PG">86.00</span></td><td class="num">85.00</td>
+          <td class="num">-1.0</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-09-14</td><td class="small muted">ours as of 2026-09-14, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/PG.html">PG</a></td><td>Price</td>
+          <td class="num"><span title="reference-site/term/ForwardDividendYield/PG">146.23</span></td><td class="num">146.13</td>
+          <td class="num">-0.1%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-09-14</td><td class="small muted">ours as of 2026-09-14, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/WMT.html">WMT</a></td><td>Fair Value (Fair Value)</td>
+          <td class="num"><span title="reference-site/term/earning-yield/WMT">103.37</span></td><td class="num">85.39</td>
+          <td class="num">-17.4%</td>
+          <td><span class="verdict over">Differs</span></td>
+          <td class="small">2026-09-04</td><td class="small muted">ours as of 2026-09-04, fundamentals to 2026-07-31</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/WMT.html">WMT</a></td><td>Quality Score (Fair Value)</td>
+          <td class="num"><span title="reference-site/term/earning-yield/WMT">86.00</span></td><td class="num">80.00</td>
+          <td class="num">-6.0</td>
+          <td><span class="verdict ">Close</span></td>
+          <td class="small">2026-09-04</td><td class="small muted">ours as of 2026-09-04, fundamentals to 2026-07-31</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/WMT.html">WMT</a></td><td>Price</td>
+          <td class="num"><span title="reference-site/term/earning-yield/WMT">107.14</span></td><td class="num">107.14</td>
+          <td class="num">-0.0%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-09-04</td><td class="small muted">ours as of 2026-09-04, fundamentals to 2026-07-31</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/WMT.html">WMT</a></td><td>PE Ratio (TTM)</td>
+          <td class="num"><span title="reference-site/term/pettm/WMT">40.62</span></td><td class="num">40.25</td>
+          <td class="num">-0.9%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08-19</td><td class="small muted">ours as of 2026-08-19, fundamentals to 2026-04-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/WMT.html">WMT</a></td><td>EV-to-EBITDA</td>
+          <td class="num"><span title="reference-site/term/enterprise-value/WMT">19.45</span></td><td class="num">19.37</td>
+          <td class="num">-0.4%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-07-01</td><td class="small muted">ours as of 2026-07-01, fundamentals to 2026-04-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/WMT.html">WMT</a></td><td>Dividend Yield</td>
+          <td class="num"><span title="reference-site/term/yield/WMT">0.87</span></td><td class="num">0.86</td>
+          <td class="num">-1.4%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-08-10</td><td class="small muted">ours as of 2026-08-10, fundamentals to 2026-04-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/XOM.html">XOM</a></td><td>Quality Score (Fair Value)</td>
+          <td class="num"><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxQNWZGY2FfS2d5elRkNE5VMWJGTDRiMDN5RDhLa05sRnl2QnNUazBERUc2Tnp0UTRBNXJkdFp0VERMYVFiYUVIVnBTdFlpU2JnczlMWXVHdjduRlpGWGJ2YkR1d1ByNjRnckQtbGIyVHlnRngyb2k4TVBIQTB4RVZPbjNWY0dITXdKUXgyNE10OGtqeGtKc2VqT0tXZ1V0SDlzVXBQVndEWkMxS3UtS3NzZTVlVlJoOFZPYmc?oc=5" rel="noopener">72.00</a></td><td class="num">81.00</td>
+          <td class="num">+9.0</td>
+          <td><span class="verdict ">Close</span></td>
+          <td class="small">2026-09-21</td><td class="small muted">ours as of 2026-09-21, fundamentals to 2026-06-30</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/XOM.html">XOM</a></td><td>Price</td>
+          <td class="num"><span title="reference-site/news/8892295/exxon-mobil-corp-xom-stock-down-12-but-still-overvalued-gf-score-64100">145.26</span></td><td class="num">145.26</td>
+          <td class="num">-0.0%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-05-29</td><td class="small muted">ours as of 2026-05-29, fundamentals to 2026-03-31</td></tr>
+      
+        <tr><td class="sym"><a href="stocks/XOM.html">XOM</a></td><td>PE Ratio (TTM)</td>
+          <td class="num"><span title="reference-site/news/8915880/exxon-mobil-xom-faces-rising-oil-prices-amid-inventory-concerns">24.79</span></td><td class="num">23.72</td>
+          <td class="num">-4.3%</td>
+          <td><span class="verdict under">Match</span></td>
+          <td class="small">2026-06-15</td><td class="small muted">ours as of 2026-06-15, fundamentals to 2026-03-31</td></tr>
+      </tbody></table></div>
+    <p class="muted small">Reference values were collected from the reference provider's page titles and articles found by web search, because the reference site blocks automated access.
+      Each reference figure keeps its source path as a tooltip. See docs/VALIDATION.md for the analysis of each gap.</p>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">Fundamentals from SEC EDGAR XBRL filings; prices and dividends from Yahoo Finance; CPI from FRED.
+      Metrics follow the reference provider definitions where published. Fair Value and Quality Score are Fair Value reconstructions, not the reference provider's numbers.
+      Generated 10 Oct 2026. Nothing here is investment advice.</div>
+  </footer>
+
+<script>
+  const q = document.getElementById("q"), rows = [...document.querySelectorAll("#tbl tbody tr")], count = document.getElementById("count");
+  function apply() {
+    const s = q.value.trim().toLowerCase(); let n = 0;
+    rows.forEach(tr => { const show = !s || tr.textContent.toLowerCase().includes(s); tr.style.display = show ? "" : "none"; n += show; });
+    count.textContent = `Showing ${n} of ${rows.length}`;
+  }
+  q.addEventListener("input", apply); apply();
+</script>
+
+</body>
+</html>

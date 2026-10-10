@@ -1,0 +1,37 @@
+{% extends "base.html.j2" %}
+{% block title %}Stock dashboards{% endblock %}
+{% block body %}
+    <div class="eyebrow">Fair Value summaries</div>
+    <h1>Stock <span class="gradient-text">dashboards</span></h1>
+    <p class="lead">{{ rows|length }} stocks analysed from <mark>SEC filings and market prices</mark>.
+      Each page reproduces the Fair Value summary metrics; the <a href="validation.html">validation page</a> compares them with values Fair Value published.</p>
+
+    <h2 class="section">Overview</h2>
+    <div class="toolbar"><input class="input" type="search" id="q" placeholder="Filter by ticker or company…"><span class="muted small" id="count"></span></div>
+    <div class="table-wrap"><table class="data" id="tbl">
+      <thead><tr><th>Symbol</th><th>Company</th><th class="num">Price</th><th class="num">Fair Value</th><th class="num">Valuation</th><th class="num">Fair Value Score</th><th class="num">PE</th><th class="num">ROIC</th><th class="num">F-Score</th><th class="num">Z-Score</th></tr></thead>
+      <tbody>{% for r in rows %}
+        <tr><td class="sym"><a href="stocks/{{ r.ticker }}.html">{{ r.ticker }}</a></td><td class="company">{{ r.name }}</td>
+          <td class="num">{{ r.price }}</td><td class="num">{{ r.fair_value }}</td>
+          <td class="num">{% if r.verdict_text %}<span class="verdict {{ r.verdict }}">{{ r.verdict_text }}</span>{% else %}–{% endif %}</td>
+          <td class="num">{{ r.quality_score }}</td><td class="num">{{ r.pe }}</td>
+          <td class="num">{{ r.roic }}</td><td class="num">{{ r.f_score }}</td><td class="num">{{ r.z_score }}</td></tr>
+      {% endfor %}</tbody></table></div>
+
+    <h2 class="section">Pages</h2>
+    <div class="card-grid">{% for r in rows %}
+      <a class="card" href="stocks/{{ r.ticker }}.html"><em class="tag">{{ r.ticker }}</em><strong>{{ r.name }}</strong>
+        <span>{% if r.verdict_text %}{{ r.verdict_text }} · {% endif %}Fair Value Score {{ r.quality_score }} · data to {{ r.as_of }}</span></a>
+    {% endfor %}</div>
+{% endblock %}
+{% block scripts %}
+<script>
+  const q = document.getElementById("q"), rows = [...document.querySelectorAll("#tbl tbody tr")], count = document.getElementById("count");
+  function apply() {
+    const s = q.value.trim().toLowerCase(); let n = 0;
+    rows.forEach(tr => { const show = !s || tr.textContent.toLowerCase().includes(s); tr.style.display = show ? "" : "none"; n += show; });
+    count.textContent = `Showing ${n} of ${rows.length}`;
+  }
+  q.addEventListener("input", apply); apply();
+</script>
+{% endblock %}

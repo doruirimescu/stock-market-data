@@ -1,0 +1,165 @@
+name: Daily index analysis
+
+# Runs every morning and computes two independent valuations of the NASDAQ-100
+# and the S&P 500:
+#
+#   alphaspread  scrapes AlphaSpread, commits dated HTML + PNG charts and the
+#                valuation JSON to generated/alphaspread/, and publishes dated
+#                snapshots to docs/data/alphaspread/.
+#   fairvalue    values every stock with the Fair Value model in fairvalue/
+#                (SEC EDGAR filings + Yahoo prices), commits the valuation JSON to
+#                generated/fairvalue/, publishes snapshots to docs/data/fairvalue/
+#                and the per-stock summary pages to docs/fairvalue/.
+#
+# The jobs run in parallel and write disjoint files (each source has its own
+# manifest), so each one rebases onto the other's commit before pushing.
+
+on:
+  schedule:
+    - cron: "30 6 * * *"     # 06:30 UTC daily (times are always UTC on GitHub)
+  workflow_dispatch: {}       # allow manual runs from the Actions tab
+
+permissions:
+  contents: write             # needed to push the generated files back
+
+concurrency:
+  group: daily-index-analysis
+  cancel-in-progress: false   # never abort a run midway through scraping
+
+jobs:
+  alphaspread:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120       # ~600 sequential scrapes with polite delays
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # kaleido>=1.0 renders the PNGs through a headless Chrome. If Chrome is
+      # unavailable the run still succeeds — the script writes the HTML and only
+      # warns about the missing PNG — but we install Chrome so PNGs are produced.
+      - name: Install Chrome for PNG export
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      - name: Fetch a kaleido-compatible Chrome (fallback, non-fatal)
+        run: plotly_get_chrome -y || true
+
+      - name: NASDAQ-100 analysis
+        run: |
+          DATE=$(date -u +%F)
+          python scripts/alphaspread_index.py --nasdaq100 --overwrite --date "$DATE" \
+            --out  generated/alphaspread/nasdaq100_valuations.json \
+            --html "generated/alphaspread/nasdaq/nasdaq_analysis_${DATE}.html" \
+            --png  "generated/alphaspread/nasdaq/nasdaq_analysis_${DATE}.png"
+
+      - name: S&P 500 analysis
+        run: |
+          DATE=$(date -u +%F)
+          python scripts/alphaspread_index.py --sp500 --overwrite --date "$DATE" \
+            --out  generated/alphaspread/sp500_valuations.json \
+            --html "generated/alphaspread/sp500/sp500_analysis_${DATE}.html" \
+            --png  "generated/alphaspread/sp500/sp500_analysis_${DATE}.png"
+
+      - name: Publish dated snapshots for the site
+        run: |
+          DATE=$(date -u +%F)
+          python scripts/publish_site_data.py --source alphaspread --index nasdaq --date "$DATE" \
+            --src generated/alphaspread/nasdaq100_valuations.json
+          python scripts/publish_site_data.py --source alphaspread --index sp500 --date "$DATE" \
+            --src generated/alphaspread/sp500_valuations.json
+
+      - name: Commit and push generated files
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          DATE=$(date -u +%F)
+          git add generated/alphaspread docs/data/alphaspread
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Daily AlphaSpread analysis: ${DATE} [skip ci]"
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase && git push && exit 0
+            sleep $((attempt * 15))
+          done
+          exit 1
+
+  fairvalue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      # SEC EDGAR rejects requests without a contact email in the User-Agent
+      # ("Name you@example.com"). Set it under Settings → Secrets → Actions.
+      SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+    steps:
+      - name: Check SEC contact
+        id: guard
+        run: |
+          if [ -z "$SEC_USER_AGENT" ]; then
+            echo "::warning::SEC_USER_AGENT secret is not set; skipping the Fair Value valuations."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout
+        if: steps.guard.outputs.run == 'true'
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        if: steps.guard.outputs.run == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install the Fair Value model
+        if: steps.guard.outputs.run == 'true'
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ./fairvalue
+
+      - name: Value the NASDAQ-100 and the S&P 500
+        if: steps.guard.outputs.run == 'true'
+        run: |
+          DATE=$(date -u +%F)
+          python -m fvmodel index --index nasdaq100 --date "$DATE"
+          python -m fvmodel index --index sp500 --date "$DATE"
+
+      - name: Publish dated snapshots for the site
+        if: steps.guard.outputs.run == 'true'
+        run: |
+          DATE=$(date -u +%F)
+          python scripts/publish_site_data.py --source fairvalue --index nasdaq --date "$DATE" \
+            --src generated/fairvalue/nasdaq100_valuations.json
+          python scripts/publish_site_data.py --source fairvalue --index sp500 --date "$DATE" \
+            --src generated/fairvalue/sp500_valuations.json
+
+      - name: Commit and push generated files
+        if: steps.guard.outputs.run == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          DATE=$(date -u +%F)
+          git add generated/fairvalue docs/data/fairvalue docs/fairvalue
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Daily Fair Value valuations: ${DATE} [skip ci]"
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase && git push && exit 0
+            sleep $((attempt * 15))
+          done
+          exit 1

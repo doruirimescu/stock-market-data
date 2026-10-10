@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loan vs Investment · Investing Nexus</title>
+  <meta name="description" content="Find the optimal salary split between loan repayment and investing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%232f6fea%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-family=%22Arial%22 font-weight=%22800%22 font-size=%2216%22 fill=%22white%22 text-anchor=%22middle%22%3EN%3C/text%3E%3C/svg%3E">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="nasdaq_today.html">NASDAQ-100</a>
+        <a href="sp500_today.html">S&amp;P 500</a>
+        <a href="sp500_valuation.html">S&amp;P 500 Summary</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container narrow">
+    <div class="eyebrow">Personal finance</div>
+    <h1>Loan vs <span class="gradient-text">Investment</span></h1>
+    <p class="lead">For every split of your salary between <mark>paying down the loan</mark> and <span class="hl-accent">investing</span>, computes your total wealth after <em>N</em> years, so you can find the best allocation.</p>
+
+    <div class="panel token-bar">
+      <label for="api-token">API token</label>
+      <input class="input" type="password" id="api-token" placeholder="Paste your token here" autocomplete="off">
+      <span class="hint" id="api-token-hint"></span>
+    </div>
+
+    <h2 class="section">Inputs</h2>
+    <form class="panel form-grid" id="sim-form">
+      <label class="field">Principal (€)
+        <span class="hint">Loan amount</span>
+        <input class="input" type="number" id="principal" value="100000" min="1" required>
+      </label>
+      <label class="field">Annual interest rate (%)
+        <span class="hint">e.g. 4 for 4%</span>
+        <input class="input" type="number" id="interest_rate" value="4.0" step="0.01" min="0" required>
+      </label>
+      <label class="field">Fixed monthly installment (€)
+        <span class="hint">Minimum required payment</span>
+        <input class="input" type="number" id="fixed_monthly_installment" value="450" min="0" required>
+      </label>
+      <label class="field">Annual investment return (%)
+        <span class="hint">e.g. 10 for 10%</span>
+        <input class="input" type="number" id="investment_return" value="10" step="0.01" min="0" required>
+      </label>
+      <label class="field">Monthly salary (€)
+        <span class="hint">Amount available for the loan and investing</span>
+        <input class="input" type="number" id="monthly_salary" value="3500" min="1" required>
+      </label>
+      <label class="field">Simulation years
+        <span class="hint">Time horizon</span>
+        <input class="input" type="number" id="n_years" value="20" min="1" required>
+      </label>
+      <div class="form-actions"><button class="btn primary lg" type="submit">Run simulation</button></div>
+    </form>
+
+    <div class="notice" id="error" hidden></div>
+
+    <section id="results" hidden>
+      <h2 class="section">Results</h2>
+      <p class="lead" id="results-summary" style="margin-bottom:6px"></p>
+      <div class="kpis" id="kpis"></div>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>Total wealth vs. share of salary toward the loan</h3></div>
+        <div id="chart" style="height:440px"></div>
+      </div>
+    </section>
+
+    <h2 class="section">How it works</h2>
+    <div class="prose">
+      <p>Each year, the chosen share of your salary goes to the loan (interest first, then principal) and the rest is invested at the annual return. Once the loan is paid off, the whole salary is invested.</p>
+      <p>Wealth is the invested amount plus its compounded gains at the end of the horizon, minus anything still owed on the loan. Shares too small to cover the yearly interest plus the fixed installments are skipped as infeasible.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container narrow">Simulation only. Nothing here is financial advice.</div>
+  </footer>
+
+  <script src="assets/backend.js"></script>
+  <script src="assets/charts.js"></script>
+  <script>
+    const fmtK = (v) => `${Number(v).toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} k€`;
+    const form = document.getElementById("sim-form");
+    const btn = form.querySelector("button[type=submit]");
+    const errorEl = document.getElementById("error");
+    const resultsEl = document.getElementById("results");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorEl.hidden = true;
+
+      const params = new URLSearchParams({
+        principal: document.getElementById("principal").value,
+        interest_rate: parseFloat(document.getElementById("interest_rate").value) / 100,
+        fixed_monthly_installment: document.getElementById("fixed_monthly_installment").value,
+        investment_return: parseFloat(document.getElementById("investment_return").value) / 100,
+        monthly_salary: document.getElementById("monthly_salary").value,
+        n_years: document.getElementById("n_years").value,
+      });
+
+      btn.disabled = true;
+      btn.textContent = "Simulating…";
+      try {
+        displayResults(await Backend.call(`/loan/simulate?${params}`));
+      } catch (err) {
+        errorEl.textContent = err.message;
+        errorEl.hidden = false;
+        resultsEl.hidden = true;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Run simulation";
+      }
+    });
+
+    function displayResults(data) {
+      const gain = data.max_vs_min_total_worth - 100;
+      document.getElementById("results-summary").innerHTML =
+        `Putting <mark>${data.max_p.toFixed(0)}% of your salary</mark> toward the loan gives the most wealth: ` +
+        `<span class="hl-accent">${fmtK(data.max_total_worth)}</span>, ${gain.toFixed(1)}% more than the worst split.`;
+
+      document.getElementById("kpis").innerHTML = [
+        { label: "Best split", value: `${data.max_p.toFixed(0)}%`, sub: `<span class="verdict under">Most wealth</span> · of salary to loan` },
+        { label: "Wealth at best split", value: fmtK(data.max_total_worth), sub: `after ${document.getElementById("n_years").value} years` },
+        { label: "Worst split", value: `${data.min_p.toFixed(0)}%`, sub: `<span class="verdict over">Least wealth</span> · of salary to loan` },
+        { label: "Wealth at worst split", value: fmtK(data.min_total_worth), sub: `${gain.toFixed(1)}% below the best` },
+      ].map((k) => `<div class="panel kpi"><div class="label">${k.label}</div><div class="value">${k.value}</div><div class="sub">${k.sub}</div></div>`).join("");
+
+      resultsEl.hidden = false;  // the chart needs a visible container to size itself
+      const C = SiteChart.colors;
+      const line = {
+        type: "scatter", mode: "lines", name: "Total wealth",
+        x: data.p_range, y: data.total_worth_list,
+        line: { color: C.accent, width: 2, shape: "spline" },
+        fill: "tozeroy", fillcolor: SiteChart.rgba(C.accent, 0.1),
+        hovertemplate: "%{x:.0f}% to loan → %{y:,.1f} k€<extra></extra>",
+      };
+      const marks = {
+        type: "scatter", mode: "markers", name: "Best / worst",
+        x: [data.max_p, data.min_p], y: [data.max_total_worth, data.min_total_worth],
+        marker: { size: 11, color: [C.positive, C.negative], line: { color: C.surface, width: 2 } },
+        hovertemplate: "%{x:.0f}% to loan → %{y:,.1f} k€<extra></extra>",
+      };
+      const ys = data.total_worth_list;
+      const pad = (Math.max(...ys) - Math.min(...ys)) * 0.15 || 1;
+      Plotly.newPlot("chart", [line, marks], SiteChart.layout({
+        showlegend: false,
+        xaxis: { title: { text: "Share of salary toward the loan (%)" }, ticksuffix: "%" },
+        yaxis: { title: { text: "Total wealth (k€)" }, range: [Math.min(...ys) - pad, Math.max(...ys) + pad] },
+        annotations: [
+          { x: data.max_p, y: data.max_total_worth, text: `best: ${data.max_p.toFixed(0)}%`, showarrow: false, yshift: 16, font: { color: C.positiveInk, size: 12 } },
+          { x: data.min_p, y: data.min_total_worth, text: `worst: ${data.min_p.toFixed(0)}%`, showarrow: false, yshift: 16, xanchor: "right", font: { color: C.negativeInk, size: 12 } },
+        ],
+      }), SiteChart.config);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IV15 Calculator · Investing Nexus</title>
+  <meta name="description" content="Intrinsic value via 15-year discounted FCF, adjusted for stock-based compensation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%232f6fea%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-family=%22Arial%22 font-weight=%22800%22 font-size=%2216%22 fill=%22white%22 text-anchor=%22middle%22%3EN%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="nasdaq_today.html">NASDAQ-100</a>
+        <a href="sp500_today.html">S&amp;P 500</a>
+        <a href="sp500_valuation.html">S&amp;P 500 Summary</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container narrow">
+    <div class="eyebrow">Stock calculator</div>
+    <h1>IV15 <span class="gradient-text">Calculator</span></h1>
+    <p class="lead">Intrinsic value from <mark>15 years of discounted free cash flow</mark>, after deducting stock-based compensation: the <span class="hl-accent">Tragic Algebra</span>.</p>
+
+    <div class="panel token-bar">
+      <label for="api-token">API token</label>
+      <input class="input" type="password" id="api-token" placeholder="Paste your token here" autocomplete="off">
+      <span class="hint" id="api-token-hint"></span>
+    </div>
+
+    <h2 class="section">Inputs</h2>
+    <form class="panel form-grid" id="iv15-form">
+      <label class="field">Ticker
+        <span class="hint">Yahoo Finance symbol, e.g. AAPL, MELI, NVDA</span>
+        <input class="input" type="text" id="ticker" placeholder="AAPL" required>
+      </label>
+      <label class="field">Growth rate (%)
+        <span class="hint">Annual FCF growth assumed for 15 years</span>
+        <input class="input" type="number" id="growth_rate" value="15" step="0.1" min="0" required>
+      </label>
+      <label class="field">Terminal multiple
+        <span class="hint">Applied to year-15 FCF for the terminal value</span>
+        <input class="input" type="number" id="terminal_multiple" value="15" step="1" min="1" required>
+      </label>
+      <label class="field">Manual SBC override ($ millions)
+        <span class="hint">Leave blank to use Yahoo Finance data</span>
+        <input class="input" type="number" id="manual_sbc" placeholder="e.g. 303 for $303M" step="0.1" min="0">
+      </label>
+      <div class="form-actions"><button class="btn primary lg" type="submit">Calculate IV15</button></div>
+    </form>
+
+    <div class="notice" id="error" hidden></div>
+
+    <section id="results" hidden>
+      <h2 class="section" id="results-title">Results</h2>
+      <p class="lead" id="results-summary" style="margin-bottom:14px"></p>
+      <div class="table-wrap"><table class="data kv" id="results-table"></table></div>
+    </section>
+
+    <h2 class="section">What is IV15?</h2>
+    <div class="prose">
+      <p>IV15 is an intrinsic value estimate built on one disciplined assumption: a business must compound its free cash flow at <strong>15% per year</strong> for 15 years and be worth <strong>15× its final-year cash flow</strong> at exit, all discounted back at a <strong>15% hurdle rate</strong>. If the stock trades below this value, it clears the bar; above it, you are paying a premium for growth that may never materialise.</p>
+      <div class="formula">IV15 = Σ FCF<sub>t</sub> / (1.15)<sup>t</sup> + TerminalValue / (1.15)<sup>15</sup></div>
+
+      <h3>The Tragic Algebra: why SBC matters</h3>
+      <p>Companies report <em>Free Cash Flow</em> without deducting <strong>Stock-Based Compensation (SBC)</strong>. SBC is a real cost to shareholders because it dilutes ownership, but as a non-cash expense it disappears from the cash flow statement. The Tragic Algebra corrects this:</p>
+      <div class="formula">True FCF = Reported FCF − Stock-Based Compensation</div>
+      <p>A company with $10B of FCF but $4B of annual SBC has a <em>True FCF</em> of only $6B. Valuing it on the reported figure overstates intrinsic value by about 67%.</p>
+      <div class="callout"><strong>Manual SBC override:</strong> Yahoo Finance sometimes omits SBC or reports it with the wrong sign. If results look off, take the SBC figure from the latest 10-K (cash flow statement, operating activities) and enter it in millions.</div>
+
+      <h3>How to read Price / IV15</h3>
+      <ul>
+        <li><strong>&lt; 1.0</strong>: the stock trades <em>below</em> intrinsic value at a 15% growth assumption. Potential margin of safety.</li>
+        <li><strong>1.0 – 1.5</strong>: a modest premium; growth expectations are priced in but not extreme.</li>
+        <li><strong>&gt; 1.5</strong>: a significant premium; the market is pricing in growth well above 15% per year.</li>
+      </ul>
+      <p class="small">IV15 is not a price target but a <em>hurdle test</em>. A ratio above 1 doesn't make the stock a bad investment; it means the implied return at today's price is below 15% a year under these assumptions. Adjust the growth rate and terminal multiple to stress-test your thesis.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container narrow">Data fetched live from Yahoo Finance. Nothing here is investment advice.</div>
+  </footer>
+
+  <script src="assets/backend.js"></script>
+  <script>
+    const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const form = document.getElementById("iv15-form");
+    const btn = form.querySelector("button[type=submit]");
+    const errorEl = document.getElementById("error");
+    const resultsEl = document.getElementById("results");
+
+    document.getElementById("ticker").addEventListener("input", function () {
+      this.value = this.value.toUpperCase();
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorEl.hidden = true;
+      resultsEl.hidden = true;
+
+      const ticker = document.getElementById("ticker").value.trim();
+      const growth_rate = parseFloat(document.getElementById("growth_rate").value) / 100;
+      const terminal_multiple = parseFloat(document.getElementById("terminal_multiple").value);
+      const sbcRaw = document.getElementById("manual_sbc").value;
+
+      const params = new URLSearchParams({ ticker, growth_rate, terminal_multiple });
+      if (sbcRaw !== "") {
+        params.set("manual_sbc", parseFloat(sbcRaw) * 1_000_000);
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Fetching data…";
+      try {
+        const data = await Backend.call(`/iv15/calculate?${params}`);
+        if (data.error) throw new Error(data.error);
+        displayResults(data);
+      } catch (err) {
+        errorEl.textContent = err.message;
+        errorEl.hidden = false;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Calculate IV15";
+      }
+    });
+
+    function displayResults(data) {
+      document.getElementById("results-title").textContent = `Results — ${data["Ticker"]}`;
+
+      const ratio = data["Price / IV15"];
+      const ratioClass = ratio < 1 ? "row-under" : ratio > 1.5 ? "row-over" : "key";
+      const verdict = ratio < 1 ? '<span class="verdict under">below its IV15</span>'
+        : ratio > 1.5 ? '<span class="verdict over">well above its IV15</span>'
+        : '<span class="verdict over">above its IV15</span>';
+      document.getElementById("results-summary").innerHTML =
+        `${esc(data["Ticker"])} trades at ${esc(data["Current Price"])}, ${verdict}: ` +
+        `IV15 is <mark>${esc(data["Calculated IV15"])}</mark>, a price-to-IV15 ratio of <span class="hl-accent">${esc(ratio)}</span>.`;
+
+      document.getElementById("results-table").innerHTML = Object.entries(data)
+        .filter(([k]) => k !== "Ticker")
+        .map(([k, v]) => {
+          const cls = k === "Price / IV15" ? ratioClass : k === "Calculated IV15" ? "key" : "";
+          return `<tr${cls ? ` class="${cls}"` : ""}><td>${esc(k)}</td><td>${esc(v)}</td></tr>`;
+        })
+        .join("");
+      resultsEl.hidden = false;
+    }
+  </script>
+</body>
+</html>

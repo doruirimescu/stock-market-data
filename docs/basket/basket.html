@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Basket · Basket Rotation · Investing Nexus</title>
+  <meta name="description" content="One basket ratio in depth: engine events, rotation signal, equity and trades.">
+  <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <link rel="stylesheet" href="assets/basket.css">
+  <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="index.html">Overview</a>
+        <a href="basket.html" class="active">Baskets</a>
+        <a href="lab.html">Strategy Lab</a>
+        <a href="trend.html">Sector Trend</a>
+        <a href="algorithm.html">Algorithm</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-head">
+      <div>
+        <div class="eyebrow" id="eyebrow">Basket</div>
+        <h1>Basket <span class="gradient-text">deep dive</span></h1>
+        <p class="lead" id="narrative">Loading…</p>
+      </div>
+      <div class="head-controls">
+        <div class="date-bar" role="group" aria-label="Basket">
+          <label for="job-select">Basket</label>
+          <button class="btn" id="job-prev" title="Previous basket (←)" aria-label="Previous basket">‹</button>
+          <select id="job-select"></select>
+          <button class="btn" id="job-next" title="Next basket (→)" aria-label="Next basket">›</button>
+        </div>
+        <div class="date-bar" id="run-picker" role="group" aria-label="Run"></div>
+      </div>
+    </div>
+    <div class="notice" id="error" hidden></div>
+
+    <div class="panel anatomy" id="anatomy"></div>
+
+    <div class="kpis" id="kpis"></div>
+
+    <h2 class="section">Position now</h2>
+    <div class="two-col">
+      <div class="panel" id="now"></div>
+      <div class="panel" id="now-signal"></div>
+    </div>
+
+    <h2 class="section">Signal &amp; performance</h2>
+    <div class="panel chart-panel">
+      <div class="chart-head"><h3 id="ratio-title">Basket ratio and mean-reversion events</h3>
+        <div class="legend">
+          <span><i class="ln" style="background:var(--text)"></i>Ratio</span>
+          <span><i class="ln" style="background:var(--accent)"></i>Configured mean</span>
+          <span><i class="band" style="background:rgba(20,160,136,.35)"></i>Reverted</span>
+          <span><i class="band" style="background:rgba(221,106,44,.35)"></i>Failed</span>
+          <span><i class="band" style="background:rgba(107,128,168,.35)"></i>Expired</span>
+        </div>
+      </div>
+      <div id="c-ratio" class="chart h-lg"></div>
+      <div class="chart-note">Engine view: equal-weight baskets of first-bar-normalized prices. Each shaded span is one deviation event, opened at |z| ≥ threshold and closed when it reverts, fails or the data ends.</div>
+    </div>
+
+    <div class="panel chart-panel">
+      <div class="chart-head"><h3>Rotation signal z-score and leg held</h3>
+        <div class="legend">
+          <span><i class="ln" style="background:var(--text)"></i>z</span>
+          <span><i class="ln" style="background:var(--muted)"></i>± threshold</span>
+          <span><i class="band" style="background:var(--leg-num-soft);outline:1px solid var(--leg-num)"></i>Holding NUM</span>
+          <span><i class="band" style="background:var(--leg-den-soft);outline:1px solid var(--leg-den)"></i>Holding DEN</span>
+        </div>
+      </div>
+      <div id="c-z" class="chart h-md"></div>
+      <div class="chart-note">Backtester view: z of the log basket ratio. Above +threshold the ratio is rich, so the strategy rotates into the denominator. Below −threshold it rotates into the numerator.</div>
+    </div>
+
+    <div class="panel chart-panel">
+      <div class="chart-head"><h3>Equity vs buy &amp; hold</h3>
+        <div class="legend">
+          <span><i class="ln" style="background:var(--text);height:3px"></i>Rotation strategy</span>
+          <span><i class="ln" style="background:var(--leg-num)"></i>Hold NUM</span>
+          <span><i class="ln" style="background:var(--leg-den)"></i>Hold DEN</span>
+          <span><i class="ln" style="background:var(--faint)"></i>Hold universe</span>
+        </div>
+      </div>
+      <div id="c-eq" class="chart h-md"></div>
+    </div>
+
+    <div class="panel chart-panel">
+      <div class="chart-head"><h3>Strategy drawdown</h3></div>
+      <div id="c-dd" class="chart h-sm"></div>
+    </div>
+
+    <h2 class="section">Trades</h2>
+    <div class="panel chart-panel" style="margin-top:0">
+      <div class="chart-head"><h3>Net P&amp;L per rotation</h3>
+        <div class="legend"><span><i style="background:var(--under)"></i>Profit</span><span><i style="background:var(--over)"></i>Loss</span></div>
+      </div>
+      <div id="c-pnl" class="chart h-sm"></div>
+    </div>
+    <div class="toolbar" style="margin-top:14px">
+      <span class="muted small" id="trade-count"></span>
+      <span class="muted small">Click a row to zoom every chart to that trade. Click ▸ for its legs.</span>
+    </div>
+    <div class="table-wrap scroll-y">
+      <table class="data">
+        <thead><tr><th></th><th>#</th><th>Leg</th><th>Entry</th><th>Exit</th><th class="num">Bars</th>
+          <th class="num">Invested</th><th class="num">P&amp;L</th><th class="num">Costs</th><th class="num">Net</th><th class="num">Equity after</th></tr></thead>
+        <tbody id="trades"></tbody>
+      </table>
+    </div>
+
+    <h2 class="section">Event diagnostics</h2>
+    <div class="two-col">
+      <div class="panel">
+        <div class="panel-title">Reversion rate by direction</div>
+        <div id="by-dir"></div>
+        <div class="panel-title" style="margin-top:18px">Event outcomes</div>
+        <div id="outcomes"></div>
+      </div>
+      <div class="panel chart-panel" style="margin-top:0">
+        <div class="chart-head"><h3>Reversion rate by volatility bucket</h3></div>
+        <div id="c-vol" class="chart h-sm" style="height:260px"></div>
+      </div>
+    </div>
+    <div class="panel chart-panel">
+      <div class="chart-head"><h3>Event duration</h3>
+        <div class="legend"><span><i style="background:var(--under)"></i>Reverted</span><span><i style="background:var(--over)"></i>Failed</span><span><i style="background:var(--faint)"></i>Expired</span></div>
+      </div>
+      <div id="c-dur" class="chart h-sm" style="height:240px"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">Prices are close-to-close; costs are commission + slippage in bps of traded notional. Not investment advice.</div>
+  </footer>
+
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+  <script src="assets/mrscore.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+  (async function () {
+    const { fmt, sign, esc } = BN;
+    let ctx;
+    try { ctx = await BN.loadRun(); } catch (e) { BN.showError(e); return; }
+    const { run, manifest, id } = ctx;
+    BN.mountRunPicker(document.getElementById("run-picker"), manifest, id);
+    BN.wireNav(id);
+    if (!run.top.length) { BN.showError(new Error("This run has no scored baskets.")); return; }
+
+    const cfg = run.config, P = BN.palette(), dates = run.panel.dates, T = dates.length;
+    const rank = Math.min(Math.max(parseInt(BN.params.get("rank") || "1", 10) || 1, 1), run.top.length);
+    const job = run.top[rank - 1], d = BN.derive(run, job), bt = job.backtest, mt = d.metrics || {};
+    const thr = cfg.deviation_detector.params.threshold, tol = cfg.reversion_criteria.params.z_tolerance;
+    document.title = `Basket Rotation · #${rank} ${job.job_id}`;
+
+    // ------------------------------------------------------------- picker
+    const sel = document.getElementById("job-select");
+    sel.innerHTML = run.top.map((t) => `<option value="${t.rank}">#${t.rank} · ${esc(t.num.join("+"))} / ${esc(t.den.join("+"))}</option>`).join("");
+    sel.value = rank;
+    const goRank = (r) => { if (r >= 1 && r <= run.top.length && r !== rank) location.href = BN.withRun("basket.html", id, { rank: r }); };
+    sel.onchange = () => goRank(+sel.value);
+    const prev = document.getElementById("job-prev"), next = document.getElementById("job-next");
+    prev.disabled = rank === 1; next.disabled = rank === run.top.length;
+    prev.onclick = () => goRank(rank - 1); next.onclick = () => goRank(rank + 1);
+    document.addEventListener("keydown", (e) => {
+      if (e.target.matches("input,select,textarea")) return;
+      if (e.key === "ArrowLeft") goRank(rank - 1);
+      if (e.key === "ArrowRight") goRank(rank + 1);
+    });
+
+    // ------------------------------------------------------------- header
+    document.getElementById("eyebrow").textContent = `Rank #${rank} of ${run.top.length} · ${cfg.scoring.score_metric.replace("_", " ")} ${fmt.sig(job.score, 4)}`;
+    const vsNum = bt && d.benchReturn ? bt.total_return - d.benchReturn.num : NaN, vsDen = bt && d.benchReturn ? bt.total_return - d.benchReturn.den : NaN;
+    document.getElementById("narrative").innerHTML = bt
+      ? `Rotating between the two baskets turned ${fmt.money(bt.initial_cash)} into <mark>${fmt.money(bt.final_equity)}</mark> ` +
+        `(${fmt.spct(bt.total_return)}) over ${fmt.num(mt.years, 1)} years and ${bt.trades.length} rotations. That is ` +
+        `<span class="hl-accent">${fmt.spct(vsNum)}</span> vs holding the numerator and <span class="hl-accent">${fmt.spct(vsDen)}</span> vs holding the denominator.`
+      : `Backtesting is disabled in this run's config; showing engine diagnostics only.`;
+
+    document.getElementById("anatomy").innerHTML = `
+      <div class="side num"><span class="leg-label num">Numerator · long when ratio is cheap</span>${BN.chips(job.num, "num")}
+        <span class="hint">Hold B&amp;H: <span class="${sign(d.benchReturn && d.benchReturn.num)}">${fmt.spct(d.benchReturn && d.benchReturn.num)}</span></span></div>
+      <div class="div" aria-hidden="true">÷</div>
+      <div class="side den"><span class="leg-label den">Denominator · long when ratio is rich</span>${BN.chips(job.den, "den")}
+        <span class="hint">Hold B&amp;H: <span class="${sign(d.benchReturn && d.benchReturn.den)}">${fmt.spct(d.benchReturn && d.benchReturn.den)}</span></span></div>`;
+
+    const kpi = (l, v, s) => `<div class="panel kpi"><div class="label">${l}</div><div class="value sm">${v}</div><div class="sub">${s || ""}</div></div>`;
+    document.getElementById("kpis").innerHTML = [
+      kpi("Total return", `<span class="${sign(mt.total_return)}">${fmt.spct(mt.total_return)}</span>`, `CAGR ${fmt.spct(mt.cagr)}`),
+      kpi("Max drawdown", fmt.pct(mt.max_dd), `ann. vol ${fmt.pct(mt.vol)}`),
+      kpi("Sharpe (ann.)", fmt.num(mt.sharpe), "daily equity, rf = 0"),
+      kpi("Win rate", fmt.pct(mt.win_rate, 0), `profit factor ${fmt.num(mt.profit_factor)}`),
+      kpi("Rotations", fmt.int(mt.trades), `avg hold ${fmt.num(mt.avg_hold, 0)} bars · ${fmt.pct(mt.num_share, 0)} in NUM`),
+      kpi("Engine events", `${job.engine.reverted}/${job.engine.total}`, `reverted · ${fmt.pct(d.reversionRate, 0)}`),
+      kpi("Costs paid", fmt.money(mt.costs), `${cfg.backtest ? cfg.backtest.costs.commission_bps + cfg.backtest.costs.slippage_bps : 0} bps per side`),
+    ].join("");
+
+    // ------------------------------------------------------------ now panel
+    const bz = bt ? bt.trace.z : [];
+    let lastT = -1; for (let t = T - 1; t >= 0; t--) if (bz[t] !== null && bz[t] !== undefined) { lastT = t; break; }
+    if (bt && bt.trades.length && lastT >= 0) {
+      const last = bt.trades[bt.trades.length - 1], z = bz[lastT];
+      const leg = last.leg, other = leg === "num" ? "den" : "num";
+      const flipAt = leg === "num" ? thr : -thr;
+      const legName = (l) => (l === "num" ? "numerator" : "denominator");
+      document.getElementById("now").innerHTML = `
+        <div class="panel-title">Current holding <span class="muted small">as of ${fmt.date(dates[lastT])}</span></div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:6px 0 12px">
+          <span class="leg-label ${leg}" style="font-size:12px">${legName(leg)}</span>${BN.chips(job[leg], leg)}</div>
+        <div class="kv"><dt>held since</dt><dd>${fmt.date(dates[last.s])}</dd>
+          <dt>bars held</dt><dd>${last.dur}</dd>
+          <dt>open P&amp;L (mark)</dt><dd class="${sign(last.net)}">${fmt.smoney(last.net)}</dd></div>
+        <p class="small muted" style="margin:12px 0 0">The backtest marks this position closed on the last bar; a live run would still hold it.</p>`;
+      const dist = Math.abs(flipAt - z);
+      const pos = Math.max(0, Math.min(1, (z + thr * 1.6) / (thr * 3.2)));
+      document.getElementById("now-signal").innerHTML = `
+        <div class="panel-title">Signal</div>
+        <div style="display:flex;align-items:baseline;gap:10px"><span class="kpi"><span class="value" style="font-size:30px;padding:0">${fmt.num(z, 2)}</span></span><span class="muted">z of log ratio</span></div>
+        <svg viewBox="0 0 300 34" width="100%" height="34" role="img" aria-label="z position between thresholds">
+          <rect x="0" y="14" width="300" height="6" rx="3" fill="var(--surface-3)"/>
+          <line x1="${((-thr + thr * 1.6) / (thr * 3.2)) * 300}" x2="${((-thr + thr * 1.6) / (thr * 3.2)) * 300}" y1="8" y2="26" stroke="var(--leg-num)" stroke-width="2"/>
+          <line x1="${((thr + thr * 1.6) / (thr * 3.2)) * 300}" x2="${((thr + thr * 1.6) / (thr * 3.2)) * 300}" y1="8" y2="26" stroke="var(--leg-den)" stroke-width="2"/>
+          <circle cx="${pos * 300}" cy="17" r="6" fill="var(--text)" stroke="var(--surface)" stroke-width="2"/>
+        </svg>
+        <div style="display:flex;justify-content:space-between;font-size:12px" class="muted"><span>−${thr} → buy NUM</span><span>+${thr} → buy DEN</span></div>
+        <p class="small muted" style="margin:10px 0 0">Rotates into the <strong>${legName(other)}</strong> when z crosses <span class="hl-accent">${flipAt > 0 ? "+" : ""}${flipAt}</span>, which is ${fmt.num(dist, 2)} σ away.</p>`;
+    } else {
+      document.getElementById("now").innerHTML = `<span class="muted">No position information in this run.</span>`;
+      document.getElementById("now-signal").innerHTML = "";
+    }
+
+    // --------------------------------------------------------------- charts
+    const nn = (a) => a.map((v) => (v === null ? null : v));
+    const span = (s, e) => [dates[s], dates[Math.min(e, T - 1)]];
+    const statusCol = { reverted: P.positive, failed: P.negative, expired: P.faint };
+    const ev = job.engine.events;
+
+    // 1. ratio + mean + events
+    const rTrace = job.engine.trace;
+    Plotly.newPlot("c-ratio", [
+      { x: dates, y: rTrace.ratio, name: "Ratio", line: { color: P.text, width: 1.4 }, hovertemplate: "%{y:.4f}" },
+      { x: dates, y: nn(rTrace.mean), name: "Mean", line: { color: P.accent, width: 1.4 }, hovertemplate: "%{y:.4f}", connectgaps: false },
+      { x: ev.map((e) => dates[e.s]), y: ev.map((e) => rTrace.ratio[e.s]), name: "Event start", mode: "markers",
+        marker: { size: 9, symbol: ev.map((e) => (e.dir === "up" ? "triangle-up" : "triangle-down")), color: ev.map((e) => statusCol[e.status]), line: { color: P.surface, width: 2 } },
+        customdata: ev.map((e) => [e.status, e.dir, e.dur, e.start_z, e.max_abs_z]),
+        hovertemplate: "%{customdata[1]} event · %{customdata[0]}<br>start z %{customdata[3]:.2f} · max |z| %{customdata[4]:.2f}<br>%{customdata[2]} bars<extra></extra>" },
+    ], BN.layout({ showlegend: false, yaxis: { title: { text: "NUM / DEN" } },
+      shapes: ev.map((e) => { const [x0, x1] = span(e.s, e.e); return { type: "rect", xref: "x", yref: "paper", x0, x1, y0: 0, y1: 1, line: { width: 0 }, fillcolor: Nexus.rgba(statusCol[e.status], 0.16), layer: "below" }; }),
+    }), BN.config());
+
+    const charts = ["c-ratio"];
+    if (bt) {
+      // 2. z with holding bands
+      const holdShapes = bt.trades.map((t) => { const [x0, x1] = span(t.s, t.e); return { type: "rect", xref: "x", yref: "paper", x0, x1, y0: 0, y1: 1, line: { width: 0 },
+        fillcolor: t.leg === "num" ? Nexus.rgba(P.num, 0.14) : Nexus.rgba(P.den, 0.26), layer: "below" }; });
+      const hl = (y, c) => ({ type: "line", xref: "paper", x0: 0, x1: 1, y0: y, y1: y, line: { color: c, width: 1 } });
+      Plotly.newPlot("c-z", [
+        { x: dates, y: nn(bt.trace.z), name: "z", line: { color: P.text, width: 1.2 }, hovertemplate: "z %{y:.2f}" },
+        { x: bt.trades.map((t) => dates[t.s]), y: bt.trades.map((t) => bt.trace.z[t.s]), name: "Rotation", mode: "markers",
+          marker: { size: 9, color: bt.trades.map((t) => (t.leg === "num" ? P.num : P.den)), line: { color: P.surface, width: 2 } },
+          customdata: bt.trades.map((t) => (t.leg === "num" ? "into NUM" : "into DEN")), hovertemplate: "rotate %{customdata}<extra></extra>" },
+      ], BN.layout({ showlegend: false, yaxis: { title: { text: "z" }, zeroline: true },
+        shapes: [...holdShapes, hl(thr, P.muted), hl(-thr, P.muted)] }), BN.config());
+
+      // 3. equity
+      const eqX = bt.equity.i.map((i) => dates[i]);
+      const sl = (a) => a.slice(d.i0);
+      Plotly.newPlot("c-eq", [
+        { x: dates.slice(d.i0), y: sl(d.bench.all), name: "Hold universe", line: { color: P.faint, width: 1 }, hovertemplate: "%{y:,.0f}" },
+        { x: dates.slice(d.i0), y: sl(d.bench.den), name: "Hold DEN", line: { color: P.den, width: 1.3 }, hovertemplate: "%{y:,.0f}" },
+        { x: dates.slice(d.i0), y: sl(d.bench.num), name: "Hold NUM", line: { color: P.num, width: 1.3 }, hovertemplate: "%{y:,.0f}" },
+        { x: eqX, y: bt.equity.v, name: "Strategy", line: { color: P.text, width: 2.2 }, hovertemplate: "%{y:,.0f}" },
+      ], BN.layout({ showlegend: false, yaxis: { title: { text: "Equity" }, tickformat: ",.0f" } }), BN.config());
+
+      // 4. drawdown
+      let peak = -Infinity;
+      const dd = bt.equity.v.map((v) => { peak = Math.max(peak, v); return (v / peak - 1) * 100; });
+      Plotly.newPlot("c-dd", [{ x: eqX, y: dd, name: "Drawdown", fill: "tozeroy", line: { color: P.negative, width: 1 },
+        fillcolor: Nexus.rgba(P.negative, 0.22), hovertemplate: "%{y:.1f}%" }],
+        BN.layout({ showlegend: false, margin: { t: 6 }, yaxis: { ticksuffix: "%", title: { text: "From peak" } } }), BN.config());
+
+      // 5. pnl bars
+      Plotly.newPlot("c-pnl", [{ type: "bar", x: bt.trades.map((t) => dates[t.e]), y: bt.trades.map((t) => t.net),
+        marker: { color: bt.trades.map((t) => (t.net >= 0 ? P.positive : P.negative)), cornerradius: 3 },
+        customdata: bt.trades.map((t, i) => [i + 1, t.leg.toUpperCase(), t.dur]),
+        hovertemplate: "Trade %{customdata[0]} · %{customdata[1]} · %{customdata[2]} bars<br>net %{y:+,.0f}<extra></extra>" }],
+        BN.layout({ hovermode: "closest", showlegend: false, margin: { t: 6 }, yaxis: { tickformat: ",.0f", title: { text: "Net" } } }), BN.config());
+      charts.push("c-z", "c-eq", "c-dd", "c-pnl");
+    } else {
+      ["c-z", "c-eq", "c-dd", "c-pnl"].forEach((c) => (document.getElementById(c).closest(".panel").hidden = true));
+    }
+    BN.syncX(charts);
+
+    // ---------------------------------------------------------- trade table
+    const body = document.getElementById("trades");
+    if (bt) {
+      let eq = bt.initial_cash;
+      document.getElementById("trade-count").textContent = `${bt.trades.length} rotations · ${bt.trades.filter((t) => t.net > 0).length} profitable`;
+      body.innerHTML = bt.trades.map((t, i) => {
+        eq += t.net;
+        const legs = (t.legs || []).map((l) => `<tr><td><span class="chip ${t.leg}">${esc(l.sym)}</span></td><td>${l.side}</td>
+          <td class="num">${fmt.num(l.qty, 3)}</td><td class="num">${fmt.num(l.entry_px, 2)}</td><td class="num">${fmt.num(l.exit_px, 2)}</td>
+          <td class="num ${sign(l.exit_px - l.entry_px)}">${fmt.spct(l.exit_px / l.entry_px - 1)}</td></tr>`).join("");
+        return `<tr class="trade" data-i="${i}" style="cursor:pointer">
+            <td><span class="caret" data-toggle>▸</span></td><td class="rank">${i + 1}</td>
+            <td><span class="leg-label ${t.leg}">${t.leg === "num" ? "NUM" : "DEN"}</span></td>
+            <td>${fmt.date(dates[t.s])}</td><td>${fmt.date(dates[t.e])}</td><td class="num">${t.dur}</td>
+            <td class="num">${fmt.money(t.gross_entry)}</td><td class="num ${sign(t.pnl)}">${fmt.smoney(t.pnl)}</td>
+            <td class="num">${fmt.money(t.costs, 2)}</td><td class="num ${sign(t.net)}">${fmt.smoney(t.net)}</td><td class="num">${fmt.money(eq)}</td></tr>
+          <tr class="legs-row" hidden><td colspan="11"><table><thead><tr><th>Symbol</th><th>Side</th><th class="num">Qty</th><th class="num">Entry px</th><th class="num">Exit px</th><th class="num">Move</th></tr></thead><tbody>${legs || '<tr><td colspan="6" class="muted">Leg detail not exported.</td></tr>'}</tbody></table></td></tr>`;
+      }).join("");
+      body.querySelectorAll("tr.trade").forEach((tr) => {
+        tr.onclick = (e) => {
+          const t = bt.trades[+tr.dataset.i];
+          if (e.target.closest("[data-toggle]")) { tr.classList.toggle("open"); tr.nextElementSibling.hidden = !tr.classList.contains("open"); return; }
+          const pad = Math.max(10, Math.round(t.dur * 0.6));
+          const range = [dates[Math.max(0, t.s - pad)], dates[Math.min(T - 1, t.e + pad)]];
+          charts.forEach((c) => Plotly.relayout(c, { "xaxis.range": range }));
+          document.getElementById("c-ratio").scrollIntoView({ behavior: "smooth", block: "start" });
+        };
+      });
+    }
+
+    // ---------------------------------------------------------- diagnostics
+    const bd = job.engine.by_direction || {};
+    const row = (label, v, col, count) => `<div class="dist-row"><div class="dist-label">${label}</div>
+      <div class="dist-track"><div class="dist-bar" style="width:${(BN.isNum(v) ? v : 0) * 100}%;background:${col}"></div></div><div class="dist-count">${count}</div></div>`;
+    const evUp = ev.filter((e) => e.dir === "up"), evDn = ev.filter((e) => e.dir === "down");
+    document.getElementById("by-dir").innerHTML =
+      row(`Up · ratio below mean <span class="muted small">${fmt.pct(bd.up, 0)}</span>`, bd.up, "var(--accent)", evUp.length) +
+      row(`Down · ratio above mean <span class="muted small">${fmt.pct(bd.down, 0)}</span>`, bd.down, "var(--accent)", evDn.length);
+    const tot = job.engine.total || 1;
+    document.getElementById("outcomes").innerHTML =
+      row(`<span class="verdict under">Reverted</span>`, job.engine.reverted / tot, "var(--under)", job.engine.reverted) +
+      row(`<span class="verdict over">Failed</span>`, job.engine.failed / tot, "var(--over)", job.engine.failed) +
+      row(`<span class="muted">Expired</span>`, job.engine.expired / tot, "var(--faint)", job.engine.expired);
+
+    const bv = job.engine.by_volatility_bucket || {};
+    const bk = Object.keys(bv);
+    if (bk.length) {
+      Plotly.newPlot("c-vol", [{ type: "bar", x: bk.map((k, i) => `Q${i + 1}`), y: bk.map((k) => (bv[k] === null ? null : bv[k] * 100)),
+        marker: { color: P.accent, cornerradius: 3 }, hovertemplate: "%{x}: %{y:.0f}% reverted<extra></extra>" }],
+        BN.layout({ hovermode: "closest", showlegend: false, margin: { t: 6 }, xaxis: { title: { text: "Volatility at event start (low → high)" }, showspikes: false },
+          yaxis: { ticksuffix: "%", range: [0, 100] } }), BN.config());
+    } else document.getElementById("c-vol").innerHTML = `<p class="muted small" style="padding:12px">Volatility bucketing is disabled in scoring.</p>`;
+
+    Plotly.newPlot("c-dur", ["reverted", "failed", "expired"].map((s) => ({
+      type: "histogram", name: s[0].toUpperCase() + s.slice(1), x: ev.filter((e) => e.status === s).map((e) => e.dur),
+      marker: { color: statusCol[s], line: { color: P.surface, width: 1 } }, xbins: { size: 2 }, hovertemplate: "%{x} bars: %{y}<extra>" + s + "</extra>",
+    })), BN.layout({ barmode: "stack", hovermode: "closest", showlegend: false, margin: { t: 6 },
+      xaxis: { title: { text: "Bars from open to close" }, showspikes: false }, yaxis: { title: { text: "Events" } } }), BN.config());
+  })();
+  </script>
+</body>
+</html>

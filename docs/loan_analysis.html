@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loan Analysis · Investing Nexus</title>
+  <meta name="description" content="Upload your loan.json to visualise repayment progress, interest costs, and monthly breakdown.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%232f6fea%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-family=%22Arial%22 font-weight=%22800%22 font-size=%2216%22 fill=%22white%22 text-anchor=%22middle%22%3EN%3C/text%3E%3C/svg%3E">
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="nasdaq_today.html">NASDAQ-100</a>
+        <a href="sp500_today.html">S&amp;P 500</a>
+        <a href="sp500_valuation.html">S&amp;P 500 Summary</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container narrow">
+    <div class="eyebrow">Personal finance</div>
+    <h1>Loan <span class="gradient-text">Analysis</span></h1>
+    <p class="lead">Upload your <code>loan.json</code> for a full breakdown of your repayment progress: <mark>principal paid</mark>, interest, costs and <span class="hl-accent">what is still owed</span>.</p>
+
+    <div class="panel token-bar">
+      <label for="api-token">API token</label>
+      <input class="input" type="password" id="api-token" placeholder="Paste your token here" autocomplete="off">
+      <span class="hint" id="api-token-hint"></span>
+    </div>
+
+    <h2 class="section">Upload</h2>
+    <div class="panel toolbar" style="margin-bottom:0">
+      <input class="file-input" type="file" id="loan-file" accept=".json,application/json">
+      <button class="btn primary lg" id="analyze-btn" type="button">Analyse</button>
+    </div>
+
+    <div class="notice" id="error" hidden></div>
+
+    <section id="dashboard" hidden>
+      <h2 class="section">Summary</h2>
+      <p class="lead" id="results-summary" style="margin-bottom:6px"></p>
+      <div class="kpis" id="kpis"></div>
+
+      <h2 class="section">Monthly breakdown</h2>
+      <div class="two-col">
+        <div class="panel chart-panel" style="margin-top:0">
+          <div class="chart-head"><h3>Principal paid per month</h3></div>
+          <div id="chart-principal-monthly" style="height:300px"></div>
+        </div>
+        <div class="panel chart-panel" style="margin-top:0">
+          <div class="chart-head"><h3>Interest paid per month</h3></div>
+          <div id="chart-interest-monthly" style="height:300px"></div>
+        </div>
+      </div>
+
+      <h2 class="section">Principal, interest and costs over time</h2>
+      <div class="panel chart-panel" style="margin-top:0">
+        <div class="chart-head"><h3>Cumulative totals</h3></div>
+        <div id="chart-cumulative" style="height:400px"></div>
+        <div class="series-toggles" id="cumulative-toggles" role="group" aria-label="Lines shown on the chart"></div>
+      </div>
+    </section>
+
+    <h2 class="section">loan.json format</h2>
+    <div class="prose"><p>The file must be valid JSON with this structure:</p></div>
+<pre class="code-block">{
+  "total": 109000,               <span class="c">// required: original loan amount (€)</span>
+  "interest_rate": 3.97,         <span class="c">// optional: global annual interest rate (%); used as fallback</span>
+  "monthly_installment": 454.17, <span class="c">// optional: fixed monthly installment (€)</span>
+  "history": [
+    {
+      "date":          "2022-05-02", <span class="c">// YYYY-MM-DD</span>
+      "principal":     454.17,       <span class="c">// principal paid in this transaction (€)</span>
+      "interest":       47.24,       <span class="c">// interest paid in this transaction (€)</span>
+      "cost":             2.50       <span class="c">// bank fees / other costs (€)</span>
+    },
+    {
+      "date":          "2024-01-01",
+      "principal":     454.17,
+      "interest":       52.10,
+      "cost":             2.50,
+      "interest_rate":    4.50  <span class="c">// optional: rate changed; overrides global for projections</span>
+    }
+  ]
+}</pre>
+    <div class="table-wrap" style="margin-top:14px">
+      <table class="data">
+        <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>total</code></td><td class="muted">number</td><td class="company"><strong>Required.</strong> The original total principal of the loan in €.</td></tr>
+          <tr><td><code>interest_rate</code></td><td class="muted">number</td><td class="company">Global annual interest rate in percent (<code>3.97</code> = 3.97%). Used when no entry-level rate is set.</td></tr>
+          <tr><td><code>monthly_installment</code></td><td class="muted">number</td><td class="company">Fixed monthly installment in €. Used as the minimum payment in simulations.</td></tr>
+          <tr><td><code>history[].date</code></td><td class="muted">string</td><td class="company">Transaction date as <code>YYYY-MM-DD</code>. Transactions in the same calendar month are combined.</td></tr>
+          <tr><td><code>history[].principal</code></td><td class="muted">number</td><td class="company">Principal repaid in this transaction (€). Record extra lump-sum payments here.</td></tr>
+          <tr><td><code>history[].interest</code></td><td class="muted">number</td><td class="company">Interest paid in this transaction (€). Use <code>0</code> for extra lump-sum principal payments.</td></tr>
+          <tr><td><code>history[].cost</code></td><td class="muted">number</td><td class="company">Bank fees or transaction costs (€). Use <code>0</code> if none.</td></tr>
+          <tr><td><code>history[].interest_rate</code></td><td class="muted">number</td><td class="company"><em>Optional.</em> Annual rate in effect for this transaction (%). The most recent entry with a rate overrides the global rate for upcoming-interest projections, which suits variable-rate mortgages.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container narrow">Your file is sent only to the backend for analysis and is not stored. Nothing here is financial advice.</div>
+  </footer>
+
+  <script src="assets/backend.js"></script>
+  <script src="assets/charts.js"></script>
+  <script>
+    const C = SiteChart.colors;
+    const errorEl = document.getElementById("error");
+    const dashboardEl = document.getElementById("dashboard");
+    const btn = document.getElementById("analyze-btn");
+
+    const fmt = (v) => "€" + Number(v).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const formatMonth = (s) => new Date(s + "T00:00:00").toLocaleDateString("en-US", { month: "short", year: "numeric" });
+
+    btn.addEventListener("click", analyze);
+
+    async function analyze() {
+      const fileInput = document.getElementById("loan-file");
+      errorEl.hidden = true;
+      if (!fileInput.files.length) {
+        errorEl.textContent = "Choose a loan.json file first.";
+        errorEl.hidden = false;
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Analysing…";
+      const formData = new FormData();
+      formData.append("file", fileInput.files[0]);
+      try {
+        const data = await Backend.call("/loan/analyze", { method: "POST", body: formData });
+        if (data.error) throw new Error(data.error);
+        renderDashboard(data);
+      } catch (err) {
+        errorEl.textContent = err.message;
+        errorEl.hidden = false;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Analyse";
+      }
+    }
+
+    function renderDashboard(d) {
+      const paidPct = Math.min(100, (d.principal_paid / d.principal_total) * 100);
+      document.getElementById("results-summary").innerHTML =
+        `You have repaid <mark>${paidPct.toFixed(1)}%</mark> of the principal. ` +
+        `<span class="hl-accent">${fmt(d.principal_remaining)}</span> is still owed, and interest plus costs so far total ${fmt(d.interest_and_cost_paid)}.`;
+
+      const progress = (pct, color) => `<div class="progress"><div style="width:${pct.toFixed(1)}%;background:${color}"></div></div>`;
+      document.getElementById("kpis").innerHTML = [
+        { label: "Principal paid", value: fmt(d.principal_paid), sub: `of ${fmt(d.principal_total)} total`, extra: progress(paidPct, C.positive) },
+        { label: "Principal remaining", value: fmt(d.principal_remaining), sub: `${(100 - paidPct).toFixed(1)}% left`, extra: progress(100 - paidPct, C.negative) },
+        { label: "Interest paid", value: fmt(d.interest_paid), sub: `${d.interest_rate}% annual rate` },
+        { label: "Costs paid", value: fmt(d.cost_paid), sub: "bank fees and charges" },
+        { label: "Interest + costs", value: fmt(d.interest_and_cost_paid), sub: "total overhead paid" },
+        { label: "Upcoming monthly interest", value: fmt(d.upcoming_monthly_interest), sub: "on the remaining principal" },
+        { label: "Avg. monthly principal", value: fmt(d.avg_monthly_principal), sub: "per recorded month" },
+      ].map((k) => `<div class="panel kpi"><div class="label">${k.label}</div><div class="value">${k.value}</div>${k.extra || ""}<div class="sub">${k.sub}</div></div>`).join("");
+
+      dashboardEl.hidden = false;  // charts need a visible container to size themselves
+      const months = d.history.map((p) => formatMonth(p.date));
+      barChart("chart-principal-monthly", months, d.history.map((p) => p.principal), C.accent, "Principal");
+      barChart("chart-interest-monthly", months, d.history.map((p) => p.interest), C.negative, "Interest");
+      cumulativeChart(d);
+      dashboardEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function barChart(id, labels, values, color, name) {
+      Plotly.newPlot(id, [{
+        type: "bar", x: labels, y: values, name,
+        marker: { color, cornerradius: 3 },
+        hovertemplate: `%{x}<br>${name}: €%{y:,.2f}<extra></extra>`,
+      }], SiteChart.layout({
+        showlegend: false, bargap: 0.2,
+        margin: { t: 10, r: 10, b: 60, l: 64 },
+        xaxis: { tickangle: -45, type: "category" },
+        yaxis: { tickprefix: "€", rangemode: "tozero" },
+      }), SiteChart.config);
+    }
+
+    // Lines on the cumulative chart. Interest, costs and their sum share one hue
+    // and differ by dash, so the chart stays readable without relying on colour.
+    const CUMULATIVE_SERIES = [
+      { key: "paid", name: "Principal paid", color: C.positive, dash: "solid" },
+      { key: "remaining", name: "Principal remaining", color: C.negative, dash: "solid" },
+      { key: "interest", name: "Interest paid", color: C.accent, dash: "solid" },
+      { key: "cost", name: "Costs paid", color: C.accent, dash: "dot" },
+      { key: "overhead", name: "Interest + costs", color: C.accent, dash: "dash" },
+    ];
+    const SVG_DASH = { solid: "", dot: "1.5 3", dash: "6 3" };
+
+    function setupCumulativeToggles() {
+      const box = document.getElementById("cumulative-toggles");
+      box.innerHTML = CUMULATIVE_SERIES.map((s, i) => `
+        <label class="series-toggle">
+          <input type="checkbox" data-index="${i}" checked>
+          <svg width="26" height="10" aria-hidden="true"><line x1="1" y1="5" x2="25" y2="5" stroke="${s.color}" stroke-width="2.5"
+            stroke-linecap="round" stroke-dasharray="${SVG_DASH[s.dash]}"/></svg>
+          ${s.name}
+        </label>`).join("");
+      box.addEventListener("change", (e) => {
+        const i = Number(e.target.dataset.index);
+        Plotly.restyle("chart-cumulative", { visible: e.target.checked }, [i]);
+      });
+    }
+    setupCumulativeToggles();
+
+    function cumulativeChart(d) {
+      // Running totals per month; history is already one combined entry per month.
+      let principal = 0, interest = 0, cost = 0;
+      const rows = d.history.map((p) => {
+        principal += p.principal; interest += p.interest; cost += p.cost;
+        return { principal, interest, cost };
+      });
+      const values = {
+        paid: rows.map((r) => r.principal),
+        remaining: rows.map((r) => Math.max(0, d.principal_total - r.principal)),
+        interest: rows.map((r) => r.interest),
+        cost: rows.map((r) => r.cost),
+        overhead: rows.map((r) => r.interest + r.cost),
+      };
+      const labels = d.history.map((p) => formatMonth(p.date));
+      const checked = [...document.querySelectorAll("#cumulative-toggles input")].map((el) => el.checked);
+
+      const traces = CUMULATIVE_SERIES.map((s, i) => ({
+        type: "scatter", mode: "lines+markers", name: s.name, x: labels, y: values[s.key],
+        visible: checked[i],
+        line: { color: s.color, width: 2, dash: s.dash, shape: "spline" },
+        marker: { size: 4, color: s.color },
+        hovertemplate: `${s.name}: €%{y:,.0f}<extra></extra>`,
+      }));
+      Plotly.newPlot("chart-cumulative", traces,
+        SiteChart.layout({
+          showlegend: false, hovermode: "x unified",
+          margin: { t: 10, r: 16, b: 60, l: 72 },
+          xaxis: { tickangle: -45, type: "category" },
+          yaxis: { tickprefix: "€", rangemode: "tozero" },
+        }), SiteChart.config);
+    }
+  </script>
+</body>
+</html>
