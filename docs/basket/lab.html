@@ -7,6 +7,7 @@
   <meta name="description" content="Edit the algorithm config and re-run the whole ratio scan and backtests in the browser.">
   <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
   <link rel="stylesheet" href="assets/basket.css">
+  <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
   <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
 </head>
 <body>
@@ -361,8 +362,8 @@
         } catch (_) { return null; }
       }));
       const diverging = metric === "total_return" || metric === "sharpe" || metric === "score";
-      const scale = diverging ? [[0, P.negative], [0.5, "#24375f"], [1, P.positive]]
-        : metric === "max_dd" ? [[0, P.negative], [1, "#24375f"]] : [[0, P.surface2], [0.5, "#2a78d6"], [1, "#cde2fb"]];
+      const scale = diverging ? [[0, P.negative], [0.5, P.divMid], [1, P.positive]]
+        : metric === "max_dd" ? [[0, P.negative], [1, P.divMid]] : [[0, P.surface2], [0.5, P.seqMid], [1, P.seqHigh]];
       const flat = z.flat().filter((v) => v !== null), amax = Math.max(...flat.map(Math.abs));
       const unit = metric === "total_return" || metric === "max_dd" ? "%" : "";
       const label = swM.options[swM.selectedIndex].text;

@@ -6,6 +6,7 @@
   <title>ALAB Astera Labs, Inc. · Investing Nexus</title>
   <meta name="description" content="Fair Value summary for Astera Labs, Inc. (ALAB): Fair Value, Quality Score, financial strength, profitability, growth and valuation.">
   <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
   <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
   <style>
     /* Layout only; colours and components come from nexus.css. */
@@ -362,11 +363,10 @@
   </footer>
 
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
-<script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
 <script>
   const D = {"dates": ["2024-03-31", "2024-04-30", "2024-05-31", "2024-06-30", "2024-07-31", "2024-08-31", "2024-09-30", "2024-10-31", "2024-11-30", "2024-12-31", "2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "price": [74.19, 84.76, 64.54, 60.51, 43.84, 43.06, 52.39, 70.16, 103.25, 132.45, 101.42, 74.35, 59.67, 65.31, 90.72, 90.42, 136.73, 182.2, 195.8, 186.68, 157.57, 166.36, 150.62, 118.83, 109.6, 194.74, 342.85, 483.02, 311.23, 296.98, 355.97, 342.21], "fair_value": null, "pe_dates": ["2024-03-31", "2024-04-30", "2024-05-31", "2024-06-30", "2024-07-31", "2024-08-31", "2024-09-30", "2024-10-31", "2024-11-30", "2024-12-31", "2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "pe": [null, null, null, null, null, null, null, null, null, null, null, null, 45.55, 49.85, 69.25, 113.02, 170.91, 227.75, 160.49, 153.02, 129.16, 136.36, 123.46, 97.4, 74.05, 131.58, 231.66, 237.94, 153.32, 146.3, 175.35, 168.58], "fy": ["2022", "2023", "2024", "2025"], "revenue": [79872000.0, 115794000.0, 396290000.0, 852525000.0], "net_income": [-58345000.0, -26257000.0, -83421000.0, 219134000.0], "fcf": [-39771000.0, -15477000.0, 102431000.0, 281762000.0]};
   const C = Nexus.colors;
-  const GOLD = getComputedStyle(document.documentElement).getPropertyValue("--hl-text").trim();
+  const GOLD = C.series2;
   const line = (x, y, name, color, extra) => Object.assign({ type: "scatter", mode: "lines", x, y, name, line: { color, width: 2 },
     hovertemplate: "%{x|%b %Y}<br>" + name + ": %{y:.2f}<extra></extra>" }, extra || {});
   const traces = [line(D.dates, D.price, "Price", C.accent)];

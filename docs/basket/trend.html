@@ -7,6 +7,7 @@
   <meta name="description" content="A trend-filtered sector portfolio vs the S&amp;P 500 since 2000: similar return, a third of the drawdown.">
   <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
   <link rel="stylesheet" href="assets/basket.css">
+  <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
   <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
 </head>
 <body>
@@ -230,7 +231,7 @@
     const sd = D.signals.dates, on = D.signals.on;
     Plotly.newPlot("c-alloc", [{
       type: "heatmap", x: sd, y: D.assets, z: D.assets.map((_, j) => on.map((s) => +s[j])), zmin: 0, zmax: 1, ygap: 2,
-      colorscale: [[0, P.surface3 || "#1a2d5a"], [0.5, P.surface3 || "#1a2d5a"], [0.5, P.accent], [1, P.accent]], showscale: false,
+      colorscale: [[0, P.surface3], [0.5, P.surface3], [0.5, P.accent], [1, P.accent]], showscale: false,
       customdata: D.assets.map((_, j) => on.map((s) => (s[j] === "1" ? "held" : "in Treasuries"))),
       hovertemplate: "%{y} · %{x}<br>%{customdata}<extra></extra>",
     }], BN.layout({ hovermode: "closest", margin: { l: 56, b: 36 }, xaxis: { showgrid: false, showspikes: false },

@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Loan Analysis · Investing Nexus</title>
   <meta name="description" content="Upload your loan.json to visualise repayment progress, interest costs, and monthly breakdown.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/site.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%232f6fea%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-family=%22Arial%22 font-weight=%22800%22 font-size=%2216%22 fill=%22white%22 text-anchor=%22middle%22%3EN%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
+  <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
 </head>
 <body>
@@ -112,9 +110,10 @@
   </footer>
 
   <script src="assets/backend.js"></script>
-  <script src="assets/charts.js"></script>
   <script>
-    const C = SiteChart.colors;
+    // Layout defaults these pages had before moving to nexus.js.
+    const layout = (extra) => Nexus.plotlyLayout(Nexus.merge({ margin: { t: 20, r: 20, b: 56, l: 64 }, hovermode: "closest",
+      xaxis: { zeroline: false }, yaxis: { zeroline: false }, legend: { orientation: "h", x: 0, y: 1.12 } }, extra));
     const errorEl = document.getElementById("error");
     const dashboardEl = document.getElementById("dashboard");
     const btn = document.getElementById("analyze-btn");
@@ -156,10 +155,10 @@
         `You have repaid <mark>${paidPct.toFixed(1)}%</mark> of the principal. ` +
         `<span class="hl-accent">${fmt(d.principal_remaining)}</span> is still owed, and interest plus costs so far total ${fmt(d.interest_and_cost_paid)}.`;
 
-      const progress = (pct, color) => `<div class="progress"><div style="width:${pct.toFixed(1)}%;background:${color}"></div></div>`;
+      const progress = (pct, token) => `<div class="progress"><div style="width:${pct.toFixed(1)}%;background:var(${token})"></div></div>`;
       document.getElementById("kpis").innerHTML = [
-        { label: "Principal paid", value: fmt(d.principal_paid), sub: `of ${fmt(d.principal_total)} total`, extra: progress(paidPct, C.positive) },
-        { label: "Principal remaining", value: fmt(d.principal_remaining), sub: `${(100 - paidPct).toFixed(1)}% left`, extra: progress(100 - paidPct, C.negative) },
+        { label: "Principal paid", value: fmt(d.principal_paid), sub: `of ${fmt(d.principal_total)} total`, extra: progress(paidPct, "--under") },
+        { label: "Principal remaining", value: fmt(d.principal_remaining), sub: `${(100 - paidPct).toFixed(1)}% left`, extra: progress(100 - paidPct, "--over") },
         { label: "Interest paid", value: fmt(d.interest_paid), sub: `${d.interest_rate}% annual rate` },
         { label: "Costs paid", value: fmt(d.cost_paid), sub: "bank fees and charges" },
         { label: "Interest + costs", value: fmt(d.interest_and_cost_paid), sub: "total overhead paid" },
@@ -168,6 +167,7 @@
       ].map((k) => `<div class="panel kpi"><div class="label">${k.label}</div><div class="value">${k.value}</div>${k.extra || ""}<div class="sub">${k.sub}</div></div>`).join("");
 
       dashboardEl.hidden = false;  // charts need a visible container to size themselves
+      const C = Nexus.colors;
       const months = d.history.map((p) => formatMonth(p.date));
       barChart("chart-principal-monthly", months, d.history.map((p) => p.principal), C.accent, "Principal");
       barChart("chart-interest-monthly", months, d.history.map((p) => p.interest), C.negative, "Interest");
@@ -180,22 +180,22 @@
         type: "bar", x: labels, y: values, name,
         marker: { color, cornerradius: 3 },
         hovertemplate: `%{x}<br>${name}: €%{y:,.2f}<extra></extra>`,
-      }], SiteChart.layout({
+      }], layout({
         showlegend: false, bargap: 0.2,
         margin: { t: 10, r: 10, b: 60, l: 64 },
         xaxis: { tickangle: -45, type: "category" },
         yaxis: { tickprefix: "€", rangemode: "tozero" },
-      }), SiteChart.config);
+      }), Nexus.plotlyConfig);
     }
 
     // Lines on the cumulative chart. Interest, costs and their sum share one hue
     // and differ by dash, so the chart stays readable without relying on colour.
     const CUMULATIVE_SERIES = [
-      { key: "paid", name: "Principal paid", color: C.positive, dash: "solid" },
-      { key: "remaining", name: "Principal remaining", color: C.negative, dash: "solid" },
-      { key: "interest", name: "Interest paid", color: C.accent, dash: "solid" },
-      { key: "cost", name: "Costs paid", color: C.accent, dash: "dot" },
-      { key: "overhead", name: "Interest + costs", color: C.accent, dash: "dash" },
+      { key: "paid", name: "Principal paid", token: "--under", dash: "solid" },
+      { key: "remaining", name: "Principal remaining", token: "--over", dash: "solid" },
+      { key: "interest", name: "Interest paid", token: "--accent", dash: "solid" },
+      { key: "cost", name: "Costs paid", token: "--accent", dash: "dot" },
+      { key: "overhead", name: "Interest + costs", token: "--accent", dash: "dash" },
     ];
     const SVG_DASH = { solid: "", dot: "1.5 3", dash: "6 3" };
 
@@ -204,7 +204,7 @@
       box.innerHTML = CUMULATIVE_SERIES.map((s, i) => `
         <label class="series-toggle">
           <input type="checkbox" data-index="${i}" checked>
-          <svg width="26" height="10" aria-hidden="true"><line x1="1" y1="5" x2="25" y2="5" stroke="${s.color}" stroke-width="2.5"
+          <svg width="26" height="10" aria-hidden="true"><line x1="1" y1="5" x2="25" y2="5" style="stroke:var(${s.token})" stroke-width="2.5"
             stroke-linecap="round" stroke-dasharray="${SVG_DASH[s.dash]}"/></svg>
           ${s.name}
         </label>`).join("");
@@ -232,7 +232,8 @@
       const labels = d.history.map((p) => formatMonth(p.date));
       const checked = [...document.querySelectorAll("#cumulative-toggles input")].map((el) => el.checked);
 
-      const traces = CUMULATIVE_SERIES.map((s, i) => ({
+      const series = CUMULATIVE_SERIES.map((s) => ({ ...s, color: Nexus.token(s.token) }));
+      const traces = series.map((s, i) => ({
         type: "scatter", mode: "lines+markers", name: s.name, x: labels, y: values[s.key],
         visible: checked[i],
         line: { color: s.color, width: 2, dash: s.dash, shape: "spline" },
@@ -240,12 +241,12 @@
         hovertemplate: `${s.name}: €%{y:,.0f}<extra></extra>`,
       }));
       Plotly.newPlot("chart-cumulative", traces,
-        SiteChart.layout({
+        layout({
           showlegend: false, hovermode: "x unified",
           margin: { t: 10, r: 16, b: 60, l: 72 },
           xaxis: { tickangle: -45, type: "category" },
           yaxis: { tickprefix: "€", rangemode: "tozero" },
-        }), SiteChart.config);
+        }), Nexus.plotlyConfig);
     }
   </script>
 </body>

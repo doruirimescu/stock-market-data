@@ -7,6 +7,7 @@
   <meta name="description" content="Ratio-basket mean-reversion scan: leaderboard, score landscape and universe.">
   <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
   <link rel="stylesheet" href="assets/basket.css">
+  <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
   <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
 </head>
 <body>
@@ -208,7 +209,7 @@
     const C = syms.map((_, i) => syms.map((_, j) => corr(lr[i], lr[j])));
     Plotly.newPlot("corr", [{
       type: "heatmap", x: syms, y: syms, z: C, zmin: 0, zmax: 1, xgap: 2, ygap: 2,
-      colorscale: [[0, P.surface2], [0.5, "#2a78d6"], [1, "#cde2fb"]],
+      colorscale: [[0, P.surface2], [0.5, P.seqMid], [1, P.seqHigh]],
       text: C.map((r) => r.map((v) => v.toFixed(2))), texttemplate: "%{text}", textfont: { size: 10 },
       hovertemplate: "%{y} × %{x}<br>ρ = %{z:.2f}<extra></extra>",
       colorbar: { thickness: 10, outlinewidth: 0, tickfont: { color: P.muted } },

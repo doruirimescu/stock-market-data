@@ -7,7 +7,8 @@
 #   scripts/nexus.sh --status    show what is running
 #   scripts/nexus.sh --restart   stop, then start
 #
-# Site:    http://localhost:8080  (pages detect localhost and call the local backend)
+# Site:    http://localhost:8080  (pages detect localhost and call the local backend;
+#          a clone at ../nexus-design is used instead of the hosted design system)
 # Backend: http://localhost:8000  (health check: /health)
 #
 # The first --start creates .venv/ and installs server/requirements.txt;
@@ -123,8 +124,8 @@ cmd_start() {
   echo "Starting Investing Nexus ..."
   start_one backend "uvicorn server.main:app" "$API_PORT" \
     "$VENV/bin/python" -m uvicorn server.main:app --host 127.0.0.1 --port "$API_PORT"
-  start_one site "http.server $SITE_PORT" "$SITE_PORT" \
-    "$VENV/bin/python" -m http.server "$SITE_PORT" --bind 127.0.0.1 --directory "$ROOT/docs"
+  start_one site "serve_site.py --port $SITE_PORT" "$SITE_PORT" \
+    "$VENV/bin/python" "$ROOT/scripts/serve_site.py" --port "$SITE_PORT"
 
   if ! wait_for_url "http://127.0.0.1:$API_PORT/health" 30; then
     echo "Backend did not come up. Last log lines (.run/backend.log):" >&2
@@ -139,7 +140,7 @@ cmd_start() {
     exit 1
   fi
   echo
-  echo "  Site     http://localhost:$SITE_PORT"
+  echo "  Site     http://localhost:$SITE_PORT  ($(head -n 1 "$RUN_DIR/site.log"))"
   echo "  Backend  http://localhost:$API_PORT  (docs: /docs)"
   echo
   echo "Stop with: scripts/nexus.sh --stop"
@@ -164,13 +165,13 @@ stop_one() {  # stop_one NAME MATCH
 
 cmd_stop() {
   echo "Stopping Investing Nexus ..."
-  stop_one site "http.server $SITE_PORT"
+  stop_one site "serve_site.py --port $SITE_PORT"
   stop_one backend "uvicorn server.main:app"
 }
 
 cmd_status() {
   local pid
-  pid="$(pid_of site "http.server $SITE_PORT")"
+  pid="$(pid_of site "serve_site.py --port $SITE_PORT")"
   [[ -n "$pid" ]] && echo "  site     running  pid $pid  http://localhost:$SITE_PORT" || echo "  site     stopped"
   pid="$(pid_of backend "uvicorn server.main:app")"
   [[ -n "$pid" ]] && echo "  backend  running  pid $pid  http://localhost:$API_PORT" || echo "  backend  stopped"

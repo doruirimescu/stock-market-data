@@ -7,7 +7,6 @@
 (function () {
   "use strict";
 
-  const NEXUS_JS = "https://doruirimescu.github.io/nexus-design/nexus.js";
   const RUN_KEY = "basket-rotation.run";
 
   window.nexusData = window.nexusData || {};
@@ -22,27 +21,8 @@
     });
   }
 
-  async function ensureNexus() {
-    if (window.Nexus) return;
-    try { await loadScript(NEXUS_JS); } catch (_) { /* offline: stand-in below */ }
-    if (!window.Nexus) {
-      // Minimal stand-in so charts still render; mirrors nexus.js defaults.
-      const c = { bg: "#0a1628", surface: "#0f1b33", surface2: "#14244a", border: "#1f3460", borderStrong: "#2b4680",
-        text: "#e6edf7", muted: "#9fb0cf", faint: "#6b80a8", accent: "#4f8cff", positive: "#14a088", negative: "#dd6a2c",
-        positiveInk: "#5fd4bd", negativeInk: "#f4a06f", zeroLine: "#3a5594" };
-      const rgba = (h, a) => { const n = parseInt(h.slice(1), 16); return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`; };
-      window.Nexus = {
-        colors: c, rgba,
-        plotlyConfig: { responsive: true, displaylogo: false, modeBarButtonsToRemove: ["lasso2d", "select2d"] },
-        plotlyLayout: (extra) => merge({ paper_bgcolor: "rgba(0,0,0,0)", plot_bgcolor: "rgba(0,0,0,0)",
-          font: { family: "Inter, system-ui, sans-serif", color: c.muted, size: 12 }, margin: { l: 56, r: 16, t: 16, b: 56 },
-          hoverlabel: { bgcolor: c.surface2, bordercolor: c.borderStrong, font: { color: c.text } },
-          xaxis: { gridcolor: c.border, linecolor: c.border, zerolinecolor: c.zeroLine },
-          yaxis: { gridcolor: c.border, linecolor: c.border, zerolinecolor: c.zeroLine, zerolinewidth: 1.5 },
-          legend: { font: { color: c.muted } } }, extra),
-      };
-    }
-  }
+  // nexus.js is loaded in each page's <head>; kept so callers can still await it.
+  async function ensureNexus() {}
 
   const isObj = (v) => v && typeof v === "object" && !Array.isArray(v);
   function merge(base, extra) {
@@ -190,7 +170,7 @@
   const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   function palette() {
     const c = window.Nexus.colors;
-    return Object.assign({}, c, { num: css("--leg-num") || c.accent, den: css("--leg-den") || "#c98500", grey: c.faint });
+    return Object.assign({}, c, { num: css("--leg-num") || c.accent, den: css("--leg-den") || c.series2, grey: c.faint });
   }
   const layout = (extra) => window.Nexus.plotlyLayout(merge({ hovermode: "x unified", margin: { l: 60, r: 18, t: 10, b: 40 },
     legend: { orientation: "h", y: 1.08, x: 0, bgcolor: "rgba(0,0,0,0)" }, xaxis: { showspikes: true, spikemode: "across", spikethickness: 1, spikecolor: window.Nexus.colors.borderStrong, spikedash: "solid" } }, extra));

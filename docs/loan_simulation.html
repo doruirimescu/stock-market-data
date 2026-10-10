@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Loan vs Investment · Investing Nexus</title>
   <meta name="description" content="Find the optimal salary split between loan repayment and investing.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/site.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%232f6fea%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-family=%22Arial%22 font-weight=%22800%22 font-size=%2216%22 fill=%22white%22 text-anchor=%22middle%22%3EN%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
+  <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
 </head>
 <body>
@@ -88,8 +86,10 @@
   </footer>
 
   <script src="assets/backend.js"></script>
-  <script src="assets/charts.js"></script>
   <script>
+    // Layout defaults these pages had before moving to nexus.js.
+    const layout = (extra) => Nexus.plotlyLayout(Nexus.merge({ margin: { t: 20, r: 20, b: 56, l: 64 }, hovermode: "closest",
+      xaxis: { zeroline: false }, yaxis: { zeroline: false }, legend: { orientation: "h", x: 0, y: 1.12 } }, extra));
     const fmtK = (v) => `${Number(v).toLocaleString("en-US", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} k€`;
     const form = document.getElementById("sim-form");
     const btn = form.querySelector("button[type=submit]");
@@ -137,12 +137,12 @@
       ].map((k) => `<div class="panel kpi"><div class="label">${k.label}</div><div class="value">${k.value}</div><div class="sub">${k.sub}</div></div>`).join("");
 
       resultsEl.hidden = false;  // the chart needs a visible container to size itself
-      const C = SiteChart.colors;
+      const C = Nexus.colors;
       const line = {
         type: "scatter", mode: "lines", name: "Total wealth",
         x: data.p_range, y: data.total_worth_list,
         line: { color: C.accent, width: 2, shape: "spline" },
-        fill: "tozeroy", fillcolor: SiteChart.rgba(C.accent, 0.1),
+        fill: "tozeroy", fillcolor: Nexus.rgba(C.accent, 0.1),
         hovertemplate: "%{x:.0f}% to loan → %{y:,.1f} k€<extra></extra>",
       };
       const marks = {
@@ -153,7 +153,7 @@
       };
       const ys = data.total_worth_list;
       const pad = (Math.max(...ys) - Math.min(...ys)) * 0.15 || 1;
-      Plotly.newPlot("chart", [line, marks], SiteChart.layout({
+      Plotly.newPlot("chart", [line, marks], layout({
         showlegend: false,
         xaxis: { title: { text: "Share of salary toward the loan (%)" }, ticksuffix: "%" },
         yaxis: { title: { text: "Total wealth (k€)" }, range: [Math.min(...ys) - pad, Math.max(...ys) + pad] },
@@ -161,7 +161,7 @@
           { x: data.max_p, y: data.max_total_worth, text: `best: ${data.max_p.toFixed(0)}%`, showarrow: false, yshift: 16, font: { color: C.positiveInk, size: 12 } },
           { x: data.min_p, y: data.min_total_worth, text: `worst: ${data.min_p.toFixed(0)}%`, showarrow: false, yshift: 16, xanchor: "right", font: { color: C.negativeInk, size: 12 } },
         ],
-      }), SiteChart.config);
+      }), Nexus.plotlyConfig);
     }
   </script>
 </body>

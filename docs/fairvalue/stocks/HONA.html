@@ -6,6 +6,7 @@
   <title>HONA Honeywell Aerospace Inc. · Investing Nexus</title>
   <meta name="description" content="Fair Value summary for Honeywell Aerospace Inc. (HONA): Fair Value, Quality Score, financial strength, profitability, growth and valuation.">
   <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
   <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
   <style>
     /* Layout only; colours and components come from nexus.css. */
@@ -334,11 +335,10 @@
   </footer>
 
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
-<script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
 <script>
   const D = {"dates": ["2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "price": [221.08, 206.74, 158.11, 154.97, 157.94], "fair_value": null, "pe_dates": ["2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "pe": [null, null, null, null, null], "fy": [], "revenue": [], "net_income": [], "fcf": []};
   const C = Nexus.colors;
-  const GOLD = getComputedStyle(document.documentElement).getPropertyValue("--hl-text").trim();
+  const GOLD = C.series2;
   const line = (x, y, name, color, extra) => Object.assign({ type: "scatter", mode: "lines", x, y, name, line: { color, width: 2 },
     hovertemplate: "%{x|%b %Y}<br>" + name + ": %{y:.2f}<extra></extra>" }, extra || {});
   const traces = [line(D.dates, D.price, "Price", C.accent)];

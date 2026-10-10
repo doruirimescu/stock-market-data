@@ -118,11 +118,10 @@
 {% endblock %}
 {% block scripts %}
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
-<script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
 <script>
   const D = {{ charts_json }};
   const C = Nexus.colors;
-  const GOLD = getComputedStyle(document.documentElement).getPropertyValue("--hl-text").trim();
+  const GOLD = C.series2;
   const line = (x, y, name, color, extra) => Object.assign({ type: "scatter", mode: "lines", x, y, name, line: { color, width: 2 },
     hovertemplate: "%{x|%b %Y}<br>" + name + ": %{y:.2f}<extra></extra>" }, extra || {});
   const traces = [line(D.dates, D.price, "Price", C.accent)];

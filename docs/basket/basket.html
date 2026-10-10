@@ -7,6 +7,7 @@
   <meta name="description" content="One basket ratio in depth: engine events, rotation signal, equity and trades.">
   <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
   <link rel="stylesheet" href="assets/basket.css">
+  <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
   <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
 </head>
 <body>
@@ -58,9 +59,9 @@
         <div class="legend">
           <span><i class="ln" style="background:var(--text)"></i>Ratio</span>
           <span><i class="ln" style="background:var(--accent)"></i>Configured mean</span>
-          <span><i class="band" style="background:rgba(20,160,136,.35)"></i>Reverted</span>
-          <span><i class="band" style="background:rgba(221,106,44,.35)"></i>Failed</span>
-          <span><i class="band" style="background:rgba(107,128,168,.35)"></i>Expired</span>
+          <span><i class="band sw-under"></i>Reverted</span>
+          <span><i class="band sw-over"></i>Failed</span>
+          <span><i class="band sw-neutral"></i>Expired</span>
         </div>
       </div>
       <div id="c-ratio" class="chart h-lg"></div>

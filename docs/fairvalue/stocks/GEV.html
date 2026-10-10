@@ -6,6 +6,7 @@
   <title>GEV GE Vernova Inc. · Investing Nexus</title>
   <meta name="description" content="Fair Value summary for GE Vernova Inc. (GEV): Fair Value, Quality Score, financial strength, profitability, growth and valuation.">
   <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
   <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
   <style>
     /* Layout only; colours and components come from nexus.css. */
@@ -362,11 +363,10 @@
   </footer>
 
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
-<script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
 <script>
   const D = {"dates": ["2024-03-31", "2024-04-30", "2024-05-31", "2024-06-30", "2024-07-31", "2024-08-31", "2024-09-30", "2024-10-31", "2024-11-30", "2024-12-31", "2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "price": [136.75, 153.71, 175.9, 171.51, 178.24, 201.0, 254.98, 301.66, 334.12, 328.93, 372.88, 335.18, 305.28, 370.82, 472.98, 529.15, 660.29, 612.97, 614.9, 585.14, 599.77, 653.57, 726.37, 873.6, 872.9, 1083.46, 968.32, 1174.86, 990.29, 898.53, 950.49, 1004.73], "fair_value": null, "pe_dates": ["2024-03-31", "2024-04-30", "2024-05-31", "2024-06-30", "2024-07-31", "2024-08-31", "2024-09-30", "2024-10-31", "2024-11-30", "2024-12-31", "2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "pe": [null, null, null, null, 41.26, 46.53, 55.79, 66.01, 73.11, 58.95, 66.82, 60.07, 43.86, 53.28, 67.96, 128.12, 159.88, 148.42, 100.15, 95.3, 97.68, 36.95, 41.06, 49.38, 25.51, 31.66, 28.3, 33.68, 28.39, 25.76, 27.25, 28.81], "fy": ["2022", "2023", "2024", "2025"], "revenue": [29654000000.0, 33239000000.0, 34935000000.0, 38068000000.0], "net_income": [-2736000000.0, -438000000.0, 1552000000.0, 4884000000.0], "fcf": [-627000000.0, 442000000.0, 1700000000.0, 3710000000.0]};
   const C = Nexus.colors;
-  const GOLD = getComputedStyle(document.documentElement).getPropertyValue("--hl-text").trim();
+  const GOLD = C.series2;
   const line = (x, y, name, color, extra) => Object.assign({ type: "scatter", mode: "lines", x, y, name, line: { color, width: 2 },
     hovertemplate: "%{x|%b %Y}<br>" + name + ": %{y:.2f}<extra></extra>" }, extra || {});
   const traces = [line(D.dates, D.price, "Price", C.accent)];

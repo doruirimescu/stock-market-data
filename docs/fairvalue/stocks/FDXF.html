@@ -6,6 +6,7 @@
   <title>FDXF FedEx Freight Holding Company, Inc. · Investing Nexus</title>
   <meta name="description" content="Fair Value summary for FedEx Freight Holding Company, Inc. (FDXF): Fair Value, Quality Score, financial strength, profitability, growth and valuation.">
   <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
   <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
   <style>
     /* Layout only; colours and components come from nexus.css. */
@@ -352,11 +353,10 @@
   </footer>
 
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
-<script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
 <script>
   const D = {"dates": ["2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "price": [160.37, 151.0, 140.53, 133.74, 109.38, 115.47], "fair_value": null, "pe_dates": ["2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "pe": [17.82, 34.47, 32.08, 30.53, 24.97, 26.36], "fy": ["2024", "2025", "2026"], "revenue": [9424000000.0, 8892000000.0, 8795000000.0], "net_income": [1574000000.0, 1346000000.0, 655000000.0], "fcf": [1080000000.0, 1094000000.0, -212000000.0]};
   const C = Nexus.colors;
-  const GOLD = getComputedStyle(document.documentElement).getPropertyValue("--hl-text").trim();
+  const GOLD = C.series2;
   const line = (x, y, name, color, extra) => Object.assign({ type: "scatter", mode: "lines", x, y, name, line: { color, width: 2 },
     hovertemplate: "%{x|%b %Y}<br>" + name + ": %{y:.2f}<extra></extra>" }, extra || {});
   const traces = [line(D.dates, D.price, "Price", C.accent)];

@@ -108,10 +108,27 @@ positive when undervalued, and a 0–100 solvency score.
 
 `docs/fairvalue/` holds a Fair Value summary page per stock
 (`stocks/<TICKER>.html`), an index of them, and the validation of the model
-against values Fair Value published (`validation.html`). The daily workflow publishes each run with
+against values the reference provider published (`validation.html`). The daily workflow publishes each run with
 `scripts/publish_site_data.py`, which skips runs where most lookups failed.
-Shared styling and rendering live in `docs/assets/`. The pages work when opened
-directly from disk (`file://`) as well as when served.
+Page logic shared by the valuation pages lives in `docs/assets/`. The pages work
+when opened directly from disk (`file://`) as well as when served.
+
+### Design system
+
+Every page takes its look from
+[nexus-design](https://github.com/doruirimescu/nexus-design): each `<head>` links
+`nexus.css` and `nexus.js` from `https://doruirimescu.github.io/nexus-design/`.
+That gives the components, the themes and the theme panel (the tab at the bottom
+right), and `Nexus.colors` / `Nexus.plotlyLayout()` for charts. Nothing here
+defines a colour: project stylesheets such as `docs/basket/assets/basket.css`
+only add layout on top of the theme tokens, and reusable components belong in
+nexus-design.
+
+To preview changes to nexus-design before pushing them, keep a clone next to this
+repo (`../nexus-design`). `scripts/nexus.sh --start` (or
+`python scripts/serve_site.py`) then serves the site with every nexus-design link
+rewritten to that clone; `--hosted` uses the published version instead. Push
+nexus-design before publishing pages here that rely on something new in it.
 
 ## Basket Rotation
 
@@ -143,8 +160,8 @@ Each run is one file, `docs/basket/data/runs/<run_id>.js`, listed newest-first i
 ./web.sh publish   # commit docs/basket/ here and push
 ```
 
-The pages also work from disk and under `scripts/nexus.sh` (`/basket/`). They link
-the live Nexus stylesheet and chart helper (`nexus-design`).
+The pages also work from disk and under `scripts/nexus.sh` (`/basket/`). Like the
+rest of the site they use nexus-design (see Design system above).
 
 ## Updating
 

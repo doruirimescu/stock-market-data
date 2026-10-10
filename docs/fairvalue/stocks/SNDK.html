@@ -6,6 +6,7 @@
   <title>SNDK Sandisk Corp · Investing Nexus</title>
   <meta name="description" content="Fair Value summary for Sandisk Corp (SNDK): Fair Value, Quality Score, financial strength, profitability, growth and valuation.">
   <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
   <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
   <style>
     /* Layout only; colours and components come from nexus.css. */
@@ -362,11 +363,10 @@
   </footer>
 
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
-<script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
 <script>
   const D = {"dates": ["2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "price": [46.85, 47.61, 32.11, 37.69, 45.35, 42.92, 52.47, 112.2, 199.33, 223.28, 237.38, 576.25, 635.36, 635.34, 1096.51, 1694.98, 2273.73, 1214.83, 1566.7, 1739.89, 1581.82], "fair_value": null, "pe_dates": ["2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "pe": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, 37.47, 57.93, 77.71, 16.47, 21.24, 23.59, 21.45], "fy": ["2023", "2024", "2025", "2026"], "revenue": [6086000000.0, 6663000000.0, 7355000000.0, 20248000000.0], "net_income": [-2143000000.0, -672000000.0, -1641000000.0, 11433000000.0], "fcf": [-932000000.0, -475000000.0, -120000000.0, 11494000000.0]};
   const C = Nexus.colors;
-  const GOLD = getComputedStyle(document.documentElement).getPropertyValue("--hl-text").trim();
+  const GOLD = C.series2;
   const line = (x, y, name, color, extra) => Object.assign({ type: "scatter", mode: "lines", x, y, name, line: { color, width: 2 },
     hovertemplate: "%{x|%b %Y}<br>" + name + ": %{y:.2f}<extra></extra>" }, extra || {});
   const traces = [line(D.dates, D.price, "Price", C.accent)];

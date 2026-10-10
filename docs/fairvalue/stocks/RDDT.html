@@ -6,6 +6,7 @@
   <title>RDDT Reddit, Inc. · Investing Nexus</title>
   <meta name="description" content="Fair Value summary for Reddit, Inc. (RDDT): Fair Value, Quality Score, financial strength, profitability, growth and valuation.">
   <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
   <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
   <style>
     /* Layout only; colours and components come from nexus.css. */
@@ -359,11 +360,10 @@
   </footer>
 
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
-<script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
 <script>
   const D = {"dates": ["2024-03-31", "2024-04-30", "2024-05-31", "2024-06-30", "2024-07-31", "2024-08-31", "2024-09-30", "2024-10-31", "2024-11-30", "2024-12-31", "2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "price": [49.32, 44.44, 54.24, 63.89, 60.85, 60.03, 65.92, 119.3, 140.69, 163.44, 199.55, 161.78, 104.9, 116.57, 112.35, 150.57, 160.59, 225.08, 229.99, 208.95, 216.47, 229.87, 180.27, 145.81, 134.65, 147.23, 176.0, 173.58, 140.67, 147.81, 142.44, 159.91], "fair_value": null, "pe_dates": ["2024-03-31", "2024-04-30", "2024-05-31", "2024-06-30", "2024-07-31", "2024-08-31", "2024-09-30", "2024-10-31", "2024-11-30", "2024-12-31", "2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "pe": [null, null, null, null, null, null, null, null, null, null, null, null, 21.02, 23.36, 22.52, 67.22, 71.69, 100.48, 105.99, 96.29, 99.76, 87.74, 68.81, 55.65, 38.47, 42.07, 50.29, 40.37, 32.71, 34.37, 33.13, 37.19], "fy": ["2022", "2023", "2024", "2025"], "revenue": [666701000.0, 804029000.0, 1300205000.0, 2202506000.0], "net_income": [-158550000.0, -90824000.0, -484000000.0, 530000000.0], "fcf": [-100254000.0, -84838000.0, 215820000.0, 684169000.0]};
   const C = Nexus.colors;
-  const GOLD = getComputedStyle(document.documentElement).getPropertyValue("--hl-text").trim();
+  const GOLD = C.series2;
   const line = (x, y, name, color, extra) => Object.assign({ type: "scatter", mode: "lines", x, y, name, line: { color, width: 2 },
     hovertemplate: "%{x|%b %Y}<br>" + name + ": %{y:.2f}<extra></extra>" }, extra || {});
   const traces = [line(D.dates, D.price, "Price", C.accent)];

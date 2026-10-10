@@ -1,29 +1,24 @@
-/* Basket Rotation — project layout and components on top of the Nexus design system.
- * Tokens and shared components come from nexus.css; nothing here redefines them. */
+/* Basket Rotation — page layout only, on top of the Nexus design system.
+ * Colours, tokens and shared components (chips, buttons, legends, chart sizes,
+ * progress bars, code blocks) come from nexus.css and its themes. Nothing here
+ * sets a colour value; everything below is layout or a theme token. */
 
 :root {
-  /* Basket legs (identity, not polarity). Validated CVD-safe as a pair on --surface;
-     amber is never placed in the same chart as the --under/--over polarity pair. */
+  /* Basket legs (identity, not polarity): the accent and the theme's second series
+     colour. Amber is never placed in the same chart as the --under/--over pair. */
   --leg-num: var(--accent);
-  --leg-den: #c98500;
-  --leg-num-soft: rgba(79, 140, 255, 0.14);
-  --leg-den-soft: rgba(201, 133, 0, 0.24);
-  --leg-den-ink: #f0c060;
+  --leg-den: var(--series-2);
+  --leg-num-soft: var(--accent-soft);
+  --leg-den-soft: var(--series-2-soft);
+  --leg-den-ink: var(--series-2-ink);
 }
 
 /* ---------- Ticker chips / ratio anatomy ---------- */
-.chip {
-  display: inline-flex; align-items: center; gap: 5px;
-  font-family: var(--mono); font-size: 12px; font-weight: 600; line-height: 1;
-  padding: 4px 7px; border-radius: 6px; color: var(--text); white-space: nowrap;
-  border: 1px solid var(--border-strong); background: var(--surface-2);
-}
 .chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; flex: none; }
-.chip.num { background: var(--leg-num-soft); border-color: rgba(79, 140, 255, 0.4); }
+.chip.num { background: var(--leg-num-soft); border-color: color-mix(in srgb, var(--leg-num) 40%, transparent); }
 .chip.num::before { background: var(--leg-num); }
-.chip.den { background: var(--leg-den-soft); border-color: rgba(201, 133, 0, 0.45); }
+.chip.den { background: var(--leg-den-soft); border-color: color-mix(in srgb, var(--leg-den) 45%, transparent); }
 .chip.den::before { background: var(--leg-den); }
-.chips { display: inline-flex; flex-wrap: wrap; gap: 4px; }
 .ratio { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .ratio .over-sign { color: var(--faint); font-weight: 700; font-size: 15px; }
 .leg-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
@@ -50,26 +45,12 @@ table.data.board td { vertical-align: middle; }
 table.data.board tbody tr { cursor: pointer; }
 table.data.board tbody tr.selected td { background: var(--accent-soft); }
 table.data.board td.rank { font-family: var(--mono); color: var(--faint); width: 36px; }
+/* Keep each basket on one line in tables; the table scrolls instead. */
+table.data.board .chips { flex-wrap: nowrap; }
 .spark { display: block; }
-.pos { color: var(--under-ink); }
-.neg { color: var(--over-ink); }
-.dim { color: var(--faint); }
 
 /* ---------- Page header extras ---------- */
 .head-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-.kpi .value.sm { font-size: 22px; }
-.kpis.tight { margin-top: 18px; }
-
-/* ---------- Charts ---------- */
-.chart.h-lg { height: 420px; }
-.chart.h-md { height: 320px; }
-.chart.h-sm { height: 200px; }
-.chart-note { font-size: 12.5px; color: var(--faint); padding: 0 12px 8px; }
-.chart-head .tools { display: flex; gap: 6px; flex-wrap: wrap; }
-.btn.sm { font-size: 12.5px; padding: 5px 10px; }
-.btn.on { border-color: var(--accent); background: var(--accent-soft); }
-.legend .ln { display: inline-block; width: 14px; height: 2px; margin-right: 6px; vertical-align: 3px; border-radius: 1px; }
-.legend .band { display: inline-block; width: 12px; height: 10px; margin-right: 6px; vertical-align: -1px; border-radius: 2px; }
 
 /* ---------- Trade blotter ---------- */
 tr.legs-row td { background: var(--surface-2); padding: 0 14px 10px; }
@@ -88,19 +69,18 @@ tr.open .caret { transform: rotate(90deg); }
   margin: 0 0 10px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--faint); display: flex; justify-content: space-between; align-items: center;
 }
-.field { display: grid; grid-template-columns: 1fr 120px; gap: 10px; align-items: center; margin: 7px 0; font-size: 13.5px; }
-.field label { color: var(--muted); display: flex; align-items: center; gap: 6px; min-width: 0; }
-.field label code { font-family: var(--mono); font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
-.field .input { width: 100%; padding: 5px 8px; font-size: 13px; font-family: var(--mono); }
-.field.changed label::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--hl-text); flex: none; }
-.field.changed .input { border-color: rgba(250, 204, 21, 0.5); }
+/* Compact label/input rows (overrides the stacked nexus .field) */
+.lab .field { display: grid; grid-template-columns: 1fr 120px; gap: 10px; align-items: center; margin: 7px 0; font-size: 13.5px; font-weight: 400; }
+.lab .field label { color: var(--muted); display: flex; align-items: center; gap: 6px; min-width: 0; }
+.lab .field label code { font-family: var(--mono); font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
+.lab .field .input { width: 100%; padding: 5px 8px; font-size: 13px; font-family: var(--mono); }
+.lab .field.changed label::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--hl-text); flex: none; }
+.lab .field.changed .input { border-color: var(--hl-line); }
 .toggle-row { display: flex; flex-wrap: wrap; gap: 6px; }
 .toggle-row .chip { cursor: pointer; user-select: none; }
 .toggle-row .chip.off { opacity: 0.35; }
 .lab-actions { display: flex; gap: 8px; padding: 14px 18px; position: sticky; bottom: 0; background: var(--surface); border-top: 1px solid var(--border); }
 .lab-actions .btn { flex: 1; }
-.progress { height: 4px; border-radius: 2px; background: var(--surface-3); overflow: hidden; margin-top: 10px; }
-.progress > div { height: 100%; width: 0; background: var(--accent); transition: width 0.1s; }
 .parity { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 .delta { font-size: 12px; font-weight: 600; margin-left: 6px; }
 pre.code {
@@ -108,7 +88,7 @@ pre.code {
   font-family: var(--mono); font-size: 12.5px; line-height: 1.55; color: var(--muted);
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
 }
-pre.code .k { color: #bcd4ff; }
+pre.code .k { color: var(--accent-ink); }
 pre.code .c { color: var(--faint); }
 pre.code .v { color: var(--text); }
 .sweep-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 4px 12px 8px; }
@@ -128,18 +108,15 @@ pre.code .v { color: var(--text); }
 .stage strong { display: block; font-size: 15px; margin: 2px 0 4px; }
 .stage .type { font-family: var(--mono); font-size: 12px; color: var(--hl-text); }
 .stage p { margin: 6px 0 8px; font-size: 13px; color: var(--muted); }
+/* Inline formula pill inside a stage (overrides the block nexus .formula) */
+.stage .formula {
+  font-size: 13px; background: var(--surface-3); border: 0;
+  border-radius: 8px; padding: 8px 12px; display: inline-block; margin: 4px 0; overflow-x: visible;
+}
 .kv { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; font-size: 12.5px; }
 .kv dt { color: var(--faint); font-family: var(--mono); }
 .kv dd { margin: 0; text-align: right; font-family: var(--mono); color: var(--text); font-variant-numeric: tabular-nums; }
-.formula {
-  font-family: var(--mono); font-size: 13px; color: var(--text); background: var(--surface-3);
-  border-radius: 8px; padding: 8px 12px; display: inline-block; margin: 4px 0;
-}
-.prose p { color: var(--muted); max-width: 760px; }
-.prose strong { color: var(--text); }
 svg.diagram text { font-family: var(--font); }
-
-.kbd { font-family: var(--mono); font-size: 11px; padding: 1px 6px; border-radius: 4px; border: 1px solid var(--border-strong); color: var(--muted); background: var(--surface-2); }
 
 @media (max-width: 900px) {
   .lab { grid-template-columns: 1fr; }
@@ -151,11 +128,7 @@ svg.diagram text { font-family: var(--font); }
   .anatomy .div { justify-self: start; }
   .stage::after { content: none; }
   .stage { margin-right: 0; }
-  .field { grid-template-columns: 1fr 110px; }
-  .chart.h-lg { height: 340px; }
+  .lab .field { grid-template-columns: 1fr 110px; }
   .head-controls { width: 100%; min-width: 0; }
   .head-controls > .date-bar { flex: 1 1 100%; min-width: 0; }
 }
-
-/* Keep each basket on one line in tables; the table scrolls instead. */
-table.data.board .chips { flex-wrap: nowrap; }

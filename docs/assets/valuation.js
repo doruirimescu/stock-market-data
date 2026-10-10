@@ -26,14 +26,13 @@
 (function () {
   "use strict";
 
-  const COLORS = { under: "#14a088", over: "#dd6a2c", text: "#e6edf7", muted: "#9fb0cf", grid: "#1f3460", surface: "#0f1b33" };
   const BUCKETS = [
-    { label: "Strongly undervalued (>30%)", type: "Undervalued", min: 30, max: Infinity, color: COLORS.under, alpha: 1 },
-    { label: "Moderately undervalued (10–30%)", type: "Undervalued", min: 10, max: 30, color: COLORS.under, alpha: 0.75 },
-    { label: "Slightly undervalued (<10%)", type: "Undervalued", min: -Infinity, max: 10, color: COLORS.under, alpha: 0.5 },
-    { label: "Slightly overvalued (<10%)", type: "Overvalued", min: -Infinity, max: 10, color: COLORS.over, alpha: 0.5 },
-    { label: "Moderately overvalued (10–30%)", type: "Overvalued", min: 10, max: 30, color: COLORS.over, alpha: 0.75 },
-    { label: "Strongly overvalued (>30%)", type: "Overvalued", min: 30, max: Infinity, color: COLORS.over, alpha: 1 },
+    { label: "Strongly undervalued (>30%)", type: "Undervalued", min: 30, max: Infinity, token: "--under", alpha: 1 },
+    { label: "Moderately undervalued (10–30%)", type: "Undervalued", min: 10, max: 30, token: "--under", alpha: 0.75 },
+    { label: "Slightly undervalued (<10%)", type: "Undervalued", min: -Infinity, max: 10, token: "--under", alpha: 0.5 },
+    { label: "Slightly overvalued (<10%)", type: "Overvalued", min: -Infinity, max: 10, token: "--over", alpha: 0.5 },
+    { label: "Moderately overvalued (10–30%)", type: "Overvalued", min: 10, max: 30, token: "--over", alpha: 0.75 },
+    { label: "Strongly overvalued (>30%)", type: "Overvalued", min: 30, max: Infinity, token: "--over", alpha: 1 },
   ];
 
   const body = document.body;
@@ -68,10 +67,6 @@
     const cls = score >= 0 ? "under" : "over";
     const word = score >= 0 ? "Undervalued" : "Overvalued";
     return `<span class="verdict ${cls}">${word} ${Math.abs(score).toFixed(digits)}%</span>`;
-  }
-  function rgba(hex, a) {
-    const n = parseInt(hex.slice(1), 16);
-    return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`;
   }
 
   // ---------- data ----------
@@ -345,7 +340,7 @@
     $("distribution").innerHTML = BUCKETS.map(
       (b, i) => `<div class="dist-row">
           <div class="dist-label">${b.label}</div>
-          <div class="dist-track"><div class="dist-bar" style="width:${(counts[i] / max) * 100}%;background:${rgba(b.color, b.alpha)}"></div></div>
+          <div class="dist-track"><div class="dist-bar" style="width:${(counts[i] / max) * 100}%;background:var(${b.token});opacity:${b.alpha}"></div></div>
           <div class="dist-count">${counts[i]}</div>
         </div>`
     ).join("");
@@ -372,6 +367,7 @@
 
   // ---------- chart ----------
   function renderChart(s) {
+    const C = Nexus.colors;
     if (!window.Plotly) return;
     const rs = [...records].sort((a, b) =>
       chartSort === "solvency"
@@ -389,27 +385,23 @@
       type: "bar",
       x: rs.map((r) => r.symbol),
       y: rs.map((r) => r.valuation_score),
-      marker: { color: rs.map((r) => (r.valuation_type === "Overvalued" ? COLORS.over : COLORS.under)), cornerradius: 3 },
+      marker: { color: rs.map((r) => (r.valuation_type === "Overvalued" ? C.negative : C.positive)), cornerradius: 3 },
       customdata: custom,
       hovertemplate:
         "<b>%{customdata[0]}</b> (%{x})<br>%{customdata[1]}<br>Intrinsic value: %{customdata[2]}<br>" +
         "Price: ~%{customdata[3]}<br>Solvency: %{customdata[4]}/100<extra></extra>",
     };
-    const avgColor = s.mean >= 0 ? "#5fd4bd" : "#f4a06f";
-    const layout = {
-      paper_bgcolor: "rgba(0,0,0,0)",
-      plot_bgcolor: "rgba(0,0,0,0)",
-      font: { family: "Inter, system-ui, sans-serif", color: COLORS.muted, size: 12 },
+    const avgColor = s.mean >= 0 ? C.positiveInk : C.negativeInk;
+    const layout = Nexus.plotlyLayout({
       margin: { l: 56, r: 16, t: 16, b: 70 },
       bargap: 0.15,
       showlegend: false,
-      hoverlabel: { bgcolor: "#14244a", bordercolor: "#2b4680", font: { color: COLORS.text, family: "Inter, system-ui, sans-serif" } },
-      xaxis: { tickangle: -90, tickfont: { size: rs.length > 150 ? 7 : 9 }, gridcolor: COLORS.grid, linecolor: COLORS.grid, title: { text: chartSort === "solvency" ? "Ticker (sorted by solvency ↑)" : "Ticker (most undervalued → most overvalued)", standoff: 8 } },
-      yaxis: { title: { text: "Valuation gap (%)" }, gridcolor: COLORS.grid, zeroline: true, zerolinecolor: "#3a5594", zerolinewidth: 1.5, ticksuffix: "%" },
+      xaxis: { tickangle: -90, tickfont: { size: rs.length > 150 ? 7 : 9 }, title: { text: chartSort === "solvency" ? "Ticker (sorted by solvency ↑)" : "Ticker (most undervalued → most overvalued)", standoff: 8 } },
+      yaxis: { title: { text: "Valuation gap (%)" }, zeroline: true, ticksuffix: "%" },
       shapes: [{ type: "line", xref: "paper", x0: 0, x1: 1, y0: s.mean, y1: s.mean, line: { color: avgColor, width: 1.5, dash: "dash" } }],
-      annotations: [{ xref: "paper", x: 1, y: s.mean, yanchor: "bottom", xanchor: "right", yshift: 2, showarrow: false, bgcolor: "rgba(15,27,51,0.9)", borderpad: 3, text: `equal-weight avg ${s.mean >= 0 ? "+" : ""}${s.mean.toFixed(1)}%`, font: { color: avgColor, size: 12 } }],
-    };
-    Plotly.react("chart", [trace], layout, { responsive: true, displaylogo: false, modeBarButtonsToRemove: ["lasso2d", "select2d"] });
+      annotations: [{ xref: "paper", x: 1, y: s.mean, yanchor: "bottom", xanchor: "right", yshift: 2, showarrow: false, bgcolor: Nexus.rgba(C.surface, 0.9), borderpad: 3, text: `equal-weight avg ${s.mean >= 0 ? "+" : ""}${s.mean.toFixed(1)}%`, font: { color: avgColor, size: 12 } }],
+    });
+    Plotly.react("chart", [trace], layout, Nexus.plotlyConfig);
   }
 
   // ---------- table ----------
