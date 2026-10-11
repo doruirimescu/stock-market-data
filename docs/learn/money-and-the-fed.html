@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Money and the Fed · Investing Nexus</title>
+  <meta name="description" content="A full lecture on how dollars are created, how the Federal Reserve buys assets, QE vs QT, the Fed's toolkit, repo and reverse repo, and how the Fed intervened in the COVID crisis. Interactive charts built on Fed data.">
+  <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
+  <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
+  <style>
+    /* Layout only: colours and components come from nexus.css */
+    .chapter { scroll-margin-top: 80px; margin-top: 64px; }
+    .chapter > .eyebrow { margin-bottom: 2px; }
+    .chapter > h2 { font-family: var(--font-display); font-size: clamp(22px, 3vw, 28px); line-height: 1.2; letter-spacing: -0.01em; margin: 0 0 14px; }
+    .chapter .prose { max-width: 760px; }
+    .toc { margin-top: 28px; }
+    .lab { margin-top: 18px; display: grid; gap: 14px; }
+    .lab-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+    .lab-actions .panel { padding: 12px 14px; }
+    .lab-actions h4 { margin: 0 0 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); }
+    .lab-actions .btns { display: flex; flex-wrap: wrap; gap: 6px; }
+    .lab-explain { padding: 14px 18px; }
+    .lab-explain h4 { margin: 0 0 6px; font-size: 15px; }
+    .lab-explain p { margin: 0; color: var(--muted); font-size: 14px; }
+    .lab-measures { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 10px; font-size: 13px; color: var(--muted); }
+    .lab-measures b { color: var(--text); font-variant-numeric: tabular-nums; }
+    .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px 22px; padding: 6px 12px 12px; }
+    .readout { display: flex; flex-wrap: wrap; gap: 8px 22px; padding: 0 12px 10px; font-size: 13px; color: var(--muted); }
+    .readout b { color: var(--text); font-variant-numeric: tabular-nums; }
+    .chart-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; padding: 8px 12px 0; }
+    .chart-tools .segmented { flex-wrap: wrap; }
+    .crisis { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 14px; margin-top: 14px; align-items: start; }
+    .crisis .chart-panel { margin-top: 0; }
+    .crisis .timeline { max-height: 560px; overflow-y: auto; padding-right: 4px; }
+    .repo-calc .form-grid { margin-top: 6px; }
+    .quiz { display: grid; gap: 12px; margin-top: 14px; }
+    .quiz .panel { padding: 14px 18px; }
+    .quiz h4 { margin: 0 0 10px; font-size: 15px; }
+    .quiz .btns { display: flex; flex-wrap: wrap; gap: 6px; }
+    .quiz .why { margin: 10px 0 0; font-size: 13.5px; color: var(--muted); }
+    .glossary dt { color: var(--text); font-weight: 600; margin-top: 10px; }
+    .glossary dd { margin: 2px 0 0; color: var(--muted); }
+    @media (max-width: 760px) {
+      .crisis { grid-template-columns: 1fr; }
+      .crisis .timeline { max-height: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="index.html">Learn</a>
+        <a href="money-and-the-fed.html" class="active">Money &amp; the Fed</a>
+        <a href="../sp500_valuation.html">S&amp;P 500 Summary</a>
+        <a href="../fairvalue/index.html">Fair Value stocks</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container narrow">
+    <div class="eyebrow">Learn · Lecture 1</div>
+    <h1>How dollars are made and how the Fed <span class="gradient-text">moves them</span></h1>
+    <p class="lead">A full lecture on the plumbing behind every asset price: who creates money, what the Federal Reserve actually does when it "prints", <mark>QE versus QT</mark>, repo and reverse repo, and how the Fed stepped in when markets broke in March 2020. Every chart uses the Fed's own published data, <span class="hl-accent" id="data-asof">updated weekly</span>.</p>
+
+    <div class="kpis" id="kpis"></div>
+
+    <nav class="toc" aria-label="Contents">
+      <h4>Contents</h4>
+      <ol>
+        <li><a href="#ch1">What is a dollar?</a></li>
+        <li><a href="#ch2">How dollars are made: the money lab</a></li>
+        <li><a href="#ch3">How the Fed "buys money"</a></li>
+        <li><a href="#ch4">The Fed's toolkit</a></li>
+        <li><a href="#ch5">Scarce, ample and abundant reserves</a></li>
+        <li><a href="#ch6">Repo and reverse repo</a></li>
+        <li><a href="#ch7">QE versus QT</a></li>
+        <li><a href="#ch8">The Fed in a crisis: March 2020</a></li>
+        <li><a href="#ch9">Where we are now</a></li>
+        <li><a href="#ch10">What it means for investors</a></li>
+        <li><a href="#ch11">Check your understanding</a></li>
+        <li><a href="#glossary">Glossary and sources</a></li>
+      </ol>
+    </nav>
+
+    <!-- ============================================================ 1 -->
+    <section class="chapter" id="ch1">
+      <div class="eyebrow">Chapter 1</div>
+      <h2>What is a dollar?</h2>
+      <div class="prose">
+        <p>A dollar is not one thing. It is a <strong>promise</strong> recorded on somebody's balance sheet, and there are three kinds of promise that all trade at exactly one dollar:</p>
+        <ul>
+          <li><strong>Physical currency.</strong> A $20 note is a liability of the Federal Reserve. Anyone can hold it.</li>
+          <li><strong>Bank reserves.</strong> Balances that commercial banks keep in their accounts at the Fed. Only banks (and a few other institutions) can hold them. Banks use them to pay each other.</li>
+          <li><strong>Bank deposits.</strong> The number in your checking account is a liability of <em>your bank</em>, not of the Fed. This is the money households and firms actually spend, and it is by far the largest layer.</li>
+        </ul>
+        <p>The layers form a hierarchy. Deposits are promises to pay you reserves-or-cash on demand; reserves and cash are promises of the state's central bank, which can never run out of its own liabilities. Who can create each layer is the subject of this whole lecture.</p>
+      </div>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>The three layers of US money today</h3>
+          <div class="legend"><span><i class="sw-accent"></i>Fed money</span><span><i class="sw-series-2"></i>Bank money</span></div></div>
+        <div id="c-layers" class="chart h-sm"></div>
+        <div class="chart-note">Currency in circulation and reserve balances from the Fed's H.4.1 release; bank deposits and other M2 = M2 money stock minus currency. Trillions of dollars.</div>
+      </div>
+      <div class="callout"><strong>Key idea.</strong> Roughly nine out of ten dollars that people hold were not created by the Fed at all. They were created by commercial banks, one loan at a time.</div>
+    </section>
+
+    <!-- ============================================================ 2 -->
+    <section class="chapter" id="ch2">
+      <div class="eyebrow">Chapter 2</div>
+      <h2>How dollars are made: the money lab</h2>
+      <div class="prose">
+        <p>The textbook story says banks collect savings and lend them out. The real mechanics run the other way: <mark>when a bank makes a loan, it creates a brand-new deposit</mark> for the borrower. Loans create deposits; repaying a loan destroys them. The Bank of England put this plainly in its 2014 paper <em>Money creation in the modern economy</em>.</p>
+        <p>What limits banks is not a stock of savings but <strong>profitability, capital requirements, liquidity rules and demand for credit</strong>. Since March 2020, US reserve requirements are zero, so the old "money multiplier" no longer describes anything.</p>
+        <p>The Fed creates the other two layers. It creates <strong>reserves</strong> whenever it buys an asset or lends, simply by crediting a bank's account. It issues <strong>currency</strong> when banks order cash: the Bureau of Engraving and Printing prints the notes, and a bank pays for them with reserves. The Treasury does not create money; it taxes and borrows, and keeps its cash in an account at the Fed called the <strong>Treasury General Account</strong> (TGA).</p>
+        <p>Try it. Each button below is a real transaction. Watch which balance sheets change, and which kind of money appears or disappears. Every balance sheet always balances.</p>
+      </div>
+
+      <div class="lab" id="lab">
+        <div class="lab-actions">
+          <div class="panel"><h4>Commercial banks &amp; the public</h4><div class="btns" data-group="bank"></div></div>
+          <div class="panel"><h4>The Federal Reserve</h4><div class="btns" data-group="fed"></div></div>
+          <div class="panel"><h4>The Treasury</h4><div class="btns" data-group="treasury"></div></div>
+        </div>
+        <div class="panel lab-explain" aria-live="polite">
+          <h4 id="lab-title">Pick a transaction</h4>
+          <p id="lab-text">Start with "Bank makes a loan", then try QE from a bank and from a pension fund to see why it matters who sells to the Fed.</p>
+          <div class="lab-measures" id="lab-measures"></div>
+        </div>
+        <div class="t-grid" id="lab-sheets"></div>
+        <div><button class="btn sm" id="lab-reset">Reset balance sheets</button> <span class="muted small">Figures in $ billions, a toy banking system with one bank.</span></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 3 -->
+    <section class="chapter" id="ch3">
+      <div class="eyebrow">Chapter 3</div>
+      <h2>How the Fed "buys money"</h2>
+      <div class="prose">
+        <p>The phrase "the Fed prints money" is shorthand for something more precise. The Fed's trading desk at the Federal Reserve Bank of New York buys Treasury bonds or mortgage-backed securities from about two dozen <strong>primary dealers</strong>. It pays by crediting the dealer's bank with reserves that did not exist a second earlier. No paper is printed. The bonds go into the Fed's portfolio, the <strong>System Open Market Account</strong> (SOMA).</p>
+        <p>What happens next depends on who ultimately sold the bond, which you saw in the lab:</p>
+        <ul>
+          <li><strong>A bank sells:</strong> the bank swaps a bond for reserves. Reserves rise; the public's money (deposits) does not change.</li>
+          <li><strong>A pension fund, insurer or hedge fund sells</strong> (via a dealer): the seller receives a bank deposit and its bank receives reserves. Both reserves <em>and</em> deposits rise. This is how QE added to the money people hold.</li>
+        </ul>
+        <p>The Fed earns interest on the bonds it holds and pays interest on reserves and reverse repos. It sends its profits to the Treasury: tens of billions of dollars a year through the 2010s, close to $100 billion in good years. When rates rose above the yield on its old low-coupon bonds in late 2022, the Fed began losing money. It does not need capital to keep operating; it records the losses as a <strong>deferred asset</strong> that future profits pay down before remittances resume.</p>
+      </div>
+      <div class="formula">Fed buys $100 of bonds &nbsp;→&nbsp; Fed assets +100 (bonds) &nbsp;=&nbsp; Fed liabilities +100 (reserves)</div>
+    </section>
+
+    <!-- ============================================================ 4 -->
+    <section class="chapter" id="ch4">
+      <div class="eyebrow">Chapter 4</div>
+      <h2>The Fed's toolkit</h2>
+      <div class="prose">
+        <p>The Federal Open Market Committee (FOMC) meets eight times a year and sets a <strong>target range</strong> for the federal funds rate, the rate banks charge each other for overnight loans of reserves. Since 2008 it has steered that rate not by rationing reserves but with <strong>administered rates</strong>: rates the Fed itself pays or charges, which form a corridor.</p>
+      </div>
+      <div class="table-wrap" style="margin-top:14px">
+        <table class="data">
+          <thead><tr><th>Tool</th><th>What it does</th><th class="num">Now</th></tr></thead>
+          <tbody id="tools-table"></tbody>
+        </table>
+      </div>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>The policy corridor since 2008</h3>
+          <div class="legend"><span><i class="band sw-neutral"></i>Target range</span></div></div>
+        <div class="chart-tools"><div class="segmented" role="group" aria-label="Period" id="corridor-range"></div></div>
+        <div id="c-corridor" class="chart h-lg"></div>
+        <div class="series-toggles" id="corridor-toggles"></div>
+        <div class="chart-note">Wednesday values, percent. IOER (interest on excess reserves) was replaced by IORB (interest on reserve balances) in July 2021.</div>
+      </div>
+      <div class="prose" style="margin-top:14px">
+        <p>Read the corridor from the top down. <strong>Nobody lends reserves below IORB</strong> to another bank, because the Fed pays IORB risk-free. Money market funds can't earn IORB, but they can lend to the Fed at the <strong>ON RRP rate</strong>, so private rates rarely fall below that floor. And no one needs to pay much above the top of the range, because banks can borrow at the <strong>discount window</strong> or, since 2021, from the <strong>Standing Repo Facility</strong>. The effective fed funds rate (EFFR) stays inside.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ 5 -->
+    <section class="chapter" id="ch5">
+      <div class="eyebrow">Chapter 5</div>
+      <h2>Scarce, ample and abundant reserves</h2>
+      <div class="prose">
+        <p>Before 2008, reserves were <strong>scarce</strong>: about $10 billion in the whole system. The Fed set rates by adding or draining a few billion each day, moving along the steep part of the demand curve below. QE flooded the system with trillions, and the curve went flat. Now the Fed runs an <strong>ample reserves</strong> framework (formalised in January 2019): it keeps reserves on the flat part and moves rates by changing IORB and the ON RRP rate.</p>
+        <p>Drag the sliders. Shrink reserves and watch rates jump off the floor: that is September 2019 in miniature. Then switch on the Standing Repo Facility and see the ceiling catch the spike.</p>
+      </div>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>The demand curve for reserves</h3>
+          <div class="legend"><span><i class="ln sw-accent"></i>Overnight rate</span><span><i class="ln sw-series-2"></i>IORB</span><span><i class="ln sw-neutral"></i>ON RRP (floor)</span></div></div>
+        <div class="controls">
+          <label class="range-field">Reserves in the system <output id="dem-r-out"></output><input type="range" id="dem-r" min="0.6" max="4.6" step="0.05"></label>
+          <label class="range-field">Bottom of the target range <output id="dem-l-out"></output><input type="range" id="dem-l" min="0" max="5.25" step="0.25"></label>
+          <label class="series-toggle" style="align-self:center;justify-self:start"><input type="checkbox" id="dem-srf" checked> Standing Repo Facility (ceiling)</label>
+        </div>
+        <div class="readout" id="dem-readout"></div>
+        <div id="c-demand" class="chart h-lg"></div>
+        <div class="chart-note">A stylised model, not an estimate. The marker starts at today's reserves from the H.4.1 release. Trillions of dollars.</div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 6 -->
+    <section class="chapter" id="ch6">
+      <div class="eyebrow">Chapter 6</div>
+      <h2>Repo and reverse repo</h2>
+      <div class="prose">
+        <p>A <strong>repurchase agreement</strong> (repo) is a secured overnight loan dressed as two trades: I sell you a Treasury bond today and agree to buy it back tomorrow at a slightly higher price. The price difference is the interest. If I fail to pay, you keep the bond. The US repo market turns over several trillion dollars every day; it is how dealers and hedge funds finance their bond holdings.</p>
+        <p>Every repo has two sides. The cash borrower does a <strong>repo</strong>; the cash lender does a <strong>reverse repo</strong>. The Fed's names follow its own side:</p>
+        <ul>
+          <li><strong>Fed repo</strong> (Standing Repo Facility, emergency repo operations): the Fed <em>lends</em> cash against collateral. <mark>Reserves go up.</mark></li>
+          <li><strong>Fed reverse repo</strong> (ON RRP facility): money market funds <em>lend</em> cash to the Fed overnight. Reserves go down; the cash sits at the Fed.</li>
+        </ul>
+      </div>
+
+      <div class="panel chart-panel repo-calc">
+        <div class="chart-head"><h3>Repo calculator</h3></div>
+        <div class="controls">
+          <label class="field">Cash borrowed <span class="hint">$ millions</span><input class="input" id="rp-amt" type="number" value="100" min="1" step="1"></label>
+          <label class="field">Repo rate <span class="hint">% a year</span><input class="input" id="rp-rate" type="number" value="3.9" min="0" step="0.05"></label>
+          <label class="field">Term <span class="hint">days</span><input class="input" id="rp-days" type="number" value="1" min="1" step="1"></label>
+          <label class="field">Haircut <span class="hint">% of collateral</span><input class="input" id="rp-hc" type="number" value="2" min="0" step="0.5"></label>
+        </div>
+        <div class="readout" id="rp-out"></div>
+      </div>
+
+      <div class="prose" style="margin-top:22px">
+        <h3>September 2019: when repo broke</h3>
+        <p>Reserves had fallen from $2.8 trillion in 2014 to about $1.4 trillion, first as currency and the Treasury's cash pile grew, then through QT. On 16 September 2019, corporate tax payments flowed into the TGA (draining reserves further) on the same day a large batch of Treasury auctions settled. Banks were unwilling to lend their remaining reserves, and on 17 September the secured overnight rate <strong>SOFR hit 5.25%</strong>, more than three points above the top of the Fed's range. The Fed ran its first repo operations in a decade the same morning and in October began buying Treasury bills "to maintain ample reserves". The lesson led to the Standing Repo Facility in 2021.</p>
+      </div>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>Overnight rates, Aug 2019 to Jan 2020</h3>
+          <div class="legend"><span><i class="ln sw-accent"></i>SOFR</span><span><i class="ln sw-series-2"></i>Fed funds (EFFR)</span><span><i class="ln sw-neutral"></i>IOER</span><span><i class="band sw-neutral"></i>Target range</span></div></div>
+        <div id="c-repo2019" class="chart h-md"></div>
+        <div class="chart-note">Daily, percent.</div>
+      </div>
+
+      <div class="prose" style="margin-top:22px">
+        <h3>The reverse repo balloon</h3>
+        <p>By 2021 the opposite problem appeared: far more cash than safe places to put it. Money funds parked it at the ON RRP facility, and reverse repos at the Fed peaked near $2.7 trillion in April 2023. That pool then acted as a <strong>shock absorber for QT</strong>: as the Fed shrank its balance sheet and the Treasury issued a flood of bills, money funds pulled cash out of ON RRP to buy them, so reserves barely fell until the pool was nearly empty in 2025.</p>
+      </div>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>Reserves, reverse repos and the Treasury's account</h3>
+          <div class="legend"><span><i class="ln sw-accent"></i>Bank reserves</span><span><i class="sw-series-2"></i>Reverse repos</span><span><i class="ln sw-neutral"></i>Treasury General Account</span></div></div>
+        <div id="c-rrp" class="chart h-lg"></div>
+        <div class="chart-note">Wednesday levels, $ billions. Reverse repos include the foreign official pool (foreign central banks' cash), which is most of what remains today.</div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 7 -->
+    <section class="chapter" id="ch7">
+      <div class="eyebrow">Chapter 7</div>
+      <h2>QE versus QT</h2>
+      <div class="prose">
+        <p><strong>Quantitative easing</strong> is the Fed buying long-dated bonds in bulk, with newly created reserves, once its policy rate is already near zero. <strong>Quantitative tightening</strong> is the reverse: shrinking the portfolio. The Fed has never sold Treasuries to do QT; it simply stops reinvesting the bonds that mature, up to a monthly cap.</p>
+      </div>
+      <div class="table-wrap" style="margin-top:14px">
+        <table class="data">
+          <thead><tr><th></th><th>QE</th><th>QT</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Mechanism</strong></td><td class="company">Buy Treasuries and MBS, pay with new reserves</td><td class="company">Let bonds mature without reinvesting, up to monthly caps</td></tr>
+            <tr><td><strong>Reserves</strong></td><td class="company">Rise</td><td class="company">Fall (or ON RRP falls first)</td></tr>
+            <tr><td><strong>Long-term yields</strong></td><td class="company">Pushed down: the Fed absorbs duration risk investors would otherwise demand a premium for</td><td class="company">Drift up: investors must absorb more duration</td></tr>
+            <tr><td><strong>Signal</strong></td><td class="company">Rates will stay low for a long time</td><td class="company">Policy is normalising</td></tr>
+            <tr><td><strong>Asset prices</strong></td><td class="company">Portfolio rebalancing: sellers of safe bonds buy riskier assets</td><td class="company">Liquidity withdrawn; usually a slow headwind</td></tr>
+            <tr><td><strong>Pace</strong></td><td class="company">Fast: up to $586B in one week (March 2020)</td><td class="company">Slow: at most $95B a month (2022 to 2024)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>The Fed's balance sheet, 2007 to today</h3>
+          <div class="legend" id="balance-legend"></div></div>
+        <div class="chart-tools">
+          <div class="segmented" role="group" aria-label="Side" id="balance-side"></div>
+          <div class="segmented" role="group" aria-label="Period" id="balance-range"></div>
+        </div>
+        <div id="c-balance" class="chart"></div>
+        <div class="chart-note">Wednesday levels from the H.4.1 release, $ billions. Shaded: asset purchase and run-off programmes. The table below shows the change in Treasuries + MBS held over each one.</div>
+      </div>
+      <div class="table-wrap" style="margin-top:14px">
+        <table class="data">
+          <thead><tr><th>Programme</th><th>Dates</th><th class="company">What happened</th><th class="num">Securities held</th></tr></thead>
+          <tbody id="era-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============================================================ 8 -->
+    <section class="chapter" id="ch8">
+      <div class="eyebrow">Chapter 8</div>
+      <h2>The Fed in a crisis: March 2020</h2>
+      <div class="prose">
+        <p>In March 2020 even the safest market in the world broke. Foreign central banks, hedge funds unwinding leveraged "basis trades", and companies drawing credit lines all tried to sell Treasuries for cash at once, and dealers ran out of balance sheet to absorb them. Ten-year yields <em>rose</em> during a flight to safety. The Fed answered with every tool it had, and invented several new ones under the emergency powers of Section 13(3) of the Federal Reserve Act, with the Treasury putting up equity to absorb losses.</p>
+        <p>Click an event to see where it lands in the weekly balance sheet changes.</p>
+      </div>
+      <div class="kpis tight" id="covid-kpis"></div>
+      <div class="crisis">
+        <div class="panel chart-panel">
+          <div class="chart-head"><h3>Weekly change in Fed assets, 2020</h3>
+            <div class="legend"><span><i class="sw-accent"></i>Securities (QE)</span><span><i class="sw-series-2"></i>Repo &amp; loans</span><span><i class="sw-neutral"></i>Swap lines</span></div></div>
+          <div id="c-covid" class="chart"></div>
+        </div>
+        <ol class="timeline" id="covid-timeline"></ol>
+      </div>
+      <div class="prose" style="margin-top:22px">
+        <h3>The money it created</h3>
+        <p>QE bought the bonds the Treasury issued to fund stimulus checks and the Paycheck Protection Program. The Treasury's spending moved that cash from the TGA into household deposits, and the broad money stock grew faster than at any time on record.</p>
+      </div>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>M2 money supply, year-on-year growth</h3>
+          <div class="legend"><span><i class="sw-accent"></i>M2 growth</span></div></div>
+        <div id="c-m2" class="chart h-lg"></div>
+        <div class="chart-note">Monthly, percent, since 1960.</div>
+      </div>
+      <div class="prose" style="margin-top:14px">
+        <p>Two other interventions are worth knowing. In <strong>2008</strong> the Fed lent directly to banks, dealers and AIG and opened swap lines worth over $580 billion before QE1 began. In <strong>March 2023</strong>, after Silicon Valley Bank failed, it created the Bank Term Funding Program, lending against bonds at face value rather than their depressed market value, so banks did not have to sell at a loss. You can see both as spikes in the "lending" layer of the balance sheet chart.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ 9 -->
+    <section class="chapter" id="ch9">
+      <div class="eyebrow">Chapter 9</div>
+      <h2>Where we are now</h2>
+      <div class="prose" id="now-prose"></div>
+    </section>
+
+    <!-- ============================================================ 10 -->
+    <section class="chapter" id="ch10">
+      <div class="eyebrow">Chapter 10</div>
+      <h2>What it means for investors</h2>
+      <div class="prose">
+        <p>Plumbing does not set the value of a business, but it changes the price investors pay for it, especially at the margin. A short watch list:</p>
+        <ul>
+          <li><strong>The policy rate and its path.</strong> The discount rate in every valuation model starts with the risk-free rate. Forward guidance moves it before the Fed acts.</li>
+          <li><strong>Bank reserves.</strong> When reserves approach the scarce zone, funding markets get jumpy (2019) and the Fed tends to stop QT.</li>
+          <li><strong>The TGA.</strong> When the Treasury rebuilds its cash (after a debt-ceiling fight, or on tax days), it drains reserves; when it spends down, it adds them.</li>
+          <li><strong>ON RRP.</strong> Cash sitting at the Fed is idle. Its drain from 2023 to 2025 quietly offset QT.</li>
+        </ul>
+        <p>Some analysts compress these into one number, "net liquidity": Fed assets minus the TGA minus reverse repos. It is a rough heuristic, not a law, but it shows how QE, the Treasury's account and the RRP pool combine.</p>
+      </div>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>Fed assets and "net liquidity"</h3>
+          <div class="legend"><span><i class="ln sw-series-2"></i>Fed total assets</span><span><i class="sw-accent"></i>Net liquidity = assets − TGA − reverse repos</span></div></div>
+        <div id="c-netliq" class="chart h-lg"></div>
+        <div class="chart-note">Wednesday levels, $ trillions.</div>
+      </div>
+    </section>
+
+    <!-- ============================================================ 11 -->
+    <section class="chapter" id="ch11">
+      <div class="eyebrow">Chapter 11</div>
+      <h2>Check your understanding</h2>
+      <div class="quiz" id="quiz"></div>
+      <p class="muted small" id="quiz-score" style="margin-top:10px"></p>
+    </section>
+
+    <!-- ============================================================ glossary -->
+    <section class="chapter" id="glossary">
+      <div class="eyebrow">Reference</div>
+      <h2>Glossary and sources</h2>
+      <div class="two-col">
+        <dl class="prose glossary">
+          <dt>Reserves</dt><dd>Banks' deposits at the Fed. Created only by the Fed.</dd>
+          <dt>IORB</dt><dd>Interest on reserve balances: the rate the Fed pays banks on reserves.</dd>
+          <dt>ON RRP</dt><dd>Overnight reverse repo facility: money funds and others lend cash to the Fed overnight.</dd>
+          <dt>SRF</dt><dd>Standing Repo Facility: the Fed lends cash overnight against Treasuries and agency debt.</dd>
+          <dt>SOFR</dt><dd>Secured Overnight Financing Rate: the average rate on overnight Treasury repo.</dd>
+          <dt>EFFR</dt><dd>Effective federal funds rate: the average rate on overnight unsecured loans of reserves between banks.</dd>
+          <dt>TGA</dt><dd>Treasury General Account: the government's checking account at the Fed.</dd>
+          <dt>SOMA</dt><dd>System Open Market Account: the Fed's portfolio of securities.</dd>
+          <dt>H.4.1</dt><dd>The Fed's weekly balance sheet release, published every Thursday.</dd>
+        </dl>
+        <div class="prose">
+          <p><strong>Data.</strong> Federal Reserve Bank of St. Louis (FRED): WALCL, TREAST, WSHOMCB, WORAL, WLCFLL, SWPT, WRBWFRBL, WCURCIR, WLRRAL, WDTGAL (H.4.1), DFF, DFEDTARU, DFEDTARL, IOER, IORB, RRPONTSYAWARD, SOFR and M2SL. Refreshed with <code>python scripts/fed_data.py</code>.</p>
+          <p><strong>Further reading.</strong> McLeay, Radia and Thomas, <em>Money creation in the modern economy</em>, Bank of England Quarterly Bulletin 2014 Q1. Federal Reserve, <em>Statement Regarding Monetary Policy Implementation and Balance Sheet Normalization</em>, January 2019. Federal Reserve Bank of New York, annual reports on open market operations.</p>
+          <p class="small faint">Dates of programmes and facilities are from Fed and FOMC announcements. Educational material only, not investment advice.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container narrow">Investing Nexus · Learn. Data: Federal Reserve via FRED. Nothing here is investment advice.</div>
+  </footer>
+
+  <script src="data/fed.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+  <script>
+  (function () {
+    "use strict";
+    const F = (window.nexusData || {}).fed;
+    if (!F) { document.querySelector("main").insertAdjacentHTML("afterbegin", '<div class="notice">Could not load data/fed.js.</div>'); return; }
+    const W = F.weekly, R = F.rates, last = W.dates.length - 1;
+    const C = () => Nexus.colors;
+    const cfg = Nexus.plotlyConfig;
+    const narrow = () => window.innerWidth < 640;
+    const $ = (id) => document.getElementById(id);
+    const esc = (s) => String(s).replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
+    const fmtDate = (d) => new Date(d + "T00:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+    const T = (bn, nd = 2) => "$" + (bn / 1000).toFixed(nd) + "T";
+    const B = (bn) => "$" + Math.round(bn).toLocaleString("en-US") + "B";
+    const pct = (v) => (v == null ? "n/a" : v.toFixed(2) + "%");
+    const idxOn = (d) => { let i = 0; while (i < W.dates.length - 1 && W.dates[i + 1] <= d) i++; return i; };
+    const lastOf = (arr) => { for (let i = arr.length - 1; i >= 0; i--) if (arr[i] != null) return arr[i]; return null; };
+    const m2Level = F.m2.level[F.m2.level.length - 1];
+
+    // Segmented control helper: one pressed option, calls onPick(value).
+    function segmented(el, options, value, onPick) {
+      el.innerHTML = options.map(([v, label]) => `<button class="btn" aria-pressed="${v === value}" data-v="${v}">${label}</button>`).join("");
+      el.addEventListener("click", (e) => {
+        const b = e.target.closest("button"); if (!b) return;
+        el.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+        onPick(b.dataset.v);
+      });
+    }
+    // Y range covering the visible part of the given series.
+    function yRange(dates, series, x0, x1, pad = 0.08, floor0 = true) {
+      let lo = Infinity, hi = -Infinity;
+      dates.forEach((d, i) => {
+        if (d < x0 || d > x1) return;
+        for (const s of series) { const v = s[i]; if (v == null) continue; lo = Math.min(lo, v); hi = Math.max(hi, v); }
+      });
+      if (!isFinite(hi)) return undefined;
+      if (floor0) lo = Math.min(0, lo);
+      const span = hi - lo || 1;
+      return [lo - (floor0 && lo === 0 ? 0 : span * pad), hi + span * pad];
+    }
+
+    // ---------- Header ----------
+    $("data-asof").textContent = "through " + fmtDate(W.dates[last]);
+    const upper = lastOf(R.upper), lower = lastOf(R.lower);
+    $("kpis").innerHTML = [
+      ["Fed balance sheet", T(W.total[last]), "total assets"],
+      ["Bank reserves", T(W.reserves[last]), "held at the Fed"],
+      ["Currency", T(W.currency[last]), "notes and coins in circulation"],
+      ["M2 money supply", T(m2Level, 1), "as of " + F.m2.dates[F.m2.dates.length - 1]],
+      ["Policy rate", lower.toFixed(2) + "–" + upper.toFixed(2) + "%", "fed funds target range"],
+    ].map(([l, v, s]) => `<div class="panel kpi"><div class="label">${l}</div><div class="value sm">${v}</div><div class="sub">${s}</div></div>`).join("");
+
+    // ---------- Ch1: layers ----------
+    function drawLayers() {
+      const c = C();
+      const vals = [W.reserves[last] / 1000, W.currency[last] / 1000, (m2Level - W.currency[last]) / 1000];
+      const labels = ["Bank reserves", "Physical currency", "Bank deposits & other M2"];
+      Plotly.react("c-layers", [{
+        type: "bar", orientation: "h", y: labels, x: vals, text: vals.map((v) => "$" + v.toFixed(1) + "T"), textposition: "outside",
+        marker: { color: [c.accent, c.accent, c.series2] }, hovertemplate: "%{y}: $%{x:.2f}T<extra></extra>", cliponaxis: false,
+      }], Nexus.plotlyLayout({
+        margin: { l: narrow() ? 120 : 170, r: 50, t: 6, b: 30 }, showlegend: false, bargap: 0.35,
+        xaxis: { tickprefix: "$", ticksuffix: "T", range: [0, Math.max(...vals) * 1.15] }, yaxis: { autorange: "reversed" },
+      }), cfg);
+    }
+
+    // ---------- Ch2: money lab ----------
+    const INITIAL = {
+      fed: { a: { tsy: 300, repo: 0 }, l: { currency: 100, reserves: 150, rrp: 0, tga: 50 } },
+      bank: { a: { reserves: 150, tsy: 200, loans: 500 }, l: { deposits: 800, repoDebt: 0, equity: 50 } },
+    };
+    const LABELS = {
+      fed: { title: "Federal Reserve", sub: "the central bank", a: { tsy: "Treasury bonds", repo: "Repo loans to banks" },
+        l: { currency: "Currency issued", reserves: "Bank reserves", rrp: "Reverse repos (ON RRP)", tga: "Treasury's account (TGA)" } },
+      bank: { title: "Commercial bank", sub: "the whole banking system", a: { reserves: "Reserves at the Fed", tsy: "Treasury bonds", loans: "Loans" },
+        l: { deposits: "Customer deposits", repoDebt: "Repo borrowing from Fed", equity: "Equity" } },
+    };
+    let state, cash, changed = {};
+    const reset = () => { state = JSON.parse(JSON.stringify(INITIAL)); cash = 100; changed = {}; };
+    reset();
+    // Each action: changes [sheet, side, key, delta], an optional public-cash delta, and an explanation.
+    const ACTIONS = [
+      { id: "loan", group: "bank", label: "Bank makes a loan", amt: 100,
+        ch: [["bank", "a", "loans", 1], ["bank", "l", "deposits", 1]],
+        text: "The bank credits the borrower's account with a new $100 deposit and books a $100 loan. No saver's money moved and no reserves were used: new money was created from a promise to repay. This is where most dollars come from." },
+      { id: "repay", group: "bank", label: "Borrower repays", amt: 100,
+        ch: [["bank", "a", "loans", -1], ["bank", "l", "deposits", -1]],
+        text: "Repaying a loan is the mirror image: the deposit and the loan cancel out, and $100 of money disappears. When the private sector pays down debt faster than it borrows, the money supply shrinks." },
+      { id: "cash", group: "bank", label: "Customer withdraws cash", amt: 50, cash: 1,
+        ch: [["bank", "l", "deposits", -1], ["bank", "a", "reserves", -1], ["fed", "l", "reserves", -1], ["fed", "l", "currency", 1]],
+        text: "The bank orders notes from the Fed and pays with reserves; the customer swaps a deposit for cash. Total money held by the public is unchanged, but a bank liability became a Fed liability." },
+      { id: "qe-bank", group: "fed", label: "QE: buy bonds from a bank", amt: 100,
+        ch: [["fed", "a", "tsy", 1], ["fed", "l", "reserves", 1], ["bank", "a", "tsy", -1], ["bank", "a", "reserves", 1]],
+        text: "The Fed buys $100 of Treasuries from the bank and pays by crediting its reserve account. The bank swapped one safe asset for another. Reserves rose by $100; the public's deposits did not change at all." },
+      { id: "qe-nonbank", group: "fed", label: "QE: buy bonds from a pension fund", amt: 100,
+        ch: [["fed", "a", "tsy", 1], ["fed", "l", "reserves", 1], ["bank", "a", "reserves", 1], ["bank", "l", "deposits", 1]],
+        text: "Now the seller is a pension fund, which banks with our bank. The Fed pays the bank $100 of reserves, and the bank credits the fund's account with a $100 deposit. Both reserves and money held by the public rose. Most QE worked this way." },
+      { id: "qt", group: "fed", label: "QT: a Fed bond matures", amt: 100,
+        ch: [["fed", "a", "tsy", -1], ["fed", "l", "reserves", -1], ["bank", "a", "reserves", -1], ["bank", "l", "deposits", -1]],
+        text: "The Fed lets a $100 bond mature and does not reinvest. The Treasury repays it from the TGA, then refills the TGA by selling a new bond to the public, who pay out of their deposits. Net effect: the Fed's bonds, bank reserves and deposits all fall by $100. QE in reverse." },
+      { id: "repo", group: "fed", label: "Repo: lend to a bank overnight", amt: 50,
+        ch: [["fed", "a", "repo", 1], ["fed", "l", "reserves", 1], ["bank", "a", "reserves", 1], ["bank", "l", "repoDebt", 1]],
+        text: "The bank pledges Treasuries as collateral and borrows $50 of reserves from the Fed until tomorrow (Standing Repo Facility). It still owns the bonds. Reserves rose, temporarily: this is how the Fed caps overnight rates." },
+      { id: "unwind", group: "fed", label: "Repo unwinds next morning", amt: 50,
+        ch: [["fed", "a", "repo", -1], ["fed", "l", "reserves", -1], ["bank", "a", "reserves", -1], ["bank", "l", "repoDebt", -1]],
+        text: "The bank repays the $50 plus a day's interest and gets its collateral back. The extra reserves disappear." },
+      { id: "rrp", group: "fed", label: "Money fund parks cash at ON RRP", amt: 50,
+        ch: [["bank", "l", "deposits", -1], ["bank", "a", "reserves", -1], ["fed", "l", "reserves", -1], ["fed", "l", "rrp", 1]],
+        text: "A money market fund moves $50 from its bank deposit to the Fed's reverse repo facility, receiving Treasuries as collateral. Bank deposits and reserves both fall; the cash now sits idle at the Fed. The fund's investors still own their shares." },
+      { id: "spend", group: "treasury", label: "Treasury spends from the TGA", amt: 50,
+        ch: [["fed", "l", "tga", -1], ["fed", "l", "reserves", 1], ["bank", "a", "reserves", 1], ["bank", "l", "deposits", 1]],
+        text: "The Treasury sends $50 of stimulus checks. Money leaves its account at the Fed and lands in households' bank deposits; the banks receive matching reserves. In 2020 this is how QE-financed spending reached people." },
+      { id: "tax", group: "treasury", label: "Treasury collects taxes", amt: 50,
+        ch: [["bank", "l", "deposits", -1], ["bank", "a", "reserves", -1], ["fed", "l", "reserves", -1], ["fed", "l", "tga", 1]],
+        text: "Taxpayers pay $50 from their deposits; banks transfer reserves to the TGA. Money held by the public and reserves both fall. A big tax day can drain reserves sharply, as on 16 September 2019." },
+    ];
+    const allowed = (a) => a.ch.every(([s, side, k, sign]) => sign > 0 || state[s][side][k] >= a.amt);
+    function renderLab() {
+      document.querySelectorAll("#lab [data-group]").forEach((g) => {
+        g.innerHTML = ACTIONS.filter((a) => a.group === g.dataset.group).map((a) =>
+          `<button class="btn sm" data-act="${a.id}"${allowed(a) ? "" : ' disabled title="Not enough on the balance sheet for this"'}>${a.label} <span class="faint">$${a.amt}</span></button>`).join("");
+      });
+      const sheet = (key) => {
+        const s = state[key], L = LABELS[key];
+        const side = (sd) => Object.keys(s[sd]).map((k) => {
+          const d = changed[key + sd + k] || 0;
+          const cls = d > 0 ? " up" : d < 0 ? " down" : s[sd][k] === 0 ? " zero" : "";
+          const tag = d ? ` <small>${d > 0 ? "+" : "−"}${Math.abs(d)}</small>` : "";
+          return `<div class="t-row${cls}"><span>${L[sd][k]}</span><b>${s[sd][k]}${tag}</b></div>`;
+        }).join("");
+        const sum = (sd) => Object.values(s[sd]).reduce((x, y) => x + y, 0);
+        return `<div class="t-account"><div class="t-title">${L.title}<small>${L.sub}</small></div>
+          <div class="t-side"><h4>Assets</h4>${side("a")}</div><div class="t-side"><h4>Liabilities</h4>${side("l")}</div>
+          <div class="t-total"><span>Total</span><b>${sum("a")}</b></div><div class="t-total"><span>Total</span><b>${sum("l")}</b></div></div>`;
+      };
+      $("lab-sheets").innerHTML = sheet("fed") + sheet("bank");
+      const moneyHeld = state.bank.l.deposits + cash;
+      const base = INITIAL.bank.l.deposits + 100;
+      const delta = (v, b) => (v === b ? "" : ` <span class="${v > b ? "pos" : "neg"}">${v > b ? "+" : "−"}${Math.abs(v - b)}</span>`);
+      $("lab-measures").innerHTML =
+        `<span>Money held by the public (deposits + cash): <b>${moneyHeld}</b>${delta(moneyHeld, base)}</span>` +
+        `<span>Bank reserves: <b>${state.fed.l.reserves}</b>${delta(state.fed.l.reserves, INITIAL.fed.l.reserves)}</span>` +
+        `<span>Fed balance sheet: <b>${state.fed.a.tsy + state.fed.a.repo}</b>${delta(state.fed.a.tsy + state.fed.a.repo, 300)}</span>`;
+    }
+    $("lab").addEventListener("click", (e) => {
+      const b = e.target.closest("[data-act]"); if (!b) return;
+      const a = ACTIONS.find((x) => x.id === b.dataset.act);
+      if (!allowed(a)) return;
+      changed = {};
+      for (const [s, side, k, sign] of a.ch) { state[s][side][k] += sign * a.amt; changed[s + side + k] = sign * a.amt; }
+      if (a.cash) cash += a.cash * a.amt;
+      $("lab-title").textContent = a.label + " ($" + a.amt + ")";
+      $("lab-text").textContent = a.text;
+      renderLab();
+    });
+    $("lab-reset").addEventListener("click", () => {
+      reset(); renderLab();
+      $("lab-title").textContent = "Balance sheets reset"; $("lab-text").textContent = "Back to the starting position. Pick a transaction.";
+    });
+    renderLab();
+
+    // ---------- Ch4: tools table ----------
+    const iorbNow = lastOf(R.iorb), rrpNow = lastOf(R.rrp), effrNow = lastOf(R.effr), sofrNow = lastOf(R.sofr);
+    const TOOLS = [
+      ["Fed funds target range", "The FOMC's announced policy range for overnight interbank lending.", lower.toFixed(2) + "–" + upper.toFixed(2) + "%"],
+      ["Interest on reserve balances (IORB)", "Rate paid on reserves. The main lever: banks won't lend reserves for less.", pct(iorbNow)],
+      ["Overnight reverse repo (ON RRP)", "Rate paid to money funds and GSEs that lend cash to the Fed. The floor.", pct(rrpNow)],
+      ["Standing Repo Facility &amp; discount window", "The Fed lends overnight against collateral at the top of the range. The ceiling.", pct(upper)],
+      ["Open market operations", "Buying or selling securities (outright for QE/QT, temporarily via repo) to set the quantity of reserves.", T(W.total[last]) + " held"],
+      ["Reserve requirements", "Share of deposits banks must hold as reserves. Cut to zero in March 2020.", "0%"],
+      ["Forward guidance", "Telling markets where rates are likely heading, to move long-term rates today.", "every meeting"],
+      ["Emergency lending (13(3))", "Broad facilities for markets beyond banks, with Treasury approval. Used in 2008 and 2020.", B(W.loans[last]) + " loans"],
+      ["Central bank swap lines", "Dollars lent to foreign central banks against their currency, to calm offshore dollar funding.", B(W.swaps[last])],
+    ];
+    $("tools-table").innerHTML = TOOLS.map(([t, d, n]) => `<tr><td><strong>${t}</strong></td><td class="company">${d}</td><td class="num">${n}</td></tr>`).join("");
+
+    // ---------- Ch4: corridor ----------
+    const floorRate = R.dates.map((_, i) => (R.ioer[i] != null ? R.ioer[i] : R.iorb[i]));
+    const corridorSeries = [
+      { key: "effr", name: "Fed funds (EFFR)", on: true },
+      { key: "iorb", name: "IOER / IORB", on: true },
+      { key: "rrp", name: "ON RRP rate", on: true },
+      { key: "sofr", name: "SOFR", on: false },
+    ];
+    let corridorRangeKey = "all";
+    const CORRIDOR_RANGES = {
+      all: ["2008-01-01", W.dates[last]], "2015": ["2015-06-01", "2019-12-31"], "2019": ["2019-06-01", "2020-03-31"],
+      "2022": ["2021-10-01", "2024-01-31"], recent: ["2024-01-01", W.dates[last]],
+    };
+    $("corridor-toggles").innerHTML = corridorSeries.map((s) =>
+      `<label class="series-toggle"><input type="checkbox" data-k="${s.key}"${s.on ? " checked" : ""}> ${s.name}</label>`).join("");
+    $("corridor-toggles").addEventListener("change", (e) => {
+      const s = corridorSeries.find((x) => x.key === e.target.dataset.k); if (s) { s.on = e.target.checked; drawCorridor(); }
+    });
+    segmented($("corridor-range"), [["all", "Since 2008"], ["2015", "2015–19 hikes"], ["2019", "2019"], ["2022", "2022–23 hikes"], ["recent", "Since 2024"]],
+      corridorRangeKey, (v) => { corridorRangeKey = v; drawCorridor(); });
+    function drawCorridor() {
+      const c = C(), x = R.dates;
+      const color = { effr: c.accent, iorb: c.series2, rrp: c.neutral, sofr: c.muted };
+      const y = { effr: R.effr, iorb: floorRate, rrp: R.rrp, sofr: R.sofr };
+      const [x0, x1] = CORRIDOR_RANGES[corridorRangeKey];
+      const data = [
+        { type: "scatter", mode: "lines", x, y: R.lower, line: { width: 0, color: c.neutral, shape: "hv" }, hoverinfo: "skip", showlegend: false },
+        { type: "scatter", mode: "lines", x, y: R.upper, fill: "tonexty", fillcolor: Nexus.rgba(c.neutral, 0.22), line: { width: 0, color: c.neutral, shape: "hv" },
+          name: "Target range (top)", hovertemplate: "Top of range: %{y:.2f}%<extra></extra>" },
+        ...corridorSeries.filter((s) => s.on).map((s) => ({
+          type: "scatter", mode: "lines", x, y: y[s.key], name: s.name, connectgaps: false,
+          line: { color: color[s.key], width: s.key === "effr" ? 2 : 1.5, dash: s.key === "sofr" ? "dot" : undefined, shape: s.key === "effr" || s.key === "sofr" ? "linear" : "hv" },
+          hovertemplate: s.name + ": %{y:.2f}%<extra></extra>",
+        })),
+      ];
+      const yr = yRange(x, [R.upper, R.lower, ...corridorSeries.filter((s) => s.on).map((s) => y[s.key])], x0, x1, 0.1);
+      Plotly.react("c-corridor", data, Nexus.plotlyLayout({
+        showlegend: false, hovermode: "x unified", margin: { l: 48, r: 12, t: 10, b: 40 },
+        xaxis: { type: "date", range: [x0, x1] }, yaxis: { ticksuffix: "%", range: yr },
+      }), cfg);
+    }
+
+    // ---------- Ch5: reserve demand ----------
+    const demR = $("dem-r"), demL = $("dem-l"), demSrf = $("dem-srf");
+    demR.value = (W.reserves[last] / 1000).toFixed(2);
+    demL.value = lower;
+    function rateAt(Rt, L, srf) {
+      const rrp = L, iorb = L + 0.15, top = L + 0.25;
+      let r = iorb - 0.07 + 0.12 * Math.exp(-(Rt - 2.0) / 0.35);
+      r = Math.max(r, rrp + 0.01);
+      if (srf) r = Math.min(r, top + 0.03);
+      return Math.min(r, L + 6);
+    }
+    function regime(Rt) { return Rt < 1.55 ? "Scarce" : Rt < 2.6 ? "Ample" : "Abundant"; }
+    function drawDemand() {
+      const c = C(), Rt = +demR.value, L = +demL.value, srf = demSrf.checked;
+      $("dem-r-out").textContent = "$" + Rt.toFixed(2) + "T";
+      $("dem-l-out").textContent = L.toFixed(2) + "%";
+      const xs = []; for (let v = 0.6; v <= 4.6001; v += 0.02) xs.push(+v.toFixed(2));
+      const ys = xs.map((v) => rateAt(v, L, srf));
+      const r = rateAt(Rt, L, srf);
+      const spread = Math.round((r - (L + 0.15)) * 100);
+      $("dem-readout").innerHTML = `<span>Overnight rate: <b>${r.toFixed(2)}%</b></span><span>vs IORB: <b>${spread >= 0 ? "+" : "−"}${Math.abs(spread)} bp</b></span>` +
+        `<span>Regime: <b>${regime(Rt)}</b></span>${!srf && r > L + 0.3 ? '<span class="neg">Above the target range: the Fed has lost control of the rate</span>' : ""}`;
+      const flat = (y, name, color) => ({ type: "scatter", mode: "lines", x: [0.6, 4.6], y: [y, y], name, line: { color, width: 1.5, dash: "dash" },
+        hovertemplate: name + ": %{y:.2f}%<extra></extra>" });
+      const yTop = Math.max(L + 1.5, srf ? L + 1.5 : Math.min(L + 6, rateAt(0.6, L, false) + 0.2));
+      const bands = Nexus.bands([
+        { x0: 0.6, x1: 1.55, label: "Scarce", tone: "neutral" },
+        { x0: 1.55, x1: 2.6, label: "Ample", tone: "accent" },
+        { x0: 2.6, x1: 4.6, label: "Abundant", tone: "series2" },
+      ]);
+      Plotly.react("c-demand", [
+        flat(L + 0.25, "Top of range" + (srf ? " (SRF)" : ""), c.muted),
+        flat(L + 0.15, "IORB", c.series2),
+        flat(L, "ON RRP", c.neutral),
+        { type: "scatter", mode: "lines", x: xs, y: ys, name: "Overnight rate", line: { color: c.accent, width: 2.5 }, hovertemplate: "Reserves $%{x:.2f}T → %{y:.2f}%<extra></extra>" },
+        { type: "scatter", mode: "markers", x: [Rt], y: [r], name: "You are here", marker: { color: c.accent, size: 14 }, hovertemplate: "Reserves $%{x:.2f}T → %{y:.2f}%<extra></extra>" },
+      ], Nexus.plotlyLayout({
+        showlegend: false, margin: { l: 52, r: 12, t: 10, b: 44 },
+        xaxis: { title: { text: "Reserves ($ trillions)" }, range: [0.6, 4.6], ticksuffix: "T", tickprefix: "$" },
+        yaxis: { ticksuffix: "%", range: [Math.max(0, L - 0.4) - (L === 0 ? 0.1 : 0), yTop] },
+        shapes: bands.shapes, annotations: bands.annotations,
+      }), cfg);
+    }
+    [demR, demL, demSrf].forEach((el) => el.addEventListener("input", drawDemand));
+
+    // ---------- Ch6: repo calculator ----------
+    function repoCalc() {
+      const amt = Math.max(0, +$("rp-amt").value || 0), rate = Math.max(0, +$("rp-rate").value || 0);
+      const days = Math.max(1, Math.round(+$("rp-days").value || 1)), hc = Math.min(90, Math.max(0, +$("rp-hc").value || 0));
+      const interest = amt * 1e6 * (rate / 100) * days / 360;
+      const collateral = amt / (1 - hc / 100);
+      const fmt = (v) => "$" + v.toLocaleString("en-US", { maximumFractionDigits: 0 });
+      $("rp-out").innerHTML = `<span>Collateral to deliver: <b>$${collateral.toFixed(2)}M</b> of Treasuries</span>` +
+        `<span>Repurchase price: <b>${fmt(amt * 1e6 + interest)}</b></span><span>Interest: <b>${fmt(interest)}</b></span>` +
+        `<span class="faint">Money-market convention: actual/360 days.</span>`;
+    }
+    ["rp-amt", "rp-rate", "rp-days", "rp-hc"].forEach((id) => $(id).addEventListener("input", repoCalc));
+    $("rp-rate").value = (sofrNow || 3.9).toFixed(2);
+
+    // ---------- Ch6: September 2019 ----------
+    function drawRepo2019() {
+      const c = C(), P = F.repo2019, x = P.dates;
+      const ev = Nexus.events([
+        { x: "2019-09-17", label: narrow() ? "17 Sep" : "17 Sep: SOFR 5.25%", tone: "negative" },
+        { x: "2019-10-11", label: narrow() ? "" : "11 Oct: bill purchases", tone: "neutral", labelY: 0.9 },
+      ]);
+      Plotly.react("c-repo2019", [
+        { type: "scatter", mode: "lines", x, y: P.lower, line: { width: 0, color: c.neutral, shape: "hv" }, hoverinfo: "skip", showlegend: false },
+        { type: "scatter", mode: "lines", x, y: P.upper, fill: "tonexty", fillcolor: Nexus.rgba(c.neutral, 0.22), line: { width: 0, color: c.neutral, shape: "hv" },
+          name: "Top of range", hovertemplate: "Top of range: %{y:.2f}%<extra></extra>" },
+        { type: "scatter", mode: "lines", x, y: P.ioer, name: "IOER", line: { color: c.neutral, width: 1.5, dash: "dash", shape: "hv" }, hovertemplate: "IOER: %{y:.2f}%<extra></extra>" },
+        { type: "scatter", mode: "lines", x, y: P.effr, name: "EFFR", line: { color: c.series2, width: 1.5 }, hovertemplate: "EFFR: %{y:.2f}%<extra></extra>" },
+        { type: "scatter", mode: "lines", x, y: P.sofr, name: "SOFR", connectgaps: true, line: { color: c.accent, width: 2 }, hovertemplate: "SOFR: %{y:.2f}%<extra></extra>" },
+      ], Nexus.plotlyLayout({
+        showlegend: false, hovermode: "x unified", margin: { l: 48, r: 12, t: 10, b: 40 },
+        xaxis: { type: "date" }, yaxis: { ticksuffix: "%", range: [1.2, 5.6] }, shapes: ev.shapes, annotations: ev.annotations,
+      }), cfg);
+    }
+
+    // ---------- Ch6: reserves, RRP, TGA ----------
+    function drawRrp() {
+      const c = C(), i0 = idxOn("2013-01-01"), x = W.dates.slice(i0);
+      Plotly.react("c-rrp", [
+        { type: "scatter", mode: "lines", x, y: W.rrp.slice(i0), name: "Reverse repos", fill: "tozeroy", line: { color: c.series2, width: 1.5 }, hovertemplate: "Reverse repos: $%{y:,.0f}B<extra></extra>" },
+        { type: "scatter", mode: "lines", x, y: W.tga.slice(i0), name: "TGA", line: { color: c.neutral, width: 1.5 }, hovertemplate: "TGA: $%{y:,.0f}B<extra></extra>" },
+        { type: "scatter", mode: "lines", x, y: W.reserves.slice(i0), name: "Reserves", line: { color: c.accent, width: 2 }, hovertemplate: "Reserves: $%{y:,.0f}B<extra></extra>" },
+      ], Nexus.plotlyLayout({ showlegend: false, hovermode: "x unified", margin: { l: 56, r: 12, t: 10, b: 40 }, xaxis: { type: "date" }, yaxis: { tickprefix: "$", ticksuffix: "B", tickformat: ",d" } }), cfg);
+    }
+
+    // ---------- Ch7: balance sheet ----------
+    const ERAS = [
+      { key: "qe1", label: "QE1", x0: "2008-11-25", x1: "2010-03-31", tone: "accent", name: "QE1", what: "$1.25T of MBS, $175B agency debt and $300B of Treasuries after Lehman's collapse." },
+      { key: "qe2", label: "QE2", x0: "2010-11-03", x1: "2011-06-30", tone: "accent", name: "QE2", what: "$600B of longer-term Treasuries to fight deflation risk." },
+      { key: "twist", label: "Twist", x0: "2011-09-21", x1: "2012-09-12", tone: "neutral", name: "Operation Twist", what: "Sold short bonds, bought long ones: lower long yields without growing the balance sheet." },
+      { key: "qe3", label: "QE3", x0: "2012-09-13", x1: "2014-10-29", tone: "accent", name: "QE3", what: "Open-ended: $40B of MBS a month, then $45B of Treasuries too. Tapered through 2014." },
+      { key: "qt1", label: "QT1", x0: "2017-10-01", x1: "2019-07-31", tone: "series2", name: "QT1", what: "Run-off with caps rising to $50B a month. Ended early as funding markets tightened." },
+      { key: "bills", label: "Bills", x0: "2019-10-11", x1: "2020-03-11", tone: "neutral", name: "Repo and bill purchases", what: "After the repo spike: $60B a month of T-bills and daily repo, explicitly \"not QE\"." },
+      { key: "covid", label: "COVID QE", x0: "2020-03-15", x1: "2022-03-09", tone: "accent", name: "COVID QE", what: "Unlimited purchases in March 2020, then $120B a month until tapering ended in March 2022." },
+      { key: "qt2", label: "QT2", x0: "2022-06-01", x1: "2025-11-30", tone: "series2", name: "QT2", what: "Caps of up to $95B a month, slowed in June 2024 and April 2025, ended 1 December 2025." },
+      { key: "rmp", label: "RMP", x0: "2025-12-12", x1: W.dates[last], tone: "neutral", name: "Reserve management purchases", what: "T-bill purchases to keep reserves ample; maturing MBS reinvested into bills." },
+    ];
+    const RANGES = { all: ["2007-01-01", W.dates[last]], gfc: ["2007-06-01", "2015-01-31"], "2019": ["2017-06-01", "2020-06-30"], covid: ["2019-10-01", "2022-12-31"], qt: ["2021-10-01", W.dates[last]] };
+    let side = "assets", rangeKey = "all";
+    segmented($("balance-side"), [["assets", "Assets"], ["liabilities", "Liabilities"]], side, (v) => { side = v; drawBalance(); });
+    segmented($("balance-range"), [["all", "All"], ["gfc", "2008 crisis & QE"], ["2019", "QT1 & 2019"], ["covid", "COVID"], ["qt", "QT2 & now"]], rangeKey, (v) => { rangeKey = v; drawBalance(); });
+    function balanceLayers() {
+      const c = C(), n = W.dates.length;
+      const lend = Array.from({ length: n }, (_, i) => (W.repo[i] || 0) + (W.loans[i] || 0) + (W.swaps[i] || 0));
+      if (side === "assets") {
+        const other = Array.from({ length: n }, (_, i) => +(W.total[i] - W.treasuries[i] - W.mbs[i] - lend[i]).toFixed(1));
+        return [["Treasuries", W.treasuries, c.accent, "sw-accent"], ["Mortgage-backed securities", W.mbs, c.series2, "sw-series-2"],
+          ["Lending, repo & swap lines", lend, c.neutral, "sw-neutral"], ["Other", other, c.faint, null]];
+      }
+      return [["Bank reserves", W.reserves, c.accent, "sw-accent"], ["Currency", W.currency, c.series2, "sw-series-2"],
+        ["Reverse repos", W.rrp, c.neutral, "sw-neutral"], ["Treasury General Account", W.tga, c.faint, null]];
+    }
+    function drawBalance() {
+      const c = C(), layers = balanceLayers(), [x0, x1] = RANGES[rangeKey];
+      $("balance-legend").innerHTML = layers.map(([n, , , sw]) => `<span><i class="${sw || ""}"${sw ? "" : ' style="background:var(--faint)"'}></i>${n}</span>`).join("") +
+        `<span><i class="ln" style="background:var(--text)"></i>Total assets</span>`;
+      const data = layers.map(([name, y, color]) => ({
+        type: "scatter", mode: "lines", name, x: W.dates, y, stackgroup: "one", line: { color, width: 1 }, fillcolor: color,
+        hovertemplate: name + ": $%{y:,.0f}B<extra></extra>",
+      }));
+      data.push({ type: "scatter", mode: "lines", name: "Total assets", x: W.dates, y: W.total, line: { color: c.text, width: 1.5, dash: "dot" }, hovertemplate: "Total assets: $%{y:,.0f}B<extra></extra>" });
+      const visible = ERAS.filter((e) => e.x1 >= x0 && e.x0 <= x1);
+      const b = Nexus.bands(visible.map((e, i) => ({ x0: e.x0, x1: e.x1, tone: e.tone, label: narrow() && rangeKey === "all" ? "" : e.label, labelY: i % 2 ? 0.93 : 1 })));
+      Plotly.react("c-balance", data, Nexus.plotlyLayout({
+        showlegend: false, hovermode: "x unified", margin: { l: 60, r: 12, t: 10, b: 40 },
+        xaxis: { type: "date", range: [x0, x1] }, yaxis: { tickprefix: "$", ticksuffix: "B", tickformat: ",d", range: yRange(W.dates, [W.total], x0, x1, 0.12) },
+        shapes: b.shapes, annotations: b.annotations,
+      }), cfg);
+    }
+    $("era-table").innerHTML = ERAS.map((e) => {
+      // Treasuries + MBS: what the programmes bought or ran off. Total assets would mix in
+      // emergency loans unwinding at the same time (QE1 began as 2008's loans were repaid).
+      const sec = (i) => W.treasuries[i] + W.mbs[i];
+      const a = sec(idxOn(e.x0)), z = sec(idxOn(e.x1)), d = z - a;
+      return `<tr><td><strong>${e.name}</strong></td><td class="small">${fmtDate(e.x0)} – ${e.key === "rmp" ? "today" : fmtDate(e.x1)}</td><td class="company">${esc(e.what)}</td>` +
+        `<td class="num">${T(a)} → ${T(z)} <span class="${d >= 0 ? "pos" : "neg"}">${d >= 0 ? "+" : "−"}${B(Math.abs(d))}</span></td></tr>`;
+    }).join("");
+
+    // ---------- Ch8: COVID ----------
+    const iPre = idxOn("2020-02-26"), iPeak = idxOn("2020-06-10");
+    let maxWk = { v: 0, d: "" };
+    for (let i = idxOn("2020-01-01"); i <= idxOn("2020-12-31"); i++) { const v = W.total[i] - W.total[i - 1]; if (v > maxWk.v) maxWk = { v, d: W.dates[i] }; }
+    $("covid-kpis").innerHTML = [
+      ["Fed assets, 15 weeks", T(W.total[iPre]) + " → " + T(W.total[iPeak]), "26 Feb to 10 Jun 2020"],
+      ["Biggest single week", "+" + B(maxWk.v), "week to " + fmtDate(maxWk.d)],
+      ["Bank reserves", T(W.reserves[iPre]) + " → " + T(W.reserves[iPeak]), "same 15 weeks"],
+      ["Policy rate", "1.50–1.75% → 0–0.25%", "two emergency cuts in 12 days"],
+    ].map(([l, v, s]) => `<div class="panel kpi"><div class="label">${l}</div><div class="value sm">${v}</div><div class="sub">${s}</div></div>`).join("");
+    const COVID = [
+      { x: "2020-03-03", t: "Emergency rate cut", d: "First cut between meetings since 2008: 50 bp to 1.00–1.25%." },
+      { x: "2020-03-12", t: "Repo offered by the trillion", d: "The New York Fed offers up to $1.5 trillion of term repo as Treasury trading seizes up." },
+      { x: "2020-03-15", t: "Sunday: zero rates and $700B QE", d: "Rates cut to 0–0.25%; $500B of Treasuries and $200B of MBS; reserve requirements to zero; discount rate cut to 0.25%; cheaper swap lines." },
+      { x: "2020-03-17", t: "Commercial paper and dealer facilities", d: "CPFF buys companies' short-term debt; the PDCF lends to primary dealers against a wide range of collateral." },
+      { x: "2020-03-18", t: "Money market fund facility", d: "MMLF lends to banks buying assets from prime money funds facing redemptions." },
+      { x: "2020-03-19", t: "Swap lines to nine more central banks", d: "Dollar funding for Brazil, Korea, Mexico, Singapore and others. Usage peaks near $450B." },
+      { x: "2020-03-23", t: "QE \"in the amounts needed\"", d: "Purchase limits removed. Facilities for corporate bonds (PMCCF, SMCCF) and asset-backed securities (TALF)." },
+      { x: "2020-03-31", t: "FIMA repo facility", d: "Foreign central banks can borrow dollars against their Treasuries instead of selling them." },
+      { x: "2020-04-09", t: "$2.3 trillion package", d: "Main Street Lending Program, Municipal Liquidity Facility and funding for PPP loans to small businesses." },
+      { x: "2020-06-10", t: "Purchases set at $120B a month", d: "$80B of Treasuries and $40B of MBS per month, the pace held until tapering began in November 2021." },
+      { x: "2020-08-27", t: "Flexible average inflation targeting", d: "The Fed will let inflation run above 2% for a time after periods below it." },
+      { x: "2020-12-16", t: "Guidance: \"substantial further progress\"", d: "Purchases continue until employment and inflation goals make substantial further progress." },
+    ];
+    let covidPick = 2;
+    $("covid-timeline").innerHTML = COVID.map((e, i) => `<li><button class="timeline-item" aria-pressed="${i === covidPick}" data-i="${i}"><time>${fmtDate(e.x)}</time><strong>${e.t}</strong><span>${e.d}</span></button></li>`).join("");
+    $("covid-timeline").addEventListener("click", (e) => {
+      const b = e.target.closest("[data-i]"); if (!b) return;
+      covidPick = +b.dataset.i;
+      $("covid-timeline").querySelectorAll("[data-i]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      drawCovid();
+    });
+    function drawCovid() {
+      const c = C(), i0 = idxOn("2020-01-01"), i1 = idxOn("2020-12-31"), x = W.dates.slice(i0, i1 + 1);
+      const d = (k) => x.map((_, j) => +(((W[k][i0 + j] || 0) - (W[k][i0 + j - 1] || 0))).toFixed(1));
+      const tsy = d("treasuries"), mbs = d("mbs"), repo = d("repo"), loans = d("loans"), swaps = d("swaps");
+      const sec = tsy.map((v, j) => +(v + mbs[j]).toFixed(1)), lend = repo.map((v, j) => +(v + loans[j]).toFixed(1));
+      const bar = (name, y, color) => ({ type: "bar", name, x, y, marker: { color }, hovertemplate: name + ": %{y:+,.0f}B<extra></extra>" });
+      const e = COVID[covidPick];
+      const ev = Nexus.events([{ x: e.x, label: narrow() ? "" : e.t.length > 28 ? e.t.slice(0, 26) + "…" : e.t, tone: "accent" }]);
+      Plotly.react("c-covid", [bar("Securities", sec, c.accent), bar("Repo & loans", lend, c.series2), bar("Swap lines", swaps, c.neutral)],
+        Nexus.plotlyLayout({ barmode: "relative", showlegend: false, hovermode: "x unified", bargap: 0.15, margin: { l: 56, r: 12, t: 10, b: 40 },
+          xaxis: { type: "date" }, yaxis: { tickprefix: "$", ticksuffix: "B", zeroline: true }, shapes: ev.shapes, annotations: ev.annotations }), cfg);
+    }
+
+    // ---------- Ch8: M2 ----------
+    function drawM2() {
+      const c = C(), M = F.m2;
+      const iMax = M.yoy.indexOf(Math.max(...M.yoy)), iMin = M.yoy.indexOf(Math.min(...M.yoy));
+      const ev = Nexus.events([
+        { x: M.dates[iMax], label: "+" + M.yoy[iMax].toFixed(1) + "% (" + M.dates[iMax] + ")", tone: "accent" },
+        { x: M.dates[iMin], label: M.yoy[iMin].toFixed(1) + "% (" + M.dates[iMin] + ")", tone: "series2", labelY: 0.12 },
+      ]);
+      Plotly.react("c-m2", [{ type: "scatter", mode: "lines", x: M.dates, y: M.yoy, name: "M2 growth", fill: "tozeroy", line: { color: c.accent, width: 1.5 },
+        hovertemplate: "%{x|%b %Y}: %{y:.1f}%<extra></extra>" }],
+        Nexus.plotlyLayout({ showlegend: false, margin: { l: 48, r: 12, t: 10, b: 40 }, xaxis: { type: "date", range: [M.dates[0], M.dates[M.dates.length - 1]] }, yaxis: { ticksuffix: "%", zeroline: true },
+          shapes: ev.shapes, annotations: ev.annotations }), cfg);
+    }
+
+    // ---------- Ch9: now ----------
+    (function () {
+      const iEndQt = idxOn("2025-12-03"), iQt0 = idxOn("2022-04-13");
+      const tsyUp = W.treasuries[last] - W.treasuries[iEndQt], mbsDown = W.mbs[iEndQt] - W.mbs[last];
+      const rates = []; let prev = null;
+      R.dates.forEach((d, i) => { if (R.upper[i] != null && R.upper[i] !== prev) { if (prev != null && d >= "2024-01-01") rates.push([d, R.lower[i], R.upper[i], R.upper[i] > prev]); prev = R.upper[i]; } });
+      const month = (d) => new Date(d + "T00:00:00Z").toLocaleDateString("en-GB", { month: "short", year: "numeric", timeZone: "UTC" });
+      const moves = rates.map(([d, lo, hi, up]) => `${up ? "a hike" : "a cut"} to ${lo.toFixed(2)}–${hi.toFixed(2)}% (${month(d)})`);
+      $("now-prose").innerHTML = `
+        <p>From its peak of <strong>${T(W.total[iQt0])}</strong> in April 2022, QT shrank the Fed's balance sheet to about <strong>${T(W.total[iEndQt])}</strong> by the time run-off ended on 1 December 2025. Reserves never fell below roughly $2.8 trillion, because the reverse repo pool drained first: from more than $2.5 trillion to ${B(W.rrp[iEndQt])}, most of it the foreign official pool.</p>
+        <p>Since December 2025 the Fed has been buying Treasury bills again as <strong>reserve management purchases</strong>, to keep reserves ample as currency and the TGA grow. Its Treasury holdings are up <mark>${B(tsyUp)}</mark> since QT ended, while mortgage-backed securities keep running off (down ${B(mbsDown)}), with the proceeds reinvested in bills. This is not QE: the purchases are short-dated and sized to match demand for reserves, not to push down long-term yields.</p>
+        <p>On rates, the Fed's moves since 2024 were ${moves.join(", ")}. As of ${fmtDate(W.dates[last])}: target range <strong>${lower.toFixed(2)}–${upper.toFixed(2)}%</strong>, IORB ${pct(iorbNow)}, ON RRP ${pct(rrpNow)}, EFFR ${pct(effrNow)} and SOFR ${pct(sofrNow)}. Reserves stand at ${T(W.reserves[last])}, currency at ${T(W.currency[last])} and the TGA at ${B(W.tga[last])}.</p>`;
+    })();
+
+    // ---------- Ch10: net liquidity ----------
+    function drawNetLiq() {
+      const c = C(), i0 = idxOn("2008-01-01"), x = W.dates.slice(i0);
+      const net = x.map((_, j) => +((W.total[i0 + j] - (W.tga[i0 + j] || 0) - (W.rrp[i0 + j] || 0)) / 1000).toFixed(3));
+      Plotly.react("c-netliq", [
+        { type: "scatter", mode: "lines", x, y: net, name: "Net liquidity", fill: "tozeroy", line: { color: c.accent, width: 1.5 }, hovertemplate: "Net liquidity: $%{y:.2f}T<extra></extra>" },
+        { type: "scatter", mode: "lines", x, y: W.total.slice(i0).map((v) => v / 1000), name: "Fed total assets", line: { color: c.series2, width: 2 }, hovertemplate: "Total assets: $%{y:.2f}T<extra></extra>" },
+      ], Nexus.plotlyLayout({ showlegend: false, hovermode: "x unified", margin: { l: 52, r: 12, t: 10, b: 40 }, xaxis: { type: "date" }, yaxis: { tickprefix: "$", ticksuffix: "T" } }), cfg);
+    }
+
+    // ---------- Ch11: quiz ----------
+    const QUIZ = [
+      { q: "A commercial bank grants a $300,000 mortgage. Where does the borrower's money come from?",
+        a: ["Other customers' savings", "The bank's reserves at the Fed", "The bank creates a new deposit"], ok: 2,
+        why: "Loans create deposits. The bank books the loan as an asset and the new deposit as a liability, at the same moment." },
+      { q: "The Fed buys $1 billion of Treasuries from a pension fund. What changes?",
+        a: ["Reserves and bank deposits both rise by $1B", "Only reserves rise", "The Fed prints $1B of paper notes"], ok: 0,
+        why: "The pension fund's bank receives reserves and credits the fund with a deposit. Buying from a bank would raise reserves only." },
+      { q: "How has the Fed carried out quantitative tightening?",
+        a: ["By selling Treasuries in the market", "By letting bonds mature without reinvesting, up to a cap", "By raising reserve requirements"], ok: 1,
+        why: "Both QT1 and QT2 were passive run-off. The Fed never sold Treasuries outright to shrink its balance sheet." },
+      { q: "In the Fed's overnight reverse repo facility, a money market fund…",
+        a: ["borrows cash from the Fed", "lends cash to the Fed against Treasury collateral", "sells bonds to the Fed permanently"], ok: 1,
+        why: "It is a reverse repo from the fund's side: it hands over cash and receives securities overnight. Reserves fall." },
+      { q: "On 17 September 2019 the fed funds target range was 2.00–2.25%. Where did SOFR print?",
+        a: ["2.43%", "5.25%", "0.10%"], ok: 1,
+        why: "Reserves had fallen too far. SOFR spiked to 5.25% and the Fed restarted repo operations that morning." },
+      { q: "In today's ample-reserves system, what mainly keeps the fed funds rate in its range?",
+        a: ["Daily changes in the quantity of reserves", "Administered rates: IORB and the ON RRP rate", "Reserve requirements"], ok: 1,
+        why: "With reserves on the flat part of the demand curve, the Fed sets rates by setting what it pays, not by rationing reserves." },
+      { q: "In the week to 25 March 2020, how much did the Fed's balance sheet grow?",
+        a: ["About $58 billion", "About $586 billion", "About $5.9 trillion"], ok: 1,
+        why: "The H.4.1 shows +$586 billion in one week, almost the size of the entire QE2 programme ($600 billion over eight months)." },
+    ];
+    const answered = {};
+    $("quiz").innerHTML = QUIZ.map((x, i) => `<div class="panel" data-q="${i}"><h4>${i + 1}. ${esc(x.q)}</h4><div class="btns">${x.a.map((a, j) =>
+      `<button class="btn" data-a="${j}">${esc(a)}</button>`).join("")}</div><p class="why" hidden></p></div>`).join("");
+    $("quiz").addEventListener("click", (e) => {
+      const b = e.target.closest("[data-a]"); if (!b) return;
+      const box = b.closest("[data-q]"), qi = +box.dataset.q, x = QUIZ[qi], ok = +b.dataset.a === x.ok;
+      answered[qi] = ok;
+      box.querySelectorAll("[data-a]").forEach((btn) => btn.classList.toggle("on", btn === b));
+      const why = box.querySelector(".why");
+      why.innerHTML = `<span class="verdict ${ok ? "under" : "over"}">${ok ? "Correct" : "Not quite"}</span> ${esc(x.why)}`;
+      why.hidden = false;
+      const n = Object.keys(answered).length, right = Object.values(answered).filter(Boolean).length;
+      $("quiz-score").textContent = `Score: ${right} of ${n} answered correctly` + (n === QUIZ.length ? (right === n ? ". Full marks." : ". Revisit the chapters above and try again.") : ".");
+    });
+
+    // ---------- Draw ----------
+    function drawAll() {
+      if (!window.Plotly) return;
+      drawLayers(); drawCorridor(); drawDemand(); drawRepo2019(); drawRrp(); drawBalance(); drawCovid(); drawM2(); drawNetLiq();
+    }
+    repoCalc();
+    drawAll();
+    // Labels shorten on phones: redraw when the width crosses the breakpoint.
+    let wasNarrow = narrow();
+    window.addEventListener("resize", () => { if (narrow() !== wasNarrow) { wasNarrow = narrow(); drawAll(); } });
+  })();
+  </script>
+</body>
+</html>

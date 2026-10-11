@@ -93,3 +93,7 @@ run = [
   "python scripts/sp500_sectors.py --out generated/sp500_sectors.json",
   "python scripts/publish_site_data.py --sectors generated/sp500_sectors.json",
 ]
+
+[tasks.fed]
+description = "Refresh the Federal Reserve data behind the Learn > Money and the Fed lecture (FRED)"
+run = "python scripts/fed_data.py"
