@@ -70,6 +70,12 @@ def summary_row(r) -> dict:
     }
 
 
+def render_backtest(summary: dict, out: Path) -> None:
+    html = _env().get_template("backtest.html.j2").render(
+        root="", nav="backtest", s=summary, data_json=Markup(json.dumps(summary).replace("</", "<\\/")))
+    (out / "backtest.html").write_text(html)
+
+
 def render_site(reports, out: Path, comparison: dict | None = None) -> None:
     """Write stock pages, rebuild the index from every stock analyzed so far, and the validation page."""
     env = _env()

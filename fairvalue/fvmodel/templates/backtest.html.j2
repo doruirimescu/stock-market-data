@@ -1,0 +1,188 @@
+{% extends "base.html.j2" %}
+{% block title %}Backtest{% endblock %}
+{% block description %}Point-in-time backtest of the Fair Value valuation gap and Quality Score on the S&amp;P 500 since 2013.{% endblock %}
+{% block body %}
+{% set g = s.signals.gap.horizons['12m'] %}{% set gc = s.signals.gap.cumulative %}
+    <div class="eyebrow">Backtest</div>
+    <h1>Does the Fair Value <span class="gradient-text">predict</span> returns?</h1>
+    <p class="lead">Every quarter since {{ g.first[:4] }}, each S&amp;P 500 member was valued with only the filings and prices known that day,
+      then ranked into fifths by its valuation gap. Over the following 12 months the most undervalued fifth returned
+      <mark>{{ "%+.1f"|format(g.spread * 100) }} points {{ 'more' if g.spread >= 0 else 'less' }}</mark> than the most overvalued fifth on average
+      (t = {{ "%.1f"|format(g.spread_t or 0) }}{% if (g.spread_t or 0)|abs < 2 %}, not statistically significant{% endif %}),
+      and beat it in <span class="hl-accent">{{ (g.hit_rate * 100)|round|int }}%</span> of {{ g.dates }} quarters.
+      {% set qs = s.signals.quality.horizons['36m'] %}Ranked by Quality Score instead, the top fifth beat the bottom fifth by
+      <span class="hl-accent">{{ "%+.1f"|format(qs.spread * 100) }} points</span> over 36 months (rank correlation t = {{ "%.1f"|format(qs.ic_t or 0) }}).</p>
+
+    <div class="page-controls" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:18px">
+      <div class="segmented" role="group" aria-label="Signal" id="signal-switch">
+        {% for k, sig in s.signals.items() %}<button class="btn" data-signal="{{ k }}" aria-pressed="{{ 'true' if k == 'gap' else 'false' }}">{{ sig.label }}</button>{% endfor %}
+      </div>
+      <div class="segmented" role="group" aria-label="Horizon" id="horizon-switch">
+        {% for h in ['3m', '6m', '12m', '36m'] %}<button class="btn" data-horizon="{{ h }}" aria-pressed="{{ 'true' if h == '12m' else 'false' }}">{{ h[:-1] }} months</button>{% endfor %}
+      </div>
+    </div>
+
+    <div class="kpis">
+      <div class="panel kpi"><div class="label">Top minus bottom fifth</div><div class="value" id="k-spread">–</div><div class="sub" id="k-spread-sub"></div></div>
+      <div class="panel kpi"><div class="label">Quarters the top fifth won</div><div class="value" id="k-hit">–</div><div class="sub" id="k-hit-sub"></div></div>
+      <div class="panel kpi"><div class="label">Rank correlation (IC)</div><div class="value" id="k-ic">–</div><div class="sub" id="k-ic-sub"></div></div>
+      <div class="panel kpi"><div class="label">Stocks ranked</div><div class="value" id="k-n">–</div><div class="sub" id="k-n-sub"></div></div>
+    </div>
+
+    <h2 class="section">Return by fifth</h2>
+    <div class="panel chart-panel">
+      <div class="chart-head"><h3 id="q-title">Average excess return</h3>
+        <div class="legend"><span><i class="sw-under"></i>Beat the average</span><span><i class="sw-over"></i>Lagged it</span></div></div>
+      <div id="chart-q" class="chart h-md"></div>
+      <p class="muted small">Each bar is the fifth's equal-weight forward total return minus the equal-weight average of all ranked stocks,
+        averaged over the signal dates. Fifths are re-formed every quarter.</p>
+    </div>
+
+    <h2 class="section">Growth of $1</h2>
+    <div class="panel chart-panel">
+      <div class="chart-head"><h3>Top and bottom fifth, rebalanced quarterly</h3>
+        <div class="legend"><span><i class="sw-under ln"></i><span id="lg-top">Top fifth</span></span><span><i class="sw-over ln"></i><span id="lg-bottom">Bottom fifth</span></span>
+          <span><i class="sw-neutral ln"></i>All ranked stocks</span><span><i class="sw-accent ln"></i>SPY</span></div></div>
+      <div id="chart-cum" class="chart"></div>
+      <div class="table-wrap" style="margin-top:10px"><table class="data">
+        <thead><tr><th>Portfolio</th><th class="num">Annual return</th><th class="num">$1 became</th></tr></thead>
+        <tbody id="cagr"></tbody></table></div>
+      <p class="muted small">Equal weight, rebalanced every quarter on the 3-month returns, with dividends reinvested.
+        No trading costs or taxes. Log scale.</p>
+    </div>
+
+    <h2 class="section">Consistency</h2>
+    <div class="two-col">
+      <div class="panel chart-panel" style="margin-top:0">
+        <div class="chart-head"><h3>Top minus bottom fifth, 12 months, by year</h3>
+          <div class="legend"><span><i class="sw-under"></i>Top fifth won</span><span><i class="sw-over"></i>Bottom fifth won</span></div></div>
+        <div id="chart-year" class="chart short"></div>
+        <p class="muted small">Average over the four quarterly signal dates of each year.</p>
+      </div>
+      <div class="panel chart-panel" style="margin-top:0">
+        <div class="chart-head"><h3>Coverage</h3>
+          <div class="legend"><span><i class="sw-neutral ln"></i>Index members</span><span><i class="sw-accent ln"></i>Valued</span></div></div>
+        <div id="chart-cov" class="chart short"></div>
+        <p class="muted small">Members without a valuation had too little filing or price history, or no longer trade.</p>
+      </div>
+    </div>
+
+    <h2 class="section">Every fifth and horizon</h2>
+    <div class="table-wrap"><table class="data">
+      <thead><tr><th>Fifth</th>{% for h in ['3m', '6m', '12m', '36m'] %}<th class="num">{{ h[:-1] }} months</th>{% endfor %}</tr></thead>
+      <tbody id="grid"></tbody></table></div>
+    <p class="muted small">Average excess return over the stated horizon, not annualized. The 12- and 36-month windows of consecutive quarters overlap,
+      so their t-statistics use Newey-West errors.</p>
+
+    <h2 class="section">How it was tested</h2>
+    <div class="panel prose">
+      <p><strong>Point in time.</strong> At each quarter end from {{ g.first }} the model ran exactly as it does today, but only on SEC filings
+        filed by that day and prices quoted by then. Restatements filed later are not used. A stock whose latest fiscal period was over
+        200 days old, or that had no close in the last week, was left out that quarter.</p>
+      <p><strong>Universe.</strong> Only stocks in the S&amp;P 500 on each date, from the
+        <a href="https://github.com/fja05680/sp500">fja05680/sp500</a> membership history: {{ s.meta.universe }} tickers over the period.
+        Stocks that joined later are excluded before they joined, and stocks that left but still trade are included while they were members.
+        {{ s.meta.renames|length }} ticker changes (FB to META, ABC to COR…) are followed.</p>
+      <p><strong>Returns.</strong> Forward total returns with dividends reinvested, from the close on the signal date. A stock that stopped
+        trading earns its return up to its last price. Returns are compared with the equal-weight average of the stocks ranked that quarter,
+        so the market's direction cancels out.</p>
+      <p><strong>Statistics.</strong> The spread is the top fifth's return minus the bottom fifth's, averaged over the dates. The IC is the
+        Spearman rank correlation between signal and return on each date, averaged. A |t| above 2 is roughly significant at 5%.</p>
+    </div>
+    <div class="callout" style="margin-top:14px">
+      <strong>Limitations.</strong> {{ s.meta.missing }} former members no longer trade (taken over or bankrupt) and have no SEC ticker or Yahoo
+      history, so they are missing. Failures among them would have flattered cheap stocks, takeovers would have helped both ends.
+      The model's settings were calibrated in 2026 against a reference provider's values, not against returns, but they were still chosen
+      with hindsight. Banks and insurers are valued like other companies. No trading costs. Past results don't predict future ones.
+    </div>
+    <p class="muted small">{{ s.meta.observations }} stock-quarters, {{ s.meta.tickers_valued }} companies. Prices to {{ s.meta.last_day }}.
+      Data: <code>generated/fairvalue/backtest/</code>. Rebuild with <code>mise run backtest</code> in <code>fairvalue/</code>.</p>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<script>
+  const D = {{ data_json }};
+  const NAMES = {
+    gap: ["Most undervalued", "Undervalued", "Middle", "Overvalued", "Most overvalued"],
+    quality: ["Highest score", "High", "Middle", "Low", "Lowest score"],
+    combo: ["Best combined", "Good", "Middle", "Weak", "Worst combined"],
+  };
+  const HORIZONS = ["3m", "6m", "12m", "36m"];
+  const state = { signal: "gap", horizon: "12m" };
+  const pct = (v, d = 1) => v === null || v === undefined ? "–" : (v >= 0 ? "+" : "−") + Math.abs(v * 100).toFixed(d) + "%";
+  const months = h => h.replace("m", " months");
+  const verdict = (v, text) => `<span class="verdict ${v >= 0 ? "under" : "over"}">${text}</span>`;
+  const tstat = t => t === null || t === undefined ? "" : `t = ${t.toFixed(1)}${Math.abs(t) < 2 ? " · not significant" : ""}`;
+
+  function draw() {
+    const C = Nexus.colors;
+    const sig = D.signals[state.signal], h = sig.horizons[state.horizon], names = NAMES[state.signal];
+    document.querySelectorAll("[data-signal]").forEach(b => b.setAttribute("aria-pressed", b.dataset.signal === state.signal));
+    document.querySelectorAll("[data-horizon]").forEach(b => b.setAttribute("aria-pressed", b.dataset.horizon === state.horizon));
+    if (!h) return;
+
+    document.getElementById("k-spread").textContent = pct(h.spread);
+    document.getElementById("k-spread-sub").innerHTML = `${verdict(h.spread, names[0])} vs ${names[4].toLowerCase()} · ${tstat(h.spread_t)}`;
+    document.getElementById("k-hit").textContent = Math.round(h.hit_rate * 100) + "%";
+    document.getElementById("k-hit-sub").textContent = `of ${h.dates} quarters, ${h.first.slice(0, 4)}–${h.last.slice(0, 4)}`;
+    document.getElementById("k-ic").textContent = h.ic.toFixed(3);
+    document.getElementById("k-ic-sub").textContent = `positive in ${Math.round(h.ic_positive * 100)}% of quarters · ${tstat(h.ic_t)}`;
+    document.getElementById("k-n").textContent = h.stocks_per_date;
+    document.getElementById("k-n-sub").textContent = `per quarter · average ${months(state.horizon)} return ${pct(h.universe)}`;
+
+    document.getElementById("q-title").textContent = `Average excess return over the next ${months(state.horizon)}`;
+    Plotly.react("chart-q", [{
+      type: "bar", x: names, y: h.excess.map(v => v * 100),
+      marker: { color: h.excess.map(v => v >= 0 ? C.positive : C.negative), cornerradius: 3 },
+      hovertemplate: "%{x}<br>%{y:+.2f} points vs average<extra></extra>",
+    }], Nexus.plotlyLayout({ showlegend: false, yaxis: { ticksuffix: "%", zeroline: true, zerolinecolor: C.zeroLine } }), Nexus.plotlyConfig);
+
+    const cum = sig.cumulative;
+    if (cum) {
+      const line = (key, name, color, width) => ({ type: "scatter", mode: "lines", x: cum.dates, y: cum.curves[key], name,
+        line: { color, width }, hovertemplate: "%{x|%b %Y}<br>" + name + ": $%{y:.2f}<extra></extra>" });
+      Plotly.react("chart-cum", [
+        line("spy", "SPY", C.accent, 1.5), line("universe", "All ranked stocks", C.neutral, 1.5),
+        line("q5", names[4], C.negative, 2), line("q1", names[0], C.positive, 2),
+      ], Nexus.plotlyLayout({ showlegend: false, hovermode: "x unified", yaxis: { type: "log", tickprefix: "$" } }), Nexus.plotlyConfig);
+      document.getElementById("lg-top").textContent = names[0];
+      document.getElementById("lg-bottom").textContent = names[4];
+      const rows = [["q1", names[0]], ["q2", names[1]], ["q3", names[2]], ["q4", names[3]], ["q5", names[4]], ["universe", "All ranked stocks"], ["spy", "SPY"]];
+      document.getElementById("cagr").innerHTML = rows.map(([k, n]) => {
+        const c = cum.curves[k];
+        return `<tr><td>${n}</td><td class="num">${pct(cum.cagr[k])}</td><td class="num">$${c[c.length - 1].toFixed(2)}</td></tr>`;
+      }).join("");
+    }
+
+    const years = Object.keys(sig.by_year), ys = Object.values(sig.by_year);
+    Plotly.react("chart-year", [{
+      type: "bar", x: years, y: ys.map(v => v * 100),
+      marker: { color: ys.map(v => v >= 0 ? C.positive : C.negative), cornerradius: 3 },
+      hovertemplate: "Signals in %{x}<br>%{y:+.1f} points<extra></extra>",
+    }], Nexus.plotlyLayout({ showlegend: false, yaxis: { ticksuffix: "%" } }), Nexus.plotlyConfig);
+
+    document.getElementById("grid").innerHTML = names.map((n, i) => `<tr><td>${n}</td>` + HORIZONS.map(hz => {
+      const x = sig.horizons[hz]; if (!x) return `<td class="num dim">–</td>`;
+      const v = x.excess[i];
+      return `<td class="num"><span class="${v >= 0 ? "pos" : "neg"}">${pct(v)}</span></td>`;
+    }).join("") + "</tr>").join("") +
+      `<tr><td><strong>Top minus bottom</strong></td>` + HORIZONS.map(hz => {
+        const x = sig.horizons[hz]; if (!x) return `<td class="num dim">–</td>`;
+        return `<td class="num"><strong class="${x.spread >= 0 ? "pos" : "neg"}">${pct(x.spread)}</strong><div class="muted small">${tstat(x.spread_t).replace(" · not significant", "")}</div></td>`;
+      }).join("") + "</tr>";
+  }
+
+  function drawCoverage() {
+    const C = Nexus.colors, cv = D.coverage;
+    const line = (y, name, color) => ({ type: "scatter", mode: "lines", x: cv.dates, y, name, line: { color, width: 2 },
+      hovertemplate: "%{x|%b %Y}<br>" + name + ": %{y}<extra></extra>" });
+    Plotly.newPlot("chart-cov", [line(cv.members, "Index members", C.neutral), line(cv.valued, "Valued", C.accent)],
+      Nexus.plotlyLayout({ showlegend: false, hovermode: "x unified", yaxis: { rangemode: "tozero" } }), Nexus.plotlyConfig);
+  }
+
+  document.querySelectorAll("[data-signal]").forEach(b => b.addEventListener("click", () => { state.signal = b.dataset.signal; draw(); }));
+  document.querySelectorAll("[data-horizon]").forEach(b => b.addEventListener("click", () => { state.horizon = b.dataset.horizon; draw(); }));
+  draw(); drawCoverage();
+  window.addEventListener("load", () => document.querySelectorAll(".js-plotly-plot").forEach(el => Plotly.Plots.resize(el)));
+</script>
+{% endblock %}

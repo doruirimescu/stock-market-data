@@ -105,16 +105,37 @@ class Market:
         return float(s.iloc[-1]) if len(s) else None
 
 
-def load_market(symbol: str, as_of=None) -> Market:
-    """Market data, optionally truncated to what was known on `as_of`."""
+@dataclass
+class MarketHistory:
+    """Every series load_market needs, untruncated, so a backtest loads them once."""
+
+    symbol: str
+    closes: pd.Series
+    dividends: pd.Series
+    benchmark: pd.Series
+    tnx: pd.Series
+    cpi: pd.Series
+
+    def at(self, as_of=None) -> Market:
+        """Market as it was known on `as_of` (the whole history when None)."""
+        series = [self.closes, self.dividends, self.benchmark, self.tnx, self.cpi]
+        if as_of is not None:
+            end = pd.Timestamp(as_of)
+            series = [s[s.index <= end] for s in series]
+        closes, divs, bench, tnx, cpi = series
+        return Market(self.symbol, closes, divs, bench, float(tnx.iloc[-1]) / 100, cpi)
+
+
+def market_history(symbol: str) -> MarketHistory:
     sym = symbol.upper().replace(".", "-")
     try:
         cpi = _cpi()
     except Exception:  # CPI only feeds Shiller PE; degrade gracefully
         cpi = pd.Series(dtype=float)
-    series = [_history(sym)["Close"].dropna(), _dividends(sym), _closes(BENCHMARK), _closes(TREASURY_10Y), cpi]
-    if as_of is not None:
-        end = pd.Timestamp(as_of)
-        series = [s[s.index <= end] for s in series]
-    closes, divs, bench, tnx, cpi = series
-    return Market(sym, closes, divs, bench, float(tnx.iloc[-1]) / 100, cpi)
+    return MarketHistory(sym, _history(sym)["Close"].dropna(), _dividends(sym), _closes(BENCHMARK),
+                         _closes(TREASURY_10Y), cpi)
+
+
+def load_market(symbol: str, as_of=None) -> Market:
+    """Market data, optionally truncated to what was known on `as_of`."""
+    return market_history(symbol).at(as_of)

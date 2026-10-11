@@ -54,11 +54,17 @@ def main(argv=None):
     i.add_argument("--pages", help="where stock pages go (default ../docs/fairvalue)")
     i.add_argument("--workers", type=int, default=4)
     i.add_argument("--limit", type=int, help="only the first N constituents (testing)")
+    b = sub.add_parser("backtest", help="point-in-time backtest of the Fair Value signals on the S&P 500")
+    b.add_argument("--start", default="2013-03-31", help="first signal date (a quarter end)")
+    b.add_argument("--workers", type=int, default=8)
+    b.add_argument("--limit", type=int, help="only the first N tickers (testing)")
+    b.add_argument("--from-panel", action="store_true", help="recompute the statistics from the saved panel")
+    b.add_argument("--pages", help="where backtest.html goes (default ../docs/fairvalue)")
     args = ap.parse_args(argv)
-    if args.cmd == "index":
-        from . import indexrun
+    if args.cmd in ("index", "backtest"):
+        from . import backtest, indexrun
 
-        indexrun.main(args)
+        (indexrun if args.cmd == "index" else backtest).main(args)
         return
 
     tickers = args.tickers if args.cmd == "analyze" else sorted(cmp.load_reference()) or DEFAULT_TICKERS

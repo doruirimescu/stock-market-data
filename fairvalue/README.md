@@ -61,6 +61,7 @@ Other tasks:
 | Task | What it does |
 | --- | --- |
 | `mise run compare` | Analyzes the reference stocks and compares them with the reference provider-published values, then writes `site/validation.html` and `reference/comparison.json`. |
+| `mise run backtest` | Point-in-time backtest of the valuation gap and Quality Score on the S&P 500 since 2013 (about 15 minutes; `-- --from-panel` only recomputes the statistics). Writes `../generated/fairvalue/backtest/` and `../docs/fairvalue/backtest.html`. |
 | `mise run test` | Runs the unit tests. |
 
 Downloads are cached in `data/` for a day.

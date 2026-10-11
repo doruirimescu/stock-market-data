@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Backtest · Investing Nexus</title>
+  <meta name="description" content="Point-in-time backtest of the Fair Value valuation gap and Quality Score on the S&amp;P 500 since 2013.">
+  <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
+  <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
+  <style>
+    /* Layout only; colours and components come from nexus.css. */
+    .metric-table td:first-child { color: var(--muted); white-space: normal; }
+    .metric-table td.num { white-space: nowrap; }
+    .metric-table td.num .verdict { display: flex; justify-content: flex-end; margin-top: 2px; white-space: normal; font-size: 12px; }
+    .range { display: flex; align-items: center; gap: 8px; min-width: 120px; }
+    .range .dist-track { flex: 1; position: relative; }
+    .range .tick { position: absolute; top: -3px; bottom: -3px; width: 3px; border-radius: 2px; background: var(--text); }
+    .ranks .dist-label { width: 150px; }
+    .panel .table-wrap { margin: 0 -4px; }
+    .chart.short { height: 340px; }
+    @media (max-width: 640px) { .chart.short { height: 280px; } .ranks .dist-label { width: 110px; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="../index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="../sp500_today.html?source=fairvalue">S&amp;P 500</a>
+        <a href="../nasdaq_today.html?source=fairvalue">NASDAQ-100</a>
+        <a href="index.html" >Fair Value stocks</a>
+        <a href="validation.html" >Validation</a>
+        <a href="backtest.html" class="active">Backtest</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+
+    <div class="eyebrow">Backtest</div>
+    <h1>Does the Fair Value <span class="gradient-text">predict</span> returns?</h1>
+    <p class="lead">Every quarter since 2013, each S&amp;P 500 member was valued with only the filings and prices known that day,
+      then ranked into fifths by its valuation gap. Over the following 12 months the most undervalued fifth returned
+      <mark>+2.7 points more</mark> than the most overvalued fifth on average
+      (t = 0.7, not statistically significant),
+      and beat it in <span class="hl-accent">47%</span> of 51 quarters.
+      Ranked by Quality Score instead, the top fifth beat the bottom fifth by
+      <span class="hl-accent">+12.4 points</span> over 36 months (rank correlation t = 2.1).</p>
+
+    <div class="page-controls" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:18px">
+      <div class="segmented" role="group" aria-label="Signal" id="signal-switch">
+        <button class="btn" data-signal="gap" aria-pressed="true">Valuation gap</button><button class="btn" data-signal="quality" aria-pressed="false">Quality Score</button><button class="btn" data-signal="combo" aria-pressed="false">Gap + Quality</button>
+      </div>
+      <div class="segmented" role="group" aria-label="Horizon" id="horizon-switch">
+        <button class="btn" data-horizon="3m" aria-pressed="false">3 months</button><button class="btn" data-horizon="6m" aria-pressed="false">6 months</button><button class="btn" data-horizon="12m" aria-pressed="true">12 months</button><button class="btn" data-horizon="36m" aria-pressed="false">36 months</button>
+      </div>
+    </div>
+
+    <div class="kpis">
+      <div class="panel kpi"><div class="label">Top minus bottom fifth</div><div class="value" id="k-spread">–</div><div class="sub" id="k-spread-sub"></div></div>
+      <div class="panel kpi"><div class="label">Quarters the top fifth won</div><div class="value" id="k-hit">–</div><div class="sub" id="k-hit-sub"></div></div>
+      <div class="panel kpi"><div class="label">Rank correlation (IC)</div><div class="value" id="k-ic">–</div><div class="sub" id="k-ic-sub"></div></div>
+      <div class="panel kpi"><div class="label">Stocks ranked</div><div class="value" id="k-n">–</div><div class="sub" id="k-n-sub"></div></div>
+    </div>
+
+    <h2 class="section">Return by fifth</h2>
+    <div class="panel chart-panel">
+      <div class="chart-head"><h3 id="q-title">Average excess return</h3>
+        <div class="legend"><span><i class="sw-under"></i>Beat the average</span><span><i class="sw-over"></i>Lagged it</span></div></div>
+      <div id="chart-q" class="chart h-md"></div>
+      <p class="muted small">Each bar is the fifth's equal-weight forward total return minus the equal-weight average of all ranked stocks,
+        averaged over the signal dates. Fifths are re-formed every quarter.</p>
+    </div>
+
+    <h2 class="section">Growth of $1</h2>
+    <div class="panel chart-panel">
+      <div class="chart-head"><h3>Top and bottom fifth, rebalanced quarterly</h3>
+        <div class="legend"><span><i class="sw-under ln"></i><span id="lg-top">Top fifth</span></span><span><i class="sw-over ln"></i><span id="lg-bottom">Bottom fifth</span></span>
+          <span><i class="sw-neutral ln"></i>All ranked stocks</span><span><i class="sw-accent ln"></i>SPY</span></div></div>
+      <div id="chart-cum" class="chart"></div>
+      <div class="table-wrap" style="margin-top:10px"><table class="data">
+        <thead><tr><th>Portfolio</th><th class="num">Annual return</th><th class="num">$1 became</th></tr></thead>
+        <tbody id="cagr"></tbody></table></div>
+      <p class="muted small">Equal weight, rebalanced every quarter on the 3-month returns, with dividends reinvested.
+        No trading costs or taxes. Log scale.</p>
+    </div>
+
+    <h2 class="section">Consistency</h2>
+    <div class="two-col">
+      <div class="panel chart-panel" style="margin-top:0">
+        <div class="chart-head"><h3>Top minus bottom fifth, 12 months, by year</h3>
+          <div class="legend"><span><i class="sw-under"></i>Top fifth won</span><span><i class="sw-over"></i>Bottom fifth won</span></div></div>
+        <div id="chart-year" class="chart short"></div>
+        <p class="muted small">Average over the four quarterly signal dates of each year.</p>
+      </div>
+      <div class="panel chart-panel" style="margin-top:0">
+        <div class="chart-head"><h3>Coverage</h3>
+          <div class="legend"><span><i class="sw-neutral ln"></i>Index members</span><span><i class="sw-accent ln"></i>Valued</span></div></div>
+        <div id="chart-cov" class="chart short"></div>
+        <p class="muted small">Members without a valuation had too little filing or price history, or no longer trade.</p>
+      </div>
+    </div>
+
+    <h2 class="section">Every fifth and horizon</h2>
+    <div class="table-wrap"><table class="data">
+      <thead><tr><th>Fifth</th><th class="num">3 months</th><th class="num">6 months</th><th class="num">12 months</th><th class="num">36 months</th></tr></thead>
+      <tbody id="grid"></tbody></table></div>
+    <p class="muted small">Average excess return over the stated horizon, not annualized. The 12- and 36-month windows of consecutive quarters overlap,
+      so their t-statistics use Newey-West errors.</p>
+
+    <h2 class="section">How it was tested</h2>
+    <div class="panel prose">
+      <p><strong>Point in time.</strong> At each quarter end from 2013-03-31 the model ran exactly as it does today, but only on SEC filings
+        filed by that day and prices quoted by then. Restatements filed later are not used. A stock whose latest fiscal period was over
+        200 days old, or that had no close in the last week, was left out that quarter.</p>
+      <p><strong>Universe.</strong> Only stocks in the S&amp;P 500 on each date, from the
+        <a href="https://github.com/fja05680/sp500">fja05680/sp500</a> membership history: 778 tickers over the period.
+        Stocks that joined later are excluded before they joined, and stocks that left but still trade are included while they were members.
+        16 ticker changes (FB to META, ABC to COR…) are followed.</p>
+      <p><strong>Returns.</strong> Forward total returns with dividends reinvested, from the close on the signal date. A stock that stopped
+        trading earns its return up to its last price. Returns are compared with the equal-weight average of the stocks ranked that quarter,
+        so the market's direction cancels out.</p>
+      <p><strong>Statistics.</strong> The spread is the top fifth's return minus the bottom fifth's, averaged over the dates. The IC is the
+        Spearman rank correlation between signal and return on each date, averaged. A |t| above 2 is roughly significant at 5%.</p>
+    </div>
+    <div class="callout" style="margin-top:14px">
+      <strong>Limitations.</strong> 166 former members no longer trade (taken over or bankrupt) and have no SEC ticker or Yahoo
+      history, so they are missing. Failures among them would have flattered cheap stocks, takeovers would have helped both ends.
+      The model's settings were calibrated in 2026 against a reference provider's values, not against returns, but they were still chosen
+      with hindsight. Banks and insurers are valued like other companies. No trading costs. Past results don't predict future ones.
+    </div>
+    <p class="muted small">23352 stock-quarters, 591 companies. Prices to 2026-10-09.
+      Data: <code>generated/fairvalue/backtest/</code>. Rebuild with <code>mise run backtest</code> in <code>fairvalue/</code>.</p>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">Fundamentals from SEC EDGAR XBRL filings; prices and dividends from Yahoo Finance; CPI from FRED.
+      Metrics follow Fair Value definitions where published. Fair Value and Quality Score are Fair Value reconstructions, not Fair Value's numbers.
+      Generated 10 Oct 2026. Nothing here is investment advice.</div>
+  </footer>
+
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<script>
+  const D = {"generated": "2026-10-10", "meta": {"universe": 778, "missing": 166, "failed": 0, "renames": {"ABC": "COR", "ANTM": "ELV", "ARNC": "HWM", "BHGE": "BKR", "CTL": "LUMN", "DISCA": "WBD", "DISCK": "WBD", "DWDP": "DD", "FB": "META", "FLT": "CPAY", "HRS": "LHX", "NLOK": "GEN", "PKI": "RVTY", "RE": "EG", "TMK": "GL", "UTX": "RTX"}, "last_day": "2026-10-09", "tickers_valued": 591, "observations": 23352, "skips": {"valued": 23352, "delisted (no data)": 3365, "no valuation": 715, "no fair value": 143, "stale filings": 66}}, "coverage": {"dates": ["2013-03-31", "2013-06-30", "2013-09-30", "2013-12-31", "2014-03-31", "2014-06-30", "2014-09-30", "2014-12-31", "2015-03-31", "2015-06-30", "2015-09-30", "2015-12-31", "2016-03-31", "2016-06-30", "2016-09-30", "2016-12-31", "2017-03-31", "2017-06-30", "2017-09-30", "2017-12-31", "2018-03-31", "2018-06-30", "2018-09-30", "2018-12-31", "2019-03-31", "2019-06-30", "2019-09-30", "2019-12-31", "2020-03-31", "2020-06-30", "2020-09-30", "2020-12-31", "2021-03-31", "2021-06-30", "2021-09-30", "2021-12-31", "2022-03-31", "2022-06-30", "2022-09-30", "2022-12-31", "2023-03-31", "2023-06-30", "2023-09-30", "2023-12-31", "2024-03-31", "2024-06-30", "2024-09-30", "2024-12-31", "2025-03-31", "2025-06-30", "2025-09-30", "2025-12-31", "2026-03-31", "2026-06-30", "2026-09-30"], "members": [497, 497, 497, 497, 497, 498, 498, 498, 499, 498, 502, 501, 504, 504, 505, 505, 505, 505, 505, 504, 505, 505, 504, 504, 504, 504, 504, 504, 504, 504, 504, 504, 504, 504, 504, 504, 504, 503, 503, 503, 503, 503, 503, 503, 503, 503, 504, 503, 503, 503, 503, 503, 503, 503, 503], "valued": [337, 339, 340, 339, 345, 345, 350, 350, 357, 361, 364, 367, 375, 381, 387, 387, 394, 397, 401, 405, 410, 412, 414, 422, 423, 422, 429, 435, 441, 445, 444, 445, 451, 453, 455, 457, 461, 464, 463, 470, 470, 471, 470, 473, 475, 477, 475, 480, 484, 485, 488, 488, 491, 493, 495]}, "signals": {"gap": {"label": "Valuation gap", "horizons": {"3m": {"dates": 54, "first": "2013-03-31", "last": "2026-06-30", "stocks_per_date": 423, "universe": 0.032719, "excess": [0.000586, 0.000796, 0.001345, -0.002098, -0.000594], "spread": 0.00118, "spread_t": 0.117464, "hit_rate": 0.481481, "ic": 0.01124, "ic_t": 0.504057, "ic_positive": 0.537037}, "6m": {"dates": 53, "first": "2013-03-31", "last": "2026-03-31", "stocks_per_date": 422, "universe": 0.065773, "excess": [0.003633, 0.00087, 0.000277, -0.004156, -0.000587], "spread": 0.00422, "spread_t": 0.212877, "hit_rate": 0.433962, "ic": 0.011602, "ic_t": 0.401066, "ic_positive": 0.45283}, "12m": {"dates": 51, "first": "2013-03-31", "last": "2025-09-30", "stocks_per_date": 419, "universe": 0.132694, "excess": [0.018215, 0.010469, -0.00484, -0.014447, -0.00923], "spread": 0.027445, "spread_t": 0.709011, "hit_rate": 0.470588, "ic": 0.037155, "ic_t": 0.907436, "ic_positive": 0.509804}, "36m": {"dates": 43, "first": "2013-03-31", "last": "2023-09-30", "stocks_per_date": 408, "universe": 0.413581, "excess": [-0.024366, -0.003703, 0.004409, 0.009348, 0.0142], "spread": -0.038566, "spread_t": -0.537706, "hit_rate": 0.325581, "ic": -0.028817, "ic_t": -0.901653, "ic_positive": 0.348837}}, "by_year": {"2013": 0.007634, "2014": 0.001639, "2015": 0.012998, "2016": 0.135857, "2017": -0.02999, "2018": -0.023755, "2019": -0.206192, "2020": 0.457652, "2021": 0.167062, "2022": 0.16212, "2023": -0.127656, "2024": -0.140646, "2025": -0.089063}, "cumulative": {"dates": ["2013-03-31", "2013-06-30", "2013-09-30", "2013-12-30", "2014-03-31", "2014-06-30", "2014-09-30", "2014-12-30", "2015-03-31", "2015-06-30", "2015-09-30", "2015-12-30", "2016-03-31", "2016-06-30", "2016-09-30", "2016-12-30", "2017-03-31", "2017-06-30", "2017-09-30", "2017-12-30", "2018-03-31", "2018-06-30", "2018-09-30", "2018-12-30", "2019-03-31", "2019-06-30", "2019-09-30", "2019-12-30", "2020-03-31", "2020-06-30", "2020-09-30", "2020-12-30", "2021-03-31", "2021-06-30", "2021-09-30", "2021-12-30", "2022-03-31", "2022-06-30", "2022-09-30", "2022-12-30", "2023-03-31", "2023-06-30", "2023-09-30", "2023-12-30", "2024-03-31", "2024-06-30", "2024-09-30", "2024-12-30", "2025-03-31", "2025-06-30", "2025-09-30", "2025-12-30", "2026-03-31", "2026-06-30", "2026-09-30"], "curves": {"q1": [1.0, 1.037731, 1.120108, 1.213453, 1.255997, 1.298171, 1.320021, 1.422535, 1.432141, 1.406725, 1.21476, 1.230787, 1.325128, 1.315997, 1.475126, 1.57295, 1.680777, 1.706832, 1.745887, 1.866232, 1.796184, 1.892018, 1.968104, 1.634102, 1.93736, 1.973048, 1.949013, 2.185156, 1.378978, 1.781554, 1.783774, 2.400105, 2.807702, 2.99847, 2.959118, 3.211302, 3.291942, 2.789559, 2.63137, 2.882815, 3.213512, 3.378819, 3.126005, 3.619146, 3.729041, 3.537332, 3.855826, 3.70792, 3.70181, 3.809302, 3.926942, 4.128721, 3.933826, 4.170925, 4.352547], "q2": [1.0, 1.045687, 1.118077, 1.223883, 1.271768, 1.350466, 1.334699, 1.467074, 1.498284, 1.496736, 1.405137, 1.478844, 1.522142, 1.554522, 1.666006, 1.830042, 1.943894, 1.996559, 2.076463, 2.21135, 2.171509, 2.173607, 2.288001, 1.986525, 2.230921, 2.33678, 2.352683, 2.582202, 1.861894, 2.246757, 2.390336, 2.820062, 3.12424, 3.299335, 3.307895, 3.616241, 3.560258, 3.146556, 2.962758, 3.333583, 3.492956, 3.670911, 3.539085, 3.936508, 4.175458, 4.023948, 4.485241, 4.340195, 4.338719, 4.457235, 4.584159, 4.645597, 4.639045, 5.019179, 5.065144], "q3": [1.0, 1.040092, 1.101531, 1.201862, 1.244077, 1.30189, 1.293621, 1.401733, 1.437323, 1.424351, 1.367482, 1.433825, 1.463295, 1.490277, 1.551611, 1.606087, 1.717077, 1.770937, 1.855279, 1.97155, 1.964621, 1.984184, 2.08597, 1.854368, 2.126523, 2.212438, 2.272665, 2.430254, 1.808213, 2.160419, 2.34934, 2.642088, 2.961366, 3.223251, 3.223574, 3.5837, 3.404091, 2.995204, 2.893945, 3.277926, 3.331002, 3.471672, 3.347633, 3.753368, 4.111732, 4.023256, 4.436381, 4.4518, 4.513912, 4.700668, 4.946679, 4.961534, 4.977918, 5.506369, 5.309225], "q4": [1.0, 1.03223, 1.105052, 1.220359, 1.253511, 1.309489, 1.299943, 1.391133, 1.432083, 1.434508, 1.338882, 1.440849, 1.509891, 1.566526, 1.584584, 1.602289, 1.685153, 1.742232, 1.822684, 1.941541, 1.967082, 1.993832, 2.108176, 1.822603, 2.085447, 2.185618, 2.236592, 2.300285, 1.786613, 2.083894, 2.294193, 2.59665, 2.767992, 3.021622, 3.008749, 3.342423, 3.247306, 2.786935, 2.627336, 3.000909, 3.047338, 3.158879, 2.959371, 3.296759, 3.596221, 3.506524, 3.831511, 3.680881, 3.670182, 3.981638, 4.196025, 4.221711, 4.287965, 4.634456, 4.439535], "q5": [1.0, 1.01591, 1.077602, 1.200134, 1.228904, 1.291815, 1.287951, 1.353965, 1.364754, 1.342078, 1.294393, 1.383077, 1.405312, 1.484284, 1.471388, 1.476727, 1.530126, 1.565928, 1.647407, 1.774109, 1.781338, 1.833891, 2.008351, 1.675548, 1.92461, 2.017481, 2.065327, 2.157032, 1.787971, 2.107058, 2.287452, 2.520735, 2.730432, 2.827997, 2.79371, 2.99812, 2.770628, 2.278052, 2.21459, 2.430689, 2.407675, 2.51351, 2.440713, 2.674417, 3.023023, 3.036715, 3.251889, 3.238766, 3.098352, 3.443342, 3.646913, 3.788043, 3.963297, 4.924905, 4.748744], "universe": [1.0, 1.034292, 1.104373, 1.211961, 1.250842, 1.310327, 1.30732, 1.407151, 1.432711, 1.420434, 1.324034, 1.392716, 1.445622, 1.482204, 1.552133, 1.618588, 1.711696, 1.756668, 1.830076, 1.95408, 1.93773, 1.979345, 2.096901, 1.797739, 2.066747, 2.150584, 2.180332, 2.337475, 1.730551, 2.089797, 2.231538, 2.625103, 2.91266, 3.110387, 3.093722, 3.387146, 3.288533, 2.822303, 2.69025, 3.009457, 3.120637, 3.261177, 3.105695, 3.479005, 3.762976, 3.66542, 4.010514, 3.921824, 3.894923, 4.124133, 4.309437, 4.40641, 4.421536, 4.928344, 4.867968], "spy": [1.0, 1.029336, 1.083329, 1.19167, 1.211986, 1.2745, 1.288968, 1.36565, 1.377632, 1.380473, 1.291903, 1.396721, 1.415259, 1.450058, 1.50486, 1.564345, 1.656985, 1.707867, 1.783266, 1.903813, 1.884856, 1.951825, 2.10117, 1.801281, 2.044879, 2.131364, 2.168805, 2.357949, 1.899883, 2.28299, 2.48945, 2.777072, 2.953483, 3.200517, 3.218972, 3.584351, 3.418838, 2.868027, 2.726686, 2.933009, 3.151901, 3.425541, 3.315238, 3.701144, 4.085784, 4.264722, 4.510025, 4.639064, 4.441117, 4.919779, 5.319252, 5.501637, 5.261392, 6.056936, 6.200914]}, "cagr": {"q1": 0.115098, "q2": 0.127692, "q3": 0.131631, "q4": 0.116734, "q5": 0.122317, "universe": 0.124381, "spy": 0.144719}}}, "quality": {"label": "Quality Score", "horizons": {"3m": {"dates": 54, "first": "2013-03-31", "last": "2026-06-30", "stocks_per_date": 423, "universe": 0.032719, "excess": [0.002229, 0.001227, -0.000914, -0.000771, -0.001777], "spread": 0.004006, "spread_t": 0.574718, "hit_rate": 0.555556, "ic": 0.030559, "ic_t": 1.74471, "ic_positive": 0.555556}, "6m": {"dates": 53, "first": "2013-03-31", "last": "2026-03-31", "stocks_per_date": 422, "universe": 0.065773, "excess": [0.004835, 0.001265, 0.0005, -0.002687, -0.003864], "spread": 0.008699, "spread_t": 0.651235, "hit_rate": 0.566038, "ic": 0.039585, "ic_t": 1.826051, "ic_positive": 0.679245}, "12m": {"dates": 51, "first": "2013-03-31", "last": "2025-09-30", "stocks_per_date": 419, "universe": 0.132694, "excess": [0.012096, 0.000302, -0.001829, -0.001889, -0.00855], "spread": 0.020646, "spread_t": 0.762471, "hit_rate": 0.607843, "ic": 0.049361, "ic_t": 1.710025, "ic_positive": 0.588235}, "36m": {"dates": 43, "first": "2013-03-31", "last": "2023-09-30", "stocks_per_date": 408, "universe": 0.413581, "excess": [0.071074, 0.01962, -0.008373, -0.028469, -0.053138], "spread": 0.124212, "spread_t": 1.523162, "hit_rate": 0.72093, "ic": 0.096156, "ic_t": 2.079379, "ic_positive": 0.767442}}, "by_year": {"2013": -0.000807, "2014": 0.088795, "2015": -0.051971, "2016": 0.03457, "2017": 0.110777, "2018": 0.053824, "2019": 0.248803, "2020": -0.041417, "2021": -0.042755, "2022": 0.121741, "2023": 0.024221, "2024": -0.102259, "2025": -0.24038}, "cumulative": {"dates": ["2013-03-31", "2013-06-30", "2013-09-30", "2013-12-30", "2014-03-31", "2014-06-30", "2014-09-30", "2014-12-30", "2015-03-31", "2015-06-30", "2015-09-30", "2015-12-30", "2016-03-31", "2016-06-30", "2016-09-30", "2016-12-30", "2017-03-31", "2017-06-30", "2017-09-30", "2017-12-30", "2018-03-31", "2018-06-30", "2018-09-30", "2018-12-30", "2019-03-31", "2019-06-30", "2019-09-30", "2019-12-30", "2020-03-31", "2020-06-30", "2020-09-30", "2020-12-30", "2021-03-31", "2021-06-30", "2021-09-30", "2021-12-30", "2022-03-31", "2022-06-30", "2022-09-30", "2022-12-30", "2023-03-31", "2023-06-30", "2023-09-30", "2023-12-30", "2024-03-31", "2024-06-30", "2024-09-30", "2024-12-30", "2025-03-31", "2025-06-30", "2025-09-30", "2025-12-30", "2026-03-31", "2026-06-30", "2026-09-30"], "curves": {"q1": [1.0, 1.017092, 1.091156, 1.189304, 1.235218, 1.260733, 1.28612, 1.395094, 1.42527, 1.404907, 1.290051, 1.336146, 1.359136, 1.327054, 1.408364, 1.434816, 1.53173, 1.596375, 1.672218, 1.810173, 1.845311, 1.924186, 2.050604, 1.73468, 2.0284, 2.095257, 2.099902, 2.343732, 1.932372, 2.388518, 2.571654, 3.024328, 3.288675, 3.628447, 3.684744, 4.160272, 3.73602, 3.144066, 3.032729, 3.297685, 3.604913, 3.796098, 3.660891, 4.183808, 4.567642, 4.414846, 4.758502, 4.850982, 4.682787, 5.152491, 5.149496, 5.18683, 4.887903, 5.366799, 5.433249], "q2": [1.0, 1.057356, 1.157101, 1.275819, 1.306925, 1.396329, 1.393598, 1.490458, 1.548904, 1.539507, 1.460659, 1.531762, 1.590895, 1.587834, 1.654727, 1.706057, 1.796105, 1.879943, 1.954091, 2.096608, 2.07413, 2.090746, 2.253046, 1.926967, 2.210606, 2.328103, 2.372005, 2.527037, 1.810503, 2.232486, 2.446177, 2.792638, 3.067766, 3.28877, 3.317801, 3.691848, 3.450702, 2.98417, 2.85704, 3.257559, 3.399099, 3.586303, 3.412009, 3.782558, 4.149381, 3.940467, 4.328076, 4.151717, 4.141827, 4.336237, 4.551396, 4.738914, 4.684286, 5.090214, 5.10078], "q3": [1.0, 1.033646, 1.105787, 1.209478, 1.220975, 1.27209, 1.269351, 1.368121, 1.400164, 1.376645, 1.25619, 1.34865, 1.411113, 1.455484, 1.542691, 1.637391, 1.768903, 1.815171, 1.900822, 2.019495, 1.999214, 1.990742, 2.100549, 1.837592, 2.08042, 2.177485, 2.22308, 2.387112, 1.764155, 2.091947, 2.259181, 2.597045, 2.861069, 3.051078, 3.021879, 3.289268, 3.2063, 2.751037, 2.628315, 2.986304, 3.034356, 3.192909, 3.04982, 3.353778, 3.626574, 3.548943, 3.833504, 3.707783, 3.690364, 3.96245, 4.16433, 4.206345, 4.2469, 4.755033, 4.662712], "q4": [1.0, 1.036647, 1.082742, 1.204388, 1.252411, 1.311702, 1.31732, 1.431851, 1.438646, 1.412932, 1.351271, 1.450384, 1.503078, 1.571439, 1.655063, 1.731401, 1.84008, 1.883794, 1.912976, 2.05214, 2.021339, 2.038385, 2.154785, 1.864669, 2.114256, 2.209961, 2.242294, 2.354848, 1.719246, 2.031716, 2.163573, 2.563012, 2.834971, 3.019735, 2.971462, 3.257336, 3.250557, 2.870735, 2.717306, 3.012547, 3.094381, 3.126824, 2.969445, 3.372225, 3.658282, 3.584776, 3.921046, 3.785923, 3.806491, 3.909397, 4.138964, 4.227516, 4.334222, 4.779371, 4.704252], "q5": [1.0, 1.026843, 1.08583, 1.181855, 1.238742, 1.31246, 1.270741, 1.350581, 1.353026, 1.369269, 1.266408, 1.301595, 1.368217, 1.471012, 1.500028, 1.584552, 1.623122, 1.611394, 1.706509, 1.789148, 1.743571, 1.834986, 1.911387, 1.615378, 1.883031, 1.929675, 1.953697, 2.061977, 1.426257, 1.713415, 1.750928, 2.153628, 2.4853, 2.567004, 2.501822, 2.621259, 2.747446, 2.318204, 2.184319, 2.447988, 2.459855, 2.593505, 2.440745, 2.719633, 2.864691, 2.852295, 3.195764, 3.12545, 3.131775, 3.277913, 3.494092, 3.606938, 3.790464, 4.41819, 4.239682], "universe": [1.0, 1.034292, 1.104373, 1.211961, 1.250842, 1.310327, 1.30732, 1.407151, 1.432711, 1.420434, 1.324034, 1.392716, 1.445622, 1.482204, 1.552133, 1.618588, 1.711696, 1.756668, 1.830076, 1.95408, 1.93773, 1.979345, 2.096901, 1.797739, 2.066747, 2.150584, 2.180332, 2.337475, 1.730551, 2.089797, 2.231538, 2.625103, 2.91266, 3.110387, 3.093722, 3.387146, 3.288533, 2.822303, 2.69025, 3.009457, 3.120637, 3.261177, 3.105695, 3.479005, 3.762976, 3.66542, 4.010514, 3.921824, 3.894923, 4.124133, 4.309437, 4.40641, 4.421536, 4.928344, 4.867968], "spy": [1.0, 1.029336, 1.083329, 1.19167, 1.211986, 1.2745, 1.288968, 1.36565, 1.377632, 1.380473, 1.291903, 1.396721, 1.415259, 1.450058, 1.50486, 1.564345, 1.656985, 1.707867, 1.783266, 1.903813, 1.884856, 1.951825, 2.10117, 1.801281, 2.044879, 2.131364, 2.168805, 2.357949, 1.899883, 2.28299, 2.48945, 2.777072, 2.953483, 3.200517, 3.218972, 3.584351, 3.418838, 2.868027, 2.726686, 2.933009, 3.151901, 3.425541, 3.315238, 3.701144, 4.085784, 4.264722, 4.510025, 4.639064, 4.441117, 4.919779, 5.319252, 5.501637, 5.261392, 6.056936, 6.200914]}, "cagr": {"q1": 0.133568, "q2": 0.128278, "q3": 0.120798, "q4": 0.121535, "q5": 0.11293, "universe": 0.124381, "spy": 0.144719}}}, "combo": {"label": "Gap + Quality", "horizons": {"3m": {"dates": 54, "first": "2013-03-31", "last": "2026-06-30", "stocks_per_date": 423, "universe": 0.032719, "excess": [0.001293, 0.002996, 0.000216, 0.000356, -0.004809], "spread": 0.006102, "spread_t": 0.849727, "hit_rate": 0.518519, "ic": 0.028022, "ic_t": 1.495066, "ic_positive": 0.555556}, "6m": {"dates": 53, "first": "2013-03-31", "last": "2026-03-31", "stocks_per_date": 422, "universe": 0.065773, "excess": [0.001373, 0.00627, 0.002617, -0.002281, -0.007931], "spread": 0.009303, "spread_t": 0.665851, "hit_rate": 0.54717, "ic": 0.033883, "ic_t": 1.472815, "ic_positive": 0.584906}, "12m": {"dates": 51, "first": "2013-03-31", "last": "2025-09-30", "stocks_per_date": 419, "universe": 0.132694, "excess": [0.011645, 0.011132, 0.006424, -0.008365, -0.020593], "spread": 0.032238, "spread_t": 0.990265, "hit_rate": 0.627451, "ic": 0.056213, "ic_t": 1.712148, "ic_positive": 0.666667}, "36m": {"dates": 43, "first": "2013-03-31", "last": "2023-09-30", "stocks_per_date": 408, "universe": 0.413581, "excess": [0.002876, 0.019948, 0.019985, 0.004099, -0.04647], "spread": 0.049346, "spread_t": 0.701355, "hit_rate": 0.627907, "ic": 0.040848, "ic_t": 1.30063, "ic_positive": 0.627907}}, "by_year": {"2013": 0.011487, "2014": 0.035795, "2015": -0.04101, "2016": 0.124234, "2017": 0.058726, "2018": 0.012817, "2019": 0.040214, "2020": 0.326779, "2021": 0.055716, "2022": 0.163504, "2023": -0.079803, "2024": -0.143356, "2025": -0.205422}, "cumulative": {"dates": ["2013-03-31", "2013-06-30", "2013-09-30", "2013-12-30", "2014-03-31", "2014-06-30", "2014-09-30", "2014-12-30", "2015-03-31", "2015-06-30", "2015-09-30", "2015-12-30", "2016-03-31", "2016-06-30", "2016-09-30", "2016-12-30", "2017-03-31", "2017-06-30", "2017-09-30", "2017-12-30", "2018-03-31", "2018-06-30", "2018-09-30", "2018-12-30", "2019-03-31", "2019-06-30", "2019-09-30", "2019-12-30", "2020-03-31", "2020-06-30", "2020-09-30", "2020-12-30", "2021-03-31", "2021-06-30", "2021-09-30", "2021-12-30", "2022-03-31", "2022-06-30", "2022-09-30", "2022-12-30", "2023-03-31", "2023-06-30", "2023-09-30", "2023-12-30", "2024-03-31", "2024-06-30", "2024-09-30", "2024-12-30", "2025-03-31", "2025-06-30", "2025-09-30", "2025-12-30", "2026-03-31", "2026-06-30", "2026-09-30"], "curves": {"q1": [1.0, 1.023986, 1.118886, 1.217559, 1.252384, 1.299183, 1.323868, 1.437036, 1.465933, 1.443177, 1.282577, 1.302919, 1.339671, 1.28786, 1.392179, 1.471595, 1.573186, 1.622638, 1.682546, 1.808015, 1.800134, 1.836029, 1.936982, 1.65878, 1.909291, 1.962939, 1.96079, 2.226164, 1.646909, 2.056209, 2.194494, 2.618159, 2.968193, 3.175548, 3.1791, 3.547892, 3.362131, 2.850725, 2.730755, 3.008223, 3.4175, 3.63831, 3.459992, 3.954478, 4.174632, 3.949188, 4.338484, 4.356882, 4.244714, 4.556862, 4.626873, 4.789862, 4.456612, 4.73908, 5.007961], "q2": [1.0, 1.054294, 1.135519, 1.234947, 1.284503, 1.334421, 1.340782, 1.446913, 1.509565, 1.510775, 1.417967, 1.495396, 1.555626, 1.557254, 1.678051, 1.752302, 1.870547, 1.932211, 1.996205, 2.152436, 2.137436, 2.17242, 2.325174, 2.021457, 2.342456, 2.450488, 2.492146, 2.678412, 1.882598, 2.292882, 2.441412, 2.984676, 3.333669, 3.646918, 3.664012, 4.035884, 3.941366, 3.368302, 3.205729, 3.603775, 3.746893, 3.87891, 3.690262, 4.222315, 4.568988, 4.366407, 4.75712, 4.642495, 4.733953, 4.863162, 5.063409, 5.120382, 5.022997, 5.553015, 5.53614], "q3": [1.0, 1.043742, 1.095567, 1.200625, 1.236624, 1.3068, 1.288956, 1.391998, 1.391224, 1.360988, 1.25068, 1.315474, 1.408094, 1.470579, 1.558346, 1.646311, 1.74747, 1.799035, 1.872784, 1.974161, 1.920387, 1.985931, 2.050008, 1.723811, 1.993233, 2.063725, 2.063074, 2.209819, 1.574942, 1.984735, 2.074102, 2.602146, 2.851982, 3.061642, 3.046301, 3.340907, 3.271983, 2.917028, 2.757041, 3.096074, 3.177009, 3.367801, 3.216417, 3.607432, 3.934852, 3.862448, 4.188685, 3.976205, 3.969846, 4.152817, 4.324425, 4.437852, 4.559063, 4.9448, 4.759898], "q4": [1.0, 1.03207, 1.100275, 1.218774, 1.258877, 1.323781, 1.304032, 1.41587, 1.435245, 1.435954, 1.388502, 1.49495, 1.532908, 1.636639, 1.687687, 1.764228, 1.874269, 1.937085, 2.029569, 2.178142, 2.197992, 2.245973, 2.383289, 2.044563, 2.338007, 2.444805, 2.499458, 2.627287, 1.96483, 2.368012, 2.558626, 2.877068, 3.131385, 3.36023, 3.352935, 3.685603, 3.51208, 3.052897, 2.905112, 3.251116, 3.204673, 3.304854, 3.119458, 3.415855, 3.675523, 3.63981, 3.990001, 3.88214, 3.835397, 4.068733, 4.292169, 4.321199, 4.50607, 5.177069, 4.996186], "q5": [1.0, 1.017479, 1.072111, 1.187641, 1.221767, 1.286823, 1.278238, 1.344033, 1.363232, 1.354062, 1.282659, 1.359537, 1.394046, 1.466688, 1.447971, 1.464214, 1.50466, 1.510693, 1.586332, 1.679509, 1.658713, 1.683779, 1.81571, 1.565393, 1.782358, 1.866758, 1.924962, 1.9803, 1.581313, 1.750884, 1.893711, 2.059196, 2.291217, 2.358661, 2.298897, 2.438668, 2.432655, 2.014691, 1.933516, 2.175753, 2.169433, 2.243233, 2.154012, 2.363667, 2.608036, 2.599776, 2.865026, 2.827905, 2.786584, 3.027994, 3.245644, 3.35343, 3.471337, 4.061909, 3.890589], "universe": [1.0, 1.034292, 1.104373, 1.211961, 1.250842, 1.310327, 1.30732, 1.407151, 1.432711, 1.420434, 1.324034, 1.392716, 1.445622, 1.482204, 1.552133, 1.618588, 1.711696, 1.756668, 1.830076, 1.95408, 1.93773, 1.979345, 2.096901, 1.797739, 2.066747, 2.150584, 2.180332, 2.337475, 1.730551, 2.089797, 2.231538, 2.625103, 2.91266, 3.110387, 3.093722, 3.387146, 3.288533, 2.822303, 2.69025, 3.009457, 3.120637, 3.261177, 3.105695, 3.479005, 3.762976, 3.66542, 4.010514, 3.921824, 3.894923, 4.124133, 4.309437, 4.40641, 4.421536, 4.928344, 4.867968], "spy": [1.0, 1.029336, 1.083329, 1.19167, 1.211986, 1.2745, 1.288968, 1.36565, 1.377632, 1.380473, 1.291903, 1.396721, 1.415259, 1.450058, 1.50486, 1.564345, 1.656985, 1.707867, 1.783266, 1.903813, 1.884856, 1.951825, 2.10117, 1.801281, 2.044879, 2.131364, 2.168805, 2.357949, 1.899883, 2.28299, 2.48945, 2.777072, 2.953483, 3.200517, 3.218972, 3.584351, 3.418838, 2.868027, 2.726686, 2.933009, 3.151901, 3.425541, 3.315238, 3.701144, 4.085784, 4.264722, 4.510025, 4.639064, 4.441117, 4.919779, 5.319252, 5.501637, 5.261392, 6.056936, 6.200914]}, "cagr": {"q1": 0.126744, "q2": 0.135144, "q3": 0.122512, "q4": 0.126548, "q5": 0.105869, "universe": 0.124381, "spy": 0.144719}}}}, "latest_date": "2026-09-30"};
+  const NAMES = {
+    gap: ["Most undervalued", "Undervalued", "Middle", "Overvalued", "Most overvalued"],
+    quality: ["Highest score", "High", "Middle", "Low", "Lowest score"],
+    combo: ["Best combined", "Good", "Middle", "Weak", "Worst combined"],
+  };
+  const HORIZONS = ["3m", "6m", "12m", "36m"];
+  const state = { signal: "gap", horizon: "12m" };
+  const pct = (v, d = 1) => v === null || v === undefined ? "–" : (v >= 0 ? "+" : "−") + Math.abs(v * 100).toFixed(d) + "%";
+  const months = h => h.replace("m", " months");
+  const verdict = (v, text) => `<span class="verdict ${v >= 0 ? "under" : "over"}">${text}</span>`;
+  const tstat = t => t === null || t === undefined ? "" : `t = ${t.toFixed(1)}${Math.abs(t) < 2 ? " · not significant" : ""}`;
+
+  function draw() {
+    const C = Nexus.colors;
+    const sig = D.signals[state.signal], h = sig.horizons[state.horizon], names = NAMES[state.signal];
+    document.querySelectorAll("[data-signal]").forEach(b => b.setAttribute("aria-pressed", b.dataset.signal === state.signal));
+    document.querySelectorAll("[data-horizon]").forEach(b => b.setAttribute("aria-pressed", b.dataset.horizon === state.horizon));
+    if (!h) return;
+
+    document.getElementById("k-spread").textContent = pct(h.spread);
+    document.getElementById("k-spread-sub").innerHTML = `${verdict(h.spread, names[0])} vs ${names[4].toLowerCase()} · ${tstat(h.spread_t)}`;
+    document.getElementById("k-hit").textContent = Math.round(h.hit_rate * 100) + "%";
+    document.getElementById("k-hit-sub").textContent = `of ${h.dates} quarters, ${h.first.slice(0, 4)}–${h.last.slice(0, 4)}`;
+    document.getElementById("k-ic").textContent = h.ic.toFixed(3);
+    document.getElementById("k-ic-sub").textContent = `positive in ${Math.round(h.ic_positive * 100)}% of quarters · ${tstat(h.ic_t)}`;
+    document.getElementById("k-n").textContent = h.stocks_per_date;
+    document.getElementById("k-n-sub").textContent = `per quarter · average ${months(state.horizon)} return ${pct(h.universe)}`;
+
+    document.getElementById("q-title").textContent = `Average excess return over the next ${months(state.horizon)}`;
+    Plotly.react("chart-q", [{
+      type: "bar", x: names, y: h.excess.map(v => v * 100),
+      marker: { color: h.excess.map(v => v >= 0 ? C.positive : C.negative), cornerradius: 3 },
+      hovertemplate: "%{x}<br>%{y:+.2f} points vs average<extra></extra>",
+    }], Nexus.plotlyLayout({ showlegend: false, yaxis: { ticksuffix: "%", zeroline: true, zerolinecolor: C.zeroLine } }), Nexus.plotlyConfig);
+
+    const cum = sig.cumulative;
+    if (cum) {
+      const line = (key, name, color, width) => ({ type: "scatter", mode: "lines", x: cum.dates, y: cum.curves[key], name,
+        line: { color, width }, hovertemplate: "%{x|%b %Y}<br>" + name + ": $%{y:.2f}<extra></extra>" });
+      Plotly.react("chart-cum", [
+        line("spy", "SPY", C.accent, 1.5), line("universe", "All ranked stocks", C.neutral, 1.5),
+        line("q5", names[4], C.negative, 2), line("q1", names[0], C.positive, 2),
+      ], Nexus.plotlyLayout({ showlegend: false, hovermode: "x unified", yaxis: { type: "log", tickprefix: "$" } }), Nexus.plotlyConfig);
+      document.getElementById("lg-top").textContent = names[0];
+      document.getElementById("lg-bottom").textContent = names[4];
+      const rows = [["q1", names[0]], ["q2", names[1]], ["q3", names[2]], ["q4", names[3]], ["q5", names[4]], ["universe", "All ranked stocks"], ["spy", "SPY"]];
+      document.getElementById("cagr").innerHTML = rows.map(([k, n]) => {
+        const c = cum.curves[k];
+        return `<tr><td>${n}</td><td class="num">${pct(cum.cagr[k])}</td><td class="num">$${c[c.length - 1].toFixed(2)}</td></tr>`;
+      }).join("");
+    }
+
+    const years = Object.keys(sig.by_year), ys = Object.values(sig.by_year);
+    Plotly.react("chart-year", [{
+      type: "bar", x: years, y: ys.map(v => v * 100),
+      marker: { color: ys.map(v => v >= 0 ? C.positive : C.negative), cornerradius: 3 },
+      hovertemplate: "Signals in %{x}<br>%{y:+.1f} points<extra></extra>",
+    }], Nexus.plotlyLayout({ showlegend: false, yaxis: { ticksuffix: "%" } }), Nexus.plotlyConfig);
+
+    document.getElementById("grid").innerHTML = names.map((n, i) => `<tr><td>${n}</td>` + HORIZONS.map(hz => {
+      const x = sig.horizons[hz]; if (!x) return `<td class="num dim">–</td>`;
+      const v = x.excess[i];
+      return `<td class="num"><span class="${v >= 0 ? "pos" : "neg"}">${pct(v)}</span></td>`;
+    }).join("") + "</tr>").join("") +
+      `<tr><td><strong>Top minus bottom</strong></td>` + HORIZONS.map(hz => {
+        const x = sig.horizons[hz]; if (!x) return `<td class="num dim">–</td>`;
+        return `<td class="num"><strong class="${x.spread >= 0 ? "pos" : "neg"}">${pct(x.spread)}</strong><div class="muted small">${tstat(x.spread_t).replace(" · not significant", "")}</div></td>`;
+      }).join("") + "</tr>";
+  }
+
+  function drawCoverage() {
+    const C = Nexus.colors, cv = D.coverage;
+    const line = (y, name, color) => ({ type: "scatter", mode: "lines", x: cv.dates, y, name, line: { color, width: 2 },
+      hovertemplate: "%{x|%b %Y}<br>" + name + ": %{y}<extra></extra>" });
+    Plotly.newPlot("chart-cov", [line(cv.members, "Index members", C.neutral), line(cv.valued, "Valued", C.accent)],
+      Nexus.plotlyLayout({ showlegend: false, hovermode: "x unified", yaxis: { rangemode: "tozero" } }), Nexus.plotlyConfig);
+  }
+
+  document.querySelectorAll("[data-signal]").forEach(b => b.addEventListener("click", () => { state.signal = b.dataset.signal; draw(); }));
+  document.querySelectorAll("[data-horizon]").forEach(b => b.addEventListener("click", () => { state.horizon = b.dataset.horizon; draw(); }));
+  draw(); drawCoverage();
+  window.addEventListener("load", () => document.querySelectorAll(".js-plotly-plot").forEach(el => Plotly.Plots.resize(el)));
+</script>
+
+</body>
+</html>

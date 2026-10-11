@@ -21,6 +21,10 @@ run = "python -m fvmodel analyze"
 description = "Compare our metrics against the Fair Value reference file"
 run = "python -m fvmodel compare"
 
+[tasks.backtest]
+description = "Point-in-time backtest on the S&P 500 -> ../docs/fairvalue/backtest.html (add -- --from-panel to only redo the statistics)"
+run = "python -m fvmodel backtest --workers 10"
+
 [tasks.serve]
 description = "Serve the generated site on http://localhost:8100 (override with FVMODEL_PORT)"
 run = "python -m http.server ${FVMODEL_PORT:-8100} --bind 127.0.0.1 -d site"
