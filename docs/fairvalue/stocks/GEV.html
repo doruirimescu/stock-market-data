@@ -31,6 +31,7 @@
         <a href="../../nasdaq_today.html?source=fairvalue">NASDAQ-100</a>
         <a href="../index.html" class="active">Fair Value stocks</a>
         <a href="../validation.html" >Validation</a>
+        <a href="../backtest.html" >Backtest</a>
       </nav>
     </div>
   </header>
@@ -41,16 +42,16 @@
     <h1>GE Vernova Inc. <span class="gradient-text">GEV</span></h1>
     
     <p class="lead">Price <span class="hl-accent">$1004.73</span> on 09 Oct 2026.
-      The Fair Value is <span class="hl-accent">$630.55</span>, so the stock looks <mark>significantly overvalued</mark> at 1.59× its fair value.</p>
+      The Fair Value is <span class="hl-accent">$1076.64</span>, so the stock looks <mark>fairly valued</mark> at 0.93× its fair value.</p>
 
     <div class="kpis">
       <div class="panel kpi"><div class="label">Price</div><div class="value">$1004.73</div>
         <div class="sub">14.48% below 52-week high</div></div>
-      <div class="panel kpi"><div class="label">Fair Value</div><div class="value">$630.55</div>
-        <div class="sub"><span class="verdict over">Significantly Overvalued</span></div></div>
+      <div class="panel kpi"><div class="label">Fair Value</div><div class="value">$1,076.64</div>
+        <div class="sub"><span class="verdict ">Fairly Valued</span></div></div>
       
-      <div class="panel kpi"><div class="label">Fair Value Score</div><div class="value">74</div>
-        <div class="sub"><span class="verdict ">Average outperformance potential</span></div></div>
+      <div class="panel kpi"><div class="label">Fair Value Score</div><div class="value">89</div>
+        <div class="sub"><span class="verdict under">Good outperformance potential</span></div></div>
       <div class="panel kpi"><div class="label">Market cap</div><div class="value">$267.59B</div>
         <div class="sub">EV $258.19B · yield 0.17%</div></div>
       <div class="panel kpi"><div class="label">PE (TTM)</div><div class="value">28.81</div>
@@ -77,8 +78,8 @@
           <div class="dist-count">–</div></div>
         
         <div class="dist-row"><div class="dist-label">Fair Value Rank</div>
-          <div class="dist-track"><div class="dist-bar" style="width:20%;background:var(--over)"></div></div>
-          <div class="dist-count">2</div></div>
+          <div class="dist-track"><div class="dist-bar" style="width:100%;background:var(--under)"></div></div>
+          <div class="dist-count">10</div></div>
         
         <div class="dist-row"><div class="dist-label">Momentum Rank</div>
           <div class="dist-track"><div class="dist-bar" style="width:100%;background:var(--under)"></div></div>
@@ -91,7 +92,7 @@
   <h3 class="panel-title">Valuation verdicts</h3>
   <div class="table-wrap"><table class="data metric-table"><tbody>
   
-<tr><td>Price-to-Fair Value</td><td class="num">1.59 <span class="verdict over">Significantly Overvalued</span></td></tr>
+<tr><td>Price-to-Fair Value</td><td class="num">0.93 <span class="verdict ">Fairly Valued</span></td></tr>
 <tr><td>Altman Z-Score</td><td class="num">3.28 <span class="verdict under">Safe zone</span></td></tr>
 <tr><td>Beneish M-Score</td><td class="num">-2.27 <span class="verdict under">Unlikely manipulator</span></td></tr>
 <tr><td>ROIC</td><td class="num">2.99% <span class="verdict over">ROIC &lt; WACC</span></td></tr>
@@ -286,8 +287,12 @@
           <thead><tr><th>Model</th><th class="num">Value</th><th class="num">Price / value</th></tr></thead><tbody>
           
           
-          <tr><td>Fair Value (Fair Value)</td><td class="num">$630.55</td>
-            <td class="num"><span class="verdict over">1.59× over</span></td></tr>
+          <tr><td>Fair Value (Fair Value)</td><td class="num">$1,076.64</td>
+            <td class="num"><span class="verdict ">0.93× fair</span></td></tr>
+          
+          
+          <tr><td>IV15 (15% Hurdle Value)</td><td class="num">$1,382.00</td>
+            <td class="num"><span class="verdict under">0.73× under</span></td></tr>
           
           
           <tr><td>DCF (Earnings Based)</td><td class="num">$373.27</td>
@@ -328,6 +333,48 @@
       </div>
     </div>
 
+    
+    <h2 class="section">Reverse DCF and IV15</h2>
+    <p class="muted">What growth does the price already assume? Both models start from owner free cash flow: FCF minus
+      stock-based compensation, per diluted share.
+      At $1004.73 the market is pricing in <mark>10.8% a year</mark> for
+      10 years.
+      To earn 15% a year from here, owner FCF would have to grow <span class="hl-accent">11.8%</span> a year for 15 years.</p>
+    <div class="two-col">
+      <div class="panel">
+        <h3 class="panel-title">What the price implies</h3>
+        <div class="table-wrap"><table class="data metric-table"><tbody>
+          
+<tr><td>Owner FCF per Share (FCF − SBC)</td><td class="num">$46.07</td></tr>
+<tr><td>Reverse DCF: Implied Growth</td><td class="num">10.81%</td></tr>
+<tr><td>Reverse DCF: Discount Rate (Cost of Equity)</td><td class="num">11.24%</td></tr>
+<tr><td>Growth Needed for a 15% Return</td><td class="num">11.77%</td></tr>
+<tr><td>IV15 (15% Hurdle Value)</td><td class="num">$1,382.00</td></tr>
+          
+          <tr><td>Price-to-IV15</td><td class="num"><span class="verdict under">0.73× under</span></td></tr>
+        </tbody></table></div>
+        <h3 class="panel-title" style="margin-top:14px">Its record (per share, fiscal years)</h3>
+        <div class="table-wrap"><table class="data metric-table"><tbody>
+          
+<tr><td>5-Year FCF per share Growth</td><td class="num">–</td></tr>
+<tr><td>10-Year FCF per share Growth</td><td class="num">–</td></tr>
+<tr><td>5-Year Revenue per share Growth</td><td class="num">–</td></tr>
+<tr><td>10-Year Revenue per share Growth</td><td class="num">–</td></tr>
+<tr><td>10-Year EPS Growth</td><td class="num">–</td></tr>
+        </tbody></table></div>
+        <p class="muted small">Reverse DCF: owner FCF grows at the implied rate for 10 years, then 3% forever,
+          discounted at the cost of equity (10-year Treasury + beta × 6%, at least 6%).
+          IV15, as in the <a href="../../iv15_calculator.html">IV15 calculator</a>: owner FCF +15%/yr for 15y, 15x exit, 15% discount.</p>
+      </div>
+      <div class="panel chart-panel" style="margin-top:0">
+        <div class="chart-head"><h3>Value per share at each growth rate</h3>
+          <div class="legend"><span><i class="sw-accent ln"></i>Reverse DCF model</span><span><i class="sw-series-2 ln"></i>IV15 model</span><span><i class="sw-neutral ln"></i>Price</span></div></div>
+        <div id="chart-growth" class="chart short"></div>
+        <p class="muted small">Where a curve crosses the price is the growth the price implies under that model. Annual owner-FCF growth on the horizontal axis.</p>
+        
+      </div>
+    </div>
+
     <h2 class="section">Financials by fiscal year</h2>
     <div class="panel chart-panel">
       <div class="chart-head"><h3>Revenue, net income and free cash flow</h3>
@@ -359,12 +406,12 @@
   <footer class="footer">
     <div class="container">Fundamentals from SEC EDGAR XBRL filings; prices and dividends from Yahoo Finance; CPI from FRED.
       Metrics follow Fair Value definitions where published. Fair Value and Quality Score are Fair Value reconstructions, not Fair Value's numbers.
-      Generated 10 Oct 2026. Nothing here is investment advice.</div>
+      Generated 11 Oct 2026. Nothing here is investment advice.</div>
   </footer>
 
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 <script>
-  const D = {"dates": ["2024-03-31", "2024-04-30", "2024-05-31", "2024-06-30", "2024-07-31", "2024-08-31", "2024-09-30", "2024-10-31", "2024-11-30", "2024-12-31", "2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "price": [136.75, 153.71, 175.9, 171.51, 178.24, 201.0, 254.98, 301.66, 334.12, 328.93, 372.88, 335.18, 305.28, 370.82, 472.98, 529.15, 660.29, 612.97, 614.9, 585.14, 599.77, 653.57, 726.37, 873.6, 872.9, 1083.46, 968.32, 1174.86, 990.29, 898.53, 950.49, 1004.73], "fair_value": [505.84, 505.84, 505.84, 499.8, 499.8, 499.8, 515.13, 515.13, 515.13, 517.18, 517.18, 517.18, 526.72, 526.72, 526.72, 545.98, 545.98, 545.98, 563.77, 563.77, 563.77, 567.65, 567.65, 567.65, 595.77, 595.77, 595.77, 630.55, 630.55, 630.55, 630.55, 630.55], "pe_dates": ["2024-03-31", "2024-04-30", "2024-05-31", "2024-06-30", "2024-07-31", "2024-08-31", "2024-09-30", "2024-10-31", "2024-11-30", "2024-12-31", "2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "pe": [null, null, null, null, 41.26, 46.53, 55.79, 66.01, 73.11, 58.95, 66.82, 60.07, 43.86, 53.28, 67.96, 128.12, 159.88, 148.42, 100.15, 95.3, 97.68, 36.95, 41.06, 49.38, 25.51, 31.66, 28.3, 33.68, 28.39, 25.76, 27.25, 28.81], "fy": ["2022", "2023", "2024", "2025"], "revenue": [29654000000.0, 33239000000.0, 34935000000.0, 38068000000.0], "net_income": [-2736000000.0, -438000000.0, 1552000000.0, 4884000000.0], "fcf": [-627000000.0, 442000000.0, 1700000000.0, 3710000000.0]};
+  const D = {"dates": ["2024-03-31", "2024-04-30", "2024-05-31", "2024-06-30", "2024-07-31", "2024-08-31", "2024-09-30", "2024-10-31", "2024-11-30", "2024-12-31", "2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "price": [136.75, 153.71, 175.9, 171.51, 178.24, 201.0, 254.98, 301.66, 334.12, 328.93, 372.88, 335.18, 305.28, 370.82, 472.98, 529.15, 660.29, 612.97, 614.9, 585.14, 599.77, 653.57, 726.37, 873.6, 872.9, 1083.46, 968.32, 1174.86, 990.29, 898.53, 950.49, 1004.73], "fair_value": [505.84, 505.84, 505.84, 394.21, 394.21, 394.21, 475.14, 475.14, 475.14, 420.06, 420.06, 420.06, 513.63, 513.63, 513.63, 478.37, 478.37, 478.37, 543.08, 543.08, 543.08, 625.76, 625.76, 625.76, 1020.72, 1020.72, 1020.72, 1071.58, 1071.58, 1071.58, 1071.58, 1071.58], "pe_dates": ["2024-03-31", "2024-04-30", "2024-05-31", "2024-06-30", "2024-07-31", "2024-08-31", "2024-09-30", "2024-10-31", "2024-11-30", "2024-12-31", "2025-01-31", "2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "pe": [null, null, null, null, 41.26, 46.53, 55.79, 66.01, 73.11, 58.95, 66.82, 60.07, 43.86, 53.28, 67.96, 128.12, 159.88, 148.42, 100.15, 95.3, 97.68, 36.95, 41.06, 49.38, 25.51, 31.66, 28.3, 33.68, 28.39, 25.76, 27.25, 28.81], "fy": ["2022", "2023", "2024", "2025"], "revenue": [29654000000.0, 33239000000.0, 34935000000.0, 38068000000.0], "net_income": [-2736000000.0, -438000000.0, 1552000000.0, 4884000000.0], "fcf": [-627000000.0, 442000000.0, 1700000000.0, 3710000000.0], "growth_curve": {"growth": [-10.0, -9.0, -8.0, -7.0, -6.0, -5.0, -4.0, -3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 29.0, 30.0, 31.0, 32.0, 33.0, 34.0, 35.0, 36.0, 37.0, 38.0, 39.0, 40.0], "reverse_dcf": [240.86, 256.51, 273.41, 291.64, 311.32, 332.57, 355.49, 380.24, 406.94, 435.75, 466.84, 500.38, 536.55, 575.55, 617.6, 662.92, 711.75, 764.35, 821.0, 881.97, 947.6, 1018.2, 1094.13, 1175.75, 1263.48, 1357.72, 1458.93, 1567.57, 1684.15, 1809.2, 1943.29, 2087.01, 2241.0, 2405.91, 2582.46, 2771.39, 2973.49, 3189.6, 3420.59, 3667.39, 3930.98, 4212.38, 4512.69, 4833.06, 5174.68, 5538.83, 5926.84, 6340.11, 6780.14, 7248.47, 7746.73], "iv15": [179.13, 190.09, 202.1, 215.27, 229.75, 245.7, 263.29, 282.7, 304.18, 327.95, 354.29, 383.51, 415.95, 452.0, 492.08, 536.66, 586.28, 641.52, 703.05, 771.58, 847.92, 932.99, 1027.76, 1133.35, 1250.98, 1382.0, 1527.91, 1690.35, 1871.16, 2072.36, 2296.15, 2545.0, 2821.59, 3128.9, 3470.2, 3849.05, 4269.42, 4735.61, 5252.37, 5824.9, 6458.9, 7160.59, 7936.81, 8794.99, 9743.3, 10790.63, 11946.7, 13222.09, 14628.35, 16178.07, 17884.94]}};
   const C = Nexus.colors;
   const GOLD = C.series2;
   const line = (x, y, name, color, extra) => Object.assign({ type: "scatter", mode: "lines", x, y, name, line: { color, width: 2 },
@@ -384,6 +431,25 @@
   Plotly.newPlot("chart-fin", [bar(D.revenue, "Revenue", C.accent), bar(D.net_income, "Net income", C.positive), bar(D.fcf, "Free cash flow", GOLD)],
     Nexus.plotlyLayout({ barmode: "group", showlegend: false, yaxis: { tickprefix: "$", ticksuffix: "B" } }), Nexus.plotlyConfig);
   // Charts are drawn before the remote stylesheet settles the layout; fit them once it has.
+  if (D.growth_curve) {
+    const G = D.growth_curve, price = 1004.73;
+    const curve = (y, name, color) => line(G.growth, y, name, color, {
+      hovertemplate: "%{x:.0f}% a year<br>" + name + ": $%{y:.2f}<extra></extra>" });
+    const top = Math.max(price * 2.5, ...G.reverse_dcf.slice(0, 11), ...G.iv15.slice(0, 11));
+    Plotly.newPlot("chart-growth", [
+      curve(G.reverse_dcf, "Reverse DCF model", C.accent), curve(G.iv15, "IV15 model", GOLD),
+      line([G.growth[0], G.growth[G.growth.length - 1]], [price, price], "Price", C.neutral,
+        { line: { color: C.neutral, width: 1.5, dash: "dash" }, hovertemplate: "Price: $%{y:.2f}<extra></extra>" }),
+      
+      { type: "scatter", mode: "markers", x: [10.81], y: [price], name: "Implied by the price",
+        marker: { color: C.accent, size: 10, line: { color: C.surface, width: 2 } },
+        hovertemplate: "Implied by the price: %{x:.1f}% a year<extra></extra>" },
+      { type: "scatter", mode: "markers", x: [11.77], y: [price], name: "Needed for 15% a year",
+        marker: { color: GOLD, size: 10, line: { color: C.surface, width: 2 } },
+        hovertemplate: "Needed for 15% a year: %{x:.1f}% a year<extra></extra>" },
+    ], Nexus.plotlyLayout({ showlegend: false, hovermode: "closest", xaxis: { ticksuffix: "%" },
+      yaxis: { tickprefix: "$", range: [0, top] } }), Nexus.plotlyConfig);
+  }
   window.addEventListener("load", () => document.querySelectorAll(".js-plotly-plot").forEach(el => Plotly.Plots.resize(el)));
 </script>
 

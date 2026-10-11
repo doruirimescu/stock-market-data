@@ -85,6 +85,9 @@ Gross, operating, net and FCF margins are each divided by TTM revenue.
 | EPV (Greenwald) | [5-year average operating margin × TTM revenue × (1 − average tax) + average D&A − average maintenance capex] / WACC + cash − debt, per share. Maintenance capex = capex − (PP&E/revenue) × revenue growth. The 25% SG&A add-back and excess-depreciation steps are omitted |
 | NCAV / NNWC | (CA − TL) / shares; (cash + 0.75·AR + 0.5·inventory − TL) / shares |
 | Forward rate of return (Yacktman) | mean FCF/share of the last 7 FYs / price + 5-year revenue/share growth clipped to [0, 20] |
+| Owner FCF per share | (TTM FCF − TTM stock-based compensation) / diluted shares. SBC is added back in operating cash flow but is a real cost to shareholders |
+| **Reverse DCF** | The growth g at which owner FCF growing at g for 10 years, then at 3% forever, discounted at the cost of equity (10Y Treasury + beta × 6%, at least 6%), equals the price. Solved by bisection on [−50%, 100%]. Compared with the company's 10-year FCF/share growth (else 5-year, else 10-year revenue/share growth). N/A for financials and when owner FCF ≤ 0. Not part of the reference provider's page |
+| **IV15** | The IV15 calculator's model (server/calculators/iv_15.py), on SEC TTM data: owner FCF grows 15% a year for 15 years, exits at 15× the last year, discounted at a 15% hurdle; with these defaults IV15 = 30 × owner FCF per share. *Growth needed for a 15% return* is the g at which IV15 equals the price |
 
 ## Momentum, dividends, liquidity
 

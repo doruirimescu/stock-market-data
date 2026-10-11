@@ -31,6 +31,7 @@
         <a href="../../nasdaq_today.html?source=fairvalue">NASDAQ-100</a>
         <a href="../index.html" class="active">Fair Value stocks</a>
         <a href="../validation.html" >Validation</a>
+        <a href="../backtest.html" >Backtest</a>
       </nav>
     </div>
   </header>
@@ -290,6 +291,10 @@
             <td class="num"><span class="verdict over">2.34× over</span></td></tr>
           
           
+          <tr><td>IV15 (15% Hurdle Value)</td><td class="num">$2,179.74</td>
+            <td class="num"><span class="verdict under">0.73× under</span></td></tr>
+          
+          
           <tr><td>DCF (Earnings Based)</td><td class="num">$789.35</td>
             <td class="num"><span class="verdict over">2.00× over</span></td></tr>
           
@@ -328,6 +333,48 @@
       </div>
     </div>
 
+    
+    <h2 class="section">Reverse DCF and IV15</h2>
+    <p class="muted">What growth does the price already assume? Both models start from owner free cash flow: FCF minus
+      stock-based compensation, per diluted share.
+      At $1581.82 the market is pricing in <mark>10.8% a year</mark> for
+      10 years.
+      To earn 15% a year from here, owner FCF would have to grow <span class="hl-accent">11.7%</span> a year for 15 years.</p>
+    <div class="two-col">
+      <div class="panel">
+        <h3 class="panel-title">What the price implies</h3>
+        <div class="table-wrap"><table class="data metric-table"><tbody>
+          
+<tr><td>Owner FCF per Share (FCF − SBC)</td><td class="num">$72.66</td></tr>
+<tr><td>Reverse DCF: Implied Growth</td><td class="num">10.79%</td></tr>
+<tr><td>Reverse DCF: Discount Rate (Cost of Equity)</td><td class="num">11.24%</td></tr>
+<tr><td>Growth Needed for a 15% Return</td><td class="num">11.75%</td></tr>
+<tr><td>IV15 (15% Hurdle Value)</td><td class="num">$2,179.74</td></tr>
+          
+          <tr><td>Price-to-IV15</td><td class="num"><span class="verdict under">0.73× under</span></td></tr>
+        </tbody></table></div>
+        <h3 class="panel-title" style="margin-top:14px">Its record (per share, fiscal years)</h3>
+        <div class="table-wrap"><table class="data metric-table"><tbody>
+          
+<tr><td>5-Year FCF per share Growth</td><td class="num">–</td></tr>
+<tr><td>10-Year FCF per share Growth</td><td class="num">–</td></tr>
+<tr><td>5-Year Revenue per share Growth</td><td class="num">–</td></tr>
+<tr><td>10-Year Revenue per share Growth</td><td class="num">–</td></tr>
+<tr><td>10-Year EPS Growth</td><td class="num">–</td></tr>
+        </tbody></table></div>
+        <p class="muted small">Reverse DCF: owner FCF grows at the implied rate for 10 years, then 3% forever,
+          discounted at the cost of equity (10-year Treasury + beta × 6%, at least 6%).
+          IV15, as in the <a href="../../iv15_calculator.html">IV15 calculator</a>: owner FCF +15%/yr for 15y, 15x exit, 15% discount.</p>
+      </div>
+      <div class="panel chart-panel" style="margin-top:0">
+        <div class="chart-head"><h3>Value per share at each growth rate</h3>
+          <div class="legend"><span><i class="sw-accent ln"></i>Reverse DCF model</span><span><i class="sw-series-2 ln"></i>IV15 model</span><span><i class="sw-neutral ln"></i>Price</span></div></div>
+        <div id="chart-growth" class="chart short"></div>
+        <p class="muted small">Where a curve crosses the price is the growth the price implies under that model. Annual owner-FCF growth on the horizontal axis.</p>
+        
+      </div>
+    </div>
+
     <h2 class="section">Financials by fiscal year</h2>
     <div class="panel chart-panel">
       <div class="chart-head"><h3>Revenue, net income and free cash flow</h3>
@@ -359,12 +406,12 @@
   <footer class="footer">
     <div class="container">Fundamentals from SEC EDGAR XBRL filings; prices and dividends from Yahoo Finance; CPI from FRED.
       Metrics follow Fair Value definitions where published. Fair Value and Quality Score are Fair Value reconstructions, not Fair Value's numbers.
-      Generated 10 Oct 2026. Nothing here is investment advice.</div>
+      Generated 11 Oct 2026. Nothing here is investment advice.</div>
   </footer>
 
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 <script>
-  const D = {"dates": ["2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "price": [46.85, 47.61, 32.11, 37.69, 45.35, 42.92, 52.47, 112.2, 199.33, 223.28, 237.38, 576.25, 635.36, 635.34, 1096.51, 1694.98, 2273.73, 1214.83, 1566.7, 1739.89, 1581.82], "fair_value": [258.3, 257.94, 257.94, 257.94, 262.99, 262.99, 262.99, 262.99, 270.71, 270.71, 270.71, 296.75, 296.75, 296.75, 435.38, 435.38, 435.38, 677.28, 677.28, 677.28, 677.28], "pe_dates": ["2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "pe": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, 37.47, 57.93, 77.71, 16.47, 21.24, 23.59, 21.45], "fy": ["2023", "2024", "2025", "2026"], "revenue": [6086000000.0, 6663000000.0, 7355000000.0, 20248000000.0], "net_income": [-2143000000.0, -672000000.0, -1641000000.0, 11433000000.0], "fcf": [-932000000.0, -475000000.0, -120000000.0, 11494000000.0]};
+  const D = {"dates": ["2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "price": [46.85, 47.61, 32.11, 37.69, 45.35, 42.92, 52.47, 112.2, 199.33, 223.28, 237.38, 576.25, 635.36, 635.34, 1096.51, 1694.98, 2273.73, 1214.83, 1566.7, 1739.89, 1581.82], "fair_value": [307.09, 264.8, 264.8, 264.8, 268.14, 268.14, 268.14, 268.14, 270.71, 270.71, 270.71, 296.75, 296.75, 296.75, 435.38, 435.38, 435.38, 677.28, 677.28, 677.28, 677.28], "pe_dates": ["2025-02-28", "2025-03-31", "2025-04-30", "2025-05-31", "2025-06-30", "2025-07-31", "2025-08-31", "2025-09-30", "2025-10-31", "2025-11-30", "2025-12-31", "2026-01-31", "2026-02-28", "2026-03-31", "2026-04-30", "2026-05-31", "2026-06-30", "2026-07-31", "2026-08-31", "2026-09-30", "2026-10-31"], "pe": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, 37.47, 57.93, 77.71, 16.47, 21.24, 23.59, 21.45], "fy": ["2023", "2024", "2025", "2026"], "revenue": [6086000000.0, 6663000000.0, 7355000000.0, 20248000000.0], "net_income": [-2143000000.0, -672000000.0, -1641000000.0, 11433000000.0], "fcf": [-932000000.0, -475000000.0, -120000000.0, 11494000000.0], "growth_curve": {"growth": [-10.0, -9.0, -8.0, -7.0, -6.0, -5.0, -4.0, -3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 21.0, 22.0, 23.0, 24.0, 25.0, 26.0, 27.0, 28.0, 29.0, 30.0, 31.0, 32.0, 33.0, 34.0, 35.0, 36.0, 37.0, 38.0, 39.0, 40.0], "reverse_dcf": [379.89, 404.58, 431.23, 459.99, 491.03, 524.53, 560.69, 599.72, 641.84, 687.29, 736.32, 789.22, 846.27, 907.79, 974.1, 1045.58, 1122.6, 1205.56, 1294.91, 1391.08, 1494.59, 1605.94, 1725.7, 1854.44, 1992.81, 2141.45, 2301.07, 2472.43, 2656.31, 2853.54, 3065.03, 3291.71, 3534.58, 3794.69, 4073.15, 4371.14, 4689.91, 5030.76, 5395.08, 5784.34, 6200.08, 6643.93, 7117.59, 7622.88, 8161.7, 8736.04, 9348.03, 9999.86, 10693.89, 11432.55, 12218.43], "iv15": [282.53, 299.82, 318.75, 339.53, 362.38, 387.53, 415.26, 445.89, 479.76, 517.25, 558.8, 604.89, 656.06, 712.91, 776.13, 846.44, 924.7, 1011.84, 1108.87, 1216.96, 1337.38, 1471.54, 1621.03, 1787.57, 1973.09, 2179.74, 2409.87, 2666.08, 2951.27, 3268.6, 3621.57, 4014.07, 4450.32, 4935.03, 5473.32, 6070.87, 6733.88, 7469.18, 8284.23, 9187.25, 10187.22, 11293.95, 12518.23, 13871.79, 15367.5, 17019.39, 18842.78, 20854.37, 23072.38, 25516.65, 28208.79]}};
   const C = Nexus.colors;
   const GOLD = C.series2;
   const line = (x, y, name, color, extra) => Object.assign({ type: "scatter", mode: "lines", x, y, name, line: { color, width: 2 },
@@ -384,6 +431,25 @@
   Plotly.newPlot("chart-fin", [bar(D.revenue, "Revenue", C.accent), bar(D.net_income, "Net income", C.positive), bar(D.fcf, "Free cash flow", GOLD)],
     Nexus.plotlyLayout({ barmode: "group", showlegend: false, yaxis: { tickprefix: "$", ticksuffix: "B" } }), Nexus.plotlyConfig);
   // Charts are drawn before the remote stylesheet settles the layout; fit them once it has.
+  if (D.growth_curve) {
+    const G = D.growth_curve, price = 1581.82;
+    const curve = (y, name, color) => line(G.growth, y, name, color, {
+      hovertemplate: "%{x:.0f}% a year<br>" + name + ": $%{y:.2f}<extra></extra>" });
+    const top = Math.max(price * 2.5, ...G.reverse_dcf.slice(0, 11), ...G.iv15.slice(0, 11));
+    Plotly.newPlot("chart-growth", [
+      curve(G.reverse_dcf, "Reverse DCF model", C.accent), curve(G.iv15, "IV15 model", GOLD),
+      line([G.growth[0], G.growth[G.growth.length - 1]], [price, price], "Price", C.neutral,
+        { line: { color: C.neutral, width: 1.5, dash: "dash" }, hovertemplate: "Price: $%{y:.2f}<extra></extra>" }),
+      
+      { type: "scatter", mode: "markers", x: [10.79], y: [price], name: "Implied by the price",
+        marker: { color: C.accent, size: 10, line: { color: C.surface, width: 2 } },
+        hovertemplate: "Implied by the price: %{x:.1f}% a year<extra></extra>" },
+      { type: "scatter", mode: "markers", x: [11.75], y: [price], name: "Needed for 15% a year",
+        marker: { color: GOLD, size: 10, line: { color: C.surface, width: 2 } },
+        hovertemplate: "Needed for 15% a year: %{x:.1f}% a year<extra></extra>" },
+    ], Nexus.plotlyLayout({ showlegend: false, hovermode: "closest", xaxis: { ticksuffix: "%" },
+      yaxis: { tickprefix: "$", range: [0, top] } }), Nexus.plotlyConfig);
+  }
   window.addEventListener("load", () => document.querySelectorAll(".js-plotly-plot").forEach(el => Plotly.Plots.resize(el)));
 </script>
 

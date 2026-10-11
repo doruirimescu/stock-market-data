@@ -86,7 +86,7 @@
         <h3 class="panel-title">Intrinsic value estimates</h3>
         <div class="table-wrap"><table class="data metric-table">
           <thead><tr><th>Model</th><th class="num">Value</th><th class="num">Price / value</th></tr></thead><tbody>
-          {% for v, p in [('fair_value','price_to_fair_value'),('dcf_earnings','price_to_dcf'),('projected_fcf_value','price_to_projected_fcf'),('median_ps_value','price_to_median_ps'),('peter_lynch_value','price_to_lynch'),('graham_number','price_to_graham'),('epv','price_to_epv'),('ncav','price_to_ncav')] %}
+          {% for v, p in [('fair_value','price_to_fair_value'),('iv15','price_to_iv15'),('dcf_earnings','price_to_dcf'),('projected_fcf_value','price_to_projected_fcf'),('median_ps_value','price_to_median_ps'),('peter_lynch_value','price_to_lynch'),('graham_number','price_to_graham'),('epv','price_to_epv'),('ncav','price_to_ncav')] %}
           {% set mv = r.metrics[v] %}{% set mp = r.metrics[p] %}
           <tr><td>{{ mv.label }}</td><td class="num">{{ fmt(mv) }}</td>
             <td class="num">{% if mp.ok %}<span class="verdict {{ 'under' if mp.value < 0.9 else 'over' if mp.value > 1.1 else '' }}">{{ "%.2f"|format(mp.value) }}× {{ 'under' if mp.value < 0.9 else 'over' if mp.value > 1.1 else 'fair' }}</span>{% else %}–{% endif %}</td></tr>
@@ -99,6 +99,38 @@
         <div class="chart-head"><h3>PE ratio, 10 years</h3>
           <div class="legend"><span><i style="background:var(--accent)"></i>PE (TTM)</span><span><i style="background:var(--faint)"></i>10y median</span></div></div>
         <div id="chart-pe" class="chart short"></div>
+      </div>
+    </div>
+
+    {% set rd = r.metrics['reverse_dcf_growth'] %}{% set ig = r.metrics['iv15_implied_growth'] %}
+    <h2 class="section">Reverse DCF and IV15</h2>
+    <p class="muted">What growth does the price already assume? Both models start from owner free cash flow: FCF minus
+      stock-based compensation, per diluted share.
+      {% if rd.ok %}At ${{ "%.2f"|format(r.price) }} the market is pricing in <mark>{{ "%.1f"|format(rd.value) }}% a year</mark> for
+      {{ rd.extra.years }} years{% if rd.extra.reference is not none %}, against {{ "%.1f"|format(rd.extra.reference) }}% {{ rd.extra.reference_label }}{% endif %}.{% endif %}
+      {% if ig.ok %}To earn 15% a year from here, owner FCF would have to grow <span class="hl-accent">{{ "%.1f"|format(ig.value) }}%</span> a year for 15 years.{% endif %}</p>
+    <div class="two-col">
+      <div class="panel">
+        <h3 class="panel-title">What the price implies</h3>
+        <div class="table-wrap"><table class="data metric-table"><tbody>
+          {{ row('owner_fcf_ps') }}{{ row('reverse_dcf_growth') }}{{ row('reverse_dcf_discount') }}{{ row('iv15_implied_growth') }}{{ row('iv15') }}
+          {% set p15 = r.metrics['price_to_iv15'] %}
+          <tr><td>{{ p15.label }}</td><td class="num">{% if p15.ok %}<span class="verdict {{ 'under' if p15.value < 0.9 else 'over' if p15.value > 1.1 else '' }}">{{ "%.2f"|format(p15.value) }}× {{ 'under' if p15.value < 0.9 else 'over' if p15.value > 1.1 else 'fair' }}</span>{% else %}{{ fmt(p15) }}{% endif %}</td></tr>
+        </tbody></table></div>
+        <h3 class="panel-title" style="margin-top:14px">Its record (per share, fiscal years)</h3>
+        <div class="table-wrap"><table class="data metric-table"><tbody>
+          {% for k in ['fcf_growth_5y','fcf_growth_10y','revenue_growth_5y','revenue_growth_10y','eps_growth_10y'] %}{{ row(k) }}{% endfor %}
+        </tbody></table></div>
+        <p class="muted small">Reverse DCF: owner FCF grows at the implied rate for {{ rd.extra.years }} years, then {{ "%.0f"|format(rd.extra.terminal * 100) }}% forever,
+          discounted at the cost of equity (10-year Treasury + beta × 6%, at least {{ "%.0f"|format(rd.extra.floor * 100) }}%).
+          IV15, as in the <a href="{{ root }}../iv15_calculator.html">IV15 calculator</a>: {{ r.metrics['iv15'].note }}.</p>
+      </div>
+      <div class="panel chart-panel" style="margin-top:0">
+        <div class="chart-head"><h3>Value per share at each growth rate</h3>
+          <div class="legend"><span><i class="sw-accent ln"></i>Reverse DCF model</span><span><i class="sw-series-2 ln"></i>IV15 model</span><span><i class="sw-neutral ln"></i>Price</span></div></div>
+        {% if r.charts.growth_curve %}<div id="chart-growth" class="chart short"></div>
+        <p class="muted small">Where a curve crosses the price is the growth the price implies under that model. Annual owner-FCF growth on the horizontal axis.</p>
+        {% else %}<p class="muted">Not available: {{ fmt(r.metrics['owner_fcf_ps'])|lower if r.metrics['owner_fcf_ps'].note else 'no free cash flow data' }}.</p>{% endif %}
       </div>
     </div>
 
@@ -139,6 +171,22 @@
   Plotly.newPlot("chart-fin", [bar(D.revenue, "Revenue", C.accent), bar(D.net_income, "Net income", C.positive), bar(D.fcf, "Free cash flow", GOLD)],
     Nexus.plotlyLayout({ barmode: "group", showlegend: false, yaxis: { tickprefix: "$", ticksuffix: "B" } }), Nexus.plotlyConfig);
   // Charts are drawn before the remote stylesheet settles the layout; fit them once it has.
+  if (D.growth_curve) {
+    const G = D.growth_curve, price = {{ "%.2f"|format(r.price) }};
+    const curve = (y, name, color) => line(G.growth, y, name, color, {
+      hovertemplate: "%{x:.0f}% a year<br>" + name + ": $%{y:.2f}<extra></extra>" });
+    const top = Math.max(price * 2.5, ...G.reverse_dcf.slice(0, 11), ...G.iv15.slice(0, 11));
+    Plotly.newPlot("chart-growth", [
+      curve(G.reverse_dcf, "Reverse DCF model", C.accent), curve(G.iv15, "IV15 model", GOLD),
+      line([G.growth[0], G.growth[G.growth.length - 1]], [price, price], "Price", C.neutral,
+        { line: { color: C.neutral, width: 1.5, dash: "dash" }, hovertemplate: "Price: $%{y:.2f}<extra></extra>" }),
+      {% for key, name, color in [('reverse_dcf_growth', 'Implied by the price', 'C.accent'), ('iv15_implied_growth', 'Needed for 15% a year', 'GOLD')] %}{% if r.metrics[key].ok %}
+      { type: "scatter", mode: "markers", x: [{{ "%.2f"|format(r.metrics[key].value) }}], y: [price], name: "{{ name }}",
+        marker: { color: {{ color }}, size: 10, line: { color: C.surface, width: 2 } },
+        hovertemplate: "{{ name }}: %{x:.1f}% a year<extra></extra>" },{% endif %}{% endfor %}
+    ], Nexus.plotlyLayout({ showlegend: false, hovermode: "closest", xaxis: { ticksuffix: "%" },
+      yaxis: { tickprefix: "$", range: [0, top] } }), Nexus.plotlyConfig);
+  }
   window.addEventListener("load", () => document.querySelectorAll(".js-plotly-plot").forEach(el => Plotly.Plots.resize(el)));
 </script>
 {% endblock %}

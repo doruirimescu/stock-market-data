@@ -36,6 +36,22 @@ FAIR_VALUE_MIN_VALID_SHARE = 0.9  # the primary multiple needs >= 90% valid days
 # 10-15% low without it). 0.25 fits best; 0 and 0.5 leave a -2.4% / +2.9% bias.
 FAIR_VALUE_GROWTH_WEIGHT = 0.25
 FAIR_VALUE_GROWTH_CLIP = (-0.5, 0.5)
+# Reverse DCF (metrics/reverse_dcf.py): owner FCF (FCF - SBC) grows at the implied
+# rate for 10 years, then at 3% forever, discounted at the CAPM cost of equity,
+# which is kept at least 3 points above the terminal growth.
+REVERSE_DCF_YEARS = 10
+REVERSE_DCF_TERMINAL_GROWTH = 0.03
+REVERSE_DCF_MIN_SPREAD = 0.03
+
+# IV15, the defaults of the IV15 calculator (server/calculators/iv_15.py): owner
+# FCF grows 15% a year for 15 years, exits at 15x, discounted at a 15% hurdle.
+# With growth equal to the hurdle every year is worth today's owner FCF, so the
+# default IV15 is 15 + 15 = 30x owner FCF.
+IV15_GROWTH = 0.15
+IV15_TERMINAL_MULTIPLE = 15
+IV15_HURDLE = 0.15
+IV15_YEARS = 15
+
 # EPS without NRI: other non-operating income below this share of pretax income
 # is treated as recurring and left in EPS (see Fundamentals.eps_without_nri).
 NRI_MIN_SHARE_OF_PRETAX = 0.10

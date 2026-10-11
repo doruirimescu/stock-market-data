@@ -18,6 +18,7 @@ import pandas as pd
 from .. import config
 from ..fundamentals import Fundamentals
 from ..market import Market
+from . import reverse_dcf as rdcf
 from . import scoring
 from .base import Metric, avg, cagr, clamp, div, pct
 from .fairvalue import COMPONENTS, FUNDAMENTAL, fair_value, window_medians
@@ -143,6 +144,7 @@ NOT_FOR_FINANCIALS = (
     "altman_z", "beneish_m", "current_ratio", "quick_ratio", "cash_ratio", "days_sales_outstanding",
     "days_inventory", "days_payable", "cash_conversion_cycle", "ncav", "nnwc", "price_to_ncav",
     "gross_margin", "roc_greenblatt", "roce", "interest_coverage", "epv", "price_to_epv",
+    "owner_fcf_ps", "reverse_dcf_growth", "iv15", "price_to_iv15", "iv15_implied_growth",
 )
 
 
@@ -540,6 +542,42 @@ def compute(ticker: str, name: str, f: Fundamentals, mk: Market, today: date | N
         frr = (sum(fcf7) / len(fcf7)) / price * 100 + clamp(g5r, 0, 20)
     put("forward_rate_of_return", "Forward Rate of Return (Yacktman)", frr, "%", "high")
 
+    # ---- reverse DCF and IV15 (metrics/reverse_dcf.py) --------------------
+    sbc = _abs(f.ttm("sbc")) or 0.0
+    owner_ps = div(fcf - sbc, sh_dil) if fcf is not None else None
+    put("owner_fcf_ps", "Owner FCF per Share (FCF − SBC)", owner_ps, "$", "high",
+        note="" if owner_ps is None or owner_ps > 0 else "Negative")
+    ke_dcf = rdcf.discount_rate(ke)
+    implied = iv15_g = iv15 = None
+    if owner_ps is not None and owner_ps > 0:
+        implied = rdcf.implied_growth(price, lambda x: rdcf.dcf_value(owner_ps, x, ke_dcf))
+        iv15 = rdcf.iv15_value(owner_ps)
+        iv15_g = rdcf.implied_growth(price, lambda x: rdcf.iv15_value(owner_ps, x))
+    # Judge the implied growth against the company's own record: 10-year FCF per
+    # share growth, else 5-year, else revenue per share.
+    ref = next(((v, lbl) for v, lbl in ((g.get(("fcf", 10)), "10-year FCF/share growth"),
+                                        (g.get(("fcf", 5)), "5-year FCF/share growth"),
+                                        (g.get(("revenue", 10)), "10-year revenue/share growth"))
+                if v is not None), (None, ""))
+    rd_verdict, rd_text = None, ""
+    if implied is not None and ref[0] is not None:
+        below = implied * 100 <= ref[0]
+        rd_verdict = "under" if below else "over"
+        rd_text = f"{'Below' if below else 'Above'} its {ref[1]} ({ref[0]:.1f}%)"
+    put("reverse_dcf_growth", "Reverse DCF: Implied Growth", None if implied is None else implied * 100, "%", "low",
+        note="Owner FCF ≤ 0" if owner_ps is not None and owner_ps <= 0 else "Outside −50%…100%" if owner_ps else "",
+        verdict=rd_verdict, verdict_text=rd_text,
+        extra={"discount": ke_dcf, "years": config.REVERSE_DCF_YEARS, "terminal": config.REVERSE_DCF_TERMINAL_GROWTH,
+               "reference": ref[0], "reference_label": ref[1],
+               "floor": config.REVERSE_DCF_TERMINAL_GROWTH + config.REVERSE_DCF_MIN_SPREAD})
+    put("reverse_dcf_discount", "Reverse DCF: Discount Rate (Cost of Equity)", ke_dcf * 100, "%")
+    put("iv15", "IV15 (15% Hurdle Value)", iv15, "$",
+        note=f"owner FCF +{config.IV15_GROWTH*100:.0f}%/yr for {config.IV15_YEARS}y, "
+             f"{config.IV15_TERMINAL_MULTIPLE:g}x exit, {config.IV15_HURDLE*100:.0f}% discount")
+    put("price_to_iv15", "Price-to-IV15", div(price, iv15), "x", "low")
+    put("iv15_implied_growth", "Growth Needed for a 15% Return", None if iv15_g is None else iv15_g * 100, "%", "low",
+        note="Owner FCF ≤ 0" if owner_ps is not None and owner_ps <= 0 else "")
+
     # ---- Fair Value ---------------------------------------------------
     eps_nri = f.eps_without_nri()
     fund_now = {"eps": eps, "eps_nri": eps_nri, "revenue": rev_ps, "book": bvps, "fcf": fcf_ps}
@@ -621,6 +659,8 @@ def compute(ticker: str, name: str, f: Fundamentals, mk: Market, today: date | N
         })
 
     charts = _charts(c, hist, parts, weights, adj, mult, as_of, annual)
+    if M["reverse_dcf_growth"].ok or M["iv15"].ok:
+        charts["growth_curve"] = rdcf.growth_curve(owner_ps, ke_dcf, [i / 100 for i in range(-10, 41)])
     return Report(ticker.upper(), name, as_of, price, mk.price_date, mcap, ev, M, annual, charts, notes, c, financial,
                   {"mult": mult, "fund_now": fund_now})
 

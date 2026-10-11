@@ -75,6 +75,8 @@ def to_record(r, page_url: str) -> dict:
         "rank_financial_strength": r.m("rank_financial_strength"),
         "rank_profitability": r.m("rank_profitability"),
         "rank_growth": r.m("rank_growth"),
+        "reverse_dcf_growth": None if r.m("reverse_dcf_growth") is None else round(r.m("reverse_dcf_growth"), 1),
+        "iv15": None if r.m("iv15") is None else round(r.m("iv15"), 2),
         "market_cap": None if r.market_cap is None else round(r.market_cap),
         "fundamentals_as_of": r.as_of.isoformat(),
         "financial": r.financial,

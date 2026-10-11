@@ -36,7 +36,8 @@ def pctf(v) -> str:
 
 def fmt(m: Metric) -> str:
     if not m.ok:
-        return m.note if m.note in ("No debt", "At loss", "N/A (financial)") else "–"
+        return m.note if m.note in ("No debt", "At loss", "N/A (financial)", "Negative", "Owner FCF ≤ 0",
+                                    "Outside −50%…100%") else "–"
     v, u = m.value, m.unit
     if u == "%":
         return f"{v:.2f}%"
