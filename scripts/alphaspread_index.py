@@ -171,7 +171,10 @@ def _lookup(symbol, name, meta=None, symbols=None):
         # Last resort: search by company name, accepted only if the name matches.
         try:
             d = alphaspread.lookup(re.sub(r"\b(N|Ps|Par|Ag|Sa|Plc|Nv|Se|Ab|Asa|A/S|Oyj|Spa)\b\.?", "", name).strip())
-            if d and stoxx600.names_match(name, d.get("company"), meta.get("ticker")):
+            # A US listing found by name is usually a namesake (nasdaq/cvc is CVC Ltd, not
+            # CVC Capital Partners); US listings are only used through ALPHASPREAD_OVERRIDES.
+            us_listing = d and d.get("exchange") in ("nasdaq", "nyse", "amex", "nysearca", "otc", "pink", "cboe")
+            if d and not us_listing and stoxx600.names_match(name, d.get("company"), meta.get("ticker")):
                 d["currency"] = meta.get("currency") or d.get("currency")
                 if symbols is not None:
                     symbols[symbol] = f"{d['exchange']}/{d['ticker'].lower()}"

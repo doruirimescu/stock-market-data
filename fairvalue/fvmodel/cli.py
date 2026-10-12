@@ -48,7 +48,7 @@ def main(argv=None):
     c = sub.add_parser("compare", help="analyze the reference tickers and compare with Fair Value values")
     c.add_argument("--out", default="site")
     i = sub.add_parser("index", help="value a whole index and publish pages + AlphaSpread-style records")
-    i.add_argument("--index", choices=["sp500", "nasdaq100"], required=True)
+    i.add_argument("--index", choices=["sp500", "nasdaq100", "stoxx600"], required=True)
     i.add_argument("--date", help="snapshot date YYYY-MM-DD (default today)")
     i.add_argument("--out", help="latest-run JSON (default ../generated/fairvalue/<index>_valuations.json)")
     i.add_argument("--pages", help="where stock pages go (default ../docs/fairvalue)")

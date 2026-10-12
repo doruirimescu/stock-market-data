@@ -18,6 +18,21 @@ def analyze(ticker: str, as_of: date | None = None) -> Report:
                    financial=is_financial(sic_code(ticker)))
 
 
+def analyze_eu(symbol: str, name: str | None = None, financial: bool = False) -> Report:
+    """Analyze a company without SEC filings from Yahoo statements (fvmodel/yahoo.py).
+
+    `symbol` is the Yahoo symbol (e.g. "ASML.AS"); amounts are in its trading currency.
+    """
+    from .. import yahoo
+
+    st = yahoo.statements(symbol)
+    book = yahoo.YahooBook(st, yahoo.splits(symbol))
+    mk = yahoo.load_market_eu(symbol, book.currency)
+    r = compute(symbol, name or st["info"].get("longName") or symbol, Fundamentals(book), mk, financial=financial)
+    r.currency = yahoo.currency_label(book.currency)
+    return r
+
+
 def analyze_history(ticker: str, dates: Iterable[date]) -> Iterator[tuple[date, Report | Exception]]:
     """analyze(ticker, d) for every date, loading filings and prices once (for the backtest)."""
     name, docs = load_facts(ticker)

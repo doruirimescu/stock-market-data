@@ -217,7 +217,7 @@ class Fundamentals:
     def __post_init__(self):
         ends = self.book.period_ends(ANCHOR_TAGS)
         if not ends:
-            raise ValueError("No 10-K/10-Q periods found")
+            raise ValueError("No reported periods with earnings found")
         self.as_of = ends[-1]
         self.fy_ends = self.book.fiscal_year_ends(ANCHOR_TAGS)
 

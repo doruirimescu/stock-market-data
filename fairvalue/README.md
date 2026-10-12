@@ -5,7 +5,8 @@ of the Investing Nexus valuation pages, next to AlphaSpread.
 
 Fair Value stock summary dashboards built only from public data: SEC EDGAR
 XBRL filings for fundamentals, Yahoo Finance for prices and dividends, and FRED
-for CPI. Pages use the [Nexus design system](https://github.com/doruirimescu/nexus-design).
+for CPI. STOXX Europe 600 companies, which don't file with the SEC, get their
+statements from Yahoo Finance instead (see [Europe](#europe-stoxx-europe-600)). Pages use the [Nexus design system](https://github.com/doruirimescu/nexus-design).
 
 For each ticker the dashboard shows the metrics on a the reference provider summary page:
 
@@ -66,6 +67,28 @@ Other tasks:
 
 Downloads are cached in `data/` for a day.
 
+## Europe (STOXX Europe 600)
+
+`mise run fairvalue stoxx600` (or `python -m fvmodel index --index stoxx600`)
+values the index from Yahoo Finance statements; no SEC contact is needed.
+`fvmodel/yahoo.py` wraps them in `YahooBook`, which answers the same queries as
+the SEC `FactBook` under the same US-GAAP tag names, so `Fundamentals` and every
+metric in `metrics/compute.py` run unchanged (`metrics.analyze_eu`).
+
+- Constituents, sectors, countries and index weights come from the iShares ETF
+  holdings (`../scripts/stoxx600.py`); stocks are looked up by Yahoo symbol
+  (`ASML.AS`, `NOVO-B.CO`) and their pages are `stocks/<Yahoo symbol>.html`.
+- Yahoo has about four fiscal years plus the last five or six quarters: enough
+  for the 3-year price-to-sales Fair Value, while 5- and 10-year growth and the
+  10-year ranges come out shorter or empty. Half-yearly reporters (Nestle, much
+  of the UK) use the last fiscal year as TTM.
+- Amounts are converted from the reporting to the trading currency at each period
+  end's exchange rate (HSBC reports in USD and trades in pence, which stay pence).
+- Beta is measured against the STOXX Europe 600 (`^STOXX`); the risk-free rate is
+  the trading currency's 10-year government bond yield from FRED. Shiller PE is
+  left out (no European CPI series).
+- Financials are flagged from the GICS sector rather than an SEC SIC code.
+
 ## Documentation
 
 | Doc | Contents |
@@ -77,6 +100,7 @@ Downloads are cached in `data/` for a day.
 
 ## Limits
 
-- US SEC filers only. Banks and insurers are not handled specially.
+- US SEC filers, plus the STOXX Europe 600 from Yahoo statements (shorter history,
+  see above). Banks and insurers are not handled specially.
 - Fair Value and Quality Score are proprietary. Ours are labelled **Fair Value** and calibrated against published values; see VALIDATION.md.
 - Not investment advice.

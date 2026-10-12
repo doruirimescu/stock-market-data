@@ -94,10 +94,14 @@ larger of value and price ((value − price) / max(value, price), see
 `alphaspread.gap_pct`).
 
 The STOXX Europe 600 has the same pages (`stoxx600_today.html`,
-`stoxx600_sectors.html`), AlphaSpread only, plus `stoxx600_analysis.html`: a
+`stoxx600_sectors.html`), with both sources: Fair Value comes from Yahoo Finance
+statements, since European companies don't file with the SEC (see
+[`fairvalue/README.md`](fairvalue/README.md#europe-stoxx-europe-600)). There is
+also `stoxx600_analysis.html`, switchable between the two models: a
 full analysis of the latest (or `?date=`) snapshot against the S&P 500 of the
 same day, by country and sector, a country × sector heatmap, size quintiles,
-valuation vs solvency and two screens. Its constituents, sectors, countries and
+valuation vs solvency, two screens and a stock-by-stock comparison of the two
+models. Its constituents, sectors, countries and
 index weights come from the holdings of the iShares STOXX Europe 600 UCITS ETF
 (`scripts/stoxx600.py`); AlphaSpread's URL for each listing is probed once and
 cached in `generated/alphaspread/stoxx600_symbols.json`. Prices are in each

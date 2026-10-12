@@ -34,7 +34,7 @@
     "country": "United Kingdom",
     "weight": 2.14,
     "market_value_eur": 219011633,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ROP": {
@@ -110,7 +110,7 @@
     "country": "United Kingdom",
     "weight": 1.66,
     "market_value_eur": 170059630,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "NESN": {
@@ -262,7 +262,7 @@
     "country": "United Kingdom",
     "weight": 1.03,
     "market_value_eur": 104972824,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ABBN": {
@@ -357,7 +357,7 @@
     "country": "United Kingdom",
     "weight": 0.91,
     "market_value_eur": 93405992,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ENR": {
@@ -414,7 +414,7 @@
     "country": "United Kingdom",
     "weight": 0.87,
     "market_value_eur": 89001934,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "UCG": {
@@ -509,7 +509,7 @@
     "country": "United Kingdom",
     "weight": 0.81,
     "market_value_eur": 82919808,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "CFR": {
@@ -661,7 +661,7 @@
     "country": "United Kingdom",
     "weight": 0.68,
     "market_value_eur": 69804367,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "INGA": {
@@ -699,7 +699,7 @@
     "country": "United Kingdom",
     "weight": 0.63,
     "market_value_eur": 64611438,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "SAN.PA": {
@@ -775,7 +775,7 @@
     "country": "United Kingdom",
     "weight": 0.55,
     "market_value_eur": 55825539,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ABI": {
@@ -813,7 +813,7 @@
     "country": "United Kingdom",
     "weight": 0.53,
     "market_value_eur": 53814437,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ENEL": {
@@ -851,7 +851,7 @@
     "country": "United Kingdom",
     "weight": 0.52,
     "market_value_eur": 53188256,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "BARC": {
@@ -870,7 +870,7 @@
     "country": "United Kingdom",
     "weight": 0.52,
     "market_value_eur": 52907899,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "INVE B": {
@@ -927,7 +927,7 @@
     "country": "United Kingdom",
     "weight": 0.49,
     "market_value_eur": 49826356,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "NWG": {
@@ -946,7 +946,7 @@
     "country": "United Kingdom",
     "weight": 0.47,
     "market_value_eur": 48039348,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "DG": {
@@ -1041,7 +1041,7 @@
     "country": "United Kingdom",
     "weight": 0.43,
     "market_value_eur": 43952895,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "DB1": {
@@ -1079,7 +1079,7 @@
     "country": "United Kingdom",
     "weight": 0.4,
     "market_value_eur": 41125449,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "DHL": {
@@ -1155,7 +1155,7 @@
     "country": "United Kingdom",
     "weight": 0.37,
     "market_value_eur": 38104156,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ATCO A": {
@@ -1193,7 +1193,7 @@
     "country": "United Kingdom",
     "weight": 0.36,
     "market_value_eur": 37059449,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "GLE": {
@@ -1383,7 +1383,7 @@
     "country": "United Kingdom",
     "weight": 0.34,
     "market_value_eur": 34610999,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "G": {
@@ -1478,7 +1478,7 @@
     "country": "United Kingdom",
     "weight": 0.32,
     "market_value_eur": 33086369,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "CABK": {
@@ -1611,7 +1611,7 @@
     "country": "United Kingdom",
     "weight": 0.29,
     "market_value_eur": 29703104,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "TSCO": {
@@ -1630,7 +1630,7 @@
     "country": "United Kingdom",
     "weight": 0.28,
     "market_value_eur": 28926353,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "PRY": {
@@ -1706,7 +1706,7 @@
     "country": "United Kingdom",
     "weight": 0.27,
     "market_value_eur": 27956394,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "SSE": {
@@ -1725,7 +1725,7 @@
     "country": "United Kingdom",
     "weight": 0.27,
     "market_value_eur": 27444537,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "VOD": {
@@ -1744,7 +1744,7 @@
     "country": "United Kingdom",
     "weight": 0.26,
     "market_value_eur": 26525830,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "SAND": {
@@ -2105,7 +2105,7 @@
     "country": "United Kingdom",
     "weight": 0.21,
     "market_value_eur": 21360025,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ADYEN": {
@@ -2162,7 +2162,7 @@
     "country": "United Kingdom",
     "weight": 0.2,
     "market_value_eur": 20817118,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "KBC": {
@@ -2219,7 +2219,7 @@
     "country": "United Kingdom",
     "weight": 0.2,
     "market_value_eur": 20361251,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "EQNR": {
@@ -2333,7 +2333,7 @@
     "country": "United Kingdom",
     "weight": 0.18,
     "market_value_eur": 18725843,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "MT": {
@@ -2409,7 +2409,7 @@
     "country": "United Kingdom",
     "weight": 0.18,
     "market_value_eur": 18073127,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ML": {
@@ -2694,7 +2694,7 @@
     "country": "United Kingdom",
     "weight": 0.16,
     "market_value_eur": 15924251,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "BPE": {
@@ -2780,7 +2780,7 @@
     "country": "United Kingdom",
     "weight": 0.15,
     "market_value_eur": 15441655,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "GEBN": {
@@ -3046,7 +3046,7 @@
     "country": "United Kingdom",
     "weight": 0.13,
     "market_value_eur": 13727926,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "DSFIR": {
@@ -3312,7 +3312,7 @@
     "country": "United Kingdom",
     "weight": 0.12,
     "market_value_eur": 12724818,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "DSY": {
@@ -3350,7 +3350,7 @@
     "country": "United Kingdom",
     "weight": 0.12,
     "market_value_eur": 12270305,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "HNR1": {
@@ -3464,7 +3464,7 @@
     "country": "United Kingdom",
     "weight": 0.11,
     "market_value_eur": 11641044,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "EPI A": {
@@ -3673,7 +3673,7 @@
     "country": "United Kingdom",
     "weight": 0.1,
     "market_value_eur": 10815938,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "VOW3": {
@@ -3768,7 +3768,7 @@
     "country": "United Kingdom",
     "weight": 0.1,
     "market_value_eur": 10583608,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "BESI": {
@@ -4015,7 +4015,7 @@
     "country": "United Kingdom",
     "weight": 0.09,
     "market_value_eur": 9776138,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "DPLM": {
@@ -4034,7 +4034,7 @@
     "country": "United Kingdom",
     "weight": 0.09,
     "market_value_eur": 9626201,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "SY1": {
@@ -4110,7 +4110,7 @@
     "country": "United Kingdom",
     "weight": 0.09,
     "market_value_eur": 9159377,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "STMN": {
@@ -4262,7 +4262,7 @@
     "country": "United Kingdom",
     "weight": 0.09,
     "market_value_eur": 8817221,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "IAG": {
@@ -4281,7 +4281,7 @@
     "country": "Spain",
     "weight": 0.09,
     "market_value_eur": 8802531,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "SCHP": {
@@ -4338,7 +4338,7 @@
     "country": "United Kingdom",
     "weight": 0.08,
     "market_value_eur": 8686873,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "METSO": {
@@ -4433,7 +4433,7 @@
     "country": "United Kingdom",
     "weight": 0.08,
     "market_value_eur": 8387960,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "KGH": {
@@ -4471,7 +4471,7 @@
     "country": "United Kingdom",
     "weight": 0.08,
     "market_value_eur": 8278646,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "FORTUM": {
@@ -4528,7 +4528,7 @@
     "country": "United Kingdom",
     "weight": 0.08,
     "market_value_eur": 8200224,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "EUROB": {
@@ -4566,7 +4566,7 @@
     "country": "United Kingdom",
     "weight": 0.08,
     "market_value_eur": 8157235,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "SPSN": {
@@ -4832,7 +4832,7 @@
     "country": "United Kingdom",
     "weight": 0.07,
     "market_value_eur": 7486972,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "FGR": {
@@ -4889,7 +4889,7 @@
     "country": "United Kingdom",
     "weight": 0.07,
     "market_value_eur": 7342303,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "SMIN": {
@@ -4908,7 +4908,7 @@
     "country": "United Kingdom",
     "weight": 0.07,
     "market_value_eur": 7334058,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "MKS": {
@@ -4927,7 +4927,7 @@
     "country": "United Kingdom",
     "weight": 0.07,
     "market_value_eur": 7317985,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "SVT": {
@@ -4946,7 +4946,7 @@
     "country": "United Kingdom",
     "weight": 0.07,
     "market_value_eur": 7291206,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "AC": {
@@ -5117,7 +5117,7 @@
     "country": "United Kingdom",
     "weight": 0.07,
     "market_value_eur": 6914822,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "COLO B": {
@@ -5174,7 +5174,7 @@
     "country": "United Kingdom",
     "weight": 0.06,
     "market_value_eur": 6597553,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ORSTED": {
@@ -5288,7 +5288,7 @@
     "country": "United Kingdom",
     "weight": 0.06,
     "market_value_eur": 6443094,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "SKF B": {
@@ -5611,7 +5611,7 @@
     "country": "United Kingdom",
     "weight": 0.06,
     "market_value_eur": 5916101,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "HSX": {
@@ -5630,7 +5630,7 @@
     "country": "United Kingdom",
     "weight": 0.06,
     "market_value_eur": 5909727,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "RXL": {
@@ -5763,7 +5763,7 @@
     "country": "United Kingdom",
     "weight": 0.06,
     "market_value_eur": 5721421,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ADDT B": {
@@ -5991,7 +5991,7 @@
     "country": "United Kingdom",
     "weight": 0.05,
     "market_value_eur": 5389341,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "EDEN": {
@@ -6086,7 +6086,7 @@
     "country": "United Kingdom",
     "weight": 0.05,
     "market_value_eur": 5234121,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "DCC": {
@@ -6105,7 +6105,7 @@
     "country": "United Kingdom",
     "weight": 0.05,
     "market_value_eur": 5233147,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "PPC": {
@@ -6219,7 +6219,7 @@
     "country": "United Kingdom",
     "weight": 0.05,
     "market_value_eur": 5063215,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "KBX": {
@@ -6257,7 +6257,7 @@
     "country": "United Kingdom",
     "weight": 0.05,
     "market_value_eur": 4975806,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "SCA B": {
@@ -6314,7 +6314,7 @@
     "country": "United Kingdom",
     "weight": 0.05,
     "market_value_eur": 4961576,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "GAW": {
@@ -6333,7 +6333,7 @@
     "country": "United Kingdom",
     "weight": 0.05,
     "market_value_eur": 4941512,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "STJ": {
@@ -6352,7 +6352,7 @@
     "country": "United Kingdom",
     "weight": 0.05,
     "market_value_eur": 4926194,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "KESKOB": {
@@ -6390,7 +6390,7 @@
     "country": "United Kingdom",
     "weight": 0.05,
     "market_value_eur": 4900918,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "YAR": {
@@ -6561,7 +6561,7 @@
     "country": "United Kingdom",
     "weight": 0.05,
     "market_value_eur": 4734159,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ABVX": {
@@ -6960,7 +6960,7 @@
     "country": "United Kingdom",
     "weight": 0.04,
     "market_value_eur": 4256314,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ISS": {
@@ -7112,7 +7112,7 @@
     "country": "United Kingdom",
     "weight": 0.04,
     "market_value_eur": 4111099,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "BBY": {
@@ -7131,7 +7131,7 @@
     "country": "United Kingdom",
     "weight": 0.04,
     "market_value_eur": 4099807,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "IPN": {
@@ -7283,7 +7283,7 @@
     "country": "United Kingdom",
     "weight": 0.04,
     "market_value_eur": 3923132,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "BGEO": {
@@ -7302,7 +7302,7 @@
     "country": "United Kingdom",
     "weight": 0.04,
     "market_value_eur": 3905665,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ABDN": {
@@ -7321,7 +7321,7 @@
     "country": "United Kingdom",
     "weight": 0.04,
     "market_value_eur": 3899716,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "LOTB": {
@@ -7359,7 +7359,7 @@
     "country": "United Kingdom",
     "weight": 0.04,
     "market_value_eur": 3892339,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "WTB": {
@@ -7378,7 +7378,7 @@
     "country": "United Kingdom",
     "weight": 0.04,
     "market_value_eur": 3864151,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "VOE": {
@@ -7454,7 +7454,7 @@
     "country": "United Kingdom",
     "weight": 0.04,
     "market_value_eur": 3816402,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "SCR": {
@@ -7521,7 +7521,7 @@
     "country": "United Kingdom",
     "weight": 0.04,
     "market_value_eur": 3748161,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "BTRW": {
@@ -7540,7 +7540,7 @@
     "country": "United Kingdom",
     "weight": 0.04,
     "market_value_eur": 3746455,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "JMT": {
@@ -7578,7 +7578,7 @@
     "country": "United Kingdom",
     "weight": 0.04,
     "market_value_eur": 3716761,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "SB1NO": {
@@ -7692,7 +7692,7 @@
     "country": "United Kingdom",
     "weight": 0.04,
     "market_value_eur": 3630744,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "BLND": {
@@ -7711,7 +7711,7 @@
     "country": "United Kingdom",
     "weight": 0.04,
     "market_value_eur": 3613975,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "SOI": {
@@ -7806,7 +7806,7 @@
     "country": "United Kingdom",
     "weight": 0.03,
     "market_value_eur": 3496457,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ROR": {
@@ -7825,7 +7825,7 @@
     "country": "United Kingdom",
     "weight": 0.03,
     "market_value_eur": 3493183,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "MOH": {
@@ -7863,7 +7863,7 @@
     "country": "United Kingdom",
     "weight": 0.03,
     "market_value_eur": 3463366,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "PSN": {
@@ -7882,7 +7882,7 @@
     "country": "United Kingdom",
     "weight": 0.03,
     "market_value_eur": 3460947,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "VAR": {
@@ -8034,7 +8034,7 @@
     "country": "United Kingdom",
     "weight": 0.03,
     "market_value_eur": 3375473,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "UMI": {
@@ -8262,7 +8262,7 @@
     "country": "United Kingdom",
     "weight": 0.03,
     "market_value_eur": 3217512,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "SIGN": {
@@ -8357,7 +8357,7 @@
     "country": "United Kingdom",
     "weight": 0.03,
     "market_value_eur": 3178430,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "BCVN": {
@@ -8395,7 +8395,7 @@
     "country": "United Kingdom",
     "weight": 0.03,
     "market_value_eur": 3154279,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "VK": {
@@ -8785,7 +8785,7 @@
     "country": "United Kingdom",
     "weight": 0.03,
     "market_value_eur": 2940320,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "TE": {
@@ -8823,7 +8823,7 @@
     "country": "United Kingdom",
     "weight": 0.03,
     "market_value_eur": 2932931,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "LAGR B": {
@@ -8880,7 +8880,7 @@
     "country": "United Kingdom",
     "weight": 0.03,
     "market_value_eur": 2879655,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "TEP": {
@@ -9013,7 +9013,7 @@
     "country": "United Kingdom",
     "weight": 0.03,
     "market_value_eur": 2797419,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "LOOMIS": {
@@ -9108,7 +9108,7 @@
     "country": "United Kingdom",
     "weight": 0.03,
     "market_value_eur": 2711231,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ADP": {
@@ -9165,7 +9165,7 @@
     "country": "United Kingdom",
     "weight": 0.03,
     "market_value_eur": 2698694,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "BFT": {
@@ -9260,7 +9260,7 @@
     "country": "United Kingdom",
     "weight": 0.03,
     "market_value_eur": 2639395,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ING": {
@@ -9336,7 +9336,7 @@
     "country": "United Kingdom",
     "weight": 0.03,
     "market_value_eur": 2590487,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ROSE": {
@@ -9355,7 +9355,7 @@
     "country": "United Kingdom",
     "weight": 0.03,
     "market_value_eur": 2585749,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "IFCN": {
@@ -9412,7 +9412,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 2490873,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "AYV": {
@@ -9460,7 +9460,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 2456232,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "RAA": {
@@ -9503,22 +9503,12 @@
   },
   "CVC": {
     "symbol": "CVC",
-    "company": "CVC Ltd",
-    "exchange": "nasdaq",
-    "url": "https://www.alphaspread.com/security/nasdaq/cvc/summary",
-    "valuation_type": "Overvalued",
-    "valuation_pct": 87.0,
-    "valuation_score": -87.0,
-    "intrinsic_value": 0.21,
-    "current_price_approx": 1.695,
-    "solvency_score": 34,
-    "verdict_text": "Overvalued",
+    "company": "Cvc Capital Partners Plc",
+    "error": "not on AlphaSpread (name search found CVC Ltd on Nasdaq, a different company)",
     "sector": "Financials",
     "country": "Netherlands",
     "weight": 0.02,
-    "market_value_eur": 2439739,
-    "currency": "€",
-    "error": null
+    "market_value_eur": 2439739
   },
   "BPT": {
     "symbol": "BPT",
@@ -9536,7 +9526,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 2426544,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "IP": {
@@ -9631,7 +9621,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 2380303,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ARCAD": {
@@ -9669,7 +9659,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 2359425,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "TCAP": {
@@ -9688,7 +9678,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 2354487,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "AAK": {
@@ -9726,7 +9716,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 2350019,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "MIL": {
@@ -9783,7 +9773,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 2332415,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "RUI": {
@@ -9859,7 +9849,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 2302985,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "FLS": {
@@ -9897,7 +9887,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 2286406,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "BC8": {
@@ -9935,7 +9925,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 2280796,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "HER": {
@@ -10049,7 +10039,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 2219144,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "ACX": {
@@ -10106,7 +10096,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 2204995,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "QQ.": {
@@ -10125,7 +10115,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 2204908,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "R3NK": {
@@ -10182,7 +10172,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 2198937,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "NOD": {
@@ -10296,7 +10286,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 2158146,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "FNTN": {
@@ -10543,7 +10533,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 2040418,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "BALD B": {
@@ -10638,7 +10628,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 1972032,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "KGX": {
@@ -10866,7 +10856,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 1885151,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "XTB": {
@@ -10904,7 +10894,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 1851735,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "HOLM B": {
@@ -10999,7 +10989,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 1813346,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "TOM": {
@@ -11075,7 +11065,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 1780361,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "PHP": {
@@ -11094,7 +11084,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 1776114,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "AG1": {
@@ -11208,7 +11198,7 @@
     "country": "United Kingdom",
     "weight": 0.02,
     "market_value_eur": 1669395,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "CSG": {
@@ -11294,7 +11284,7 @@
     "country": "United Kingdom",
     "weight": 0.01,
     "market_value_eur": 1505309,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "HOC": {
@@ -11313,7 +11303,7 @@
     "country": "United Kingdom",
     "weight": 0.01,
     "market_value_eur": 1409587,
-    "currency": "£",
+    "currency": "GBX ",
     "error": null
   },
   "GBF": {

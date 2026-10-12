@@ -27,11 +27,26 @@ from pathlib import Path
 import requests
 
 from . import market, sec
-from .metrics import analyze
+from .metrics import analyze, analyze_eu
 from .render import render_site
+
+REPO = Path(__file__).resolve().parents[2]
 
 SLICKCHARTS = {"sp500": "https://www.slickcharts.com/sp500", "nasdaq100": "https://www.slickcharts.com/nasdaq100"}
 BROWSER_UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36"
+
+
+def stoxx600_constituents() -> list[tuple[str, str, dict]]:
+    """(symbol, company, meta) for the STOXX Europe 600, from the same iShares holdings
+    the AlphaSpread run uses (scripts/stoxx600.py); meta gains the Yahoo symbol."""
+    sys.path.insert(0, str(REPO / "scripts"))
+    import stoxx600
+
+    out = []
+    for sym, name, meta in stoxx600.constituents():
+        meta = {**meta, "yahoo": stoxx600.yahoo_symbol(meta["ticker"], meta["exchange_name"])}
+        out.append((sym, name, meta))
+    return out
 
 
 def fetch_constituents(index: str) -> list[tuple[str, str]]:
@@ -84,8 +99,19 @@ def to_record(r, page_url: str) -> dict:
     }
 
 
-def _warm_shared_caches():
+# Index metadata copied into STOXX 600 records (as in the AlphaSpread records), so the
+# pages can weight by index weight and group by sector and country.
+META_FIELDS = ("sector", "country", "weight", "market_value_eur")
+
+
+def _warm_shared_caches(index: str = "sp500"):
     """Fetch data every worker needs once, before the thread pool starts."""
+    if index == "stoxx600":
+        from . import yahoo
+
+        market._closes(yahoo.BENCHMARK_EU)
+        market._closes(market.TREASURY_10Y)
+        return
     sec.lookup("AAPL")
     market._closes(market.BENCHMARK)
     market._closes(market.TREASURY_10Y)
@@ -97,21 +123,37 @@ def _warm_shared_caches():
 
 def run(index: str, out_json: Path, pages_dir: Path, dated_json: Path | None = None,
         workers: int = 4, limit: int | None = None) -> dict:
-    constituents = fetch_constituents(index)[:limit]
+    europe = index == "stoxx600"
+    constituents = (stoxx600_constituents() if europe else [(t, n, {}) for t, n in fetch_constituents(index)])[:limit]
     print(f"[{index}] {len(constituents)} constituents", file=sys.stderr)
-    _warm_shared_caches()
+    _warm_shared_caches(index)
     results, reports = {}, []
     started = time.time()
 
-    def job(tk, name):
-        return tk, name, analyze(tk)
+    def job(tk, name, meta):
+        if not europe:
+            return tk, name, analyze(tk)
+        # No SEC filings: Yahoo statements, keyed by the index symbol. Yahoo throttles
+        # bursts ("Too Many Requests"), so back off and retry a few times.
+        for attempt in range(4):
+            try:
+                return tk, name, analyze_eu(meta["yahoo"], None, financial=meta.get("sector") == "Financials")
+            except Exception as e:
+                if "Rate limit" not in str(e) and "Too Many Requests" not in str(e) or attempt == 3:
+                    raise
+                time.sleep(60 * (attempt + 1))
 
     with ThreadPoolExecutor(max_workers=workers) as pool:
-        futures = [pool.submit(job, tk, name) for tk, name in constituents]
+        futures = [pool.submit(job, tk, name, meta) for tk, name, meta in constituents]
         for i, fut in enumerate(as_completed(futures), 1):
             try:
                 tk, name, r = fut.result()
-                results[tk] = to_record(r, f"fairvalue/stocks/{r.ticker}.html")
+                rec = to_record(r, f"fairvalue/stocks/{r.ticker}.html")
+                if europe:
+                    meta = constituents[futures.index(fut)][2]
+                    rec.update({"symbol": tk, "company": r.name or name, "exchange": meta["yahoo"].rsplit(".", 1)[-1],
+                                "currency": r.currency, **{k: meta[k] for k in META_FIELDS if k in meta}})
+                results[tk] = rec
                 reports.append(r)
             except Exception as e:  # one bad filer must not sink the run
                 tk = constituents[futures.index(fut)][0]
@@ -124,7 +166,7 @@ def run(index: str, out_json: Path, pages_dir: Path, dated_json: Path | None = N
                 ok = sum(1 for v in results.values() if v.get("valuation_score") is not None)
                 print(f"[{index}] {i}/{len(futures)} done, {ok} valued, {time.time() - started:.0f}s", file=sys.stderr)
 
-    ordered = {tk: results[tk] for tk, _ in constituents if tk in results}
+    ordered = {tk: results[tk] for tk, _, _ in constituents if tk in results}
     for path in filter(None, (out_json, dated_json)):
         path.parent.mkdir(parents=True, exist_ok=True)
         tmp = path.with_suffix(".tmp")
@@ -136,7 +178,7 @@ def run(index: str, out_json: Path, pages_dir: Path, dated_json: Path | None = N
 
 def main(args) -> None:
     repo = Path(__file__).resolve().parents[2]
-    slug = {"sp500": "sp500", "nasdaq100": "nasdaq"}[args.index]
+    slug = {"sp500": "sp500", "nasdaq100": "nasdaq", "stoxx600": "stoxx600"}[args.index]
     day = args.date or date.today().isoformat()
     out = Path(args.out) if args.out else repo / "generated" / "fairvalue" / f"{args.index}_valuations.json"
     dated = repo / "generated" / "fairvalue" / slug / f"{slug}_fairvalue_{day}.json"

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>STOXX Europe 600 Analysis · Investing Nexus</title>
-  <meta name="description" content="Full valuation analysis of the STOXX Europe 600: Europe versus the S&amp;P 500, countries, sectors, size, solvency and screens, from daily AlphaSpread data.">
+  <meta name="description" content="Full valuation analysis of the STOXX Europe 600: Europe versus the S&amp;P 500, countries, sectors, size, solvency and screens, from daily AlphaSpread and Fair Value data.">
   <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
   <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
   <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
@@ -35,6 +35,11 @@
     <div class="eyebrow">Index analysis</div>
     <h1>STOXX Europe 600: <span class="gradient-text">full analysis</span></h1>
     <p class="lead" id="lead">Loading the latest snapshot…</p>
+    <div class="date-bar segmented" id="source-switch" role="group" aria-label="Valuation model" style="margin-top:14px">
+      <label>Model</label>
+      <button class="btn" data-source="alphaspread" aria-pressed="false">AlphaSpread</button>
+      <button class="btn" data-source="fairvalue" aria-pressed="false">Fair Value</button>
+    </div>
     <div class="as-of" id="as-of"></div>
     <div class="notice" id="error" hidden></div>
 
@@ -51,6 +56,7 @@
         <li><a href="#size">Large versus small</a></li>
         <li><a href="#solvency">Valuation and balance sheets</a></li>
         <li><a href="#screens">Screens</a></li>
+        <li><a href="#models">AlphaSpread vs Fair Value</a></li>
         <li><a href="#method">Method and caveats</a></li>
       </ol>
     </nav>
@@ -143,14 +149,30 @@
       </div>
     </section>
 
+    <section id="models">
+      <h2 class="section">AlphaSpread vs Fair Value</h2>
+      <p class="prose" id="models-text"></p>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>The two models, stock by stock</h3>
+          <div class="legend"><span><i class="sw-under"></i>Both undervalued</span><span><i class="sw-over"></i>Both overvalued</span><span><i class="sw-neutral"></i>They disagree</span></div></div>
+        <div id="c-models" class="chart h-lg"></div>
+        <div class="chart-note">Each dot is a stock valued by both models; marker size follows index weight. Gaps beyond ±100% are drawn at the edge.</div>
+      </div>
+      <div class="two-col" style="margin-top:14px">
+        <div><div class="panel-title"><span class="verdict under">Fair Value sees more upside</span></div><div id="models-fv"></div></div>
+        <div><div class="panel-title"><span class="verdict over">AlphaSpread sees more upside</span></div><div id="models-as"></div></div>
+      </div>
+    </section>
+
     <section id="method">
       <h2 class="section">Method and caveats</h2>
       <div class="prose" id="method-text">
         <p><strong>Valuations.</strong> Each stock's intrinsic value and solvency score come from <a href="https://www.alphaspread.com" target="_blank" rel="noopener">AlphaSpread</a>, which blends discounted cash flow and relative (multiples) valuation. The valuation gap is how far the price sits below (undervalued, positive) or above (overvalued, negative) that value, measured against the larger of the two: "undervalued by 35%" means the price is 65% of the value, "overvalued by 28%" means the value is 72% of the price. It is one model's estimate, not a price target.</p>
         <p id="fair-note"><strong>"Fairly valued" stocks.</strong> When the price sits within the range of AlphaSpread's scenarios it labels the stock "Fairly Valued" and prints no percentage. For those the gap is computed the way AlphaSpread computes it for every other stock, from its own base-case value and the market price: the difference divided by the larger of the two. These gaps are small by construction.</p>
+        <p><strong>Fair Value.</strong> Our own model (the <a href="fairvalue/index.html">Fair Value stock pages</a>): the median price-to-sales ratio of the last three years times today's sales per share, nudged by last year's sales growth; its gap is (Fair Value − price) ÷ Fair Value. For European companies, which don't file with the SEC, the statements come from Yahoo Finance (about four fiscal years plus recent quarters), converted to the trading currency at each period's exchange rate. Beta is measured against the STOXX Europe 600 and the risk-free rate is the trading currency's 10-year government bond yield. Price-to-sales suits banks and insurers poorly, so read the Financials figures with care.</p>
         <p><strong>Constituents and weights.</strong> The index members, their GICS sector, country and weight come from the holdings of the iShares STOXX Europe 600 UCITS ETF (DE), which fully replicates the index. Its weights are free-float market-cap weights, the same weighting STOXX uses, so "market-cap weighted" here means index-weighted.</p>
         <p><strong>Currencies.</strong> Prices and intrinsic values are in each stock's trading currency (EUR, GBP, CHF, SEK, DKK, NOK, PLN). Gaps are percentages, so they compare across currencies.</p>
-        <p><strong>Europe vs US.</strong> The S&amp;P 500 figures use the AlphaSpread snapshot of the same day (or the nearest earlier one) and that page's market-cap weights. Stocks AlphaSpread doesn't cover are left out of both.</p>
+        <p><strong>Europe vs US.</strong> The S&amp;P 500 figures use the same model's snapshot of the same day (or the nearest earlier one) and that page's market-cap weights. Stocks the model can't value are left out of both.</p>
         <p id="missing-note" class="small faint"></p>
         <p class="small faint">Not investment advice.</p>
       </div>
@@ -227,27 +249,56 @@
     }
     const polarity = (vals) => vals.map((v) => (v >= 0 ? Nexus.colors.positive : Nexus.colors.negative));
 
+    const LABEL = { alphaspread: "AlphaSpread", fairvalue: "Fair Value" };
+    // Model: ?source=, else the one remembered by the valuation pages, else AlphaSpread.
+    function pickSource(manifests) {
+      let s = new URLSearchParams(location.search).get("source");
+      if (!LABEL[s]) { try { s = localStorage.getItem("nexus-valuation-source"); } catch (e) { s = null; } }
+      if (!LABEL[s] || !(manifests[s].stoxx600 || []).length) s = (manifests.alphaspread.stoxx600 || []).length ? "alphaspread" : "fairvalue";
+      return s;
+    }
+    // Newest snapshot of `m` on or before `date`, at most a week older.
+    const nearest = (dates, date) => (dates || []).find((d) => d <= date && Date.parse(date) - Date.parse(d) <= 7 * 864e5) || null;
+
     async function init() {
-      let manifest, date, eu, us = [], usDate = null, usWeights = {};
+      let manifests, manifest, date, eu, us = [], usDate = null, usWeights = {}, SRC, other = [], otherDate = null;
       try {
-        manifest = await loadData("alphaspread/manifest", true);
+        const [ma, mf] = await Promise.all([loadData("alphaspread/manifest", true).catch(() => ({})), loadData("fairvalue/manifest", true).catch(() => ({}))]);
+        manifests = { alphaspread: ma || {}, fairvalue: mf || {} };
+        SRC = pickSource(manifests);
+        manifest = manifests[SRC];
         const dates = manifest.stoxx600 || [];
         if (!dates.length) throw new Error("No STOXX Europe 600 snapshot has been published yet.");
         const q = new URLSearchParams(location.search).get("date");
         date = dates.includes(q) ? q : dates[0];
-        eu = valued(await loadData(`alphaspread/stoxx600/${date}`));
+        eu = valued(await loadData(`${SRC}/stoxx600/${date}`));
         usDate = (manifest.sp500 || []).find((d) => d <= date) || null;
         if (usDate) {
-          const [u, w] = await Promise.all([loadData(`alphaspread/sp500/${usDate}`), loadData("sp500_weights").catch(() => ({}))]);
+          const [u, w] = await Promise.all([loadData(`${SRC}/sp500/${usDate}`), loadData("sp500_weights").catch(() => ({}))]);
           us = valued(u); usWeights = w || {};
         }
+        const OTHER = SRC === "alphaspread" ? "fairvalue" : "alphaspread";
+        otherDate = nearest(manifests[OTHER].stoxx600, date);
+        if (otherDate) other = valued(await loadData(`${OTHER}/stoxx600/${otherDate}`).catch(() => ({})));
         var sectorsUS = await loadData("sp500_sectors").catch(() => ({}));
-        var raw = window.nexusData[`alphaspread/stoxx600/${date}`];
+        var raw = window.nexusData[`${SRC}/stoxx600/${date}`];
       } catch (e) {
         $("error").textContent = e.message; $("error").hidden = false; $("lead").textContent = ""; return;
       }
+      document.querySelectorAll("#source-switch [data-source]").forEach((b) => {
+        const on = b.dataset.source === SRC;
+        b.setAttribute("aria-pressed", String(on));
+        b.disabled = !(manifests[b.dataset.source].stoxx600 || []).length;
+      });
+      $("source-switch").addEventListener("click", (e) => {
+        const b = e.target.closest("[data-source]");
+        if (!b || b.dataset.source === SRC) return;
+        try { localStorage.setItem("nexus-valuation-source", b.dataset.source); } catch (err) { /* storage blocked */ }
+        const url = new URL(location.href); url.searchParams.set("source", b.dataset.source); url.searchParams.delete("date");
+        location.href = url;
+      });
       const latest = date === manifest.stoxx600[0];
-      $("as-of").innerHTML = `<span>AlphaSpread data for <mark>${esc(longDate(date))}</mark></span>` +
+      $("as-of").innerHTML = `<span>${LABEL[SRC]} data for <mark>${esc(longDate(date))}</mark></span>` +
         (latest ? '<span class="badge live">Latest snapshot</span>' : `<span class="badge past">Historical — latest is ${esc(manifest.stoxx600[0])}</span>`);
 
       const wEU = (r) => r.weight || r.market_value_eur || 0;
@@ -266,7 +317,7 @@
         ["Index-weighted", Math.abs(S.cw).toFixed(1) + "%", `<span class="verdict ${S.cw >= 0 ? "under" : "over"}">${S.cw >= 0 ? "Undervalued" : "Overvalued"}</span> · free-float weights`],
         ["Avg. solvency", `${S.solv.toFixed(0)}<span class="muted small"> / 100</span>`, U ? `S&amp;P 500: ${U.solv.toFixed(0)}` : "balance-sheet strength"],
       ].map(([l, v, s]) => `<div class="panel kpi"><div class="label">${l}</div><div class="value">${v}</div><div class="sub">${s}</div></div>`).join("");
-      $("lead").innerHTML = `On AlphaSpread's numbers, the STOXX Europe 600 is <mark>${gap(S.cw)}</mark> at index weights, and its average stock is ${gap(S.mean)}.` +
+      $("lead").innerHTML = `On ${LABEL[SRC]}'s numbers, the STOXX Europe 600 is <mark>${gap(S.cw)}</mark> at index weights, and its average stock is ${gap(S.mean)}.` +
         (U ? ` The S&amp;P 500 on the same day: <span class="hl-accent">${gap(U.cw)}</span> by market cap.` : "");
 
       // ---------- groups ----------
@@ -291,7 +342,7 @@
       // ---------- findings ----------
       const sVs = sectors.filter((s) => usSectors.has(s.name)).map((s) => ({ ...s, d: s.mean - usSectors.get(s.name).mean })).sort((a, b) => b.d - a.d);
       const F = [];
-      F.push(`<strong>Headline:</strong> ${S.under} of ${S.n} valued stocks (${pct((S.under / S.n) * 100)}) trade below AlphaSpread's intrinsic value. Index-weighted, Europe is <mark>${gap(S.cw)}</mark>; the median stock is ${gap(S.median)}.`);
+      F.push(`<strong>Headline:</strong> ${S.under} of ${S.n} valued stocks (${pct((S.under / S.n) * 100)}) trade below their ${SRC === "fairvalue" ? "Fair Value" : "AlphaSpread intrinsic value"}. Index-weighted, Europe is <mark>${gap(S.cw)}</mark>; the median stock is ${gap(S.median)}.`);
       if (U) {
         const d = S.cw - U.cw;
         F.push(`<strong>Europe vs US:</strong> by market cap the S&amp;P 500 is ${gap(U.cw)}, so Europe screens <span class="hl-accent">${Math.abs(d).toFixed(1)} points ${d >= 0 ? "cheaper" : "dearer"}</span>. Equal-weight the gap is ${Math.abs(S.mean - U.mean).toFixed(1)} points (${gap(S.mean)} vs ${gap(U.mean)}).`);
@@ -327,11 +378,42 @@
       $("size-text").innerHTML = `Ranked by index weight, from the largest fifth of the index to the smallest. ${qStats[0].mean < qStats[4].mean ? "Smaller companies screen cheaper than the giants" : "The largest companies screen cheaper than the smaller ones"}, and the largest fifth averages a solvency score of ${qStats[0].solv.toFixed(0)} against ${qStats[4].solv.toFixed(0)} for the smallest.`;
       $("top-body").innerHTML = top25.map((r) => `<tr><td><a class="sym" href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.symbol)}</a></td><td class="company">${esc(r.company)}</td>
         <td>${esc(r.country)}</td><td>${esc(r.sector)}</td><td class="num">${pct((wEU(r) / totalW) * 100, 2)}</td><td class="num">${verdict(r.valuation_score, 0)}</td><td class="num">${r.solvency_score ?? "—"}</td></tr>`).join("");
-      $("solv-text").innerHTML = `Each dot is a stock. Solvency (0–100) is AlphaSpread's balance-sheet score. Stocks with solvency of 70 or more average ${gap(sSolid.mean)}; stocks under 50 average ${gap(sWeak.mean)}. A cheap stock with a weak balance sheet may be cheap for a reason.`;
+      $("solv-text").innerHTML = `Each dot is a stock. Solvency (0–100) is ${LABEL[SRC]}'s balance-sheet score. Stocks with solvency of 70 or more average ${gap(sSolid.mean)}; stocks under 50 average ${gap(sWeak.mean)}. A cheap stock with a weak balance sheet may be cheap for a reason.`;
       $("screen-good").innerHTML = stockTable(good.slice(0, 15));
       $("screen-bad").innerHTML = stockTable(bad.slice(0, 15));
       const fair = eu.filter((r) => r.verdict_text === "Fairly Valued").length;
-      if (fair) $("fair-note").insertAdjacentHTML("beforeend", ` On this date that applies to ${fair} of the ${S.n} stocks.`);
+      if (SRC === "alphaspread" && fair) $("fair-note").insertAdjacentHTML("beforeend", ` On this date that applies to ${fair} of the ${S.n} stocks.`);
+      // ---------- the two models ----------
+      const bySym = new Map(other.map((r) => [r.symbol, r]));
+      const pairs = eu.filter((r) => bySym.has(r.symbol)).map((r) => {
+        const o = bySym.get(r.symbol);
+        const as_ = SRC === "alphaspread" ? r : o, fv = SRC === "alphaspread" ? o : r;
+        return { r: as_, as: as_.valuation_score, fv: fv.valuation_score, w: wEU(as_) || wEU(fv) };
+      });
+      if (pairs.length) {
+        const agree = pairs.filter((p) => (p.as >= 0) === (p.fv >= 0)).length;
+        const xs = pairs.map((p) => p.as), ys = pairs.map((p) => p.fv);
+        const mx = xs.reduce((a, b) => a + b, 0) / xs.length, my = ys.reduce((a, b) => a + b, 0) / ys.length;
+        let sxy = 0, sxx = 0, syy = 0;
+        xs.forEach((x, i) => { sxy += (x - mx) * (ys[i] - my); sxx += (x - mx) ** 2; syy += (ys[i] - my) ** 2; });
+        const corr = sxy / Math.sqrt(sxx * syy);
+        const sAS = stats(pairs.map((p) => ({ ...p.r, valuation_score: p.as })), wEU), sFV = stats(pairs.map((p) => ({ ...p.r, valuation_score: p.fv })), wEU);
+        $("models-text").innerHTML = `${pairs.length} stocks are valued by both models${otherDate !== date ? ` (the other model's snapshot is from ${esc(otherDate)})` : ""}. ` +
+          `They give the same verdict for <mark>${agree} of them (${pct((agree / pairs.length) * 100)})</mark>, and their gaps correlate at <span class="hl-accent">${corr.toFixed(2)}</span>. ` +
+          `Index-weighted, AlphaSpread puts these stocks ${gap(sAS.cw)} and Fair Value ${gap(sFV.cw)}. ` +
+          `The models are independent: AlphaSpread blends DCF and multiples, Fair Value uses three years of price-to-sales. Where they agree the verdict is sturdier; ` +
+          `where they don't, look at why (banks and cyclicals are typical). Their gaps are scaled slightly differently (see Method), so compare signs and size rather than exact numbers.`;
+        const pairRows = (ps) => `<div class="table-wrap"><table class="data"><thead><tr><th>Symbol</th><th>Company</th><th class="num">AlphaSpread</th><th class="num">Fair Value</th></tr></thead><tbody>${ps.map((p) =>
+          `<tr><td><span class="sym">${esc(p.r.symbol)}</span></td><td class="company">${esc(p.r.company)}</td><td class="num">${verdict(p.as, 0)}</td><td class="num">${verdict(p.fv, 0)}</td></tr>`).join("")}</tbody></table></div>`;
+        const byDiff = [...pairs].sort((a, b) => (b.fv - b.as) - (a.fv - a.as));
+        $("models-fv").innerHTML = pairRows(byDiff.slice(0, 10));
+        $("models-as").innerHTML = pairRows(byDiff.slice(-10).reverse());
+        window.__pairs = pairs;
+      } else {
+        $("models-text").textContent = "Only one model has a snapshot for this date, so the two can't be compared yet.";
+        $("c-models").parentElement.hidden = true;
+      }
+
       $("missing-note").textContent = missing.length
         ? `Not valued on this date (${missing.length} stocks, ${missW.toFixed(1)}% of the index): ${missing.map((r) => r.symbol).slice(0, 40).join(", ")}${missing.length > 40 ? "…" : ""}.`
         : "Every constituent was valued on this date.";
@@ -388,9 +470,23 @@
             shapes: [{ type: "line", x0: 70, x1: 70, yref: "paper", y0: 0, y1: 1, line: { color: C.zeroLine, dash: "dot", width: 1 } },
                      { type: "line", x0: 50, x1: 50, yref: "paper", y0: 0, y1: 1, line: { color: C.zeroLine, dash: "dot", width: 1 } }] }), cfg);
       }
-      if (window.Plotly) draw();
+      function drawModels() {
+        const ps = window.__pairs || [];
+        if (!ps.length) return;
+        const C = Nexus.colors, maxW = Math.max(...ps.map((p) => p.w || 0)) || 1, cl = (v) => Math.max(-100, Math.min(100, v));
+        const col = ps.map((p) => ((p.as >= 0) === (p.fv >= 0) ? (p.as >= 0 ? C.positive : C.negative) : C.neutral));
+        Plotly.react("c-models", [{ type: "scatter", mode: "markers", x: ps.map((p) => cl(p.as)), y: ps.map((p) => cl(p.fv)),
+          text: ps.map((p) => `${p.r.symbol} · ${p.r.company}`), customdata: ps.map((p) => [p.as.toFixed(0), p.fv.toFixed(0)]),
+          marker: { color: col, size: ps.map((p) => 5 + 20 * Math.sqrt((p.w || 0) / maxW)), opacity: 0.75 },
+          hovertemplate: "%{text}<br>AlphaSpread %{customdata[0]}% · Fair Value %{customdata[1]}%<extra></extra>" }],
+          Nexus.plotlyLayout({ showlegend: false, margin: { l: 56, r: 16, t: 10, b: 48 },
+            xaxis: { title: { text: "AlphaSpread gap" }, ticksuffix: "%", zeroline: true, range: [-105, 105] },
+            yaxis: { title: { text: "Fair Value gap" }, ticksuffix: "%", zeroline: true, range: [-105, 105] },
+            shapes: [{ type: "line", x0: -100, y0: -100, x1: 100, y1: 100, line: { color: C.zeroLine, dash: "dot", width: 1 } }] }), cfg);
+      }
+      if (window.Plotly) { draw(); drawModels(); }
       let wasNarrow = narrow();
-      window.addEventListener("resize", () => { if (narrow() !== wasNarrow) { wasNarrow = narrow(); if (window.Plotly) draw(); } });
+      window.addEventListener("resize", () => { if (narrow() !== wasNarrow) { wasNarrow = narrow(); if (window.Plotly) { draw(); drawModels(); } } });
     }
     init();
   })();

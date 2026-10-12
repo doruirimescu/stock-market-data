@@ -70,9 +70,9 @@ python scripts/alphaspread_index.py "$flag" --date "$day" ${usage_overwrite:+--o
 '''
 
 [tasks.fairvalue]
-description = "Fair Value run for an index (needs SEC_USER_AGENT): JSON + per-stock pages"
+description = "Fair Value run for an index (US: SEC filings, needs SEC_USER_AGENT; stoxx600: Yahoo statements): JSON + per-stock pages"
 usage = '''
-arg "<index>" help="Index to value" { choices "nasdaq100" "sp500" }
+arg "<index>" help="Index to value" { choices "nasdaq100" "sp500" "stoxx600" }
 flag "--date <date>" help="Run date, YYYY-MM-DD (default: today)"
 '''
 dir = "fairvalue"

@@ -12,18 +12,21 @@ from markupsafe import Markup
 from .metrics.base import Metric
 
 
-def money(v) -> str:
+def money(v, cur: str = "$") -> str:
+    """Compact amount with a currency label; pence (GBX) amounts are shown in pounds."""
     if v is None:
         return "–"
+    if cur == "GBX ":
+        v, cur = v / 100, "£"
     a = abs(v)
     for div_, suffix in ((1e12, "T"), (1e9, "B"), (1e6, "M"), (1e3, "K")):
         if a >= div_:
-            return f"{'-' if v < 0 else ''}${a / div_:.2f}{suffix}"
-    return f"{'-' if v < 0 else ''}${a:,.2f}"
+            return f"{'-' if v < 0 else ''}{cur}{a / div_:.2f}{suffix}"
+    return f"{'-' if v < 0 else ''}{cur}{a:,.2f}"
 
 
 def count(v) -> str:
-    return "–" if v is None else money(v).replace("$", "")
+    return "–" if v is None else money(v, "")
 
 
 def num(v) -> str:
@@ -34,7 +37,7 @@ def pctf(v) -> str:
     return "–" if v is None else f"{v:.1f}%"
 
 
-def fmt(m: Metric) -> str:
+def fmt(m: Metric, cur: str = "$") -> str:
     if not m.ok:
         return m.note if m.note in ("No debt", "At loss", "N/A (financial)", "Negative", "Owner FCF ≤ 0",
                                     "Outside −50%…100%") else "–"
@@ -42,7 +45,7 @@ def fmt(m: Metric) -> str:
     if u == "%":
         return f"{v:.2f}%"
     if u == "$":
-        return money(v) if abs(v) >= 1e6 else f"{'-' if v < 0 else ''}${abs(v):,.2f}"
+        return money(v, cur) if abs(v) >= 1e6 else f"{'-' if v < 0 else ''}{cur}{abs(v):,.2f}"
     if u in ("/10", "/9", "/100"):
         return f"{int(v)}"
     if u == "/5":
@@ -63,9 +66,10 @@ def _env() -> Environment:
 def summary_row(r) -> dict:
     """What the index needs about one stock, stored next to its page."""
     p2 = r.metrics["price_to_fair_value"]
+    cur = getattr(r, "currency", "$")
     return {
-        "ticker": r.ticker, "name": r.name, "price": f"{r.price:.2f}", "as_of": r.as_of.isoformat(),
-        "fair_value": fmt(r.metrics["fair_value"]), "verdict": p2.verdict or "", "verdict_text": p2.verdict_text,
+        "ticker": r.ticker, "name": r.name, "price": f"{'' if cur == '$' else cur}{r.price:.2f}", "as_of": r.as_of.isoformat(),
+        "fair_value": fmt(r.metrics["fair_value"], cur), "verdict": p2.verdict or "", "verdict_text": p2.verdict_text,
         "quality_score": fmt(r.metrics["quality_score"]), "pe": fmt(r.metrics["pe_ttm"]), "roic": fmt(r.metrics["roic"]),
         "f_score": fmt(r.metrics["piotroski_f"]), "z_score": fmt(r.metrics["altman_z"]),
     }
@@ -83,8 +87,9 @@ def render_site(reports, out: Path, comparison: dict | None = None) -> None:
     stocks = out / "stocks"
     stocks.mkdir(parents=True, exist_ok=True)
     for r in reports:
+        cur = getattr(r, "currency", "$")
         html = env.get_template("stock.html.j2").render(
-            r=r, root="../", nav="stocks", charts_json=Markup(json.dumps(r.charts).replace("</", "<\\/")))
+            r=r, cur=cur, root="../", nav="stocks", charts_json=Markup(json.dumps(r.charts).replace("</", "<\\/")))
         (stocks / f"{r.ticker}.html").write_text(html)
         (stocks / f"{r.ticker}.json").write_text(json.dumps(summary_row(r)))
     rows = sorted((json.loads(p.read_text()) for p in stocks.glob("*.json")), key=lambda x: x["ticker"])

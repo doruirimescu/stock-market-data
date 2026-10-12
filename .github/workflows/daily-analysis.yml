@@ -174,12 +174,14 @@ jobs:
         if: steps.guard.outputs.run == 'true'
         uses: jdx/mise-action@v2
 
-      - name: Value the NASDAQ-100 and the S&P 500
+      - name: Value the NASDAQ-100, the S&P 500 and the STOXX Europe 600
         if: steps.guard.outputs.run == 'true'
         run: |
           DATE=$(date -u +%F)
           mise run fairvalue nasdaq100 --date "$DATE"
           mise run fairvalue sp500 --date "$DATE"
+          # Europe: statements from Yahoo Finance (no SEC filings). Non-fatal.
+          mise run fairvalue stoxx600 --date "$DATE" || echo "::warning::STOXX 600 Fair Value run failed."
 
       - name: Publish dated snapshots for the site
         if: steps.guard.outputs.run == 'true'
@@ -187,6 +189,7 @@ jobs:
           DATE=$(date -u +%F)
           mise run publish fairvalue nasdaq100 --date "$DATE"
           mise run publish fairvalue sp500 --date "$DATE"
+          mise run publish fairvalue stoxx600 --date "$DATE" || true
 
       - name: Commit and push generated files
         if: steps.guard.outputs.run == 'true'

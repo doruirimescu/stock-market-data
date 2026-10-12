@@ -54,7 +54,7 @@ COUNTRIES = {
 # and the price currency. Found by probing AlphaSpread (it answers 404 for a wrong slug); it
 # also accepts ISO MIC codes for some venues (Brussels is only reachable as xbru).
 EXCHANGES = {
-    "London Stock Exchange": (["lse"], "£"),
+    "London Stock Exchange": (["lse"], "GBX "),   # London prices are quoted in pence
     "Nyse Euronext - Euronext Paris": (["par", "euronext"], "€"),
     "Xetra": (["xetra", "fra"], "€"),
     "Deutsche Börse AG": (["xetra", "fra"], "€"),
@@ -78,6 +78,12 @@ EXCHANGES = {
 def _num(s):
     """German number format: '1.234.567,89' -> 1234567.89."""
     return float(s.replace(".", "").replace(",", ".")) if s and s != "-" else 0.0
+
+
+def yahoo_symbol(ticker, exchange_name):
+    """Yahoo Finance symbol: 'NOVO B' on Copenhagen -> 'NOVO-B.CO', 'RR.' -> 'RR.L', 'BT.A' -> 'BT-A.L'."""
+    base = re.sub(r"[ .]+", "-", ticker.strip().rstrip("."))
+    return f"{base}.{SUFFIXES.get(exchange_name, '')}".rstrip(".")
 
 
 def ticker_variants(ticker):

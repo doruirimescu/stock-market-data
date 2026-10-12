@@ -151,8 +151,15 @@
         fv_url: rg?.url || null,
         valuation_score: score,
         valuation_type: score >= 0 ? "Undervalued" : "Overvalued",
-        intrinsic_value: mean([ra?.intrinsic_value, rg?.intrinsic_value]),
+        // Average the two values only when both are quoted in the same currency
+        // (AlphaSpread values a few European stocks through their US listing).
+        intrinsic_value: ra && rg && (ra.currency || "") !== (rg.currency || "") ? rg.intrinsic_value
+          : mean([ra?.intrinsic_value, rg?.intrinsic_value]),
         current_price_approx: rg?.current_price_approx ?? ra?.current_price_approx,
+        currency: rg?.currency ?? ra?.currency,
+        weight: ra?.weight ?? rg?.weight,
+        sector: ra?.sector ?? rg?.sector,
+        country: ra?.country ?? rg?.country,
         solvency_score: (() => { const v = mean([ra?.solvency_score, rg?.solvency_score]); return v === null ? null : Math.round(v); })(),
         market_cap: rg?.market_cap,
         quality_score: rg?.quality_score ?? null,

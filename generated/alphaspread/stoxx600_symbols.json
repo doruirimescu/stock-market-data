@@ -592,6 +592,5 @@
   "ROP": "six/ro",
   "PEO": "wse/peo",
   "WISE": "nasdaq/wise",
-  "CVC": "nasdaq/cvc",
   "HUBN": "six/hubn"
 }

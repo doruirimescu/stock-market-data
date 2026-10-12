@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>STOXX Europe 600 Sectors · Investing Nexus</title>
-  <meta name="description" content="Daily AlphaSpread valuation of the STOXX Europe 600, sector by sector.">
+  <meta name="description" content="Daily AlphaSpread and Fair Value valuation of the STOXX Europe 600, sector by sector.">
   <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
   <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
   <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
@@ -26,7 +26,7 @@
     .sector-bar .input { min-width: 240px; }
   </style>
 </head>
-<body data-index="stoxx600" data-mode="full" data-sectors data-sectors-key="stoxx600_sectors" data-sources="alphaspread" data-title="STOXX Europe 600 Sectors">
+<body data-index="stoxx600" data-mode="full" data-sectors data-sectors-key="stoxx600_sectors" data-title="STOXX Europe 600 Sectors">
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="index.html"><span class="brand-mark">N</span>Investing Nexus</a>
@@ -79,6 +79,7 @@
           <span class="muted small">Sort</span>
           <button class="btn primary sm" data-chart-sort="solvency">Solvency</button>
           <button class="btn sm" data-chart-sort="valuation">Valuation</button>
+          <button class="btn sm" data-chart-sort="quality" title="Fair Value score (only in Fair Value and Combined mode)">FV score</button>
         </div>
       </div>
       <div id="chart" class="chart"></div>

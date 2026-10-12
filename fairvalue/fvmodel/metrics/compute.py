@@ -41,6 +41,7 @@ class Report:
     closes: pd.Series | None = field(default=None, repr=False)
     financial: bool = False
     fv_inputs: dict | None = field(default=None, repr=False)  # for calibration (metrics/fairvalue.py)
+    currency: str = "$"  # label shown before prices and amounts (e.g. "€", "GBX ")
 
     def m(self, key: str) -> float | None:
         metric = self.metrics.get(key)
@@ -312,7 +313,7 @@ def compute(ticker: str, name: str, f: Fundamentals, mk: Market, today: date | N
     put("debt_to_equity", "Debt-to-Equity", div(debt, equity) if (equity or 0) > 0 else None, "x", "low")
     put("debt_to_ebitda", "Debt-to-EBITDA", div(debt, ebitda) if (ebitda or 0) > 0 else None, "x", "low")
     put("debt_to_revenue", "Debt-to-Revenue", div(debt, rev), "x", "low")
-    ic_note = "No debt" if no_debt else ("Interest expense not tagged in XBRL" if int_exp is None else "")
+    ic_note = "No debt" if no_debt else ("Interest expense not reported" if int_exp is None else "")
     put("interest_coverage", "Interest Coverage", div(op_inc, int_exp), "x", "high", note=ic_note)
 
     # Piotroski F-Score (TTM vs TTM a year earlier)
@@ -638,15 +639,32 @@ def compute(ticker: str, name: str, f: Fundamentals, mk: Market, today: date | N
     if financial:
         notes.append("Financial company (bank, insurer or REIT): balance-sheet ratios such as Altman Z and "
                      "liquidity are not applicable, and revenue-based metrics should be read with care.")
-    for item, d in f.stale_flows.items():
-        notes.append(f"{item.replace('_', ' ').capitalize()} is not tagged in the latest 10-Q; "
-                     f"using the TTM to {d:%Y-%m-%d}.")
-    for item, d in f.stale.items():
-        notes.append(f"{item.replace('_', ' ').capitalize()} is not tagged in the latest 10-Q; using the {d:%Y-%m-%d} 10-K value.")
+    yahoo = getattr(f.book, "source", "sec") == "yahoo"
+    quarter_doc, annual_doc = ("latest quarterly statement", "annual report") if yahoo else ("latest 10-Q", "10-K")
+    nice = lambda item: item.replace('_', ' ')
+    if yahoo:   # Yahoo's quarterly statements are often partial: one line per kind, not per item
+        for d in sorted(set(f.stale_flows.values())):
+            items = [nice(i) for i, x in f.stale_flows.items() if x == d]
+            notes.append(f"Not in the {quarter_doc}, so taken as the TTM to {d:%Y-%m-%d}: {', '.join(items)}.")
+        for d in sorted(set(f.stale.values())):
+            items = [nice(i) for i, x in f.stale.items() if x == d]
+            notes.append(f"Not in the {quarter_doc}, so taken from the {d:%Y-%m-%d} {annual_doc}: {', '.join(items)}.")
+    else:
+        for item, d in f.stale_flows.items():
+            notes.append(f"{nice(item).capitalize()} is not reported in the {quarter_doc}; using the TTM to {d:%Y-%m-%d}.")
+        for item, d in f.stale.items():
+            notes.append(f"{nice(item).capitalize()} is not reported in the {quarter_doc}; "
+                         f"using the {d:%Y-%m-%d} {annual_doc} value.")
     if int_exp is None and not no_debt:
-        notes.append("Interest expense is not reported as a standard XBRL tag; interest coverage and cost of debt are unavailable.")
+        notes.append("Interest expense is not reported " + ("by Yahoo Finance" if yahoo else "as a standard XBRL tag")
+                     + "; interest coverage and cost of debt are unavailable.")
+    if yahoo:
+        notes.append("Statements from Yahoo Finance (about four fiscal years plus recent quarters), converted to the "
+                     "trading currency at each period end's exchange rate; 5- and 10-year figures may be unavailable.")
     if ((today or date.today()) - as_of).days > 120:
-        notes.append(f"Latest filing period ends {as_of:%Y-%m-%d}; newer quarters are not yet in SEC companyfacts.")
+        notes.append(f"Latest reported period ends {as_of:%Y-%m-%d}; "
+                     + ("the company reports half-yearly or newer quarters are not yet available."
+                        if yahoo else "newer quarters are not yet in SEC companyfacts."))
 
     # ---- annual table and charts -------------------------------------------
     annual = []
