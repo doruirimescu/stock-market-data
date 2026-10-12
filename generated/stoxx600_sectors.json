@@ -443,9 +443,13 @@
   "country": "United Kingdom",
   "sector": "Industrials"
  },
- "BOL": {
+ "BOL.PA": {
   "country": "France",
   "sector": "Energy"
+ },
+ "BOL.ST": {
+  "country": "Sweden",
+  "sector": "Materials"
  },
  "BP.": {
   "country": "United Kingdom",
@@ -1827,7 +1831,11 @@
   "country": "Finland",
   "sector": "Financials"
  },
- "SAN": {
+ "SAN.MC": {
+  "country": "Spain",
+  "sector": "Financials"
+ },
+ "SAN.PA": {
   "country": "France",
   "sector": "Health Care"
  },
@@ -2239,8 +2247,12 @@
   "country": "Belgium",
   "sector": "Materials"
  },
- "UNI": {
+ "UNI.MC": {
   "country": "Spain",
+  "sector": "Financials"
+ },
+ "UNI.MI": {
+  "country": "Italy",
   "sector": "Financials"
  },
  "UPM": {
