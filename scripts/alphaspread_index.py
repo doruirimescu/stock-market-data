@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """
-Fetch the constituents of an index (NASDAQ-100 or S&P 500), compute AlphaSpread
+Fetch the constituents of an index (NASDAQ-100, S&P 500 or STOXX Europe 600), compute AlphaSpread
 valuations for every company, store the results to JSON, and render an
 interactive Plotly HTML chart.
 
 Data flow:
     slickcharts (constituents) -> alphaspread.lookup() per ticker -> JSON
+    STOXX 600: iShares ETF holdings (stoxx600.py) -> alphaspread.lookup_at() on the
+    listing exchange; resolved slug/ticker pairs are cached in {index}_symbols.json
     -> visualize.build_html()/build_png() -> HTML + PNG
 
 Outputs:
@@ -21,6 +23,7 @@ after every stock, and re-running skips companies already done.
 Usage:
     python alphaspread_index.py --nasdaq100
     python alphaspread_index.py --sp500
+    python alphaspread_index.py --stoxx600
     python alphaspread_index.py --nasdaq100 --limit 25 --delay 1.0
     python alphaspread_index.py --nasdaq100 --retry-errors
     python alphaspread_index.py --nasdaq100 --visualize-only   # just rebuild HTML+PNG
@@ -40,15 +43,18 @@ import time
 
 import common
 import alphaspread
+import stoxx600
 import visualize
 
 INDEX_URLS = {
     "nasdaq100": "https://www.slickcharts.com/nasdaq100",
     "sp500": "https://www.slickcharts.com/sp500",
 }
-INDEX_TITLES = {"nasdaq100": "NASDAQ-100", "sp500": "S&P 500"}
+INDEX_TITLES = {"nasdaq100": "NASDAQ-100", "sp500": "S&P 500", "stoxx600": "STOXX Europe 600"}
 # Filename prefix for the dated analysis outputs (HTML/PNG).
-INDEX_SLUGS = {"nasdaq100": "nasdaq", "sp500": "sp500"}
+INDEX_SLUGS = {"nasdaq100": "nasdaq", "sp500": "sp500", "stoxx600": "stoxx600"}
+# Index metadata copied into each stored record when the constituent list has it.
+META_FIELDS = ("sector", "country", "weight", "market_value_eur", "currency")
 
 
 def analysis_basename(index, date=None):
@@ -61,7 +67,14 @@ def analysis_basename(index, date=None):
 # Constituents
 # --------------------------------------------------------------------------- #
 def fetch_constituents(index):
-    """Return an ordered list of (ticker, company_name) for the index."""
+    """Return an ordered list of (ticker, company_name, meta) for the index."""
+    if index == "stoxx600":
+        return stoxx600.constituents()
+    return [(tk, name, {}) for tk, name in fetch_us_constituents(index)]
+
+
+def fetch_us_constituents(index):
+    """Return an ordered list of (ticker, company_name) from slickcharts."""
     txt = common.http_get(INDEX_URLS[index], timeout=30)
     # slickcharts links both the company name and the ticker to /symbol/TICKER;
     # the company-name link is the one whose text differs from the ticker.
@@ -98,7 +111,7 @@ def save_results(path, data):
     os.replace(tmp, path)
 
 
-def build_record(symbol, name, d):
+def build_record(symbol, name, d, meta=None):
     """Turn an alphaspread.lookup() result into our stored record.
 
     valuation_score is signed: positive = undervalued (upside), negative =
@@ -120,12 +133,52 @@ def build_record(symbol, name, d):
         "intrinsic_value": d.get("intrinsic_value"),
         "current_price_approx": d.get("current_price_approx"),
         "solvency_score": d.get("solvency_score"),
+        "verdict_text": d.get("verdict_text"),   # AlphaSpread's own label, e.g. "Fairly Valued"
+        **{k: (meta or {})[k] for k in META_FIELDS if k in (meta or {})},
+        # The page's price unit (e.g. GBX: London prices are in pence) beats the exchange default.
+        "currency": d.get("currency") or (meta or {}).get("currency"),
         "error": None,
     }
 
 
-def _lookup(symbol, name):
-    """Look up a company, trying ticker first, then the name."""
+def _lookup(symbol, name, meta=None, symbols=None):
+    """Look up a company.
+
+    With a listing exchange (STOXX 600), try the cached AlphaSpread slug/ticker, then
+    every slug x ticker spelling for that exchange, and remember the hit in `symbols`.
+    Otherwise (and as a last resort) resolve the ticker, then the name, via search.
+    """
+    meta = meta or {}
+    if meta.get("slugs"):
+        tried = []
+        cached = [(symbols or {})[symbol]] if (symbols or {}).get(symbol) else []
+        cached += stoxx600.ALPHASPREAD_OVERRIDES.get(meta.get("ticker"), [])
+        cands = [tuple(c.split("/", 1)) for c in cached]
+        cands += [(s, v) for s in meta["slugs"] for v in stoxx600.ticker_variants(meta.get("ticker", symbol))]
+        for slug, tk in cands:
+            if (slug, tk) in tried:
+                continue
+            tried.append((slug, tk))
+            d = alphaspread.lookup_at(slug, tk, currency=meta.get("currency"))
+            if d and not stoxx600.names_match(name, d.get("company"), meta.get("ticker")):
+                tried.append((slug, f"{tk} (is {d.get('company')})"))
+                d = None
+            if d:
+                if symbols is not None:
+                    symbols[symbol] = f"{slug}/{tk}"
+                return d
+            time.sleep(0.5)
+        # Last resort: search by company name, accepted only if the name matches.
+        try:
+            d = alphaspread.lookup(re.sub(r"\b(N|Ps|Par|Ag|Sa|Plc|Nv|Se|Ab|Asa|A/S|Oyj|Spa)\b\.?", "", name).strip())
+            if d and stoxx600.names_match(name, d.get("company"), meta.get("ticker")):
+                d["currency"] = meta.get("currency") or d.get("currency")
+                if symbols is not None:
+                    symbols[symbol] = f"{d['exchange']}/{d['ticker'].lower()}"
+                return d
+        except Exception:  # noqa: BLE001
+            pass
+        raise RuntimeError(f"not on AlphaSpread as {', '.join(s + '/' + t for s, t in tried[:6])}")
     try:
         return alphaspread.lookup(symbol)
     except Exception:  # noqa: BLE001
@@ -161,9 +214,13 @@ def run(index, out_path, html_path, png_path=None, limit=None, delay=1.5,
     print(f"[+] {total} constituents. Output: {os.path.abspath(out_path)}")
 
     results = {} if overwrite else load_results(out_path)
+    # Resolved AlphaSpread slug/ticker per symbol, kept across runs (even --overwrite).
+    symbols_path = out_path.replace("_valuations.json", "_symbols.json")
+    symbols = load_results(symbols_path) if constituents and constituents[0][2] else None
 
     done = ok = failed = skipped = 0
-    for i, (symbol, name) in enumerate(constituents, 1):
+    limited = 0   # consecutive stocks that failed with HTTP 429
+    for i, (symbol, name, meta) in enumerate(constituents, 1):
         prev = results.get(symbol)
         if prev and not overwrite:
             already_ok = prev.get("error") is None
@@ -172,9 +229,10 @@ def run(index, out_path, html_path, png_path=None, limit=None, delay=1.5,
                 continue
 
         try:
-            d = _lookup(symbol, name)
-            results[symbol] = build_record(symbol, name, d)
+            d = _lookup(symbol, name, meta, symbols)
+            results[symbol] = build_record(symbol, name, d, meta)
             ok += 1
+            limited = 0
             r = results[symbol]
             vt = r["valuation_type"] or "?"
             sol = r["solvency_score"]
@@ -182,12 +240,24 @@ def run(index, out_path, html_path, png_path=None, limit=None, delay=1.5,
                   f"{('%+.0f%%' % r['valuation_score']) if r['valuation_score'] is not None else ''} "
                   f"solvency={sol if sol is not None else '?'}")
         except Exception as e:  # noqa: BLE001
-            results[symbol] = {"symbol": symbol, "company": name, "error": str(e)}
+            if "429" in str(e):
+                limited += 1
+                if limited >= 3:
+                    # Blocked: stop rather than record the rest of the index as failures.
+                    print(f"  [{i}/{total}] AlphaSpread is rate-limiting (HTTP 429); stopping. "
+                          "Progress is saved: re-run later to resume.", file=sys.stderr)
+                    break
+                time.sleep(30)
+                continue
+            results[symbol] = {"symbol": symbol, "company": name, "error": str(e),
+                               **{k: meta[k] for k in META_FIELDS if k in meta}}
             failed += 1
             print(f"  [{i}/{total}] FAIL {symbol:6s} -- {e}")
 
         done += 1
         save_results(out_path, results)   # resumable: persist after every stock
+        if symbols is not None:
+            save_results(symbols_path, symbols)
         time.sleep(delay)
 
     print(f"\n[✓] Processed {done} (ok {ok}, failed {failed}), skipped {skipped} "
@@ -210,6 +280,7 @@ def main():
     g = ap.add_mutually_exclusive_group()
     g.add_argument("--nasdaq100", action="store_true", help="Use the NASDAQ-100.")
     g.add_argument("--sp500", action="store_true", help="Use the S&P 500.")
+    g.add_argument("--stoxx600", action="store_true", help="Use the STOXX Europe 600.")
     ap.add_argument("--limit", type=int, help="Only the first N constituents.")
     ap.add_argument("--delay", type=float, default=1.5,
                     help="Seconds between stocks (rate-limit politeness, default 1.5).")
@@ -228,7 +299,7 @@ def main():
                     help="Skip fetching; just (re)build the HTML from the JSON.")
     args = ap.parse_args()
 
-    index = "sp500" if args.sp500 else "nasdaq100"
+    index = "sp500" if args.sp500 else "stoxx600" if args.stoxx600 else "nasdaq100"
     stem = analysis_basename(index, date=args.date)
     # JSON name stays stable (undated) so re-runs stay resumable; the HTML/PNG
     # analysis artifacts are dated, e.g. sp500_analysis_2026-05-14.html/.png.

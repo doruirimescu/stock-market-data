@@ -155,10 +155,30 @@ def _clean(s):
     return htmllib.unescape(re.sub(r"\s+", " ", s or "")).strip()
 
 
+# A number as AlphaSpread prints it: thousands may be split by a comma, a space or a
+# (narrow) no-break space ("3 731.83"), so the separators are part of the match.
+_NUM = r"(\d[\d,\u00a0\u202f ]*(?:\.\d+)?)"
+# Price unit after the market price -> currency label shown on the site.
+_UNITS = {"USD": "$", "EUR": "€", "GBP": "£", "GBX": "GBX ", "GBp": "GBX ", "CHF": "CHF ",
+          "SEK": "SEK ", "DKK": "DKK ", "NOK": "NOK ", "PLN": "PLN ", "CAD": "C$", "AUD": "A$"}
+
+
+def gap_pct(value, price):
+    """AlphaSpread's valuation gap in %, signed (+ undervalued): measured against the
+    larger of the two, so "Undervalued by 35%" means price = 0.65 x value and
+    "Overvalued by 28%" means value = 0.72 x price."""
+    return (value - price) / max(value, price) * 100
+
+
+def _to_float(s):
+    return float(re.sub(r"[,\u00a0\u202f ]", "", s))
+
+
 def parse_summary(html):
-    """Pull company name, intrinsic value and valuation verdict off the page."""
+    """Pull company name, intrinsic value, price and valuation verdict off the page."""
     out = {"company": None, "intrinsic_value": None, "currency": "$",
-           "valuation": None, "valuation_pct": None, "current_price_approx": None}
+           "valuation": None, "valuation_pct": None, "current_price_approx": None,
+           "verdict_text": None, "price_unit": None}
 
     title = re.search(r"<title>(.*?)</title>", html, re.S)
     if title:
@@ -169,24 +189,45 @@ def parse_summary(html):
         elif parts:
             out["company"] = parts[0]
 
-    # Grab just the number after the recommended-intrinsic-value label,
-    # skipping any leading currency glyph (which may be a mangled byte).
-    iv = re.search(r'mos-entry-recommended__title-price[^>]*>\s*'
-                   r'[^\d<]{0,4}([\d,]+(?:\.\d+)?)', html)
+    # "The intrinsic value of UBS Group AG (UBSG) under the Base Case is 39.86 CHF per share."
+    tag = r"(?:\s|<[^>]*>)*"   # words in this sentence are wrapped in <span>s
+    iv = re.search(r"under" + tag + r"the" + tag + r"Base Case" + tag + r"is" + tag + r"[^\d<]{0,4}" + _NUM, html)
     if iv:
-        out["intrinsic_value"] = float(iv.group(1).replace(",", ""))
+        out["intrinsic_value"] = _to_float(iv.group(1))
+    else:
+        # Fallback: the "buy zone" box shows the price at a 20% margin of safety,
+        # i.e. 0.8 x intrinsic value (it is NOT the intrinsic value itself).
+        mos = re.search(r'mos-entry-recommended__title-price[^>]*>\s*[^\d<]{0,4}' + _NUM, html)
+        if mos:
+            out["intrinsic_value"] = round(_to_float(mos.group(1)) / 0.8, 2)
+
+    # "Compared to the current market price of 4 673.5 GBX, the stock appears Fairly Valued."
+    price = re.search(r"market price of\s*(?:<[^>]*>\s*)*" + _NUM + r"\s*(?:<[^>]*>\s*)*([A-Za-z]{3})?", html)
+    if price:
+        out["current_price_approx"] = _to_float(price.group(1))
+        out["price_unit"] = price.group(2)
 
     verdict = re.search(r'(Under|Over)valued\s*by\s*([\d.]+)\s*%', html, re.I)
     if verdict:
         out["valuation"] = verdict.group(1).capitalize() + "valued"
         out["valuation_pct"] = float(verdict.group(2))
+        out["verdict_text"] = out["valuation"]
+    elif re.search(r"appears\s*(?:<[^>]*>\s*)*Fairly\s+Valued", html, re.I):
+        # No percentage on the page: use AlphaSpread's own gap definition (see
+        # gap_pct) on its base-case value and the price.
+        out["verdict_text"] = "Fairly Valued"
+        iv_, px = out["intrinsic_value"], out["current_price_approx"]
+        if iv_ and px:
+            g = gap_pct(iv_, px)
+            out["valuation"] = "Undervalued" if g >= 0 else "Overvalued"
+            out["valuation_pct"] = round(abs(g), 1)
 
-    # AlphaSpread reports valuation relative to intrinsic value, so we can
-    # derive the (approximate) current price from the two.
-    if out["intrinsic_value"] is not None and out["valuation_pct"] is not None:
-        factor = 1 + out["valuation_pct"] / 100 if out["valuation"] == "Overvalued" \
-            else 1 - out["valuation_pct"] / 100
-        out["current_price_approx"] = round(out["intrinsic_value"] * factor, 2)
+    # Derive the price from the gap when the page didn't state it (inverse of gap_pct).
+    if out["current_price_approx"] is None and out["intrinsic_value"] is not None and out["valuation_pct"] is not None:
+        g = out["valuation_pct"] / 100
+        if g < 1:
+            out["current_price_approx"] = round(out["intrinsic_value"] * (1 - g) if out["valuation"] == "Undervalued"
+                                                else out["intrinsic_value"] / (1 - g), 2)
     return out
 
 
@@ -204,11 +245,42 @@ def fetch_solvency_score(url_summary):
     return int(m.group(1)) if m else None
 
 
+def page_ticker(html):
+    """The ticker AlphaSpread shows in the page title ('VOLV B Intrinsic Valuation…'), normalised."""
+    t = re.search(r"<title>\s*(.*?)\s+Intrinsic", html or "", re.S | re.I)
+    return re.sub(r"[^a-z0-9]", "", _clean(t.group(1)).lower()) if t else None
+
+
+def lookup_at(slug, ticker, currency=None):
+    """Look up a known exchange slug + AlphaSpread ticker spelling directly.
+
+    Returns the result dict, or None when AlphaSpread has no such page (404) or
+    the page is for a different ticker. Other HTTP errors propagate.
+    """
+    url = f"{BASE}/security/{slug}/{urllib.parse.quote(ticker.lower())}/summary"
+    try:
+        html = common.http_get(url, retries=3)
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            return None
+        raise
+    shown = page_ticker(html)
+    if shown and shown != re.sub(r"[^a-z0-9]", "", ticker.lower()):
+        return None
+    data = parse_summary(html)
+    if data["valuation"] is None and data["intrinsic_value"] is None:
+        return None
+    data["currency"] = currency or CURRENCY_BY_SLUG.get(slug, "$")
+    data.update({"query": ticker, "ticker": ticker.upper(), "exchange": slug, "url": url,
+                 "solvency_score": fetch_solvency_score(url)})
+    return data
+
+
 def lookup(query):
     """Resolve + parse everything into one result dict."""
     url, ticker, exchange, html = resolve_security(query)
     data = parse_summary(html)
-    data["currency"] = CURRENCY_BY_SLUG.get(exchange, "$")
+    data["currency"] = _UNITS.get(data.get("price_unit") or "", CURRENCY_BY_SLUG.get(exchange, "$"))
     data.update({
         "query": query,
         "ticker": ticker,

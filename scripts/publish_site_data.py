@@ -6,9 +6,10 @@ GitHub Pages serves only docs/, so the valuation pages read their data from
 docs/data/, one folder per valuation source (alphaspread, fairvalue):
 
     docs/data/{source}/{slug}/YYYY-MM-DD.js   one snapshot per index per day
-    docs/data/{source}/manifest.js            {"nasdaq": [dates newest first], "sp500": [...]}
+    docs/data/{source}/manifest.js            {"nasdaq": [dates newest first], "sp500": [...], "stoxx600": [...]}
     docs/data/sp500_weights.js                market caps for the cap-weighted average
     docs/data/sp500_sectors.js                GICS sector of each S&P 500 stock (sector pages)
+    docs/data/stoxx600_sectors.js             same for the STOXX Europe 600
 
 Each source has its own manifest, so the AlphaSpread and Fair Value jobs never
 write the same file and can publish independently.
@@ -32,8 +33,9 @@ Usage:
     # Refresh the market-cap weights
     python scripts/publish_site_data.py --weights generated/sp500_weights.json
 
-    # Refresh the sector map (from scripts/sp500_sectors.py)
+    # Refresh the sector map (from scripts/sp500_sectors.py, or stoxx600.py --sectors)
     python scripts/publish_site_data.py --sectors generated/sp500_sectors.json
+    python scripts/publish_site_data.py --sectors generated/stoxx600_sectors.json --sectors-key stoxx600_sectors
 
     # Only rebuild the manifests from the snapshots on disk
     python scripts/publish_site_data.py --manifest-only
@@ -47,7 +49,7 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(ROOT, "docs", "data")
-SLUGS = ("nasdaq", "sp500")
+SLUGS = ("nasdaq", "sp500", "stoxx600")
 SOURCES = ("alphaspread", "fairvalue")
 DATE_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})\.js$")
 MIN_VALID_SHARE = 0.5   # publish only if at least this share of stocks was valued
@@ -84,11 +86,11 @@ def write_weights(src):
     return write_js(os.path.join(DATA_DIR, "sp500_weights.js"), "sp500_weights", weights)
 
 
-def write_sectors(src):
+def write_sectors(src, key="sp500_sectors"):
     """Publish {ticker: sector} only; the sub-industry is not used by the pages."""
     with open(src, "r", encoding="utf-8") as f:
         sectors = {k: v["sector"] for k, v in json.load(f).items()}
-    return write_js(os.path.join(DATA_DIR, "sp500_sectors.js"), "sp500_sectors", sectors)
+    return write_js(os.path.join(DATA_DIR, f"{key}.js"), key, sectors)
 
 
 def build_manifest(source):
@@ -110,13 +112,15 @@ def main():
     ap.add_argument("--src", help="Valuations JSON to snapshot.")
     ap.add_argument("--weights", help="Market-cap weights JSON to publish (sp500_weights.json).")
     ap.add_argument("--sectors", help="Sector map JSON to publish (sp500_sectors.json).")
+    ap.add_argument("--sectors-key", default="sp500_sectors", choices=("sp500_sectors", "stoxx600_sectors"),
+                    help="Data key (and file name) of the published sector map.")
     ap.add_argument("--manifest-only", action="store_true", help="Only rebuild the manifests.")
     args = ap.parse_args()
 
     if args.weights:
         print(f"[✓] Wrote weights -> {write_weights(args.weights)}")
     if args.sectors:
-        print(f"[✓] Wrote sectors -> {write_sectors(args.sectors)}")
+        print(f"[✓] Wrote sectors -> {write_sectors(args.sectors, args.sectors_key)}")
     if not (args.manifest_only or args.weights or args.sectors):
         if not (args.index and args.date and args.src):
             ap.error("--index, --date and --src are required unless --manifest-only, --weights or --sectors")

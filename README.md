@@ -49,7 +49,7 @@ Interactive API docs are at <http://localhost:8000/docs>.
 
 ```bash
 # AlphaSpread: daily valuation run for an index → JSON + dated HTML + PNG
-mise run alphaspread nasdaq100      # or sp500
+mise run alphaspread nasdaq100      # or sp500, stoxx600
 
 # Fair Value: value every constituent → generated/fairvalue/ JSON and
 # docs/fairvalue/stocks/<TICKER>.html summary pages (needs SEC_USER_AGENT;
@@ -57,10 +57,13 @@ mise run alphaspread nasdaq100      # or sp500
 mise run fairvalue sp500            # or nasdaq100
 
 # Publish a run as today's dated snapshot for the site
-mise run publish fairvalue sp500    # source: alphaspread|fairvalue, index: nasdaq100|sp500
+mise run publish fairvalue sp500    # source: alphaspread|fairvalue, index: nasdaq100|sp500|stoxx600 (AlphaSpread only)
 
 # S&P 500 GICS sectors (Wikipedia) → generated/sp500_sectors.json + docs/data/sp500_sectors.js
 mise run sectors
+
+# STOXX Europe 600 sectors (iShares ETF holdings) → generated/stoxx600_sectors.json + docs/data/stoxx600_sectors.js
+mise run stoxx600-sectors
 ```
 
 The PNG export (kaleido) renders with a Chrome or Chromium it finds on the system.
@@ -85,8 +88,20 @@ They open the newest date and offer a date picker (`?date=YYYY-MM-DD` links to a
 specific day), plus a source switch (`?source=alphaspread|fairvalue|combined`).
 Combined averages each stock's valuation gap and solvency over the sources that
 value it, pairing each source's newest snapshot on or before the chosen date.
-Both sources use the same record shape: valuation gap = (value − price) / value,
-positive when undervalued, and a 0–100 solvency score.
+Both sources use the same record shape: a signed valuation gap, positive when
+undervalued, and a 0–100 solvency score. AlphaSpread measures the gap against the
+larger of value and price ((value − price) / max(value, price), see
+`alphaspread.gap_pct`).
+
+The STOXX Europe 600 has the same pages (`stoxx600_today.html`,
+`stoxx600_sectors.html`), AlphaSpread only, plus `stoxx600_analysis.html`: a
+full analysis of the latest (or `?date=`) snapshot against the S&P 500 of the
+same day, by country and sector, a country × sector heatmap, size quintiles,
+valuation vs solvency and two screens. Its constituents, sectors, countries and
+index weights come from the holdings of the iShares STOXX Europe 600 UCITS ETF
+(`scripts/stoxx600.py`); AlphaSpread's URL for each listing is probed once and
+cached in `generated/alphaspread/stoxx600_symbols.json`. Prices are in each
+stock's trading currency.
 
 `sp500_sectors.html` gives the same breakdown per GICS sector: a sector
 comparison table (equal-weight, median and market-cap-weighted gap, solvency),

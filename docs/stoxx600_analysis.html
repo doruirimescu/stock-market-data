@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>STOXX Europe 600 Analysis · Investing Nexus</title>
+  <meta name="description" content="Full valuation analysis of the STOXX Europe 600: Europe versus the S&amp;P 500, countries, sectors, size, solvency and screens, from daily AlphaSpread data.">
+  <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
+  <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
+  <style>
+    /* Layout only */
+    .findings { margin: 0; padding-left: 20px; }
+    .findings li { margin: 6px 0; }
+    .grid-note { margin-top: 8px; }
+    .toc { margin-top: 24px; }
+    section { scroll-margin-top: 80px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="stoxx600_today.html">STOXX 600</a>
+        <a href="stoxx600_sectors.html">STOXX 600 Sectors</a>
+        <a href="stoxx600_analysis.html" class="active">STOXX 600 Analysis</a>
+        <a href="sp500_today.html">S&amp;P 500</a>
+        <a href="nasdaq_today.html">NASDAQ-100</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container narrow">
+    <div class="eyebrow">Index analysis</div>
+    <h1>STOXX Europe 600: <span class="gradient-text">full analysis</span></h1>
+    <p class="lead" id="lead">Loading the latest snapshot…</p>
+    <div class="as-of" id="as-of"></div>
+    <div class="notice" id="error" hidden></div>
+
+    <div class="kpis" id="kpis"></div>
+
+    <nav class="toc" aria-label="Contents">
+      <h4>Contents</h4>
+      <ol>
+        <li><a href="#findings">Key findings</a></li>
+        <li><a href="#vs-us">Europe versus the S&amp;P 500</a></li>
+        <li><a href="#countries">By country</a></li>
+        <li><a href="#sectors">By sector</a></li>
+        <li><a href="#heatmap">Country × sector</a></li>
+        <li><a href="#size">Large versus small</a></li>
+        <li><a href="#solvency">Valuation and balance sheets</a></li>
+        <li><a href="#screens">Screens</a></li>
+        <li><a href="#method">Method and caveats</a></li>
+      </ol>
+    </nav>
+
+    <section id="findings">
+      <h2 class="section">Key findings</h2>
+      <div class="panel" style="padding:16px 20px"><ul class="findings prose" id="findings-list"></ul></div>
+    </section>
+
+    <section id="vs-us">
+      <h2 class="section">Europe versus the S&amp;P 500</h2>
+      <p class="prose" id="vs-us-text"></p>
+      <div class="table-wrap"><table class="data"><thead id="vs-head"></thead><tbody id="vs-body"></tbody></table></div>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>Distribution of valuation gaps</h3>
+          <div class="legend"><span><i class="sw-accent"></i>STOXX Europe 600</span><span><i class="sw-series-2"></i>S&amp;P 500</span></div></div>
+        <div id="c-hist" class="chart h-lg"></div>
+        <div class="chart-note">Share of each index's stocks in 10-point bins of the valuation gap. Right of zero = trading below intrinsic value.</div>
+      </div>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>Equal-weight gap by sector: Europe vs US</h3>
+          <div class="legend"><span><i class="sw-accent"></i>STOXX Europe 600</span><span><i class="sw-series-2"></i>S&amp;P 500</span></div></div>
+        <div id="c-sector-vs" class="chart h-lg"></div>
+        <div class="chart-note">Positive = the sector's average stock is undervalued.</div>
+      </div>
+    </section>
+
+    <section id="countries">
+      <h2 class="section">By country</h2>
+      <p class="prose" id="country-text"></p>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>Market-cap weighted gap by country</h3>
+          <div class="legend"><span><i class="sw-under"></i>Undervalued</span><span><i class="sw-over"></i>Overvalued</span></div></div>
+        <div id="c-country" class="chart h-lg"></div>
+      </div>
+      <div class="table-wrap" style="margin-top:14px"><table class="data"><thead id="country-head"></thead><tbody id="country-body"></tbody></table></div>
+    </section>
+
+    <section id="sectors">
+      <h2 class="section">By sector</h2>
+      <p class="prose" id="sector-text"></p>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>Market-cap weighted gap by sector</h3>
+          <div class="legend"><span><i class="sw-under"></i>Undervalued</span><span><i class="sw-over"></i>Overvalued</span></div></div>
+        <div id="c-sector" class="chart h-md"></div>
+      </div>
+      <div class="table-wrap" style="margin-top:14px"><table class="data"><thead id="sector-head"></thead><tbody id="sector-body"></tbody></table></div>
+      <p class="muted small grid-note">Every sector's stocks, chart and table: <a href="stoxx600_sectors.html">STOXX 600 Sectors</a>.</p>
+    </section>
+
+    <section id="heatmap">
+      <h2 class="section">Country × sector</h2>
+      <p class="prose">Equal-weight valuation gap of each country's stocks within each sector, for the larger markets. Cells with fewer than three stocks are left blank.</p>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>Where the value sits</h3>
+          <div class="legend"><span><i class="sw-under"></i>Undervalued</span><span><i class="sw-over"></i>Overvalued</span></div></div>
+        <div id="c-heat" class="chart"></div>
+      </div>
+    </section>
+
+    <section id="size">
+      <h2 class="section">Large versus small</h2>
+      <p class="prose" id="size-text"></p>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>Equal-weight gap by size quintile</h3>
+          <div class="legend"><span><i class="sw-under"></i>Undervalued</span><span><i class="sw-over"></i>Overvalued</span></div></div>
+        <div id="c-size" class="chart h-md"></div>
+        <div class="chart-note">Stocks ranked by index weight and split into five equal groups.</div>
+      </div>
+      <h3 class="muted small" style="margin:22px 0 8px;text-transform:uppercase;letter-spacing:.08em">The 25 largest constituents</h3>
+      <div class="table-wrap scroll-y"><table class="data"><thead><tr><th>Symbol</th><th>Company</th><th>Country</th><th>Sector</th><th class="num">Weight</th><th class="num">Valuation</th><th class="num">Solvency</th></tr></thead><tbody id="top-body"></tbody></table></div>
+    </section>
+
+    <section id="solvency">
+      <h2 class="section">Valuation and balance sheets</h2>
+      <p class="prose" id="solv-text"></p>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>Valuation gap vs solvency score</h3>
+          <div class="legend"><span><i class="sw-under"></i>Undervalued</span><span><i class="sw-over"></i>Overvalued</span></div></div>
+        <div id="c-scatter" class="chart h-lg"></div>
+        <div class="chart-note">Marker size follows index weight. Gaps beyond ±100% are drawn at the edge.</div>
+      </div>
+    </section>
+
+    <section id="screens">
+      <h2 class="section">Screens</h2>
+      <div class="two-col">
+        <div><div class="panel-title"><span class="verdict under">Cheap and solid</span> <span class="muted small">undervalued ≥ 25%, solvency ≥ 70</span></div><div id="screen-good"></div></div>
+        <div><div class="panel-title"><span class="verdict over">Expensive and stretched</span> <span class="muted small">overvalued ≥ 25%, solvency &lt; 50</span></div><div id="screen-bad"></div></div>
+      </div>
+    </section>
+
+    <section id="method">
+      <h2 class="section">Method and caveats</h2>
+      <div class="prose" id="method-text">
+        <p><strong>Valuations.</strong> Each stock's intrinsic value and solvency score come from <a href="https://www.alphaspread.com" target="_blank" rel="noopener">AlphaSpread</a>, which blends discounted cash flow and relative (multiples) valuation. The valuation gap is how far the price sits below (undervalued, positive) or above (overvalued, negative) that value, measured against the larger of the two: "undervalued by 35%" means the price is 65% of the value, "overvalued by 28%" means the value is 72% of the price. It is one model's estimate, not a price target.</p>
+        <p id="fair-note"><strong>"Fairly valued" stocks.</strong> When the price sits within the range of AlphaSpread's scenarios it labels the stock "Fairly Valued" and prints no percentage. For those the gap is computed the way AlphaSpread computes it for every other stock, from its own base-case value and the market price: the difference divided by the larger of the two. These gaps are small by construction.</p>
+        <p><strong>Constituents and weights.</strong> The index members, their GICS sector, country and weight come from the holdings of the iShares STOXX Europe 600 UCITS ETF (DE), which fully replicates the index. Its weights are free-float market-cap weights, the same weighting STOXX uses, so "market-cap weighted" here means index-weighted.</p>
+        <p><strong>Currencies.</strong> Prices and intrinsic values are in each stock's trading currency (EUR, GBP, CHF, SEK, DKK, NOK, PLN). Gaps are percentages, so they compare across currencies.</p>
+        <p><strong>Europe vs US.</strong> The S&amp;P 500 figures use the AlphaSpread snapshot of the same day (or the nearest earlier one) and that page's market-cap weights. Stocks AlphaSpread doesn't cover are left out of both.</p>
+        <p id="missing-note" class="small faint"></p>
+        <p class="small faint">Not investment advice.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container narrow">Valuations from <a href="https://www.alphaspread.com" target="_blank" rel="noopener">AlphaSpread</a>, constituents from iShares, refreshed daily. Not investment advice.</div>
+  </footer>
+
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+  <script>
+  (function () {
+    "use strict";
+    const $ = (id) => document.getElementById(id);
+    const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const longDate = (iso) => new Date(iso + "T00:00:00Z").toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+    const narrow = () => window.innerWidth < 640;
+    const cfg = Nexus.plotlyConfig;
+    const word = (v) => (v >= 0 ? "undervalued" : "overvalued");
+    const gap = (v, d = 1) => (isFinite(v) ? `${word(v)} by ${Math.abs(v).toFixed(d)}%` : "n/a");
+    function verdict(v, d = 1) {
+      if (typeof v !== "number" || !isFinite(v)) return '<span class="muted">—</span>';
+      return `<span class="verdict ${v >= 0 ? "under" : "over"}">${v >= 0 ? "Undervalued" : "Overvalued"} ${Math.abs(v).toFixed(d)}%</span>`;
+    }
+    const pct = (v, d = 0) => (isFinite(v) ? v.toFixed(d) + "%" : "—");
+
+    function loadData(key, fresh) {
+      const store = (window.nexusData = window.nexusData || {});
+      if (store[key]) return Promise.resolve(store[key]);
+      return new Promise((resolve, reject) => {
+        const el = document.createElement("script");
+        el.src = `data/${key}.js` + (fresh ? `?v=${Date.now()}` : "");
+        el.onload = () => (el.remove(), store[key] ? resolve(store[key]) : reject(new Error(`data/${key}.js did not register its data`)));
+        el.onerror = () => (el.remove(), reject(new Error(`data/${key}.js could not be loaded`)));
+        document.head.appendChild(el);
+      });
+    }
+    const valued = (data) => Object.values(data || {}).filter((r) => r && r.symbol && !r.error && typeof r.valuation_score === "number");
+
+    // Summary of a group of records; w(r) gives the weight for the cap-weighted mean.
+    function stats(rs, w) {
+      const s = rs.map((r) => r.valuation_score).sort((a, b) => a - b), n = s.length;
+      const sol = rs.map((r) => r.solvency_score).filter((v) => typeof v === "number");
+      let ws = 0, wv = 0;
+      for (const r of rs) { const x = w(r); if (x) { ws += x; wv += x * r.valuation_score; } }
+      return {
+        n, weight: ws,
+        mean: n ? s.reduce((a, b) => a + b, 0) / n : NaN,
+        median: n ? (n % 2 ? s[(n - 1) / 2] : (s[n / 2 - 1] + s[n / 2]) / 2) : NaN,
+        cw: ws ? wv / ws : NaN,
+        under: rs.filter((r) => r.valuation_score >= 0).length,
+        solv: sol.length ? sol.reduce((a, b) => a + b, 0) / sol.length : NaN,
+      };
+    }
+    function groupBy(rs, key) {
+      const m = new Map();
+      for (const r of rs) { const k = key(r) || "Other"; if (!m.has(k)) m.set(k, []); m.get(k).push(r); }
+      return m;
+    }
+    function groupTable(headId, bodyId, groups, label, totalWeight) {
+      $(headId).innerHTML = `<tr><th>${label}</th><th class="num">Stocks</th><th class="num">Index weight</th><th class="num">Undervalued</th>
+        <th class="num">Equal-weight</th><th class="num">Median</th><th class="num">Market-cap weighted</th><th class="num">Avg. solvency</th></tr>`;
+      $(bodyId).innerHTML = groups.map((g) => `<tr><td><strong>${esc(g.name)}</strong></td><td class="num">${g.n}</td>
+        <td class="num">${pct((g.weight / totalWeight) * 100, 1)}</td><td class="num">${pct((g.under / g.n) * 100)}</td>
+        <td class="num">${verdict(g.mean)}</td><td class="num">${verdict(g.median)}</td><td class="num">${verdict(g.cw)}</td>
+        <td class="num">${isFinite(g.solv) ? g.solv.toFixed(0) : "—"}</td></tr>`).join("");
+    }
+    function stockTable(rs, cols) {
+      if (!rs.length) return '<p class="muted small">No stocks pass this screen today.</p>';
+      return `<div class="table-wrap"><table class="data"><thead><tr><th>Symbol</th><th>Company</th><th>Country</th><th class="num">Valuation</th><th class="num">Solvency</th></tr></thead><tbody>${rs.map((r) =>
+        `<tr><td><a class="sym" href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.symbol)}</a></td><td class="company">${esc(r.company)}</td>
+        <td>${esc(r.country || "")}</td><td class="num">${verdict(r.valuation_score, 0)}</td><td class="num">${r.solvency_score ?? "—"}</td></tr>`).join("")}</tbody></table></div>`;
+    }
+    const polarity = (vals) => vals.map((v) => (v >= 0 ? Nexus.colors.positive : Nexus.colors.negative));
+
+    async function init() {
+      let manifest, date, eu, us = [], usDate = null, usWeights = {};
+      try {
+        manifest = await loadData("alphaspread/manifest", true);
+        const dates = manifest.stoxx600 || [];
+        if (!dates.length) throw new Error("No STOXX Europe 600 snapshot has been published yet.");
+        const q = new URLSearchParams(location.search).get("date");
+        date = dates.includes(q) ? q : dates[0];
+        eu = valued(await loadData(`alphaspread/stoxx600/${date}`));
+        usDate = (manifest.sp500 || []).find((d) => d <= date) || null;
+        if (usDate) {
+          const [u, w] = await Promise.all([loadData(`alphaspread/sp500/${usDate}`), loadData("sp500_weights").catch(() => ({}))]);
+          us = valued(u); usWeights = w || {};
+        }
+        var sectorsUS = await loadData("sp500_sectors").catch(() => ({}));
+        var raw = window.nexusData[`alphaspread/stoxx600/${date}`];
+      } catch (e) {
+        $("error").textContent = e.message; $("error").hidden = false; $("lead").textContent = ""; return;
+      }
+      const latest = date === manifest.stoxx600[0];
+      $("as-of").innerHTML = `<span>AlphaSpread data for <mark>${esc(longDate(date))}</mark></span>` +
+        (latest ? '<span class="badge live">Latest snapshot</span>' : `<span class="badge past">Historical — latest is ${esc(manifest.stoxx600[0])}</span>`);
+
+      const wEU = (r) => r.weight || r.market_value_eur || 0;
+      const wUS = (r) => usWeights[r.symbol] || r.market_cap || 0;
+      const S = stats(eu, wEU), U = us.length ? stats(us, wUS) : null;
+      const totalW = eu.reduce((a, r) => a + wEU(r), 0);
+      const allRaw = Object.values(raw);
+      const missing = allRaw.filter((r) => r && (r.error || typeof r.valuation_score !== "number"));
+      const missW = missing.reduce((a, r) => a + (r.weight || 0), 0);
+
+      // ---------- KPIs + lead ----------
+      $("kpis").innerHTML = [
+        ["Stocks valued", `${S.n}<span class="muted small"> / ${allRaw.length}</span>`, `<span class="verdict under">${S.under} under</span> &nbsp; <span class="verdict over">${S.n - S.under} over</span>`],
+        ["Equal-weight", Math.abs(S.mean).toFixed(1) + "%", `<span class="verdict ${S.mean >= 0 ? "under" : "over"}">${S.mean >= 0 ? "Undervalued" : "Overvalued"}</span> · average gap`],
+        ["Median stock", Math.abs(S.median).toFixed(1) + "%", `<span class="verdict ${S.median >= 0 ? "under" : "over"}">${S.median >= 0 ? "Undervalued" : "Overvalued"}</span>`],
+        ["Index-weighted", Math.abs(S.cw).toFixed(1) + "%", `<span class="verdict ${S.cw >= 0 ? "under" : "over"}">${S.cw >= 0 ? "Undervalued" : "Overvalued"}</span> · free-float weights`],
+        ["Avg. solvency", `${S.solv.toFixed(0)}<span class="muted small"> / 100</span>`, U ? `S&amp;P 500: ${U.solv.toFixed(0)}` : "balance-sheet strength"],
+      ].map(([l, v, s]) => `<div class="panel kpi"><div class="label">${l}</div><div class="value">${v}</div><div class="sub">${s}</div></div>`).join("");
+      $("lead").innerHTML = `On AlphaSpread's numbers, the STOXX Europe 600 is <mark>${gap(S.cw)}</mark> at index weights, and its average stock is ${gap(S.mean)}.` +
+        (U ? ` The S&amp;P 500 on the same day: <span class="hl-accent">${gap(U.cw)}</span> by market cap.` : "");
+
+      // ---------- groups ----------
+      const countries = [...groupBy(eu, (r) => r.country)].map(([name, rs]) => ({ name, ...stats(rs, wEU) })).sort((a, b) => b.cw - a.cw);
+      const sectors = [...groupBy(eu, (r) => r.sector)].map(([name, rs]) => ({ name, ...stats(rs, wEU) })).sort((a, b) => b.cw - a.cw);
+      const usSectors = new Map([...groupBy(us, (r) => sectorsUS[r.symbol])].map(([name, rs]) => [name, stats(rs, wUS)]));
+      const bigCountries = countries.filter((c) => c.n >= 5);
+
+      // Size quintiles by weight
+      const byW = [...eu].sort((a, b) => wEU(b) - wEU(a));
+      const Q = [0, 1, 2, 3, 4].map((q) => byW.slice(Math.round((q * byW.length) / 5), Math.round(((q + 1) * byW.length) / 5)));
+      const qStats = Q.map((rs) => stats(rs, wEU));
+      const top25 = byW.slice(0, 25);
+      const top25W = top25.reduce((a, r) => a + wEU(r), 0) / totalW * 100;
+
+      // Solvency halves
+      const solid = eu.filter((r) => (r.solvency_score ?? 0) >= 70), weak = eu.filter((r) => typeof r.solvency_score === "number" && r.solvency_score < 50);
+      const sSolid = stats(solid, wEU), sWeak = stats(weak, wEU);
+      const good = eu.filter((r) => r.valuation_score >= 25 && (r.solvency_score ?? 0) >= 70).sort((a, b) => b.valuation_score - a.valuation_score);
+      const bad = eu.filter((r) => r.valuation_score <= -25 && typeof r.solvency_score === "number" && r.solvency_score < 50).sort((a, b) => a.valuation_score - b.valuation_score);
+
+      // ---------- findings ----------
+      const sVs = sectors.filter((s) => usSectors.has(s.name)).map((s) => ({ ...s, d: s.mean - usSectors.get(s.name).mean })).sort((a, b) => b.d - a.d);
+      const F = [];
+      F.push(`<strong>Headline:</strong> ${S.under} of ${S.n} valued stocks (${pct((S.under / S.n) * 100)}) trade below AlphaSpread's intrinsic value. Index-weighted, Europe is <mark>${gap(S.cw)}</mark>; the median stock is ${gap(S.median)}.`);
+      if (U) {
+        const d = S.cw - U.cw;
+        F.push(`<strong>Europe vs US:</strong> by market cap the S&amp;P 500 is ${gap(U.cw)}, so Europe screens <span class="hl-accent">${Math.abs(d).toFixed(1)} points ${d >= 0 ? "cheaper" : "dearer"}</span>. Equal-weight the gap is ${Math.abs(S.mean - U.mean).toFixed(1)} points (${gap(S.mean)} vs ${gap(U.mean)}).`);
+      }
+      if (sectors.length) F.push(`<strong>Sectors:</strong> cheapest at index weights is <mark>${esc(sectors[0].name)}</mark> (${gap(sectors[0].cw)}); the most expensive is ${esc(sectors[sectors.length - 1].name)} (${gap(sectors[sectors.length - 1].cw)}).`);
+      if (sVs.length > 1) {
+        const rel = (x) => `${Math.abs(x.d).toFixed(1)} points ${x.d >= 0 ? "cheaper" : "dearer"}`;
+        const end = sVs[sVs.length - 1], cheaper = sVs.filter((x) => x.d > 0).length;
+        F.push(`<strong>Sector by sector vs the US</strong> (equal-weight): Europe is cheaper in ${cheaper} of ${sVs.length} sectors. ` +
+          `The largest discount is in ${esc(sVs[0].name)} (${rel(sVs[0])} than S&amp;P 500 peers), then ${esc(sVs[1].name)} (${rel(sVs[1])}); ` +
+          `at the other end, European ${esc(end.name)} stocks are ${rel(end)}.`);
+      }
+      if (bigCountries.length) F.push(`<strong>Countries</strong> (five or more stocks): cheapest is <mark>${esc(bigCountries[0].name)}</mark> (${gap(bigCountries[0].cw)}), most expensive ${esc(bigCountries[bigCountries.length - 1].name)} (${gap(bigCountries[bigCountries.length - 1].cw)}).`);
+      F.push(`<strong>Size:</strong> the largest fifth of the index is ${gap(qStats[0].mean)} on average, the smallest fifth ${gap(qStats[4].mean)}. The 25 largest stocks make up ${top25W.toFixed(0)}% of the index.`);
+      F.push(`<strong>Balance sheets:</strong> stocks with solvency of 70 or more average ${gap(sSolid.mean)} (${sSolid.n} stocks); those under 50 average ${gap(sWeak.mean)} (${sWeak.n} stocks). ${good.length} stocks are both 25%+ undervalued and solvent (70+).`);
+      $("findings-list").innerHTML = F.map((f) => `<li>${f}</li>`).join("");
+
+      // ---------- vs US ----------
+      if (U) {
+        $("vs-us-text").innerHTML = `Same model, same day${usDate !== date ? ` (S&amp;P 500 snapshot of ${esc(usDate)})` : ""}. Europe trades ${S.cw >= U.cw ? "at a discount to" : "at a premium over"} the US at index weights, and the gap is ${Math.abs(S.mean - U.mean) > Math.abs(S.cw - U.cw) ? "wider" : "narrower"} for the average stock than for the cap-weighted index, because the S&amp;P 500's largest companies ${U.cw < U.mean ? "are priced richer than its typical stock" : "screen cheaper than its typical stock"}.`;
+        $("vs-head").innerHTML = '<tr><th></th><th class="num">Stocks valued</th><th class="num">Undervalued</th><th class="num">Equal-weight</th><th class="num">Median</th><th class="num">Market-cap weighted</th><th class="num">Avg. solvency</th></tr>';
+        $("vs-body").innerHTML = [["STOXX Europe 600", S], ["S&P 500", U]].map(([n, s]) => `<tr><td><strong>${esc(n)}</strong></td><td class="num">${s.n}</td>
+          <td class="num">${pct((s.under / s.n) * 100)}</td><td class="num">${verdict(s.mean)}</td><td class="num">${verdict(s.median)}</td><td class="num">${verdict(s.cw)}</td><td class="num">${s.solv.toFixed(0)}</td></tr>`).join("");
+      } else {
+        $("vs-us-text").textContent = "No S&P 500 snapshot is available for comparison.";
+      }
+
+      // ---------- country / sector tables ----------
+      $("country-text").innerHTML = bigCountries.length ? `Among markets with at least five constituents, <strong>${esc(bigCountries[0].name)}</strong> screens cheapest at index weights and <strong>${esc(bigCountries[bigCountries.length - 1].name)}</strong> most expensive. Index weight shows how much each country matters to the headline number: the United Kingdom, France, Switzerland and Germany together carry ${pct(["United Kingdom", "France", "Switzerland", "Germany"].reduce((a, n) => a + ((countries.find((c) => c.name === n) || {}).weight || 0), 0) / totalW * 100)} of it.` : "";
+      groupTable("country-head", "country-body", countries, "Country", totalW);
+      $("sector-text").innerHTML = `Sorted from cheapest to most expensive at index weights. The equal-weight and median columns show whether a sector's verdict is driven by a few large companies or shared by most of its members.`;
+      groupTable("sector-head", "sector-body", sectors, "Sector", totalW);
+      $("size-text").innerHTML = `Ranked by index weight, from the largest fifth of the index to the smallest. ${qStats[0].mean < qStats[4].mean ? "Smaller companies screen cheaper than the giants" : "The largest companies screen cheaper than the smaller ones"}, and the largest fifth averages a solvency score of ${qStats[0].solv.toFixed(0)} against ${qStats[4].solv.toFixed(0)} for the smallest.`;
+      $("top-body").innerHTML = top25.map((r) => `<tr><td><a class="sym" href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.symbol)}</a></td><td class="company">${esc(r.company)}</td>
+        <td>${esc(r.country)}</td><td>${esc(r.sector)}</td><td class="num">${pct((wEU(r) / totalW) * 100, 2)}</td><td class="num">${verdict(r.valuation_score, 0)}</td><td class="num">${r.solvency_score ?? "—"}</td></tr>`).join("");
+      $("solv-text").innerHTML = `Each dot is a stock. Solvency (0–100) is AlphaSpread's balance-sheet score. Stocks with solvency of 70 or more average ${gap(sSolid.mean)}; stocks under 50 average ${gap(sWeak.mean)}. A cheap stock with a weak balance sheet may be cheap for a reason.`;
+      $("screen-good").innerHTML = stockTable(good.slice(0, 15));
+      $("screen-bad").innerHTML = stockTable(bad.slice(0, 15));
+      const fair = eu.filter((r) => r.verdict_text === "Fairly Valued").length;
+      if (fair) $("fair-note").insertAdjacentHTML("beforeend", ` On this date that applies to ${fair} of the ${S.n} stocks.`);
+      $("missing-note").textContent = missing.length
+        ? `Not valued on this date (${missing.length} stocks, ${missW.toFixed(1)}% of the index): ${missing.map((r) => r.symbol).slice(0, 40).join(", ")}${missing.length > 40 ? "…" : ""}.`
+        : "Every constituent was valued on this date.";
+
+      // ---------- charts ----------
+      function draw() {
+        const C = Nexus.colors;
+        const L = (extra) => Nexus.plotlyLayout(Nexus.merge({ showlegend: false, margin: { l: 56, r: 16, t: 10, b: 44 } }, extra || {}));
+        // Histogram (as bars of shares, so both indices share one axis)
+        const bins = []; for (let b = -100; b < 100; b += 10) bins.push(b);
+        const share = (rs) => bins.map((b) => (rs.filter((r) => { const v = Math.max(-100, Math.min(99.9, r.valuation_score)); return v >= b && v < b + 10; }).length / rs.length) * 100);
+        const binLabels = bins.map((b) => b + 5);
+        const hist = [{ type: "bar", name: "STOXX Europe 600", x: binLabels, y: share(eu), marker: { color: C.accent }, hovertemplate: "Gap %{x}% ±5: %{y:.1f}% of stocks<extra>STOXX 600</extra>" }];
+        if (us.length) hist.push({ type: "bar", name: "S&P 500", x: binLabels, y: share(us), marker: { color: C.series2 }, hovertemplate: "Gap %{x}% ±5: %{y:.1f}% of stocks<extra>S&P 500</extra>" });
+        Plotly.react("c-hist", hist, L({ barmode: "group", bargap: 0.15, xaxis: { ticksuffix: "%", title: { text: "Valuation gap (overvalued ← → undervalued)" } }, yaxis: { ticksuffix: "%" } }), cfg);
+
+        const sv = sectors.filter((s) => usSectors.has(s.name)).sort((a, b) => b.mean - a.mean);
+        Plotly.react("c-sector-vs", [
+          { type: "bar", name: "STOXX Europe 600", x: sv.map((s) => s.name), y: sv.map((s) => s.mean), marker: { color: C.accent }, hovertemplate: "%{x}: %{y:+.1f}%<extra>STOXX 600</extra>" },
+          { type: "bar", name: "S&P 500", x: sv.map((s) => s.name), y: sv.map((s) => usSectors.get(s.name).mean), marker: { color: C.series2 }, hovertemplate: "%{x}: %{y:+.1f}%<extra>S&P 500</extra>" },
+        ], L({ barmode: "group", margin: { b: narrow() ? 130 : 110 }, xaxis: { tickangle: -35 }, yaxis: { ticksuffix: "%", zeroline: true } }), cfg);
+
+        const hbar = (id, groups) => Plotly.react(id, [{ type: "bar", orientation: "h", y: groups.map((g) => g.name), x: groups.map((g) => g.cw),
+          marker: { color: polarity(groups.map((g) => g.cw)) }, customdata: groups.map((g) => [g.n, g.mean]),
+          hovertemplate: "%{y}: %{x:+.1f}% (index-weighted)<br>Equal-weight %{customdata[1]:+.1f}% · %{customdata[0]} stocks<extra></extra>" }],
+          L({ margin: { l: narrow() ? 120 : 170 }, yaxis: { autorange: "reversed" }, xaxis: { ticksuffix: "%", zeroline: true } }), cfg);
+        hbar("c-country", countries);
+        hbar("c-sector", sectors);
+
+        // Heatmap: countries with >= 10 stocks x sectors
+        const hc = countries.filter((c) => c.n >= 10).sort((a, b) => b.weight - a.weight).map((c) => c.name);
+        const hs = sectors.map((s) => s.name).sort();
+        const cells = hc.map((c) => hs.map((s) => { const rs = eu.filter((r) => r.country === c && r.sector === s); return rs.length >= 3 ? stats(rs, wEU) : null; }));
+        const z = cells.map((row) => row.map((x) => (x ? Math.max(-60, Math.min(60, x.mean)) : null)));
+        Plotly.react("c-heat", [{ type: "heatmap", x: hs, y: hc, z, zmid: 0, zmin: -60, zmax: 60,
+          colorscale: [[0, C.negative], [0.5, C.divMid], [1, C.positive]], xgap: 2, ygap: 2,
+          text: cells.map((row) => row.map((x) => (x ? `${x.mean >= 0 ? "+" : ""}${x.mean.toFixed(0)}` : ""))), texttemplate: narrow() ? "" : "%{text}",
+          customdata: cells.map((row) => row.map((x) => (x ? [x.n, x.mean.toFixed(1)] : [0, "n/a"]))),
+          hovertemplate: "%{y} · %{x}<br>Equal-weight gap: %{customdata[1]}%<br>%{customdata[0]} stocks<extra></extra>",
+          colorbar: { ticksuffix: "%", thickness: 10, outlinewidth: 0 } }],
+          L({ margin: { l: narrow() ? 100 : 120, b: narrow() ? 150 : 120 }, xaxis: { tickangle: -35, showgrid: false }, yaxis: { autorange: "reversed", showgrid: false } }), cfg);
+
+        const ql = ["Largest fifth", "2nd", "3rd", "4th", "Smallest fifth"];
+        Plotly.react("c-size", [{ type: "bar", x: ql, y: qStats.map((q) => q.mean), marker: { color: polarity(qStats.map((q) => q.mean)) },
+          customdata: qStats.map((q) => [q.n, q.solv.toFixed(0)]), hovertemplate: "%{x}: %{y:+.1f}% equal-weight<br>%{customdata[0]} stocks · solvency %{customdata[1]}<extra></extra>" }],
+          L({ yaxis: { ticksuffix: "%", zeroline: true } }), cfg);
+
+        const sc = eu.filter((r) => typeof r.solvency_score === "number");
+        const maxW = Math.max(...sc.map(wEU));
+        Plotly.react("c-scatter", [{ type: "scatter", mode: "markers", x: sc.map((r) => r.solvency_score), y: sc.map((r) => Math.max(-100, Math.min(100, r.valuation_score))),
+          text: sc.map((r) => `${r.symbol} · ${r.company}`), marker: { color: polarity(sc.map((r) => r.valuation_score)), size: sc.map((r) => 5 + 22 * Math.sqrt(wEU(r) / maxW)), opacity: 0.75 },
+          customdata: sc.map((r) => [r.valuation_score.toFixed(0), r.country]), hovertemplate: "%{text}<br>%{customdata[1]}<br>Gap %{customdata[0]}% · solvency %{x}<extra></extra>" }],
+          L({ xaxis: { title: { text: "Solvency score" }, range: [0, 102] }, yaxis: { title: { text: "Valuation gap" }, ticksuffix: "%", zeroline: true, range: [-105, 105] },
+            shapes: [{ type: "line", x0: 70, x1: 70, yref: "paper", y0: 0, y1: 1, line: { color: C.zeroLine, dash: "dot", width: 1 } },
+                     { type: "line", x0: 50, x1: 50, yref: "paper", y0: 0, y1: 1, line: { color: C.zeroLine, dash: "dot", width: 1 } }] }), cfg);
+      }
+      if (window.Plotly) draw();
+      let wasNarrow = narrow();
+      window.addEventListener("resize", () => { if (narrow() !== wasNarrow) { wasNarrow = narrow(); if (window.Plotly) draw(); } });
+    }
+    init();
+  })();
+  </script>
+</body>
+</html>

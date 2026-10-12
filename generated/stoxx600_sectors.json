@@ -1,0 +1,2390 @@
+{
+ "A2A": {
+  "country": "Italy",
+  "sector": "Utilities"
+ },
+ "A5G": {
+  "country": "Ireland",
+  "sector": "Financials"
+ },
+ "AAF": {
+  "country": "United Kingdom",
+  "sector": "Communication Services"
+ },
+ "AAK": {
+  "country": "Sweden",
+  "sector": "Consumer Staples"
+ },
+ "AAL": {
+  "country": "United Kingdom",
+  "sector": "Materials"
+ },
+ "AALB": {
+  "country": "Netherlands",
+  "sector": "Industrials"
+ },
+ "ABBN": {
+  "country": "Switzerland",
+  "sector": "Industrials"
+ },
+ "ABDN": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "ABF": {
+  "country": "United Kingdom",
+  "sector": "Consumer Staples"
+ },
+ "ABI": {
+  "country": "Belgium",
+  "sector": "Consumer Staples"
+ },
+ "ABN": {
+  "country": "Netherlands",
+  "sector": "Financials"
+ },
+ "ABVX": {
+  "country": "France",
+  "sector": "Health Care"
+ },
+ "AC": {
+  "country": "France",
+  "sector": "Consumer Discretionary"
+ },
+ "ACA": {
+  "country": "France",
+  "sector": "Financials"
+ },
+ "ACKB": {
+  "country": "Belgium",
+  "sector": "Industrials"
+ },
+ "ACLN": {
+  "country": "Switzerland",
+  "sector": "Industrials"
+ },
+ "ACP": {
+  "country": "Poland",
+  "sector": "Information Technology"
+ },
+ "ACS": {
+  "country": "Spain",
+  "sector": "Industrials"
+ },
+ "ACX": {
+  "country": "Spain",
+  "sector": "Materials"
+ },
+ "AD": {
+  "country": "Netherlands",
+  "sector": "Consumer Staples"
+ },
+ "ADDT B": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "ADEN": {
+  "country": "Switzerland",
+  "sector": "Industrials"
+ },
+ "ADM": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "ADP": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "ADS": {
+  "country": "Germany",
+  "sector": "Consumer Discretionary"
+ },
+ "ADYEN": {
+  "country": "Netherlands",
+  "sector": "Financials"
+ },
+ "AED": {
+  "country": "Belgium",
+  "sector": "Real Estate"
+ },
+ "AENA": {
+  "country": "Spain",
+  "sector": "Industrials"
+ },
+ "AG1": {
+  "country": "Germany",
+  "sector": "Consumer Discretionary"
+ },
+ "AGN": {
+  "country": "Netherlands",
+  "sector": "Financials"
+ },
+ "AGS": {
+  "country": "Belgium",
+  "sector": "Financials"
+ },
+ "AI": {
+  "country": "France",
+  "sector": "Materials"
+ },
+ "AIR": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "AIXA": {
+  "country": "Germany",
+  "sector": "Information Technology"
+ },
+ "AKE": {
+  "country": "France",
+  "sector": "Materials"
+ },
+ "AKER": {
+  "country": "Norway",
+  "sector": "Industrials"
+ },
+ "AKRBP": {
+  "country": "Norway",
+  "sector": "Energy"
+ },
+ "AKZA": {
+  "country": "Netherlands",
+  "sector": "Materials"
+ },
+ "ALC": {
+  "country": "Switzerland",
+  "sector": "Health Care"
+ },
+ "ALE": {
+  "country": "Poland",
+  "sector": "Consumer Discretionary"
+ },
+ "ALFA": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "ALK B": {
+  "country": "Denmark",
+  "sector": "Health Care"
+ },
+ "ALLFG": {
+  "country": "Netherlands",
+  "sector": "Financials"
+ },
+ "ALLN": {
+  "country": "Switzerland",
+  "sector": "Real Estate"
+ },
+ "ALO": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "ALPHA": {
+  "country": "Greece",
+  "sector": "Financials"
+ },
+ "ALSYDB": {
+  "country": "Denmark",
+  "sector": "Financials"
+ },
+ "ALV": {
+  "country": "Germany",
+  "sector": "Financials"
+ },
+ "AM": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "AMS": {
+  "country": "Spain",
+  "sector": "Consumer Discretionary"
+ },
+ "AMUN": {
+  "country": "France",
+  "sector": "Financials"
+ },
+ "ANA": {
+  "country": "Spain",
+  "sector": "Utilities"
+ },
+ "ANDR": {
+  "country": "Austria",
+  "sector": "Industrials"
+ },
+ "ANTO": {
+  "country": "United Kingdom",
+  "sector": "Materials"
+ },
+ "ARCAD": {
+  "country": "Netherlands",
+  "sector": "Industrials"
+ },
+ "ARGX": {
+  "country": "Belgium",
+  "sector": "Health Care"
+ },
+ "ASM": {
+  "country": "Netherlands",
+  "sector": "Information Technology"
+ },
+ "ASML": {
+  "country": "Netherlands",
+  "sector": "Information Technology"
+ },
+ "ASRNL": {
+  "country": "Netherlands",
+  "sector": "Financials"
+ },
+ "ASSA B": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "ATCO A": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "ATS": {
+  "country": "Austria",
+  "sector": "Information Technology"
+ },
+ "AUTO": {
+  "country": "United Kingdom",
+  "sector": "Communication Services"
+ },
+ "AV.": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "AVOL": {
+  "country": "Switzerland",
+  "sector": "Consumer Discretionary"
+ },
+ "AXFO": {
+  "country": "Sweden",
+  "sector": "Consumer Staples"
+ },
+ "AYV": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "AZA": {
+  "country": "Sweden",
+  "sector": "Financials"
+ },
+ "AZM": {
+  "country": "Italy",
+  "sector": "Financials"
+ },
+ "AZN": {
+  "country": "United Kingdom",
+  "sector": "Health Care"
+ },
+ "BA.": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "BAB": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "BAER": {
+  "country": "Switzerland",
+  "sector": "Financials"
+ },
+ "BALD B": {
+  "country": "Sweden",
+  "sector": "Real Estate"
+ },
+ "BAMI": {
+  "country": "Italy",
+  "sector": "Financials"
+ },
+ "BAMNB": {
+  "country": "Netherlands",
+  "sector": "Industrials"
+ },
+ "BARC": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "BARN": {
+  "country": "Switzerland",
+  "sector": "Consumer Staples"
+ },
+ "BAS": {
+  "country": "Germany",
+  "sector": "Materials"
+ },
+ "BATS": {
+  "country": "United Kingdom",
+  "sector": "Consumer Staples"
+ },
+ "BAYN": {
+  "country": "Germany",
+  "sector": "Health Care"
+ },
+ "BBOX": {
+  "country": "United Kingdom",
+  "sector": "Real Estate"
+ },
+ "BBVA": {
+  "country": "Spain",
+  "sector": "Financials"
+ },
+ "BBY": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "BC": {
+  "country": "Italy",
+  "sector": "Consumer Discretionary"
+ },
+ "BC8": {
+  "country": "Germany",
+  "sector": "Information Technology"
+ },
+ "BCP": {
+  "country": "Portugal",
+  "sector": "Financials"
+ },
+ "BCVN": {
+  "country": "Switzerland",
+  "sector": "Financials"
+ },
+ "BEAN": {
+  "country": "Switzerland",
+  "sector": "Industrials"
+ },
+ "BEI": {
+  "country": "Germany",
+  "sector": "Consumer Staples"
+ },
+ "BEIJ B": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "BELA": {
+  "country": "Greece",
+  "sector": "Consumer Discretionary"
+ },
+ "BESI": {
+  "country": "Netherlands",
+  "sector": "Information Technology"
+ },
+ "BFT": {
+  "country": "Poland",
+  "sector": "Industrials"
+ },
+ "BG": {
+  "country": "Austria",
+  "sector": "Financials"
+ },
+ "BGEO": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "BGN": {
+  "country": "Italy",
+  "sector": "Financials"
+ },
+ "BIM": {
+  "country": "France",
+  "sector": "Health Care"
+ },
+ "BIRG": {
+  "country": "Ireland",
+  "sector": "Financials"
+ },
+ "BKG": {
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary"
+ },
+ "BKT": {
+  "country": "Spain",
+  "sector": "Financials"
+ },
+ "BKW": {
+  "country": "Switzerland",
+  "sector": "Utilities"
+ },
+ "BLND": {
+  "country": "United Kingdom",
+  "sector": "Real Estate"
+ },
+ "BME": {
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary"
+ },
+ "BMED": {
+  "country": "Italy",
+  "sector": "Financials"
+ },
+ "BMPS": {
+  "country": "Italy",
+  "sector": "Financials"
+ },
+ "BMW": {
+  "country": "Germany",
+  "sector": "Consumer Discretionary"
+ },
+ "BN": {
+  "country": "France",
+  "sector": "Consumer Staples"
+ },
+ "BNP": {
+  "country": "France",
+  "sector": "Financials"
+ },
+ "BNR": {
+  "country": "Germany",
+  "sector": "Industrials"
+ },
+ "BNZL": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "BOL": {
+  "country": "France",
+  "sector": "Energy"
+ },
+ "BP.": {
+  "country": "United Kingdom",
+  "sector": "Energy"
+ },
+ "BPE": {
+  "country": "Italy",
+  "sector": "Financials"
+ },
+ "BPT": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "BRBY": {
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary"
+ },
+ "BT.A": {
+  "country": "United Kingdom",
+  "sector": "Communication Services"
+ },
+ "BTRW": {
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary"
+ },
+ "BVI": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "BWY": {
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary"
+ },
+ "BZU": {
+  "country": "Italy",
+  "sector": "Materials"
+ },
+ "CA": {
+  "country": "France",
+  "sector": "Consumer Staples"
+ },
+ "CABK": {
+  "country": "Spain",
+  "sector": "Financials"
+ },
+ "CAP": {
+  "country": "France",
+  "sector": "Information Technology"
+ },
+ "CARL B": {
+  "country": "Denmark",
+  "sector": "Consumer Staples"
+ },
+ "CAST": {
+  "country": "Sweden",
+  "sector": "Real Estate"
+ },
+ "CBK": {
+  "country": "Germany",
+  "sector": "Financials"
+ },
+ "CCC": {
+  "country": "United Kingdom",
+  "sector": "Information Technology"
+ },
+ "CCH": {
+  "country": "United Kingdom",
+  "sector": "Consumer Staples"
+ },
+ "CDR": {
+  "country": "Poland",
+  "sector": "Communication Services"
+ },
+ "CFR": {
+  "country": "Switzerland",
+  "sector": "Consumer Discretionary"
+ },
+ "CLNX": {
+  "country": "Spain",
+  "sector": "Communication Services"
+ },
+ "CMBN": {
+  "country": "Switzerland",
+  "sector": "Financials"
+ },
+ "CNA": {
+  "country": "United Kingdom",
+  "sector": "Utilities"
+ },
+ "COLO B": {
+  "country": "Denmark",
+  "sector": "Health Care"
+ },
+ "CON": {
+  "country": "Germany",
+  "sector": "Consumer Discretionary"
+ },
+ "COTN": {
+  "country": "Switzerland",
+  "sector": "Information Technology"
+ },
+ "COV": {
+  "country": "France",
+  "sector": "Real Estate"
+ },
+ "CPG": {
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary"
+ },
+ "CPR": {
+  "country": "Italy",
+  "sector": "Consumer Staples"
+ },
+ "CRDA": {
+  "country": "United Kingdom",
+  "sector": "Materials"
+ },
+ "CS": {
+  "country": "France",
+  "sector": "Financials"
+ },
+ "CSG": {
+  "country": "Netherlands",
+  "sector": "Industrials"
+ },
+ "CTEC": {
+  "country": "United Kingdom",
+  "sector": "Health Care"
+ },
+ "CVC": {
+  "country": "Netherlands",
+  "sector": "Financials"
+ },
+ "CWK": {
+  "country": "United Kingdom",
+  "sector": "Consumer Staples"
+ },
+ "DANSKE": {
+  "country": "Denmark",
+  "sector": "Financials"
+ },
+ "DB1": {
+  "country": "Germany",
+  "sector": "Financials"
+ },
+ "DBK": {
+  "country": "Germany",
+  "sector": "Financials"
+ },
+ "DCC": {
+  "country": "United Kingdom",
+  "sector": "Energy"
+ },
+ "DEMANT": {
+  "country": "Denmark",
+  "sector": "Health Care"
+ },
+ "DG": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "DGE": {
+  "country": "United Kingdom",
+  "sector": "Consumer Staples"
+ },
+ "DHER": {
+  "country": "Germany",
+  "sector": "Consumer Discretionary"
+ },
+ "DHL": {
+  "country": "Germany",
+  "sector": "Industrials"
+ },
+ "DIE": {
+  "country": "Belgium",
+  "sector": "Consumer Discretionary"
+ },
+ "DIM": {
+  "country": "France",
+  "sector": "Health Care"
+ },
+ "DKSH": {
+  "country": "Switzerland",
+  "sector": "Industrials"
+ },
+ "DLG": {
+  "country": "Italy",
+  "sector": "Consumer Discretionary"
+ },
+ "DLN": {
+  "country": "United Kingdom",
+  "sector": "Real Estate"
+ },
+ "DNB": {
+  "country": "Norway",
+  "sector": "Financials"
+ },
+ "DNP": {
+  "country": "Poland",
+  "sector": "Consumer Staples"
+ },
+ "DPLM": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "DRX": {
+  "country": "United Kingdom",
+  "sector": "Utilities"
+ },
+ "DSFIR": {
+  "country": "Netherlands",
+  "sector": "Materials"
+ },
+ "DSV": {
+  "country": "Denmark",
+  "sector": "Industrials"
+ },
+ "DSY": {
+  "country": "France",
+  "sector": "Information Technology"
+ },
+ "DTE": {
+  "country": "Germany",
+  "sector": "Communication Services"
+ },
+ "DTG": {
+  "country": "Germany",
+  "sector": "Industrials"
+ },
+ "EBP": {
+  "country": "Poland",
+  "sector": "Financials"
+ },
+ "EBS": {
+  "country": "Austria",
+  "sector": "Financials"
+ },
+ "EDEN": {
+  "country": "France",
+  "sector": "Financials"
+ },
+ "EDP": {
+  "country": "Portugal",
+  "sector": "Utilities"
+ },
+ "EDPR": {
+  "country": "Portugal",
+  "sector": "Utilities"
+ },
+ "EDV": {
+  "country": "United Kingdom",
+  "sector": "Materials"
+ },
+ "EL": {
+  "country": "France",
+  "sector": "Health Care"
+ },
+ "ELE": {
+  "country": "Spain",
+  "sector": "Utilities"
+ },
+ "ELI": {
+  "country": "Belgium",
+  "sector": "Utilities"
+ },
+ "ELIS": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "ELISA": {
+  "country": "Finland",
+  "sector": "Communication Services"
+ },
+ "EMG": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "EMSN": {
+  "country": "Switzerland",
+  "sector": "Materials"
+ },
+ "EN": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "ENEL": {
+  "country": "Italy",
+  "sector": "Utilities"
+ },
+ "ENG": {
+  "country": "Spain",
+  "sector": "Utilities"
+ },
+ "ENGI": {
+  "country": "France",
+  "sector": "Utilities"
+ },
+ "ENI": {
+  "country": "Italy",
+  "sector": "Energy"
+ },
+ "ENR": {
+  "country": "Germany",
+  "sector": "Industrials"
+ },
+ "ENT": {
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary"
+ },
+ "ENX": {
+  "country": "France",
+  "sector": "Financials"
+ },
+ "EOAN": {
+  "country": "Germany",
+  "sector": "Utilities"
+ },
+ "EPI A": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "EQNR": {
+  "country": "Norway",
+  "sector": "Energy"
+ },
+ "EQT": {
+  "country": "Sweden",
+  "sector": "Financials"
+ },
+ "ERF": {
+  "country": "France",
+  "sector": "Health Care"
+ },
+ "ERIC B": {
+  "country": "Sweden",
+  "sector": "Information Technology"
+ },
+ "ESSITY B": {
+  "country": "Sweden",
+  "sector": "Consumer Staples"
+ },
+ "ETE": {
+  "country": "Greece",
+  "sector": "Financials"
+ },
+ "EUROB": {
+  "country": "Greece",
+  "sector": "Financials"
+ },
+ "EVD": {
+  "country": "Germany",
+  "sector": "Communication Services"
+ },
+ "EVK": {
+  "country": "Germany",
+  "sector": "Materials"
+ },
+ "EVO": {
+  "country": "Sweden",
+  "sector": "Consumer Discretionary"
+ },
+ "EXO": {
+  "country": "Netherlands",
+  "sector": "Financials"
+ },
+ "EXPN": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "EZJ": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "FBK": {
+  "country": "Italy",
+  "sector": "Financials"
+ },
+ "FDJU": {
+  "country": "France",
+  "sector": "Consumer Discretionary"
+ },
+ "FER": {
+  "country": "Spain",
+  "sector": "Industrials"
+ },
+ "FGR": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "FHZN": {
+  "country": "Switzerland",
+  "sector": "Industrials"
+ },
+ "FLS": {
+  "country": "Denmark",
+  "sector": "Industrials"
+ },
+ "FME": {
+  "country": "Germany",
+  "sector": "Health Care"
+ },
+ "FNTN": {
+  "country": "Germany",
+  "sector": "Communication Services"
+ },
+ "FORTUM": {
+  "country": "Finland",
+  "sector": "Utilities"
+ },
+ "FPE3": {
+  "country": "Germany",
+  "sector": "Materials"
+ },
+ "FR": {
+  "country": "France",
+  "sector": "Consumer Discretionary"
+ },
+ "FRE": {
+  "country": "Germany",
+  "sector": "Health Care"
+ },
+ "FRES": {
+  "country": "United Kingdom",
+  "sector": "Materials"
+ },
+ "FRO": {
+  "country": "Norway",
+  "sector": "Energy"
+ },
+ "FTK": {
+  "country": "Germany",
+  "sector": "Financials"
+ },
+ "G": {
+  "country": "Italy",
+  "sector": "Financials"
+ },
+ "G1A": {
+  "country": "Germany",
+  "sector": "Industrials"
+ },
+ "G24": {
+  "country": "Germany",
+  "sector": "Communication Services"
+ },
+ "GALD": {
+  "country": "Switzerland",
+  "sector": "Health Care"
+ },
+ "GALE": {
+  "country": "Switzerland",
+  "sector": "Health Care"
+ },
+ "GALP": {
+  "country": "Portugal",
+  "sector": "Energy"
+ },
+ "GAW": {
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary"
+ },
+ "GBF": {
+  "country": "Germany",
+  "sector": "Industrials"
+ },
+ "GBLB": {
+  "country": "Belgium",
+  "sector": "Financials"
+ },
+ "GEBN": {
+  "country": "Switzerland",
+  "sector": "Industrials"
+ },
+ "GEKTERNA": {
+  "country": "Greece",
+  "sector": "Industrials"
+ },
+ "GET": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "GETI B": {
+  "country": "Sweden",
+  "sector": "Health Care"
+ },
+ "GF": {
+  "country": "Switzerland",
+  "sector": "Industrials"
+ },
+ "GFC": {
+  "country": "France",
+  "sector": "Real Estate"
+ },
+ "GIVN": {
+  "country": "Switzerland",
+  "sector": "Materials"
+ },
+ "GJF": {
+  "country": "Norway",
+  "sector": "Financials"
+ },
+ "GL9": {
+  "country": "Ireland",
+  "sector": "Consumer Staples"
+ },
+ "GLE": {
+  "country": "France",
+  "sector": "Financials"
+ },
+ "GLEN": {
+  "country": "United Kingdom",
+  "sector": "Materials"
+ },
+ "GMAB": {
+  "country": "Denmark",
+  "sector": "Health Care"
+ },
+ "GRF": {
+  "country": "Spain",
+  "sector": "Health Care"
+ },
+ "GSK": {
+  "country": "United Kingdom",
+  "sector": "Health Care"
+ },
+ "GTT": {
+  "country": "France",
+  "sector": "Energy"
+ },
+ "HAG": {
+  "country": "Germany",
+  "sector": "Industrials"
+ },
+ "HBAN": {
+  "country": "Switzerland",
+  "sector": "Financials"
+ },
+ "HEI": {
+  "country": "Germany",
+  "sector": "Materials"
+ },
+ "HEIA": {
+  "country": "Netherlands",
+  "sector": "Consumer Staples"
+ },
+ "HEIO": {
+  "country": "Netherlands",
+  "sector": "Consumer Staples"
+ },
+ "HEN3": {
+  "country": "Germany",
+  "sector": "Consumer Staples"
+ },
+ "HER": {
+  "country": "Italy",
+  "sector": "Utilities"
+ },
+ "HEXA B": {
+  "country": "Sweden",
+  "sector": "Information Technology"
+ },
+ "HIAB": {
+  "country": "Finland",
+  "sector": "Industrials"
+ },
+ "HIK": {
+  "country": "United Kingdom",
+  "sector": "Health Care"
+ },
+ "HILS": {
+  "country": "United Kingdom",
+  "sector": "Materials"
+ },
+ "HLMA": {
+  "country": "United Kingdom",
+  "sector": "Information Technology"
+ },
+ "HLN": {
+  "country": "United Kingdom",
+  "sector": "Health Care"
+ },
+ "HM B": {
+  "country": "Sweden",
+  "sector": "Consumer Discretionary"
+ },
+ "HNR1": {
+  "country": "Germany",
+  "sector": "Financials"
+ },
+ "HO": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "HOC": {
+  "country": "United Kingdom",
+  "sector": "Materials"
+ },
+ "HOLM B": {
+  "country": "Sweden",
+  "sector": "Materials"
+ },
+ "HOLN": {
+  "country": "Switzerland",
+  "sector": "Materials"
+ },
+ "HOT": {
+  "country": "Germany",
+  "sector": "Industrials"
+ },
+ "HSBA": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "HSX": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "HTO": {
+  "country": "Greece",
+  "sector": "Communication Services"
+ },
+ "HUBN": {
+  "country": "Switzerland",
+  "sector": "Industrials"
+ },
+ "HUH1V": {
+  "country": "Finland",
+  "sector": "Materials"
+ },
+ "HWDN": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "IAG": {
+  "country": "Spain",
+  "sector": "Industrials"
+ },
+ "IBE": {
+  "country": "Spain",
+  "sector": "Utilities"
+ },
+ "ICG": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "IDR": {
+  "country": "Spain",
+  "sector": "Information Technology"
+ },
+ "IFCN": {
+  "country": "Switzerland",
+  "sector": "Information Technology"
+ },
+ "IFX": {
+  "country": "Germany",
+  "sector": "Information Technology"
+ },
+ "IG": {
+  "country": "Italy",
+  "sector": "Utilities"
+ },
+ "IGG": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "IHG": {
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary"
+ },
+ "III": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "IMB": {
+  "country": "United Kingdom",
+  "sector": "Consumer Staples"
+ },
+ "IMCD": {
+  "country": "Netherlands",
+  "sector": "Industrials"
+ },
+ "IMI": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "INCH": {
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary"
+ },
+ "INDT": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "INDU C": {
+  "country": "Sweden",
+  "sector": "Financials"
+ },
+ "INF": {
+  "country": "United Kingdom",
+  "sector": "Communication Services"
+ },
+ "ING": {
+  "country": "Poland",
+  "sector": "Financials"
+ },
+ "INGA": {
+  "country": "Netherlands",
+  "sector": "Financials"
+ },
+ "INVE B": {
+  "country": "Sweden",
+  "sector": "Financials"
+ },
+ "INVP": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "IP": {
+  "country": "Italy",
+  "sector": "Industrials"
+ },
+ "IPN": {
+  "country": "France",
+  "sector": "Health Care"
+ },
+ "ISP": {
+  "country": "Italy",
+  "sector": "Financials"
+ },
+ "ISS": {
+  "country": "Denmark",
+  "sector": "Industrials"
+ },
+ "ITRK": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "ITV": {
+  "country": "United Kingdom",
+  "sector": "Communication Services"
+ },
+ "ITX": {
+  "country": "Spain",
+  "sector": "Consumer Discretionary"
+ },
+ "IVG": {
+  "country": "Italy",
+  "sector": "Industrials"
+ },
+ "JMAT": {
+  "country": "United Kingdom",
+  "sector": "Materials"
+ },
+ "JMT": {
+  "country": "Portugal",
+  "sector": "Consumer Staples"
+ },
+ "JYSK": {
+  "country": "Denmark",
+  "sector": "Financials"
+ },
+ "KBC": {
+  "country": "Belgium",
+  "sector": "Financials"
+ },
+ "KBCA": {
+  "country": "Belgium",
+  "sector": "Financials"
+ },
+ "KBX": {
+  "country": "Germany",
+  "sector": "Industrials"
+ },
+ "KCR": {
+  "country": "Finland",
+  "sector": "Industrials"
+ },
+ "KER": {
+  "country": "France",
+  "sector": "Consumer Discretionary"
+ },
+ "KESKOB": {
+  "country": "Finland",
+  "sector": "Consumer Staples"
+ },
+ "KGF": {
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary"
+ },
+ "KGH": {
+  "country": "Poland",
+  "sector": "Materials"
+ },
+ "KGX": {
+  "country": "Germany",
+  "sector": "Industrials"
+ },
+ "KNEBV": {
+  "country": "Finland",
+  "sector": "Industrials"
+ },
+ "KNIN": {
+  "country": "Switzerland",
+  "sector": "Industrials"
+ },
+ "KOG": {
+  "country": "Norway",
+  "sector": "Industrials"
+ },
+ "KPN": {
+  "country": "Netherlands",
+  "sector": "Communication Services"
+ },
+ "KRX": {
+  "country": "Ireland",
+  "sector": "Industrials"
+ },
+ "KRZ": {
+  "country": "Ireland",
+  "sector": "Consumer Staples"
+ },
+ "KTY": {
+  "country": "Poland",
+  "sector": "Materials"
+ },
+ "LAGR B": {
+  "country": "Sweden",
+  "sector": "Information Technology"
+ },
+ "LAND": {
+  "country": "United Kingdom",
+  "sector": "Real Estate"
+ },
+ "LATO B": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "LDO": {
+  "country": "Italy",
+  "sector": "Industrials"
+ },
+ "LEG": {
+  "country": "Germany",
+  "sector": "Real Estate"
+ },
+ "LGEN": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "LHA": {
+  "country": "Germany",
+  "sector": "Industrials"
+ },
+ "LI": {
+  "country": "France",
+  "sector": "Real Estate"
+ },
+ "LIFCO B": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "LISP": {
+  "country": "Switzerland",
+  "sector": "Consumer Staples"
+ },
+ "LLOY": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "LMP": {
+  "country": "United Kingdom",
+  "sector": "Real Estate"
+ },
+ "LOGN": {
+  "country": "Switzerland",
+  "sector": "Information Technology"
+ },
+ "LONN": {
+  "country": "Switzerland",
+  "sector": "Health Care"
+ },
+ "LOOMIS": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "LOTB": {
+  "country": "Belgium",
+  "sector": "Consumer Staples"
+ },
+ "LPP": {
+  "country": "Poland",
+  "sector": "Consumer Discretionary"
+ },
+ "LR": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "LSEG": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "LTMC": {
+  "country": "Italy",
+  "sector": "Consumer Discretionary"
+ },
+ "LUND B": {
+  "country": "Sweden",
+  "sector": "Financials"
+ },
+ "MAERSK B": {
+  "country": "Denmark",
+  "sector": "Industrials"
+ },
+ "MANTA": {
+  "country": "Finland",
+  "sector": "Financials"
+ },
+ "MAP": {
+  "country": "Spain",
+  "sector": "Financials"
+ },
+ "MBG": {
+  "country": "Germany",
+  "sector": "Consumer Discretionary"
+ },
+ "MBK": {
+  "country": "Poland",
+  "sector": "Financials"
+ },
+ "MC": {
+  "country": "France",
+  "sector": "Consumer Discretionary"
+ },
+ "METSO": {
+  "country": "Finland",
+  "sector": "Industrials"
+ },
+ "MICC": {
+  "country": "Netherlands",
+  "sector": "Consumer Staples"
+ },
+ "MIL": {
+  "country": "Poland",
+  "sector": "Financials"
+ },
+ "MKS": {
+  "country": "United Kingdom",
+  "sector": "Consumer Staples"
+ },
+ "ML": {
+  "country": "France",
+  "sector": "Consumer Discretionary"
+ },
+ "MNDI": {
+  "country": "United Kingdom",
+  "sector": "Materials"
+ },
+ "MNG": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "MOBN": {
+  "country": "Switzerland",
+  "sector": "Real Estate"
+ },
+ "MOH": {
+  "country": "Greece",
+  "sector": "Energy"
+ },
+ "MONC": {
+  "country": "Italy",
+  "sector": "Consumer Discretionary"
+ },
+ "MOWI": {
+  "country": "Norway",
+  "sector": "Consumer Staples"
+ },
+ "MRK": {
+  "country": "Germany",
+  "sector": "Health Care"
+ },
+ "MRL": {
+  "country": "Spain",
+  "sector": "Real Estate"
+ },
+ "MRO": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "MT": {
+  "country": "France",
+  "sector": "Materials"
+ },
+ "MTLN": {
+  "country": "Greece",
+  "sector": "Industrials"
+ },
+ "MTO": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "MTX": {
+  "country": "Germany",
+  "sector": "Industrials"
+ },
+ "MUV2": {
+  "country": "Germany",
+  "sector": "Financials"
+ },
+ "MYCR": {
+  "country": "Sweden",
+  "sector": "Information Technology"
+ },
+ "NDA": {
+  "country": "Germany",
+  "sector": "Materials"
+ },
+ "NDA FI": {
+  "country": "Finland",
+  "sector": "Financials"
+ },
+ "NDX1": {
+  "country": "Germany",
+  "sector": "Industrials"
+ },
+ "NEM": {
+  "country": "Germany",
+  "sector": "Information Technology"
+ },
+ "NESN": {
+  "country": "Switzerland",
+  "sector": "Consumer Staples"
+ },
+ "NESTE": {
+  "country": "Finland",
+  "sector": "Energy"
+ },
+ "NEX": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "NEXI": {
+  "country": "Italy",
+  "sector": "Financials"
+ },
+ "NG.": {
+  "country": "United Kingdom",
+  "sector": "Utilities"
+ },
+ "NHY": {
+  "country": "Norway",
+  "sector": "Materials"
+ },
+ "NIBE B": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "NKT": {
+  "country": "Denmark",
+  "sector": "Industrials"
+ },
+ "NN": {
+  "country": "Netherlands",
+  "sector": "Financials"
+ },
+ "NOD": {
+  "country": "Norway",
+  "sector": "Information Technology"
+ },
+ "NOKIA": {
+  "country": "Finland",
+  "sector": "Information Technology"
+ },
+ "NOVN": {
+  "country": "Switzerland",
+  "sector": "Health Care"
+ },
+ "NOVO B": {
+  "country": "Denmark",
+  "sector": "Health Care"
+ },
+ "NSIS B": {
+  "country": "Denmark",
+  "sector": "Materials"
+ },
+ "NTGY": {
+  "country": "Spain",
+  "sector": "Utilities"
+ },
+ "NWG": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "NXT": {
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary"
+ },
+ "OCTV SDB": {
+  "country": "Sweden",
+  "sector": "Information Technology"
+ },
+ "OMV": {
+  "country": "Austria",
+  "sector": "Energy"
+ },
+ "OR": {
+  "country": "France",
+  "sector": "Consumer Staples"
+ },
+ "ORA": {
+  "country": "France",
+  "sector": "Communication Services"
+ },
+ "ORK": {
+  "country": "Norway",
+  "sector": "Consumer Staples"
+ },
+ "ORNBV": {
+  "country": "Finland",
+  "sector": "Health Care"
+ },
+ "ORSTED": {
+  "country": "Denmark",
+  "sector": "Utilities"
+ },
+ "P911": {
+  "country": "Germany",
+  "sector": "Consumer Discretionary"
+ },
+ "PAF": {
+  "country": "United Kingdom",
+  "sector": "Materials"
+ },
+ "PAH3": {
+  "country": "Germany",
+  "sector": "Consumer Discretionary"
+ },
+ "PEO": {
+  "country": "Poland",
+  "sector": "Financials"
+ },
+ "PGHN": {
+  "country": "Switzerland",
+  "sector": "Financials"
+ },
+ "PHIA": {
+  "country": "Netherlands",
+  "sector": "Health Care"
+ },
+ "PHP": {
+  "country": "United Kingdom",
+  "sector": "Real Estate"
+ },
+ "PIRC": {
+  "country": "Italy",
+  "sector": "Consumer Discretionary"
+ },
+ "PKN": {
+  "country": "Poland",
+  "sector": "Energy"
+ },
+ "PKO": {
+  "country": "Poland",
+  "sector": "Financials"
+ },
+ "PLUS": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "PNDORA": {
+  "country": "Denmark",
+  "sector": "Consumer Discretionary"
+ },
+ "PNN": {
+  "country": "United Kingdom",
+  "sector": "Utilities"
+ },
+ "PPC": {
+  "country": "Greece",
+  "sector": "Utilities"
+ },
+ "PRU": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "PRX": {
+  "country": "Netherlands",
+  "sector": "Consumer Discretionary"
+ },
+ "PRY": {
+  "country": "Italy",
+  "sector": "Industrials"
+ },
+ "PSN": {
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary"
+ },
+ "PSON": {
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary"
+ },
+ "PSPN": {
+  "country": "Switzerland",
+  "sector": "Real Estate"
+ },
+ "PST": {
+  "country": "Italy",
+  "sector": "Financials"
+ },
+ "PUB": {
+  "country": "France",
+  "sector": "Communication Services"
+ },
+ "PUIG": {
+  "country": "Spain",
+  "sector": "Consumer Staples"
+ },
+ "PUM": {
+  "country": "Germany",
+  "sector": "Consumer Discretionary"
+ },
+ "PZU": {
+  "country": "Poland",
+  "sector": "Financials"
+ },
+ "QIA": {
+  "country": "Germany",
+  "sector": "Health Care"
+ },
+ "QLT": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "QQ.": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "R3NK": {
+  "country": "Germany",
+  "sector": "Industrials"
+ },
+ "RAA": {
+  "country": "Germany",
+  "sector": "Industrials"
+ },
+ "RACE": {
+  "country": "Italy",
+  "sector": "Consumer Discretionary"
+ },
+ "RAND": {
+  "country": "Netherlands",
+  "sector": "Industrials"
+ },
+ "RBI": {
+  "country": "Austria",
+  "sector": "Financials"
+ },
+ "RBREW": {
+  "country": "Denmark",
+  "sector": "Consumer Staples"
+ },
+ "REC": {
+  "country": "Italy",
+  "sector": "Health Care"
+ },
+ "RED": {
+  "country": "Spain",
+  "sector": "Utilities"
+ },
+ "REL": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "REP": {
+  "country": "Spain",
+  "sector": "Energy"
+ },
+ "REY": {
+  "country": "Italy",
+  "sector": "Information Technology"
+ },
+ "RHM": {
+  "country": "Germany",
+  "sector": "Industrials"
+ },
+ "RI": {
+  "country": "France",
+  "sector": "Consumer Staples"
+ },
+ "RILBA": {
+  "country": "Denmark",
+  "sector": "Financials"
+ },
+ "RIO": {
+  "country": "United Kingdom",
+  "sector": "Materials"
+ },
+ "RKT": {
+  "country": "United Kingdom",
+  "sector": "Consumer Staples"
+ },
+ "RMS": {
+  "country": "France",
+  "sector": "Consumer Discretionary"
+ },
+ "RMV": {
+  "country": "United Kingdom",
+  "sector": "Communication Services"
+ },
+ "RNO": {
+  "country": "France",
+  "sector": "Consumer Discretionary"
+ },
+ "ROCK B": {
+  "country": "Denmark",
+  "sector": "Industrials"
+ },
+ "ROP": {
+  "country": "Switzerland",
+  "sector": "Health Care"
+ },
+ "ROR": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "ROSE": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "RR.": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "RS1": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "RTO": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "RUI": {
+  "country": "France",
+  "sector": "Utilities"
+ },
+ "RWE": {
+  "country": "Germany",
+  "sector": "Utilities"
+ },
+ "RXL": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "RYA": {
+  "country": "Ireland",
+  "sector": "Industrials"
+ },
+ "SAAB B": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "SAB": {
+  "country": "Spain",
+  "sector": "Financials"
+ },
+ "SAF": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "SAGA B": {
+  "country": "Sweden",
+  "sector": "Real Estate"
+ },
+ "SALM": {
+  "country": "Norway",
+  "sector": "Consumer Staples"
+ },
+ "SAMPO": {
+  "country": "Finland",
+  "sector": "Financials"
+ },
+ "SAN": {
+  "country": "France",
+  "sector": "Health Care"
+ },
+ "SAND": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "SAP": {
+  "country": "Germany",
+  "sector": "Information Technology"
+ },
+ "SAVE": {
+  "country": "Sweden",
+  "sector": "Financials"
+ },
+ "SB1NO": {
+  "country": "Norway",
+  "sector": "Financials"
+ },
+ "SBMO": {
+  "country": "Netherlands",
+  "sector": "Energy"
+ },
+ "SBNOR": {
+  "country": "Norway",
+  "sector": "Financials"
+ },
+ "SBRY": {
+  "country": "United Kingdom",
+  "sector": "Consumer Staples"
+ },
+ "SCA B": {
+  "country": "Sweden",
+  "sector": "Materials"
+ },
+ "SCHP": {
+  "country": "Switzerland",
+  "sector": "Industrials"
+ },
+ "SCMN": {
+  "country": "Switzerland",
+  "sector": "Communication Services"
+ },
+ "SCR": {
+  "country": "France",
+  "sector": "Financials"
+ },
+ "SCT": {
+  "country": "United Kingdom",
+  "sector": "Information Technology"
+ },
+ "SCYR": {
+  "country": "Spain",
+  "sector": "Industrials"
+ },
+ "SDF": {
+  "country": "Germany",
+  "sector": "Materials"
+ },
+ "SDLF": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "SDZ": {
+  "country": "Switzerland",
+  "sector": "Health Care"
+ },
+ "SEB A": {
+  "country": "Sweden",
+  "sector": "Financials"
+ },
+ "SECT B": {
+  "country": "Sweden",
+  "sector": "Health Care"
+ },
+ "SECU B": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "SFSN": {
+  "country": "Switzerland",
+  "sector": "Industrials"
+ },
+ "SFZN": {
+  "country": "Switzerland",
+  "sector": "Health Care"
+ },
+ "SGE": {
+  "country": "United Kingdom",
+  "sector": "Information Technology"
+ },
+ "SGO": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "SGRO": {
+  "country": "United Kingdom",
+  "sector": "Real Estate"
+ },
+ "SGSN": {
+  "country": "Switzerland",
+  "sector": "Industrials"
+ },
+ "SHB A": {
+  "country": "Sweden",
+  "sector": "Financials"
+ },
+ "SHC": {
+  "country": "United Kingdom",
+  "sector": "Real Estate"
+ },
+ "SHELL": {
+  "country": "United Kingdom",
+  "sector": "Energy"
+ },
+ "SHL": {
+  "country": "Germany",
+  "sector": "Health Care"
+ },
+ "SIE": {
+  "country": "Germany",
+  "sector": "Industrials"
+ },
+ "SIGN": {
+  "country": "Switzerland",
+  "sector": "Materials"
+ },
+ "SIKA": {
+  "country": "Switzerland",
+  "sector": "Materials"
+ },
+ "SKA B": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "SKF B": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "SLHN": {
+  "country": "Switzerland",
+  "sector": "Financials"
+ },
+ "SMIN": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "SN.": {
+  "country": "United Kingdom",
+  "sector": "Health Care"
+ },
+ "SOBI": {
+  "country": "Sweden",
+  "sector": "Health Care"
+ },
+ "SOF": {
+  "country": "Belgium",
+  "sector": "Financials"
+ },
+ "SOI": {
+  "country": "France",
+  "sector": "Information Technology"
+ },
+ "SOON": {
+  "country": "Switzerland",
+  "sector": "Health Care"
+ },
+ "SOP": {
+  "country": "France",
+  "sector": "Information Technology"
+ },
+ "SPIE": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "SPM": {
+  "country": "Italy",
+  "sector": "Energy"
+ },
+ "SPSN": {
+  "country": "Switzerland",
+  "sector": "Real Estate"
+ },
+ "SPX": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "SQN": {
+  "country": "Switzerland",
+  "sector": "Financials"
+ },
+ "SREN": {
+  "country": "Switzerland",
+  "sector": "Financials"
+ },
+ "SRG": {
+  "country": "Italy",
+  "sector": "Utilities"
+ },
+ "SRP": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "SRT3": {
+  "country": "Germany",
+  "sector": "Health Care"
+ },
+ "SSAB B": {
+  "country": "Sweden",
+  "sector": "Materials"
+ },
+ "SSE": {
+  "country": "United Kingdom",
+  "sector": "Utilities"
+ },
+ "STAN": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "STB": {
+  "country": "Norway",
+  "sector": "Financials"
+ },
+ "STERV": {
+  "country": "Finland",
+  "sector": "Materials"
+ },
+ "STJ": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "STLAM": {
+  "country": "Italy",
+  "sector": "Consumer Discretionary"
+ },
+ "STMMI": {
+  "country": "France",
+  "sector": "Information Technology"
+ },
+ "STMN": {
+  "country": "Switzerland",
+  "sector": "Health Care"
+ },
+ "SU": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "SUBC": {
+  "country": "Norway",
+  "sector": "Energy"
+ },
+ "SUN": {
+  "country": "Switzerland",
+  "sector": "Industrials"
+ },
+ "SUNN": {
+  "country": "Switzerland",
+  "sector": "Communication Services"
+ },
+ "SVT": {
+  "country": "United Kingdom",
+  "sector": "Utilities"
+ },
+ "SW": {
+  "country": "France",
+  "sector": "Consumer Discretionary"
+ },
+ "SWEC B": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "SWED A": {
+  "country": "Sweden",
+  "sector": "Financials"
+ },
+ "SY1": {
+  "country": "Germany",
+  "sector": "Materials"
+ },
+ "SYENS": {
+  "country": "Belgium",
+  "sector": "Materials"
+ },
+ "TBCG": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "TCAP": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "TE": {
+  "country": "France",
+  "sector": "Energy"
+ },
+ "TEF": {
+  "country": "Spain",
+  "sector": "Communication Services"
+ },
+ "TEG": {
+  "country": "Germany",
+  "sector": "Real Estate"
+ },
+ "TEL": {
+  "country": "Norway",
+  "sector": "Communication Services"
+ },
+ "TEL2 B": {
+  "country": "Sweden",
+  "sector": "Communication Services"
+ },
+ "TELIA": {
+  "country": "Sweden",
+  "sector": "Communication Services"
+ },
+ "TEMN": {
+  "country": "Switzerland",
+  "sector": "Information Technology"
+ },
+ "TEN": {
+  "country": "Italy",
+  "sector": "Energy"
+ },
+ "TEP": {
+  "country": "France",
+  "sector": "Industrials"
+ },
+ "TGS": {
+  "country": "Norway",
+  "sector": "Energy"
+ },
+ "TKA": {
+  "country": "Germany",
+  "sector": "Materials"
+ },
+ "TLX": {
+  "country": "Germany",
+  "sector": "Financials"
+ },
+ "TOM": {
+  "country": "Norway",
+  "sector": "Industrials"
+ },
+ "TPEIR": {
+  "country": "Greece",
+  "sector": "Financials"
+ },
+ "TPRO": {
+  "country": "Italy",
+  "sector": "Information Technology"
+ },
+ "TREL B": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "TRN": {
+  "country": "Italy",
+  "sector": "Utilities"
+ },
+ "TRYG": {
+  "country": "Denmark",
+  "sector": "Financials"
+ },
+ "TSCO": {
+  "country": "United Kingdom",
+  "sector": "Consumer Staples"
+ },
+ "TTE": {
+  "country": "France",
+  "sector": "Energy"
+ },
+ "TUB": {
+  "country": "Belgium",
+  "sector": "Health Care"
+ },
+ "TUI1": {
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary"
+ },
+ "TW.": {
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary"
+ },
+ "UBSG": {
+  "country": "Switzerland",
+  "sector": "Financials"
+ },
+ "UCB": {
+  "country": "Belgium",
+  "sector": "Health Care"
+ },
+ "UCG": {
+  "country": "Italy",
+  "sector": "Financials"
+ },
+ "UHR": {
+  "country": "Switzerland",
+  "sector": "Consumer Discretionary"
+ },
+ "ULVR": {
+  "country": "United Kingdom",
+  "sector": "Consumer Staples"
+ },
+ "UMG": {
+  "country": "Netherlands",
+  "sector": "Communication Services"
+ },
+ "UMI": {
+  "country": "Belgium",
+  "sector": "Materials"
+ },
+ "UNI": {
+  "country": "Spain",
+  "sector": "Financials"
+ },
+ "UPM": {
+  "country": "Finland",
+  "sector": "Materials"
+ },
+ "URW": {
+  "country": "France",
+  "sector": "Real Estate"
+ },
+ "UTG": {
+  "country": "United Kingdom",
+  "sector": "Real Estate"
+ },
+ "UU.": {
+  "country": "United Kingdom",
+  "sector": "Utilities"
+ },
+ "VACN": {
+  "country": "Switzerland",
+  "sector": "Industrials"
+ },
+ "VALMT": {
+  "country": "Finland",
+  "sector": "Industrials"
+ },
+ "VAR": {
+  "country": "Norway",
+  "sector": "Energy"
+ },
+ "VATN": {
+  "country": "Switzerland",
+  "sector": "Financials"
+ },
+ "VEND": {
+  "country": "Norway",
+  "sector": "Communication Services"
+ },
+ "VER": {
+  "country": "Austria",
+  "sector": "Utilities"
+ },
+ "VIE": {
+  "country": "France",
+  "sector": "Utilities"
+ },
+ "VK": {
+  "country": "France",
+  "sector": "Energy"
+ },
+ "VNA": {
+  "country": "Germany",
+  "sector": "Real Estate"
+ },
+ "VOD": {
+  "country": "United Kingdom",
+  "sector": "Communication Services"
+ },
+ "VOE": {
+  "country": "Austria",
+  "sector": "Materials"
+ },
+ "VOLV B": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "VONN": {
+  "country": "Switzerland",
+  "sector": "Financials"
+ },
+ "VOW3": {
+  "country": "Germany",
+  "sector": "Consumer Discretionary"
+ },
+ "VPK": {
+  "country": "Netherlands",
+  "sector": "Energy"
+ },
+ "VSURE": {
+  "country": "Sweden",
+  "sector": "Industrials"
+ },
+ "VWS": {
+  "country": "Denmark",
+  "sector": "Industrials"
+ },
+ "VZN": {
+  "country": "Switzerland",
+  "sector": "Financials"
+ },
+ "WDP": {
+  "country": "Belgium",
+  "sector": "Real Estate"
+ },
+ "WEIR": {
+  "country": "United Kingdom",
+  "sector": "Industrials"
+ },
+ "WISE": {
+  "country": "United Kingdom",
+  "sector": "Financials"
+ },
+ "WKL": {
+  "country": "Netherlands",
+  "sector": "Industrials"
+ },
+ "WPP": {
+  "country": "United Kingdom",
+  "sector": "Communication Services"
+ },
+ "WRT1V": {
+  "country": "Finland",
+  "sector": "Industrials"
+ },
+ "WTB": {
+  "country": "United Kingdom",
+  "sector": "Consumer Discretionary"
+ },
+ "XTB": {
+  "country": "Poland",
+  "sector": "Financials"
+ },
+ "YAR": {
+  "country": "Norway",
+  "sector": "Materials"
+ },
+ "ZAB": {
+  "country": "Poland",
+  "sector": "Consumer Staples"
+ },
+ "ZAL": {
+  "country": "Germany",
+  "sector": "Consumer Discretionary"
+ },
+ "ZEAL": {
+  "country": "Denmark",
+  "sector": "Health Care"
+ },
+ "ZEG": {
+  "country": "United Kingdom",
+  "sector": "Communication Services"
+ },
+ "ZURN": {
+  "country": "Switzerland",
+  "sector": "Financials"
+ }
+}

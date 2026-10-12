@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>STOXX Europe 600 Valuation · Investing Nexus</title>
+  <meta name="description" content="Daily AlphaSpread valuation snapshot of every STOXX Europe 600 stock (prices in local currency).">
+  <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
+  <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
+  <style>
+    /* Chart sort buttons. On phones they take their own row as three equal
+       buttons that shrink to fit, so they never wrap whatever the font size. */
+    .chart-sort { display: flex; gap: 6px; align-items: center; }
+    .chart-sort .btn { white-space: nowrap; }
+    @media (max-width: 640px) {
+      .chart-sort { width: 100%; }
+      .chart-sort > span { display: none; }
+      .chart-sort .btn { flex: 1 1 0; min-width: 0; padding: 6px 4px; overflow: hidden; text-overflow: ellipsis; }
+    }
+  </style>
+</head>
+<body data-index="stoxx600" data-mode="full" data-sources="alphaspread" data-title="STOXX Europe 600 Valuation">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="stoxx600_today.html" class="active">STOXX 600</a>
+        <a href="stoxx600_sectors.html">STOXX 600 Sectors</a>
+        <a href="stoxx600_analysis.html">STOXX 600 Analysis</a>
+        <a href="sp500_today.html">S&amp;P 500</a>
+        <a href="nasdaq_today.html">NASDAQ-100</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-head">
+      <div>
+        <div class="eyebrow">Daily snapshot</div>
+        <h1>STOXX Europe 600 <span class="gradient-text">Valuation</span></h1>
+        <p class="lead" id="narrative">Loading the latest snapshot…</p>
+      </div>
+      <div class="page-controls">
+      <div class="date-bar" id="source-switch" role="group" aria-label="Valuation source"></div>
+      <div class="date-bar" role="group" aria-label="Snapshot date">
+        <label for="date-select">Date</label>
+        <button class="btn" id="date-prev" title="Previous day" aria-label="Previous day">‹</button>
+        <select id="date-select"></select>
+        <button class="btn" id="date-next" title="Next day" aria-label="Next day">›</button>
+        <button class="btn primary" id="date-latest">Latest</button>
+      </div>
+      </div>
+    </div>
+    <div class="as-of" id="as-of"></div>
+    <div class="notice" id="error" hidden></div>
+
+    <div class="kpis" id="kpis"></div>
+
+    <h2 class="section">Valuation by stock</h2>
+    <div class="panel chart-panel">
+      <div class="chart-head">
+        <div class="legend"><span><i class="sw-under"></i>Undervalued</span><span><i class="sw-over"></i>Overvalued</span></div>
+        <div class="chart-sort" role="group" aria-label="Sort the chart">
+          <span class="muted small">Sort</span>
+          <button class="btn primary sm" data-chart-sort="solvency">Solvency</button>
+          <button class="btn sm" data-chart-sort="valuation">Valuation</button>
+        </div>
+      </div>
+      <div id="chart" class="chart"></div>
+    </div>
+
+    <h2 class="section">Distribution</h2>
+    <div class="panel" id="distribution"></div>
+
+    <h2 class="section">Extremes</h2>
+    <div class="two-col">
+      <div><div class="panel-title"><span class="verdict under">Most undervalued</span></div><div id="most-under"></div></div>
+      <div><div class="panel-title"><span class="verdict over">Most overvalued</span></div><div id="most-over"></div></div>
+    </div>
+
+    <h2 class="section">All stocks</h2>
+    <div class="toolbar">
+      <input class="input" id="search" type="search" placeholder="Search ticker or company…" aria-label="Search ticker or company">
+      <div style="display:flex;gap:10px;align-items:center">
+        <span class="muted small" id="table-count"></span>
+        <select class="input" id="filter" aria-label="Filter by verdict">
+          <option value="all">All verdicts</option>
+          <option value="Undervalued">Undervalued only</option>
+          <option value="Overvalued">Overvalued only</option>
+        </select>
+      </div>
+    </div>
+    <div class="table-wrap scroll-y">
+      <table class="data">
+        <thead id="table-head"></thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+
+    </main>
+  <!-- Floating copy of the source switch, shown once the one above scrolls out of view (nexus.js) -->
+  <div class="dock" id="source-dock" data-dock-for="#source-switch" role="group" aria-label="Valuation source"></div>
+
+
+  <footer class="footer">
+    <div class="container" id="source-note">Valuations from <a href="https://www.alphaspread.com" target="_blank" rel="noopener">AlphaSpread</a>, refreshed daily. Not investment advice.</div>
+  </footer>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+  <script src="assets/valuation.js"></script>
+</body>
+</html>

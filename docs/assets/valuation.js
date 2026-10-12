@@ -2,11 +2,17 @@
  * Renders a valuation snapshot from docs/data/.
  *
  * Page config lives on <body>:
- *   data-index = "nasdaq" | "sp500"     which docs/data/{source}/{index}/ to read
+ *   data-index = "nasdaq" | "sp500" | "stoxx600"   which docs/data/{source}/{index}/ to read
  *   data-mode  = "full"   | "summary"   full adds the chart and the all-stocks table
  *   data-sectors                        sector pages: a sector overview, and every
  *                                       section shows one GICS sector's stocks
  *                                       (?sector=<slug>, from docs/data/sp500_sectors.js)
+ *   data-sectors-key                    the sector map's data key (default "sp500_sectors")
+ *   data-sources = "alphaspread"        the sources this index has (default: all three);
+ *                                       with one, the source switch is hidden
+ *
+ * Records may carry their own index weight (`weight`, used for the cap-weighted
+ * average) and price `currency` (shown before prices), as the STOXX 600 ones do.
  *
  * Valuation source (switch on the page, ?source=, remembered per browser):
  *   alphaspread   AlphaSpread intrinsic value and solvency score
@@ -48,6 +54,9 @@
     fairvalue: { label: "Fair Value", value: "Fair Value", note: 'Valuations from our <a href="fairvalue/index.html">Fair Value model</a> (SEC filings + market prices)' },
     combined: { label: "Combined", value: "combined AlphaSpread + Fair Value value", note: 'Average of <a href="https://www.alphaspread.com" target="_blank" rel="noopener">AlphaSpread</a> and our <a href="fairvalue/index.html">Fair Value model</a>' },
   };
+  const ALLOWED = (body.dataset.sources || Object.keys(SOURCES).join(",")).split(",").filter((k) => SOURCES[k]);
+  for (const k of Object.keys(SOURCES)) if (!ALLOWED.includes(k)) delete SOURCES[k];
+  const SECTORS_KEY = body.dataset.sectorsKey || "sp500_sectors";
   const COMBINE_MAX_LAG_DAYS = 7;
   let source = "alphaspread";
   let manifests = { alphaspread: {}, fairvalue: {} };
@@ -81,7 +90,8 @@
   }
 
   const sectorSlug = (name) => name.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-  const sectorOf = (r) => (sectorMap && sectorMap[r.symbol]) || "Unclassified";
+  const sectorOf = (r) => (sectorMap && sectorMap[r.symbol]) || r.sector || "Unclassified";
+  const money = (r, v) => (typeof v === "number" && isFinite(v) ? esc(r.currency || "") : "") + num(v);
   const scope = () => (SECTOR_MODE ? `the ${sector} sector` : "the index");
 
   // ---------- data ----------
@@ -158,12 +168,16 @@
     const q = new URLSearchParams(location.search).get("source");
     if (q && SOURCES[q]) return q;
     try { const s = localStorage.getItem("nexus-valuation-source"); if (s && SOURCES[s]) return s; } catch (e) { /* storage blocked */ }
-    return "alphaspread";
+    return ALLOWED[0];
   }
 
   // The switch in the page header, and its floating copy (#source-dock) that nexus.js
   // shows once the header scrolls away. Both render the same buttons and stay in sync.
   function setupSourceSwitch() {
+    if (ALLOWED.length < 2) {
+      ["source-switch", "source-dock"].forEach((id) => $(id) && $(id).remove());
+      return;
+    }
     const buttons = Object.entries(SOURCES)
       .map(([k, v]) => `<button class="btn" data-source="${k}" aria-pressed="false">${v.label}</button>`).join("");
     ["source-switch", "source-dock"].forEach((id) => {
@@ -208,7 +222,7 @@
     const solv = rs.map((r) => r.solvency_score).filter((v) => typeof v === "number");
     let wSum = 0, wScore = 0, wN = 0;
     for (const r of rs) {
-      const w = (weights && weights[r.symbol]) || r.market_cap;
+      const w = r.weight || (weights && weights[r.symbol]) || r.market_cap;
       if (w) { wSum += w; wScore += w * r.valuation_score; wN++; }
     }
     return {
@@ -427,8 +441,8 @@
     const custom = rs.map((r) => [
       r.company || r.symbol,
       `${r.valuation_type} by ${Math.abs(r.valuation_score).toFixed(0)}%`,
-      num(r.intrinsic_value),
-      num(r.current_price_approx),
+      money(r, r.intrinsic_value),
+      money(r, r.current_price_approx),
       r.solvency_score ?? "n/a",
       r.quality_score ?? "n/a",
     ]);
@@ -531,8 +545,8 @@
           <td><a class="sym" href="${esc(r.url)}"${linkAttrs(r.url)}>${highlight(r.symbol, q)}</a></td>
           <td class="company">${highlight(r.company, q)}</td>
           <td class="num">${verdictHTML(r.valuation_score, 0)}</td>
-          <td class="num">${num(r.intrinsic_value)}</td>
-          <td class="num">${num(r.current_price_approx)}</td>
+          <td class="num">${money(r, r.intrinsic_value)}</td>
+          <td class="num">${money(r, r.current_price_approx)}</td>
           <td class="num">${r.solvency_score ?? "—"}</td>${extraCells(r)}
         </tr>`
       )
@@ -636,7 +650,7 @@
         loadData("alphaspread/manifest", true).then((m) => m).catch(() => ({})),
         loadData("fairvalue/manifest", true).then((m) => m).catch(() => ({})),
         loadData("sp500_weights").catch(() => null),
-        SECTOR_MODE ? loadData("sp500_sectors") : null,
+        SECTOR_MODE ? loadData(SECTORS_KEY) : null,
       ]);
       manifests = { alphaspread: ma || {}, fairvalue: mg || {} };
       weights = w;

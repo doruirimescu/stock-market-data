@@ -49,7 +49,7 @@ run = "python -m unittest discover -s tests -t ."
 description = "AlphaSpread valuation run for an index: JSON + dated HTML + PNG"
 depends = ["install"]
 usage = '''
-arg "<index>" help="Index to value" { choices "nasdaq100" "sp500" }
+arg "<index>" help="Index to value" { choices "nasdaq100" "sp500" "stoxx600" }
 flag "--date <date>" help="Run date, YYYY-MM-DD (default: today)"
 flag "--overwrite" help="Replace today's files if they exist"
 '''
@@ -58,8 +58,12 @@ day=${usage_date:-$(date +%F)}
 case "$usage_index" in
   nasdaq100) flag=--nasdaq100; dir=nasdaq ;;
   sp500)     flag=--sp500;     dir=sp500 ;;
+  stoxx600)  flag=--stoxx600;  dir=stoxx600 ;;
 esac
+# ALPHASPREAD_DELAY: seconds between stocks (AlphaSpread blocks for an hour past
+# roughly 400 requests in 45 minutes; the STOXX 600 job slows down to stay under it).
 python scripts/alphaspread_index.py "$flag" --date "$day" ${usage_overwrite:+--overwrite} \
+  ${ALPHASPREAD_DELAY:+--delay "$ALPHASPREAD_DELAY"} \
   --out  "generated/alphaspread/${usage_index}_valuations.json" \
   --html "generated/alphaspread/$dir/${dir}_analysis_$day.html" \
   --png  "generated/alphaspread/$dir/${dir}_analysis_$day.png"
@@ -78,11 +82,11 @@ run = 'mise run install && mise exec -- python -m fvmodel index --index "$usage_
 description = "Publish a run as a dated snapshot for the site"
 usage = '''
 arg "<source>" help="Valuation source" { choices "alphaspread" "fairvalue" }
-arg "<index>" help="Index" { choices "nasdaq100" "sp500" }
+arg "<index>" help="Index" { choices "nasdaq100" "sp500" "stoxx600" }
 flag "--date <date>" help="Snapshot date, YYYY-MM-DD (default: today)"
 '''
 run = '''
-case "$usage_index" in nasdaq100) site=nasdaq ;; *) site=sp500 ;; esac
+case "$usage_index" in nasdaq100) site=nasdaq ;; stoxx600) site=stoxx600 ;; *) site=sp500 ;; esac
 python scripts/publish_site_data.py --source "$usage_source" --index "$site" --date "${usage_date:-$(date +%F)}" \
   --src "generated/$usage_source/${usage_index}_valuations.json"
 '''
@@ -92,6 +96,13 @@ description = "Refresh the S&P 500 GICS sector map and publish it for the sector
 run = [
   "python scripts/sp500_sectors.py --out generated/sp500_sectors.json",
   "python scripts/publish_site_data.py --sectors generated/sp500_sectors.json",
+]
+
+[tasks.stoxx600-sectors]
+description = "Refresh the STOXX Europe 600 sector map (iShares holdings) and publish it"
+run = [
+  "python scripts/stoxx600.py --sectors generated/stoxx600_sectors.json",
+  "python scripts/publish_site_data.py --sectors generated/stoxx600_sectors.json --sectors-key stoxx600_sectors",
 ]
 
 [tasks.fed]
