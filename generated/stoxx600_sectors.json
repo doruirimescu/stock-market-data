@@ -1627,6 +1627,10 @@
   "country": "United Kingdom",
   "sector": "Utilities"
  },
+ "PNNN": {
+  "country": "United Kingdom",
+  "sector": "Utilities"
+ },
  "PPC": {
   "country": "Greece",
   "sector": "Utilities"
@@ -2252,6 +2256,10 @@
   "sector": "Financials"
  },
  "UNI.MI": {
+  "country": "Italy",
+  "sector": "Financials"
+ },
+ "UNIAXA": {
   "country": "Italy",
   "sector": "Financials"
  },
