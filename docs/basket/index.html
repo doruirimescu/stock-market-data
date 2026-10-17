@@ -44,10 +44,10 @@
       <span class="muted small"><span class="kbd">J</span> <span class="kbd">K</span> move · <span class="kbd">Enter</span> open</span>
     </div>
     <div class="table-wrap">
-      <table class="data board">
+      <table class="data board" data-list data-list-tap="native">
         <thead><tr>
-          <th>#</th><th>Basket ratio</th><th class="num">Score</th><th class="num">Reverted</th>
-          <th class="num">Return</th><th class="num">CAGR</th><th class="num">Max DD</th><th class="num">Sharpe</th>
+          <th>#</th><th data-list="title">Basket ratio</th><th class="num">Score</th><th class="num">Reverted</th>
+          <th class="num" data-list="value">Return</th><th class="num" data-list="note" data-list-prefix="CAGR">CAGR</th><th class="num" data-list="subtitle" data-list-prefix="Max DD">Max DD</th><th class="num">Sharpe</th>
           <th class="num">Trades</th><th>Equity</th>
         </tr></thead>
         <tbody id="board"></tbody>

@@ -404,8 +404,9 @@
   const linkAttrs = (url) => (/^https?:/.test(url || "") ? ' target="_blank" rel="noopener"' : "");
 
   function extremesTable(rows) {
-    return `<div class="table-wrap"><table class="data">
-      <thead><tr><th>Symbol</th><th>Company</th><th class="num">Valuation</th><th class="num">Solvency</th></tr></thead>
+    return `<div class="table-wrap"><table class="data" data-list>
+      <thead><tr><th data-list="title">Symbol</th><th data-list="subtitle">Company</th><th class="num" data-list="value">Valuation</th>
+        <th class="num" data-list="note" data-list-prefix="Solvency">Solvency</th></tr></thead>
       <tbody>${rows
         .map((r) => `<tr><td><a class="sym" href="${esc(r.url)}"${linkAttrs(r.url)}>${esc(r.symbol)}</a></td>
           <td class="company">${esc(r.company)}</td><td class="num">${verdictHTML(r.valuation_score, 0)}</td>
@@ -497,11 +498,11 @@
 
   // ---------- table ----------
   const BASE_COLUMNS = [
-    { key: "symbol", label: "Symbol" },
-    { key: "company", label: "Company" },
-    { key: "valuation_score", label: "Valuation", num: true },
+    { key: "symbol", label: "Symbol", list: "title" },
+    { key: "company", label: "Company", list: "subtitle" },
+    { key: "valuation_score", label: "Valuation", num: true, list: "value" },
     { key: "intrinsic_value", label: "Intrinsic value", num: true },
-    { key: "current_price_approx", label: "Price", num: true },
+    { key: "current_price_approx", label: "Price", num: true, list: "note", prefix: "Price" },
     { key: "solvency_score", label: "Solvency", num: true },
   ];
   function columns() {
@@ -543,7 +544,9 @@
     $("table-head").innerHTML =
       "<tr>" +
       columns().map(
-        (c) => `<th class="sortable${c.num ? " num" : ""}" data-key="${c.key}">${c.label}${c.key === key ? `<span class="arrow">${dir > 0 ? "↑" : "↓"}</span>` : ""}</th>`
+        (c) => `<th class="sortable${c.num ? " num" : ""}" data-key="${c.key}"` +
+          (c.list ? ` data-list="${c.list}"` : "") + (c.prefix ? ` data-list-prefix="${c.prefix}"` : "") +
+          (c.key === key ? ` aria-sort="${dir > 0 ? "ascending" : "descending"}"` : "") + `>${c.label}${c.key === key ? `<span class="arrow">${dir > 0 ? "↑" : "↓"}</span>` : ""}</th>`
       ).join("") +
       "</tr>";
     $("table-body").innerHTML = rows
@@ -562,6 +565,8 @@
   }
 
   function setupTable() {
+    // On phones nexus.js shows this table as a list with a Sort menu (see data-list in nexus.js).
+    $("table-body").closest("table").dataset.list = "";
     $("search").addEventListener("input", renderTable);
     $("filter").addEventListener("change", renderTable);
     $("table-head").addEventListener("click", (e) => {
@@ -617,8 +622,9 @@
     }
     const rows = [...groups].filter(([, rs]) => rs.length).map(([name, rs]) => ({ name, ...summarize(rs) }));
     rows.sort((a, b) => b.mean - a.mean);
-    $("sector-overview").innerHTML = `<div class="table-wrap"><table class="data sector-table">
-      <thead><tr><th>Sector</th><th class="num">Stocks</th><th class="num">Under / over</th><th class="num">Equal-weight</th>
+    $("sector-overview").innerHTML = `<div class="table-wrap"><table class="data sector-table" data-list data-list-tap="native">
+      <thead><tr><th data-list="title">Sector</th><th class="num" data-list="subtitle" data-list-suffix="stocks">Stocks</th>
+        <th class="num" data-list="note">Under / over</th><th class="num" data-list="value">Equal-weight</th>
         <th class="num">Median</th><th class="num">Market-cap weighted</th><th class="num">Avg. solvency</th></tr></thead>
       <tbody>${rows
         .map((r) => `<tr data-sector="${esc(r.name)}"${r.name === sector ? ' class="selected" aria-selected="true"' : ""}>

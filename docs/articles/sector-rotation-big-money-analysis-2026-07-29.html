@@ -113,7 +113,7 @@
     @media (max-width: 640px) {
       .summary, .confidence, .signal-grid { grid-template-columns: 1fr; }
       nav.toc ul { columns: 1; }
-      .bar-row { grid-template-columns: 100px minmax(120px, 1fr) 50px; }
+      .bar-row { grid-template-columns: 100px minmax(0, 1fr) 50px; }
     }
   </style>
 </head>
@@ -195,7 +195,7 @@
     <p>Three concepts are easy to confuse:</p>
 
     <div class="table-wrap">
-      <table>
+      <table data-list="cards">
         <thead>
           <tr><th>Signal</th><th>What it measures</th><th>What it does not prove</th></tr>
         </thead>
@@ -215,7 +215,7 @@
     <p>Finviz's 29 July sector snapshot shows a sharp weekly divergence. "Consumer Defensive" in Finviz terminology corresponds broadly to consumer staples, while "Consumer Cyclical" corresponds to consumer discretionary.</p>
 
     <div class="table-wrap">
-      <table>
+      <table data-list="cards">
         <thead>
           <tr>
             <th>Sector</th>
@@ -269,7 +269,7 @@
     </figure>
 
     <div class="table-wrap">
-      <table>
+      <table data-list="cards">
         <thead>
           <tr><th>Sector</th><th class="num">Five-day flow</th><th class="num">Category assets</th><th class="num">Flow / assets</th><th>Reading</th></tr>
         </thead>
@@ -316,7 +316,7 @@
     <p>The latest Tier 1 dataset available for this study covers the week beginning 6 July and was published on 27 July. The table below compares each sector SPDR's ATS share volume with its preceding four-week average.</p>
 
     <div class="table-wrap">
-      <table>
+      <table data-list="cards">
         <thead>
           <tr><th>ETF</th><th>Sector proxy</th><th class="num">ATS-volume change</th><th>What can reasonably be inferred</th></tr>
         </thead>
@@ -444,7 +444,7 @@
   <section id="triggers">
     <h2>What to watch next</h2>
     <div class="table-wrap">
-      <table>
+      <table data-list="cards">
         <thead>
           <tr><th>Next signal</th><th>Confirmation threshold</th><th>Why it matters</th></tr>
         </thead>

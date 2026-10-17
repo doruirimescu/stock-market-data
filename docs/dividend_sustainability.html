@@ -60,8 +60,8 @@
         <div id="chart" style="height:480px"></div>
       </div>
       <div class="table-wrap" style="margin-top:14px">
-        <table class="data">
-          <thead><tr><th>Ticker</th><th>Company</th><th class="num">Yield</th><th class="num">Score</th><th>Status</th></tr></thead>
+        <table class="data" data-list>
+          <thead><tr><th data-list="title">Ticker</th><th data-list="subtitle">Company</th><th class="num">Yield</th><th class="num" data-list="value" data-list-prefix="Score">Score</th><th data-list="note">Status</th></tr></thead>
           <tbody id="results-body"></tbody>
         </table>
       </div>
@@ -77,7 +77,7 @@
       <p>Each ticker is scored on seven factors, for a total of 0 to 100. A stock at or above the threshold is rated <strong>Sustainable</strong>.</p>
     </div>
     <div class="table-wrap">
-      <table class="data">
+      <table class="data" data-list="cards">
         <thead><tr><th>Factor</th><th class="num">Max pts</th><th>What it measures</th></tr></thead>
         <tbody>
           <tr><td>Payout ratio</td><td class="num">20</td><td class="company">Share of earnings paid as dividends; lower is safer</td></tr>

@@ -46,9 +46,9 @@
 
         <h2 class="section">Lab leaderboard</h2>
         <div class="table-wrap">
-          <table class="data board">
-            <thead><tr><th>#</th><th>Basket ratio</th><th class="num">Score</th><th class="num">Return</th><th class="num">Max DD</th>
-              <th class="num">Sharpe</th><th class="num">Trades</th><th class="num">Published rank</th><th>Equity</th></tr></thead>
+          <table class="data board" data-list data-list-tap="native">
+            <thead><tr><th>#</th><th data-list="title">Basket ratio</th><th class="num">Score</th><th class="num" data-list="value">Return</th><th class="num" data-list="subtitle" data-list-prefix="Max DD">Max DD</th>
+              <th class="num" data-list="note" data-list-prefix="Sharpe">Sharpe</th><th class="num">Trades</th><th class="num">Published rank</th><th>Equity</th></tr></thead>
             <tbody id="board"><tr><td colspan="9" class="muted">Run the lab to see results.</td></tr></tbody>
           </table>
         </div>

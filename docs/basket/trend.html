@@ -86,11 +86,11 @@
     <div class="two-col">
       <div>
         <div class="panel-title">By period</div>
-        <div class="table-wrap"><table class="data"><thead id="periods-head"></thead><tbody id="periods"></tbody></table></div>
+        <div class="table-wrap"><table class="data" data-list><thead id="periods-head"></thead><tbody id="periods"></tbody></table></div>
       </div>
       <div>
         <div class="panel-title">Lookback robustness · full period</div>
-        <div class="table-wrap"><table class="data"><thead><tr><th>Average</th><th class="num">CAGR</th><th class="num">Max DD</th><th class="num">Sharpe</th><th class="num" id="sw-h1">1st half</th><th class="num" id="sw-h2">2nd half</th></tr></thead><tbody id="sweep"></tbody></table></div>
+        <div class="table-wrap"><table class="data" data-list><thead><tr><th data-list="title">Average</th><th class="num" data-list="value" data-list-prefix="CAGR">CAGR</th><th class="num" data-list="note" data-list-prefix="Max DD">Max DD</th><th class="num">Sharpe</th><th class="num" id="sw-h1">1st half</th><th class="num" id="sw-h2">2nd half</th></tr></thead><tbody id="sweep"></tbody></table></div>
         <p class="small muted" style="margin:10px 0 0">Every lookback lands on the same plateau, so the 10-month choice isn't a lucky pick.</p>
       </div>
     </div>
@@ -98,7 +98,7 @@
     <h2 class="section">What didn't work</h2>
     <div class="panel prose">
       <p>The same harness, rules and costs, over 2000–2026, all with parameters fixed in advance. The basket mean-reversion signal behind the other pages showed a small edge on country ETFs but none on sectors, so it isn't part of this strategy.</p>
-      <div class="table-wrap" style="margin-top:8px"><table class="data">
+      <div class="table-wrap" style="margin-top:8px"><table class="data" data-list="cards">
         <thead><tr><th>Approach</th><th class="num">CAGR</th><th class="num">Max DD</th><th>Verdict</th></tr></thead>
         <tbody>
           <tr><td>Basket mean-reversion, ensemble of all 840 ratios (sectors)</td><td class="num">+8.8%</td><td class="num">−53%</td><td><span class="verdict over">No edge over holding the sectors</span></td></tr>
@@ -185,7 +185,7 @@
     document.getElementById("current").innerHTML = `
       <div class="panel-title">Allocation from the ${fmt.date(cur.date)} signal</div>
       <p class="small muted" style="margin:0 0 10px"><mark>${fmt.pct(1 - offShare, 0)} in sectors, ${fmt.pct(offShare, 0)} in Treasuries.</mark>${pv ? ` Last column: what the ${fmt.date(pv.date)} close would change if the month ended there.` : ""}</p>
-      <div class="table-wrap"><table class="data"><thead><tr><th>ETF</th><th>Sector</th><th>Position</th><th class="num">vs average</th>${pv ? "<th class='num'>Mid-month</th>" : ""}</tr></thead><tbody>${rowsNow}</tbody></table></div>`;
+      <div class="table-wrap"><table class="data" data-list><thead><tr><th data-list="title">ETF</th><th data-list="subtitle">Sector</th><th data-list="value">Position</th><th class="num" data-list="note" data-list-prefix="vs average">vs average</th>${pv ? "<th class='num'>Mid-month</th>" : ""}</tr></thead><tbody>${rowsNow}</tbody></table></div>`;
 
     // ---------------------------------------------------------------- charts
     const x = D.dates;
@@ -239,7 +239,7 @@
 
     // ---------------------------------------------------------------- tables
     const h1 = `${yr(D.meta.start)}–${String(+yr(D.meta.split) - 1)}`, h2 = `${yr(D.meta.split)}–${yr(D.meta.end)}`;
-    document.getElementById("periods-head").innerHTML = `<tr><th>Strategy</th><th class="num">CAGR</th><th class="num">Max DD</th><th class="num">${h1}</th><th class="num">${h2}</th></tr>`;
+    document.getElementById("periods-head").innerHTML = `<tr><th data-list="title">Strategy</th><th class="num" data-list="value" data-list-prefix="CAGR">CAGR</th><th class="num" data-list="note" data-list-prefix="Max DD">Max DD</th><th class="num">${h1}</th><th class="num">${h2}</th></tr>`;
     const label = { strategy: "Sector trend", "leverage_1.25": "Sector trend 1.25×", "leverage_1.5": "Sector trend 1.5×", equal_weight: "Sectors, no filter", benchmark: "S&P 500 (SPY)" };
     const cell = (s) => `${fmt.spct(s.cagr)} <span class="dim small">${fmt.pct(s.max_dd, 0)}</span>`;
     document.getElementById("periods").innerHTML = Object.keys(label).filter((k) => S[k]).map((k) =>

@@ -8,12 +8,12 @@
 
     <h2 class="section">Overview</h2>
     <div class="toolbar"><input class="input" type="search" id="q" placeholder="Filter by ticker or company…"><span class="muted small" id="count"></span></div>
-    <div class="table-wrap"><table class="data" id="tbl">
-      <thead><tr><th>Symbol</th><th>Company</th><th class="num">Price</th><th class="num">Fair Value</th><th class="num">Valuation</th><th class="num">Fair Value Score</th><th class="num">PE</th><th class="num">ROIC</th><th class="num">F-Score</th><th class="num">Z-Score</th></tr></thead>
+    <div class="table-wrap"><table class="data" id="tbl" data-list>
+      <thead><tr><th data-list="title">Symbol</th><th data-list="subtitle">Company</th><th class="num" data-list="value">Price</th><th class="num">Fair Value</th><th class="num" data-list="note" data-sort-dir="asc">Valuation</th><th class="num">Fair Value Score</th><th class="num">PE</th><th class="num">ROIC</th><th class="num">F-Score</th><th class="num">Z-Score</th></tr></thead>
       <tbody>{% for r in rows %}
         <tr><td class="sym"><a href="stocks/{{ r.ticker }}.html">{{ r.ticker }}</a></td><td class="company">{{ r.name }}</td>
           <td class="num">{{ r.price }}</td><td class="num">{{ r.fair_value }}</td>
-          <td class="num">{% if r.verdict_text %}<span class="verdict {{ r.verdict }}">{{ r.verdict_text }}</span>{% else %}–{% endif %}</td>
+          <td class="num"{% if r.p2fv is not none %} data-sort="{{ r.p2fv }}"{% endif %}>{% if r.verdict_text %}<span class="verdict {{ r.verdict }}">{{ r.verdict_text }}</span>{% else %}–{% endif %}</td>
           <td class="num">{{ r.quality_score }}</td><td class="num">{{ r.pe }}</td>
           <td class="num">{{ r.roic }}</td><td class="num">{{ r.f_score }}</td><td class="num">{{ r.z_score }}</td></tr>
       {% endfor %}</tbody></table></div>

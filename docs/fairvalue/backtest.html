@@ -80,8 +80,8 @@
         <div class="legend"><span><i class="sw-under ln"></i><span id="lg-top">Top fifth</span></span><span><i class="sw-over ln"></i><span id="lg-bottom">Bottom fifth</span></span>
           <span><i class="sw-neutral ln"></i>All ranked stocks</span><span><i class="sw-accent ln"></i>SPY</span></div></div>
       <div id="chart-cum" class="chart"></div>
-      <div class="table-wrap" style="margin-top:10px"><table class="data">
-        <thead><tr><th>Portfolio</th><th class="num">Annual return</th><th class="num">$1 became</th></tr></thead>
+      <div class="table-wrap" style="margin-top:10px"><table class="data" data-list>
+        <thead><tr><th data-list="title">Portfolio</th><th class="num" data-list="value" data-list-suffix="a year">Annual return</th><th class="num" data-list="note" data-list-prefix="$1 became">$1 became</th></tr></thead>
         <tbody id="cagr"></tbody></table></div>
       <p class="muted small">Equal weight, rebalanced every quarter on the 3-month returns, with dividends reinvested.
         No trading costs or taxes. Log scale.</p>
@@ -104,7 +104,7 @@
     </div>
 
     <h2 class="section">Every fifth and horizon</h2>
-    <div class="table-wrap"><table class="data">
+    <div class="table-wrap"><table class="data" data-list="cards">
       <thead><tr><th>Fifth</th><th class="num">3 months</th><th class="num">6 months</th><th class="num">12 months</th><th class="num">36 months</th></tr></thead>
       <tbody id="grid"></tbody></table></div>
     <p class="muted small">Average excess return over the stated horizon, not annualized. The 12- and 36-month windows of consecutive quarters overlap,

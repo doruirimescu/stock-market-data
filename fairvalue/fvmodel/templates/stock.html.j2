@@ -68,8 +68,8 @@
     <h2 class="section">Valuation</h2>
     <div class="panel">
       <h3 class="panel-title">Ratios against their own 10-year range</h3>
-      <div class="table-wrap"><table class="data metric-table">
-        <thead><tr><th>Ratio</th><th class="num">Current</th><th class="num">10y min</th><th class="num">Median</th><th class="num">10y max</th><th>Position in 10-year range</th></tr></thead>
+      <div class="table-wrap"><table class="data metric-table" data-list>
+        <thead><tr><th data-list="title">Ratio</th><th class="num" data-list="value">Current</th><th class="num">10y min</th><th class="num">Median</th><th class="num">10y max</th><th data-list="note">Position in 10-year range</th></tr></thead>
         <tbody>
         {% for k in ['pe_ttm','ps','pb','price_to_fcf','price_to_tangible_book','price_to_ocf','ev_to_ebit','ev_to_ebitda','ev_to_revenue','ev_to_fcf','peg','shiller_pe','earnings_yield','fcf_yield','forward_rate_of_return'] %}{% set m = r.metrics[k] %}
         <tr><td>{{ m.label }}</td><td class="num">{{ fmt(m, cur) }}</td>
@@ -84,8 +84,8 @@
     <div class="two-col" style="margin-top:14px">
       <div class="panel">
         <h3 class="panel-title">Intrinsic value estimates</h3>
-        <div class="table-wrap"><table class="data metric-table">
-          <thead><tr><th>Model</th><th class="num">Value</th><th class="num">Price / value</th></tr></thead><tbody>
+        <div class="table-wrap"><table class="data metric-table" data-list>
+          <thead><tr><th data-list="title">Model</th><th class="num" data-list="value">Value</th><th class="num" data-list="note">Price / value</th></tr></thead><tbody>
           {% for v, p in [('fair_value','price_to_fair_value'),('iv15','price_to_iv15'),('dcf_earnings','price_to_dcf'),('projected_fcf_value','price_to_projected_fcf'),('median_ps_value','price_to_median_ps'),('peter_lynch_value','price_to_lynch'),('graham_number','price_to_graham'),('epv','price_to_epv'),('ncav','price_to_ncav')] %}
           {% set mv = r.metrics[v] %}{% set mp = r.metrics[p] %}
           <tr><td>{{ mv.label }}</td><td class="num">{{ fmt(mv, cur) }}</td>
@@ -140,8 +140,8 @@
         <div class="legend"><span><i style="background:var(--accent)"></i>Revenue</span><span><i style="background:var(--under)"></i>Net income</span><span><i style="background:var(--hl-text)"></i>Free cash flow</span></div></div>
       <div id="chart-fin" class="chart short"></div>
     </div>
-    <div class="table-wrap" style="margin-top:14px"><table class="data">
-      <thead><tr><th>Fiscal year</th><th class="num">Revenue</th><th class="num">Gross margin</th><th class="num">Op. margin</th><th class="num">Net income</th><th class="num">EPS</th><th class="num">FCF</th><th class="num">DPS</th><th class="num">Shares</th><th class="num">Debt</th><th class="num">Equity</th><th class="num">ROE</th></tr></thead>
+    <div class="table-wrap" style="margin-top:14px"><table class="data" data-list>
+      <thead><tr><th data-list="title">Fiscal year</th><th class="num" data-list="value">Revenue</th><th class="num">Gross margin</th><th class="num">Op. margin</th><th class="num" data-list="note" data-list-prefix="Net income">Net income</th><th class="num">EPS</th><th class="num">FCF</th><th class="num">DPS</th><th class="num">Shares</th><th class="num">Debt</th><th class="num">Equity</th><th class="num">ROE</th></tr></thead>
       <tbody>{% for a in r.annual|reverse %}
         <tr><td class="sym">{{ a.fy.strftime('%Y-%m') }}</td><td class="num">{{ money(a.revenue, cur) }}</td><td class="num">{{ pctf(a.gross_margin) }}</td><td class="num">{{ pctf(a.operating_margin) }}</td>
           <td class="num">{{ money(a.net_income, cur) }}</td><td class="num">{{ num(a.eps) }}</td><td class="num">{{ money(a.fcf, cur) }}</td><td class="num">{{ num(a.dps) }}</td>

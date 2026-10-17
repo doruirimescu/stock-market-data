@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from datetime import date
 from pathlib import Path
 
@@ -72,7 +73,22 @@ def summary_row(r) -> dict:
         "fair_value": fmt(r.metrics["fair_value"], cur), "verdict": p2.verdict or "", "verdict_text": p2.verdict_text,
         "quality_score": fmt(r.metrics["quality_score"]), "pe": fmt(r.metrics["pe_ttm"]), "roic": fmt(r.metrics["roic"]),
         "f_score": fmt(r.metrics["piotroski_f"]), "z_score": fmt(r.metrics["altman_z"]),
+        "p2fv": round(p2.value, 4) if p2.ok else None,
     }
+
+
+def _number(text: str) -> float | None:
+    m = re.search(r"-?\d[\d,]*(\.\d+)?", text or "")
+    return float(m.group(0).replace(",", "")) if m else None
+
+
+def p2fv(row: dict) -> float | None:
+    """Price-to-Fair-Value of an index row: stored, or (rows saved before it was) from the
+    formatted price and Fair Value. The index sorts its Valuation column by it."""
+    if row.get("p2fv") is not None or not row.get("verdict_text"):
+        return row.get("p2fv")
+    price, fv = _number(row.get("price", "")), _number(row.get("fair_value", ""))
+    return round(price / fv, 4) if price and fv else None
 
 
 def render_backtest(summary: dict, out: Path) -> None:
@@ -93,6 +109,8 @@ def render_site(reports, out: Path, comparison: dict | None = None) -> None:
         (stocks / f"{r.ticker}.html").write_text(html)
         (stocks / f"{r.ticker}.json").write_text(json.dumps(summary_row(r)))
     rows = sorted((json.loads(p.read_text()) for p in stocks.glob("*.json")), key=lambda x: x["ticker"])
+    for row in rows:
+        row["p2fv"] = p2fv(row)
     (out / "index.html").write_text(env.get_template("index.html.j2").render(rows=rows, root="", nav="stocks"))
     if comparison:
         labels = {}

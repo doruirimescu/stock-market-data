@@ -27,8 +27,8 @@
 
     <h2 class="section">Every comparison</h2>
     <div class="toolbar"><input class="input" type="search" id="q" placeholder="Filter by ticker, metric or status…"><span class="muted small" id="count"></span></div>
-    <div class="table-wrap scroll-y"><table class="data" id="tbl">
-      <thead><tr><th>Symbol</th><th>Metric</th><th class="num">Reference</th><th class="num">Ours</th><th class="num">Gap</th><th>Status</th><th>As of</th><th>Note</th></tr></thead>
+    <div class="table-wrap scroll-y"><table class="data" id="tbl" data-list>
+      <thead><tr><th data-list="title">Symbol</th><th data-list="subtitle">Metric</th><th class="num">Reference</th><th class="num">Ours</th><th class="num" data-list="value">Gap</th><th data-list="note">Status</th><th>As of</th><th>Note</th></tr></thead>
       <tbody>{% for x in rows %}
         <tr><td class="sym"><a href="stocks/{{ x.ticker }}.html">{{ x.ticker }}</a></td><td>{{ x.label }}</td>
           <td class="num"><span title="{{ x.source }}">{{ num(x.theirs) }}</span></td><td class="num">{{ num(x.ours) }}</td>

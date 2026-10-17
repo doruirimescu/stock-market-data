@@ -16,16 +16,24 @@
     .chapter .prose { max-width: 760px; }
     .toc { margin-top: 28px; }
     .lab { margin-top: 18px; display: grid; gap: 14px; }
-    .lab-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+    .lab-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 14px; }
     .lab-actions .panel { padding: 12px 14px; }
     .lab-actions h4 { margin: 0 0 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); }
     .lab-actions .btns { display: flex; flex-wrap: wrap; gap: 6px; }
+    .lab-actions .btn .faint { white-space: nowrap; font-variant-numeric: tabular-nums; }
+    /* Phones: one full-width row per transaction, label left and amount right, so a
+       label that wraps stays left-aligned and the amount never lands mid-line. */
+    @media (max-width: 640px) {
+      .lab-actions .btns { flex-direction: column; flex-wrap: nowrap; }
+      .lab-actions .btn { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; text-align: left; }
+      .lab-actions .btn .faint { flex: none; }
+    }
     .lab-explain { padding: 14px 18px; }
     .lab-explain h4 { margin: 0 0 6px; font-size: 15px; }
     .lab-explain p { margin: 0; color: var(--muted); font-size: 14px; }
     .lab-measures { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 10px; font-size: 13px; color: var(--muted); }
     .lab-measures b { color: var(--text); font-variant-numeric: tabular-nums; }
-    .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px 22px; padding: 6px 12px 12px; }
+    .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 14px 22px; padding: 6px 12px 12px; }
     .readout { display: flex; flex-wrap: wrap; gap: 8px 22px; padding: 0 12px 10px; font-size: 13px; color: var(--muted); }
     .readout b { color: var(--text); font-variant-numeric: tabular-nums; }
     .chart-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; padding: 8px 12px 0; }
@@ -158,7 +166,7 @@
         <p>The Federal Open Market Committee (FOMC) meets eight times a year and sets a <strong>target range</strong> for the federal funds rate, the rate banks charge each other for overnight loans of reserves. Since 2008 it has steered that rate not by rationing reserves but with <strong>administered rates</strong>: rates the Fed itself pays or charges, which form a corridor.</p>
       </div>
       <div class="table-wrap" style="margin-top:14px">
-        <table class="data">
+        <table class="data" data-list="cards">
           <thead><tr><th>Tool</th><th>What it does</th><th class="num">Now</th></tr></thead>
           <tbody id="tools-table"></tbody>
         </table>
@@ -253,7 +261,7 @@
         <p><strong>Quantitative easing</strong> is the Fed buying long-dated bonds in bulk, with newly created reserves, once its policy rate is already near zero. <strong>Quantitative tightening</strong> is the reverse: shrinking the portfolio. The Fed has never sold Treasuries to do QT; it simply stops reinvesting the bonds that mature, up to a monthly cap.</p>
       </div>
       <div class="table-wrap" style="margin-top:14px">
-        <table class="data">
+        <table class="data" data-list="cards">
           <thead><tr><th></th><th>QE</th><th>QT</th></tr></thead>
           <tbody>
             <tr><td><strong>Mechanism</strong></td><td class="company">Buy Treasuries and MBS, pay with new reserves</td><td class="company">Let bonds mature without reinvesting, up to monthly caps</td></tr>
@@ -276,7 +284,7 @@
         <div class="chart-note">Wednesday levels from the H.4.1 release, $ billions. Shaded: asset purchase and run-off programmes. The table below shows the change in Treasuries + MBS held over each one.</div>
       </div>
       <div class="table-wrap" style="margin-top:14px">
-        <table class="data">
+        <table class="data" data-list="cards">
           <thead><tr><th>Programme</th><th>Dates</th><th class="company">What happened</th><th class="num">Securities held</th></tr></thead>
           <tbody id="era-table"></tbody>
         </table>

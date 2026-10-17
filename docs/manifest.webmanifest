@@ -1,0 +1,38 @@
+{
+  "name": "Investing Nexus",
+  "short_name": "Nexus",
+  "description": "Daily index valuations, calculators and research for data-driven investing.",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a1628",
+  "theme_color": "#0a1628",
+  "icons": [
+    { "src": "icons/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Home", "url": "index.html", "nexus_icon": "home", "nexus_match": ["index.html"] },
+    { "name": "NASDAQ-100", "short_name": "NASDAQ", "url": "nasdaq_today.html", "nexus_icon": "chart", "nexus_match": ["nasdaq_"] },
+    { "name": "S&P 500", "url": "sp500_today.html", "nexus_icon": "bars", "nexus_match": ["sp500_"] },
+    { "name": "Fair Value stocks", "short_name": "Fair Value", "url": "fairvalue/index.html", "nexus_icon": "target", "nexus_match": ["fairvalue/"] },
+
+    { "name": "STOXX 600", "description": "Daily valuation of Europe's 600 largest stocks", "url": "stoxx600_today.html", "nexus_icon": "globe", "nexus_group": "Markets", "nexus_match": ["stoxx600_today"] },
+    { "name": "STOXX 600 analysis", "description": "Full analysis of the European index", "url": "stoxx600_analysis.html", "nexus_icon": "layers", "nexus_group": "Markets" },
+    { "name": "STOXX 600 sectors", "description": "Valuation breakdown per sector", "url": "stoxx600_sectors.html", "nexus_icon": "pie", "nexus_group": "Markets" },
+    { "name": "S&P 500 summary", "description": "Portfolio deviation, distribution and extremes", "url": "sp500_valuation.html", "nexus_icon": "gauge", "nexus_group": "Markets" },
+    { "name": "S&P 500 sectors", "description": "Valuation breakdown per GICS sector", "url": "sp500_sectors.html", "nexus_icon": "pie", "nexus_group": "Markets" },
+
+    { "name": "Learn", "description": "Lectures on money, central banks and markets", "url": "learn/index.html", "nexus_icon": "book", "nexus_group": "Research", "nexus_match": ["learn/"] },
+    { "name": "Strategies", "description": "Basket and trend strategy research", "url": "basket/index.html", "nexus_icon": "layers", "nexus_group": "Research", "nexus_match": ["basket/"] },
+    { "name": "Articles", "description": "Following the Big Money", "url": "articles/sector-rotation-big-money-analysis-2026-07-29.html", "nexus_icon": "doc", "nexus_group": "Research", "nexus_match": ["articles/"] },
+
+    { "name": "IV15 calculator", "url": "iv15_calculator.html", "nexus_icon": "calculator", "nexus_group": "Calculators" },
+    { "name": "PVGO calculator", "url": "pvgo_calculator.html", "nexus_icon": "calculator", "nexus_group": "Calculators" },
+    { "name": "Dividend sustainability", "url": "dividend_sustainability.html", "nexus_icon": "calculator", "nexus_group": "Calculators" },
+    { "name": "Loan simulation", "url": "loan_simulation.html", "nexus_icon": "wallet", "nexus_group": "Personal finance" },
+    { "name": "Loan analysis", "url": "loan_analysis.html", "nexus_icon": "wallet", "nexus_group": "Personal finance" }
+  ]
+}

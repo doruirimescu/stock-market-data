@@ -110,9 +110,9 @@
       <span class="muted small">Click a row to zoom every chart to that trade. Click ▸ for its legs.</span>
     </div>
     <div class="table-wrap scroll-y">
-      <table class="data">
-        <thead><tr><th></th><th>#</th><th>Leg</th><th>Entry</th><th>Exit</th><th class="num">Bars</th>
-          <th class="num">Invested</th><th class="num">P&amp;L</th><th class="num">Costs</th><th class="num">Net</th><th class="num">Equity after</th></tr></thead>
+      <table class="data" data-list data-list-action="Zoom charts to this trade">
+        <thead><tr><th></th><th data-list="title" data-list-prefix="Trade">#</th><th>Leg</th><th data-list="subtitle">Entry</th><th>Exit</th><th class="num" data-list="note" data-list-suffix="bars">Bars</th>
+          <th class="num">Invested</th><th class="num">P&amp;L</th><th class="num">Costs</th><th class="num" data-list="value">Net</th><th class="num">Equity after</th></tr></thead>
         <tbody id="trades"></tbody>
       </table>
     </div>
@@ -315,7 +315,7 @@
             <td>${fmt.date(dates[t.s])}</td><td>${fmt.date(dates[t.e])}</td><td class="num">${t.dur}</td>
             <td class="num">${fmt.money(t.gross_entry)}</td><td class="num ${sign(t.pnl)}">${fmt.smoney(t.pnl)}</td>
             <td class="num">${fmt.money(t.costs, 2)}</td><td class="num ${sign(t.net)}">${fmt.smoney(t.net)}</td><td class="num">${fmt.money(eq)}</td></tr>
-          <tr class="legs-row" hidden><td colspan="11"><table><thead><tr><th>Symbol</th><th>Side</th><th class="num">Qty</th><th class="num">Entry px</th><th class="num">Exit px</th><th class="num">Move</th></tr></thead><tbody>${legs || '<tr><td colspan="6" class="muted">Leg detail not exported.</td></tr>'}</tbody></table></td></tr>`;
+          <tr class="legs-row" data-list-detail hidden><td colspan="11"><table data-list="cards"><thead><tr><th>Symbol</th><th>Side</th><th class="num">Qty</th><th class="num">Entry px</th><th class="num">Exit px</th><th class="num">Move</th></tr></thead><tbody>${legs || '<tr><td colspan="6" class="muted">Leg detail not exported.</td></tr>'}</tbody></table></td></tr>`;
       }).join("");
       body.querySelectorAll("tr.trade").forEach((tr) => {
         tr.onclick = (e) => {

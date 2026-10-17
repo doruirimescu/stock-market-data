@@ -69,7 +69,7 @@
     <section id="vs-us">
       <h2 class="section">Europe versus the S&amp;P 500</h2>
       <p class="prose" id="vs-us-text"></p>
-      <div class="table-wrap"><table class="data"><thead id="vs-head"></thead><tbody id="vs-body"></tbody></table></div>
+      <div class="table-wrap"><table class="data" data-list><thead id="vs-head"></thead><tbody id="vs-body"></tbody></table></div>
       <div class="panel chart-panel">
         <div class="chart-head"><h3>Distribution of valuation gaps</h3>
           <div class="legend"><span><i class="sw-accent"></i>STOXX Europe 600</span><span><i class="sw-series-2"></i>S&amp;P 500</span></div></div>
@@ -92,7 +92,7 @@
           <div class="legend"><span><i class="sw-under"></i>Undervalued</span><span><i class="sw-over"></i>Overvalued</span></div></div>
         <div id="c-country" class="chart h-lg"></div>
       </div>
-      <div class="table-wrap" style="margin-top:14px"><table class="data"><thead id="country-head"></thead><tbody id="country-body"></tbody></table></div>
+      <div class="table-wrap" style="margin-top:14px"><table class="data" data-list><thead id="country-head"></thead><tbody id="country-body"></tbody></table></div>
     </section>
 
     <section id="sectors">
@@ -103,7 +103,7 @@
           <div class="legend"><span><i class="sw-under"></i>Undervalued</span><span><i class="sw-over"></i>Overvalued</span></div></div>
         <div id="c-sector" class="chart h-md"></div>
       </div>
-      <div class="table-wrap" style="margin-top:14px"><table class="data"><thead id="sector-head"></thead><tbody id="sector-body"></tbody></table></div>
+      <div class="table-wrap" style="margin-top:14px"><table class="data" data-list><thead id="sector-head"></thead><tbody id="sector-body"></tbody></table></div>
       <p class="muted small grid-note">Every sector's stocks, chart and table: <a href="stoxx600_sectors.html">STOXX 600 Sectors</a>.</p>
     </section>
 
@@ -127,7 +127,7 @@
         <div class="chart-note">Stocks ranked by index weight and split into five equal groups.</div>
       </div>
       <h3 class="muted small" style="margin:22px 0 8px;text-transform:uppercase;letter-spacing:.08em">The 25 largest constituents</h3>
-      <div class="table-wrap scroll-y"><table class="data"><thead><tr><th>Symbol</th><th>Company</th><th>Country</th><th>Sector</th><th class="num">Weight</th><th class="num">Valuation</th><th class="num">Solvency</th></tr></thead><tbody id="top-body"></tbody></table></div>
+      <div class="table-wrap scroll-y"><table class="data" data-list><thead><tr><th data-list="title">Symbol</th><th data-list="subtitle">Company</th><th>Country</th><th>Sector</th><th class="num" data-list="note" data-list-prefix="Weight">Weight</th><th class="num" data-list="value">Valuation</th><th class="num">Solvency</th></tr></thead><tbody id="top-body"></tbody></table></div>
     </section>
 
     <section id="solvency">
@@ -234,8 +234,8 @@
       return m;
     }
     function groupTable(headId, bodyId, groups, label, totalWeight) {
-      $(headId).innerHTML = `<tr><th>${label}</th><th class="num">Stocks</th><th class="num">Index weight</th><th class="num">Undervalued</th>
-        <th class="num">Equal-weight</th><th class="num">Median</th><th class="num">Market-cap weighted</th><th class="num">Avg. solvency</th></tr>`;
+      $(headId).innerHTML = `<tr><th data-list="title">${label}</th><th class="num" data-list="subtitle" data-list-suffix="stocks">Stocks</th><th class="num">Index weight</th><th class="num" data-list="note" data-list-suffix="undervalued">Undervalued</th>
+        <th class="num" data-list="value">Equal-weight</th><th class="num">Median</th><th class="num">Market-cap weighted</th><th class="num">Avg. solvency</th></tr>`;
       $(bodyId).innerHTML = groups.map((g) => `<tr><td><strong>${esc(g.name)}</strong></td><td class="num">${g.n}</td>
         <td class="num">${pct((g.weight / totalWeight) * 100, 1)}</td><td class="num">${pct((g.under / g.n) * 100)}</td>
         <td class="num">${verdict(g.mean)}</td><td class="num">${verdict(g.median)}</td><td class="num">${verdict(g.cw)}</td>
@@ -243,7 +243,7 @@
     }
     function stockTable(rs, cols) {
       if (!rs.length) return '<p class="muted small">No stocks pass this screen today.</p>';
-      return `<div class="table-wrap"><table class="data"><thead><tr><th>Symbol</th><th>Company</th><th>Country</th><th class="num">Valuation</th><th class="num">Solvency</th></tr></thead><tbody>${rs.map((r) =>
+      return `<div class="table-wrap"><table class="data" data-list><thead><tr><th data-list="title">Symbol</th><th data-list="subtitle">Company</th><th>Country</th><th class="num" data-list="value">Valuation</th><th class="num" data-list="note" data-list-prefix="Solvency">Solvency</th></tr></thead><tbody>${rs.map((r) =>
         `<tr><td><a class="sym" href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.symbol)}</a></td><td class="company">${esc(r.company)}</td>
         <td>${esc(r.country || "")}</td><td class="num">${verdict(r.valuation_score, 0)}</td><td class="num">${r.solvency_score ?? "—"}</td></tr>`).join("")}</tbody></table></div>`;
     }
@@ -363,7 +363,7 @@
       // ---------- vs US ----------
       if (U) {
         $("vs-us-text").innerHTML = `Same model, same day${usDate !== date ? ` (S&amp;P 500 snapshot of ${esc(usDate)})` : ""}. Europe trades ${S.cw >= U.cw ? "at a discount to" : "at a premium over"} the US at index weights, and the gap is ${Math.abs(S.mean - U.mean) > Math.abs(S.cw - U.cw) ? "wider" : "narrower"} for the average stock than for the cap-weighted index, because the S&amp;P 500's largest companies ${U.cw < U.mean ? "are priced richer than its typical stock" : "screen cheaper than its typical stock"}.`;
-        $("vs-head").innerHTML = '<tr><th></th><th class="num">Stocks valued</th><th class="num">Undervalued</th><th class="num">Equal-weight</th><th class="num">Median</th><th class="num">Market-cap weighted</th><th class="num">Avg. solvency</th></tr>';
+        $("vs-head").innerHTML = '<tr><th data-list="title" data-list-label="Index"></th><th class="num" data-list="subtitle" data-list-suffix="stocks valued">Stocks valued</th><th class="num" data-list="note" data-list-suffix="undervalued">Undervalued</th><th class="num" data-list="value">Equal-weight</th><th class="num">Median</th><th class="num">Market-cap weighted</th><th class="num">Avg. solvency</th></tr>';
         $("vs-body").innerHTML = [["STOXX Europe 600", S], ["S&P 500", U]].map(([n, s]) => `<tr><td><strong>${esc(n)}</strong></td><td class="num">${s.n}</td>
           <td class="num">${pct((s.under / s.n) * 100)}</td><td class="num">${verdict(s.mean)}</td><td class="num">${verdict(s.median)}</td><td class="num">${verdict(s.cw)}</td><td class="num">${s.solv.toFixed(0)}</td></tr>`).join("");
       } else {
@@ -403,7 +403,7 @@
           `Index-weighted, AlphaSpread puts these stocks ${gap(sAS.cw)} and Fair Value ${gap(sFV.cw)}. ` +
           `The models are independent: AlphaSpread blends DCF and multiples, Fair Value uses three years of price-to-sales. Where they agree the verdict is sturdier; ` +
           `where they don't, look at why (banks and cyclicals are typical). Their gaps are scaled slightly differently (see Method), so compare signs and size rather than exact numbers.`;
-        const pairRows = (ps) => `<div class="table-wrap"><table class="data"><thead><tr><th>Symbol</th><th>Company</th><th class="num">AlphaSpread</th><th class="num">Fair Value</th></tr></thead><tbody>${ps.map((p) =>
+        const pairRows = (ps) => `<div class="table-wrap"><table class="data" data-list><thead><tr><th data-list="title">Symbol</th><th data-list="subtitle">Company</th><th class="num" data-list="note" data-list-prefix="AlphaSpread">AlphaSpread</th><th class="num" data-list="value">Fair Value</th></tr></thead><tbody>${ps.map((p) =>
           `<tr><td><span class="sym">${esc(p.r.symbol)}</span></td><td class="company">${esc(p.r.company)}</td><td class="num">${verdict(p.as, 0)}</td><td class="num">${verdict(p.fv, 0)}</td></tr>`).join("")}</tbody></table></div>`;
         const byDiff = [...pairs].sort((a, b) => (b.fv - b.as) - (a.fv - a.as));
         $("models-fv").innerHTML = pairRows(byDiff.slice(0, 10));
