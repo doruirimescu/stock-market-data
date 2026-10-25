@@ -422,7 +422,7 @@
   "T": {
     "symbol": "T",
     "company": "AT&T Inc.",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'AT&T Inc.'."
   },
   "LMT": {
     "symbol": "LMT",
@@ -537,7 +537,7 @@
   "PSX": {
     "symbol": "PSX",
     "company": "PHILLIPS 66",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'PHILLIPS 66'."
   },
   "LOW": {
     "symbol": "LOW",
@@ -584,14 +584,14 @@
     "company": "Airbnb, Inc. Class A Common Stock",
     "error": "HTTP Error 403: Forbidden"
   },
-  "BNY": {
-    "symbol": "BNY",
-    "company": "Bank of New York Mellon Corporation",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "TT": {
     "symbol": "TT",
     "company": "Trane Technologies plc",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "BNY": {
+    "symbol": "BNY",
+    "company": "Bank of New York Mellon Corporation",
     "error": "HTTP Error 403: Forbidden"
   },
   "DUK": {
@@ -619,11 +619,6 @@
     "company": "General Dynamics Corporation",
     "error": "HTTP Error 403: Forbidden"
   },
-  "MRSH": {
-    "symbol": "MRSH",
-    "company": "Marsh",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "EQIX": {
     "symbol": "EQIX",
     "company": "Equinix, Inc. Common Stock REIT",
@@ -637,6 +632,11 @@
   "CSX": {
     "symbol": "CSX",
     "company": "CSX Corporation",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "MRSH": {
+    "symbol": "MRSH",
+    "company": "Marsh",
     "error": "HTTP Error 403: Forbidden"
   },
   "FCX": {
@@ -734,11 +734,6 @@
     "company": "Moody's Corporation",
     "error": "HTTP Error 403: Forbidden"
   },
-  "TRV": {
-    "symbol": "TRV",
-    "company": "The Travelers Companies, Inc.",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "REGN": {
     "symbol": "REGN",
     "company": "Regeneron Pharmaceuticals Inc",
@@ -762,6 +757,11 @@
   "SHW": {
     "symbol": "SHW",
     "company": "The Sherwin-Williams Company",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "TRV": {
+    "symbol": "TRV",
+    "company": "The Travelers Companies, Inc.",
     "error": "HTTP Error 403: Forbidden"
   },
   "MDLZ": {
@@ -794,11 +794,6 @@
     "company": "Motorola Solutions, Inc. New",
     "error": "HTTP Error 403: Forbidden"
   },
-  "SLB": {
-    "symbol": "SLB",
-    "company": "SLB Limited",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "HLT": {
     "symbol": "HLT",
     "company": "Hilton Worldwide Holdings Inc.",
@@ -812,6 +807,11 @@
   "NOC": {
     "symbol": "NOC",
     "company": "Northrop Grumman Corp.",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "SLB": {
+    "symbol": "SLB",
+    "company": "SLB Limited",
     "error": "HTTP Error 403: Forbidden"
   },
   "DASH": {
@@ -924,11 +924,6 @@
     "company": "Apollo Global Management, Inc.",
     "error": "HTTP Error 403: Forbidden"
   },
-  "GM": {
-    "symbol": "GM",
-    "company": "General Motors Company",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "BSX": {
     "symbol": "BSX",
     "company": "Boston Scientific Corp.",
@@ -937,6 +932,11 @@
   "TRGP": {
     "symbol": "TRGP",
     "company": "Targa Resources Corp.",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "GM": {
+    "symbol": "GM",
+    "company": "General Motors Company",
     "error": "HTTP Error 403: Forbidden"
   },
   "AON": {
@@ -1112,7 +1112,7 @@
   "KEYS": {
     "symbol": "KEYS",
     "company": "Keysight Technologies, Inc.",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'Keysight Technologies, Inc.'."
   },
   "ADSK": {
     "symbol": "ADSK",
@@ -1449,11 +1449,6 @@
     "company": "Public Service Enterprise Group Incorporated",
     "error": "HTTP Error 403: Forbidden"
   },
-  "CBRE": {
-    "symbol": "CBRE",
-    "company": "CBRE GROUP, INC.",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "RMD": {
     "symbol": "RMD",
     "company": "ResMed Inc.",
@@ -1462,6 +1457,11 @@
   "CBOE": {
     "symbol": "CBOE",
     "company": "Cboe Global Markets, Inc.",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "CBRE": {
+    "symbol": "CBRE",
+    "company": "CBRE GROUP, INC.",
     "error": "HTTP Error 403: Forbidden"
   },
   "CCL": {
@@ -1609,14 +1609,14 @@
     "company": "Atmos Energy Corporation",
     "error": "HTTP Error 403: Forbidden"
   },
-  "HAL": {
-    "symbol": "HAL",
-    "company": "Halliburton Company",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "TDY": {
     "symbol": "TDY",
     "company": "Teledyne Technologies Incorporated",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "HAL": {
+    "symbol": "HAL",
+    "company": "Halliburton Company",
     "error": "HTTP Error 403: Forbidden"
   },
   "JBL": {
@@ -1684,11 +1684,6 @@
     "company": "W.R. Berkley Corporation",
     "error": "HTTP Error 403: Forbidden"
   },
-  "VRSN": {
-    "symbol": "VRSN",
-    "company": "VeriSign Inc",
-    "error": "HTTP Error 403: Forbidden"
-  },
   "CINF": {
     "symbol": "CINF",
     "company": "Cincinnati Financial Corp",
@@ -1697,6 +1692,11 @@
   "CNP": {
     "symbol": "CNP",
     "company": "CenterPoint Energy, Inc.",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  "VRSN": {
+    "symbol": "VRSN",
+    "company": "VeriSign Inc",
     "error": "HTTP Error 403: Forbidden"
   },
   "CPRT": {
@@ -2402,7 +2402,7 @@
   "ALB": {
     "symbol": "ALB",
     "company": "Albemarle Corporation",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'Albemarle Corporation'."
   },
   "NWSA": {
     "symbol": "NWSA",
@@ -2437,7 +2437,7 @@
   "AES": {
     "symbol": "AES",
     "company": "AES Corporation",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'AES Corporation'."
   },
   "CLX": {
     "symbol": "CLX",
