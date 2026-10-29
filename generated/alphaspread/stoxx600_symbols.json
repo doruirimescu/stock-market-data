@@ -180,7 +180,7 @@
   "KRX": "lse/krx",
   "KPN": "aex/kpn",
   "BT.A": "lse/bt.a",
-  "EPI A": "sto/epi a",
+  "EPI A": "lse/0ysu",
   "NTGY": "mad/ntgy",
   "KER": "par/ker",
   "ALFA": "sto/alfa",
@@ -594,5 +594,6 @@
   "WISE": "nasdaq/wise",
   "HUBN": "six/hubn",
   "AYV": "par/ayv",
-  "HIAB": "omxh/hiab"
+  "HIAB": "omxh/hiab",
+  "NSIS B": "otc/nvzmy"
 }
