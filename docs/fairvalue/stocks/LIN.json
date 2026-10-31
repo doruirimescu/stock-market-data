@@ -1,1 +1,1 @@
-{"ticker": "LIN", "name": "LINDE PLC", "price": "483.73", "as_of": "2026-06-30", "fair_value": "$511.88", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "90", "pe": "31.21", "roic": "8.62%", "f_score": "6", "z_score": "3.84"}
+{"ticker": "LIN", "name": "LINDE PLC", "price": "514.24", "as_of": "2026-09-30", "fair_value": "$529.25", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "93", "pe": "34.15", "roic": "8.35%", "f_score": "6", "z_score": "4.05", "p2fv": 0.9716}

@@ -1,1 +1,1 @@
-{"ticker": "SLB", "name": "SLB LIMITED/NV", "price": "48.95", "as_of": "2026-06-30", "fair_value": "$45.35", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "74", "pe": "23.88", "roic": "8.57%", "f_score": "5", "z_score": "3.06"}
+{"ticker": "SLB", "name": "SLB LIMITED/NV", "price": "53.74", "as_of": "2026-09-30", "fair_value": "$46.52", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "75", "pe": "26.09", "roic": "8.05%", "f_score": "5", "z_score": "3.15", "p2fv": 1.1552}

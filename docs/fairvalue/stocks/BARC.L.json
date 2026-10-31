@@ -1,1 +1,1 @@
-{"ticker": "BARC.L", "name": "Barclays PLC", "price": "GBX 436.00", "as_of": "2026-06-30", "fair_value": "GBX 432.55", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "91", "pe": "At loss", "roic": "0.46%", "f_score": "\u2013", "z_score": "N/A (financial)"}
+{"ticker": "BARC.L", "name": "Barclays PLC", "price": "GBX 415.05", "as_of": "2026-09-30", "fair_value": "GBX 447.49", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "93", "pe": "8.03", "roic": "0.46%", "f_score": "\u2013", "z_score": "N/A (financial)", "p2fv": 0.9275}

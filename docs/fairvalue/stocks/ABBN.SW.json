@@ -1,1 +1,1 @@
-{"ticker": "ABBN.SW", "name": "ABB Ltd", "price": "CHF 79.96", "as_of": "2025-12-31", "fair_value": "CHF 48.95", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "81", "pe": "39.00", "roic": "12.74%", "f_score": "7", "z_score": "6.05"}
+{"ticker": "ABBN.SW", "name": "ABB Ltd", "price": "CHF 70.68", "as_of": "2026-09-30", "fair_value": "CHF 58.22", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "83", "pe": "31.70", "roic": "13.78%", "f_score": "\u2013", "z_score": "5.13", "p2fv": 1.214}

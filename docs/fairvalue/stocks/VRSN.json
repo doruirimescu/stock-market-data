@@ -1,1 +1,1 @@
-{"ticker": "VRSN", "name": "VERISIGN INC/CA", "price": "303.74", "as_of": "2026-06-30", "fair_value": "$270.91", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "90", "pe": "At loss", "roic": "65.62%", "f_score": "7", "z_score": "-2.16"}
+{"ticker": "VRSN", "name": "VERISIGN INC/CA", "price": "307.21", "as_of": "2026-09-30", "fair_value": "$278.45", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "91", "pe": "At loss", "roic": "84.22%", "f_score": "8", "z_score": "-3.87", "p2fv": 1.1033}

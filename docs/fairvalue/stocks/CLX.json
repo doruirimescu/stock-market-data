@@ -1,1 +1,1 @@
-{"ticker": "CLX", "name": "CLOROX CO /DE/", "price": "83.80", "as_of": "2026-03-31", "fair_value": "$127.94", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "78", "pe": "13.63", "roic": "20.01%", "f_score": "5", "z_score": "2.52"}
+{"ticker": "CLX", "name": "CLOROX CO /DE/", "price": "88.00", "as_of": "2026-03-31", "fair_value": "$127.94", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "78", "pe": "14.31", "roic": "20.01%", "f_score": "5", "z_score": "2.57", "p2fv": 0.6878}

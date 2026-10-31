@@ -1,1 +1,1 @@
-{"ticker": "MSFT", "name": "MICROSOFT CORP", "price": "535.07", "as_of": "2026-06-30", "fair_value": "$572.27", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "98", "pe": "29.81", "roic": "20.54%", "f_score": "6", "z_score": "9.38"}
+{"ticker": "MSFT", "name": "MICROSOFT CORP", "price": "521.91", "as_of": "2026-09-30", "fair_value": "$605.39", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "99", "pe": "27.25", "roic": "20.93%", "f_score": "6", "z_score": "9.43", "p2fv": 0.8621}

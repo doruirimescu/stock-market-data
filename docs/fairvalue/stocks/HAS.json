@@ -1,1 +1,1 @@
-{"ticker": "HAS", "name": "HASBRO, INC.", "price": "93.32", "as_of": "2026-06-28", "fair_value": "$77.95", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "78", "pe": "16.60", "roic": "24.54%", "f_score": "5", "z_score": "3.70"}
+{"ticker": "HAS", "name": "HASBRO, INC.", "price": "119.09", "as_of": "2026-09-27", "fair_value": "$71.93", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "69", "pe": "17.75", "roic": "27.75%", "f_score": "7", "z_score": "3.96", "p2fv": 1.6556}

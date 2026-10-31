@@ -1,1 +1,1 @@
-{"ticker": "LH", "name": "LABCORP HOLDINGS INC.", "price": "312.15", "as_of": "2026-06-30", "fair_value": "$279.15", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "78", "pe": "25.82", "roic": "\u2013", "f_score": "8", "z_score": "3.34"}
+{"ticker": "LH", "name": "LABCORP HOLDINGS INC.", "price": "361.39", "as_of": "2026-09-30", "fair_value": "$288.03", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "75", "pe": "29.62", "roic": "\u2013", "f_score": "8", "z_score": "3.51", "p2fv": 1.2547}

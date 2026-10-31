@@ -1,1 +1,1 @@
-{"ticker": "FFIV", "name": "F5, INC.", "price": "479.83", "as_of": "2026-06-30", "fair_value": "$305.07", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "85", "pe": "38.23", "roic": "13.83%", "f_score": "7", "z_score": "7.37"}
+{"ticker": "FFIV", "name": "F5, INC.", "price": "338.34", "as_of": "2026-06-30", "fair_value": "$308.23", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "88", "pe": "26.96", "roic": "13.83%", "f_score": "7", "z_score": "5.75", "p2fv": 1.0977}

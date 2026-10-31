@@ -1,1 +1,1 @@
-{"ticker": "AKAM", "name": "AKAMAI TECHNOLOGIES INC", "price": "106.95", "as_of": "2026-06-30", "fair_value": "$105.49", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "84", "pe": "38.75", "roic": "\u2013", "f_score": "4", "z_score": "1.76"}
+{"ticker": "AKAM", "name": "AKAMAI TECHNOLOGIES INC", "price": "92.72", "as_of": "2026-06-30", "fair_value": "$104.83", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "87", "pe": "33.59", "roic": "\u2013", "f_score": "4", "z_score": "1.64", "p2fv": 0.8845}

@@ -1,1 +1,1 @@
-{"ticker": "TKO", "name": "TKO Group Holdings, Inc.", "price": "178.01", "as_of": "2026-06-30", "fair_value": "$318.41", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "73", "pe": "62.46", "roic": "6.06%", "f_score": "5", "z_score": "\u2013"}
+{"ticker": "TKO", "name": "TKO Group Holdings, Inc.", "price": "180.68", "as_of": "2026-06-30", "fair_value": "$318.41", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "71", "pe": "63.40", "roic": "6.06%", "f_score": "5", "z_score": "\u2013", "p2fv": 0.5674}

@@ -1,1 +1,1 @@
-{"ticker": "FIX", "name": "COMFORT SYSTEMS USA INC", "price": "1715.69", "as_of": "2026-06-30", "fair_value": "$235.53", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "76", "pe": "42.23", "roic": "6.36%", "f_score": "8", "z_score": "8.33"}
+{"ticker": "FIX", "name": "COMFORT SYSTEMS USA INC", "price": "1232.66", "as_of": "2026-09-30", "fair_value": "$332.38", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "75", "pe": "26.62", "roic": "8.55%", "f_score": "7", "z_score": "5.53", "p2fv": 3.7086}

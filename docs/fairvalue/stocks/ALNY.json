@@ -1,1 +1,1 @@
-{"ticker": "ALNY", "name": "ALNYLAM PHARMACEUTICALS, INC.", "price": "232.68", "as_of": "2026-06-30", "fair_value": "$521.82", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "85", "pe": "40.54", "roic": "81.65%", "f_score": "7", "z_score": "5.01"}
+{"ticker": "ALNY", "name": "ALNYLAM PHARMACEUTICALS, INC.", "price": "165.00", "as_of": "2026-09-30", "fair_value": "$547.12", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "80", "pe": "8.58", "roic": "41.11%", "f_score": "4", "z_score": "3.82", "p2fv": 0.3016}

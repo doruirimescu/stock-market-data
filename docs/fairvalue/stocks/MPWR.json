@@ -1,1 +1,1 @@
-{"ticker": "MPWR", "name": "MONOLITHIC POWER SYSTEMS, INC.", "price": "1386.29", "as_of": "2026-06-30", "fair_value": "$1,229.43", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "95", "pe": "84.58", "roic": "28.95%", "f_score": "5", "z_score": "54.44"}
+{"ticker": "MPWR", "name": "MONOLITHIC POWER SYSTEMS, INC.", "price": "1211.63", "as_of": "2026-06-30", "fair_value": "$1,245.75", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "97", "pe": "73.92", "roic": "28.95%", "f_score": "5", "z_score": "47.93", "p2fv": 0.9726}

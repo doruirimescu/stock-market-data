@@ -1,1 +1,1 @@
-{"ticker": "GALD.SW", "name": "Galderma Group AG", "price": "CHF 166.15", "as_of": "2025-12-31", "fair_value": "CHF 126.93", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "76", "pe": "At loss", "roic": "6.57%", "f_score": "7", "z_score": "6.92"}
+{"ticker": "GALD.SW", "name": "Galderma Group AG", "price": "CHF 192.85", "as_of": "2025-12-31", "fair_value": "CHF 132.92", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "74", "pe": "At loss", "roic": "6.57%", "f_score": "7", "z_score": "7.83", "p2fv": 1.4509}

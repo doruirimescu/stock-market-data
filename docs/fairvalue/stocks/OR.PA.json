@@ -1,1 +1,1 @@
-{"ticker": "OR.PA", "name": "L'Or\u00e9al S.A.", "price": "\u20ac383.35", "as_of": "2025-12-31", "fair_value": "\u20ac386.07", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "89", "pe": "33.51", "roic": "13.33%", "f_score": "6", "z_score": "6.04"}
+{"ticker": "OR.PA", "name": "L'Or\u00e9al S.A.", "price": "\u20ac436.95", "as_of": "2025-12-31", "fair_value": "\u20ac386.08", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "86", "pe": "38.19", "roic": "13.33%", "f_score": "6", "z_score": "6.68", "p2fv": 1.1318}

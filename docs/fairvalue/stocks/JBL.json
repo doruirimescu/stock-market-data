@@ -1,1 +1,1 @@
-{"ticker": "JBL", "name": "JABIL INC", "price": "306.28", "as_of": "2026-05-31", "fair_value": "$217.68", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "73", "pe": "38.33", "roic": "19.21%", "f_score": "7", "z_score": "2.82"}
+{"ticker": "JBL", "name": "JABIL INC", "price": "272.72", "as_of": "2026-08-31", "fair_value": "$241.26", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "83", "pe": "27.97", "roic": "21.36%", "f_score": "7", "z_score": "2.53", "p2fv": 1.1304}

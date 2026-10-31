@@ -1,1 +1,1 @@
-{"ticker": "BX", "name": "Blackstone Inc.", "price": "114.29", "as_of": "2026-06-30", "fair_value": "$192.53", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "85", "pe": "25.57", "roic": "15.28%", "f_score": "6", "z_score": "N/A (financial)"}
+{"ticker": "BX", "name": "Blackstone Inc.", "price": "118.51", "as_of": "2026-06-30", "fair_value": "$191.92", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "84", "pe": "26.51", "roic": "15.28%", "f_score": "6", "z_score": "N/A (financial)", "p2fv": 0.6175}

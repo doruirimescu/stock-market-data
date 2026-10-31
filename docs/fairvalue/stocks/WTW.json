@@ -1,1 +1,1 @@
-{"ticker": "WTW", "name": "WILLIS TOWERS WATSON PLC", "price": "296.26", "as_of": "2026-06-30", "fair_value": "$336.44", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "84", "pe": "18.34", "roic": "6.44%", "f_score": "5", "z_score": "N/A (financial)"}
+{"ticker": "WTW", "name": "WILLIS TOWERS WATSON PLC", "price": "324.42", "as_of": "2026-09-30", "fair_value": "$343.70", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "80", "pe": "19.93", "roic": "6.62%", "f_score": "4", "z_score": "N/A (financial)", "p2fv": 0.9439}

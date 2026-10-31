@@ -1,1 +1,1 @@
-{"ticker": "PLD", "name": "Prologis, Inc.", "price": "129.49", "as_of": "2026-03-31", "fair_value": "$131.93", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "80", "pe": "32.54", "roic": "4.59%", "f_score": "4", "z_score": "N/A (financial)"}
+{"ticker": "PLD", "name": "Prologis, Inc.", "price": "127.98", "as_of": "2026-03-31", "fair_value": "$131.99", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "79", "pe": "32.16", "roic": "4.59%", "f_score": "4", "z_score": "N/A (financial)", "p2fv": 0.9697}

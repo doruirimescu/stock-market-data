@@ -1,1 +1,1 @@
-{"ticker": "UNP", "name": "UNION PACIFIC CORP", "price": "278.34", "as_of": "2026-06-30", "fair_value": "$256.56", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "85", "pe": "22.54", "roic": "11.92%", "f_score": "8", "z_score": "4.23"}
+{"ticker": "UNP", "name": "UNION PACIFIC CORP", "price": "304.00", "as_of": "2026-09-30", "fair_value": "$269.82", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "85", "pe": "23.71", "roic": "12.26%", "f_score": "7", "z_score": "4.43", "p2fv": 1.1267}

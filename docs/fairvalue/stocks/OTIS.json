@@ -1,1 +1,1 @@
-{"ticker": "OTIS", "name": "Otis Worldwide Corp", "price": "65.95", "as_of": "2026-06-30", "fair_value": "$102.90", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "75", "pe": "16.95", "roic": "24.73%", "f_score": "5", "z_score": "2.76"}
+{"ticker": "OTIS", "name": "Otis Worldwide Corp", "price": "75.75", "as_of": "2026-09-30", "fair_value": "$105.42", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "77", "pe": "18.84", "roic": "24.61%", "f_score": "7", "z_score": "2.97", "p2fv": 0.7186}

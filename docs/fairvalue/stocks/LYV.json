@@ -1,1 +1,1 @@
-{"ticker": "LYV", "name": "Live Nation Entertainment, Inc.", "price": "170.33", "as_of": "2026-06-30", "fair_value": "$146.95", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "77", "pe": "At loss", "roic": "1.91%", "f_score": "3", "z_score": "1.76"}
+{"ticker": "LYV", "name": "Live Nation Entertainment, Inc.", "price": "177.89", "as_of": "2026-06-30", "fair_value": "$148.31", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "78", "pe": "At loss", "roic": "1.91%", "f_score": "3", "z_score": "1.80", "p2fv": 1.1995}

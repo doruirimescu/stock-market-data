@@ -1,1 +1,1 @@
-{"ticker": "TEL", "name": "TE Connectivity plc", "price": "218.29", "as_of": "2026-06-26", "fair_value": "$203.52", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "86", "pe": "21.38", "roic": "13.69%", "f_score": "8", "z_score": "5.19"}
+{"ticker": "TEL", "name": "TE Connectivity plc", "price": "213.03", "as_of": "2026-06-26", "fair_value": "$205.07", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "88", "pe": "20.86", "roic": "13.69%", "f_score": "8", "z_score": "5.12", "p2fv": 1.0388}

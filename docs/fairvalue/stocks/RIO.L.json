@@ -1,1 +1,1 @@
-{"ticker": "RIO.L", "name": "Rio Tinto Group", "price": "GBX 7091.58", "as_of": "2025-12-31", "fair_value": "GBX 5,135.27", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "73", "pe": "15.70", "roic": "10.02%", "f_score": "2", "z_score": "2.97"}
+{"ticker": "RIO.L", "name": "Rio Tinto Group", "price": "GBX 6094.00", "as_of": "2025-12-31", "fair_value": "GBX 5,203.04", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "74", "pe": "13.49", "roic": "10.02%", "f_score": "4", "z_score": "2.75", "p2fv": 1.1712}

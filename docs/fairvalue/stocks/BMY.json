@@ -1,1 +1,1 @@
-{"ticker": "BMY", "name": "BRISTOL MYERS SQUIBB CO", "price": "59.12", "as_of": "2026-06-30", "fair_value": "$55.77", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "81", "pe": "13.02", "roic": "13.52%", "f_score": "6", "z_score": "2.64"}
+{"ticker": "BMY", "name": "BRISTOL MYERS SQUIBB CO", "price": "62.48", "as_of": "2026-09-30", "fair_value": "$56.81", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "80", "pe": "13.85", "roic": "13.39%", "f_score": "6", "z_score": "2.70", "p2fv": 1.0999}

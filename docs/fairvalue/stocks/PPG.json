@@ -1,1 +1,1 @@
-{"ticker": "PPG", "name": "PPG INDUSTRIES INC", "price": "103.96", "as_of": "2026-03-31", "fair_value": "$122.75", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "83", "pe": "14.83", "roic": "11.25%", "f_score": "6", "z_score": "3.70"}
+{"ticker": "PPG", "name": "PPG INDUSTRIES INC", "price": "119.52", "as_of": "2026-09-30", "fair_value": "$128.24", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "82", "pe": "17.05", "roic": "11.11%", "f_score": "7", "z_score": "3.86", "p2fv": 0.932}

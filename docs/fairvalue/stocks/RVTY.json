@@ -1,1 +1,1 @@
-{"ticker": "RVTY", "name": "REVVITY, INC.", "price": "154.18", "as_of": "2026-07-05", "fair_value": "$120.05", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "66", "pe": "74.12", "roic": "3.11%", "f_score": "6", "z_score": "3.30"}
+{"ticker": "RVTY", "name": "REVVITY, INC.", "price": "157.00", "as_of": "2026-07-05", "fair_value": "$121.14", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "63", "pe": "75.48", "roic": "3.11%", "f_score": "6", "z_score": "3.34", "p2fv": 1.296}

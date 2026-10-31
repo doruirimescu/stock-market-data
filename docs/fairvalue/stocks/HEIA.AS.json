@@ -1,1 +1,1 @@
-{"ticker": "HEIA.AS", "name": "Heineken N.V.", "price": "\u20ac71.56", "as_of": "2025-12-31", "fair_value": "\u20ac73.81", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "79", "pe": "21.17", "roic": "4.97%", "f_score": "7", "z_score": "1.98"}
+{"ticker": "HEIA.AS", "name": "Heineken N.V.", "price": "\u20ac79.56", "as_of": "2025-12-31", "fair_value": "\u20ac73.78", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "75", "pe": "23.54", "roic": "4.97%", "f_score": "7", "z_score": "2.06", "p2fv": 1.0784}

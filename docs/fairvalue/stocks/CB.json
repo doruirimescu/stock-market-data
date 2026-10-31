@@ -1,1 +1,1 @@
-{"ticker": "CB", "name": "Chubb Ltd", "price": "341.20", "as_of": "2026-03-31", "fair_value": "$323.90", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "90", "pe": "12.07", "roic": "4.65%", "f_score": "5", "z_score": "N/A (financial)"}
+{"ticker": "CB", "name": "Chubb Ltd", "price": "364.12", "as_of": "2026-09-30", "fair_value": "$337.07", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "91", "pe": "12.76", "roic": "4.26%", "f_score": "6", "z_score": "N/A (financial)", "p2fv": 1.0802}

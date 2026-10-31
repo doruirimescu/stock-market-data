@@ -1,1 +1,1 @@
-{"ticker": "DTG.DE", "name": "Daimler Truck Holding AG", "price": "\u20ac41.28", "as_of": "2025-12-31", "fair_value": "\u20ac35.07", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "71", "pe": "16.12", "roic": "3.16%", "f_score": "5", "z_score": "1.63"}
+{"ticker": "DTG.DE", "name": "Daimler Truck Holding AG", "price": "\u20ac40.54", "as_of": "2025-12-31", "fair_value": "\u20ac35.27", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "70", "pe": "15.84", "roic": "3.16%", "f_score": "5", "z_score": "1.62", "p2fv": 1.1493}

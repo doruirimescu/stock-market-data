@@ -1,1 +1,1 @@
-{"ticker": "DRI", "name": "DARDEN RESTAURANTS INC", "price": "197.66", "as_of": "2026-08-30", "fair_value": "$214.61", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "90", "pe": "19.32", "roic": "10.89%", "f_score": "7", "z_score": "2.37"}
+{"ticker": "DRI", "name": "DARDEN RESTAURANTS INC", "price": "220.17", "as_of": "2026-08-30", "fair_value": "$214.97", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "85", "pe": "21.52", "roic": "10.89%", "f_score": "7", "z_score": "2.51", "p2fv": 1.0242}

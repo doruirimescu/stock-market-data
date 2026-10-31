@@ -1,1 +1,1 @@
-{"ticker": "HOOD", "name": "Robinhood Markets, Inc.", "price": "109.02", "as_of": "2026-06-30", "fair_value": "$83.11", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "82", "pe": "48.24", "roic": "5.21%", "f_score": "3", "z_score": "N/A (financial)"}
+{"ticker": "HOOD", "name": "Robinhood Markets, Inc.", "price": "84.99", "as_of": "2026-09-30", "fair_value": "$88.45", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "86", "pe": "39.17", "roic": "4.63%", "f_score": "5", "z_score": "N/A (financial)", "p2fv": 0.9609}

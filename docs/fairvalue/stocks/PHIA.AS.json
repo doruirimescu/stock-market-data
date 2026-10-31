@@ -1,1 +1,1 @@
-{"ticker": "PHIA.AS", "name": "Koninklijke Philips N.V.", "price": "\u20ac21.72", "as_of": "2026-06-30", "fair_value": "\u20ac22.60", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "76", "pe": "At loss", "roic": "6.21%", "f_score": "\u2013", "z_score": "1.97"}
+{"ticker": "PHIA.AS", "name": "Koninklijke Philips N.V.", "price": "\u20ac24.24", "as_of": "2026-06-30", "fair_value": "\u20ac22.65", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "73", "pe": "At loss", "roic": "6.21%", "f_score": "\u2013", "z_score": "2.07", "p2fv": 1.0704}

@@ -1,1 +1,1 @@
-{"ticker": "SMCI", "name": "Super Micro Computer, Inc.", "price": "41.86", "as_of": "2026-06-30", "fair_value": "$80.13", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "91", "pe": "12.84", "roic": "16.99%", "f_score": "1", "z_score": "3.79"}
+{"ticker": "SMCI", "name": "Super Micro Computer, Inc.", "price": "32.95", "as_of": "2026-06-30", "fair_value": "$78.48", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "88", "pe": "10.11", "roic": "16.99%", "f_score": "1", "z_score": "3.56", "p2fv": 0.4198}

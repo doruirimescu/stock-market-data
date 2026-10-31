@@ -1,1 +1,1 @@
-{"ticker": "INVE-B.ST", "name": "Investor AB (publ)", "price": "SEK 415.00", "as_of": "2025-12-31", "fair_value": "SEK 392.11", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "87", "pe": "8.08", "roic": "15.79%", "f_score": "4", "z_score": "N/A (financial)"}
+{"ticker": "INVE-B.ST", "name": "Investor AB (publ)", "price": "SEK 427.10", "as_of": "2025-12-31", "fair_value": "SEK 392.78", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "85", "pe": "8.31", "roic": "15.79%", "f_score": "4", "z_score": "N/A (financial)", "p2fv": 1.0874}

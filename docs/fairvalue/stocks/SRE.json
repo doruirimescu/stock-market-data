@@ -1,1 +1,1 @@
-{"ticker": "SRE", "name": "SEMPRA", "price": "81.34", "as_of": "2026-03-31", "fair_value": "$77.25", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "68", "pe": "27.67", "roic": "2.15%", "f_score": "5", "z_score": "1.01"}
+{"ticker": "SRE", "name": "SEMPRA", "price": "86.06", "as_of": "2026-03-31", "fair_value": "$77.73", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "66", "pe": "29.27", "roic": "2.15%", "f_score": "5", "z_score": "1.04", "p2fv": 1.1071}

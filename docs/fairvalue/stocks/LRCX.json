@@ -1,1 +1,1 @@
-{"ticker": "LRCX", "name": "LAM RESEARCH CORP", "price": "318.84", "as_of": "2026-06-28", "fair_value": "$158.19", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "89", "pe": "55.35", "roic": "55.46%", "f_score": "8", "z_score": "26.39"}
+{"ticker": "LRCX", "name": "LAM RESEARCH CORP", "price": "239.11", "as_of": "2026-09-27", "fair_value": "$190.52", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "94", "pe": "35.63", "roic": "64.75%", "f_score": "8", "z_score": "19.10", "p2fv": 1.255}

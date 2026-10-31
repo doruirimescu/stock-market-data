@@ -1,1 +1,1 @@
-{"ticker": "VLTO", "name": "Veralto Corp", "price": "96.93", "as_of": "2026-04-03", "fair_value": "$104.28", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "86", "pe": "24.98", "roic": "19.85%", "f_score": "5", "z_score": "4.87"}
+{"ticker": "VLTO", "name": "Veralto Corp", "price": "111.10", "as_of": "2026-10-02", "fair_value": "$111.45", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "84", "pe": "27.43", "roic": "19.76%", "f_score": "6", "z_score": "5.12", "p2fv": 0.9969}

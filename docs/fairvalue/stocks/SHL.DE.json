@@ -1,1 +1,1 @@
-{"ticker": "SHL.DE", "name": "Siemens Healthineers AG", "price": "\u20ac39.18", "as_of": "2025-09-30", "fair_value": "\u20ac50.90", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "71", "pe": "20.51", "roic": "\u2013", "f_score": "1", "z_score": "1.08"}
+{"ticker": "SHL.DE", "name": "Siemens Healthineers AG", "price": "\u20ac42.89", "as_of": "2025-09-30", "fair_value": "\u20ac50.64", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "71", "pe": "22.46", "roic": "\u2013", "f_score": "1", "z_score": "1.17", "p2fv": 0.8469}

@@ -1,1 +1,1 @@
-{"ticker": "UNH", "name": "UNITEDHEALTH GROUP INC", "price": "379.30", "as_of": "2026-06-30", "fair_value": "$542.80", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "88", "pe": "24.38", "roic": "6.81%", "f_score": "7", "z_score": "N/A (financial)"}
+{"ticker": "UNH", "name": "UNITEDHEALTH GROUP INC", "price": "406.97", "as_of": "2026-06-30", "fair_value": "$452.07", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "87", "pe": "26.15", "roic": "6.81%", "f_score": "7", "z_score": "N/A (financial)", "p2fv": 0.9002}

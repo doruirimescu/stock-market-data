@@ -1,1 +1,1 @@
-{"ticker": "EG", "name": "EVEREST GROUP, LTD.", "price": "368.37", "as_of": "2026-06-30", "fair_value": "$376.22", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "88", "pe": "7.78", "roic": "3.32%", "f_score": "6", "z_score": "N/A (financial)"}
+{"ticker": "EG", "name": "EVEREST GROUP, LTD.", "price": "410.97", "as_of": "2026-09-30", "fair_value": "$373.57", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "82", "pe": "8.64", "roic": "3.27%", "f_score": "5", "z_score": "N/A (financial)", "p2fv": 1.1001}

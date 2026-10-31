@@ -1,1 +1,1 @@
-{"ticker": "ORLY", "name": "O REILLY AUTOMOTIVE INC", "price": "86.45", "as_of": "2026-06-30", "fair_value": "$97.52", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "27.44", "roic": "29.87%", "f_score": "6", "z_score": "\u2013"}
+{"ticker": "ORLY", "name": "O REILLY AUTOMOTIVE INC", "price": "88.12", "as_of": "2026-06-30", "fair_value": "$97.52", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "85", "pe": "27.97", "roic": "29.87%", "f_score": "6", "z_score": "\u2013", "p2fv": 0.9036}

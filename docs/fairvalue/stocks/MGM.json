@@ -1,1 +1,1 @@
-{"ticker": "MGM", "name": "MGM Resorts International", "price": "29.27", "as_of": "2026-06-30", "fair_value": "$43.90", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "85", "pe": "17.74", "roic": "2.58%", "f_score": "6", "z_score": "0.76"}
+{"ticker": "MGM", "name": "MGM Resorts International", "price": "29.96", "as_of": "2026-09-30", "fair_value": "$44.54", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "82", "pe": "11.52", "roic": "3.18%", "f_score": "8", "z_score": "0.78", "p2fv": 0.6726}

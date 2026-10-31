@@ -1,1 +1,1 @@
-{"ticker": "SHELL.AS", "name": "Shell plc", "price": "\u20ac44.81", "as_of": "2026-06-30", "fair_value": "\u20ac34.35", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "71", "pe": "At loss", "roic": "8.21%", "f_score": "\u2013", "z_score": "2.72"}
+{"ticker": "SHELL.AS", "name": "Shell plc", "price": "\u20ac48.68", "as_of": "2026-09-30", "fair_value": "\u20ac38.40", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "71", "pe": "9.67", "roic": "9.63%", "f_score": "\u2013", "z_score": "2.70", "p2fv": 1.2676}

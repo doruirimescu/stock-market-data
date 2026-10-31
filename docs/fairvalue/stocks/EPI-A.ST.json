@@ -1,1 +1,1 @@
-{"ticker": "EPI-A.ST", "name": "Epiroc AB (publ)", "price": "SEK 266.70", "as_of": "2025-12-31", "fair_value": "SEK 210.43", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "75", "pe": "37.46", "roic": "14.39%", "f_score": "7", "z_score": "7.51"}
+{"ticker": "EPI-A.ST", "name": "Epiroc AB (publ)", "price": "SEK 239.50", "as_of": "2026-09-30", "fair_value": "SEK 219.12", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "82", "pe": "31.14", "roic": "13.26%", "f_score": "\u2013", "z_score": "6.35", "p2fv": 1.093}

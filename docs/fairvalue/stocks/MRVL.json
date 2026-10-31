@@ -1,1 +1,1 @@
-{"ticker": "MRVL", "name": "Marvell Technology, Inc.", "price": "275.28", "as_of": "2026-08-01", "fair_value": "$116.57", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "82", "pe": "91.15", "roic": "\u2013", "f_score": "6", "z_score": "16.90"}
+{"ticker": "MRVL", "name": "Marvell Technology, Inc.", "price": "196.40", "as_of": "2026-08-01", "fair_value": "$117.85", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "83", "pe": "65.03", "roic": "\u2013", "f_score": "6", "z_score": "12.30", "p2fv": 1.6666}

@@ -1,1 +1,1 @@
-{"ticker": "TSCO", "name": "TRACTOR SUPPLY CO /DE/", "price": "33.70", "as_of": "2026-06-27", "fair_value": "$56.64", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "84", "pe": "17.55", "roic": "12.19%", "f_score": "6", "z_score": "3.77"}
+{"ticker": "TSCO", "name": "TRACTOR SUPPLY CO /DE/", "price": "33.94", "as_of": "2026-06-27", "fair_value": "$56.64", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "84", "pe": "17.68", "roic": "12.19%", "f_score": "6", "z_score": "3.77", "p2fv": 0.5992}

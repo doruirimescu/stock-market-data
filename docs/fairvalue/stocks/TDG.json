@@ -1,1 +1,1 @@
-{"ticker": "TDG", "name": "TransDigm Group INC", "price": "1107.99", "as_of": "2026-06-27", "fair_value": "$1,654.22", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "87", "pe": "33.61", "roic": "17.61%", "f_score": "5", "z_score": "1.70"}
+{"ticker": "TDG", "name": "TransDigm Group INC", "price": "1146.81", "as_of": "2026-06-27", "fair_value": "$1,654.22", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "87", "pe": "34.78", "roic": "17.61%", "f_score": "5", "z_score": "1.73", "p2fv": 0.6933}

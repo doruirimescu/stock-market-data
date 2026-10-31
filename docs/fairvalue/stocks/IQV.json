@@ -1,1 +1,1 @@
-{"ticker": "IQV", "name": "IQVIA HOLDINGS INC.", "price": "259.88", "as_of": "2026-03-31", "fair_value": "$239.81", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "85", "pe": "32.28", "roic": "7.26%", "f_score": "5", "z_score": "2.22"}
+{"ticker": "IQV", "name": "IQVIA HOLDINGS INC.", "price": "267.33", "as_of": "2026-09-30", "fair_value": "$257.53", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "88", "pe": "32.52", "roic": "6.97%", "f_score": "7", "z_score": "2.27", "p2fv": 1.0381}
