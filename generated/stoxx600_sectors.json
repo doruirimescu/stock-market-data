@@ -1,4 +1,8 @@
 {
+ "-.HE": {
+  "country": "Finland",
+  "sector": "Sonstige"
+ },
  "A2A": {
   "country": "Italy",
   "sector": "Utilities"
@@ -2175,10 +2179,6 @@
   "country": "Germany",
   "sector": "Materials"
  },
- "TKCC": {
-  "country": "Germany",
-  "sector": "Sonstige"
- },
  "TLX": {
   "country": "Germany",
   "sector": "Financials"
@@ -2266,10 +2266,6 @@
  "UNIAXA": {
   "country": "Italy",
   "sector": "Financials"
- },
- "UPM": {
-  "country": "Finland",
-  "sector": "Materials"
  },
  "URW": {
   "country": "France",
