@@ -1,1 +1,1 @@
-{"ticker": "SCHP.SW", "name": "Schindler Holding AG", "price": "CHF 263.60", "as_of": "2025-12-31", "fair_value": "CHF 258.65", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "85", "pe": "27.86", "roic": "13.33%", "f_score": "7", "z_score": "4.94"}
+{"ticker": "SCHP.SW", "name": "Schindler Holding AG", "price": "CHF 306.40", "as_of": "2025-12-31", "fair_value": "CHF 259.55", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "81", "pe": "32.39", "roic": "13.33%", "f_score": "7", "z_score": "5.36", "p2fv": 1.1805}

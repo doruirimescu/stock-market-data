@@ -1,1 +1,1 @@
-{"ticker": "DE", "name": "DEERE & CO", "price": "675.48", "as_of": "2026-08-02", "fair_value": "$500.13", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "80", "pe": "37.55", "roic": "6.52%", "f_score": "6", "z_score": "2.91", "p2fv": 1.3506}
+{"ticker": "DE", "name": "DEERE & CO", "price": "670.46", "as_of": "2026-08-02", "fair_value": "$501.10", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "79", "pe": "37.27", "roic": "6.52%", "f_score": "6", "z_score": "2.90", "p2fv": 1.338}

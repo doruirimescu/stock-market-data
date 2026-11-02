@@ -1,1 +1,1 @@
-{"ticker": "MMM", "name": "3M CO", "price": "174.34", "as_of": "2026-09-30", "fair_value": "$157.19", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "68", "pe": "26.02", "roic": "12.37%", "f_score": "4", "z_score": "4.20", "p2fv": 1.1091}
+{"ticker": "MMM", "name": "3M CO", "price": "179.04", "as_of": "2026-09-30", "fair_value": "$157.44", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "67", "pe": "26.72", "roic": "12.37%", "f_score": "4", "z_score": "4.24", "p2fv": 1.1372}

@@ -1,1 +1,1 @@
-{"ticker": "LONN.SW", "name": "Lonza Group AG", "price": "CHF 644.20", "as_of": "2025-12-31", "fair_value": "CHF 585.65", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "80", "pe": "At loss", "roic": "6.67%", "f_score": "6", "z_score": "4.07", "p2fv": 1.1}
+{"ticker": "LONN.SW", "name": "Lonza Group AG", "price": "CHF 648.80", "as_of": "2025-12-31", "fair_value": "CHF 586.28", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "80", "pe": "At loss", "roic": "6.67%", "f_score": "6", "z_score": "4.09", "p2fv": 1.1066}

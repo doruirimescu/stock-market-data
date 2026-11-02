@@ -1,1 +1,1 @@
-{"ticker": "LR.PA", "name": "Legrand SA", "price": "\u20ac131.00", "as_of": "2025-12-31", "fair_value": "\u20ac120.22", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "78", "pe": "27.84", "roic": "9.85%", "f_score": "5", "z_score": "3.64", "p2fv": 1.0897}
+{"ticker": "LR.PA", "name": "Legrand SA", "price": "\u20ac133.40", "as_of": "2025-12-31", "fair_value": "\u20ac120.28", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "78", "pe": "28.35", "roic": "9.85%", "f_score": "5", "z_score": "3.68", "p2fv": 1.1091}

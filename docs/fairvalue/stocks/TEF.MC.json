@@ -1,1 +1,1 @@
-{"ticker": "TEF.MC", "name": "Telef\u00f3nica, S.A.", "price": "\u20ac3.26", "as_of": "2025-12-31", "fair_value": "\u20ac3.65", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "67", "pe": "At loss", "roic": "2.40%", "f_score": "4", "z_score": "0.78"}
+{"ticker": "TEF.MC", "name": "Telef\u00f3nica, S.A.", "price": "\u20ac3.38", "as_of": "2025-12-31", "fair_value": "\u20ac3.65", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "64", "pe": "At loss", "roic": "2.40%", "f_score": "4", "z_score": "0.79", "p2fv": 0.9256}

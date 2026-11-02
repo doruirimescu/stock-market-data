@@ -1,1 +1,1 @@
-{"ticker": "STLD", "name": "STEEL DYNAMICS INC", "price": "250.80", "as_of": "2026-09-30", "fair_value": "$194.25", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "87", "pe": "18.52", "roic": "12.90%", "f_score": "8", "z_score": "6.10", "p2fv": 1.2911}
+{"ticker": "STLD", "name": "STEEL DYNAMICS INC", "price": "257.93", "as_of": "2026-09-30", "fair_value": "$194.35", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "88", "pe": "19.05", "roic": "12.90%", "f_score": "8", "z_score": "6.18", "p2fv": 1.3272}

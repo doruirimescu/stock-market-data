@@ -1,1 +1,1 @@
-{"ticker": "AOS", "name": "SMITH A O CORP", "price": "63.07", "as_of": "2026-09-30", "fair_value": "$74.92", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "87", "pe": "17.62", "roic": "16.83%", "f_score": "6", "z_score": "6.55", "p2fv": 0.8419}
+{"ticker": "AOS", "name": "SMITH A O CORP", "price": "65.15", "as_of": "2026-09-30", "fair_value": "$74.88", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "87", "pe": "18.20", "roic": "16.83%", "f_score": "6", "z_score": "6.65", "p2fv": 0.8701}

@@ -1,1 +1,1 @@
-{"ticker": "XYL", "name": "Xylem Inc.", "price": "92.40", "as_of": "2026-09-30", "fair_value": "$144.72", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "84", "pe": "20.49", "roic": "\u2013", "f_score": "7", "z_score": "3.06", "p2fv": 0.6385}
+{"ticker": "XYL", "name": "Xylem Inc.", "price": "96.21", "as_of": "2026-09-30", "fair_value": "$144.83", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "86", "pe": "21.33", "roic": "\u2013", "f_score": "7", "z_score": "3.14", "p2fv": 0.6643}

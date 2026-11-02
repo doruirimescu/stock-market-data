@@ -1,1 +1,1 @@
-{"ticker": "SAN.PA", "name": "Sanofi", "price": "\u20ac79.74", "as_of": "2026-06-30", "fair_value": "\u20ac110.01", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "76", "pe": "At loss", "roic": "7.50%", "f_score": "\u2013", "z_score": "1.50", "p2fv": 0.7249}
+{"ticker": "SAN.PA", "name": "Sanofi", "price": "\u20ac80.18", "as_of": "2026-06-30", "fair_value": "\u20ac109.93", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "76", "pe": "At loss", "roic": "7.50%", "f_score": "\u2013", "z_score": "1.50", "p2fv": 0.7293}

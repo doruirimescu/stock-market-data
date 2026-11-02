@@ -1,1 +1,1 @@
-{"ticker": "STE", "name": "STERIS plc", "price": "227.12", "as_of": "2026-06-30", "fair_value": "$262.17", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "92", "pe": "28.64", "roic": "8.95%", "f_score": "8", "z_score": "5.24", "p2fv": 0.8663}
+{"ticker": "STE", "name": "STERIS plc", "price": "232.22", "as_of": "2026-06-30", "fair_value": "$262.11", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "92", "pe": "29.28", "roic": "8.95%", "f_score": "8", "z_score": "5.32", "p2fv": 0.886}

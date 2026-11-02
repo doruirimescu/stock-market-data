@@ -1,1 +1,1 @@
-{"ticker": "CAT", "name": "CATERPILLAR INC", "price": "622.75", "as_of": "2026-06-30", "fair_value": "$488.33", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "82", "pe": "26.82", "roic": "13.28%", "f_score": "8", "z_score": "4.37", "p2fv": 1.2753}
+{"ticker": "CAT", "name": "CATERPILLAR INC", "price": "620.42", "as_of": "2026-06-30", "fair_value": "$489.03", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "84", "pe": "26.72", "roic": "13.28%", "f_score": "8", "z_score": "4.36", "p2fv": 1.2687}

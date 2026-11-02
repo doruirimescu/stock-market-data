@@ -1,1 +1,1 @@
-{"ticker": "CI", "name": "Cigna Group", "price": "298.23", "as_of": "2026-06-30", "fair_value": "$365.00", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "12.33", "roic": "5.58%", "f_score": "7", "z_score": "N/A (financial)", "p2fv": 0.8171}
+{"ticker": "CI", "name": "Cigna Group", "price": "294.34", "as_of": "2026-06-30", "fair_value": "$364.79", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "86", "pe": "12.17", "roic": "5.58%", "f_score": "7", "z_score": "N/A (financial)", "p2fv": 0.8069}

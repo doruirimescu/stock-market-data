@@ -1,1 +1,1 @@
-{"ticker": "CSX", "name": "CSX CORP", "price": "51.99", "as_of": "2026-09-30", "fair_value": "$38.24", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "79", "pe": "27.08", "roic": "9.67%", "f_score": "7", "z_score": "2.95", "p2fv": 1.3595}
+{"ticker": "CSX", "name": "CSX CORP", "price": "51.69", "as_of": "2026-09-30", "fair_value": "$38.25", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "78", "pe": "26.92", "roic": "9.67%", "f_score": "7", "z_score": "2.94", "p2fv": 1.3515}

@@ -1,1 +1,1 @@
-{"ticker": "MSTR", "name": "Strategy Inc", "price": "130.51", "as_of": "2026-06-30", "fair_value": "$130.52", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "56", "pe": "At loss", "roic": "-52.94%", "f_score": "3", "z_score": "N/A (financial)", "p2fv": 0.9999}
+{"ticker": "MSTR", "name": "Strategy Inc", "price": "134.96", "as_of": "2026-06-30", "fair_value": "$130.88", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "53", "pe": "At loss", "roic": "-52.94%", "f_score": "3", "z_score": "N/A (financial)", "p2fv": 1.0312}

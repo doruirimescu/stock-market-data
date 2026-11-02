@@ -1,1 +1,1 @@
-{"ticker": "HUBB", "name": "HUBBELL INC", "price": "422.44", "as_of": "2026-09-30", "fair_value": "$515.81", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "86", "pe": "24.78", "roic": "12.81%", "f_score": "6", "z_score": "3.20", "p2fv": 0.819}
+{"ticker": "HUBB", "name": "HUBBELL INC", "price": "430.80", "as_of": "2026-09-30", "fair_value": "$516.15", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "87", "pe": "25.27", "roic": "12.81%", "f_score": "6", "z_score": "3.23", "p2fv": 0.8346}

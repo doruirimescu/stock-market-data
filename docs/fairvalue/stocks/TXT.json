@@ -1,1 +1,1 @@
-{"ticker": "TXT", "name": "TEXTRON INC", "price": "85.70", "as_of": "2026-10-03", "fair_value": "$100.06", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "88", "pe": "15.44", "roic": "5.45%", "f_score": "7", "z_score": "2.40", "p2fv": 0.8565}
+{"ticker": "TXT", "name": "TEXTRON INC", "price": "87.71", "as_of": "2026-10-03", "fair_value": "$99.99", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "88", "pe": "15.80", "roic": "5.45%", "f_score": "7", "z_score": "2.42", "p2fv": 0.8772}

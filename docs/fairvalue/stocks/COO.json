@@ -1,1 +1,1 @@
-{"ticker": "COO", "name": "COOPER COMPANIES, INC.", "price": "59.55", "as_of": "2026-07-31", "fair_value": "$91.25", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "87", "pe": "20.46", "roic": "4.49%", "f_score": "7", "z_score": "2.98", "p2fv": 0.6526}
+{"ticker": "COO", "name": "COOPER COMPANIES, INC.", "price": "61.03", "as_of": "2026-07-31", "fair_value": "$90.73", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "87", "pe": "20.97", "roic": "4.49%", "f_score": "7", "z_score": "3.02", "p2fv": 0.6727}

@@ -1,1 +1,1 @@
-{"ticker": "CCL", "name": "Carnival Corp Ltd.", "price": "28.83", "as_of": "2026-08-31", "fair_value": "$26.62", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "74", "pe": "12.70", "roic": "9.15%", "f_score": "7", "z_score": "1.43", "p2fv": 1.0829}
+{"ticker": "CCL", "name": "Carnival Corp Ltd.", "price": "30.35", "as_of": "2026-08-31", "fair_value": "$26.64", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "74", "pe": "13.37", "roic": "9.15%", "f_score": "7", "z_score": "1.46", "p2fv": 1.1392}

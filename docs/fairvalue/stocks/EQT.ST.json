@@ -1,1 +1,1 @@
-{"ticker": "EQT.ST", "name": "EQT AB (publ)", "price": "SEK 309.00", "as_of": "2025-12-31", "fair_value": "SEK 316.63", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "86", "pe": "46.28", "roic": "13.69%", "f_score": "4", "z_score": "N/A (financial)", "p2fv": 0.9759}
+{"ticker": "EQT.ST", "name": "EQT AB (publ)", "price": "SEK 319.00", "as_of": "2025-12-31", "fair_value": "SEK 316.75", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "83", "pe": "47.78", "roic": "13.69%", "f_score": "4", "z_score": "N/A (financial)", "p2fv": 1.0071}

@@ -1,1 +1,1 @@
-{"ticker": "CVX", "name": "CHEVRON CORP", "price": "235.52", "as_of": "2026-06-30", "fair_value": "$161.16", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "79", "pe": "22.67", "roic": "8.62%", "f_score": "6", "z_score": "3.98", "p2fv": 1.4614}
+{"ticker": "CVX", "name": "CHEVRON CORP", "price": "230.36", "as_of": "2026-06-30", "fair_value": "$161.26", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "79", "pe": "22.17", "roic": "8.62%", "f_score": "6", "z_score": "3.94", "p2fv": 1.4285}

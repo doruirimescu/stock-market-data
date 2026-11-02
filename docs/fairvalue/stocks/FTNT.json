@@ -1,1 +1,1 @@
-{"ticker": "FTNT", "name": "Fortinet, Inc.", "price": "136.08", "as_of": "2026-09-30", "fair_value": "$116.63", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "94", "pe": "44.47", "roic": "23.95%", "f_score": "6", "z_score": "7.86", "p2fv": 1.1668}
+{"ticker": "FTNT", "name": "Fortinet, Inc.", "price": "130.29", "as_of": "2026-09-30", "fair_value": "$116.69", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "95", "pe": "42.58", "roic": "23.95%", "f_score": "6", "z_score": "7.59", "p2fv": 1.1165}
