@@ -1,1 +1,1 @@
-{"ticker": "AFL", "name": "AFLAC INC", "price": "123.52", "as_of": "2026-06-30", "fair_value": "$119.42", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "82", "pe": "13.32", "roic": "4.21%", "f_score": "5", "z_score": "N/A (financial)", "p2fv": 1.0343}
+{"ticker": "AFL", "name": "AFLAC INC", "price": "123.52", "as_of": "2026-06-30", "fair_value": "$119.44", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "82", "pe": "13.32", "roic": "4.21%", "f_score": "5", "z_score": "N/A (financial)", "p2fv": 1.0341}

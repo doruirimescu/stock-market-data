@@ -1,1 +1,1 @@
-{"ticker": "LDOS", "name": "Leidos Holdings, Inc.", "price": "143.68", "as_of": "2026-07-03", "fair_value": "$170.37", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "13.42", "roic": "13.55%", "f_score": "6", "z_score": "3.23", "p2fv": 0.8433}
+{"ticker": "LDOS", "name": "Leidos Holdings, Inc.", "price": "128.57", "as_of": "2026-07-03", "fair_value": "$170.37", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "12.01", "roic": "13.55%", "f_score": "6", "z_score": "3.12", "p2fv": 0.7547}

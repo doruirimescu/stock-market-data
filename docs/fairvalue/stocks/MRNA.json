@@ -1,1 +1,1 @@
-{"ticker": "MRNA", "name": "Moderna, Inc.", "price": "221.95", "as_of": "2026-06-30", "fair_value": "$30.28", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "70", "pe": "At loss", "roic": "-56.02%", "f_score": "1", "z_score": "12.94", "p2fv": 7.3307}
+{"ticker": "MRNA", "name": "Moderna, Inc.", "price": "230.87", "as_of": "2026-06-30", "fair_value": "$30.29", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "70", "pe": "At loss", "roic": "-56.02%", "f_score": "1", "z_score": "13.45", "p2fv": 7.6216}

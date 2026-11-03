@@ -1,1 +1,1 @@
-{"ticker": "PLTR", "name": "Palantir Technologies Inc.", "price": "184.66", "as_of": "2026-06-30", "fair_value": "$186.68", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "94", "pe": "157.83", "roic": "177.68%", "f_score": "8", "z_score": "150.61", "p2fv": 0.9892}
+{"ticker": "PLTR", "name": "Palantir Technologies Inc.", "price": "170.38", "as_of": "2026-09-30", "fair_value": "$217.48", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "95", "pe": "119.98", "roic": "188.21%", "f_score": "8", "z_score": "121.49", "p2fv": 0.7834}

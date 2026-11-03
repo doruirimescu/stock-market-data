@@ -1,1 +1,1 @@
-{"ticker": "ORCL", "name": "ORACLE CORP", "price": "123.29", "as_of": "2026-08-31", "fair_value": "$190.39", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "85", "pe": "19.32", "roic": "\u2013", "f_score": "5", "z_score": "1.46", "p2fv": 0.6476}
+{"ticker": "ORCL", "name": "ORACLE CORP", "price": "122.82", "as_of": "2026-08-31", "fair_value": "$190.39", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "85", "pe": "19.25", "roic": "\u2013", "f_score": "5", "z_score": "1.46", "p2fv": 0.6451}

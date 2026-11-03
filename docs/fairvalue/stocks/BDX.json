@@ -1,1 +1,1 @@
-{"ticker": "BDX", "name": "BECTON DICKINSON & CO", "price": "199.44", "as_of": "2026-06-30", "fair_value": "$241.57", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "96.56", "roic": "4.55%", "f_score": "7", "z_score": "\u2013", "p2fv": 0.8256}
+{"ticker": "BDX", "name": "BECTON DICKINSON & CO", "price": "197.59", "as_of": "2026-06-30", "fair_value": "$241.39", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "95.66", "roic": "4.55%", "f_score": "7", "z_score": "\u2013", "p2fv": 0.8185}

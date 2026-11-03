@@ -1,1 +1,1 @@
-{"ticker": "GM", "name": "General Motors Co", "price": "89.42", "as_of": "2026-09-30", "fair_value": "$67.09", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "79", "pe": "19.57", "roic": "1.84%", "f_score": "6", "z_score": "1.20", "p2fv": 1.3328}
+{"ticker": "GM", "name": "General Motors Co", "price": "89.02", "as_of": "2026-09-30", "fair_value": "$67.10", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "79", "pe": "19.48", "roic": "1.84%", "f_score": "6", "z_score": "1.20", "p2fv": 1.3267}

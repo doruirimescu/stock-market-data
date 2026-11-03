@@ -1,1 +1,1 @@
-{"ticker": "NXT.L", "name": "NEXT plc", "price": "GBX 15455.00", "as_of": "2026-01-31", "fair_value": "GBX 13,503.22", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "81", "pe": "20.73", "roic": "21.89%", "f_score": "8", "z_score": "7.01", "p2fv": 1.1445}
+{"ticker": "NXT.L", "name": "NEXT plc", "price": "GBX 15240.00", "as_of": "2026-01-31", "fair_value": "GBX 13,509.73", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "83", "pe": "20.45", "roic": "21.89%", "f_score": "8", "z_score": "6.97", "p2fv": 1.1281}

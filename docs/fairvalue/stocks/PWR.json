@@ -1,1 +1,1 @@
-{"ticker": "PWR", "name": "QUANTA SERVICES, INC.", "price": "623.54", "as_of": "2026-09-30", "fair_value": "$575.98", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "94", "pe": "56.43", "roic": "9.49%", "f_score": "6", "z_score": "4.37", "p2fv": 1.0826}
+{"ticker": "PWR", "name": "QUANTA SERVICES, INC.", "price": "639.57", "as_of": "2026-09-30", "fair_value": "$576.48", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "94", "pe": "57.88", "roic": "9.49%", "f_score": "6", "z_score": "4.43", "p2fv": 1.1094}

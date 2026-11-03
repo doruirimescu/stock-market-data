@@ -1,1 +1,1 @@
-{"ticker": "BF.B", "name": "BROWN FORMAN CORP", "price": "29.88", "as_of": "2026-07-31", "fair_value": "$32.97", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "79", "pe": "19.28", "roic": "11.32%", "f_score": "7", "z_score": "4.43", "p2fv": 0.9064}
+{"ticker": "BF.B", "name": "BROWN FORMAN CORP", "price": "29.43", "as_of": "2026-07-31", "fair_value": "$32.94", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "77", "pe": "18.99", "roic": "11.32%", "f_score": "7", "z_score": "4.39", "p2fv": 0.8936}

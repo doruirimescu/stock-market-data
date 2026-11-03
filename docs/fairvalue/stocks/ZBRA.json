@@ -1,1 +1,1 @@
-{"ticker": "ZBRA", "name": "ZEBRA TECHNOLOGIES CORP", "price": "362.70", "as_of": "2026-07-04", "fair_value": "$383.74", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "84", "pe": "33.24", "roic": "9.63%", "f_score": "7", "z_score": "3.63", "p2fv": 0.9452}
+{"ticker": "ZBRA", "name": "ZEBRA TECHNOLOGIES CORP", "price": "312.85", "as_of": "2026-07-04", "fair_value": "$383.74", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "28.68", "roic": "9.63%", "f_score": "7", "z_score": "3.36", "p2fv": 0.8153}

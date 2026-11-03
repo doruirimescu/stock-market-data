@@ -1,1 +1,1 @@
-{"ticker": "ROP", "name": "ROPER TECHNOLOGIES INC", "price": "481.83", "as_of": "2026-06-30", "fair_value": "$715.35", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "85", "pe": "20.08", "roic": "5.79%", "f_score": "8", "z_score": "2.98", "p2fv": 0.6736}
+{"ticker": "ROP", "name": "ROPER TECHNOLOGIES INC", "price": "471.28", "as_of": "2026-09-30", "fair_value": "$743.37", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "84", "pe": "18.65", "roic": "5.93%", "f_score": "8", "z_score": "3.11", "p2fv": 0.634}

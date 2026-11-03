@@ -1,1 +1,1 @@
-{"ticker": "HOLN.SW", "name": "Holcim AG", "price": "CHF 71.64", "as_of": "2025-12-31", "fair_value": "CHF 65.25", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "78", "pe": "3.01", "roic": "2.91%", "f_score": "6", "z_score": "2.04", "p2fv": 1.0979}
+{"ticker": "HOLN.SW", "name": "Holcim AG", "price": "CHF 72.08", "as_of": "2025-12-31", "fair_value": "CHF 65.31", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "78", "pe": "3.03", "roic": "2.91%", "f_score": "6", "z_score": "2.05", "p2fv": 1.1036}

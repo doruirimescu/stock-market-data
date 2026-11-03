@@ -1,1 +1,1 @@
-{"ticker": "ALC.SW", "name": "Alcon Inc.", "price": "CHF 60.36", "as_of": "2026-06-30", "fair_value": "CHF 70.84", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "83", "pe": "57.87", "roic": "2.85%", "f_score": "\u2013", "z_score": "2.86", "p2fv": 0.8521}
+{"ticker": "ALC.SW", "name": "Alcon Inc.", "price": "CHF 59.98", "as_of": "2026-06-30", "fair_value": "CHF 70.82", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "83", "pe": "57.51", "roic": "2.85%", "f_score": "\u2013", "z_score": "2.85", "p2fv": 0.847}

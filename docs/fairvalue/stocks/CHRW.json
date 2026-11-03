@@ -1,1 +1,1 @@
-{"ticker": "CHRW", "name": "C. H. ROBINSON WORLDWIDE, INC.", "price": "126.15", "as_of": "2026-09-30", "fair_value": "$114.80", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "74", "pe": "22.65", "roic": "17.86%", "f_score": "4", "z_score": "6.69", "p2fv": 1.0988}
+{"ticker": "CHRW", "name": "C. H. ROBINSON WORLDWIDE, INC.", "price": "129.41", "as_of": "2026-09-30", "fair_value": "$114.93", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "74", "pe": "23.23", "roic": "17.86%", "f_score": "4", "z_score": "6.74", "p2fv": 1.126}

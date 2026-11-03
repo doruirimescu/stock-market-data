@@ -1,1 +1,1 @@
-{"ticker": "MDLZ", "name": "Mondelez International, Inc.", "price": "65.69", "as_of": "2026-09-30", "fair_value": "$74.24", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "83", "pe": "20.66", "roic": "6.72%", "f_score": "9", "z_score": "2.53", "p2fv": 0.8848}
+{"ticker": "MDLZ", "name": "Mondelez International, Inc.", "price": "65.43", "as_of": "2026-09-30", "fair_value": "$74.19", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "84", "pe": "20.58", "roic": "6.72%", "f_score": "9", "z_score": "2.52", "p2fv": 0.882}

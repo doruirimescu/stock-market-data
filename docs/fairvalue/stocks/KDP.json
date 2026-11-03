@@ -1,1 +1,1 @@
-{"ticker": "KDP", "name": "Keurig Dr Pepper Inc.", "price": "35.87", "as_of": "2026-06-30", "fair_value": "$44.92", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "82", "pe": "36.23", "roic": "3.84%", "f_score": "4", "z_score": "0.82", "p2fv": 0.7986}
+{"ticker": "KDP", "name": "Keurig Dr Pepper Inc.", "price": "35.40", "as_of": "2026-06-30", "fair_value": "$44.91", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "81", "pe": "35.76", "roic": "3.84%", "f_score": "4", "z_score": "0.81", "p2fv": 0.7883}

@@ -1,1 +1,1 @@
-{"ticker": "JNJ", "name": "JOHNSON & JOHNSON", "price": "268.12", "as_of": "2026-09-27", "fair_value": "$193.74", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "80", "pe": "40.75", "roic": "9.80%", "f_score": "5", "z_score": "5.36", "p2fv": 1.3839}
+{"ticker": "JNJ", "name": "JOHNSON & JOHNSON", "price": "269.52", "as_of": "2026-09-27", "fair_value": "$193.95", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "80", "pe": "40.96", "roic": "9.80%", "f_score": "5", "z_score": "5.37", "p2fv": 1.3897}

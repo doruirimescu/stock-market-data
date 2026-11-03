@@ -1,1 +1,1 @@
-{"ticker": "ZBH", "name": "ZIMMER BIOMET HOLDINGS, INC.", "price": "97.18", "as_of": "2026-06-30", "fair_value": "$119.38", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "80", "pe": "23.59", "roic": "4.74%", "f_score": "6", "z_score": "2.45", "p2fv": 0.814}
+{"ticker": "ZBH", "name": "ZIMMER BIOMET HOLDINGS, INC.", "price": "96.22", "as_of": "2026-06-30", "fair_value": "$119.32", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "80", "pe": "23.35", "roic": "4.74%", "f_score": "6", "z_score": "2.44", "p2fv": 0.8064}

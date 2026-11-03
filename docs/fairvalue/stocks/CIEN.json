@@ -1,1 +1,1 @@
-{"ticker": "CIEN", "name": "CIENA CORP", "price": "304.84", "as_of": "2026-08-01", "fair_value": "$125.73", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "70", "pe": "68.20", "roic": "17.25%", "f_score": "6", "z_score": "6.47", "p2fv": 2.4245}
+{"ticker": "CIEN", "name": "CIENA CORP", "price": "300.77", "as_of": "2026-08-01", "fair_value": "$124.70", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "70", "pe": "67.29", "roic": "17.25%", "f_score": "6", "z_score": "6.40", "p2fv": 2.412}
