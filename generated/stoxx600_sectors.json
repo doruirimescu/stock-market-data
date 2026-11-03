@@ -1,8 +1,4 @@
 {
- "-.HE": {
-  "country": "Finland",
-  "sector": "Sonstige"
- },
  "A2A": {
   "country": "Italy",
   "sector": "Utilities"
@@ -2267,6 +2263,10 @@
   "country": "Italy",
   "sector": "Financials"
  },
+ "UPM": {
+  "country": "Finland",
+  "sector": "Materials"
+ },
  "URW": {
   "country": "France",
   "sector": "Real Estate"
@@ -2358,6 +2358,10 @@
  "WEIR": {
   "country": "United Kingdom",
   "sector": "Industrials"
+ },
+ "WISA": {
+  "country": "Finland",
+  "sector": "Sonstige"
  },
  "WISE": {
   "country": "United Kingdom",
