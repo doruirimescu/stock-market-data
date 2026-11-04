@@ -1,1 +1,1 @@
-{"ticker": "AKZA.AS", "name": "Akzo Nobel N.V.", "price": "\u20ac57.54", "as_of": "2025-12-31", "fair_value": "\u20ac56.09", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "77", "pe": "15.59", "roic": "7.51%", "f_score": "5", "z_score": "1.88"}
+{"ticker": "AKZA.AS", "name": "Akzo Nobel N.V.", "price": "\u20ac62.70", "as_of": "2026-09-30", "fair_value": "\u20ac54.41", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "76", "pe": "16.54", "roic": "8.06%", "f_score": "\u2013", "z_score": "1.76", "p2fv": 1.1524}

@@ -1,1 +1,1 @@
-{"ticker": "ADM", "name": "Archer-Daniels-Midland Co", "price": "72.82", "as_of": "2026-06-30", "fair_value": "$58.49", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "75", "pe": "19.89", "roic": "5.00%", "f_score": "6", "z_score": "3.17", "p2fv": 1.245}
+{"ticker": "ADM", "name": "Archer-Daniels-Midland Co", "price": "70.31", "as_of": "2026-09-30", "fair_value": "$60.39", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "76", "pe": "13.73", "roic": "6.51%", "f_score": "6", "z_score": "3.14", "p2fv": 1.1641}

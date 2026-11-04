@@ -1,1 +1,1 @@
-{"ticker": "CMCSA", "name": "COMCAST CORP", "price": "23.76", "as_of": "2026-09-30", "fair_value": "$34.70", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "82", "pe": "7.52", "roic": "5.82%", "f_score": "6", "z_score": "1.40", "p2fv": 0.6847}
+{"ticker": "CMCSA", "name": "COMCAST CORP", "price": "24.50", "as_of": "2026-09-30", "fair_value": "$34.69", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "82", "pe": "7.75", "roic": "5.82%", "f_score": "6", "z_score": "1.42", "p2fv": 0.706}

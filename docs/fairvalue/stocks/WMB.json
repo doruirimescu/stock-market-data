@@ -1,1 +1,1 @@
-{"ticker": "WMB", "name": "WILLIAMS COMPANIES, INC.", "price": "72.86", "as_of": "2026-06-30", "fair_value": "$65.04", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "80", "pe": "29.03", "roic": "6.31%", "f_score": "5", "z_score": "1.35", "p2fv": 1.1204}
+{"ticker": "WMB", "name": "WILLIAMS COMPANIES, INC.", "price": "69.37", "as_of": "2026-06-30", "fair_value": "$65.06", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "81", "pe": "27.64", "roic": "6.31%", "f_score": "5", "z_score": "1.30", "p2fv": 1.0662}

@@ -1,1 +1,1 @@
-{"ticker": "TYL", "name": "TYLER TECHNOLOGIES INC", "price": "394.80", "as_of": "2026-09-30", "fair_value": "$611.69", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "91", "pe": "49.29", "roic": "6.03%", "f_score": "8", "z_score": "4.69", "p2fv": 0.6454}
+{"ticker": "TYL", "name": "TYLER TECHNOLOGIES INC", "price": "416.65", "as_of": "2026-09-30", "fair_value": "$611.69", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "93", "pe": "52.02", "roic": "6.03%", "f_score": "8", "z_score": "4.88", "p2fv": 0.6811}

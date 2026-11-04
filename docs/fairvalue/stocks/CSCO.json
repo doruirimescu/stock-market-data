@@ -1,1 +1,1 @@
-{"ticker": "CSCO", "name": "CISCO SYSTEMS, INC.", "price": "102.48", "as_of": "2026-07-25", "fair_value": "$75.33", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "79", "pe": "30.77", "roic": "10.35%", "f_score": "7", "z_score": "3.98", "p2fv": 1.3604}
+{"ticker": "CSCO", "name": "CISCO SYSTEMS, INC.", "price": "104.21", "as_of": "2026-07-25", "fair_value": "$75.39", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "77", "pe": "31.30", "roic": "10.35%", "f_score": "7", "z_score": "4.03", "p2fv": 1.3824}

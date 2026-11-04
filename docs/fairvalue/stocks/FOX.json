@@ -1,1 +1,1 @@
-{"ticker": "FOX", "name": "Fox Corp", "price": "56.23", "as_of": "2026-09-30", "fair_value": "$57.00", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "85", "pe": "11.91", "roic": "14.89%", "f_score": "7", "z_score": "1.90", "p2fv": 0.9865}
+{"ticker": "FOX", "name": "Fox Corp", "price": "60.51", "as_of": "2026-09-30", "fair_value": "$57.00", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "84", "pe": "12.82", "roic": "14.89%", "f_score": "7", "z_score": "1.90", "p2fv": 1.0616}

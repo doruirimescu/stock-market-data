@@ -1,1 +1,1 @@
-{"ticker": "ULTA", "name": "Ulta Beauty, Inc.", "price": "627.68", "as_of": "2026-08-01", "fair_value": "$565.35", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "89", "pe": "22.86", "roic": "22.49%", "f_score": "7", "z_score": "6.80", "p2fv": 1.1102}
+{"ticker": "ULTA", "name": "Ulta Beauty, Inc.", "price": "650.52", "as_of": "2026-08-01", "fair_value": "$565.42", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "88", "pe": "23.69", "roic": "22.49%", "f_score": "7", "z_score": "6.93", "p2fv": 1.1505}

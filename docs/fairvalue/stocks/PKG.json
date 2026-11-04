@@ -1,1 +1,1 @@
-{"ticker": "PKG", "name": "PACKAGING CORP OF AMERICA", "price": "255.46", "as_of": "2026-06-30", "fair_value": "$234.05", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "82", "pe": "33.18", "roic": "9.19%", "f_score": "4", "z_score": "4.04", "p2fv": 1.0915}
+{"ticker": "PKG", "name": "PACKAGING CORP OF AMERICA", "price": "257.53", "as_of": "2026-06-30", "fair_value": "$234.11", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "82", "pe": "33.45", "roic": "9.19%", "f_score": "4", "z_score": "4.06", "p2fv": 1.1}

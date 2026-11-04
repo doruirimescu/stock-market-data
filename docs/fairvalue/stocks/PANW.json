@@ -1,1 +1,1 @@
-{"ticker": "PANW", "name": "Palo Alto Networks Inc", "price": "357.48", "as_of": "2026-07-31", "fair_value": "$234.57", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "82", "pe": "893.70", "roic": "1.14%", "f_score": "4", "z_score": "8.69", "p2fv": 1.524}
+{"ticker": "PANW", "name": "Palo Alto Networks Inc", "price": "351.80", "as_of": "2026-07-31", "fair_value": "$234.61", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "81", "pe": "879.49", "roic": "1.14%", "f_score": "4", "z_score": "8.56", "p2fv": 1.4995}

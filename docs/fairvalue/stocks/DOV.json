@@ -1,1 +1,1 @@
-{"ticker": "DOV", "name": "DOVER Corp", "price": "216.78", "as_of": "2026-09-30", "fair_value": "$217.05", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "86", "pe": "25.24", "roic": "\u2013", "f_score": "7", "z_score": "\u2013", "p2fv": 0.9988}
+{"ticker": "DOV", "name": "DOVER Corp", "price": "213.11", "as_of": "2026-09-30", "fair_value": "$217.06", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "86", "pe": "24.81", "roic": "\u2013", "f_score": "7", "z_score": "\u2013", "p2fv": 0.9818}

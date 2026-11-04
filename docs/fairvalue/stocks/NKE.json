@@ -1,1 +1,1 @@
-{"ticker": "NKE", "name": "NIKE, Inc.", "price": "38.40", "as_of": "2026-08-31", "fair_value": "$68.19", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "73", "pe": "18.37", "roic": "15.67%", "f_score": "5", "z_score": "\u2013", "p2fv": 0.5632}
+{"ticker": "NKE", "name": "NIKE, Inc.", "price": "39.78", "as_of": "2026-08-31", "fair_value": "$68.12", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "73", "pe": "19.03", "roic": "15.67%", "f_score": "5", "z_score": "\u2013", "p2fv": 0.584}

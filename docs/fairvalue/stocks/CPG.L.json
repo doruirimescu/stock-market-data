@@ -1,1 +1,1 @@
-{"ticker": "CPG.L", "name": "Compass Group PLC", "price": "34.06", "as_of": "2025-09-30", "fair_value": "$34.64", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "78", "pe": "30.99", "roic": "10.92%", "f_score": "6", "z_score": "3.91", "p2fv": 0.9833}
+{"ticker": "CPG.L", "name": "Compass Group PLC", "price": "34.33", "as_of": "2025-09-30", "fair_value": "$28.51", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "78", "pe": "31.24", "roic": "10.92%", "f_score": "6", "z_score": "3.93", "p2fv": 1.2039}

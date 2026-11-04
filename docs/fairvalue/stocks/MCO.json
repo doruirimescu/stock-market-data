@@ -1,1 +1,1 @@
-{"ticker": "MCO", "name": "MOODYS CORP /DE/", "price": "500.45", "as_of": "2026-09-30", "fair_value": "$578.20", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "88", "pe": "30.53", "roic": "22.81%", "f_score": "8", "z_score": "7.88", "p2fv": 0.8655}
+{"ticker": "MCO", "name": "MOODYS CORP /DE/", "price": "520.10", "as_of": "2026-09-30", "fair_value": "$578.20", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "88", "pe": "31.73", "roic": "22.81%", "f_score": "8", "z_score": "8.06", "p2fv": 0.8995}

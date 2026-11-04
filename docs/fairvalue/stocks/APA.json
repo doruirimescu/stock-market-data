@@ -1,1 +1,1 @@
-{"ticker": "APA", "name": "APA Corp", "price": "48.47", "as_of": "2026-06-30", "fair_value": "$34.78", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "68", "pe": "10.23", "roic": "\u2013", "f_score": "7", "z_score": "1.66", "p2fv": 1.3936}
+{"ticker": "APA", "name": "APA Corp", "price": "45.61", "as_of": "2026-06-30", "fair_value": "$34.78", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "69", "pe": "9.62", "roic": "\u2013", "f_score": "7", "z_score": "1.60", "p2fv": 1.3112}

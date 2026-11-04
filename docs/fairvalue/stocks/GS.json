@@ -1,1 +1,1 @@
-{"ticker": "GS", "name": "GOLDMAN SACHS GROUP INC", "price": "901.51", "as_of": "2026-09-30", "fair_value": "$920.82", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "83", "pe": "12.96", "roic": "3.82%", "f_score": "3", "z_score": "N/A (financial)", "p2fv": 0.979}
+{"ticker": "GS", "name": "GOLDMAN SACHS GROUP INC", "price": "922.17", "as_of": "2026-09-30", "fair_value": "$922.11", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "82", "pe": "13.26", "roic": "3.82%", "f_score": "3", "z_score": "N/A (financial)", "p2fv": 1.0001}

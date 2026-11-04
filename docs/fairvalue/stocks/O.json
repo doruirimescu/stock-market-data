@@ -1,1 +1,1 @@
-{"ticker": "O", "name": "REALTY INCOME CORP", "price": "56.72", "as_of": "2026-09-30", "fair_value": "$64.51", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "74", "pe": "38.85", "roic": "3.33%", "f_score": "6", "z_score": "N/A (financial)", "p2fv": 0.8791}
+{"ticker": "O", "name": "REALTY INCOME CORP", "price": "58.10", "as_of": "2026-09-30", "fair_value": "$64.51", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "75", "pe": "39.79", "roic": "3.33%", "f_score": "6", "z_score": "N/A (financial)", "p2fv": 0.9006}

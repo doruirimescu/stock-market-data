@@ -1,1 +1,1 @@
-{"ticker": "WMT", "name": "Walmart Inc.", "price": "125.90", "as_of": "2026-07-31", "fair_value": "$105.83", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "80", "pe": "45.62", "roic": "12.99%", "f_score": "6", "z_score": "6.40", "p2fv": 1.1897}
+{"ticker": "WMT", "name": "Walmart Inc.", "price": "127.43", "as_of": "2026-07-31", "fair_value": "$105.85", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "78", "pe": "46.17", "roic": "12.99%", "f_score": "6", "z_score": "6.44", "p2fv": 1.204}
