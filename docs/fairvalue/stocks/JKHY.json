@@ -1,1 +1,1 @@
-{"ticker": "JKHY", "name": "JACK HENRY & ASSOCIATES INC", "price": "172.40", "as_of": "2026-06-30", "fair_value": "$196.03", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "92", "pe": "24.70", "roic": "17.53%", "f_score": "7", "z_score": "9.81", "p2fv": 0.8794}
+{"ticker": "JKHY", "name": "JACK HENRY & ASSOCIATES INC", "price": "183.65", "as_of": "2026-06-30", "fair_value": "$195.97", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "90", "pe": "26.31", "roic": "17.53%", "f_score": "7", "z_score": "10.24", "p2fv": 0.9371}

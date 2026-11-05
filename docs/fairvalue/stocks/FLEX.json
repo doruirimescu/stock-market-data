@@ -1,1 +1,1 @@
-{"ticker": "FLEX", "name": "FLEX LTD.", "price": "81.64", "as_of": "2026-09-25", "fair_value": "$56.03", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "84", "pe": "29.47", "roic": "\u2013", "f_score": "6", "z_score": "2.52", "p2fv": 1.4571}
+{"ticker": "FLEX", "name": "FLEX LTD.", "price": "70.68", "as_of": "2026-09-25", "fair_value": "$56.03", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "86", "pe": "25.52", "roic": "\u2013", "f_score": "6", "z_score": "2.41", "p2fv": 1.2615}

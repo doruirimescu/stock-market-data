@@ -1,1 +1,1 @@
-{"ticker": "PSX", "name": "Phillips 66", "price": "263.29", "as_of": "2026-09-30", "fair_value": "$182.71", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "79", "pe": "8.44", "roic": "\u2013", "f_score": "9", "z_score": "3.95", "p2fv": 1.441}
+{"ticker": "PSX", "name": "Phillips 66", "price": "261.61", "as_of": "2026-09-30", "fair_value": "$182.72", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "79", "pe": "8.39", "roic": "\u2013", "f_score": "9", "z_score": "3.94", "p2fv": 1.4317}

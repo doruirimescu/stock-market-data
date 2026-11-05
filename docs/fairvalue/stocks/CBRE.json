@@ -1,1 +1,1 @@
-{"ticker": "CBRE", "name": "CBRE GROUP, INC.", "price": "140.71", "as_of": "2026-09-30", "fair_value": "$166.01", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "88", "pe": "30.13", "roic": "5.67%", "f_score": "7", "z_score": "N/A (financial)", "p2fv": 0.8476}
+{"ticker": "CBRE", "name": "CBRE GROUP, INC.", "price": "141.09", "as_of": "2026-09-30", "fair_value": "$166.00", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "88", "pe": "30.21", "roic": "5.67%", "f_score": "7", "z_score": "N/A (financial)", "p2fv": 0.85}

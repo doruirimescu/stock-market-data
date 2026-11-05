@@ -1,1 +1,1 @@
-{"ticker": "ADBE", "name": "ADOBE INC.", "price": "251.91", "as_of": "2026-08-28", "fair_value": "$525.09", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "94", "pe": "14.07", "roic": "27.51%", "f_score": "8", "z_score": "7.40", "p2fv": 0.4797}
+{"ticker": "ADBE", "name": "ADOBE INC.", "price": "248.38", "as_of": "2026-08-28", "fair_value": "$524.92", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "94", "pe": "13.87", "roic": "27.51%", "f_score": "8", "z_score": "7.35", "p2fv": 0.4732}

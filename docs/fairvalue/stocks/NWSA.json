@@ -1,1 +1,1 @@
-{"ticker": "NWSA", "name": "NEWS CORP", "price": "30.22", "as_of": "2026-06-30", "fair_value": "$30.72", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "81", "pe": "29.33", "roic": "6.65%", "f_score": "5", "z_score": "2.59", "p2fv": 0.9834}
+{"ticker": "NWSA", "name": "NEWS CORP", "price": "28.10", "as_of": "2026-09-30", "fair_value": "$32.39", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "83", "pe": "25.09", "roic": "7.11%", "f_score": "5", "z_score": "2.53", "p2fv": 0.8677}

@@ -1,1 +1,1 @@
-{"ticker": "SAP.DE", "name": "SAP SE", "price": "\u20ac212.30", "as_of": "2026-09-30", "fair_value": "\u20ac246.24", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "94", "pe": "30.16", "roic": "11.19%", "f_score": "\u2013", "z_score": "6.93", "p2fv": 0.8622}
+{"ticker": "SAP.DE", "name": "SAP SE", "price": "\u20ac216.10", "as_of": "2026-09-30", "fair_value": "\u20ac245.79", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "93", "pe": "30.70", "roic": "11.19%", "f_score": "\u2013", "z_score": "7.02", "p2fv": 0.8792}

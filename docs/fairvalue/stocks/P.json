@@ -1,1 +1,1 @@
-{"ticker": "P", "name": "Everpure, Inc.", "price": "116.49", "as_of": "2026-08-02", "fair_value": "$82.67", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "82", "pe": "159.58", "roic": "5.40%", "f_score": "6", "z_score": "7.29", "p2fv": 1.4091}
+{"ticker": "P", "name": "Everpure, Inc.", "price": "97.60", "as_of": "2026-08-02", "fair_value": "$82.69", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "86", "pe": "133.70", "roic": "5.40%", "f_score": "6", "z_score": "6.26", "p2fv": 1.1804}

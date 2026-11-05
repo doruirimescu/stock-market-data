@@ -1,1 +1,1 @@
-{"ticker": "ACN", "name": "Accenture plc", "price": "261.13", "as_of": "2026-08-31", "fair_value": "$357.32", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "90", "pe": "19.26", "roic": "14.84%", "f_score": "6", "z_score": "4.60", "p2fv": 0.7308}
+{"ticker": "ACN", "name": "Accenture plc", "price": "269.21", "as_of": "2026-08-31", "fair_value": "$357.27", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "90", "pe": "19.85", "roic": "14.84%", "f_score": "6", "z_score": "4.68", "p2fv": 0.7535}

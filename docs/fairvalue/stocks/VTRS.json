@@ -1,1 +1,1 @@
-{"ticker": "VTRS", "name": "Viatris Inc", "price": "19.15", "as_of": "2026-06-30", "fair_value": "$11.76", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "58", "pe": "At loss", "roic": "-0.16%", "f_score": "6", "z_score": "1.15", "p2fv": 1.6274}
+{"ticker": "VTRS", "name": "Viatris Inc", "price": "19.71", "as_of": "2026-09-30", "fair_value": "$11.94", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "58", "pe": "At loss", "roic": "-0.01%", "f_score": "5", "z_score": "1.17", "p2fv": 1.6503}

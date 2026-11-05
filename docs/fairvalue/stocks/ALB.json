@@ -1,1 +1,1 @@
-{"ticker": "ALB", "name": "ALBEMARLE CORP", "price": "93.73", "as_of": "2026-06-30", "fair_value": "$79.44", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "69", "pe": "347.15", "roic": "0.00%", "f_score": "7", "z_score": "2.29", "p2fv": 1.1798}
+{"ticker": "ALB", "name": "ALBEMARLE CORP", "price": "100.61", "as_of": "2026-09-30", "fair_value": "$99.27", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "75", "pe": "24.24", "roic": "1.99%", "f_score": "8", "z_score": "2.53", "p2fv": 1.0135}

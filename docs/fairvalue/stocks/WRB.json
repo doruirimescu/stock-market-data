@@ -1,1 +1,1 @@
-{"ticker": "WRB", "name": "BERKLEY W R CORP", "price": "75.61", "as_of": "2026-09-30", "fair_value": "$70.68", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "71", "pe": "15.98", "roic": "4.41%", "f_score": "5", "z_score": "N/A (financial)", "p2fv": 1.0698}
+{"ticker": "WRB", "name": "BERKLEY W R CORP", "price": "78.49", "as_of": "2026-09-30", "fair_value": "$70.69", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "71", "pe": "16.59", "roic": "4.41%", "f_score": "5", "z_score": "N/A (financial)", "p2fv": 1.1103}

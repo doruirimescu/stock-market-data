@@ -1,1 +1,1 @@
-{"ticker": "TT", "name": "Trane Technologies plc", "price": "405.75", "as_of": "2026-09-30", "fair_value": "$476.24", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "94", "pe": "28.65", "roic": "22.09%", "f_score": "5", "z_score": "5.85", "p2fv": 0.852}
+{"ticker": "TT", "name": "Trane Technologies plc", "price": "407.58", "as_of": "2026-09-30", "fair_value": "$476.19", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "95", "pe": "28.78", "roic": "22.09%", "f_score": "5", "z_score": "5.87", "p2fv": 0.8559}

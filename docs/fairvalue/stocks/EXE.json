@@ -1,1 +1,1 @@
-{"ticker": "EXE", "name": "EXPAND ENERGY Corp", "price": "89.29", "as_of": "2026-09-30", "fair_value": "$134.98", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "69", "pe": "7.70", "roic": "10.43%", "f_score": "8", "z_score": "2.34", "p2fv": 0.6615}
+{"ticker": "EXE", "name": "EXPAND ENERGY Corp", "price": "88.08", "as_of": "2026-09-30", "fair_value": "$134.91", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "69", "pe": "7.60", "roic": "10.43%", "f_score": "8", "z_score": "2.32", "p2fv": 0.6529}

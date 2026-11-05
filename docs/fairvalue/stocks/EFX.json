@@ -1,1 +1,1 @@
-{"ticker": "EFX", "name": "EQUIFAX INC", "price": "193.74", "as_of": "2026-09-30", "fair_value": "$312.12", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "80", "pe": "31.35", "roic": "7.98%", "f_score": "7", "z_score": "3.57", "p2fv": 0.6207}
+{"ticker": "EFX", "name": "EQUIFAX INC", "price": "195.68", "as_of": "2026-09-30", "fair_value": "$311.98", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "80", "pe": "31.66", "roic": "7.98%", "f_score": "7", "z_score": "3.59", "p2fv": 0.6272}

@@ -1,1 +1,1 @@
-{"ticker": "TWLO", "name": "TWILIO INC", "price": "209.76", "as_of": "2026-09-30", "fair_value": "$140.43", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "80", "pe": "26.35", "roic": "5.18%", "f_score": "5", "z_score": "10.07", "p2fv": 1.4937}
+{"ticker": "TWLO", "name": "TWILIO INC", "price": "199.58", "as_of": "2026-09-30", "fair_value": "$140.54", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "80", "pe": "25.07", "roic": "5.18%", "f_score": "5", "z_score": "9.58", "p2fv": 1.4201}

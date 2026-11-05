@@ -1,1 +1,1 @@
-{"ticker": "MO", "name": "ALTRIA GROUP, INC.", "price": "77.46", "as_of": "2026-09-30", "fair_value": "$58.59", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "70", "pe": "15.97", "roic": "24.89%", "f_score": "7", "z_score": "5.19", "p2fv": 1.322}
+{"ticker": "MO", "name": "ALTRIA GROUP, INC.", "price": "79.50", "as_of": "2026-09-30", "fair_value": "$58.60", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "71", "pe": "16.39", "roic": "24.89%", "f_score": "7", "z_score": "5.24", "p2fv": 1.3567}

@@ -1,1 +1,1 @@
-{"ticker": "GILD", "name": "GILEAD SCIENCES, INC.", "price": "171.60", "as_of": "2026-09-30", "fair_value": "$120.17", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "66", "pe": "At loss", "roic": "-4.82%", "f_score": "5", "z_score": "4.02", "p2fv": 1.4279}
+{"ticker": "GILD", "name": "GILEAD SCIENCES, INC.", "price": "175.51", "as_of": "2026-09-30", "fair_value": "$120.21", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "66", "pe": "At loss", "roic": "-4.82%", "f_score": "5", "z_score": "4.09", "p2fv": 1.46}

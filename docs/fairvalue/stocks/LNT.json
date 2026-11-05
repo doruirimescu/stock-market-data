@@ -1,1 +1,1 @@
-{"ticker": "LNT", "name": "ALLIANT ENERGY CORP", "price": "72.24", "as_of": "2026-03-31", "fair_value": "$67.25", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "67", "pe": "22.72", "roic": "4.35%", "f_score": "6", "z_score": "1.20", "p2fv": 1.0742}
+{"ticker": "LNT", "name": "ALLIANT ENERGY CORP", "price": "75.07", "as_of": "2026-03-31", "fair_value": "$67.26", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "67", "pe": "23.61", "roic": "4.35%", "f_score": "6", "z_score": "1.22", "p2fv": 1.1162}

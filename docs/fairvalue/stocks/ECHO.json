@@ -1,1 +1,1 @@
-{"ticker": "ECHO", "name": "EchoStar CORP", "price": "100.77", "as_of": "2026-09-30", "fair_value": "$14.81", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "71", "pe": "3.65", "roic": "0.69%", "f_score": "5", "z_score": "2.31", "p2fv": 6.8039}
+{"ticker": "ECHO", "name": "EchoStar CORP", "price": "92.26", "as_of": "2026-09-30", "fair_value": "$14.81", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "71", "pe": "3.35", "roic": "0.69%", "f_score": "5", "z_score": "2.30", "p2fv": 6.2279}
