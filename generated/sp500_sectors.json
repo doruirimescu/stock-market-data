@@ -1091,10 +1091,6 @@
   "sector": "Consumer Staples",
   "industry": "Food Retail"
  },
- "KVUE": {
-  "sector": "Consumer Staples",
-  "industry": "Personal Care Products"
- },
  "L": {
   "sector": "Financials",
   "industry": "Multi-line Insurance"
@@ -1386,6 +1382,10 @@
  "OKE": {
   "sector": "Energy",
   "industry": "Oil & Gas Storage & Transportation"
+ },
+ "OKTA": {
+  "sector": "Information Technology",
+  "industry": "Application Software"
  },
  "OMC": {
   "sector": "Communication Services",
