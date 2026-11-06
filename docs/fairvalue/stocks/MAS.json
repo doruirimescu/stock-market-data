@@ -1,1 +1,1 @@
-{"ticker": "MAS", "name": "MASCO CORP /DE/", "price": "86.93", "as_of": "2026-09-30", "fair_value": "$77.19", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "81", "pe": "18.86", "roic": "33.51%", "f_score": "7", "z_score": "4.18", "p2fv": 1.1261}
+{"ticker": "MAS", "name": "MASCO CORP /DE/", "price": "81.65", "as_of": "2026-09-30", "fair_value": "$77.19", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "82", "pe": "17.71", "roic": "33.51%", "f_score": "7", "z_score": "4.07", "p2fv": 1.0578}

@@ -1,1 +1,1 @@
-{"ticker": "BAX", "name": "BAXTER INTERNATIONAL INC", "price": "26.65", "as_of": "2026-09-30", "fair_value": "$32.46", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "68", "pe": "At loss", "roic": "-1.44%", "f_score": "4", "z_score": "2.41", "p2fv": 0.8211}
+{"ticker": "BAX", "name": "BAXTER INTERNATIONAL INC", "price": "25.08", "as_of": "2026-09-30", "fair_value": "$32.44", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "68", "pe": "At loss", "roic": "-1.44%", "f_score": "4", "z_score": "2.37", "p2fv": 0.7731}

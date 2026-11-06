@@ -1,1 +1,1 @@
-{"ticker": "PHM", "name": "PULTEGROUP INC/MI/", "price": "137.21", "as_of": "2026-09-30", "fair_value": "$121.12", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "82", "pe": "14.66", "roic": "\u2013", "f_score": "3", "z_score": "4.40", "p2fv": 1.1329}
+{"ticker": "PHM", "name": "PULTEGROUP INC/MI/", "price": "132.22", "as_of": "2026-09-30", "fair_value": "$121.19", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "83", "pe": "14.13", "roic": "\u2013", "f_score": "3", "z_score": "4.29", "p2fv": 1.091}

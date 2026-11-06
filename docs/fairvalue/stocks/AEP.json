@@ -1,1 +1,1 @@
-{"ticker": "AEP", "name": "AMERICAN ELECTRIC POWER CO INC", "price": "130.73", "as_of": "2026-03-31", "fair_value": "$115.56", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "72", "pe": "19.34", "roic": "4.92%", "f_score": "5", "z_score": "0.98", "p2fv": 1.1313}
+{"ticker": "AEP", "name": "AMERICAN ELECTRIC POWER CO INC", "price": "124.53", "as_of": "2026-03-31", "fair_value": "$115.59", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "73", "pe": "18.42", "roic": "4.92%", "f_score": "5", "z_score": "0.96", "p2fv": 1.0774}

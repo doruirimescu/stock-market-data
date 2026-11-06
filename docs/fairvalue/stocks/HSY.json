@@ -1,1 +1,1 @@
-{"ticker": "HSY", "name": "HERSHEY CO", "price": "177.45", "as_of": "2026-09-27", "fair_value": "$201.99", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "83", "pe": "At loss", "roic": "18.98%", "f_score": "8", "z_score": "4.81", "p2fv": 0.8785}
+{"ticker": "HSY", "name": "HERSHEY CO", "price": "172.15", "as_of": "2026-09-27", "fair_value": "$201.95", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "83", "pe": "At loss", "roic": "18.98%", "f_score": "8", "z_score": "4.73", "p2fv": 0.8524}

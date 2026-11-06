@@ -1,1 +1,1 @@
-{"ticker": "EVRG", "name": "Evergy, Inc.", "price": "88.79", "as_of": "2026-03-31", "fair_value": "$68.78", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "72", "pe": "23.61", "roic": "4.59%", "f_score": "4", "z_score": "0.87", "p2fv": 1.2909}
+{"ticker": "EVRG", "name": "Evergy, Inc.", "price": "86.36", "as_of": "2026-03-31", "fair_value": "$68.79", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "75", "pe": "22.97", "roic": "4.59%", "f_score": "4", "z_score": "0.85", "p2fv": 1.2554}

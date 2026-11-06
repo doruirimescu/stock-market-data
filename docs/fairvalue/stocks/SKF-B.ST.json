@@ -1,1 +1,1 @@
-{"ticker": "SKF-B.ST", "name": "AB SKF (publ)", "price": "SEK 270.20", "as_of": "2025-12-31", "fair_value": "SEK 200.75", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "76", "pe": "31.35", "roic": "5.64%", "f_score": "6", "z_score": "3.58"}
+{"ticker": "SKF-B.ST", "name": "AB SKF (publ)", "price": "SEK 270.30", "as_of": "2026-09-30", "fair_value": "SEK 183.76", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "71", "pe": "23.86", "roic": "6.46%", "f_score": "\u2013", "z_score": "3.20", "p2fv": 1.4709}

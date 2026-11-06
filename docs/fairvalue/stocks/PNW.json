@@ -1,1 +1,1 @@
-{"ticker": "PNW", "name": "PINNACLE WEST CAPITAL CORP", "price": "106.57", "as_of": "2026-09-30", "fair_value": "$96.31", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "73", "pe": "20.03", "roic": "\u2013", "f_score": "5", "z_score": "0.73", "p2fv": 1.1065}
+{"ticker": "PNW", "name": "PINNACLE WEST CAPITAL CORP", "price": "101.82", "as_of": "2026-09-30", "fair_value": "$96.33", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "77", "pe": "19.14", "roic": "\u2013", "f_score": "5", "z_score": "0.72", "p2fv": 1.0569}

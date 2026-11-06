@@ -1,1 +1,1 @@
-{"ticker": "MET", "name": "METLIFE INC", "price": "104.91", "as_of": "2026-06-30", "fair_value": "$96.50", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "81", "pe": "20.10", "roic": "0.67%", "f_score": "6", "z_score": "N/A (financial)", "p2fv": 1.0872}
+{"ticker": "MET", "name": "METLIFE INC", "price": "98.78", "as_of": "2026-09-30", "fair_value": "$102.79", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "84", "pe": "12.91", "roic": "0.71%", "f_score": "7", "z_score": "N/A (financial)", "p2fv": 0.961}

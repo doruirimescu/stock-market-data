@@ -1,1 +1,1 @@
-{"ticker": "CCH.L", "name": "Coca-Cola HBC AG", "price": "GBX 4332.00", "as_of": "2025-12-31", "fair_value": "GBX 4,078.54", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "88", "pe": "19.18", "roic": "10.72%", "f_score": "8", "z_score": "3.93", "p2fv": 1.0621}
+{"ticker": "CCH.L", "name": "Coca-Cola HBC AG", "price": "GBX 4092.00", "as_of": "2025-12-31", "fair_value": "GBX 4,078.54", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "86", "pe": "18.11", "roic": "10.72%", "f_score": "8", "z_score": "3.85", "p2fv": 1.0033}

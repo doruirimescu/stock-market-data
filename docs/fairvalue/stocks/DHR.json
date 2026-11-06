@@ -1,1 +1,1 @@
-{"ticker": "DHR", "name": "DANAHER CORP /DE/", "price": "232.64", "as_of": "2026-09-25", "fair_value": "$239.42", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "86", "pe": "38.14", "roic": "5.95%", "f_score": "6", "z_score": "3.75", "p2fv": 0.9717}
+{"ticker": "DHR", "name": "DANAHER CORP /DE/", "price": "225.00", "as_of": "2026-09-25", "fair_value": "$239.38", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "85", "pe": "36.89", "roic": "5.95%", "f_score": "6", "z_score": "3.67", "p2fv": 0.9399}

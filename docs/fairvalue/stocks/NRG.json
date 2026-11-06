@@ -1,1 +1,1 @@
-{"ticker": "NRG", "name": "NRG ENERGY, INC.", "price": "80.81", "as_of": "2026-06-30", "fair_value": "$116.77", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "80", "pe": "21.04", "roic": "5.54%", "f_score": "5", "z_score": "1.36", "p2fv": 0.692}
+{"ticker": "NRG", "name": "NRG ENERGY, INC.", "price": "83.25", "as_of": "2026-06-30", "fair_value": "$116.74", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "80", "pe": "21.68", "roic": "5.54%", "f_score": "5", "z_score": "1.37", "p2fv": 0.7131}

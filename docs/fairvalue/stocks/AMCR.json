@@ -1,1 +1,1 @@
-{"ticker": "AMCR", "name": "Amcor plc", "price": "45.83", "as_of": "2026-06-30", "fair_value": "$55.86", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "86", "pe": "19.26", "roic": "5.04%", "f_score": "7", "z_score": "1.39", "p2fv": 0.8204}
+{"ticker": "AMCR", "name": "Amcor plc", "price": "44.83", "as_of": "2026-09-30", "fair_value": "$56.92", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "82", "pe": "19.24", "roic": "4.84%", "f_score": "7", "z_score": "1.41", "p2fv": 0.7875}

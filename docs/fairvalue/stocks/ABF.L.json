@@ -1,1 +1,1 @@
-{"ticker": "ABF.L", "name": "Associated British Foods plc", "price": "GBX 1840.50", "as_of": "2025-08-31", "fair_value": "GBX 2,123.75", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "82", "pe": "13.00", "roic": "7.09%", "f_score": "5", "z_score": "3.22"}
+{"ticker": "ABF.L", "name": "Associated British Foods plc", "price": "GBX 1952.50", "as_of": "2026-08-31", "fair_value": "GBX 2,011.27", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "72", "pe": "14.80", "roic": "\u2013", "f_score": "2", "z_score": "1.98", "p2fv": 0.9708}

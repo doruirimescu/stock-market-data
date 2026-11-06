@@ -1,1 +1,1 @@
-{"ticker": "REG", "name": "REGENCY CENTERS CORP", "price": "77.55", "as_of": "2026-03-31", "fair_value": "$77.05", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "77", "pe": "At loss", "roic": "\u2013", "f_score": "6", "z_score": "N/A (financial)", "p2fv": 1.0064}
+{"ticker": "REG", "name": "REGENCY CENTERS CORP", "price": "75.65", "as_of": "2026-03-31", "fair_value": "$77.03", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "79", "pe": "At loss", "roic": "\u2013", "f_score": "6", "z_score": "N/A (financial)", "p2fv": 0.9821}

@@ -1,1 +1,1 @@
-{"ticker": "REL.L", "name": "RELX PLC", "price": "GBX 3077.00", "as_of": "2025-12-31", "fair_value": "GBX 3,657.95", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "82", "pe": "27.47", "roic": "15.24%", "f_score": "7", "z_score": "3.79", "p2fv": 0.8412}
+{"ticker": "REL.L", "name": "RELX PLC", "price": "GBX 2977.00", "as_of": "2025-12-31", "fair_value": "GBX 3,657.75", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "82", "pe": "26.58", "roic": "15.24%", "f_score": "7", "z_score": "3.71", "p2fv": 0.8139}

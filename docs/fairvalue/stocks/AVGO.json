@@ -1,1 +1,1 @@
-{"ticker": "AVGO", "name": "Broadcom Inc.", "price": "309.80", "as_of": "2026-08-02", "fair_value": "$392.50", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "96", "pe": "39.52", "roic": "25.62%", "f_score": "8", "z_score": "11.63", "p2fv": 0.7893}
+{"ticker": "AVGO", "name": "Broadcom Inc.", "price": "304.92", "as_of": "2026-08-02", "fair_value": "$392.42", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "96", "pe": "38.89", "roic": "25.62%", "f_score": "8", "z_score": "11.47", "p2fv": 0.777}

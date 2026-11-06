@@ -1,1 +1,1 @@
-{"ticker": "ALFA.ST", "name": "Alfa Laval AB (publ)", "price": "SEK 540.40", "as_of": "2026-09-30", "fair_value": "SEK 528.85", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "88", "pe": "27.45", "roic": "8.93%", "f_score": "\u2013", "z_score": "3.82", "p2fv": 1.0218}
+{"ticker": "ALFA.ST", "name": "Alfa Laval AB (publ)", "price": "SEK 528.00", "as_of": "2026-09-30", "fair_value": "SEK 528.94", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "90", "pe": "26.82", "roic": "8.93%", "f_score": "\u2013", "z_score": "3.77", "p2fv": 0.9982}

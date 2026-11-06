@@ -1,1 +1,1 @@
-{"ticker": "KLAC", "name": "KLA CORP", "price": "141.04", "as_of": "2026-09-30", "fair_value": "$119.80", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "96", "pe": "35.35", "roic": "36.58%", "f_score": "8", "z_score": "12.04", "p2fv": 1.1773}
+{"ticker": "KLAC", "name": "KLA CORP", "price": "138.35", "as_of": "2026-09-30", "fair_value": "$119.83", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "96", "pe": "34.67", "roic": "36.58%", "f_score": "8", "z_score": "11.87", "p2fv": 1.1545}

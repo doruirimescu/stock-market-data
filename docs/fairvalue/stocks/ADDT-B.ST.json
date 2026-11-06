@@ -1,1 +1,1 @@
-{"ticker": "ADDT-B.ST", "name": "Addtech AB (publ.)", "price": "SEK 321.60", "as_of": "2026-03-31", "fair_value": "SEK 336.84", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "83", "pe": "40.45", "roic": "13.68%", "f_score": "5", "z_score": "6.21"}
+{"ticker": "ADDT-B.ST", "name": "Addtech AB (publ.)", "price": "SEK 313.60", "as_of": "2026-09-30", "fair_value": "SEK 351.16", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "84", "pe": "36.68", "roic": "13.15%", "f_score": "\u2013", "z_score": "5.89", "p2fv": 0.893}

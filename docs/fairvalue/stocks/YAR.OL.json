@@ -1,1 +1,1 @@
-{"ticker": "YAR.OL", "name": "Yara International ASA", "price": "NOK 405.80", "as_of": "2025-12-31", "fair_value": "NOK 349.61", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "76", "pe": "7.52", "roic": "8.24%", "f_score": "7", "z_score": "3.11"}
+{"ticker": "YAR.OL", "name": "Yara International ASA", "price": "NOK 396.50", "as_of": "2026-09-30", "fair_value": "NOK 382.84", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "75", "pe": "7.26", "roic": "10.39%", "f_score": "\u2013", "z_score": "3.23", "p2fv": 1.0357}

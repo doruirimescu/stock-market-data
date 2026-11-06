@@ -1,1 +1,1 @@
-{"ticker": "TRYG.CO", "name": "Tryg A/S", "price": "DKK 147.70", "as_of": "2025-12-31", "fair_value": "DKK 162.09", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "85", "pe": "16.78", "roic": "5.93%", "f_score": "5", "z_score": "N/A (financial)"}
+{"ticker": "TRYG.CO", "name": "Tryg A/S", "price": "DKK 162.50", "as_of": "2026-09-30", "fair_value": "DKK 165.46", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "82", "pe": "At loss", "roic": "4.62%", "f_score": "\u2013", "z_score": "N/A (financial)", "p2fv": 0.9821}

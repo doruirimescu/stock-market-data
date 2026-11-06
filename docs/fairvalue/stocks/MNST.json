@@ -1,1 +1,1 @@
-{"ticker": "MNST", "name": "Monster Beverage Corp", "price": "48.75", "as_of": "2026-06-30", "fair_value": "$40.12", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "91", "pe": "At loss", "roic": "32.23%", "f_score": "7", "z_score": "\u2013", "p2fv": 1.2151}
+{"ticker": "MNST", "name": "Monster Beverage Corp", "price": "45.38", "as_of": "2026-09-30", "fair_value": "$42.10", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "94", "pe": "At loss", "roic": "31.57%", "f_score": "5", "z_score": "\u2013", "p2fv": 1.078}

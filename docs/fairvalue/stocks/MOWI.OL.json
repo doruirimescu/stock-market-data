@@ -1,1 +1,1 @@
-{"ticker": "MOWI.OL", "name": "Mowi ASA", "price": "NOK 218.60", "as_of": "2026-06-30", "fair_value": "NOK 215.72", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "68", "pe": "At loss", "roic": "6.22%", "f_score": "\u2013", "z_score": "2.35", "p2fv": 1.0134}
+{"ticker": "MOWI.OL", "name": "Mowi ASA", "price": "NOK 215.20", "as_of": "2026-06-30", "fair_value": "NOK 215.74", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "70", "pe": "At loss", "roic": "6.22%", "f_score": "\u2013", "z_score": "2.33", "p2fv": 0.9975}

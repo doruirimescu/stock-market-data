@@ -1,1 +1,1 @@
-{"ticker": "TRGP", "name": "Targa Resources Corp.", "price": "288.98", "as_of": "2026-06-30", "fair_value": "$170.67", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "76", "pe": "27.63", "roic": "12.66%", "f_score": "8", "z_score": "2.65", "p2fv": 1.6932}
+{"ticker": "TRGP", "name": "Targa Resources Corp.", "price": "271.21", "as_of": "2026-09-30", "fair_value": "$189.45", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "77", "pe": "24.00", "roic": "13.21%", "f_score": "7", "z_score": "2.55", "p2fv": 1.4315}

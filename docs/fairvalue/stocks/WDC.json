@@ -1,1 +1,1 @@
-{"ticker": "WDC", "name": "WESTERN DIGITAL CORP", "price": "286.03", "as_of": "2026-10-02", "fair_value": "$167.73", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "78", "pe": "11.07", "roic": "50.36%", "f_score": "7", "z_score": "17.70", "p2fv": 1.7053}
+{"ticker": "WDC", "name": "WESTERN DIGITAL CORP", "price": "277.43", "as_of": "2026-10-02", "fair_value": "$167.85", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "79", "pe": "10.74", "roic": "50.36%", "f_score": "7", "z_score": "17.30", "p2fv": 1.6529}

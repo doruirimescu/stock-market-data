@@ -1,1 +1,1 @@
-{"ticker": "AME", "name": "AMETEK INC/", "price": "230.60", "as_of": "2026-09-30", "fair_value": "$227.09", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "94", "pe": "32.52", "roic": "9.71%", "f_score": "6", "z_score": "4.53", "p2fv": 1.0154}
+{"ticker": "AME", "name": "AMETEK INC/", "price": "226.51", "as_of": "2026-09-30", "fair_value": "$227.20", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "95", "pe": "31.95", "roic": "9.71%", "f_score": "6", "z_score": "4.48", "p2fv": 0.997}

@@ -1,1 +1,1 @@
-{"ticker": "KHC", "name": "Kraft Heinz Co", "price": "25.44", "as_of": "2026-09-26", "fair_value": "$27.75", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "60", "pe": "At loss", "roic": "-4.29%", "f_score": "4", "z_score": "0.53", "p2fv": 0.9166}
+{"ticker": "KHC", "name": "Kraft Heinz Co", "price": "24.40", "as_of": "2026-09-26", "fair_value": "$27.74", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "60", "pe": "At loss", "roic": "-4.29%", "f_score": "4", "z_score": "0.51", "p2fv": 0.8797}

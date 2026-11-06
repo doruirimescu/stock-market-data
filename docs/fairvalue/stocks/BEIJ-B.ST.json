@@ -1,1 +1,1 @@
-{"ticker": "BEIJ-B.ST", "name": "Beijer Ref AB (publ)", "price": "SEK 140.40", "as_of": "2025-12-31", "fair_value": "SEK 158.18", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "83", "pe": "30.59", "roic": "6.68%", "f_score": "6", "z_score": "3.44"}
+{"ticker": "BEIJ-B.ST", "name": "Beijer Ref AB (publ)", "price": "SEK 156.40", "as_of": "2026-09-30", "fair_value": "SEK 170.21", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "83", "pe": "31.79", "roic": "6.41%", "f_score": "\u2013", "z_score": "3.16", "p2fv": 0.9189}

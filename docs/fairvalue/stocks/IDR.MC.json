@@ -1,1 +1,1 @@
-{"ticker": "IDR.MC", "name": "Indra Sistemas, S.A.", "price": "\u20ac60.76", "as_of": "2025-12-31", "fair_value": "\u20ac31.72", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "69", "pe": "24.49", "roic": "7.12%", "f_score": "5", "z_score": "2.04"}
+{"ticker": "IDR.MC", "name": "Indra Sistemas, S.A.", "price": "\u20ac56.74", "as_of": "2026-09-30", "fair_value": "\u20ac53.20", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "81", "pe": "At loss", "roic": "6.54%", "f_score": "\u2013", "z_score": "1.92", "p2fv": 1.0665}

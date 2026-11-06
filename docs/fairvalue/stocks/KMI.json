@@ -1,1 +1,1 @@
-{"ticker": "KMI", "name": "KINDER MORGAN, INC.", "price": "31.80", "as_of": "2026-09-30", "fair_value": "$32.31", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "85", "pe": "19.63", "roic": "5.74%", "f_score": "7", "z_score": "1.32", "p2fv": 0.984}
+{"ticker": "KMI", "name": "KINDER MORGAN, INC.", "price": "30.00", "as_of": "2026-09-30", "fair_value": "$32.31", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "86", "pe": "18.52", "roic": "5.74%", "f_score": "7", "z_score": "1.26", "p2fv": 0.9286}

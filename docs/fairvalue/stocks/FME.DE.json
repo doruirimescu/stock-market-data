@@ -1,1 +1,1 @@
-{"ticker": "FME.DE", "name": "Fresenius Medical Care AG", "price": "\u20ac37.91", "as_of": "2026-03-31", "fair_value": "\u20ac41.80", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "77", "pe": "11.28", "roic": "4.94%", "f_score": "\u2013", "z_score": "1.77"}
+{"ticker": "FME.DE", "name": "Fresenius Medical Care AG", "price": "\u20ac41.59", "as_of": "2026-09-30", "fair_value": "\u20ac44.52", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "79", "pe": "13.91", "roic": "4.95%", "f_score": "\u2013", "z_score": "1.71", "p2fv": 0.9341}

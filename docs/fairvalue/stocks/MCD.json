@@ -1,1 +1,1 @@
-{"ticker": "MCD", "name": "MCDONALDS CORP", "price": "280.61", "as_of": "2026-06-30", "fair_value": "$323.82", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "22.79", "roic": "\u2013", "f_score": "7", "z_score": "\u2013", "p2fv": 0.8666}
+{"ticker": "MCD", "name": "MCDONALDS CORP", "price": "270.60", "as_of": "2026-06-30", "fair_value": "$323.77", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "21.98", "roic": "\u2013", "f_score": "7", "z_score": "\u2013", "p2fv": 0.8358}
