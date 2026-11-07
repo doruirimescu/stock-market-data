@@ -1,1 +1,1 @@
-{"ticker": "SAAB-B.ST", "name": "Saab AB (publ)", "price": "SEK 598.40", "as_of": "2026-09-30", "fair_value": "SEK 665.49", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "88", "pe": "43.02", "roic": "6.26%", "f_score": "\u2013", "z_score": "3.33", "p2fv": 0.8992}
+{"ticker": "SAAB-B.ST", "name": "Saab AB (publ)", "price": "SEK 605.00", "as_of": "2026-09-30", "fair_value": "SEK 665.49", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "88", "pe": "43.49", "roic": "6.26%", "f_score": "\u2013", "z_score": "3.35", "p2fv": 0.9091}

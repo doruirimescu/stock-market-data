@@ -1,1 +1,1 @@
-{"ticker": "EN.PA", "name": "Bouygues SA", "price": "\u20ac41.58", "as_of": "2025-12-31", "fair_value": "\u20ac37.61", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "73", "pe": "13.91", "roic": "3.39%", "f_score": "7", "z_score": "1.19", "p2fv": 1.1055}
+{"ticker": "EN.PA", "name": "Bouygues SA", "price": "\u20ac42.29", "as_of": "2026-09-30", "fair_value": "\u20ac37.73", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "69", "pe": "At loss", "roic": "2.23%", "f_score": "\u2013", "z_score": "1.12", "p2fv": 1.1208}

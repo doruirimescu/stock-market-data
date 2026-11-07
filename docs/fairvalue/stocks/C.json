@@ -1,1 +1,1 @@
-{"ticker": "C", "name": "CITIGROUP INC", "price": "117.88", "as_of": "2025-12-31", "fair_value": "$85.50", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "75", "pe": "16.86", "roic": "2.93%", "f_score": "3", "z_score": "N/A (financial)", "p2fv": 1.3787}
+{"ticker": "C", "name": "CITIGROUP INC", "price": "119.05", "as_of": "2025-12-31", "fair_value": "$85.50", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "75", "pe": "17.03", "roic": "2.93%", "f_score": "3", "z_score": "N/A (financial)", "p2fv": 1.3924}

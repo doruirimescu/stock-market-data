@@ -1,1 +1,1 @@
-{"ticker": "WSM", "name": "WILLIAMS SONOMA INC", "price": "254.34", "as_of": "2026-08-02", "fair_value": "$192.44", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "88", "pe": "26.09", "roic": "31.61%", "f_score": "6", "z_score": "8.33", "p2fv": 1.3216}
+{"ticker": "WSM", "name": "WILLIAMS SONOMA INC", "price": "254.06", "as_of": "2026-08-02", "fair_value": "$192.44", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "88", "pe": "26.06", "roic": "31.61%", "f_score": "6", "z_score": "8.33", "p2fv": 1.3202}

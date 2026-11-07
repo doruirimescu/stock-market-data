@@ -1,1 +1,1 @@
-{"ticker": "EXPN.L", "name": "Experian plc", "price": "GBX 3026.00", "as_of": "2026-03-31", "fair_value": "GBX 4,168.59", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "At loss", "roic": "11.83%", "f_score": "9", "z_score": "5.70", "p2fv": 0.7259}
+{"ticker": "EXPN.L", "name": "Experian plc", "price": "GBX 3064.00", "as_of": "2026-03-31", "fair_value": "GBX 4,168.59", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "At loss", "roic": "11.83%", "f_score": "9", "z_score": "5.73", "p2fv": 0.735}
