@@ -64,6 +64,10 @@ mise run sectors
 
 # STOXX Europe 600 sectors (iShares ETF holdings) → generated/stoxx600_sectors.json + docs/data/stoxx600_sectors.js
 mise run stoxx600-sectors
+
+# Treasury Timing gauges (FRED macro data + Yahoo UCITS ETF prices) → docs/data/bonds.js
+# Runs every weekday in .github/workflows/bond-signals.yml
+mise run bonds
 ```
 
 The PNG export (kaleido) renders with a Chrome or Chromium it finds on the system.

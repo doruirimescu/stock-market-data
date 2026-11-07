@@ -24,6 +24,7 @@
     { "name": "STOXX 600 sectors", "description": "Valuation breakdown per sector", "url": "stoxx600_sectors.html", "nexus_icon": "pie", "nexus_group": "Markets" },
     { "name": "S&P 500 summary", "description": "Portfolio deviation, distribution and extremes", "url": "sp500_valuation.html", "nexus_icon": "gauge", "nexus_group": "Markets" },
     { "name": "S&P 500 sectors", "description": "Valuation breakdown per GICS sector", "url": "sp500_sectors.html", "nexus_icon": "pie", "nexus_group": "Markets" },
+    { "name": "Treasury Timing", "description": "When to buy or sell US Treasuries, by maturity", "url": "bond_timing.html", "nexus_icon": "gauge", "nexus_group": "Markets", "nexus_match": ["bond_timing"] },
 
     { "name": "Learn", "description": "Lectures on money, central banks and markets", "url": "learn/index.html", "nexus_icon": "book", "nexus_group": "Research", "nexus_match": ["learn/"] },
     { "name": "Strategies", "description": "Basket and trend strategy research", "url": "basket/index.html", "nexus_icon": "layers", "nexus_group": "Research", "nexus_match": ["basket/"] },

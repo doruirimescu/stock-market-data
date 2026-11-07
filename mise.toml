@@ -108,3 +108,7 @@ run = [
 [tasks.fed]
 description = "Refresh the Federal Reserve data behind the Learn > Money and the Fed lecture (FRED)"
 run = "python scripts/fed_data.py"
+
+[tasks.bonds]
+description = "Recompute the Treasury Timing gauges (FRED + Yahoo) -> docs/data/bonds.js"
+run = "python scripts/bond_signals.py"

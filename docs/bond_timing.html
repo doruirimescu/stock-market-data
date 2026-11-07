@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Treasury Timing · Investing Nexus</title>
+  <meta name="description" content="Daily macro gauges for buying and selling short-, mid- and long-term US Treasuries, with three UCITS ETFs per maturity bucket.">
+  <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
+  <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+  <style>
+    .gauges { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 14px; margin-top: 24px; }
+    .gauge-card { display: flex; flex-direction: column; gap: 6px; }
+    .gauge-card h3 { margin: 0; }
+    .gauge-card .gauge { height: 210px; }
+    .gauge-card .gauge-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 14px; align-items: baseline; }
+    .gauge-card .verdict { font-size: 1.15rem; }
+    .verdict.hold { color: var(--muted); }
+    .verdict.hold::before { background: var(--neutral); }
+    .bucket-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+    .bucket-head h2 { margin-right: auto; }
+    .ind-cell { min-width: 260px; }
+    .rule-cell { min-width: 200px; }
+    .ind-name { font-weight: 600; color: var(--text); }
+    .ind-desc { display: block; font-size: .85em; color: var(--muted); margin-top: 2px; max-width: 46ch; }
+    .score-cell { min-width: 150px; }
+    .score-track { position: relative; height: 10px; border-radius: 5px; background: var(--surface-3); }
+    .score-track::after { content: ""; position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1px; background: var(--border-strong); }
+    .score-track > div { position: absolute; top: 0; bottom: 0; border-radius: 5px; }
+    .score-num { display: block; font-size: .8em; margin-top: 3px; }
+    .stack { display: flex; flex-direction: column; gap: 14px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="nasdaq_today.html">NASDAQ-100</a>
+        <a href="sp500_today.html">S&amp;P 500</a>
+        <a href="sp500_valuation.html">S&amp;P 500 Summary</a>
+        <a href="stoxx600_today.html">STOXX 600</a>
+        <a href="bond_timing.html" class="active">Treasury Timing</a>
+        <a href="fairvalue/index.html">Fair Value stocks</a>
+        <a href="learn/index.html">Learn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="eyebrow">Fixed income · US Treasuries</div>
+    <h1>Treasury <span class="gradient-text">Timing</span></h1>
+    <p class="lead" id="narrative">Loading the latest readings…</p>
+    <p class="muted small" id="asof"></p>
+
+    <div class="gauges" id="gauges"></div>
+
+    <div class="kpis tight" id="snapshot"></div>
+
+    <h2 class="section">Gauge history</h2>
+    <div class="panel chart-panel">
+      <div class="chart-head">
+        <div class="segmented" role="group" aria-label="Maturity bucket" id="hist-switch"></div>
+        <div class="legend"><span><i class="sw-under"></i>Buy side</span><span><i class="sw-over"></i>Sell side</span><span><i class="sw-neutral ln"></i>Zone edges ±20 / ±50</span></div>
+      </div>
+      <div id="hist-chart" class="chart h-md"></div>
+    </div>
+
+    <div id="buckets"></div>
+
+    <h2 class="section">Does it work? Backtest since 2000</h2>
+    <p class="prose">Each day since 2000 the gauge was computed with only the data available that day. That reading is then compared with the
+      bond's return over the following six months, in excess of 3-month T-bills. Returns come from a constant-maturity bond priced off
+      the daily Treasury yield (2-, 5- and 20-year), because the ETFs don't have that much history. <span class="hl-accent">Rank IC</span> is the
+      Spearman correlation between the gauge and the forward return: 0 means no information, and anything above 0.05 is useful for a macro signal.</p>
+    <div class="two-col" id="backtests" style="margin-top:14px"></div>
+
+    <h2 class="section">How the gauges are built</h2>
+    <div class="prose">
+      <p>Each gauge averages six or seven indicators. Every indicator is scored from <b>−1</b> (conditions favour selling that part of the
+        curve) to <b>+1</b> (they favour buying it), and the gauge is the average × 100. Zones: <span class="verdict over">Strong sell</span> below −50,
+        <span class="verdict over">Sell</span> −50 to −20, <span class="verdict hold">Hold</span> −20 to +20, <span class="verdict under">Buy</span> +20 to +50,
+        <span class="verdict under">Strong buy</span> above +50.</p>
+      <p>Two kinds of scoring are used. Indicators with a natural scale (the Sahm rule, inflation against the 2% target, 3-month changes)
+        use fixed linear ranges. Valuation indicators that drift over decades (real yields, the term premium, the curve slope) use a
+        <mark>rolling 10-year z-score</mark>, so "cheap" means cheap against the last decade, not against 1981.</p>
+      <p>The three buckets react to different things:</p>
+      <ul>
+        <li><b>Short-term (0–3y)</b> trades the Fed. Front-end yields are roughly the expected average policy rate, so the gauge reads the
+          policy stance (real fed funds rate), its direction, the labour market that drives it (Sahm rule, jobless claims), core inflation,
+          and 2-year yield momentum.</li>
+        <li><b>Mid-term (3–10y)</b> trades the business cycle. Excess bond returns are countercyclical: they are high in slowdowns and low in
+          expansions (Ludvigson &amp; Ng, 2009). The gauge combines economic activity (CFNAI), the labour market, inflation and its expectations,
+          the 5-year real yield as valuation, and trend.</li>
+        <li><b>Long-term (10y+)</b> trades valuation and risk. It uses the term premium (Kim–Wright), the 10-year real yield (the bond "value"
+          factor of Asness, Moskowitz &amp; Pedersen, 2013), the curve slope (Campbell &amp; Shiller, 1991; Fama &amp; Bliss, 1987), the yield against
+          nominal GDP growth, inflation-expectation momentum, trend (time-series momentum, Moskowitz, Ooi &amp; Pedersen, 2012) and flight to quality
+          (credit spreads).</li>
+      </ul>
+      <p>Data: <a href="https://fred.stlouisfed.org/">FRED</a> (St. Louis Fed) for every macro series and Yahoo Finance for ETF prices,
+        refreshed every weekday. Monthly and quarterly releases only enter the model after their usual publication lag (unemployment +5 weeks,
+        core PCE +2 months, GDP +4 months), so the history and the backtest never use data before it was published. FRED serves the latest revision
+        of each series, though, so revised data can still flatter the backtest a little.</p>
+      <div class="callout">The scales and thresholds were set from economic reasoning before looking at returns, not optimised on them.
+        That keeps the backtest honest, but it is still one sample of 25 years with few full rate cycles. Treat the gauges as a structured
+        read of conditions, not as a trading system. Nothing here is investment advice.</div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">Gauges recalculated every weekday from FRED and Yahoo Finance data. Nothing here is investment advice.</div>
+  </footer>
+
+  <script src="data/bonds.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <script>
+  (function () {
+    const D = (window.nexusData || {}).bonds;
+    if (!D) { document.getElementById("narrative").textContent = "No data yet: run `mise run bonds`."; return; }
+    const ORDER = ["short", "mid", "long"];
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const fmtDate = s => new Date(s + "T00:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+    const sign = (v, nd = 0) => (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(nd);
+    const toneCls = t => t === "positive" ? "under" : t === "negative" ? "over" : "hold";
+    const zoneOf = s => D.zones.find(z => s < z.hi) || D.zones[D.zones.length - 1];
+    const verdict = (label, tone) => `<span class="verdict ${toneCls(tone)}">${esc(label)}</span>`;
+    const pct = v => v == null ? '<span class="dim">n/a</span>' : `<span class="${v > 0 ? "pos" : v < 0 ? "neg" : ""}">${sign(v, 2)}%</span>`;
+    function fmtVal(ind) {
+      const v = ind.value;
+      if (v == null) return '<span class="dim">n/a</span>';
+      if (ind.unit === "%") return v.toFixed(2) + "%";
+      if (ind.unit === "pp") return sign(v, 2) + " pp";
+      return sign(v, 2);
+    }
+
+    // ---- headline
+    const G = D.gauges;
+    document.getElementById("narrative").innerHTML =
+      ORDER.map(b => `${G[b].label} <mark>${esc(G[b].zone)} (${sign(G[b].score)})</mark>`).join(" · ") +
+      ". Each gauge scores today's economic conditions from −100 (sell Treasuries of that maturity) to +100 (buy them).";
+    document.getElementById("asof").textContent =
+      `Market data to ${fmtDate(D.asof)} · computed ${fmtDate(D.updated)} · the gold tick on each gauge marks the reading a month ago`;
+
+    const S = D.snapshot;
+    const kpi = (label, v, sub) => `<div class="panel kpi"><div class="label">${label}</div><div class="value sm">${v == null ? "n/a" : v.toFixed(2) + "%"}</div><div class="sub">${sub}</div></div>`;
+    document.getElementById("snapshot").innerHTML = [
+      kpi("Fed funds (effective)", S.DFF, "policy rate"),
+      kpi("2-year yield", S.DGS2, `vs 3m bill ${S.DTB3?.toFixed(2)}%`),
+      kpi("10-year yield", S.DGS10, `real ${S.DFII10?.toFixed(2)}% · breakeven ${S.T10YIE?.toFixed(2)}%`),
+      kpi("20-year yield", S.DGS20, `term premium ${S.THREEFYTP10?.toFixed(2)}%`),
+      kpi("Core PCE inflation", S.core_yoy, `unemployment ${S.unrate?.toFixed(1)}%`),
+    ].join("");
+
+    // ---- gauges
+    document.getElementById("gauges").innerHTML = ORDER.map(b => {
+      const g = G[b];
+      const d = (ref, lbl) => ref == null ? "" : `<span class="${g.score - ref > 0 ? "pos" : g.score - ref < 0 ? "neg" : "dim"}">${sign(g.score - ref)}</span> ${lbl}`;
+      return `<a class="panel gauge-card" href="#${b}" style="text-decoration:none;color:inherit">
+        <div><h3>${esc(g.label)} Treasuries</h3><span class="muted small">${esc(g.horizon)} · ${esc(g.etfs.map(e => e.symbol).join(", "))}</span></div>
+        <div class="gauge" id="gauge-${b}"></div>
+        <div class="gauge-foot">${verdict(g.zone, g.tone)}<span class="muted small">${d(g.week, "vs last week")} · ${d(g.month, "vs last month")}</span></div>
+        <span class="muted small">${esc(g.summary)}</span></a>`;
+    }).join("");
+
+    function drawGauges() {
+      const C = Nexus.colors;
+      const tone = { negative: C.negative, positive: C.positive, neutral: C.neutral };
+      for (const b of ORDER) {
+        const g = G[b];
+        Plotly.react("gauge-" + b, [{
+          type: "indicator", mode: "gauge+number", value: Math.sign(g.score) * Math.round(Math.abs(g.score)),
+          number: { valueformat: "+.0f", font: { size: 40, color: C.text } },
+          gauge: {
+            shape: "angular",
+            axis: { range: [-100, 100], tickvals: [-100, -50, -20, 0, 20, 50, 100], tickfont: { size: 10, color: C.muted }, tickcolor: C.border },
+            bar: { color: C.text, thickness: 0.18 },
+            bgcolor: C.surface2, borderwidth: 0,
+            steps: [
+              { range: [-100, -50], color: Nexus.rgba(C.negative, 0.6) },
+              { range: [-50, -20], color: Nexus.rgba(C.negative, 0.28) },
+              { range: [-20, 20], color: Nexus.rgba(C.neutral, 0.22) },
+              { range: [20, 50], color: Nexus.rgba(C.positive, 0.28) },
+              { range: [50, 100], color: Nexus.rgba(C.positive, 0.6) },
+            ],
+            threshold: g.month == null ? undefined : { line: { color: C.series2, width: 3 }, thickness: 0.9, value: g.month },
+          },
+          hovertemplate: `${g.label}: %{value:+.0f}<extra></extra>`,
+        }], Nexus.plotlyLayout({ margin: { t: 10, b: 0, l: 26, r: 26 } }), { ...Nexus.plotlyConfig, displayModeBar: false, staticPlot: false });
+      }
+    }
+
+    // ---- per-bucket detail
+    const buckets = document.getElementById("buckets");
+    buckets.innerHTML = ORDER.map(b => {
+      const g = G[b];
+      const rows = g.indicators.map(ind => {
+        const s = ind.score;
+        const bar = s == null ? "" :
+          `<div style="${s >= 0 ? "left:50%" : `left:${50 + s * 50}%`};width:${Math.abs(s) * 50}%;background:var(${s >= 0 ? "--under" : "--over"})"></div>`;
+        const moved = ind.score_month == null || s == null ? "" : ` · ${sign(s - ind.score_month, 2)} in a month`;
+        const src = ind.src.map(id => `<a href="https://fred.stlouisfed.org/series/${id}">${id}</a>`).join(", ");
+        return `<tr>
+          <td class="company ind-cell"><span class="ind-name">${esc(ind.name)}</span><span class="ind-desc">${esc(ind.desc)}</span></td>
+          <td class="num">${fmtVal(ind)}<span class="score-num faint">data to ${fmtDate(ind.asof)}</span></td>
+          <td class="score-cell" title="${esc(ind.rule)}"><div class="score-track">${bar}</div>
+            <span class="score-num ${s > 0 ? "pos" : s < 0 ? "neg" : "dim"}">${s == null ? "n/a" : sign(s, 2)}<span class="dim">${moved}</span></span></td>
+          <td class="company small rule-cell">${esc(ind.rule)}<br><span class="faint">FRED ${src}</span></td>
+        </tr>`;
+      }).join("");
+      const etfRows = g.etfs.map(e => `<tr>
+          <td class="sym">${esc(e.symbol)}</td>
+          <td class="company">${esc(e.name)}<br><span class="faint small">${esc(e.maturity)} · LSE · ${esc(e.currency || "USD")}</span></td>
+          <td class="num">${e.price == null ? "n/a" : e.price.toFixed(e.price < 10 ? 3 : 2)}</td>
+          <td class="num">${pct(e.r1m)}</td><td class="num">${pct(e.r3m)}</td><td class="num">${pct(e.ytd)}</td><td class="num">${pct(e.r1y)}</td>
+          <td class="num">${pct(e.vs200)}</td></tr>`).join("");
+      return `<section id="${b}">
+        <div class="bucket-head"><h2 class="section">${esc(g.label)} Treasuries · ${esc(g.horizon)}</h2>${verdict(`${g.zone} ${sign(g.score)}`, g.tone)}</div>
+        <p class="muted">${esc(g.summary)}</p>
+        <div class="stack">
+          <div class="table-wrap"><table class="data" data-list>
+            <thead><tr><th data-list="title">Indicator</th><th class="num" data-list="value">Now</th>
+              <th data-list="note" data-list-prefix="Score">Score (−1 sell … +1 buy)</th><th>Scoring rule · source</th></tr></thead>
+            <tbody>${rows}</tbody></table></div>
+          <div class="table-wrap"><table class="data" data-list>
+              <thead><tr><th data-list="title">ETF</th><th data-list="subtitle">Name</th><th class="num">Price</th><th class="num">1m</th><th class="num">3m</th>
+                <th class="num">YTD</th><th class="num" data-list="value" data-list-prefix="1y">1y</th><th class="num" data-list="note" data-list-prefix="vs 200d">vs 200-day</th></tr></thead>
+              <tbody>${etfRows}</tbody></table></div>
+          <div class="panel chart-panel">
+              <div class="chart-head"><h3>Last 12 months, total return</h3>
+                <div class="legend">${g.etfs.map((e, i) => `<span><i class="${["sw-accent", "sw-series-2", "sw-neutral"][i]} ln"></i>${esc(e.symbol)}</span>`).join("")}</div></div>
+              <div id="etf-${b}" class="chart h-sm"></div>
+          </div>
+        </div></section>`;
+    }).join("");
+
+    function drawEtfs() {
+      const C = Nexus.colors, cols = [C.accent, C.series2, C.neutral];
+      for (const b of ORDER) {
+        const traces = G[b].etfs.filter(e => e.chart).map((e, i) => ({
+          type: "scatter", mode: "lines", name: e.symbol, x: e.chart.dates, y: e.chart.idx,
+          line: { color: cols[i], width: 2 }, hovertemplate: `${e.symbol} %{y:.1f}<extra></extra>`,
+        }));
+        Plotly.react("etf-" + b, traces, Nexus.plotlyLayout({
+          showlegend: false, margin: { t: 6, b: 30, l: 40, r: 10 }, hovermode: "x unified",
+          yaxis: { title: { text: "" }, tickformat: ".0f" },
+        }), Nexus.plotlyConfig);
+      }
+    }
+
+    // ---- history
+    let histBucket = "short";
+    const sw = document.getElementById("hist-switch");
+    sw.innerHTML = ORDER.map(b => `<button class="btn" data-b="${b}" aria-pressed="${b === histBucket}">${esc(G[b].label)}</button>`).join("");
+    sw.addEventListener("click", e => {
+      const btn = e.target.closest("button[data-b]");
+      if (!btn) return;
+      histBucket = btn.dataset.b;
+      sw.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === btn));
+      drawHistory();
+    });
+    function drawHistory() {
+      const C = Nexus.colors, H = D.history, y = H[histBucket];
+      const pos = y.map(v => v == null ? null : Math.max(v, 0));
+      const neg = y.map(v => v == null ? null : Math.min(v, 0));
+      const hover = y.map(v => v == null ? "" : `${sign(v)} · ${zoneOf(v).label}`);
+      const edges = [-50, -20, 20, 50].map(v => ({
+        type: "line", xref: "paper", x0: 0, x1: 1, y0: v, y1: v, layer: "below",
+        line: { color: C.neutral, width: 1, dash: "dot" },
+      }));
+      Plotly.react("hist-chart", [
+        { type: "scatter", mode: "lines", name: "Buy side", x: H.dates, y: pos, fill: "tozeroy", line: { color: C.positive, width: 1 }, hoverinfo: "skip" },
+        { type: "scatter", mode: "lines", name: "Sell side", x: H.dates, y: neg, fill: "tozeroy", line: { color: C.negative, width: 1 }, hoverinfo: "skip" },
+        { type: "scatter", mode: "lines", name: G[histBucket].label, x: H.dates, y, text: hover, line: { color: C.text, width: 0 },
+          hovertemplate: "%{x|%d %b %Y}: %{text}<extra></extra>" },
+      ], Nexus.plotlyLayout({
+        showlegend: false, hovermode: "x", shapes: edges, margin: { t: 10, b: 36, l: 44, r: 10 },
+        yaxis: { range: [-100, 100], tickvals: [-100, -50, -20, 0, 20, 50, 100], zeroline: true },
+      }), Nexus.plotlyConfig);
+    }
+
+    // ---- backtests
+    document.getElementById("backtests").innerHTML = ORDER.map(b => {
+      const t = G[b].backtest;
+      const rows = t.zones.map(z => `<tr><td>${verdict(z.zone, z.tone)}</td><td class="num">${z.share}%</td>
+        <td class="num">${z.fwd == null ? "n/a" : pct(z.fwd)}</td><td class="num">${z.hit == null ? "n/a" : z.hit + "%"}</td></tr>`).join("");
+      return `<div class="panel"><h3 style="margin-top:0">${esc(G[b].label)} <span class="muted small">· ${t.proxy.replace("DGS", "")}-year bond · since ${fmtDate(t.from)}</span></h3>
+        <p class="small muted">Rank IC <b class="hl-accent">${t.ic.toFixed(2)}</b> · average excess return over all days ${pct(t.base_fwd)} a year</p>
+        <div class="table-wrap"><table class="data" data-list="cards">
+          <thead><tr><th>Gauge zone</th><th class="num">Time</th><th class="num" title="Average excess return over the next 6 months, annualised">Next 6m</th><th class="num" title="Share of days followed by a positive 6-month excess return">Hit rate</th></tr></thead>
+          <tbody>${rows}</tbody></table></div></div>`;
+    }).join("");
+
+    function drawAll() { drawGauges(); drawEtfs(); drawHistory(); }
+    drawAll();
+    Nexus.onThemeChange(drawAll);
+  })();
+  </script>
+</body>
+</html>
