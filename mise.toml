@@ -112,3 +112,16 @@ run = "python scripts/fed_data.py"
 [tasks.bonds]
 description = "Recompute the Treasury Timing gauges (FRED + Yahoo) -> docs/data/bonds.js"
 run = "python scripts/bond_signals.py"
+
+[tasks.allweather]
+description = "All-Weather gauges: refresh prices (Yahoo) and macro (FRED), rebuild docs/data/allweather.js"
+depends = ["install"]
+run = "python -m allweather.build"
+
+[tasks.allweather-backtest]
+description = "Backtest the All-Weather gauges with tradelab (TRADELAB_DIR, default ../trading/Trading/backtest) -> docs/data/allweather_backtest.js"
+depends = ["install"]
+usage = '''
+flag "--skip-robust" help="Skip the optimize and walk-forward runs"
+'''
+run = "python -m allweather.backtest ${usage_skip_robust:+--skip-robust}"

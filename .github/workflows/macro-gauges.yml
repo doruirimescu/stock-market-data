@@ -1,8 +1,11 @@
-name: Treasury timing gauges
+name: Macro gauges
 
-# Recomputes the short/mid/long US Treasury buy-sell gauges behind
-# docs/bond_timing.html from FRED macro data and Yahoo ETF prices, and commits
-# docs/data/bonds.js. Stdlib only, takes a few seconds.
+# Recomputes the gauge pages from FRED macro data and Yahoo prices and commits
+# their data files:
+#   docs/data/bonds.js       Treasury Timing (docs/bond_timing.html), stdlib only
+#   docs/data/allweather.js  All-Weather gauges (docs/allweather.html), pandas
+# The All-Weather backtest (docs/data/allweather_backtest.js) needs tradelab and
+# is refreshed locally with `mise run allweather-backtest`.
 #
 # FRED posts the previous day's Treasury yields during the US afternoon, so the
 # run is scheduled after that.
@@ -20,7 +23,7 @@ env:
   MISE_TRUSTED_CONFIG_PATHS: ${{ github.workspace }}
 
 concurrency:
-  group: bond-signals
+  group: macro-gauges
   cancel-in-progress: false
 
 jobs:
@@ -34,19 +37,22 @@ jobs:
       - name: Set up mise (Python)
         uses: jdx/mise-action@v2
 
-      - name: Compute the gauges
+      - name: Treasury Timing gauges
         run: mise run bonds
+
+      - name: All-Weather gauges
+        run: mise run allweather
 
       - name: Commit and push
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/data/bonds.js
+          git add docs/data/bonds.js docs/data/allweather.js
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
           fi
-          git commit -m "Treasury timing gauges: $(date -u +%F) [skip ci]"
+          git commit -m "Macro gauges: $(date -u +%F) [skip ci]"
           for attempt in 1 2 3 4 5; do
             git pull --rebase && git push && exit 0
             sleep $((attempt * 15))

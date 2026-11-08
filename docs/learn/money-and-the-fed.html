@@ -49,6 +49,31 @@
     .quiz .why { margin: 10px 0 0; font-size: 13.5px; color: var(--muted); }
     .glossary dt { color: var(--text); font-weight: 600; margin-top: 10px; }
     .glossary dd { margin: 2px 0 0; color: var(--muted); }
+    .plain { margin: 0 0 18px; max-width: 760px; }
+    .recap { margin-top: 22px; }
+    .recap ul { margin: 6px 0 0; padding-left: 20px; }
+    .recap li { margin: 4px 0; }
+    .quick { margin-top: 18px; }
+    .quick > h3 { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin: 0; }
+    .quick .quiz { margin-top: 8px; }
+    .prose h3 { margin-top: 26px; }
+    .prose ol.steps { padding-left: 22px; }
+    .prose ol.steps li { margin: 6px 0; }
+    .cast td:first-child { white-space: nowrap; }
+    .pyramid { display: grid; justify-items: center; gap: 6px; padding: 16px 12px; }
+    .pyramid .tier { width: 100%; border: 1px solid var(--border-strong); border-radius: var(--radius); padding: 10px 14px; text-align: center; background: var(--surface-2); }
+    .pyramid .tier strong { display: block; }
+    .pyramid .tier span { color: var(--muted); font-size: 13px; }
+    .pyramid .t1 { max-width: 46%; border-color: var(--accent); }
+    .pyramid .t2 { max-width: 70%; border-color: var(--accent); }
+    .pyramid .t3 { border-color: var(--series-2); }
+    .pyramid .who { font-size: 12px; color: var(--faint); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 4px; }
+    .chain { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 12px 0; }
+    .chain .step { border: 1px solid var(--border-strong); background: var(--surface-2); border-radius: var(--radius); padding: 6px 10px; font-size: 13.5px; }
+    .chain .arrow { color: var(--faint); }
+    @media (max-width: 640px) {
+      .pyramid .t1, .pyramid .t2 { max-width: 100%; }
+    }
     @media (max-width: 760px) {
       .crisis { grid-template-columns: 1fr; }
       .crisis .timeline { max-height: none; }
@@ -75,9 +100,24 @@
 
     <div class="kpis" id="kpis"></div>
 
+    <div class="callout" style="margin-top:22px"><strong>New to this? Read this first.</strong> You don't need any background in economics. Chapter 1 builds the five ideas the rest of the lecture uses: balance sheets, interest rates, bonds, the main players, and what the Fed is for. Every later chapter opens with a one-paragraph summary, ends with a short recap, and has a couple of quick questions to check yourself. If a word is unfamiliar, it's in the <a href="#glossary">glossary</a>.</div>
+
+    <div class="prose" style="margin-top:22px">
+      <h3>The whole story in six sentences</h3>
+      <ol class="steps">
+        <li>Most of the money people use is <strong>bank deposits</strong>, and banks create them when they make loans.</li>
+        <li>Banks pay <em>each other</em> with a different kind of money, <strong>reserves</strong>, which only the Fed can create.</li>
+        <li>The Fed's main job is to steer <strong>interest rates</strong> so that inflation stays near 2% and as many people as possible have jobs.</li>
+        <li>It does that by choosing what interest it pays and charges on reserves, which sets the floor and ceiling for the rate banks charge each other overnight.</li>
+        <li>When cutting rates to zero is not enough, it buys bonds in bulk with new reserves (<strong>QE</strong>), and later lets them run off (<strong>QT</strong>).</li>
+        <li>In a panic it lends to almost anyone with good collateral, which is why its balance sheet jumps in every crisis.</li>
+      </ol>
+    </div>
+
     <nav class="toc" aria-label="Contents">
       <h4>Contents</h4>
       <ol>
+        <li><a href="#basics">Start here: five ideas you need</a></li>
         <li><a href="#ch1">What is a dollar?</a></li>
         <li><a href="#ch2">How dollars are made: the money lab</a></li>
         <li><a href="#ch3">How the Fed "buys money"</a></li>
@@ -93,18 +133,146 @@
       </ol>
     </nav>
 
+    <!-- ============================================================ basics -->
+    <section class="chapter" id="basics">
+      <div class="eyebrow">Chapter 1</div>
+      <h2>Start here: five ideas you need</h2>
+      <p class="plain muted">Money mechanics look confusing mostly because people skip the basics. These five ideas take ten minutes and make every later chapter much easier. Don't rush them.</p>
+
+      <div class="prose">
+        <h3>Idea 1: a balance sheet is a list of what you own and what you owe</h3>
+        <p>Every person, company and bank, including the Fed, can be described by a <strong>balance sheet</strong>, a two-column list:</p>
+        <ul>
+          <li><strong>Assets</strong> (left column): things you own or are owed. Your house, your car, the money in your bank account.</li>
+          <li><strong>Liabilities</strong> (right column): things you owe to someone else. Your mortgage, your credit card balance.</li>
+          <li><strong>Equity</strong> (also on the right): what is left over if you sold every asset and paid every debt. For a person it's called net worth; for a bank, its capital.</li>
+        </ul>
+        <p>Because equity is defined as "assets minus liabilities", the two columns <mark>always add up to the same total</mark>. That's why it's called a balance sheet, and it's why every transaction in this lecture changes at least two lines at once.</p>
+        <p>The single most useful trick: <strong>one person's asset is another person's liability.</strong> The $20 in your checking account is an asset to you and a debt your bank owes you. Your mortgage is a debt to you and an asset (a loan) to the bank. Look at the two balance sheets below and find the mirror images.</p>
+      </div>
+      <div class="t-grid" style="margin-top:14px">
+        <div class="t-account"><div class="t-title">You<small>a homeowner</small></div>
+          <div class="t-side"><h4>Assets</h4><div class="t-row"><span>House</span><b>300</b></div><div class="t-row up"><span>Checking account</span><b>20</b></div></div>
+          <div class="t-side"><h4>Liabilities</h4><div class="t-row down"><span>Mortgage</span><b>250</b></div><div class="t-row"><span>Net worth (equity)</span><b>70</b></div></div>
+          <div class="t-total"><span>Total</span><b>320</b></div><div class="t-total"><span>Total</span><b>320</b></div></div>
+        <div class="t-account"><div class="t-title">Your bank<small>just your part of it</small></div>
+          <div class="t-side"><h4>Assets</h4><div class="t-row down"><span>Mortgage loan to you</span><b>250</b></div></div>
+          <div class="t-side"><h4>Liabilities</h4><div class="t-row up"><span>Your checking account</span><b>20</b></div><div class="t-row"><span>Other funding and equity</span><b>230</b></div></div>
+          <div class="t-total"><span>Total</span><b>250</b></div><div class="t-total"><span>Total</span><b>250</b></div></div>
+      </div>
+      <p class="muted small" style="margin-top:6px">$ thousands. Matching colours mark the same item seen from both sides: your deposit is the bank's debt to you; your mortgage is the bank's asset.</p>
+
+      <div class="prose">
+        <h3>Idea 2: an interest rate is the price of borrowing money</h3>
+        <p>If you borrow $100 for a year at 5%, you pay back $105. The extra $5 is rent for using someone else's money. Interest rates are quoted <em>per year</em>, even for loans that last one night: a 4% overnight loan of $1 million costs about $111 (4% ÷ 360 days × $1M).</p>
+        <p>Rates differ by <strong>how long</strong> you borrow (a 30-year loan usually costs more than a 1-night loan, because a lot can go wrong in 30 years) and by <strong>how risky</strong> the borrower is (the US government pays less than a start-up). The Fed directly controls only the shortest rate of all, the overnight rate between banks. Everything else is priced by markets on top of it.</p>
+        <p>Rate changes are measured in <strong>basis points</strong> (bp): one basis point is one hundredth of a percentage point. Going from 4.00% to 4.25% is "up 25 bp". The Fed almost always moves in steps of 25 bp.</p>
+
+        <h3>Idea 3: a bond is a tradeable IOU, and its price moves opposite to interest rates</h3>
+        <p>A <strong>bond</strong> is a loan cut into pieces that investors can buy and sell. A US <strong>Treasury bond</strong> is a loan to the US government: you pay $100 today, the government pays you a fixed <strong>coupon</strong> (say $3) every year, and returns your $100 when the bond <strong>matures</strong>. Short-dated ones (a year or less) are called <strong>Treasury bills</strong>.</p>
+        <p>Here is the key fact. Suppose you own that bond paying $3 a year, and new bonds now pay $5. Nobody will pay you $100 for your $3 bond when $100 buys a $5 bond, so to sell it you must cut the price until its return matches. <mark>When interest rates rise, existing bond prices fall; when rates fall, prices rise.</mark> The return a buyer locks in at today's price is the bond's <strong>yield</strong>.</p>
+        <p>Longer bonds swing more, because you're stuck with the old coupon for more years. Drag the slider and compare the three lines. This idea comes back in the QE chapter, and in the failure of Silicon Valley Bank.</p>
+      </div>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>Price of a bond paying a 3% coupon</h3>
+          <div class="legend"><span><i class="ln sw-neutral"></i>2-year</span><span><i class="ln sw-accent"></i>10-year</span><span><i class="ln sw-series-2"></i>30-year</span></div></div>
+        <div class="controls">
+          <label class="range-field">Market interest rate today <output id="bd-y-out"></output><input type="range" id="bd-y" min="0" max="8" step="0.25" value="5"></label>
+        </div>
+        <div class="readout" id="bd-readout"></div>
+        <div id="c-bond" class="chart h-md"></div>
+        <div class="chart-note">Each bond was bought at $100 when rates were 3%. The price is what a buyer would pay today so that the bond's return equals the market rate. Below 3% the bonds are worth more than $100; above 3%, less.</div>
+      </div>
+
+      <div class="prose">
+        <h3>Idea 4: the cast of characters</h3>
+        <p>Seven kinds of players appear in this lecture. It helps to know what each one wants.</p>
+      </div>
+      <div class="table-wrap cast" style="margin-top:10px">
+        <table class="data" data-list="cards">
+          <thead><tr><th>Who</th><th class="company">What they are</th><th class="company">What they want</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Households &amp; firms</strong></td><td class="company">You, your employer, the shop down the road.</td><td class="company">Somewhere safe to keep money, and loans at a decent rate.</td></tr>
+            <tr><td><strong>Commercial banks</strong></td><td class="company">JPMorgan, Bank of America, your local bank. They take deposits and make loans.</td><td class="company">Profit: earn more on loans and bonds than they pay on deposits.</td></tr>
+            <tr><td><strong>The Federal Reserve</strong></td><td class="company">The US central bank: the bank for banks and for the government.</td><td class="company">Stable prices and maximum employment (see Idea 5).</td></tr>
+            <tr><td><strong>The Treasury</strong></td><td class="company">The government's finance department. Collects taxes, pays bills, borrows by selling bonds.</td><td class="company">To pay for spending at the lowest cost.</td></tr>
+            <tr><td><strong>Money market funds</strong></td><td class="company">Funds that hold only very short, very safe IOUs. Companies and savers use them as a higher-paying bank account. About $7 trillion.</td><td class="company">A safe overnight home for cash that pays interest.</td></tr>
+            <tr><td><strong>Primary dealers</strong></td><td class="company">About two dozen big banks and brokers that must bid at every Treasury auction and trade directly with the Fed.</td><td class="company">Profit from making markets in bonds, usually with borrowed money.</td></tr>
+            <tr><td><strong>Pension funds, insurers, hedge funds</strong></td><td class="company">Big investors that are <em>not</em> banks.</td><td class="company">Returns. Pension funds and insurers want long, safe bonds to match far-off promises.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose">
+        <h3>Idea 5: what the Fed is for</h3>
+        <p>Congress gave the Federal Reserve a <strong>dual mandate</strong>: <em>maximum employment</em> and <em>stable prices</em>. The Fed defines stable prices as <strong>2% inflation</strong> a year. Inflation is the rate at which prices in general go up: at 2%, a basket of groceries that costs $100 today costs $102 next year. Too much inflation erodes wages and savings; too little (or falling prices, called deflation) tends to come with weak economies and rising debt burdens.</p>
+        <p>The Fed's main lever is the price of money. Cheaper borrowing encourages people and companies to borrow, spend and hire; that heats up the economy and, eventually, prices. Dearer borrowing cools it down. The chain looks like this, and it takes roughly a year or more to work through:</p>
+      </div>
+      <div class="chain" aria-label="How a rate change reaches the economy">
+        <span class="step">Fed sets the overnight rate</span><span class="arrow">→</span>
+        <span class="step">Bills, savings accounts, credit cards reprice within days</span><span class="arrow">→</span>
+        <span class="step">Markets reprice mortgages and long bonds on what they expect next</span><span class="arrow">→</span>
+        <span class="step">Borrowing, spending, hiring, stock prices and the dollar respond</span><span class="arrow">→</span>
+        <span class="step">Jobs and inflation move</span>
+      </div>
+      <div class="prose">
+        <p>The decisions are made by the <strong>Federal Open Market Committee</strong> (FOMC): seven governors in Washington plus five of the twelve regional Fed bank presidents, meeting eight times a year. The Fed is independent: the government appoints its leaders but doesn't approve each decision, so rates can't easily be cut just before an election.</p>
+      </div>
+
+      <div class="callout recap"><strong>Remember</strong>
+        <ul>
+          <li>Assets = liabilities + equity, always. Every transaction changes at least two lines.</li>
+          <li>My asset is your liability: your deposit is a debt your bank owes you.</li>
+          <li>Bond prices and interest rates move in opposite directions, and long bonds move most.</li>
+          <li>The Fed's goals are 2% inflation and maximum employment; its main tool is the overnight interest rate.</li>
+        </ul>
+      </div>
+      <div class="quick"><h3>Quick check</h3><div class="quiz" data-quick="basics"></div></div>
+    </section>
+
     <!-- ============================================================ 1 -->
     <section class="chapter" id="ch1">
-      <div class="eyebrow">Chapter 1</div>
+      <div class="eyebrow">Chapter 2</div>
       <h2>What is a dollar?</h2>
+      <p class="plain muted">In plain English: "a dollar" can mean three different things, a banknote, a bank's balance at the Fed, or the number in your bank account. They're all worth exactly $1, but different institutions owe them and different people can hold them.</p>
       <div class="prose">
-        <p>A dollar is not one thing. It is a <strong>promise</strong> recorded on somebody's balance sheet, and there are three kinds of promise that all trade at exactly one dollar:</p>
+        <p>A dollar is not one thing. It is a <strong>promise</strong> recorded on somebody's balance sheet (Idea 1), and there are three kinds of promise that all trade at exactly one dollar:</p>
         <ul>
-          <li><strong>Physical currency.</strong> A $20 note is a liability of the Federal Reserve. Anyone can hold it.</li>
-          <li><strong>Bank reserves.</strong> Balances that commercial banks keep in their accounts at the Fed. Only banks (and a few other institutions) can hold them. Banks use them to pay each other.</li>
+          <li><strong>Physical currency.</strong> A $20 note is a liability of the Federal Reserve: it's printed on the note, "Federal Reserve Note". Anyone can hold it.</li>
+          <li><strong>Bank reserves.</strong> Balances that commercial banks keep in their accounts at the Fed. Think of it as the bank's own checking account, held at the bank for banks. Only banks (and a few other institutions) can hold them, and they never leave the Fed's books. Banks use them to pay each other.</li>
           <li><strong>Bank deposits.</strong> The number in your checking account is a liability of <em>your bank</em>, not of the Fed. This is the money households and firms actually spend, and it is by far the largest layer.</li>
         </ul>
-        <p>The layers form a hierarchy. Deposits are promises to pay you reserves-or-cash on demand; reserves and cash are promises of the state's central bank, which can never run out of its own liabilities. Who can create each layer is the subject of this whole lecture.</p>
+        <p><strong>Why is a banknote a "liability" if the Fed won't give you anything for it?</strong> Until 1971 dollars could, in principle, be swapped for gold. Today the Fed owes you nothing except another note, yet it still records currency as a liability, because the note is a claim on the Fed that the Fed must accept back (for example, when a bank returns cash). People value it because the government accepts it for taxes and the law makes it legal tender for debts. Think of it like casino chips: the casino records the chips you hold as something it owes, and everyone in the building treats them as money.</p>
+        <h3>Why there are two kinds of "bank" money</h3>
+        <p>The US runs a <strong>two-tier system</strong>. The public pays each other with bank deposits. Banks pay each other with reserves. Here's what happens when you pay a friend who banks somewhere else:</p>
+        <ol class="steps">
+          <li>You send Alice $100. Your bank (Bank A) lowers your deposit by $100.</li>
+          <li>Alice's bank (Bank B) raises her deposit by $100. Bank B now owes Alice $100 more, so it needs to be paid.</li>
+          <li>Bank A pays Bank B by moving $100 of reserves from its account at the Fed to Bank B's account at the Fed.</li>
+        </ol>
+      </div>
+      <div class="t-grid" style="margin:12px 0 16px">
+        <div class="t-account"><div class="t-title">Bank A<small>your bank</small></div>
+          <div class="t-side"><h4>Assets</h4><div class="t-row down"><span>Reserves at the Fed</span><b>−100</b></div></div>
+          <div class="t-side"><h4>Liabilities</h4><div class="t-row down"><span>Your deposit</span><b>−100</b></div></div>
+          <div class="t-total"><span>Change</span><b>−100</b></div><div class="t-total"><span>Change</span><b>−100</b></div></div>
+        <div class="t-account"><div class="t-title">Bank B<small>Alice's bank</small></div>
+          <div class="t-side"><h4>Assets</h4><div class="t-row up"><span>Reserves at the Fed</span><b>+100</b></div></div>
+          <div class="t-side"><h4>Liabilities</h4><div class="t-row up"><span>Alice's deposit</span><b>+100</b></div></div>
+          <div class="t-total"><span>Change</span><b>+100</b></div><div class="t-total"><span>Change</span><b>+100</b></div></div>
+      </div>
+      <div class="prose">
+        <p>The total amount of reserves didn't change: they just moved from one bank to another, inside the Fed. That's an important rule: <mark>banks can't create or destroy reserves, and the public can't hold them.</mark> Only the Fed changes the total. When you hear "banks are sitting on trillions of reserves instead of lending them out", that's a misunderstanding: reserves can't be lent to households at all. They can only move between banks, or turn into cash when someone withdraws notes.</p>
+        <p>The layers form a hierarchy. Deposits are promises to pay you reserves-or-cash on demand; reserves and cash are promises of the central bank, which can never run out of its own liabilities.</p>
+      </div>
+      <div class="panel pyramid" aria-label="The hierarchy of money">
+        <div class="tier t1"><strong>Bank reserves</strong><span>Owed by the Fed · held only by banks · used for payments between banks</span></div>
+        <div class="tier t2"><strong>Physical currency</strong><span>Owed by the Fed · held by anyone</span></div>
+        <div class="tier t3"><strong>Bank deposits</strong><span>Owed by commercial banks · held by households and firms · most of the money we spend</span></div>
+        <div class="who">Top: created by the Fed · Bottom: created by commercial banks</div>
+      </div>
+      <div class="prose">
+        <p>The chart below measures the layers today. The bottom bar uses <strong>M2</strong>, the standard measure of money the public holds: cash, checking and savings deposits, small time deposits and retail money market funds. Subtracting cash leaves the bank-created part.</p>
       </div>
       <div class="panel chart-panel">
         <div class="chart-head"><h3>The three layers of US money today</h3>
@@ -113,17 +281,45 @@
         <div class="chart-note">Currency in circulation and reserve balances from the Fed's H.4.1 release; bank deposits and other M2 = M2 money stock minus currency. Trillions of dollars.</div>
       </div>
       <div class="callout"><strong>Key idea.</strong> Roughly nine out of ten dollars that people hold were not created by the Fed at all. They were created by commercial banks, one loan at a time.</div>
+      <div class="callout recap"><strong>Remember</strong>
+        <ul>
+          <li>Three kinds of dollar: cash and reserves (owed by the Fed), deposits (owed by your bank).</li>
+          <li>The public pays with deposits; banks settle with each other in reserves.</li>
+          <li>Reserves never leave the Fed's books. Only the Fed changes how many there are.</li>
+        </ul>
+      </div>
+      <div class="quick"><h3>Quick check</h3><div class="quiz" data-quick="ch1"></div></div>
     </section>
 
     <!-- ============================================================ 2 -->
     <section class="chapter" id="ch2">
-      <div class="eyebrow">Chapter 2</div>
+      <div class="eyebrow">Chapter 3</div>
       <h2>How dollars are made: the money lab</h2>
+      <p class="plain muted">In plain English: a bank doesn't lend out somebody else's savings. It writes a new number into your account and calls it a loan. That's how most money is born. The Fed creates reserves and cash, by buying things and paying with money it creates.</p>
       <div class="prose">
         <p>The textbook story says banks collect savings and lend them out. The real mechanics run the other way: <mark>when a bank makes a loan, it creates a brand-new deposit</mark> for the borrower. Loans create deposits; repaying a loan destroys them. The Bank of England put this plainly in its 2014 paper <em>Money creation in the modern economy</em>.</p>
-        <p>What limits banks is not a stock of savings but <strong>profitability, capital requirements, liquidity rules and demand for credit</strong>. Since March 2020, US reserve requirements are zero, so the old "money multiplier" no longer describes anything.</p>
-        <p>The Fed creates the other two layers. It creates <strong>reserves</strong> whenever it buys an asset or lends, simply by crediting a bank's account. It issues <strong>currency</strong> when banks order cash: the Bureau of Engraving and Printing prints the notes, and a bank pays for them with reserves. The Treasury does not create money; it taxes and borrows, and keeps its cash in an account at the Fed called the <strong>Treasury General Account</strong> (TGA).</p>
-        <p>Try it. Each button below is a real transaction. Watch which balance sheets change, and which kind of money appears or disappears. Every balance sheet always balances.</p>
+        <h3>A loan, step by step</h3>
+        <p>Sam borrows $30,000 to buy a car. The bank checks Sam's income, signs the contract, and then simply types $30,000 into Sam's account. On the bank's balance sheet two lines grow at once: a new <em>asset</em> (Sam owes the bank $30,000) and a new <em>liability</em> (the bank owes Sam a $30,000 deposit). No other customer's balance went down. $30,000 of money exists that didn't exist a minute ago.</p>
+        <p>Sam pays the car dealer, so the deposit moves to the dealer's bank, along with $30,000 of reserves (as in the payment example in Chapter 2). The money still exists, now in the dealer's account. It only disappears when Sam repays the loan: his deposit shrinks and the loan shrinks with it.</p>
+        <h3>So what stops banks creating unlimited money?</h3>
+        <ul>
+          <li><strong>Profitability.</strong> Every loan must earn more than it costs the bank to fund it, after expected losses. Bad loans lose money.</li>
+          <li><strong>Capital requirements.</strong> Regulators make banks fund part of every loan with their own equity (Idea 1), roughly 10% or more for risky loans. Equity is expensive to raise, so it rations lending.</li>
+          <li><strong>Liquidity.</strong> When borrowers spend their new money, it flows to other banks and the lender must hand over reserves. A bank has to keep enough reserves, or be able to borrow them, to cover those outflows.</li>
+          <li><strong>Demand.</strong> Someone must want to borrow, at a rate the bank will accept. Higher Fed rates make loans dearer and reduce demand.</li>
+        </ul>
+        <p>Old textbooks taught a "money multiplier": banks must hold a fixed fraction of deposits as reserves, so the Fed controls deposits by controlling reserves. It never worked well in practice, and since March 2020 US reserve requirements are zero, so it describes nothing at all.</p>
+        <h3>Where the Fed and Treasury fit</h3>
+        <p>The Fed creates the other two layers. It creates <strong>reserves</strong> whenever it buys an asset or lends, simply by crediting a bank's account. It issues <strong>currency</strong> when banks order cash: the Bureau of Engraving and Printing prints the notes, and a bank pays for them with reserves. The Treasury does not create money; it taxes and borrows, and keeps its cash in an account at the Fed called the <strong>Treasury General Account</strong> (TGA). That last detail matters: when money moves into the TGA, it leaves the banking system, and when the Treasury spends, it comes back.</p>
+        <h3>How to use the lab</h3>
+        <p>Each button below is a real transaction. Two balance sheets appear underneath: the Fed's and one bank that stands for the whole banking system. After each click, rows that rose turn teal with a <strong>+</strong>, rows that fell turn orange with a <strong>−</strong>, and the panel explains what happened. Check that both columns of each balance sheet still have equal totals: they always will. Try this order:</p>
+        <ol class="steps">
+          <li><strong>Bank makes a loan</strong>, then <strong>Borrower repays</strong>. Did reserves change? (No: lending creates deposits, not reserves.)</li>
+          <li><strong>QE: buy bonds from a bank</strong>. Did money held by the public change?</li>
+          <li><strong>QE: buy bonds from a pension fund</strong>. Now what changed? This difference explains why QE raised the money supply.</li>
+          <li><strong>Treasury collects taxes</strong>, then <strong>Treasury spends from the TGA</strong>. Watch reserves fall and come back.</li>
+          <li><strong>Repo</strong> then <strong>Repo unwinds</strong>: a temporary boost to reserves that reverses the next day.</li>
+        </ol>
       </div>
 
       <div class="lab" id="lab">
@@ -140,30 +336,57 @@
         <div class="t-grid" id="lab-sheets"></div>
         <div><button class="btn sm" id="lab-reset">Reset balance sheets</button> <span class="muted small">Figures in $ billions, a toy banking system with one bank.</span></div>
       </div>
+      <div class="callout recap"><strong>Remember</strong>
+        <ul>
+          <li>Loans create deposits; repayments destroy them. Banks create most money.</li>
+          <li>Banks are limited by profit, capital, liquidity and demand, not by a pile of savings.</li>
+          <li>The Fed creates reserves by buying or lending. Money paid into the TGA leaves the banking system until the Treasury spends it.</li>
+        </ul>
+      </div>
+      <div class="quick"><h3>Quick check</h3><div class="quiz" data-quick="ch2"></div></div>
     </section>
 
     <!-- ============================================================ 3 -->
     <section class="chapter" id="ch3">
-      <div class="eyebrow">Chapter 3</div>
+      <div class="eyebrow">Chapter 4</div>
       <h2>How the Fed "buys money"</h2>
+      <p class="plain muted">In plain English: the Fed buys bonds and pays by typing new reserves into the seller's bank account. Nothing is printed. Whether this adds to the money people hold depends on who sold the bond.</p>
       <div class="prose">
         <p>The phrase "the Fed prints money" is shorthand for something more precise. The Fed's trading desk at the Federal Reserve Bank of New York buys Treasury bonds or mortgage-backed securities from about two dozen <strong>primary dealers</strong>. It pays by crediting the dealer's bank with reserves that did not exist a second earlier. No paper is printed. The bonds go into the Fed's portfolio, the <strong>System Open Market Account</strong> (SOMA).</p>
+        <p><strong>What does it buy?</strong> Mostly two things. <strong>Treasuries</strong> are the government's bonds (Idea 3). <strong>Mortgage-backed securities</strong> (MBS) are bundles of thousands of home loans: homeowners' monthly payments flow through to whoever owns the bundle. The Fed only buys MBS guaranteed by government-backed agencies (Fannie Mae, Freddie Mac, Ginnie Mae), so it takes no risk that homeowners default.</p>
+        <p><strong>Why buy at all?</strong> For two different reasons, which is why the size of purchases varies so much. Small, routine purchases of short-dated bills keep enough reserves in the system for payments to run smoothly. Huge purchases of long-dated bonds, QE, aim to push down long-term interest rates when the overnight rate is already at zero (Chapter 8).</p>
         <p>What happens next depends on who ultimately sold the bond, which you saw in the lab:</p>
         <ul>
           <li><strong>A bank sells:</strong> the bank swaps a bond for reserves. Reserves rise; the public's money (deposits) does not change.</li>
           <li><strong>A pension fund, insurer or hedge fund sells</strong> (via a dealer): the seller receives a bank deposit and its bank receives reserves. Both reserves <em>and</em> deposits rise. This is how QE added to the money people hold.</li>
         </ul>
-        <p>The Fed earns interest on the bonds it holds and pays interest on reserves and reverse repos. It sends its profits to the Treasury: tens of billions of dollars a year through the 2010s, close to $100 billion in good years. When rates rose above the yield on its old low-coupon bonds in late 2022, the Fed began losing money. It does not need capital to keep operating; it records the losses as a <strong>deferred asset</strong> that future profits pay down before remittances resume.</p>
+        <p>Notice what the bank does <em>not</em> get to do in either case: hand the new reserves to the public. As Chapter 2 showed, reserves stay on the Fed's books. QE raises the public's money only through the second route, when non-banks sell.</p>
+        <h3>Does the Fed make a profit?</h3>
+        <p>Usually, yes. The Fed earns interest on the bonds it holds and pays interest on reserves and reverse repos. It works like a bank: profit is the gap between what its assets earn and what its liabilities cost. It sends its profits to the Treasury: tens of billions of dollars a year through the 2010s, close to $100 billion in good years.</p>
+        <p>Then it flipped. Much of the portfolio was bought in 2020 and 2021 at yields around 1.5%. When the Fed raised rates to fight inflation in 2022, it had to pay over 4% on the reserves that funded those bonds. Earn 1.5%, pay 4%: a loss on every dollar, roughly $100 billion a year at the worst. A normal company would need fresh capital; the Fed doesn't, because it can always pay in reserves it creates. It records the losses as a <strong>deferred asset</strong>, an IOU to itself that future profits pay down before payments to the Treasury resume.</p>
       </div>
       <div class="formula">Fed buys $100 of bonds &nbsp;→&nbsp; Fed assets +100 (bonds) &nbsp;=&nbsp; Fed liabilities +100 (reserves)</div>
+      <div class="callout recap"><strong>Remember</strong>
+        <ul>
+          <li>"Printing money" really means the Fed creating reserves to pay for bonds.</li>
+          <li>From a bank: only reserves rise. From a non-bank: reserves <em>and</em> deposits rise.</li>
+          <li>The Fed earns on its bonds and pays on reserves. When rates jump, that gap can turn into losses, which don't stop it working.</li>
+        </ul>
+      </div>
+      <div class="quick"><h3>Quick check</h3><div class="quiz" data-quick="ch3"></div></div>
     </section>
 
     <!-- ============================================================ 4 -->
     <section class="chapter" id="ch4">
-      <div class="eyebrow">Chapter 4</div>
+      <div class="eyebrow">Chapter 5</div>
       <h2>The Fed's toolkit</h2>
+      <p class="plain muted">In plain English: the Fed can't order banks to charge a certain rate. Instead, it sets a floor (what it pays on cash parked with it) and a ceiling (what it charges to lend), and market rates settle in between.</p>
       <div class="prose">
-        <p>The Federal Open Market Committee (FOMC) meets eight times a year and sets a <strong>target range</strong> for the federal funds rate, the rate banks charge each other for overnight loans of reserves. Since 2008 it has steered that rate not by rationing reserves but with <strong>administered rates</strong>: rates the Fed itself pays or charges, which form a corridor.</p>
+        <p>The Federal Open Market Committee (FOMC) meets eight times a year and sets a <strong>target range</strong> for the federal funds rate, for example 3.75–4.00%. "Federal funds" is just the market name for reserves. Banks that end the day with more reserves than they want lend them overnight to banks that are short, and the rate on those loans is the federal funds rate. It's the shortest, safest rate in the economy, the base that other rates are built on (Idea 5).</p>
+        <p>Since 2008 the Fed has steered that rate not by rationing reserves but with <strong>administered rates</strong>: rates the Fed itself pays or charges, which form a corridor. When the news says "the Fed raised rates by a quarter point", what actually happens is that the Fed raises the target range <em>and</em> every administered rate by 0.25 points the next day, and market rates follow within hours.</p>
+        <h3>Why a floor works: a worked example</h3>
+        <p>Suppose the Fed pays 3.90% on reserves (IORB) and some bank offers to lend reserves to other banks at 3.70%. Any bank could borrow from it at 3.70%, leave the money at the Fed earning 3.90%, and pocket 0.20% risk-free. Banks pile in to borrow, which bids the market rate back up. That kind of risk-free trade is called <strong>arbitrage</strong>, and it's what holds market rates near the Fed's rates. The ceiling works the same way in reverse: nobody pays 6% in the market if the Fed will lend at 4%.</p>
+        <p>The table below lists every tool. Don't worry about memorising them; the three that matter most day to day are IORB, ON RRP and the Standing Repo Facility.</p>
       </div>
       <div class="table-wrap" style="margin-top:14px">
         <table class="data" data-list="cards">
@@ -180,17 +403,33 @@
         <div class="chart-note">Wednesday values, percent. IOER (interest on excess reserves) was replaced by IORB (interest on reserve balances) in July 2021.</div>
       </div>
       <div class="prose" style="margin-top:14px">
-        <p>Read the corridor from the top down. <strong>Nobody lends reserves below IORB</strong> to another bank, because the Fed pays IORB risk-free. Money market funds can't earn IORB, but they can lend to the Fed at the <strong>ON RRP rate</strong>, so private rates rarely fall below that floor. And no one needs to pay much above the top of the range, because banks can borrow at the <strong>discount window</strong> or, since 2021, from the <strong>Standing Repo Facility</strong>. The effective fed funds rate (EFFR) stays inside.</p>
+        <p><strong>How to read the chart.</strong> The grey band is the target range the FOMC announces. The lines are the rates that actually happen. Notice the staircase: long flat stretches at zero (2009–2015 and 2020–2022), then steps up during hiking cycles and down during cuts. The EFFR (the actual fed funds rate) hugs the line just under IORB the whole time. That's the corridor working.</p>
+        <p>Read the corridor from the top down. <strong>Nobody lends reserves below IORB</strong> to another bank, because the Fed pays IORB risk-free. Money market funds aren't banks, so they can't earn IORB, but they can lend to the Fed at the <strong>ON RRP rate</strong>, so private rates rarely fall below that floor. And no one needs to pay much above the top of the range, because banks can borrow at the <strong>discount window</strong> or, since 2021, from the <strong>Standing Repo Facility</strong>. The effective fed funds rate (EFFR) stays inside.</p>
       </div>
+      <div class="callout recap"><strong>Remember</strong>
+        <ul>
+          <li>The FOMC sets a target range for the overnight rate banks charge each other.</li>
+          <li>It holds rates in range with a floor (IORB, ON RRP) and a ceiling (SRF, discount window), enforced by arbitrage.</li>
+          <li>A "rate hike" means all those administered rates move up together.</li>
+        </ul>
+      </div>
+      <div class="quick"><h3>Quick check</h3><div class="quiz" data-quick="ch4"></div></div>
     </section>
 
     <!-- ============================================================ 5 -->
     <section class="chapter" id="ch5">
-      <div class="eyebrow">Chapter 5</div>
+      <div class="eyebrow">Chapter 6</div>
       <h2>Scarce, ample and abundant reserves</h2>
+      <p class="plain muted">In plain English: when reserves are hard to come by, banks pay up to borrow them and rates jump. When there are plenty, rates sink to the Fed's floor and stay put. Today the Fed keeps "plenty, but not wastefully many".</p>
       <div class="prose">
-        <p>Before 2008, reserves were <strong>scarce</strong>: about $10 billion in the whole system. The Fed set rates by adding or draining a few billion each day, moving along the steep part of the demand curve below. QE flooded the system with trillions, and the curve went flat. Now the Fed runs an <strong>ample reserves</strong> framework (formalised in January 2019): it keeps reserves on the flat part and moves rates by changing IORB and the ON RRP rate.</p>
-        <p>Drag the sliders. Shrink reserves and watch rates jump off the floor: that is September 2019 in miniature. Then switch on the Standing Repo Facility and see the ceiling catch the spike.</p>
+        <h3>Why banks want reserves at all</h3>
+        <p>Banks need reserves to make payments to other banks (Chapter 2), and every day trillions of dollars of payments flow between them. Since 2008, regulators also require big banks to hold a buffer of very safe, instantly available assets, and reserves are the safest of all. Each bank has a level below which it gets nervous. Add those up across the system and you get the <strong>demand for reserves</strong>.</p>
+        <h3>An analogy: parking in a city</h3>
+        <p>Picture a city where the council pays you a small fee for leaving a parking space empty (that's IORB, the floor). When spaces are <strong>scarce</strong>, drivers bid fiercely for the last ones and the price shoots up: a few spaces more or less makes a big difference. When spaces are <strong>abundant</strong>, nobody pays more than the council's fee, and adding another thousand spaces changes nothing. The price is flat. The chart below has exactly this shape: the horizontal axis is the quantity of reserves, the vertical axis is the overnight rate.</p>
+        <h3>From scarce to ample</h3>
+        <p>Before 2008, reserves were <strong>scarce</strong>: about $10 billion in the whole system. The Fed set rates by adding or draining a few billion each day, moving along the steep part of the curve. QE flooded the system with trillions, and the curve went flat; the old method couldn't work anymore, because nobody could drain trillions overnight. So the Fed adopted an <strong>ample reserves</strong> framework (formalised in January 2019): it keeps reserves on the flat part and moves rates by changing IORB and the ON RRP rate.</p>
+        <p>"Ample" means just to the right of the bend: enough that rates are calm, but not so many that the Fed's balance sheet is bigger than it needs to be. The hard part is that nobody knows exactly where the bend is, and it moves as banks' needs change.</p>
+        <p><strong>Try these:</strong> (1) drag reserves left until the marker climbs off the floor; that's September 2019 in miniature. (2) Untick the Standing Repo Facility and drag left again: without a ceiling, rates can spike far above the target range. (3) Move the target range slider and see that the whole picture shifts up or down together, which is what a rate hike does.</p>
       </div>
       <div class="panel chart-panel">
         <div class="chart-head"><h3>The demand curve for reserves</h3>
@@ -204,19 +443,33 @@
         <div id="c-demand" class="chart h-lg"></div>
         <div class="chart-note">A stylised model, not an estimate. The marker starts at today's reserves from the H.4.1 release. Trillions of dollars.</div>
       </div>
+      <div class="callout recap"><strong>Remember</strong>
+        <ul>
+          <li>Banks need reserves for payments and safety buffers; their combined appetite is the demand curve.</li>
+          <li>Scarce reserves: small changes cause big rate swings. Abundant: rates sit on the Fed's floor.</li>
+          <li>Since 2019 the Fed aims for "ample", just past the bend, and sets rates with IORB and ON RRP.</li>
+        </ul>
+      </div>
+      <div class="quick"><h3>Quick check</h3><div class="quiz" data-quick="ch5"></div></div>
     </section>
 
     <!-- ============================================================ 6 -->
     <section class="chapter" id="ch6">
-      <div class="eyebrow">Chapter 6</div>
+      <div class="eyebrow">Chapter 7</div>
       <h2>Repo and reverse repo</h2>
+      <p class="plain muted">In plain English: a repo is a very short loan backed by a bond, like a pawn shop for Treasuries. When the Fed lends this way, reserves go up. When money funds lend to the Fed this way (reverse repo), reserves go down.</p>
       <div class="prose">
-        <p>A <strong>repurchase agreement</strong> (repo) is a secured overnight loan dressed as two trades: I sell you a Treasury bond today and agree to buy it back tomorrow at a slightly higher price. The price difference is the interest. If I fail to pay, you keep the bond. The US repo market turns over several trillion dollars every day; it is how dealers and hedge funds finance their bond holdings.</p>
-        <p>Every repo has two sides. The cash borrower does a <strong>repo</strong>; the cash lender does a <strong>reverse repo</strong>. The Fed's names follow its own side:</p>
+        <p>A <strong>repurchase agreement</strong> (repo) is a secured overnight loan dressed as two trades: I sell you a Treasury bond today and agree to buy it back tomorrow at a slightly higher price. The price difference is the interest. If I fail to pay, you keep the bond. The US repo market turns over several trillion dollars every day.</p>
+        <p><strong>The pawn shop version.</strong> You hand a pawnbroker your watch and walk out with $100 cash. Tomorrow you bring back $101 and get the watch back. If you don't come back, the pawnbroker sells the watch. A repo is the same thing between financial institutions, with a Treasury bond as the watch. Because the lender holds the bond, the loan is very safe, so repo rates are close to the Fed's rates.</p>
+        <p><strong>Why it exists.</strong> On one side are dealers and hedge funds that own trillions of dollars of bonds bought largely with borrowed money; they need cash every night to keep holding them. On the other side are money market funds with trillions of dollars of savers' cash that needs a safe home overnight. Repo connects them.</p>
+        <p><strong>The haircut.</strong> The lender usually asks for a bit more collateral than the cash it lends: $102 of bonds for a $100 loan. That 2% is the <strong>haircut</strong>, a cushion in case the bond's price falls before it can be sold.</p>
+        <p>Every repo has two sides. The cash borrower does a <strong>repo</strong>; the cash lender does a <strong>reverse repo</strong>. Same trade, two names, depending on where you stand. The Fed's names follow its own side:</p>
         <ul>
-          <li><strong>Fed repo</strong> (Standing Repo Facility, emergency repo operations): the Fed <em>lends</em> cash against collateral. <mark>Reserves go up.</mark></li>
-          <li><strong>Fed reverse repo</strong> (ON RRP facility): money market funds <em>lend</em> cash to the Fed overnight. Reserves go down; the cash sits at the Fed.</li>
+          <li><strong>Fed repo</strong> (Standing Repo Facility, emergency repo operations): the Fed <em>lends</em> cash against collateral. New reserves are created, so <mark>reserves go up.</mark></li>
+          <li><strong>Fed reverse repo</strong> (ON RRP facility): money market funds <em>lend</em> cash to the Fed overnight. Reserves go down; the cash sits at the Fed, out of the banking system.</li>
         </ul>
+        <p>The average rate on overnight Treasury repo across the market is published every morning as <strong>SOFR</strong> (Secured Overnight Financing Rate). It replaced LIBOR as the benchmark for trillions of dollars of loans and derivatives.</p>
+        <p>Use the calculator to see a repo's numbers. Change the haircut and watch how much collateral you must deliver; change the term and see the interest grow.</p>
       </div>
 
       <div class="panel chart-panel repo-calc">
@@ -232,7 +485,9 @@
 
       <div class="prose" style="margin-top:22px">
         <h3>September 2019: when repo broke</h3>
+        <p>This episode ties together everything so far: the demand curve (Chapter 6), the TGA draining reserves (Chapter 3) and the need for a ceiling (Chapter 5).</p>
         <p>Reserves had fallen from $2.8 trillion in 2014 to about $1.4 trillion, first as currency and the Treasury's cash pile grew, then through QT. On 16 September 2019, corporate tax payments flowed into the TGA (draining reserves further) on the same day a large batch of Treasury auctions settled. Banks were unwilling to lend their remaining reserves, and on 17 September the secured overnight rate <strong>SOFR hit 5.25%</strong>, more than three points above the top of the Fed's range. The Fed ran its first repo operations in a decade the same morning and in October began buying Treasury bills "to maintain ample reserves". The lesson led to the Standing Repo Facility in 2021.</p>
+        <p>Why did it matter beyond a few traders? Because repo is how the bond market finances itself. If overnight funding can suddenly cost 5% instead of 2%, dealers can't afford to hold bonds, the Treasury market gets less liquid, and the Fed's control over rates, its main tool, slips. In the chart below, find the SOFR line spiking far above the shaded target range on 17 September.</p>
       </div>
       <div class="panel chart-panel">
         <div class="chart-head"><h3>Overnight rates, Aug 2019 to Jan 2020</h3>
@@ -243,7 +498,9 @@
 
       <div class="prose" style="margin-top:22px">
         <h3>The reverse repo balloon</h3>
-        <p>By 2021 the opposite problem appeared: far more cash than safe places to put it. Money funds parked it at the ON RRP facility, and reverse repos at the Fed peaked near $2.7 trillion in April 2023. That pool then acted as a <strong>shock absorber for QT</strong>: as the Fed shrank its balance sheet and the Treasury issued a flood of bills, money funds pulled cash out of ON RRP to buy them, so reserves barely fell until the pool was nearly empty in 2025.</p>
+        <p>By 2021 the opposite problem appeared: far more cash than safe places to put it. COVID QE and stimulus had swollen deposits, savers moved cash into money market funds, and those funds couldn't find enough Treasury bills to buy. So they parked it at the ON RRP facility, which paid a safe rate straight from the Fed. Reverse repos at the Fed peaked near $2.7 trillion in April 2023.</p>
+        <p>That pool then acted as a <strong>shock absorber for QT</strong>. Think of the Fed's liabilities as connected tanks of water: reserves, reverse repos and the TGA. When QT drains the total, it has to come out of one of them. From 2023 the Treasury issued a flood of bills; money funds pulled cash out of ON RRP to buy them, which emptied the reverse repo tank instead of the reserve tank. So reserves barely fell until the pool was nearly empty in 2025.</p>
+        <p><strong>How to read the chart.</strong> Follow the three lines together. When the shaded reverse repo area grows, reserves tend to dip; when it shrinks, reserves hold up. The TGA line jumps around with tax days and debt-ceiling fights, and reserves move the opposite way.</p>
       </div>
       <div class="panel chart-panel">
         <div class="chart-head"><h3>Reserves, reverse repos and the Treasury's account</h3>
@@ -251,14 +508,34 @@
         <div id="c-rrp" class="chart h-lg"></div>
         <div class="chart-note">Wednesday levels, $ billions. Reverse repos include the foreign official pool (foreign central banks' cash), which is most of what remains today.</div>
       </div>
+      <div class="callout recap"><strong>Remember</strong>
+        <ul>
+          <li>A repo is a collateralised loan: sell a bond today, buy it back tomorrow for a little more.</li>
+          <li>Fed repo lends cash and adds reserves; Fed reverse repo takes cash in and removes reserves.</li>
+          <li>Reserves, reverse repos and the TGA are connected: money leaving one often shows up in another.</li>
+        </ul>
+      </div>
+      <div class="quick"><h3>Quick check</h3><div class="quiz" data-quick="ch6"></div></div>
     </section>
 
     <!-- ============================================================ 7 -->
     <section class="chapter" id="ch7">
-      <div class="eyebrow">Chapter 7</div>
+      <div class="eyebrow">Chapter 8</div>
       <h2>QE versus QT</h2>
+      <p class="plain muted">In plain English: when the Fed has already cut rates to zero and the economy still needs help, it buys long-term bonds in bulk to push long-term rates down too (QE). Later, it lets those bonds expire without replacing them (QT).</p>
       <div class="prose">
         <p><strong>Quantitative easing</strong> is the Fed buying long-dated bonds in bulk, with newly created reserves, once its policy rate is already near zero. <strong>Quantitative tightening</strong> is the reverse: shrinking the portfolio. The Fed has never sold Treasuries to do QT; it simply stops reinvesting the bonds that mature, up to a monthly cap.</p>
+        <h3>Why QE was invented</h3>
+        <p>In late 2008 the Fed cut the overnight rate to zero, and the economy was still collapsing. It couldn't cut further (people would just hold cash rather than pay to keep money in a bank). But what drives mortgages and business investment is mostly <em>long-term</em> rates, the 10-year and 30-year yields, and those were still well above zero. QE was a way to reach them directly.</p>
+        <h3>How buying bonds lowers long-term rates</h3>
+        <p>Recall Idea 3: when lots of buyers want a bond, its price rises and its yield falls. QE makes the Fed a giant, price-insensitive buyer. It works through three channels:</p>
+        <ol class="steps">
+          <li><strong>Less risk left for investors.</strong> Holding a 10-year bond is risky because its price swings with rates (the bond chart in Chapter 1). Investors demand extra yield for that risk, called the <strong>term premium</strong>. When the Fed takes trillions of long bonds out of the market, investors carry less of that risk in total and accept lower yields.</li>
+          <li><strong>A signal.</strong> A central bank that's buying bonds every month isn't about to raise rates. Markets push expected future rates down, and long yields with them.</li>
+          <li><strong>Portfolio rebalancing.</strong> The pension fund that sold bonds to the Fed now holds a deposit earning almost nothing. It still needs returns, so it buys corporate bonds, mortgages or stocks instead, pushing their prices up and their yields down. Cheaper borrowing for companies and higher asset prices then support spending.</li>
+        </ol>
+        <h3>Why QT is done by run-off, not selling</h3>
+        <p>Selling trillions of bonds would hammer bond prices, spike long-term rates and force the Fed to lock in losses. Letting bonds mature is gentle and predictable: when a bond the Fed owns comes due, the Treasury repays it, and the Fed simply doesn't buy a replacement. You saw the mechanics in the lab's "QT: a Fed bond matures" button: Fed bonds, reserves and deposits all fall together.</p>
       </div>
       <div class="table-wrap" style="margin-top:14px">
         <table class="data" data-list="cards">
@@ -289,15 +566,31 @@
           <tbody id="era-table"></tbody>
         </table>
       </div>
+      <div class="prose" style="margin-top:14px">
+        <p><strong>How to read the balance sheet chart.</strong> "Assets" shows what the Fed owns, stacked: Treasuries, mortgage bonds, emergency lending. "Liabilities" shows how it's funded: mostly reserves and currency. Because a balance sheet balances, both views reach almost the same total. The shaded bands are the programmes in the table. Look for the three big staircases up (QE1–QE3, then COVID) and the two gentle slopes down (QT1, QT2). Use the period buttons to zoom in on one episode.</p>
+      </div>
+      <div class="callout recap"><strong>Remember</strong>
+        <ul>
+          <li>QE: buy long bonds with new reserves when rates are already at zero. QT: let them mature without replacing them.</li>
+          <li>QE lowers long-term yields by soaking up risk, signalling low rates and pushing investors into other assets.</li>
+          <li>QE is fast and used in emergencies; QT is slow and gradual.</li>
+        </ul>
+      </div>
+      <div class="quick"><h3>Quick check</h3><div class="quiz" data-quick="ch7"></div></div>
     </section>
 
     <!-- ============================================================ 8 -->
     <section class="chapter" id="ch8">
-      <div class="eyebrow">Chapter 8</div>
+      <div class="eyebrow">Chapter 9</div>
       <h2>The Fed in a crisis: March 2020</h2>
+      <p class="plain muted">In plain English: in a panic everyone wants cash at the same time and even safe assets become hard to sell. The Fed's job then is to be the buyer and lender of last resort, and it did that on a scale never seen before.</p>
       <div class="prose">
-        <p>In March 2020 even the safest market in the world broke. Foreign central banks, hedge funds unwinding leveraged "basis trades", and companies drawing credit lines all tried to sell Treasuries for cash at once, and dealers ran out of balance sheet to absorb them. Ten-year yields <em>rose</em> during a flight to safety. The Fed answered with every tool it had, and invented several new ones under the emergency powers of Section 13(3) of the Federal Reserve Act, with the Treasury putting up equity to absorb losses.</p>
-        <p>Click an event to see where it lands in the weekly balance sheet changes.</p>
+        <p>Central banks have had a crisis rulebook since the 1870s, from the British journalist Walter Bagehot: in a panic, <strong>lend freely, against good collateral, at a penalty rate</strong>. Solvent institutions shouldn't fail just because everyone wants cash on the same day. March 2020 tested that rule harder than ever.</p>
+        <h3>The dash for cash</h3>
+        <p>As COVID lockdowns spread, everyone wanted dollars at once. Companies drew down their credit lines. Foreign central banks sold Treasuries to defend their currencies. Hedge funds had a popular <strong>basis trade</strong>: buy Treasury bonds, sell slightly pricier Treasury futures, and pocket the tiny gap, multiplied many times over with borrowed repo money. When prices moved the wrong way, they were forced to sell those bonds fast.</p>
+        <p>Normally dealers buy whatever is sold and resell it later. But dealers have limited room on their own balance sheets (capital rules again), and they filled up. With more sellers than buyers, even Treasuries, the safest assets in the world, became hard to sell, and ten-year yields <em>rose</em> during a flight to safety, the opposite of what usually happens.</p>
+        <p>The Fed answered with every tool it had, and invented several new ones under the emergency powers of <strong>Section 13(3)</strong> of the Federal Reserve Act, which lets it lend to non-banks in "unusual and exigent circumstances" with the Treasury's approval. The Treasury put up equity to absorb any losses. Two more tools appear in the timeline: <strong>swap lines</strong>, which lend dollars to foreign central banks so they don't have to dump Treasuries to get them, and facilities for <strong>commercial paper</strong>, the short-term IOUs companies use to pay wages and suppliers.</p>
+        <p>Click an event to see where it lands in the weekly balance sheet changes. Tall bars mean the Fed created a lot of reserves that week.</p>
       </div>
       <div class="kpis tight" id="covid-kpis"></div>
       <div class="crisis">
@@ -310,7 +603,10 @@
       </div>
       <div class="prose" style="margin-top:22px">
         <h3>The money it created</h3>
-        <p>QE bought the bonds the Treasury issued to fund stimulus checks and the Paycheck Protection Program. The Treasury's spending moved that cash from the TGA into household deposits, and the broad money stock grew faster than at any time on record.</p>
+        <p>QE bought the bonds the Treasury issued to fund stimulus checks and the Paycheck Protection Program. The Treasury's spending moved that cash from the TGA into household deposits (the lab's "Treasury spends" button), and the broad money stock grew faster than at any time on record: about 27% in a year.</p>
+        <h3>What came next: inflation</h3>
+        <p>In 2021 people spent the money as the economy reopened, while factories, ports and energy supplies were still disrupted. Too much money chasing too few goods. US inflation rose from under 2% to a peak of 9.1% in June 2022, the highest in four decades. Economists still argue about how much was due to the money surge and how much to supply shocks and the war in Ukraine; both mattered.</p>
+        <p>The Fed's response was the fastest hiking cycle since the early 1980s: from 0–0.25% in March 2022 to 5.25–5.50% by July 2023, with QT running at the same time. Notice in the chart that M2 then did something it had not done since the 1930s: it <em>shrank</em>, as people paid down debt and moved cash into money market funds that ended up at the Fed's reverse repo facility.</p>
       </div>
       <div class="panel chart-panel">
         <div class="chart-head"><h3>M2 money supply, year-on-year growth</h3>
@@ -320,21 +616,51 @@
       </div>
       <div class="prose" style="margin-top:14px">
         <p>Two other interventions are worth knowing. In <strong>2008</strong> the Fed lent directly to banks, dealers and AIG and opened swap lines worth over $580 billion before QE1 began. In <strong>March 2023</strong>, after Silicon Valley Bank failed, it created the Bank Term Funding Program, lending against bonds at face value rather than their depressed market value, so banks did not have to sell at a loss. You can see both as spikes in the "lending" layer of the balance sheet chart.</p>
+        <p>SVB is Idea 3 in real life. The bank had put customers' deposits into long-dated bonds bought when rates were near zero. When rates jumped in 2022, those bonds fell sharply in price (drag the bond slider in Chapter 1 from 1% to 5% and look at the 10-year line). Depositors heard about the losses, rushed to withdraw, and the bank had to sell bonds at a loss to pay them. That's a <strong>bank run</strong>.</p>
       </div>
+      <div class="callout recap"><strong>Remember</strong>
+        <ul>
+          <li>Crisis rule: lend freely, against good collateral, at a penalty rate.</li>
+          <li>In March 2020 even Treasuries were hard to sell; the Fed bought, lent and swapped dollars on a historic scale.</li>
+          <li>The money it created reached households via government spending, M2 jumped, and inflation followed in 2021–22.</li>
+        </ul>
+      </div>
+      <div class="quick"><h3>Quick check</h3><div class="quiz" data-quick="ch8"></div></div>
     </section>
 
     <!-- ============================================================ 9 -->
     <section class="chapter" id="ch9">
-      <div class="eyebrow">Chapter 9</div>
+      <div class="eyebrow">Chapter 10</div>
       <h2>Where we are now</h2>
+      <p class="plain muted">In plain English: QT is over, the Fed is buying short-term bills again just to keep enough reserves in the system, and the policy rate sits below its 2023 peak of 5.25–5.50%. The figures below update with the data.</p>
       <div class="prose" id="now-prose"></div>
     </section>
 
     <!-- ============================================================ 10 -->
     <section class="chapter" id="ch10">
-      <div class="eyebrow">Chapter 10</div>
+      <div class="eyebrow">Chapter 11</div>
       <h2>What it means for investors</h2>
+      <p class="plain muted">In plain English: the interest rate the Fed sets is the starting point for how much any future income is worth today. Higher rates make distant profits worth less, which hits the price of growth stocks and long bonds hardest.</p>
       <div class="prose">
+        <h3>Why rates move stock prices</h3>
+        <p>A share is a claim on a company's future profits. But $100 arriving in ten years is worth less than $100 today, because you could put a smaller amount in safe Treasuries now and grow it to $100. How much less depends on the interest rate. This is called <strong>discounting</strong>, and the result is the <strong>present value</strong>:</p>
+      </div>
+      <div class="formula">Present value = future amount ÷ (1 + rate)<sup>years</sup> &nbsp;·&nbsp; $100 in 10 years at 2% = $82; at 5% = $61</div>
+      <div class="prose">
+        <p>Investors use the risk-free Treasury yield, plus a premium for risk, as that rate. So when rates rise, every stock's future profits are discounted harder. Far-off profits are hit most, the same way long bonds are hit most. That's why fast-growing tech companies, whose profits lie mostly in the future, fell hardest when the Fed hiked in 2022. Try it:</p>
+      </div>
+      <div class="panel chart-panel">
+        <div class="chart-head"><h3>What $100 of future profit is worth today</h3>
+          <div class="legend"><span><i class="ln sw-neutral"></i>At 2%</span><span><i class="ln sw-accent"></i>At your rate</span></div></div>
+        <div class="controls">
+          <label class="range-field">Discount rate <output id="pv-r-out"></output><input type="range" id="pv-r" min="0" max="10" step="0.25" value="5"></label>
+        </div>
+        <div class="readout" id="pv-readout"></div>
+        <div id="c-pv" class="chart h-md"></div>
+        <div class="chart-note">Horizontal axis: years until the $100 arrives. A real valuation adds up many such payments.</div>
+      </div>
+      <div class="prose" style="margin-top:14px">
+        <h3>A watch list</h3>
         <p>Plumbing does not set the value of a business, but it changes the price investors pay for it, especially at the margin. A short watch list:</p>
         <ul>
           <li><strong>The policy rate and its path.</strong> The discount rate in every valuation model starts with the risk-free rate. Forward guidance moves it before the Fed acts.</li>
@@ -342,7 +668,7 @@
           <li><strong>The TGA.</strong> When the Treasury rebuilds its cash (after a debt-ceiling fight, or on tax days), it drains reserves; when it spends down, it adds them.</li>
           <li><strong>ON RRP.</strong> Cash sitting at the Fed is idle. Its drain from 2023 to 2025 quietly offset QT.</li>
         </ul>
-        <p>Some analysts compress these into one number, "net liquidity": Fed assets minus the TGA minus reverse repos. It is a rough heuristic, not a law, but it shows how QE, the Treasury's account and the RRP pool combine.</p>
+        <p>Some analysts compress these into one number, "net liquidity": Fed assets minus the TGA minus reverse repos. The logic: start with everything the Fed has created (its assets), then subtract the parts that are parked out of reach of banks and markets, the Treasury's cash and the money funds' cash at the Fed. What's left is roughly the money sloshing around the financial system. It is a rough heuristic, not a law, but it shows how QE, the Treasury's account and the RRP pool combine. Compare the two lines: in 2023 the Fed's assets were falling (QT), but net liquidity held up because the reverse repo pool was draining.</p>
       </div>
       <div class="panel chart-panel">
         <div class="chart-head"><h3>Fed assets and "net liquidity"</h3>
@@ -350,12 +676,20 @@
         <div id="c-netliq" class="chart h-lg"></div>
         <div class="chart-note">Wednesday levels, $ trillions.</div>
       </div>
+      <div class="callout recap"><strong>Remember</strong>
+        <ul>
+          <li>Higher rates shrink the present value of future profits; distant profits shrink most.</li>
+          <li>Watch the policy rate path, reserves, the TGA and the reverse repo pool.</li>
+          <li>"Net liquidity" is a rough summary of how those pieces combine, not a law.</li>
+        </ul>
+      </div>
     </section>
 
     <!-- ============================================================ 11 -->
     <section class="chapter" id="ch11">
-      <div class="eyebrow">Chapter 11</div>
+      <div class="eyebrow">Chapter 12</div>
       <h2>Check your understanding</h2>
+      <p class="plain muted">Fifteen questions covering the whole lecture. Each answer comes with an explanation and points you to the chapter to revisit.</p>
       <div class="quiz" id="quiz"></div>
       <p class="muted small" id="quiz-score" style="margin-top:10px"></p>
     </section>
@@ -366,15 +700,41 @@
       <h2>Glossary and sources</h2>
       <div class="two-col">
         <dl class="prose glossary">
-          <dt>Reserves</dt><dd>Banks' deposits at the Fed. Created only by the Fed.</dd>
-          <dt>IORB</dt><dd>Interest on reserve balances: the rate the Fed pays banks on reserves.</dd>
-          <dt>ON RRP</dt><dd>Overnight reverse repo facility: money funds and others lend cash to the Fed overnight.</dd>
-          <dt>SRF</dt><dd>Standing Repo Facility: the Fed lends cash overnight against Treasuries and agency debt.</dd>
-          <dt>SOFR</dt><dd>Secured Overnight Financing Rate: the average rate on overnight Treasury repo.</dd>
+          <dt>Arbitrage</dt><dd>A risk-free profit from a price gap, e.g. borrowing at 3.7% and earning 3.9% at the Fed. Arbitrage closes such gaps quickly.</dd>
+          <dt>Asset / liability / equity</dt><dd>What you own / what you owe / what's left over. Assets always equal liabilities plus equity.</dd>
+          <dt>Balance sheet</dt><dd>A list of an institution's assets on one side and liabilities plus equity on the other.</dd>
+          <dt>Basis point (bp)</dt><dd>One hundredth of a percentage point. 0.25% = 25 bp.</dd>
+          <dt>Bond, coupon, maturity</dt><dd>A tradeable loan; the fixed interest it pays; the date the principal is repaid.</dd>
+          <dt>Capital requirements</dt><dd>Rules forcing banks to fund part of their assets with their own equity, so losses hit owners before depositors.</dd>
+          <dt>Collateral</dt><dd>An asset pledged to secure a loan, which the lender keeps if the borrower doesn't repay.</dd>
+          <dt>Deposits</dt><dd>Money in bank accounts. A liability of the bank, created mostly when banks lend.</dd>
+          <dt>Discount window</dt><dd>The Fed's oldest lending facility for banks, at a rate at the top of the target range.</dd>
+          <dt>Dual mandate</dt><dd>The Fed's two goals set by Congress: maximum employment and stable prices (2% inflation).</dd>
+          <dt>Duration</dt><dd>How sensitive a bond's price is to interest rates. Longer bonds have more duration.</dd>
           <dt>EFFR</dt><dd>Effective federal funds rate: the average rate on overnight unsecured loans of reserves between banks.</dd>
-          <dt>TGA</dt><dd>Treasury General Account: the government's checking account at the Fed.</dd>
-          <dt>SOMA</dt><dd>System Open Market Account: the Fed's portfolio of securities.</dd>
+          <dt>FOMC</dt><dd>Federal Open Market Committee: the 12 voting officials who set US monetary policy, eight times a year.</dd>
+          <dt>Forward guidance</dt><dd>The Fed telling markets where it expects rates to go.</dd>
           <dt>H.4.1</dt><dd>The Fed's weekly balance sheet release, published every Thursday.</dd>
+          <dt>Haircut</dt><dd>The extra collateral a lender demands beyond the cash lent, as a safety cushion.</dd>
+          <dt>Inflation</dt><dd>The rate at which the general level of prices rises, measured over a year.</dd>
+          <dt>IORB</dt><dd>Interest on reserve balances: the rate the Fed pays banks on reserves.</dd>
+          <dt>M2</dt><dd>A broad measure of the public's money: cash, checking and savings deposits, small time deposits and retail money funds.</dd>
+          <dt>MBS</dt><dd>Mortgage-backed securities: bonds made from bundles of home loans.</dd>
+          <dt>Money market fund</dt><dd>A fund holding only short, safe IOUs; used like a high-yield bank account.</dd>
+          <dt>ON RRP</dt><dd>Overnight reverse repo facility: money funds and others lend cash to the Fed overnight.</dd>
+          <dt>Present value</dt><dd>What a future payment is worth today, after discounting at an interest rate.</dd>
+          <dt>Primary dealers</dt><dd>About two dozen banks and brokers that trade directly with the Fed and bid at Treasury auctions.</dd>
+          <dt>QE / QT</dt><dd>Quantitative easing / tightening: the Fed growing / shrinking its bond holdings.</dd>
+          <dt>Repo / reverse repo</dt><dd>A short loan made by selling a bond and agreeing to buy it back. The cash borrower does a repo; the cash lender a reverse repo.</dd>
+          <dt>Reserves</dt><dd>Banks' deposits at the Fed. Created only by the Fed; used to settle payments between banks.</dd>
+          <dt>SOFR</dt><dd>Secured Overnight Financing Rate: the average rate on overnight Treasury repo.</dd>
+          <dt>SOMA</dt><dd>System Open Market Account: the Fed's portfolio of securities.</dd>
+          <dt>SRF</dt><dd>Standing Repo Facility: the Fed lends cash overnight against Treasuries and agency debt.</dd>
+          <dt>Swap lines</dt><dd>Agreements to lend dollars to foreign central banks in exchange for their currency.</dd>
+          <dt>Term premium</dt><dd>The extra yield investors demand for holding a long bond instead of rolling short ones.</dd>
+          <dt>TGA</dt><dd>Treasury General Account: the government's checking account at the Fed.</dd>
+          <dt>Treasury bills / bonds</dt><dd>US government IOUs. Bills mature within a year; notes and bonds run up to 30 years.</dd>
+          <dt>Yield</dt><dd>The annual return a buyer locks in by buying a bond at today's price.</dd>
         </dl>
         <div class="prose">
           <p><strong>Data.</strong> Federal Reserve Bank of St. Louis (FRED): WALCL, TREAST, WSHOMCB, WORAL, WLCFLL, SWPT, WRBWFRBL, WCURCIR, WLRRAL, WDTGAL (H.4.1), DFF, DFEDTARU, DFEDTARL, IOER, IORB, RRPONTSYAWARD, SOFR and M2SL. Refreshed with <code>python scripts/fed_data.py</code>.</p>
@@ -858,25 +1218,172 @@
         a: ["About $58 billion", "About $586 billion", "About $5.9 trillion"], ok: 1,
         why: "The H.4.1 shows +$586 billion in one week, almost the size of the entire QE2 programme ($600 billion over eight months)." },
     ];
-    const answered = {};
-    $("quiz").innerHTML = QUIZ.map((x, i) => `<div class="panel" data-q="${i}"><h4>${i + 1}. ${esc(x.q)}</h4><div class="btns">${x.a.map((a, j) =>
-      `<button class="btn" data-a="${j}">${esc(a)}</button>`).join("")}</div><p class="why" hidden></p></div>`).join("");
-    $("quiz").addEventListener("click", (e) => {
-      const b = e.target.closest("[data-a]"); if (!b) return;
-      const box = b.closest("[data-q]"), qi = +box.dataset.q, x = QUIZ[qi], ok = +b.dataset.a === x.ok;
-      answered[qi] = ok;
+    QUIZ.push(
+      { q: "Your checking account balance is…",
+        a: ["an asset of your bank", "a liability of your bank", "a liability of the Fed"], ok: 1, see: "Chapter 1",
+        why: "One side's asset is the other's liability. Your deposit is an asset to you and a debt the bank owes you." },
+      { q: "You own a 10-year bond paying a 3% coupon. Market rates jump to 5%. What happens to its price?",
+        a: ["It rises above $100", "It stays at $100", "It falls below $100"], ok: 2, see: "Chapter 1",
+        why: "Buyers can get 5% on new bonds, so they'll only buy yours at a discount. Rates up, bond prices down." },
+      { q: "You pay $500 to a friend at a different bank. What happens to the total amount of reserves in the system?",
+        a: ["Falls by $500", "Unchanged: $500 of reserves moves from your bank to theirs", "Rises by $500"], ok: 1, see: "Chapter 2",
+        why: "Payments move reserves between banks' accounts at the Fed. Only the Fed changes the total." },
+      { q: "The Fed pays 3.90% on reserves. Why won't a bank lend reserves to another bank at 3.60%?",
+        a: ["It's illegal", "It can earn 3.90% risk-free by leaving them at the Fed", "Reserve requirements forbid it"], ok: 1, see: "Chapter 5",
+        why: "IORB acts as a floor: nobody lends for less than they can earn risk-free at the Fed." },
+      { q: "In a repo with a 2% haircut, to borrow $100 of cash you deliver about…",
+        a: ["$98 of bonds", "$100 of bonds", "$102 of bonds"], ok: 2, see: "Chapter 7",
+        why: "The haircut is extra collateral that protects the lender if the bonds' price falls." },
+      { q: "Why does QE tend to lower long-term interest rates?",
+        a: ["The Fed orders banks to cut mortgage rates", "The Fed buys long bonds, pushing their prices up and yields down", "It raises reserve requirements"], ok: 1, see: "Chapter 8",
+        why: "A huge buyer raises bond prices, which lowers yields, and takes duration risk off investors' hands." },
+      { q: "At a 5% discount rate, roughly what is $100 received in 10 years worth today?",
+        a: ["$95", "$61", "$50"], ok: 1, see: "Chapter 11",
+        why: "$100 ÷ 1.05¹⁰ ≈ $61. At 2% it would be about $82. Higher rates shrink the value of distant cash." },
+      { q: "What are the Fed's two official goals?",
+        a: ["Maximum employment and stable prices", "A strong dollar and high stock prices", "Low taxes and balanced budgets"], ok: 0, see: "Chapter 1",
+        why: "The dual mandate. The Fed defines stable prices as 2% inflation a year." },
+    );
+    const SEE = ["Chapter 3", "Chapter 4", "Chapter 8", "Chapter 7", "Chapter 7", "Chapter 6", "Chapter 9"];
+    QUIZ.forEach((x, i) => { if (!x.see) x.see = SEE[i]; });
+    // Order: the basics first, then roughly chapter by chapter.
+    const ORDER = [7, 14, 8, 9, 0, 1, 10, 5, 3, 11, 4, 12, 2, 6, 13];
+    const FINAL = ORDER.map((i) => QUIZ[i]);
+
+    // Inline quick checks: unscored, one or two per chapter.
+    const QUICK = {
+      basics: [
+        { q: "A bank lends you $10,000 and puts it in your account. On the bank's balance sheet…",
+          a: ["only assets rise", "assets (the loan) and liabilities (your deposit) both rise by $10,000", "assets fall"], ok: 1,
+          why: "A balance sheet always balances: the new loan is an asset, the new deposit a liability." },
+        { q: "The Fed raises rates from 4.00% to 4.25%. That's a move of…",
+          a: ["25 basis points", "0.25 basis points", "2.5 basis points"], ok: 0,
+          why: "One basis point is 0.01 percentage points, so 0.25 points is 25 bp." },
+      ],
+      ch1: [
+        { q: "Who can hold bank reserves?",
+          a: ["Anyone with a bank account", "Only banks and a few other institutions with Fed accounts", "Only the Treasury"], ok: 1,
+          why: "Reserves are balances in accounts at the Fed, which households and most companies don't have." },
+      ],
+      ch2: [
+        { q: "When a borrower repays a $100 loan, what happens to the money supply?",
+          a: ["It grows by $100", "Nothing", "It shrinks by $100"], ok: 2,
+          why: "The deposit and the loan cancel out. Repaying debt destroys money." },
+        { q: "The Treasury collects $50 of taxes. What happens to bank reserves?",
+          a: ["They fall by $50, moving into the TGA", "They rise by $50", "Nothing"], ok: 0,
+          why: "The TGA sits at the Fed, outside the banking system. Tax payments drain reserves until the Treasury spends." },
+      ],
+      ch3: [
+        { q: "The Fed buys $100 of Treasuries from a bank. What changes for the public?",
+          a: ["Deposits rise by $100", "Nothing: the bank swapped a bond for reserves", "Cash in circulation rises"], ok: 1,
+          why: "Only reserves rise when a bank sells. Deposits rise when a non-bank sells." },
+      ],
+      ch4: [
+        { q: "Which rate acts as the ceiling of the Fed's corridor?",
+          a: ["ON RRP rate", "IORB", "Standing Repo Facility / discount rate"], ok: 2,
+          why: "Banks needn't pay more in the market than the Fed charges to lend against collateral." },
+      ],
+      ch5: [
+        { q: "Reserves are abundant and the Fed adds another $100 billion. What happens to the overnight rate?",
+          a: ["Barely moves: the curve is flat there", "Jumps up", "Falls far below the floor"], ok: 0,
+          why: "On the flat part of the demand curve, quantity hardly matters. The administered rates set the level." },
+      ],
+      ch6: [
+        { q: "A money fund puts $10 billion into the Fed's ON RRP facility. Bank reserves…",
+          a: ["rise by $10B", "fall by $10B", "don't change"], ok: 1,
+          why: "The fund's cash moves from a bank deposit to the Fed, so banks lose reserves to match." },
+      ],
+      ch7: [
+        { q: "Why did the Fed run QT by letting bonds mature rather than selling them?",
+          a: ["Selling is illegal", "It is gentle and predictable; selling could spike yields and lock in losses", "Matured bonds pay more"], ok: 1,
+          why: "Passive run-off shrinks the balance sheet slowly without shocking the bond market." },
+      ],
+      ch8: [
+        { q: "Bagehot's crisis rule says a central bank should lend…",
+          a: ["only to banks that are profitable", "freely, against good collateral, at a penalty rate", "nothing, to avoid moral hazard"], ok: 1,
+          why: "Solvent institutions shouldn't fail because everyone wants cash at once." },
+      ],
+    };
+
+    function quizHTML(list, final) {
+      return list.map((x, i) => `<div class="panel" data-q="${i}"><h4>${final ? i + 1 + ". " : ""}${esc(x.q)}</h4><div class="btns">${x.a.map((a, j) =>
+        `<button class="btn" data-a="${j}">${esc(a)}</button>`).join("")}</div><p class="why" hidden></p></div>`).join("");
+    }
+    function answer(list, b) {
+      const box = b.closest("[data-q]"), x = list[+box.dataset.q], ok = +b.dataset.a === x.ok;
       box.querySelectorAll("[data-a]").forEach((btn) => btn.classList.toggle("on", btn === b));
       const why = box.querySelector(".why");
-      why.innerHTML = `<span class="verdict ${ok ? "under" : "over"}">${ok ? "Correct" : "Not quite"}</span> ${esc(x.why)}`;
+      why.innerHTML = `<span class="verdict ${ok ? "under" : "over"}">${ok ? "Correct" : "Not quite"}</span> ${esc(x.why)}${!ok && x.see ? ` <span class="faint">Revisit ${esc(x.see)}.</span>` : ""}`;
       why.hidden = false;
-      const n = Object.keys(answered).length, right = Object.values(answered).filter(Boolean).length;
-      $("quiz-score").textContent = `Score: ${right} of ${n} answered correctly` + (n === QUIZ.length ? (right === n ? ". Full marks." : ". Revisit the chapters above and try again.") : ".");
+      return [+box.dataset.q, ok];
+    }
+    document.querySelectorAll("[data-quick]").forEach((el) => {
+      const list = QUICK[el.dataset.quick] || [];
+      el.innerHTML = quizHTML(list, false);
+      el.addEventListener("click", (e) => { const b = e.target.closest("[data-a]"); if (b) answer(list, b); });
     });
+
+    const answered = {};
+    $("quiz").innerHTML = quizHTML(FINAL, true);
+    $("quiz").addEventListener("click", (e) => {
+      const b = e.target.closest("[data-a]"); if (!b) return;
+      const [qi, ok] = answer(FINAL, b);
+      answered[qi] = ok;
+      const n = Object.keys(answered).length, right = Object.values(answered).filter(Boolean).length;
+      $("quiz-score").textContent = `Score: ${right} of ${n} answered correctly` + (n === FINAL.length ? (right === n ? ". Full marks." : ". Revisit the chapters named in the answers and try again.") : ".");
+    });
+
+    // ---------- Ch1: bond price vs yield ----------
+    const bondPrice = (years, y, coupon = 3) => {
+      const r = y / 100; if (r === 0) return 100 + coupon * years;
+      return coupon * (1 - Math.pow(1 + r, -years)) / r + 100 * Math.pow(1 + r, -years);
+    };
+    function drawBond() {
+      const c = C(), y = +$("bd-y").value;
+      $("bd-y-out").textContent = y.toFixed(2) + "%";
+      const ys = []; for (let v = 0; v <= 8.0001; v += 0.1) ys.push(+v.toFixed(1));
+      const bonds = [[2, "2-year", c.neutral], [10, "10-year", c.accent], [30, "30-year", c.series2]];
+      $("bd-readout").innerHTML = bonds.map(([n, name]) => {
+        const p = bondPrice(n, y), d = p - 100;
+        return `<span>${name}: <b>$${p.toFixed(2)}</b> <span class="${d >= 0 ? "pos" : "neg"}">${d >= 0 ? "+" : "−"}${Math.abs(d).toFixed(1)}%</span></span>`;
+      }).join("");
+      Plotly.react("c-bond", [
+        ...bonds.map(([n, name, color]) => ({ type: "scatter", mode: "lines", x: ys, y: ys.map((v) => bondPrice(n, v)), name, line: { color, width: 2 },
+          hovertemplate: name + " at %{x:.1f}%: $%{y:.2f}<extra></extra>" })),
+        ...bonds.map(([n, name, color]) => ({ type: "scatter", mode: "markers", x: [y], y: [bondPrice(n, y)], name: name + " today", marker: { color, size: 11 },
+          hovertemplate: name + " at %{x:.2f}%: $%{y:.2f}<extra></extra>" })),
+      ], Nexus.plotlyLayout({
+        showlegend: false, margin: { l: 52, r: 12, t: 10, b: 44 },
+        xaxis: { title: { text: "Market interest rate" }, ticksuffix: "%", range: [0, 8] },
+        yaxis: { tickprefix: "$", range: [35, 200] },
+        shapes: [{ type: "line", x0: 3, x1: 3, yref: "paper", y0: 0, y1: 1, line: { color: c.faint, width: 1, dash: "dot" } }],
+      }), cfg);
+    }
+    $("bd-y").addEventListener("input", drawBond);
+
+    // ---------- Ch11: present value ----------
+    function drawPv() {
+      const c = C(), r = +$("pv-r").value;
+      $("pv-r-out").textContent = r.toFixed(2) + "%";
+      const yrs = Array.from({ length: 30 }, (_, i) => i + 1);
+      const pv = (n, rate) => 100 / Math.pow(1 + rate / 100, n);
+      const cmp = (n) => { const a = pv(n, 2), b = pv(n, r), d = (b / a - 1) * 100;
+        return `<span>$100 in ${n} years: <b>$${b.toFixed(0)}</b> <span class="${d >= 0 ? "pos" : "neg"}">${d >= 0 ? "+" : "−"}${Math.abs(d).toFixed(0)}% vs 2%</span></span>`; };
+      $("pv-readout").innerHTML = cmp(3) + cmp(10) + cmp(25);
+      Plotly.react("c-pv", [
+        { type: "scatter", mode: "lines", x: yrs, y: yrs.map((n) => pv(n, 2)), name: "At 2%", line: { color: c.neutral, width: 2, dash: "dash" }, hovertemplate: "Year %{x} at 2%: $%{y:.0f}<extra></extra>" },
+        { type: "scatter", mode: "lines", x: yrs, y: yrs.map((n) => pv(n, r)), name: "At " + r.toFixed(2) + "%", line: { color: c.accent, width: 2.5 }, hovertemplate: "Year %{x} at " + r.toFixed(2) + "%: $%{y:.0f}<extra></extra>" },
+      ], Nexus.plotlyLayout({
+        showlegend: false, hovermode: "x unified", margin: { l: 48, r: 12, t: 10, b: 44 },
+        xaxis: { title: { text: "Years until the $100 arrives" }, range: [1, 30] }, yaxis: { tickprefix: "$", range: [0, 105] },
+      }), cfg);
+    }
+    $("pv-r").addEventListener("input", drawPv);
 
     // ---------- Draw ----------
     function drawAll() {
       if (!window.Plotly) return;
-      drawLayers(); drawCorridor(); drawDemand(); drawRepo2019(); drawRrp(); drawBalance(); drawCovid(); drawM2(); drawNetLiq();
+      drawBond(); drawPv(); drawLayers(); drawCorridor(); drawDemand(); drawRepo2019(); drawRrp(); drawBalance(); drawCovid(); drawM2(); drawNetLiq();
     }
     repoCalc();
     drawAll();

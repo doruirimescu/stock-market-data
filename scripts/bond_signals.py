@@ -6,7 +6,7 @@ short-, mid- and long-term Treasuries, and track three UCITS ETFs per bucket.
     python scripts/bond_signals.py --out some/file.js
 
 Data: FRED's public CSV endpoint (no API key) and Yahoo Finance chart data for
-the ETFs. Stdlib only. Run daily (see .github/workflows/bond-signals.yml).
+the ETFs. Stdlib only. Run daily (see .github/workflows/macro-gauges.yml).
 
 Method
 ------
@@ -187,8 +187,16 @@ def rnd(v, nd=2):
 def build_inputs():
     print("Downloading FRED series...", file=sys.stderr)
     raw = {s: fetch(s) for s in SERIES}
+    days, x = inputs_from_raw(raw)
+    return days, x, raw
 
-    last = max(raw["DGS10"])
+
+def inputs_from_raw(raw, last=None):
+    """Align raw FRED observations ({series: {date: value}}) to a weekday calendar, applying release lags.
+
+    `last` caps the calendar (default: the newest 10-year yield). Also used by the All-Weather gauges.
+    """
+    last = last or max(raw["DGS10"])
     days = [START + timedelta(days=i) for i in range((last - START).days + 1)]
     days = [d for d in days if d.weekday() < 5]
 
@@ -218,7 +226,7 @@ def build_inputs():
     x["claims"] = align(claims, SERIES["ICSA"], days)
     x["ngdp"] = align(ngdp, SERIES["GDP"], days)
     x["unrate"] = a("UNRATE")
-    return days, x, raw
+    return days, x
 
 
 def indicators(x):

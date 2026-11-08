@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>All-Weather Gauges · Investing Nexus</title>
+  <meta name="description" content="Buy/sell gauges for 22 asset classes with low correlation, a gauge-tilted all-weather allocation for a $10,000 portfolio, and a tradelab backtest since 2008.">
+  <link rel="stylesheet" href="https://doruirimescu.github.io/nexus-design/nexus.css">
+  <script src="https://doruirimescu.github.io/nexus-design/nexus.js"></script>
+  <link rel="icon" href="https://doruirimescu.github.io/nexus-design/favicon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+  <style>
+    .verdict.hold { color: var(--muted); }
+    .verdict.hold::before { background: var(--neutral); }
+    .sleeve-title { margin: 22px 0 10px; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .mini-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(230px, 100%), 1fr)); gap: 12px; }
+    .mini { display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; }
+    .mini .head { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+    .mini .head strong { font-size: .98rem; }
+    .mini .gauge { height: 120px; margin: 0 -6px; }
+    .mini .foot { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+    .comp { display: grid; grid-template-columns: 62px 1fr 38px; gap: 6px; align-items: center; font-size: .78rem; color: var(--muted); }
+    .track { position: relative; height: 7px; border-radius: 4px; background: var(--surface-3); }
+    .track::after { content: ""; position: absolute; left: 50%; top: -2px; bottom: -2px; width: 1px; background: var(--border-strong); }
+    .track > div { position: absolute; top: 0; bottom: 0; border-radius: 4px; }
+    .comp .v { text-align: right; font-variant-numeric: tabular-nums; }
+    .factor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 12px; }
+    .factor .big { font-size: 1.5rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .factor .parts { margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
+    .factor .parts .comp { grid-template-columns: 1fr 70px 38px; }
+    .wrap-cell { white-space: normal; min-width: 200px; }
+    .note { margin-top: 8px; }
+    .controls-row { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: space-between; }
+    .stack { display: flex; flex-direction: column; gap: 14px; }
+    .robust-kv td:first-child { white-space: normal; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><span class="brand-mark">N</span>Investing Nexus</a>
+      <nav class="nav">
+        <a href="nasdaq_today.html">NASDAQ-100</a>
+        <a href="sp500_today.html">S&amp;P 500</a>
+        <a href="stoxx600_today.html">STOXX 600</a>
+        <a href="bond_timing.html">Treasury Timing</a>
+        <a href="allweather.html" class="active">All-Weather</a>
+        <a href="fairvalue/index.html">Fair Value stocks</a>
+        <a href="learn/index.html">Learn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="eyebrow">Multi-asset rotation · 22 asset classes</div>
+    <h1>All-Weather <span class="gradient-text">Gauges</span></h1>
+    <p class="lead" id="lead">Loading…</p>
+    <p class="muted small" id="asof"></p>
+
+    <div class="kpis tight" id="kpis"></div>
+
+    <h2 class="section" id="allocation">Target allocation for $10,000</h2>
+    <p class="prose" id="alloc-lead"></p>
+    <div class="panel chart-panel">
+      <div class="chart-head"><h3>Target weight vs the static all-weather base</h3>
+        <div class="legend"><span><i class="sw-accent"></i>Target (gauges)</span><span><i class="sw-neutral"></i>Static base</span></div></div>
+      <div id="alloc-chart" class="chart" style="height:560px"></div>
+    </div>
+    <div class="table-wrap" style="margin-top:14px"><table class="data" data-list id="alloc-table">
+      <thead><tr><th data-list="title">Asset</th><th data-list="subtitle">Buy (UCITS / ETP)</th><th>Gauge</th>
+        <th class="num" data-list="value" data-list-suffix=" target">Target</th><th class="num" data-list="note">Amount</th>
+        <th class="num">Static base</th><th class="num">Held since last rebalance</th></tr></thead>
+      <tbody></tbody></table></div>
+
+    <h2 class="section" id="gauges">The 22 gauges</h2>
+    <p class="prose">Each gauge runs from −100 (sell) to +100 (buy). The bars under it are its four inputs, each from −1 to +1:
+      <b>trend</b> (the asset's own momentum), <b>relative</b> strength against the other 21, <b>value</b> (long-term cheapness) and
+      <b>macro</b> fit with today's economy. The gold tick marks the reading a month ago.</p>
+    <div id="gauge-sleeves"></div>
+
+    <h2 class="section" id="macro">Macro backdrop</h2>
+    <p class="prose">Six factors from FRED data, each from −1 to +1, after each series' publication delay. Every asset has a sensitivity to
+      each factor (table at the bottom); its macro input is the sensitivity-weighted average.</p>
+    <div class="factor-grid" id="factors"></div>
+
+    <h2 class="section" id="dispersion">Always something to buy, always something to sell</h2>
+    <div class="kpis tight" id="disp-kpis"></div>
+    <div class="panel chart-panel" style="margin-top:14px">
+      <div class="chart-head"><h3>Every gauge at every monthly rebalance since 2008</h3>
+        <div class="legend"><span><i class="sw-over"></i>Sell</span><span><i class="sw-neutral"></i>Hold</span><span><i class="sw-under"></i>Buy</span></div></div>
+      <div id="heatmap" class="chart" style="height:560px"></div>
+    </div>
+    <p class="prose note" id="disp-note"></p>
+    <div class="panel chart-panel" style="margin-top:14px">
+      <div class="chart-head"><h3>Correlation of weekly returns, 2008 to today</h3>
+        <div class="legend"><span><i class="sw-under"></i>Low or negative (diversifies)</span><span><i class="sw-over"></i>High (moves together)</span></div></div>
+      <div id="corr" class="chart" style="height:680px"></div>
+    </div>
+    <p class="prose note" id="corr-note"></p>
+
+    <h2 class="section" id="backtest">Backtest: $10,000 from January 2008</h2>
+    <p class="prose" id="bt-lead"></p>
+    <div class="kpis tight" id="bt-kpis"></div>
+    <div class="panel chart-panel" style="margin-top:14px">
+      <div class="chart-head">
+        <div class="controls-row" style="width:100%">
+          <h3 style="margin:0">Portfolio value (log scale)</h3>
+          <div class="segmented" role="group" aria-label="Bitcoin" id="btc-switch">
+            <button class="btn" data-btc="1" aria-pressed="true">With Bitcoin</button>
+            <button class="btn" data-btc="0" aria-pressed="false">Without Bitcoin</button>
+          </div>
+        </div>
+      </div>
+      <div class="legend" style="margin:0 0 6px"><span><i class="sw-accent ln"></i>All-Weather gauges</span><span><i class="sw-series-2 ln"></i>Static all-weather</span>
+        <span><i class="sw-neutral ln"></i>60/40</span><span><i class="sw-neutral ln" style="opacity:.5"></i>S&amp;P 500</span></div>
+      <div id="eq-chart" class="chart h-lg"></div>
+    </div>
+    <div class="panel chart-panel" style="margin-top:14px">
+      <div class="chart-head"><h3>Drawdown from the previous peak</h3></div>
+      <div id="dd-chart" class="chart h-sm"></div>
+    </div>
+    <div class="table-wrap" style="margin-top:14px"><table class="data" data-list="cards" id="metrics-table">
+      <thead><tr><th>Portfolio</th><th class="num">$10k became</th><th class="num">Return / yr</th><th class="num">Volatility</th>
+        <th class="num">Sharpe</th><th class="num">Max drawdown</th><th class="num">Correlation to S&amp;P 500</th><th class="num">Turnover / yr</th></tr></thead>
+      <tbody></tbody></table></div>
+
+    <div class="panel chart-panel" style="margin-top:14px">
+      <div class="chart-head"><h3>How the gauges allocated the money</h3>
+        <div class="legend" id="alloc-hist-legend"></div></div>
+      <div id="alloc-hist" class="chart h-md"></div>
+    </div>
+
+    <div class="table-wrap" style="margin-top:14px"><table class="data" id="years-table">
+      <thead></thead><tbody></tbody></table></div>
+
+    <h3 style="margin-top:28px">Robustness (tradelab)</h3>
+    <div class="two-col" id="robust"></div>
+
+    <h2 class="section" id="method">How it works</h2>
+    <div class="prose">
+      <p><b>Universe.</b> 22 asset classes in six sleeves, chosen because they respond differently to growth, inflation, stress, interest
+        rates and the dollar: Treasuries at three maturities, TIPS, investment-grade and high-yield credit, US, European and emerging-market
+        equities, seven US sectors, real estate, gold, silver, broad commodities and Bitcoin. Money not allocated sits in T-bills. Gauges and
+        the backtest use US-listed ETFs with long histories; the table above lists the UCITS ETF (or ETP for Bitcoin, which cannot be UCITS)
+        a European investor would buy for each.</p>
+      <p><b>Gauges.</b> Four inputs, each scored −1 to +1, are averaged into an absolute score:</p>
+      <ul>
+        <li><b>Trend (25%)</b>: price against its 200-day average and 12-month momentum (skipping the last month), both scaled by the asset's
+          volatility. Time-series momentum works across asset classes (Moskowitz, Ooi &amp; Pedersen, 2012).</li>
+        <li><b>Relative strength (25%)</b>: rank among all investable assets by risk-adjusted 6- and 12-month momentum (cross-sectional momentum).</li>
+        <li><b>Value (20%)</b>: for equities, sectors, real assets and Bitcoin, the 4-year return ending a year ago, ranked and reversed:
+          long-term losers tend to recover ("value and momentum everywhere", Asness, Moskowitz &amp; Pedersen, 2013). TIPS use the 10-year real
+          yield and corporates their credit spread, against the last 10 years. Treasuries get their value from the Treasury Timing gauges.</li>
+        <li><b>Macro (30%)</b>: the asset's sensitivities times six macro factors (growth, inflation, stress, falling rates, dollar, falling real
+          yields). The three Treasury gauges use the full <a href="bond_timing.html">Treasury Timing</a> models instead.</li>
+      </ul>
+      <p>Rotation is a relative decision: money has to go somewhere. So the published gauge is <mark>50% the absolute score and 50% the
+        asset's rank among all assets on that score</mark>. The best asset sits at +50 or more and the worst at −50 or less whenever their
+        absolute scores are on the right side of zero, which is why every zone is occupied at every rebalance. The blend changed the
+        backtest Sharpe by less than 0.02 at every level tried (0%, 30%, 50%, 70%), so it was not chosen for returns.</p>
+      <p><b>Allocation.</b> Start from a static all-weather mix: about 30% equities (half US, the rest Europe, emerging markets and sectors),
+        50% bonds, 17% real assets and 3% Bitcoin. Multiply each asset's base weight by its gauge: −50 or lower gives 0×, 0 gives 1×,
+        +50 gives 2×, up to 2.5×. No asset may exceed 25% (Bitcoin 6%). If the total exceeds 100% everything is scaled down; anything
+        below 100% goes to T-bills. Rebalancing happens on the first trading day of each month; orders fill at the next day's open.</p>
+      <p><b>Backtest.</b> Run in tradelab, with weights decided at the close and filled at the next open, and 10 bp of costs per trade
+        (5 commission + 5 slippage). It passes tradelab's causality checks (prefix invariance, future poison) on every run, and a separate test
+        in this repo re-runs the model on data truncated at three dates (macro included) to confirm nothing uses the future. The tilt
+        strength (1×) and monthly rebalancing were fixed before the grid was run.</p>
+      <div class="table-wrap"><table class="data" id="beta-table"><thead></thead><tbody></tbody></table></div>
+      <div class="callout note"><b>Caveats.</b> Bitcoin's 2017 run lifts both all-weather versions; the "without Bitcoin" switch shows the
+        gauges' edge without it. Results are in US dollars: a euro investor also carries currency risk unless they use hedged share classes.
+        UCITS ETFs track the same indices as the US proxies but differ in fees, tax treatment and history. The engine holds constant weights
+        between rebalances, so drift is not modelled. The macro sensitivities were set by judgement, not estimated. tradelab's overall verdict
+        is red because of PBO (see above). Nothing here is investment advice.</div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">Gauges recalculated every weekday from FRED and Yahoo Finance data; the backtest is refreshed with tradelab. Nothing here is investment advice.</div>
+  </footer>
+
+  <script src="data/allweather.js"></script>
+  <script src="data/allweather_backtest.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <script>
+  (function () {
+    const D = (window.nexusData || {}).allweather, B = (window.nexusData || {}).allweatherBacktest;
+    if (!D) { document.getElementById("lead").textContent = "No data yet: run `mise run allweather`."; return; }
+    const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const fmtDate = s => new Date(s + "T00:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+    const sgn = (v, nd = 0) => v == null ? "n/a" : (v > 0 ? "+" : v < 0 ? "−" : "") + Math.abs(v).toFixed(nd);
+    const pct = (v, nd = 1) => v == null ? "n/a" : (v * 100).toFixed(nd) + "%";
+    const spct = (v, nd = 1) => v == null ? '<span class="dim">n/a</span>' : `<span class="${v > 0 ? "pos" : v < 0 ? "neg" : ""}">${sgn(v * 100, nd)}%</span>`;
+    const usd = v => "$" + Math.round(v).toLocaleString("en-US");
+    const toneCls = t => t === "positive" ? "under" : t === "negative" ? "over" : "hold";
+    const verdict = (label, tone, extra = "") => `<span class="verdict ${toneCls(tone)}">${esc(label)}${extra}</span>`;
+    const A = D.assets, byId = Object.fromEntries(A.map(a => [a.id, a]));
+    const COMP = { trend: "Trend", relative: "Relative", value: "Value", macro: "Macro" };
+    const bar = (v, scale = 1) => {
+      if (v == null) return '<div class="track"></div>';
+      const s = Math.max(-1, Math.min(1, v / scale));
+      return `<div class="track"><div style="${s >= 0 ? "left:50%" : `left:${50 + s * 50}%`};width:${Math.abs(s) * 50}%;background:var(${s >= 0 ? "--under" : "--over"})"></div></div>`;
+    };
+
+    // ---- headline
+    const sorted = [...A].filter(a => a.score != null).sort((a, b) => b.score - a.score);
+    const names = list => list.map(a => esc(a.name)).join(", ");
+    const sb = sorted.filter(a => a.zone === "Strong buy"), ss = sorted.filter(a => a.zone === "Strong sell").reverse();
+    const sleeveSum = s => A.filter(a => a.sleeve === s).reduce((t, a) => t + (a.target || 0), 0);
+    const eq = sleeveSum("Equity regions") + sleeveSum("US sectors"), bonds = sleeveSum("Treasuries") + sleeveSum("Credit & inflation");
+    document.getElementById("lead").innerHTML =
+      `Strong buy: <mark>${names(sb)}</mark>. Strong sell: <mark>${names(ss)}</mark>. ` +
+      `The gauges currently put ${eq.toFixed(0)}% in equities, ${bonds.toFixed(0)}% in bonds, ${sleeveSum("Real assets").toFixed(0)}% in real assets, ` +
+      `${sleeveSum("Crypto").toFixed(1)}% in Bitcoin and ${D.cash.target.toFixed(0)}% in T-bills.`;
+    document.getElementById("asof").textContent = `Prices to ${fmtDate(D.asof)} · macro data to ${fmtDate(D.macro_asof)} · computed ${fmtDate(D.updated)}`;
+
+    const kpi = (label, value, sub) => `<div class="panel kpi"><div class="label">${label}</div><div class="value sm">${value}</div><div class="sub">${sub}</div></div>`;
+    const kp = [];
+    if (B) {
+      const g = B.runs.gauges.metrics, s = B.runs.static.metrics, sp = B.runs.spy.metrics;
+      kp.push(kpi("Backtest: $10k since 2008", usd(g.final), `${pct(g.cagr)} a year · static ${usd(s.final)}`));
+      kp.push(kpi("Worst drawdown", pct(g.max_dd, 0), `static ${pct(s.max_dd, 0)} · S&amp;P 500 ${pct(sp.max_dd, 0)}`));
+      kp.push(kpi("Sharpe ratio", g.sharpe.toFixed(2), `static ${s.sharpe.toFixed(2)} · S&amp;P 500 ${sp.sharpe.toFixed(2)}`));
+      kp.push(kpi("Correlation to S&amp;P 500", g.corr_spy.toFixed(2), `static ${s.corr_spy.toFixed(2)} · 60/40 ${B.runs.sixty_forty.metrics.corr_spy.toFixed(2)}`));
+    }
+    kp.push(kpi("Months with every zone used", D.dispersion.all_zones.toFixed(0) + "%", `${D.dispersion.months} monthly rebalances since 2008`));
+    document.getElementById("kpis").innerHTML = kp.join("");
+
+    // ---- allocation
+    const order = D.sleeves.flatMap(s => A.filter(a => a.sleeve === s));
+    document.getElementById("alloc-lead").innerHTML =
+      `What the rules would hold if you rebalanced today, for a ${usd(D.capital)} portfolio. The last scheduled rebalance was on
+      ${fmtDate(D.last_rebalance)}; the next is the first trading day of next month. Assets in <span class="verdict over">Strong sell</span>
+      get nothing; the freed money goes to the buys or, when the buys hit their caps, to T-bills.`;
+    const rows = order.map(a => `<tr>
+        <td class="wrap-cell"><b>${esc(a.name)}</b><br><span class="faint small">${esc(a.sleeve)} · backtest proxy ${esc(a.proxy)}</span></td>
+        <td class="wrap-cell"><span class="sym">${esc(a.ucits.split(".")[0])}</span> <span class="muted small">${esc(a.ucits_name)}</span>
+          ${a.quote ? `<br><span class="faint small">${esc(a.ucits)} · ${a.quote.price} ${esc(a.quote.currency)}</span>` : ""}</td>
+        <td>${verdict(a.zone || "n/a", a.tone, a.score == null ? "" : " " + sgn(a.score))}</td>
+        <td class="num"><b>${a.target.toFixed(1)}%</b></td><td class="num">${usd(a.target / 100 * D.capital)}</td>
+        <td class="num">${a.static.toFixed(1)}%</td><td class="num">${a.held.toFixed(1)}%</td></tr>`).join("");
+    const c = D.cash;
+    document.querySelector("#alloc-table tbody").innerHTML = rows + `<tr>
+        <td class="wrap-cell"><b>T-bills (cash)</b><br><span class="faint small">Cash · backtest proxy ${esc(c.proxy)}</span></td>
+        <td class="wrap-cell"><span class="sym">${esc(c.ucits.split(".")[0])}</span> <span class="muted small">${esc(c.ucits_name)}</span></td>
+        <td><span class="dim">residual</span></td><td class="num"><b>${c.target.toFixed(1)}%</b></td><td class="num">${usd(c.target / 100 * D.capital)}</td>
+        <td class="num">${c.static.toFixed(1)}%</td><td class="num">${c.held.toFixed(1)}%</td></tr>`;
+
+    function drawAlloc() {
+      const C = Nexus.colors, ys = order.map(a => a.name).concat(["T-bills"]).reverse();
+      const tgt = order.map(a => a.target).concat([c.target]).reverse(), base = order.map(a => a.static).concat([c.static]).reverse();
+      Plotly.react("alloc-chart", [
+        { type: "bar", orientation: "h", name: "Static base", y: ys, x: base, marker: { color: C.neutral }, hovertemplate: "%{y}: base %{x:.1f}%<extra></extra>" },
+        { type: "bar", orientation: "h", name: "Target", y: ys, x: tgt, marker: { color: C.accent }, hovertemplate: "%{y}: target %{x:.1f}%<extra></extra>" },
+      ], Nexus.plotlyLayout({ barmode: "group", bargap: 0.25, showlegend: false, margin: { t: 6, b: 30, l: 170, r: 10 },
+        xaxis: { ticksuffix: "%" }, yaxis: { automargin: true, dtick: 1, tickfont: { size: 11 } } }), Nexus.plotlyConfig);
+    }
+
+    // ---- gauges
+    document.getElementById("gauge-sleeves").innerHTML = D.sleeves.map(s => `
+      <div class="sleeve-title">${esc(s)}</div>
+      <div class="mini-grid">${A.filter(a => a.sleeve === s).map(a => `
+        <div class="panel mini">
+          <div class="head"><strong>${esc(a.name)}</strong><span class="faint small">${esc(a.ucits.split(".")[0])}</span></div>
+          <div class="gauge" id="g-${a.id}"></div>
+          <div class="foot">${verdict(a.zone || "n/a", a.tone)}<span class="muted small">${a.month == null ? "" : sgn(a.score - a.month) + " in a month"}</span></div>
+          ${Object.entries(COMP).map(([k, l]) => `<div class="comp"><span>${l}</span>${bar(a.components[k])}<span class="v">${a.components[k] == null ? "–" : sgn(a.components[k], 2)}</span></div>`).join("")}
+          <span class="faint small">Absolute ${sgn(a.absolute)} · rank ${sgn(a.rank)} · target ${a.target.toFixed(1)}%</span>
+        </div>`).join("")}</div>`).join("");
+
+    function drawGauges() {
+      const C = Nexus.colors;
+      for (const a of A) {
+        if (a.score == null) continue;
+        Plotly.react("g-" + a.id, [{
+          type: "indicator", mode: "gauge+number", value: Math.sign(a.score) * Math.round(Math.abs(a.score)),
+          number: { valueformat: ".0f", prefix: a.score >= 0.5 ? "+" : "", font: { size: 26, color: C.text } },
+          gauge: {
+            axis: { range: [-100, 100], tickvals: [-100, -50, 0, 50, 100], tickfont: { size: 9, color: C.faint }, tickcolor: C.border },
+            bar: { color: C.text, thickness: 0.2 }, bgcolor: C.surface2, borderwidth: 0,
+            steps: [
+              { range: [-100, -50], color: Nexus.rgba(C.negative, 0.6) }, { range: [-50, -20], color: Nexus.rgba(C.negative, 0.28) },
+              { range: [-20, 20], color: Nexus.rgba(C.neutral, 0.22) }, { range: [20, 50], color: Nexus.rgba(C.positive, 0.28) },
+              { range: [50, 100], color: Nexus.rgba(C.positive, 0.6) }],
+            threshold: a.month == null ? undefined : { line: { color: C.series2, width: 3 }, thickness: 0.9, value: a.month },
+          },
+          hovertemplate: `${a.name}: %{value:+.0f}<extra></extra>`,
+        }], Nexus.plotlyLayout({ margin: { t: 6, b: 0, l: 18, r: 18 } }), { ...Nexus.plotlyConfig, displayModeBar: false });
+      }
+    }
+
+    // ---- factors
+    document.getElementById("factors").innerHTML = D.factors.map(f => `
+      <div class="panel factor">
+        <div class="label muted small">${esc(f.name)}</div>
+        <div class="big ${f.value > 0 ? "pos" : f.value < 0 ? "neg" : ""}">${sgn(f.value, 2)}</div>
+        <div class="muted small">${esc(f.desc)}</div>
+        <div class="parts">${f.parts.map(p => `<div class="comp"><span>${esc(p.name)}</span>${bar(p.value)}<span class="v">${sgn(p.value, 2)}</span></div>`).join("")}</div>
+      </div>`).join("");
+
+    // ---- dispersion
+    const DZ = D.dispersion, DA = D.dispersion_absolute, CR = D.correlation;
+    document.getElementById("disp-kpis").innerHTML = [
+      kpi("Rebalances with all five zones", DZ.all_zones.toFixed(0) + "%", `Strong buy and Strong sell together: ${DZ.strong_both.toFixed(0)}%`),
+      kpi("Assets per zone, on average", Object.values(DZ.avg_per_zone).map(v => v.toFixed(1)).join(" · "), "Strong sell · Sell · Hold · Buy · Strong buy"),
+      kpi("Average pairwise correlation", CR.avg.toFixed(2), `${CR.share_below_03.toFixed(0)}% of pairs below 0.3 · range ${CR.min.toFixed(2)} to ${CR.max.toFixed(2)}`),
+    ].join("");
+    document.getElementById("disp-note").innerHTML =
+      `Read this honestly: part of the spread is by construction. On the absolute score alone, every zone was occupied at
+      <b>${DA.all_zones.toFixed(0)}%</b> of rebalances; the 50% rank blend lifts that to ${DZ.all_zones.toFixed(0)}%. The spread is not proof of
+      diversification on its own. The evidence for that is below: the assets' returns are weakly correlated, so the gauges disagree for real
+      reasons, and the gauge portfolio's correlation to the S&amp;P 500 is ${B ? B.runs.gauges.metrics.corr_spy.toFixed(2) : "n/a"}.`;
+    const sleeveCorr = Object.entries(CR.by_sleeve).map(([s, v]) => `${esc(s)} ${v.toFixed(2)}`).join(", ");
+    document.getElementById("corr-note").innerHTML =
+      `The high values sit inside sleeves (average within each sleeve: ${sleeveCorr}). Across sleeves correlations are low or negative:
+      long Treasuries against equities is the classic hedge. That is why the base mix gives each sleeve a fixed share and lets the gauges rotate inside it.`;
+
+    function drawHeatmap() {
+      const C = Nexus.colors, H = D.history;
+      const ids = D.sleeves.flatMap(s => A.filter(a => a.sleeve === s).map(a => a.id)).reverse();
+      Plotly.react("heatmap", [{
+        type: "heatmap", x: H.dates, y: ids.map(id => byId[id].name), z: ids.map(id => H.scores[id]), zmin: -100, zmax: 100,
+        colorscale: [[0, C.negative], [0.25, Nexus.rgba(C.negative, 0.55)], [0.5, C.divMid], [0.75, Nexus.rgba(C.positive, 0.55)], [1, C.positive]],
+        colorbar: { thickness: 10, tickvals: [-100, -50, -20, 20, 50, 100], tickfont: { color: C.muted, size: 10 }, outlinewidth: 0 },
+        hovertemplate: "%{y}<br>%{x|%b %Y}: %{z:+.0f}<extra></extra>", xgap: 0, ygap: 1,
+      }], Nexus.plotlyLayout({ margin: { t: 6, b: 30, l: 170, r: 10 }, yaxis: { automargin: true, showgrid: false, dtick: 1, tickfont: { size: 11 } }, xaxis: { showgrid: false } }), Nexus.plotlyConfig);
+      const cids = CR.ids, cn = cids.map(id => byId[id].name);
+      Plotly.react("corr", [{
+        type: "heatmap", x: cn, y: cn, z: CR.matrix, zmin: -1, zmax: 1,
+        colorscale: [[0, C.positive], [0.5, C.divMid], [1, C.negative]],
+        colorbar: { thickness: 10, tickfont: { color: C.muted, size: 10 }, outlinewidth: 0 },
+        hovertemplate: "%{y} / %{x}: %{z:.2f}<extra></extra>", xgap: 1, ygap: 1,
+      }], Nexus.plotlyLayout({ margin: { t: 6, b: 120, l: 170, r: 10 }, xaxis: { tickangle: -45, showgrid: false, automargin: true, dtick: 1, tickfont: { size: 11 } },
+        yaxis: { autorange: "reversed", showgrid: false, automargin: true, dtick: 1, tickfont: { size: 11 } } }), Nexus.plotlyConfig);
+    }
+
+    // ---- backtest
+    let withBtc = true;
+    function drawBacktest() {
+      if (!B) return;
+      const C = Nexus.colors, R = B.runs;
+      const g = withBtc ? R.gauges : R.gauges_ex_btc || R.gauges, s = withBtc ? R.static : R.static_ex_btc || R.static;
+      const line = (r, color, name, opacity = 1) => ({ type: "scatter", mode: "lines", name, x: r.dates, y: r.equity, opacity,
+        line: { color, width: 2 }, hovertemplate: `${name}: $%{y:,.0f}<extra></extra>` });
+      Plotly.react("eq-chart", [line(R.spy, C.neutral, "S&P 500", 0.5), line(R.sixty_forty, C.neutral, "60/40"), line(s, C.series2, s.label), line(g, C.accent, g.label)],
+        Nexus.plotlyLayout({ showlegend: false, hovermode: "x unified", margin: { t: 6, b: 30, l: 60, r: 10 },
+          yaxis: { type: "log", tickprefix: "$", tickformat: ",.0f" } }), Nexus.plotlyConfig);
+      const dd = (r, color, name, opacity = 1) => ({ type: "scatter", mode: "lines", name, x: r.dates, y: r.drawdown, opacity,
+        line: { color, width: 1.5 }, hovertemplate: `${name}: %{y:.1f}%<extra></extra>` });
+      Plotly.react("dd-chart", [dd(R.spy, C.neutral, "S&P 500", 0.5), dd(s, C.series2, s.label), dd(g, C.accent, g.label)],
+        Nexus.plotlyLayout({ showlegend: false, hovermode: "x unified", margin: { t: 6, b: 30, l: 50, r: 10 }, yaxis: { ticksuffix: "%" } }), Nexus.plotlyConfig);
+    }
+    function drawAllocHist() {
+      if (!B) return;
+      const C = Nexus.colors, AL = B.allocation, S = AL.sleeves;
+      const groups = [["Equities", ["Equity regions", "US sectors"], C.accent], ["Bonds", ["Treasuries", "Credit & inflation"], C.series2],
+                      ["Real assets", ["Real assets"], C.neutral], ["Bitcoin", ["Crypto"], C.seqHigh], ["T-bills", ["Cash"], C.faint]];
+      document.getElementById("alloc-hist-legend").innerHTML = groups.map(([n, , col], i) =>
+        `<span><i style="background:${["var(--accent)", "var(--series-2)", "var(--neutral)", "var(--seq-high)", "var(--faint)"][i]}"></i>${n}</span>`).join("");
+      Plotly.react("alloc-hist", groups.map(([name, keys, color]) => ({
+        type: "scatter", mode: "lines", stackgroup: "one", name, x: AL.dates,
+        y: AL.dates.map((_, i) => keys.reduce((t, k) => t + (S[k] ? S[k][i] : 0), 0)),
+        line: { color, width: 1 }, fillcolor: color, hovertemplate: `${name}: %{y:.0f}%<extra></extra>`,
+      })), Nexus.plotlyLayout({ showlegend: false, hovermode: "x unified", margin: { t: 6, b: 30, l: 44, r: 10 }, yaxis: { ticksuffix: "%", range: [0, 100] } }), Nexus.plotlyConfig);
+    }
+    if (B) {
+      const R = B.runs, g = R.gauges.metrics, s = R.static.metrics, gn = (R.gauges_ex_btc || R.gauges).metrics, sn = (R.static_ex_btc || R.static).metrics;
+      document.getElementById("bt-lead").innerHTML =
+        `Starting with ${usd(B.capital)} on ${fmtDate(B.start)}, rebalancing monthly by the gauges, after costs, to ${fmtDate(B.end)}.
+        The gauges matter most in the worst periods: the deepest drawdown was <mark>${pct(g.max_dd, 0)}</mark> against ${pct(s.max_dd, 0)} for the same
+        assets held at fixed weights. Without Bitcoin the edge remains: ${pct(gn.cagr)} against ${pct(sn.cagr)} a year, Sharpe
+        ${gn.sharpe.toFixed(2)} against ${sn.sharpe.toFixed(2)}, worst drawdown ${pct(gn.max_dd, 0)} against ${pct(sn.max_dd, 0)}.
+        It does not beat the S&amp;P 500 on return: it is built to lose less, not to win more.`;
+      document.getElementById("bt-kpis").innerHTML = [
+        kpi("Gauges vs static: return", `${sgn((g.cagr - s.cagr) * 100, 2)} pp`, `a year · without Bitcoin ${sgn((gn.cagr - sn.cagr) * 100, 2)} pp`),
+        kpi("Gauges vs static: Sharpe", sgn(g.sharpe - s.sharpe, 2), `without Bitcoin ${sgn(gn.sharpe - sn.sharpe, 2)}`),
+        kpi("Costs paid", usd(g.costs), `turnover ${(g.turnover * 100).toFixed(0)}% a year`),
+      ].join("");
+      const mrow = (r, strong) => {
+        const m = r.metrics;
+        return `<tr><td>${strong ? "<b>" : ""}${esc(r.label)}${strong ? "</b>" : ""}</td><td class="num">${usd(m.final)}</td><td class="num">${pct(m.cagr, 2)}</td>
+          <td class="num">${pct(m.vol)}</td><td class="num">${m.sharpe.toFixed(2)}</td><td class="num"><span class="neg">${pct(m.max_dd)}</span></td>
+          <td class="num">${m.corr_spy.toFixed(2)}</td><td class="num">${m.turnover == null ? "–" : (m.turnover * 100).toFixed(0) + "%"}</td></tr>`;
+      };
+      document.querySelector("#metrics-table tbody").innerHTML = ["gauges", "static", "gauges_ex_btc", "static_ex_btc", "sixty_forty", "spy"]
+        .filter(k => R[k]).map(k => mrow(R[k], k === "gauges")).join("");
+      const yk = ["gauges", "static", "gauges_ex_btc", "sixty_forty", "spy"].filter(k => R[k]);
+      const years = Object.keys(R.gauges.years).sort();
+      document.querySelector("#years-table thead").innerHTML = `<tr><th>Year</th>${yk.map(k => `<th class="num">${esc(R[k].label)}</th>`).join("")}</tr>`;
+      document.querySelector("#years-table tbody").innerHTML = years.map(y =>
+        `<tr><td>${y}${y === B.end.slice(0, 4) ? ' <span class="faint small">to date</span>' : ""}</td>${yk.map(k => `<td class="num">${spct(R[k].years[y])}</td>`).join("")}</tr>`).join("");
+
+      const rb = B.robustness, gr = rb.grid || {}, wf = rb.walkforward || {}, bs = rb.bootstrap || {};
+      const grid = (gr.table || []).slice().sort((a, b) => a.rebalance.localeCompare(b.rebalance) || a.tilt - b.tilt);
+      document.getElementById("robust").innerHTML = `
+        <div class="panel table-wrap"><table class="data kv robust-kv"><tbody>
+          <tr><td>Causality checks (no look-ahead)</td><td class="num">${rb.causality ? '<span class="verdict under">PASS</span>' : '<span class="verdict over">FAIL</span>'}</td></tr>
+          <tr><td>Deflated Sharpe ratio (8 trials)</td><td class="num">${gr.dsr ?? "n/a"}</td></tr>
+          <tr><td>Bootstrap Sharpe, 5th to 95th percentile</td><td class="num">${bs.sharpe_p05} to ${bs.sharpe_p95}</td></tr>
+          <tr><td>Bootstrap worst drawdown, 5th percentile</td><td class="num">${pct(bs.max_drawdown_p05, 0)}</td></tr>
+          <tr><td>Walk-forward out-of-sample Sharpe (${wf.folds} folds)</td><td class="num">${wf.oos_sharpe ?? "n/a"}</td></tr>
+          <tr><td>Walk-forward efficiency (out / in sample)</td><td class="num">${wf.efficiency ?? "n/a"}</td></tr>
+          <tr><td>Parameter plateau score</td><td class="num">${gr.plateau ?? "n/a"}</td></tr>
+          <tr><td>Probability of backtest overfitting (PBO)</td><td class="num"><span class="neg">${gr.pbo ?? "n/a"}</span></td></tr>
+          <tr><td>Losing years</td><td class="num">${rb.negative_years.join(", ")}</td></tr>
+          <tr><td>Still profitable at 3× costs</td><td class="num">${rb.costs.table ? sgn(rb.costs.table[rb.costs.table.length - 1].sharpe, 2) + " Sharpe" : "n/a"}</td></tr>
+        </tbody></table></div>
+        <div class="stack">
+          <div class="table-wrap"><table class="data" data-list="cards"><thead><tr><th>Tilt</th><th>Rebalance</th><th class="num">Sharpe</th><th class="num">Total return</th></tr></thead>
+            <tbody>${grid.map(r => `<tr><td>${r.tilt === 0 ? "0 (static)" : r.tilt + "×"}${r.tilt === 1 && r.rebalance === "monthly" ? " <b>· used</b>" : ""}</td><td>${esc(r.rebalance)}</td>
+              <td class="num">${r.objective.toFixed(2)}</td><td class="num">${pct(r.total_return, 0)}</td></tr>`).join("")}</tbody></table></div>
+          <p class="small muted">Every tilted setting beats the static mix (0), and they form a flat plateau. That is also why PBO is high: with
+            seven near-identical settings, which one wins in-sample is a coin flip, so picking the in-sample winner does not hold up. The chance
+            that the in-sample winner lost money out of sample was ${(gr.prob_oos_loss ?? 0) * 100}%. tradelab's overall verdict is red because of
+            PBO; read it as "don't fine-tune the tilt", not as "no edge". The setting used (1×, monthly) was fixed before the grid ran.</p>
+        </div>`;
+    }
+    document.getElementById("btc-switch").addEventListener("click", e => {
+      const b = e.target.closest("button[data-btc]");
+      if (!b) return;
+      withBtc = b.dataset.btc === "1";
+      document.querySelectorAll("#btc-switch button").forEach(x => x.setAttribute("aria-pressed", x === b));
+      drawBacktest();
+    });
+
+    // ---- sensitivities table
+    const F = D.factors.map(f => f.id), FN = Object.fromEntries(D.factors.map(f => [f.id, f.name]));
+    document.querySelector("#beta-table thead").innerHTML = `<tr><th>Asset</th>${F.map(f => `<th class="num">${esc(FN[f])}</th>`).join("")}</tr>`;
+    document.querySelector("#beta-table tbody").innerHTML = order.map(a => typeof a.beta === "string"
+      ? `<tr><td>${esc(a.name)}</td><td colspan="${F.length}" class="muted">Treasury Timing ${esc(a.beta.split(":")[1])}-term gauge</td></tr>`
+      : `<tr><td>${esc(a.name)}</td>${F.map(f => `<td class="num">${a.beta[f] == null ? '<span class="dim">·</span>' : `<span class="${a.beta[f] > 0 ? "pos" : "neg"}">${sgn(a.beta[f], 1)}</span>`}</td>`).join("")}</tr>`).join("");
+
+    function drawAll() { drawAlloc(); drawGauges(); drawHeatmap(); drawBacktest(); drawAllocHist(); }
+    drawAll();
+    Nexus.onThemeChange(drawAll);
+  })();
+  </script>
+</body>
+</html>
