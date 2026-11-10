@@ -14,6 +14,7 @@ and loan tools.
 | ------------ | -------- |
 | `scripts/`   | The AlphaSpread data-generation scripts — scrape index valuations and render the dated `nasdaq/` and `sp500/` charts. See [`scripts/README.md`](scripts/README.md). Also `serve_site.py` (the local site server behind `mise run site`) and `publish_site_data.py`. |
 | `fairvalue/` | Fair Value valuation model (`fvmodel`): Fair Value, Quality Score, solvency and the full Fair Value summary metrics from SEC EDGAR filings and Yahoo prices. See [`fairvalue/README.md`](fairvalue/README.md). |
+| `allweather/` | All-Weather gauges: buy/sell gauges for 22 asset classes, a gauge-tilted all-weather allocation, and its tradelab backtest (strategy, configs, exporter). Feeds `docs/allweather.html`. |
 | `server/`    | FastAPI backend for the calculators (PVGO, IV15, dividend sustainability) and loan tools. Fetches live data from Yahoo Finance. |
 | `tests/`     | Unit tests for the backend. |
 | `docs/`      | The published site — dashboards, calculators and articles. Served by GitHub Pages. |
@@ -66,8 +67,16 @@ mise run sectors
 mise run stoxx600-sectors
 
 # Treasury Timing gauges (FRED macro data + Yahoo UCITS ETF prices) → docs/data/bonds.js
-# Runs every weekday in .github/workflows/bond-signals.yml
+# Runs every weekday in .github/workflows/macro-gauges.yml
 mise run bonds
+
+# All-Weather gauges (Yahoo prices + FRED, cached in generated/allweather/cache/) → docs/data/allweather.js
+# Also runs every weekday in .github/workflows/macro-gauges.yml
+mise run allweather
+
+# All-Weather backtest with tradelab (the trading repo's Trading/backtest; set TRADELAB_DIR
+# if it lives elsewhere): causality check, runs, optimize, walk-forward → docs/data/allweather_backtest.js
+mise run allweather-backtest            # add --skip-robust for just the runs
 ```
 
 The PNG export (kaleido) renders with a Chrome or Chromium it finds on the system.
@@ -179,10 +188,11 @@ rest of the site they use nexus-design (see Design system above).
 
 The AlphaSpread valuation generator now lives here in [`scripts/`](scripts/) and
 writes straight into `generated/alphaspread/` (see above); the Fair Value
-model writes into `generated/fairvalue/` and `docs/fairvalue/`. Both run daily
-in `.github/workflows/daily-analysis.yml`; the Fair Value job needs the
-`SEC_USER_AGENT` repository secret (`"Your Name you@example.com"`) and skips
-itself with a warning until it is set. The
+model writes into `generated/fairvalue/` and `docs/fairvalue/`. Both run daily,
+in parallel: AlphaSpread in `.github/workflows/daily-analysis.yml`, Fair Value
+in `.github/workflows/fairvalue.yml`. The Fair Value workflow needs the
+`SEC_USER_AGENT` repository secret (`"Your Name you@example.com"`) and fails
+until it is set. The
 remaining analysis scripts (macro, SP500 weights, the `docs/` calculators) still
 live in `python-trading` and, as of the split, write into their old in-repo
 paths — refreshing those means copying the new output over until that pipeline is

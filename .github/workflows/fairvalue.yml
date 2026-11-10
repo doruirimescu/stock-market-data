@@ -1,0 +1,83 @@
+name: Daily Fair Value
+
+# Values every stock in the NASDAQ-100, the S&P 500 and the STOXX Europe 600
+# with the Fair Value model in fairvalue/ (SEC EDGAR filings + Yahoo prices;
+# Yahoo Finance statements for Europe). Commits the valuation JSON to
+# generated/fairvalue/, publishes snapshots to docs/data/fairvalue/ and the
+# per-stock summary pages to docs/fairvalue/.
+#
+# Separate from daily-analysis.yml (AlphaSpread) so either can be re-run on its
+# own. They write disjoint files, so each rebases onto the other before pushing.
+#
+# Tools and dependencies come from mise (mise.toml, fairvalue/mise.toml): the
+# steps run the same `mise run` tasks as a local checkout.
+
+on:
+  schedule:
+    - cron: "30 6 * * *"     # 06:30 UTC daily (times are always UTC on GitHub)
+  workflow_dispatch: {}       # allow manual runs from the Actions tab
+
+permissions:
+  contents: write             # needed to push the generated files back
+
+env:
+  MISE_YES: "1"                                        # never prompt
+  MISE_TRUSTED_CONFIG_PATHS: ${{ github.workspace }}   # trust the repo's mise.toml files
+
+concurrency:
+  group: daily-fairvalue
+  cancel-in-progress: false
+
+jobs:
+  fairvalue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      # SEC EDGAR rejects requests without a contact email in the User-Agent
+      # ("Name you@example.com"). Set it under Settings → Secrets → Actions.
+      SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+    steps:
+      - name: Check SEC contact
+        run: |
+          if [ -z "$SEC_USER_AGENT" ]; then
+            echo "::error::SEC_USER_AGENT secret is not set; the Fair Value valuations need it."
+            exit 1
+          fi
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up mise (Python, uv)
+        uses: jdx/mise-action@v2
+
+      - name: Value the NASDAQ-100, the S&P 500 and the STOXX Europe 600
+        run: |
+          DATE=$(date -u +%F)
+          mise run fairvalue nasdaq100 --date "$DATE"
+          mise run fairvalue sp500 --date "$DATE"
+          # Europe: statements from Yahoo Finance (no SEC filings). Non-fatal.
+          mise run fairvalue stoxx600 --date "$DATE" || echo "::warning::STOXX 600 Fair Value run failed."
+
+      - name: Publish dated snapshots for the site
+        run: |
+          DATE=$(date -u +%F)
+          mise run publish fairvalue nasdaq100 --date "$DATE"
+          mise run publish fairvalue sp500 --date "$DATE"
+          mise run publish fairvalue stoxx600 --date "$DATE" || true
+
+      - name: Commit and push generated files
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          DATE=$(date -u +%F)
+          git add generated/fairvalue docs/data/fairvalue docs/fairvalue
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Daily Fair Value valuations: ${DATE} [skip ci]"
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase && git push && exit 0
+            sleep $((attempt * 15))
+          done
+          exit 1

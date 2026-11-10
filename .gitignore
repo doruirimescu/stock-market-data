@@ -5,3 +5,5 @@ __pycache__/
 # Local agent tooling
 .serena/
 .claude/
+.agent-tools/
+generated/allweather/cache/
