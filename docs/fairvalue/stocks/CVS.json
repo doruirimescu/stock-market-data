@@ -1,1 +1,1 @@
-{"ticker": "CVS", "name": "CVS HEALTH Corp", "price": "83.85", "as_of": "2026-09-30", "fair_value": "$79.52", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "77", "pe": "9.74", "roic": "5.91%", "f_score": "7", "z_score": "2.48", "p2fv": 1.0545}
+{"ticker": "CVS", "name": "CVS HEALTH Corp", "price": "88.07", "as_of": "2026-09-30", "fair_value": "$79.45", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "73", "pe": "10.23", "roic": "5.91%", "f_score": "7", "z_score": "2.50", "p2fv": 1.1086}

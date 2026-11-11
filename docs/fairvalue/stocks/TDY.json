@@ -1,1 +1,1 @@
-{"ticker": "TDY", "name": "TELEDYNE TECHNOLOGIES INC", "price": "618.60", "as_of": "2026-09-27", "fair_value": "$580.74", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "96", "pe": "28.32", "roic": "7.83%", "f_score": "9", "z_score": "5.42", "p2fv": 1.0652}
+{"ticker": "TDY", "name": "TELEDYNE TECHNOLOGIES INC", "price": "647.46", "as_of": "2026-09-27", "fair_value": "$581.75", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "94", "pe": "29.65", "roic": "7.83%", "f_score": "9", "z_score": "5.60", "p2fv": 1.113}

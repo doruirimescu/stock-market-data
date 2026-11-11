@@ -1,1 +1,1 @@
-{"ticker": "PKN.WA", "name": "Orlen S.A.", "price": "PLN 130.14", "as_of": "2026-06-30", "fair_value": "PLN 68.27", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "66", "pe": "7.18", "roic": "11.90%", "f_score": "\u2013", "z_score": "2.67", "p2fv": 1.9064}
+{"ticker": "PKN.WA", "name": "Orlen S.A.", "price": "PLN 128.00", "as_of": "2026-09-30", "fair_value": "PLN 75.08", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "68", "pe": "6.07", "roic": "13.43%", "f_score": "\u2013", "z_score": "2.61", "p2fv": 1.7049}

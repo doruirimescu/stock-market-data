@@ -1,1 +1,1 @@
-{"ticker": "MKC", "name": "MCCORMICK & CO INC", "price": "48.40", "as_of": "2026-08-31", "fair_value": "$81.51", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "76", "pe": "8.75", "roic": "5.51%", "f_score": "5", "z_score": "\u2013", "p2fv": 0.5938}
+{"ticker": "MKC", "name": "MCCORMICK & CO INC", "price": "46.05", "as_of": "2026-08-31", "fair_value": "$81.52", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "76", "pe": "8.33", "roic": "5.51%", "f_score": "5", "z_score": "\u2013", "p2fv": 0.5649}

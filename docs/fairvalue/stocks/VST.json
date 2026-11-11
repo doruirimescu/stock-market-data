@@ -1,1 +1,1 @@
-{"ticker": "VST", "name": "Vistra Corp.", "price": "124.80", "as_of": "2026-06-30", "fair_value": "$159.26", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "21.05", "roic": "7.24%", "f_score": "5", "z_score": "1.46", "p2fv": 0.7836}
+{"ticker": "VST", "name": "Vistra Corp.", "price": "134.12", "as_of": "2026-09-30", "fair_value": "$174.06", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "87", "pe": "18.12", "roic": "8.49%", "f_score": "8", "z_score": "1.61", "p2fv": 0.7705}

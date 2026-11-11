@@ -1,1 +1,1 @@
-{"ticker": "EMR", "name": "EMERSON ELECTRIC CO", "price": "162.35", "as_of": "2026-06-30", "fair_value": "$136.78", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "77", "pe": "35.53", "roic": "6.90%", "f_score": "8", "z_score": "4.54", "p2fv": 1.187}
+{"ticker": "EMR", "name": "EMERSON ELECTRIC CO", "price": "169.74", "as_of": "2026-09-30", "fair_value": "$139.85", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "81", "pe": "35.44", "roic": "7.35%", "f_score": "9", "z_score": "4.76", "p2fv": 1.2138}

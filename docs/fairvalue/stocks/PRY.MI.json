@@ -1,1 +1,1 @@
-{"ticker": "PRY.MI", "name": "Prysmian S.p.A.", "price": "\u20ac101.00", "as_of": "2026-09-30", "fair_value": "\u20ac95.50", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "81", "pe": "At loss", "roic": "7.45%", "f_score": "\u2013", "z_score": "2.60", "p2fv": 1.0576}
+{"ticker": "PRY.MI", "name": "Prysmian S.p.A.", "price": "\u20ac110.40", "as_of": "2026-09-30", "fair_value": "\u20ac95.76", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "78", "pe": "At loss", "roic": "7.45%", "f_score": "\u2013", "z_score": "2.71", "p2fv": 1.1528}

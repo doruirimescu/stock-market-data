@@ -1,1 +1,1 @@
-{"ticker": "RMD", "name": "RESMED INC", "price": "235.30", "as_of": "2026-09-30", "fair_value": "$280.30", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "100", "pe": "21.43", "roic": "23.68%", "f_score": "8", "z_score": "11.90", "p2fv": 0.8395}
+{"ticker": "RMD", "name": "RESMED INC", "price": "233.56", "as_of": "2026-09-30", "fair_value": "$280.44", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "100", "pe": "21.27", "roic": "23.68%", "f_score": "8", "z_score": "11.83", "p2fv": 0.8328}

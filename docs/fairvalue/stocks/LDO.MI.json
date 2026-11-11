@@ -1,1 +1,1 @@
-{"ticker": "LDO.MI", "name": "Leonardo S.p.a.", "price": "\u20ac48.07", "as_of": "2025-12-31", "fair_value": "\u20ac50.32", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "81", "pe": "22.65", "roic": "4.54%", "f_score": "8", "z_score": "1.42", "p2fv": 0.9553}
+{"ticker": "LDO.MI", "name": "Leonardo S.p.a.", "price": "\u20ac50.49", "as_of": "2026-09-30", "fair_value": "\u20ac55.99", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "80", "pe": "At loss", "roic": "7.72%", "f_score": "\u2013", "z_score": "2.32", "p2fv": 0.9017}

@@ -1,1 +1,1 @@
-{"ticker": "FAST", "name": "FASTENAL CO", "price": "52.99", "as_of": "2026-09-30", "fair_value": "$48.89", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "92", "pe": "43.08", "roic": "32.48%", "f_score": "7", "z_score": "\u2013", "p2fv": 1.0839}
+{"ticker": "FAST", "name": "FASTENAL CO", "price": "54.92", "as_of": "2026-09-30", "fair_value": "$48.95", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "92", "pe": "44.65", "roic": "32.48%", "f_score": "7", "z_score": "\u2013", "p2fv": 1.122}

@@ -1,1 +1,1 @@
-{"ticker": "ADI", "name": "ANALOG DEVICES INC", "price": "363.56", "as_of": "2026-08-01", "fair_value": "$351.21", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "90", "pe": "43.18", "roic": "9.98%", "f_score": "8", "z_score": "\u2013", "p2fv": 1.0352}
+{"ticker": "ADI", "name": "ANALOG DEVICES INC", "price": "402.60", "as_of": "2026-08-01", "fair_value": "$351.86", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "87", "pe": "47.81", "roic": "9.98%", "f_score": "8", "z_score": "\u2013", "p2fv": 1.1442}

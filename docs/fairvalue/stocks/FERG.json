@@ -1,1 +1,1 @@
-{"ticker": "FERG", "name": "Ferguson Enterprises Inc. /DE/", "price": "233.70", "as_of": "2026-06-30", "fair_value": "$239.65", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "70", "pe": "At loss", "roic": "\u2013", "f_score": "1", "z_score": "2.93", "p2fv": 0.9752}
+{"ticker": "FERG", "name": "Ferguson Enterprises Inc. /DE/", "price": "260.67", "as_of": "2026-09-30", "fair_value": "$256.97", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "66", "pe": "At loss", "roic": "\u2013", "f_score": "2", "z_score": "2.91", "p2fv": 1.0144}

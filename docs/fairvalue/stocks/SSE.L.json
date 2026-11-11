@@ -1,1 +1,1 @@
-{"ticker": "SSE.L", "name": "SSE plc", "price": "GBX 2649.00", "as_of": "2026-03-31", "fair_value": "GBX 1,706.71", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "74", "pe": "25.13", "roic": "4.86%", "f_score": "5", "z_score": "1.89", "p2fv": 1.5521}
+{"ticker": "SSE.L", "name": "SSE plc", "price": "GBX 2692.00", "as_of": "2026-03-31", "fair_value": "GBX 1,713.15", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "74", "pe": "25.54", "roic": "4.86%", "f_score": "5", "z_score": "1.90", "p2fv": 1.5714}

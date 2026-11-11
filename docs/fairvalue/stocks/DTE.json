@@ -1,1 +1,1 @@
-{"ticker": "DTE", "name": "DTE ENERGY CO", "price": "135.08", "as_of": "2026-03-31", "fair_value": "$123.34", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "68", "pe": "22.22", "roic": "4.09%", "f_score": "4", "z_score": "0.67", "p2fv": 1.0952}
+{"ticker": "DTE", "name": "DTE ENERGY CO", "price": "138.51", "as_of": "2026-03-31", "fair_value": "$123.42", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "67", "pe": "22.78", "roic": "4.09%", "f_score": "4", "z_score": "0.68", "p2fv": 1.1222}

@@ -1,1 +1,1 @@
-{"ticker": "ABBV", "name": "AbbVie Inc.", "price": "291.31", "as_of": "2026-09-30", "fair_value": "$230.76", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "76", "pe": "50.14", "roic": "16.06%", "f_score": "8", "z_score": "2.63", "p2fv": 1.2624}
+{"ticker": "ABBV", "name": "AbbVie Inc.", "price": "292.10", "as_of": "2026-09-30", "fair_value": "$230.94", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "76", "pe": "50.27", "roic": "16.06%", "f_score": "8", "z_score": "2.64", "p2fv": 1.2648}

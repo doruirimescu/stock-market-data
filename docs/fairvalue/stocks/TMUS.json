@@ -1,1 +1,1 @@
-{"ticker": "TMUS", "name": "T-Mobile US, Inc.", "price": "162.01", "as_of": "2026-09-30", "fair_value": "$244.45", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "82", "pe": "15.62", "roic": "7.16%", "f_score": "6", "z_score": "\u2013", "p2fv": 0.6628}
+{"ticker": "TMUS", "name": "T-Mobile US, Inc.", "price": "168.68", "as_of": "2026-09-30", "fair_value": "$244.64", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "82", "pe": "16.27", "roic": "7.16%", "f_score": "6", "z_score": "\u2013", "p2fv": 0.6895}

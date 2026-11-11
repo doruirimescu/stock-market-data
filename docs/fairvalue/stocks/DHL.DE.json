@@ -1,1 +1,1 @@
-{"ticker": "DHL.DE", "name": "DHL AG", "price": "\u20ac58.02", "as_of": "2025-12-31", "fair_value": "\u20ac42.27", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "74", "pe": "19.09", "roic": "6.04%", "f_score": "7", "z_score": "2.64", "p2fv": 1.3725}
+{"ticker": "DHL.DE", "name": "DHL AG", "price": "\u20ac59.60", "as_of": "2026-09-30", "fair_value": "\u20ac46.98", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "73", "pe": "At loss", "roic": "6.65%", "f_score": "\u2013", "z_score": "2.68", "p2fv": 1.2687}

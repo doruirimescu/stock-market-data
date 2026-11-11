@@ -1,1 +1,1 @@
-{"ticker": "V", "name": "VISA INC.", "price": "422.65", "as_of": "2026-09-30", "fair_value": "$392.33", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "89", "pe": "At loss", "roic": "26.26%", "f_score": "6", "z_score": "9.86", "p2fv": 1.0773}
+{"ticker": "V", "name": "VISA INC.", "price": "419.58", "as_of": "2026-09-30", "fair_value": "$392.78", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "89", "pe": "At loss", "roic": "26.26%", "f_score": "6", "z_score": "9.80", "p2fv": 1.0682}
