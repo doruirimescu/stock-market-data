@@ -196,12 +196,13 @@ against plain DCA, on final wealth and on drawdown.
 | Page | Shows |
 | ---- | ----- |
 | `dca/index.html` | The report: account-sized rules (exposure targets) and six-payment rules, ranked by edge over plain DCA and by drawdown |
-| `dca/rules/combined-strategy.html` | The Combined strategy: a continuous Kelly function of the VIX, the 200-day trend and the 10-year / 3-month rates that only borrows more or less and never sells; its formula, an exposure map, today's calculation, and a leave-one-era-out test |
+| `dca/rules/combined-strategy.html` | The four combined strategies side by side, and the first in depth (optimism, never sells): a continuous Kelly function of the VIX, the 200-day trend and the 10-year / 3-month rates; its formula, an exposure map, today's calculation, and a leave-one-era-out test |
+| `dca/rules/combined-pessimism.html`, `combined-optimism-sells.html`, `combined-pessimism-sells.html` | The other three: pessimism borrows in dips (and when yields fall), the `-sells` versions sell to reach their target; the pessimism pages split the edge into its dip and rate parts |
 | `dca/rules/<rule>.html` | One rule in depth: what it does and why, what it held, growth and drawdown vs plain DCA, edge by start month, crashes and decades |
 
 The pages are static (data embedded) and produced in
 `python-trading/Trading/perfectshape` (`mise run dca-report`, then
-`research/dca/kelly_cv.py` and `research/dca/combined_page.py` for the combined page);
+`research/dca/kelly4_cv.py`, `dip_ablation.py` and `combined_page.py` for the combined pages);
 the run folder is copied here with the top bar pointed at the site.
 
 ## Updating
