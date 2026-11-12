@@ -184,6 +184,26 @@ Each run is one file, `docs/basket/data/runs/<run_id>.js`, listed newest-first i
 The pages also work from disk and under `mise run start` (`/basket/`). Like the
 rest of the site they use nexus-design (see Design system above).
 
+## DCA Timing
+
+<https://doruirimescu.github.io/stock-market-data/dca/>
+
+Can a $2,000-a-month S&P 500 saver beat plain monthly DCA by borrowing on margin
+(at the 10-year yield, Reg T margin) or holding payments back, using the VIX,
+rates, news and the trend? Every rule is scored on every start month since 1928
+against plain DCA, on final wealth and on drawdown.
+
+| Page | Shows |
+| ---- | ----- |
+| `dca/index.html` | The report: account-sized rules (exposure targets) and six-payment rules, ranked by edge over plain DCA and by drawdown |
+| `dca/rules/combined-strategy.html` | The Combined strategy: a continuous Kelly function of the VIX, the 200-day trend and the 10-year / 3-month rates that only borrows more or less and never sells; its formula, an exposure map, today's calculation, and a leave-one-era-out test |
+| `dca/rules/<rule>.html` | One rule in depth: what it does and why, what it held, growth and drawdown vs plain DCA, edge by start month, crashes and decades |
+
+The pages are static (data embedded) and produced in
+`python-trading/Trading/perfectshape` (`mise run dca-report`, then
+`research/dca/kelly_cv.py` and `research/dca/combined_page.py` for the combined page);
+the run folder is copied here with the top bar pointed at the site.
+
 ## Updating
 
 The AlphaSpread valuation generator now lives here in [`scripts/`](scripts/) and
