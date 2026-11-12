@@ -1,1 +1,1 @@
-{"ticker": "DASH", "name": "DoorDash, Inc.", "price": "178.33", "as_of": "2026-09-30", "fair_value": "$252.67", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "76", "pe": "74.00", "roic": "8.60%", "f_score": "8", "z_score": "\u2013", "p2fv": 0.7058}
+{"ticker": "DASH", "name": "DoorDash, Inc.", "price": "175.91", "as_of": "2026-09-30", "fair_value": "$252.67", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "76", "pe": "72.99", "roic": "8.60%", "f_score": "8", "z_score": "\u2013", "p2fv": 0.6962}

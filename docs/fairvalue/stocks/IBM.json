@@ -1,1 +1,1 @@
-{"ticker": "IBM", "name": "INTERNATIONAL BUSINESS MACHINES CORP", "price": "243.43", "as_of": "2026-09-30", "fair_value": "$249.81", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "77", "pe": "20.72", "roic": "8.49%", "f_score": "7", "z_score": "3.25", "p2fv": 0.9744}
+{"ticker": "IBM", "name": "INTERNATIONAL BUSINESS MACHINES CORP", "price": "245.68", "as_of": "2026-09-30", "fair_value": "$249.83", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "77", "pe": "20.91", "roic": "8.49%", "f_score": "7", "z_score": "3.26", "p2fv": 0.9834}

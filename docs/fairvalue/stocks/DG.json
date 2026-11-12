@@ -1,1 +1,1 @@
-{"ticker": "DG", "name": "DOLLAR GENERAL CORP", "price": "137.50", "as_of": "2026-07-31", "fair_value": "$121.72", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "78", "pe": "17.86", "roic": "7.42%", "f_score": "7", "z_score": "2.66", "p2fv": 1.1296}
+{"ticker": "DG", "name": "DOLLAR GENERAL CORP", "price": "136.80", "as_of": "2026-07-31", "fair_value": "$121.77", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "77", "pe": "17.77", "roic": "7.42%", "f_score": "7", "z_score": "2.66", "p2fv": 1.1235}

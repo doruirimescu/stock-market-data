@@ -1,1 +1,1 @@
-{"ticker": "ATO", "name": "ATMOS ENERGY CORP", "price": "174.75", "as_of": "2026-06-30", "fair_value": "$160.27", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "78", "pe": "20.83", "roic": "5.01%", "f_score": "5", "z_score": "\u2013", "p2fv": 1.0904}
+{"ticker": "ATO", "name": "ATMOS ENERGY CORP", "price": "177.10", "as_of": "2026-06-30", "fair_value": "$160.31", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "78", "pe": "21.11", "roic": "5.01%", "f_score": "5", "z_score": "\u2013", "p2fv": 1.1047}

@@ -1,1 +1,1 @@
-{"ticker": "OKTA", "name": "Okta, Inc.", "price": "185.57", "as_of": "2026-07-31", "fair_value": "$109.76", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "84", "pe": "111.79", "roic": "2.54%", "f_score": "9", "z_score": "\u2013", "p2fv": 1.6906}
+{"ticker": "OKTA", "name": "Okta, Inc.", "price": "176.49", "as_of": "2026-07-31", "fair_value": "$109.79", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "84", "pe": "106.32", "roic": "2.54%", "f_score": "9", "z_score": "\u2013", "p2fv": 1.6075}

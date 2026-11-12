@@ -1,1 +1,1 @@
-{"ticker": "GOOG", "name": "Alphabet Inc.", "price": "287.26", "as_of": "2026-09-30", "fair_value": "$275.31", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "88", "pe": "15.00", "roic": "24.29%", "f_score": "5", "z_score": "8.94", "p2fv": 1.0434}
+{"ticker": "GOOG", "name": "Alphabet Inc.", "price": "292.06", "as_of": "2026-09-30", "fair_value": "$275.32", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "88", "pe": "15.25", "roic": "24.29%", "f_score": "5", "z_score": "9.05", "p2fv": 1.0608}

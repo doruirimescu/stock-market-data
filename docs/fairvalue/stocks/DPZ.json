@@ -1,1 +1,1 @@
-{"ticker": "DPZ", "name": "DOMINOS PIZZA INC", "price": "324.01", "as_of": "2026-09-06", "fair_value": "$497.02", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "85", "pe": "17.85", "roic": "51.27%", "f_score": "6", "z_score": "2.05", "p2fv": 0.6519}
+{"ticker": "DPZ", "name": "DOMINOS PIZZA INC", "price": "335.70", "as_of": "2026-09-06", "fair_value": "$496.99", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "85", "pe": "18.50", "roic": "51.27%", "f_score": "6", "z_score": "2.09", "p2fv": 0.6755}

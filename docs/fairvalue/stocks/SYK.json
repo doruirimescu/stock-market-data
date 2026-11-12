@@ -1,1 +1,1 @@
-{"ticker": "SYK", "name": "STRYKER CORP", "price": "319.67", "as_of": "2026-09-30", "fair_value": "$420.63", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "90", "pe": "34.04", "roic": "9.10%", "f_score": "9", "z_score": "4.85", "p2fv": 0.76}
+{"ticker": "SYK", "name": "STRYKER CORP", "price": "316.42", "as_of": "2026-09-30", "fair_value": "$420.49", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "90", "pe": "33.70", "roic": "9.10%", "f_score": "9", "z_score": "4.82", "p2fv": 0.7525}

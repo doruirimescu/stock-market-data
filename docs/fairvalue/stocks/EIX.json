@@ -1,1 +1,1 @@
-{"ticker": "EIX", "name": "EDISON INTERNATIONAL", "price": "60.17", "as_of": "2026-09-30", "fair_value": "$68.05", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "75", "pe": "6.39", "roic": "5.49%", "f_score": "4", "z_score": "0.72", "p2fv": 0.8842}
+{"ticker": "EIX", "name": "EDISON INTERNATIONAL", "price": "60.14", "as_of": "2026-09-30", "fair_value": "$68.03", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "75", "pe": "6.39", "roic": "5.49%", "f_score": "4", "z_score": "0.72", "p2fv": 0.884}

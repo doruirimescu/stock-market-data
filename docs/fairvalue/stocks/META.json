@@ -1,1 +1,1 @@
-{"ticker": "META", "name": "Meta Platforms, Inc.", "price": "642.43", "as_of": "2026-09-30", "fair_value": "$892.69", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "98", "pe": "21.92", "roic": "25.16%", "f_score": "3", "z_score": "\u2013", "p2fv": 0.7197}
+{"ticker": "META", "name": "Meta Platforms, Inc.", "price": "620.56", "as_of": "2026-09-30", "fair_value": "$891.72", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "100", "pe": "21.17", "roic": "25.16%", "f_score": "3", "z_score": "\u2013", "p2fv": 0.6959}

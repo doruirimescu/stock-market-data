@@ -1,1 +1,1 @@
-{"ticker": "ALAB", "name": "Astera Labs, Inc.", "price": "226.33", "as_of": "2026-09-30", "fair_value": "$318.19", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "93", "pe": "89.46", "roic": "94.06%", "f_score": "5", "z_score": "81.36", "p2fv": 0.7113}
+{"ticker": "ALAB", "name": "Astera Labs, Inc.", "price": "220.87", "as_of": "2026-09-30", "fair_value": "$318.00", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "93", "pe": "87.30", "roic": "94.06%", "f_score": "5", "z_score": "79.46", "p2fv": 0.6945}
