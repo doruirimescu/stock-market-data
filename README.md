@@ -196,6 +196,7 @@ against plain DCA, on final wealth and on drawdown.
 | Page | Shows |
 | ---- | ----- |
 | `dca/index.html` | The report: account-sized rules (exposure targets) and six-payment rules, ranked by edge over plain DCA and by drawdown |
+| `dca/rules/mega-strategy.html` | The Mega strategy, outside the DCA rules: a 3x S&P 500 fund in uptrends sized by volatility, Treasuries, gold or T-bills otherwise; by era against the S&P 500 (growth, Sharpe, deepest fall), today's holdings, and every variant tried |
 | `dca/rules/combined-strategy.html` | The four combined strategies side by side, and the first in depth (optimism, never sells): a continuous Kelly function of the VIX, the 200-day trend and the 10-year / 3-month rates; its formula, an exposure map, today's calculation, and a leave-one-era-out test |
 | `dca/rules/combined-pessimism.html`, `combined-optimism-sells.html`, `combined-pessimism-sells.html` | The other three: pessimism borrows in dips (and when yields fall), the `-sells` versions sell to reach their target; the pessimism pages split the edge into its dip and rate parts |
 | `dca/rules/<rule>.html` | One rule in depth: what it does and why, what it held, growth and drawdown vs plain DCA, edge by start month, crashes and decades |
