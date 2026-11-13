@@ -1,1 +1,1 @@
-{"ticker": "HPQ", "name": "HP INC", "price": "28.96", "as_of": "2026-07-31", "fair_value": "$32.79", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "86", "pe": "11.05", "roic": "11.97%", "f_score": "6", "z_score": "\u2013", "p2fv": 0.8832}
+{"ticker": "HPQ", "name": "HP INC", "price": "28.75", "as_of": "2026-07-31", "fair_value": "$32.76", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "10.97", "roic": "11.97%", "f_score": "6", "z_score": "\u2013", "p2fv": 0.8775}

@@ -1,1 +1,1 @@
-{"ticker": "NOW", "name": "ServiceNow, Inc.", "price": "100.94", "as_of": "2026-09-30", "fair_value": "$249.13", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "89", "pe": "72.62", "roic": "4.29%", "f_score": "4", "z_score": "4.21", "p2fv": 0.4052}
+{"ticker": "NOW", "name": "ServiceNow, Inc.", "price": "101.50", "as_of": "2026-09-30", "fair_value": "$248.98", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "89", "pe": "73.02", "roic": "4.29%", "f_score": "4", "z_score": "4.23", "p2fv": 0.4077}

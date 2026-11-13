@@ -1,1 +1,1 @@
-{"ticker": "COHR", "name": "COHERENT CORP.", "price": "226.86", "as_of": "2026-09-30", "fair_value": "$117.63", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "73", "pe": "46.97", "roic": "7.71%", "f_score": "4", "z_score": "4.09", "p2fv": 1.9286}
+{"ticker": "COHR", "name": "COHERENT CORP.", "price": "219.98", "as_of": "2026-09-30", "fair_value": "$117.67", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "74", "pe": "45.54", "roic": "7.71%", "f_score": "4", "z_score": "3.99", "p2fv": 1.8694}

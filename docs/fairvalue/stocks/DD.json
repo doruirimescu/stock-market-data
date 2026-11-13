@@ -1,1 +1,1 @@
-{"ticker": "DD", "name": "DuPont de Nemours, Inc.", "price": "154.79", "as_of": "2026-09-30", "fair_value": "$160.51", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "80", "pe": "69.73", "roic": "2.04%", "f_score": "8", "z_score": "0.71", "p2fv": 0.9644}
+{"ticker": "DD", "name": "DuPont de Nemours, Inc.", "price": "154.37", "as_of": "2026-09-30", "fair_value": "$160.52", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "80", "pe": "69.53", "roic": "2.04%", "f_score": "8", "z_score": "0.70", "p2fv": 0.9616}
