@@ -1,1 +1,1 @@
-{"ticker": "ABT", "name": "ABBOTT LABORATORIES", "price": "108.53", "as_of": "2026-09-30", "fair_value": "$137.90", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "40.35", "roic": "5.55%", "f_score": "5", "z_score": "3.39", "p2fv": 0.787}
+{"ticker": "ABT", "name": "ABBOTT LABORATORIES", "price": "108.52", "as_of": "2026-09-30", "fair_value": "$137.90", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "40.34", "roic": "5.55%", "f_score": "5", "z_score": "3.39", "p2fv": 0.7869}

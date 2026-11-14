@@ -1,1 +1,1 @@
-{"ticker": "BG", "name": "Bunge Global SA", "price": "100.13", "as_of": "2026-09-30", "fair_value": "$131.62", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "75", "pe": "17.38", "roic": "4.63%", "f_score": "4", "z_score": "3.03", "p2fv": 0.7607}
+{"ticker": "BG", "name": "Bunge Global SA", "price": "101.65", "as_of": "2026-09-30", "fair_value": "$131.62", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "75", "pe": "17.65", "roic": "4.63%", "f_score": "4", "z_score": "3.03", "p2fv": 0.7723}

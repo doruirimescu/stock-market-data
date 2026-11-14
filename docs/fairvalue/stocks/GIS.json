@@ -1,1 +1,1 @@
-{"ticker": "GIS", "name": "GENERAL MILLS INC", "price": "34.01", "as_of": "2026-08-30", "fair_value": "$52.34", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "64", "pe": "At loss", "roic": "-0.74%", "f_score": "5", "z_score": "1.94", "p2fv": 0.6497}
+{"ticker": "GIS", "name": "GENERAL MILLS INC", "price": "34.32", "as_of": "2026-08-30", "fair_value": "$52.34", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "65", "pe": "At loss", "roic": "-0.74%", "f_score": "5", "z_score": "1.94", "p2fv": 0.6557}

@@ -1,1 +1,1 @@
-{"ticker": "APTV", "name": "Aptiv PLC", "price": "38.81", "as_of": "2026-09-30", "fair_value": "$97.87", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "74", "pe": "10.69", "roic": "8.70%", "f_score": "8", "z_score": "2.57", "p2fv": 0.3965}
+{"ticker": "APTV", "name": "Aptiv PLC", "price": "38.75", "as_of": "2026-09-30", "fair_value": "$97.87", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "74", "pe": "10.67", "roic": "8.70%", "f_score": "8", "z_score": "2.57", "p2fv": 0.3959}

@@ -1,1 +1,1 @@
-{"ticker": "LVS", "name": "LAS VEGAS SANDS CORP", "price": "40.01", "as_of": "2026-09-30", "fair_value": "$65.48", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "75", "pe": "16.40", "roic": "11.49%", "f_score": "6", "z_score": "2.29", "p2fv": 0.611}
+{"ticker": "LVS", "name": "LAS VEGAS SANDS CORP", "price": "40.39", "as_of": "2026-09-30", "fair_value": "$65.48", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "75", "pe": "16.55", "roic": "11.49%", "f_score": "6", "z_score": "2.29", "p2fv": 0.6168}

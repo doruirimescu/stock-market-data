@@ -1,1 +1,1 @@
-{"ticker": "BKNG", "name": "Booking Holdings Inc.", "price": "161.71", "as_of": "2026-09-30", "fair_value": "$237.08", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "95", "pe": "17.55", "roic": "48.63%", "f_score": "6", "z_score": "6.42", "p2fv": 0.6821}
+{"ticker": "BKNG", "name": "Booking Holdings Inc.", "price": "159.58", "as_of": "2026-09-30", "fair_value": "$237.08", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "95", "pe": "17.32", "roic": "48.63%", "f_score": "6", "z_score": "6.39", "p2fv": 0.6731}

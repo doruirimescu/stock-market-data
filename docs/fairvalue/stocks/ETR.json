@@ -1,1 +1,1 @@
-{"ticker": "ETR", "name": "ENTERGY CORP /DE/", "price": "111.92", "as_of": "2026-03-31", "fair_value": "$88.57", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "71", "pe": "28.55", "roic": "3.51%", "f_score": "6", "z_score": "1.09", "p2fv": 1.2637}
+{"ticker": "ETR", "name": "ENTERGY CORP /DE/", "price": "111.15", "as_of": "2026-03-31", "fair_value": "$88.57", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "71", "pe": "28.35", "roic": "3.51%", "f_score": "6", "z_score": "1.09", "p2fv": 1.255}

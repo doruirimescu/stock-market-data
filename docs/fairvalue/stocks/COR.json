@@ -1,1 +1,1 @@
-{"ticker": "COR", "name": "Cencora, Inc.", "price": "351.81", "as_of": "2026-06-30", "fair_value": "$306.72", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "82", "pe": "26.12", "roic": "9.69%", "f_score": "7", "z_score": "4.71", "p2fv": 1.147}
+{"ticker": "COR", "name": "Cencora, Inc.", "price": "359.03", "as_of": "2026-06-30", "fair_value": "$306.72", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "82", "pe": "26.65", "roic": "9.69%", "f_score": "7", "z_score": "4.72", "p2fv": 1.1706}
