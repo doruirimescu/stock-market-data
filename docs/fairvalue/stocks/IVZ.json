@@ -1,1 +1,1 @@
-{"ticker": "IVZ", "name": "Invesco Ltd.", "price": "28.92", "as_of": "2026-09-30", "fair_value": "$22.78", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "66", "pe": "At loss", "roic": "-0.76%", "f_score": "5", "z_score": "N/A (financial)", "p2fv": 1.2696}
+{"ticker": "IVZ", "name": "Invesco Ltd.", "price": "28.77", "as_of": "2026-09-30", "fair_value": "$22.79", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "67", "pe": "At loss", "roic": "-0.76%", "f_score": "5", "z_score": "N/A (financial)", "p2fv": 1.2626}

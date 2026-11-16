@@ -1,1 +1,1 @@
-{"ticker": "AAPL", "name": "Apple Inc.", "price": "356.27", "as_of": "2026-09-26", "fair_value": "$299.82", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "95", "pe": "39.67", "roic": "43.18%", "f_score": "9", "z_score": "13.16", "p2fv": 1.1883}
+{"ticker": "AAPL", "name": "Apple Inc.", "price": "355.05", "as_of": "2026-09-26", "fair_value": "$299.87", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "95", "pe": "39.54", "roic": "43.18%", "f_score": "9", "z_score": "13.13", "p2fv": 1.184}

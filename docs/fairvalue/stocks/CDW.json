@@ -1,1 +1,1 @@
-{"ticker": "CDW", "name": "CDW Corp", "price": "171.65", "as_of": "2026-09-30", "fair_value": "$220.70", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "87", "pe": "20.03", "roic": "10.82%", "f_score": "4", "z_score": "\u2013", "p2fv": 0.7777}
+{"ticker": "CDW", "name": "CDW Corp", "price": "168.45", "as_of": "2026-09-30", "fair_value": "$220.17", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "87", "pe": "19.66", "roic": "10.82%", "f_score": "4", "z_score": "\u2013", "p2fv": 0.7651}

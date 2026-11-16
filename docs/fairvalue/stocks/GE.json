@@ -1,1 +1,1 @@
-{"ticker": "GE", "name": "GENERAL ELECTRIC CO", "price": "331.81", "as_of": "2026-09-30", "fair_value": "$332.34", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "74", "pe": "38.32", "roic": "7.95%", "f_score": "7", "z_score": "3.58", "p2fv": 0.9984}
+{"ticker": "GE", "name": "GENERAL ELECTRIC CO", "price": "327.73", "as_of": "2026-09-30", "fair_value": "$332.13", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "75", "pe": "37.84", "roic": "7.95%", "f_score": "7", "z_score": "3.56", "p2fv": 0.9868}

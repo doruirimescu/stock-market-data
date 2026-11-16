@@ -1,1 +1,1 @@
-{"ticker": "A", "name": "AGILENT TECHNOLOGIES, INC.", "price": "173.96", "as_of": "2026-07-31", "fair_value": "$152.99", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "87", "pe": "34.31", "roic": "13.08%", "f_score": "7", "z_score": "5.80", "p2fv": 1.1371}
+{"ticker": "A", "name": "AGILENT TECHNOLOGIES, INC.", "price": "172.74", "as_of": "2026-07-31", "fair_value": "$153.14", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "89", "pe": "34.07", "roic": "13.08%", "f_score": "7", "z_score": "5.77", "p2fv": 1.128}
