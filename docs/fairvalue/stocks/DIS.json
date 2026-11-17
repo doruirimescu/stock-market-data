@@ -1,1 +1,1 @@
-{"ticker": "DIS", "name": "Walt Disney Co", "price": "118.71", "as_of": "2026-06-27", "fair_value": "$116.15", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "87", "pe": "24.48", "roic": "7.31%", "f_score": "6", "z_score": "2.44", "p2fv": 1.0221}
+{"ticker": "DIS", "name": "Walt Disney Co", "price": "120.03", "as_of": "2026-10-03", "fair_value": "$119.97", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "85", "pe": "21.32", "roic": "8.16%", "f_score": "6", "z_score": "2.51", "p2fv": 1.0005}

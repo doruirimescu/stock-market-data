@@ -1,1 +1,1 @@
-{"ticker": "NBIS", "name": "Nebius Group N.V.", "price": "109.16", "as_of": "2025-12-31", "fair_value": "$190.78", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "70", "pe": "330.79", "roic": "-9.56%", "f_score": "7", "z_score": "2.86", "p2fv": 0.5722}
+{"ticker": "NBIS", "name": "Nebius Group N.V.", "price": "105.99", "as_of": "2025-12-31", "fair_value": "$190.33", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "70", "pe": "321.18", "roic": "-9.56%", "f_score": "7", "z_score": "2.79", "p2fv": 0.5569}

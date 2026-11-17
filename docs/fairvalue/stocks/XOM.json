@@ -1,1 +1,1 @@
-{"ticker": "XOM", "name": "ExxonMobil Holdings Corp", "price": "168.45", "as_of": "2026-09-30", "fair_value": "$145.91", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "85", "pe": "17.33", "roic": "11.24%", "f_score": "8", "z_score": "4.07", "p2fv": 1.1544}
+{"ticker": "XOM", "name": "ExxonMobil Holdings Corp", "price": "167.96", "as_of": "2026-09-30", "fair_value": "$146.00", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "85", "pe": "17.28", "roic": "11.24%", "f_score": "8", "z_score": "4.06", "p2fv": 1.1504}

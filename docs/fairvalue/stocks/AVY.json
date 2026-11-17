@@ -1,1 +1,1 @@
-{"ticker": "AVY", "name": "Avery Dennison Corp", "price": "188.58", "as_of": "2026-09-30", "fair_value": "$207.71", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "85", "pe": "20.41", "roic": "11.25%", "f_score": "7", "z_score": "\u2013", "p2fv": 0.9079}
+{"ticker": "AVY", "name": "Avery Dennison Corp", "price": "185.80", "as_of": "2026-09-30", "fair_value": "$207.60", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "20.11", "roic": "11.25%", "f_score": "7", "z_score": "\u2013", "p2fv": 0.895}

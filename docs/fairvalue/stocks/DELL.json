@@ -1,1 +1,1 @@
-{"ticker": "DELL", "name": "Dell Technologies Inc.", "price": "324.51", "as_of": "2026-07-31", "fair_value": "$239.52", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "74", "pe": "18.88", "roic": "19.21%", "f_score": "8", "z_score": "2.63", "p2fv": 1.3548}
+{"ticker": "DELL", "name": "Dell Technologies Inc.", "price": "312.28", "as_of": "2026-07-31", "fair_value": "$239.74", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "73", "pe": "18.17", "roic": "19.21%", "f_score": "8", "z_score": "2.60", "p2fv": 1.3026}

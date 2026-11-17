@@ -1,1 +1,1 @@
-{"ticker": "IT", "name": "GARTNER INC", "price": "190.48", "as_of": "2026-09-30", "fair_value": "$535.58", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "90", "pe": "13.64", "roic": "16.44%", "f_score": "8", "z_score": "3.94", "p2fv": 0.3556}
+{"ticker": "IT", "name": "GARTNER INC", "price": "183.76", "as_of": "2026-09-30", "fair_value": "$534.15", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "90", "pe": "13.16", "roic": "16.44%", "f_score": "8", "z_score": "3.90", "p2fv": 0.344}
