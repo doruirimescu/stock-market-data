@@ -1,1 +1,1 @@
-{"ticker": "NWS", "name": "NEWS CORP", "price": "29.22", "as_of": "2026-09-30", "fair_value": "$35.24", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "82", "pe": "26.09", "roic": "7.11%", "f_score": "5", "z_score": "2.60", "p2fv": 0.8291}
+{"ticker": "NWS", "name": "NEWS CORP", "price": "29.24", "as_of": "2026-09-30", "fair_value": "$35.24", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "81", "pe": "26.10", "roic": "7.11%", "f_score": "5", "z_score": "2.60", "p2fv": 0.8295}

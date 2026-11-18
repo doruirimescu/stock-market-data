@@ -1,1 +1,1 @@
-{"ticker": "GDDY", "name": "GoDaddy Inc.", "price": "106.93", "as_of": "2026-09-30", "fair_value": "$180.59", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "83", "pe": "14.71", "roic": "14.25%", "f_score": "8", "z_score": "1.44", "p2fv": 0.5921}
+{"ticker": "GDDY", "name": "GoDaddy Inc.", "price": "105.15", "as_of": "2026-09-30", "fair_value": "$180.59", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "82", "pe": "14.46", "roic": "14.25%", "f_score": "8", "z_score": "1.42", "p2fv": 0.5822}

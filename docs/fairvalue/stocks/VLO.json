@@ -1,1 +1,1 @@
-{"ticker": "VLO", "name": "VALERO ENERGY CORP/TX", "price": "365.23", "as_of": "2026-09-30", "fair_value": "$215.48", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "85", "pe": "8.31", "roic": "32.23%", "f_score": "9", "z_score": "6.25", "p2fv": 1.695}
+{"ticker": "VLO", "name": "VALERO ENERGY CORP/TX", "price": "347.52", "as_of": "2026-09-30", "fair_value": "$215.58", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "85", "pe": "7.90", "roic": "32.23%", "f_score": "9", "z_score": "6.17", "p2fv": 1.612}

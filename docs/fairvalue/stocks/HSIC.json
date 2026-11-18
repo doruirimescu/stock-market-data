@@ -1,1 +1,1 @@
-{"ticker": "HSIC", "name": "HENRY SCHEIN INC", "price": "84.11", "as_of": "2026-09-26", "fair_value": "$90.07", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "83", "pe": "23.04", "roic": "5.35%", "f_score": "7", "z_score": "2.74", "p2fv": 0.9338}
+{"ticker": "HSIC", "name": "HENRY SCHEIN INC", "price": "83.33", "as_of": "2026-09-26", "fair_value": "$90.07", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "85", "pe": "22.83", "roic": "5.35%", "f_score": "7", "z_score": "2.73", "p2fv": 0.9252}

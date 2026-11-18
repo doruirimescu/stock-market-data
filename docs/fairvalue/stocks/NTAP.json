@@ -1,1 +1,1 @@
-{"ticker": "NTAP", "name": "NetApp, Inc.", "price": "172.96", "as_of": "2026-07-31", "fair_value": "$124.28", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "83", "pe": "24.43", "roic": "18.69%", "f_score": "7", "z_score": "3.49", "p2fv": 1.3917}
+{"ticker": "NTAP", "name": "NetApp, Inc.", "price": "173.13", "as_of": "2026-07-31", "fair_value": "$124.35", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "83", "pe": "24.45", "roic": "18.69%", "f_score": "7", "z_score": "3.50", "p2fv": 1.3923}

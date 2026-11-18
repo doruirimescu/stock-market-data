@@ -1,1 +1,1 @@
-{"ticker": "GNRC", "name": "GENERAC HOLDINGS INC.", "price": "185.48", "as_of": "2026-09-30", "fair_value": "$176.88", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "81", "pe": "36.58", "roic": "7.33%", "f_score": "5", "z_score": "4.13", "p2fv": 1.0486}
+{"ticker": "GNRC", "name": "GENERAC HOLDINGS INC.", "price": "199.00", "as_of": "2026-09-30", "fair_value": "$176.93", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "80", "pe": "39.25", "roic": "7.33%", "f_score": "5", "z_score": "4.29", "p2fv": 1.1247}

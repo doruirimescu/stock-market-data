@@ -1,1 +1,1 @@
-{"ticker": "GWW", "name": "W.W. GRAINGER, INC.", "price": "1469.87", "as_of": "2026-09-30", "fair_value": "$1,223.25", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "90", "pe": "32.30", "roic": "26.23%", "f_score": "7", "z_score": "13.26", "p2fv": 1.2016}
+{"ticker": "GWW", "name": "W.W. GRAINGER, INC.", "price": "1460.53", "as_of": "2026-09-30", "fair_value": "$1,223.27", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "92", "pe": "32.09", "roic": "26.23%", "f_score": "7", "z_score": "13.21", "p2fv": 1.194}
