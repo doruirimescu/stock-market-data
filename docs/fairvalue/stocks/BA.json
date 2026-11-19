@@ -1,1 +1,1 @@
-{"ticker": "BA", "name": "BOEING CO", "price": "162.25", "as_of": "2026-09-30", "fair_value": "$216.99", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "70", "pe": "16.74", "roic": "9.10%", "f_score": "6", "z_score": "1.47", "p2fv": 0.7477}
+{"ticker": "BA", "name": "BOEING CO", "price": "161.77", "as_of": "2026-09-30", "fair_value": "$216.97", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "70", "pe": "16.69", "roic": "9.10%", "f_score": "6", "z_score": "1.47", "p2fv": 0.7456}

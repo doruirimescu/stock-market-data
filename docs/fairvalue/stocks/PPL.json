@@ -1,1 +1,1 @@
-{"ticker": "PPL", "name": "PPL Corp", "price": "35.08", "as_of": "2026-03-31", "fair_value": "$35.82", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "74", "pe": "22.06", "roic": "4.13%", "f_score": "5", "z_score": "0.98", "p2fv": 0.9792}
+{"ticker": "PPL", "name": "PPL Corp", "price": "34.71", "as_of": "2026-03-31", "fair_value": "$35.82", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "73", "pe": "21.83", "roic": "4.13%", "f_score": "5", "z_score": "0.97", "p2fv": 0.9689}

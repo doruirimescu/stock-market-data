@@ -1,1 +1,1 @@
-{"ticker": "UPS", "name": "UNITED PARCEL SERVICE INC", "price": "110.74", "as_of": "2026-09-30", "fair_value": "$112.87", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "77", "pe": "21.34", "roic": "7.97%", "f_score": "4", "z_score": "2.81", "p2fv": 0.9811}
+{"ticker": "UPS", "name": "UNITED PARCEL SERVICE INC", "price": "108.94", "as_of": "2026-09-30", "fair_value": "$112.86", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "77", "pe": "20.99", "roic": "7.97%", "f_score": "4", "z_score": "2.80", "p2fv": 0.9653}

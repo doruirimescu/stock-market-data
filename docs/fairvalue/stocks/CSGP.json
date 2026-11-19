@@ -1,1 +1,1 @@
-{"ticker": "CSGP", "name": "COSTAR GROUP, INC.", "price": "29.77", "as_of": "2026-09-30", "fair_value": "$111.07", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "73", "pe": "69.23", "roic": "1.72%", "f_score": "6", "z_score": "3.95", "p2fv": 0.268}
+{"ticker": "CSGP", "name": "COSTAR GROUP, INC.", "price": "29.26", "as_of": "2026-09-30", "fair_value": "$111.05", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "73", "pe": "68.05", "roic": "1.72%", "f_score": "6", "z_score": "3.90", "p2fv": 0.2635}

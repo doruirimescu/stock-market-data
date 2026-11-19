@@ -1,1 +1,1 @@
-{"ticker": "PDD", "name": "PDD Holdings Inc.", "price": "77.44", "as_of": "2025-12-31", "fair_value": "$140.39", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "92", "pe": "32.81", "roic": "34.39%", "f_score": "5", "z_score": "11.06", "p2fv": 0.5516}
+{"ticker": "PDD", "name": "PDD Holdings Inc.", "price": "86.84", "as_of": "2025-12-31", "fair_value": "$140.35", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "92", "pe": "36.80", "roic": "34.39%", "f_score": "5", "z_score": "12.10", "p2fv": 0.6188}

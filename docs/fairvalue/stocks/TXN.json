@@ -1,1 +1,1 @@
-{"ticker": "TXN", "name": "TEXAS INSTRUMENTS INC", "price": "293.39", "as_of": "2026-09-30", "fair_value": "$256.60", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "84", "pe": "38.05", "roic": "26.04%", "f_score": "8", "z_score": "12.97", "p2fv": 1.1434}
+{"ticker": "TXN", "name": "TEXAS INSTRUMENTS INC", "price": "292.70", "as_of": "2026-09-30", "fair_value": "$256.72", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "84", "pe": "37.96", "roic": "26.04%", "f_score": "8", "z_score": "12.95", "p2fv": 1.1402}

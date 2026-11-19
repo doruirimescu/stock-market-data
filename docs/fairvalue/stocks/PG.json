@@ -1,1 +1,1 @@
-{"ticker": "PG", "name": "PROCTER & GAMBLE Co", "price": "170.37", "as_of": "2026-09-30", "fair_value": "$170.18", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "88", "pe": "25.66", "roic": "15.21%", "f_score": "6", "z_score": "5.57", "p2fv": 1.0011}
+{"ticker": "PG", "name": "PROCTER & GAMBLE Co", "price": "168.45", "as_of": "2026-09-30", "fair_value": "$170.25", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "89", "pe": "25.37", "roic": "15.21%", "f_score": "6", "z_score": "5.54", "p2fv": 0.9894}

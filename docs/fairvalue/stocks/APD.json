@@ -1,1 +1,1 @@
-{"ticker": "APD", "name": "Air Products & Chemicals, Inc.", "price": "304.92", "as_of": "2026-06-30", "fair_value": "$292.63", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "72", "pe": "At loss", "roic": "-0.00%", "f_score": "5", "z_score": "2.61", "p2fv": 1.042}
+{"ticker": "APD", "name": "Air Products & Chemicals, Inc.", "price": "306.95", "as_of": "2026-09-30", "fair_value": "$303.74", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "74", "pe": "128.43", "roic": "0.06%", "f_score": "7", "z_score": "2.65", "p2fv": 1.0106}

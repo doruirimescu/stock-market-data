@@ -1,1 +1,1 @@
-{"ticker": "CL", "name": "COLGATE PALMOLIVE CO", "price": "98.62", "as_of": "2026-09-30", "fair_value": "$97.31", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "80", "pe": "38.37", "roic": "15.29%", "f_score": "7", "z_score": "7.10", "p2fv": 1.0135}
+{"ticker": "CL", "name": "COLGATE PALMOLIVE CO", "price": "96.60", "as_of": "2026-09-30", "fair_value": "$97.31", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "82", "pe": "37.59", "roic": "15.29%", "f_score": "7", "z_score": "7.04", "p2fv": 0.9927}
