@@ -1,1 +1,1 @@
-{"ticker": "RKLB", "name": "Rocket Lab Corp", "price": "52.24", "as_of": "2026-09-30", "fair_value": "$47.91", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "82", "pe": "At loss", "roic": "-15.74%", "f_score": "5", "z_score": "26.48", "p2fv": 1.0904}
+{"ticker": "RKLB", "name": "Rocket Lab Corp", "price": "47.85", "as_of": "2026-09-30", "fair_value": "$48.17", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "85", "pe": "At loss", "roic": "-15.74%", "f_score": "5", "z_score": "24.31", "p2fv": 0.9935}

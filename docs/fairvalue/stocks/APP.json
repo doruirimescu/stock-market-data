@@ -1,1 +1,1 @@
-{"ticker": "APP", "name": "AppLovin Corp", "price": "388.61", "as_of": "2026-09-30", "fair_value": "$672.44", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "93", "pe": "26.17", "roic": "132.30%", "f_score": "8", "z_score": "18.90", "p2fv": 0.5779}
+{"ticker": "APP", "name": "AppLovin Corp", "price": "356.64", "as_of": "2026-09-30", "fair_value": "$672.33", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "91", "pe": "24.02", "roic": "132.30%", "f_score": "8", "z_score": "17.69", "p2fv": 0.5305}

@@ -1,1 +1,1 @@
-{"ticker": "VRT", "name": "Vertiv Holdings Co", "price": "192.74", "as_of": "2026-09-30", "fair_value": "$208.34", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "91", "pe": "36.03", "roic": "24.43%", "f_score": "6", "z_score": "5.14", "p2fv": 0.9251}
+{"ticker": "VRT", "name": "Vertiv Holdings Co", "price": "168.52", "as_of": "2026-09-30", "fair_value": "$208.29", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "91", "pe": "31.50", "roic": "24.43%", "f_score": "6", "z_score": "4.70", "p2fv": 0.8091}

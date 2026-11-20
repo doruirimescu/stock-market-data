@@ -1,1 +1,1 @@
-{"ticker": "HD", "name": "HOME DEPOT, INC.", "price": "337.14", "as_of": "2026-08-02", "fair_value": "$384.74", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "84", "pe": "23.59", "roic": "17.94%", "f_score": "4", "z_score": "5.64", "p2fv": 0.8763}
+{"ticker": "HD", "name": "HOME DEPOT, INC.", "price": "344.09", "as_of": "2026-08-02", "fair_value": "$384.64", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "84", "pe": "24.08", "roic": "17.94%", "f_score": "4", "z_score": "5.69", "p2fv": 0.8946}

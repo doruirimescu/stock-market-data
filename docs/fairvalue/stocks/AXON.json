@@ -1,1 +1,1 @@
-{"ticker": "AXON", "name": "AXON ENTERPRISE, INC.", "price": "317.30", "as_of": "2026-09-30", "fair_value": "$680.31", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "84", "pe": "102.03", "roic": "1.31%", "f_score": "3", "z_score": "4.16", "p2fv": 0.4664}
+{"ticker": "AXON", "name": "AXON ENTERPRISE, INC.", "price": "312.52", "as_of": "2026-09-30", "fair_value": "$680.28", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "84", "pe": "100.49", "roic": "1.31%", "f_score": "3", "z_score": "4.11", "p2fv": 0.4594}

@@ -1,1 +1,1 @@
-{"ticker": "JCI", "name": "Johnson Controls International plc", "price": "138.01", "as_of": "2026-09-30", "fair_value": "$121.77", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "83", "pe": "29.49", "roic": "8.78%", "f_score": "7", "z_score": "2.78", "p2fv": 1.1334}
+{"ticker": "JCI", "name": "Johnson Controls International plc", "price": "132.15", "as_of": "2026-09-30", "fair_value": "$121.80", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "85", "pe": "28.24", "roic": "8.78%", "f_score": "7", "z_score": "2.70", "p2fv": 1.0849}

@@ -1,1 +1,1 @@
-{"ticker": "CCI", "name": "CROWN CASTLE INC.", "price": "81.88", "as_of": "2026-09-30", "fair_value": "$92.12", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "65", "pe": "43.32", "roic": "7.28%", "f_score": "7", "z_score": "N/A (financial)", "p2fv": 0.8889}
+{"ticker": "CCI", "name": "CROWN CASTLE INC.", "price": "83.65", "as_of": "2026-09-30", "fair_value": "$92.10", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "65", "pe": "44.26", "roic": "7.28%", "f_score": "7", "z_score": "N/A (financial)", "p2fv": 0.9082}

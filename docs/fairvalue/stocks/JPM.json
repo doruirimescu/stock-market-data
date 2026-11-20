@@ -1,1 +1,1 @@
-{"ticker": "JPM", "name": "JPMORGAN CHASE & CO", "price": "321.61", "as_of": "2026-09-30", "fair_value": "$321.24", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "90", "pe": "13.49", "roic": "2.91%", "f_score": "4", "z_score": "N/A (financial)", "p2fv": 1.0012}
+{"ticker": "JPM", "name": "JPMORGAN CHASE & CO", "price": "318.03", "as_of": "2026-09-30", "fair_value": "$321.27", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "91", "pe": "13.34", "roic": "2.91%", "f_score": "4", "z_score": "N/A (financial)", "p2fv": 0.9899}

@@ -1,1 +1,1 @@
-{"ticker": "ROL", "name": "ROLLINS INC", "price": "37.54", "as_of": "2026-09-30", "fair_value": "$61.61", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "89", "pe": "34.44", "roic": "17.15%", "f_score": "6", "z_score": "7.55", "p2fv": 0.6094}
+{"ticker": "ROL", "name": "ROLLINS INC", "price": "38.72", "as_of": "2026-09-30", "fair_value": "$61.61", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "89", "pe": "35.52", "roic": "17.15%", "f_score": "6", "z_score": "7.73", "p2fv": 0.6285}

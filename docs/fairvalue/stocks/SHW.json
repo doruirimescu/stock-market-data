@@ -1,1 +1,1 @@
-{"ticker": "SHW", "name": "SHERWIN WILLIAMS CO", "price": "340.41", "as_of": "2026-09-30", "fair_value": "$382.49", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "31.32", "roic": "12.91%", "f_score": "7", "z_score": "\u2013", "p2fv": 0.89}
+{"ticker": "SHW", "name": "SHERWIN WILLIAMS CO", "price": "344.38", "as_of": "2026-09-30", "fair_value": "$382.46", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "85", "pe": "31.68", "roic": "12.91%", "f_score": "7", "z_score": "\u2013", "p2fv": 0.9004}
