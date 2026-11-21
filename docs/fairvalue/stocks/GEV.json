@@ -1,1 +1,1 @@
-{"ticker": "GEV", "name": "GE Vernova Inc.", "price": "716.93", "as_of": "2026-09-30", "fair_value": "$1,344.50", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "86", "pe": "18.82", "roic": "4.47%", "f_score": "6", "z_score": "2.45", "p2fv": 0.5332}
+{"ticker": "GEV", "name": "GE Vernova Inc.", "price": "699.33", "as_of": "2026-09-30", "fair_value": "$1,344.36", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "86", "pe": "18.36", "roic": "4.47%", "f_score": "6", "z_score": "2.41", "p2fv": 0.5202}

@@ -1,1 +1,1 @@
-{"ticker": "CF", "name": "CF Industries Holdings, Inc.", "price": "118.75", "as_of": "2026-09-30", "fair_value": "$130.89", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "91", "pe": "8.37", "roic": "21.94%", "f_score": "9", "z_score": "3.31", "p2fv": 0.9073}
+{"ticker": "CF", "name": "CF Industries Holdings, Inc.", "price": "115.53", "as_of": "2026-09-30", "fair_value": "$130.89", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "91", "pe": "8.15", "roic": "21.94%", "f_score": "9", "z_score": "3.27", "p2fv": 0.8827}

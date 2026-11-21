@@ -1,1 +1,1 @@
-{"ticker": "ON", "name": "ON SEMICONDUCTOR CORP", "price": "62.35", "as_of": "2026-10-02", "fair_value": "$64.38", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "80", "pe": "36.46", "roic": "\u2013", "f_score": "6", "z_score": "4.30", "p2fv": 0.9685}
+{"ticker": "ON", "name": "ON SEMICONDUCTOR CORP", "price": "60.84", "as_of": "2026-10-02", "fair_value": "$64.38", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "80", "pe": "35.58", "roic": "\u2013", "f_score": "6", "z_score": "4.25", "p2fv": 0.9449}

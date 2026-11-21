@@ -1,1 +1,1 @@
-{"ticker": "ALLE", "name": "Allegion plc", "price": "187.70", "as_of": "2026-09-30", "fair_value": "$167.14", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "93", "pe": "23.35", "roic": "18.22%", "f_score": "8", "z_score": "5.04", "p2fv": 1.123}
+{"ticker": "ALLE", "name": "Allegion plc", "price": "183.61", "as_of": "2026-09-30", "fair_value": "$167.14", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "93", "pe": "22.84", "roic": "18.22%", "f_score": "8", "z_score": "4.98", "p2fv": 1.0985}

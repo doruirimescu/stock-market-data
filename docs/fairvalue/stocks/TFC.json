@@ -1,1 +1,1 @@
-{"ticker": "TFC", "name": "TRUIST FINANCIAL CORP", "price": "47.01", "as_of": "2026-09-30", "fair_value": "$46.89", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "81", "pe": "12.12", "roic": "2.47%", "f_score": "4", "z_score": "N/A (financial)", "p2fv": 1.0025}
+{"ticker": "TFC", "name": "TRUIST FINANCIAL CORP", "price": "45.81", "as_of": "2026-09-30", "fair_value": "$46.86", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "82", "pe": "11.81", "roic": "2.47%", "f_score": "4", "z_score": "N/A (financial)", "p2fv": 0.9775}

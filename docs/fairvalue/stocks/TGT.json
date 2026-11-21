@@ -1,1 +1,1 @@
-{"ticker": "TGT", "name": "TARGET CORP", "price": "169.55", "as_of": "2026-08-01", "fair_value": "$136.09", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "75", "pe": "17.59", "roic": "11.55%", "f_score": "6", "z_score": "\u2013", "p2fv": 1.2459}
+{"ticker": "TGT", "name": "TARGET CORP", "price": "165.83", "as_of": "2026-08-01", "fair_value": "$136.09", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "75", "pe": "17.20", "roic": "11.55%", "f_score": "6", "z_score": "\u2013", "p2fv": 1.2185}

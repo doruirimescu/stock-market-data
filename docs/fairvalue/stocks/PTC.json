@@ -1,1 +1,1 @@
-{"ticker": "PTC", "name": "PTC INC.", "price": "195.94", "as_of": "2026-06-30", "fair_value": "$236.39", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "100", "pe": "19.00", "roic": "14.11%", "f_score": "7", "z_score": "6.10", "p2fv": 0.8289}
+{"ticker": "PTC", "name": "PTC INC.", "price": "195.10", "as_of": "2026-09-30", "fair_value": "$212.55", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "97", "pe": "21.85", "roic": "11.07%", "f_score": "5", "z_score": "5.62", "p2fv": 0.9179}

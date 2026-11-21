@@ -1,1 +1,1 @@
-{"ticker": "RJF", "name": "RAYMOND JAMES FINANCIAL INC", "price": "159.35", "as_of": "2026-06-30", "fair_value": "$171.90", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "88", "pe": "13.89", "roic": "\u2013", "f_score": "3", "z_score": "N/A (financial)", "p2fv": 0.927}
+{"ticker": "RJF", "name": "RAYMOND JAMES FINANCIAL INC", "price": "155.82", "as_of": "2026-06-30", "fair_value": "$171.90", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "88", "pe": "13.59", "roic": "\u2013", "f_score": "3", "z_score": "N/A (financial)", "p2fv": 0.9065}

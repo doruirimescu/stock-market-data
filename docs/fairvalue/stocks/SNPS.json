@@ -1,1 +1,1 @@
-{"ticker": "SNPS", "name": "SYNOPSYS INC", "price": "419.35", "as_of": "2026-07-31", "fair_value": "$629.91", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "87", "pe": "73.31", "roic": "1.49%", "f_score": "5", "z_score": "3.60", "p2fv": 0.6657}
+{"ticker": "SNPS", "name": "SYNOPSYS INC", "price": "396.17", "as_of": "2026-07-31", "fair_value": "$629.91", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "86", "pe": "69.26", "roic": "1.49%", "f_score": "5", "z_score": "3.44", "p2fv": 0.6289}

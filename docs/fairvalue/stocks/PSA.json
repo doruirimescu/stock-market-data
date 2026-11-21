@@ -1,1 +1,1 @@
-{"ticker": "PSA", "name": "Public Storage", "price": "331.55", "as_of": "2026-09-30", "fair_value": "$300.39", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "79", "pe": "34.86", "roic": "9.14%", "f_score": "4", "z_score": "N/A (financial)", "p2fv": 1.1037}
+{"ticker": "PSA", "name": "Public Storage", "price": "325.42", "as_of": "2026-09-30", "fair_value": "$300.39", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "79", "pe": "34.22", "roic": "9.14%", "f_score": "4", "z_score": "N/A (financial)", "p2fv": 1.0833}

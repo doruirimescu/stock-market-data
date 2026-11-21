@@ -1,1 +1,1 @@
-{"ticker": "MRK", "name": "Merck & Co., Inc.", "price": "136.13", "as_of": "2026-09-30", "fair_value": "$122.49", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "82", "pe": "137.51", "roic": "3.07%", "f_score": "5", "z_score": "3.76", "p2fv": 1.1114}
+{"ticker": "MRK", "name": "Merck & Co., Inc.", "price": "133.72", "as_of": "2026-09-30", "fair_value": "$122.49", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "82", "pe": "135.07", "roic": "3.07%", "f_score": "5", "z_score": "3.72", "p2fv": 1.0917}

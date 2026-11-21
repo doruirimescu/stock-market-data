@@ -1,1 +1,1 @@
-{"ticker": "ARM", "name": "ARM HOLDINGS PLC /UK", "price": "160.49", "as_of": "2026-03-31", "fair_value": "$201.71", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "91", "pe": "188.81", "roic": "10.76%", "f_score": "7", "z_score": "44.37", "p2fv": 0.7956}
+{"ticker": "ARM", "name": "ARM HOLDINGS PLC /UK", "price": "152.20", "as_of": "2026-03-31", "fair_value": "$201.71", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "91", "pe": "179.06", "roic": "10.76%", "f_score": "7", "z_score": "42.18", "p2fv": 0.7545}

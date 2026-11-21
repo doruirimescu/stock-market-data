@@ -1,1 +1,1 @@
-{"ticker": "MU", "name": "MICRON TECHNOLOGY INC", "price": "619.50", "as_of": "2026-09-03", "fair_value": "$771.53", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "100", "pe": "8.33", "roic": "87.84%", "f_score": "8", "z_score": "11.01", "p2fv": 0.803}
+{"ticker": "MU", "name": "MICRON TECHNOLOGY INC", "price": "594.51", "as_of": "2026-09-03", "fair_value": "$771.53", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "100", "pe": "8.00", "roic": "87.84%", "f_score": "8", "z_score": "10.71", "p2fv": 0.7706}

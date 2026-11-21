@@ -1,1 +1,1 @@
-{"ticker": "MPC", "name": "Marathon Petroleum Corp", "price": "369.69", "as_of": "2026-09-30", "fair_value": "$291.75", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "83", "pe": "7.32", "roic": "25.25%", "f_score": "9", "z_score": "4.11", "p2fv": 1.2671}
+{"ticker": "MPC", "name": "Marathon Petroleum Corp", "price": "367.19", "as_of": "2026-09-30", "fair_value": "$291.75", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "84", "pe": "7.28", "roic": "25.25%", "f_score": "9", "z_score": "4.11", "p2fv": 1.2586}

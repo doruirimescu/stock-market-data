@@ -1,1 +1,1 @@
-{"ticker": "NUE", "name": "NUCOR CORP", "price": "241.29", "as_of": "2026-10-03", "fair_value": "$210.74", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "89", "pe": "15.37", "roic": "13.91%", "f_score": "8", "z_score": "5.26", "p2fv": 1.145}
+{"ticker": "NUE", "name": "NUCOR CORP", "price": "239.62", "as_of": "2026-10-03", "fair_value": "$210.74", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "89", "pe": "15.26", "roic": "13.91%", "f_score": "8", "z_score": "5.25", "p2fv": 1.137}
