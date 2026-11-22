@@ -87,7 +87,7 @@
   "JNJ": {
     "symbol": "JNJ",
     "company": "Johnson & Johnson",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'Johnson & Johnson'."
   },
   "MA": {
     "symbol": "MA",
@@ -767,7 +767,7 @@
   "MRNA": {
     "symbol": "MRNA",
     "company": "Moderna, Inc. Common Stock",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'Moderna, Inc. Common Stock'."
   },
   "CL": {
     "symbol": "CL",
@@ -1037,7 +1037,7 @@
   "CMI": {
     "symbol": "CMI",
     "company": "Cummins Inc.",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'Cummins Inc.'."
   },
   "O": {
     "symbol": "O",
@@ -1617,7 +1617,7 @@
   "DGX": {
     "symbol": "DGX",
     "company": "Quest Diagnostics Inc.",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'Quest Diagnostics Inc.'."
   },
   "VLTO": {
     "symbol": "VLTO",
@@ -1702,7 +1702,7 @@
   "PPL": {
     "symbol": "PPL",
     "company": "PPL Corporation",
-    "error": "HTTP Error 403: Forbidden"
+    "error": "No equity found for 'PPL Corporation'."
   },
   "CTSH": {
     "symbol": "CTSH",
