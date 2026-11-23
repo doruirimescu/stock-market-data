@@ -1,1 +1,1 @@
-{"ticker": "AMAT", "name": "APPLIED MATERIALS INC /DE", "price": "302.63", "as_of": "2026-07-26", "fair_value": "$250.78", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "93", "pe": "26.11", "roic": "30.92%", "f_score": "6", "z_score": "11.98", "p2fv": 1.2068}
+{"ticker": "AMAT", "name": "APPLIED MATERIALS INC /DE", "price": "343.05", "as_of": "2026-07-26", "fair_value": "$251.14", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "90", "pe": "29.60", "roic": "30.92%", "f_score": "6", "z_score": "13.05", "p2fv": 1.366}

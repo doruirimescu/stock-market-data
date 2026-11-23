@@ -1,1 +1,1 @@
-{"ticker": "PCG", "name": "PG&E Corp", "price": "13.78", "as_of": "2026-06-30", "fair_value": "$17.10", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "68", "pe": "9.91", "roic": "3.76%", "f_score": "5", "z_score": "0.54", "p2fv": 0.8061}
+{"ticker": "PCG", "name": "PG&E Corp", "price": "14.01", "as_of": "2026-06-30", "fair_value": "$17.08", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "68", "pe": "10.08", "roic": "3.76%", "f_score": "5", "z_score": "0.54", "p2fv": 0.8199}

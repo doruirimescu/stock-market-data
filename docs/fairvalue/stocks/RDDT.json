@@ -1,1 +1,1 @@
-{"ticker": "RDDT", "name": "Reddit, Inc.", "price": "85.33", "as_of": "2026-09-30", "fair_value": "$262.21", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "84", "pe": "17.41", "roic": "177.38%", "f_score": "8", "z_score": "\u2013", "p2fv": 0.3254}
+{"ticker": "RDDT", "name": "Reddit, Inc.", "price": "89.11", "as_of": "2026-09-30", "fair_value": "$262.05", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "83", "pe": "18.19", "roic": "177.38%", "f_score": "8", "z_score": "\u2013", "p2fv": 0.3401}

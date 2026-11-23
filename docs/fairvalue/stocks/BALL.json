@@ -1,1 +1,1 @@
-{"ticker": "BALL", "name": "BALL Corp", "price": "63.49", "as_of": "2026-09-30", "fair_value": "$79.43", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "83", "pe": "31.90", "roic": "4.94%", "f_score": "6", "z_score": "2.46", "p2fv": 0.7993}
+{"ticker": "BALL", "name": "BALL Corp", "price": "64.36", "as_of": "2026-09-30", "fair_value": "$79.31", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "83", "pe": "32.34", "roic": "4.94%", "f_score": "6", "z_score": "2.47", "p2fv": 0.8115}

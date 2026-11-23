@@ -1,1 +1,1 @@
-{"ticker": "MA", "name": "Mastercard Inc", "price": "625.59", "as_of": "2026-09-30", "fair_value": "$713.62", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "98", "pe": "32.74", "roic": "42.74%", "f_score": "5", "z_score": "13.11", "p2fv": 0.8766}
+{"ticker": "MA", "name": "Mastercard Inc", "price": "637.22", "as_of": "2026-09-30", "fair_value": "$713.85", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "98", "pe": "33.35", "roic": "42.74%", "f_score": "5", "z_score": "13.28", "p2fv": 0.8927}

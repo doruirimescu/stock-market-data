@@ -1,1 +1,1 @@
-{"ticker": "FANG", "name": "Diamondback Energy, Inc.", "price": "175.75", "as_of": "2026-09-30", "fair_value": "$233.81", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "88", "pe": "23.65", "roic": "2.54%", "f_score": "6", "z_score": "1.59", "p2fv": 0.7517}
+{"ticker": "FANG", "name": "Diamondback Energy, Inc.", "price": "174.16", "as_of": "2026-09-30", "fair_value": "$233.12", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "88", "pe": "23.44", "roic": "2.54%", "f_score": "6", "z_score": "1.58", "p2fv": 0.7471}

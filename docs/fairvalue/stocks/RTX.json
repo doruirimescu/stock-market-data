@@ -1,1 +1,1 @@
-{"ticker": "RTX", "name": "RTX Corp", "price": "190.17", "as_of": "2026-09-30", "fair_value": "$162.67", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "85", "pe": "30.92", "roic": "6.00%", "f_score": "6", "z_score": "2.70", "p2fv": 1.1691}
+{"ticker": "RTX", "name": "RTX Corp", "price": "193.90", "as_of": "2026-09-30", "fair_value": "$163.40", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "85", "pe": "31.53", "roic": "6.00%", "f_score": "6", "z_score": "2.73", "p2fv": 1.1866}

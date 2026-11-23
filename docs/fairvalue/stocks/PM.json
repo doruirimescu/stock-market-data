@@ -1,1 +1,1 @@
-{"ticker": "PM", "name": "Philip Morris International Inc.", "price": "184.09", "as_of": "2026-09-30", "fair_value": "$173.01", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "79", "pe": "26.87", "roic": "21.04%", "f_score": "7", "z_score": "4.58", "p2fv": 1.0641}
+{"ticker": "PM", "name": "Philip Morris International Inc.", "price": "183.10", "as_of": "2026-09-30", "fair_value": "$173.18", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "79", "pe": "26.73", "roic": "21.04%", "f_score": "7", "z_score": "4.56", "p2fv": 1.0573}

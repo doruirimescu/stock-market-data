@@ -1,1 +1,1 @@
-{"ticker": "PH", "name": "Parker-Hannifin Corp", "price": "871.86", "as_of": "2026-09-30", "fair_value": "$823.18", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "88", "pe": "29.95", "roic": "12.57%", "f_score": "5", "z_score": "4.31", "p2fv": 1.0591}
+{"ticker": "PH", "name": "Parker-Hannifin Corp", "price": "916.57", "as_of": "2026-09-30", "fair_value": "$824.31", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "85", "pe": "31.49", "roic": "12.57%", "f_score": "5", "z_score": "4.44", "p2fv": 1.1119}

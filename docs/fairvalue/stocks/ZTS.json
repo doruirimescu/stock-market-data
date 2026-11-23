@@ -1,1 +1,1 @@
-{"ticker": "ZTS", "name": "Zoetis Inc.", "price": "79.11", "as_of": "2026-09-30", "fair_value": "$178.22", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "84", "pe": "13.34", "roic": "20.93%", "f_score": "6", "z_score": "4.71", "p2fv": 0.4439}
+{"ticker": "ZTS", "name": "Zoetis Inc.", "price": "79.58", "as_of": "2026-09-30", "fair_value": "$178.15", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "83", "pe": "13.42", "roic": "20.93%", "f_score": "6", "z_score": "4.72", "p2fv": 0.4467}

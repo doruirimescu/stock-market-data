@@ -1,1 +1,1 @@
-{"ticker": "CMI", "name": "CUMMINS INC", "price": "403.61", "as_of": "2026-09-30", "fair_value": "$682.60", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "85", "pe": "16.84", "roic": "13.81%", "f_score": "6", "z_score": "3.10", "p2fv": 0.5913}
+{"ticker": "CMI", "name": "CUMMINS INC", "price": "428.95", "as_of": "2026-09-30", "fair_value": "$683.06", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "85", "pe": "17.90", "roic": "13.81%", "f_score": "6", "z_score": "3.19", "p2fv": 0.628}

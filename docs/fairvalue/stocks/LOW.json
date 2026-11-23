@@ -1,1 +1,1 @@
-{"ticker": "LOW", "name": "LOWES COMPANIES INC", "price": "220.84", "as_of": "2026-07-31", "fair_value": "$255.91", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "81", "pe": "18.67", "roic": "19.83%", "f_score": "6", "z_score": "3.25", "p2fv": 0.863}
+{"ticker": "LOW", "name": "LOWES COMPANIES INC", "price": "227.42", "as_of": "2026-07-31", "fair_value": "$256.01", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "81", "pe": "19.22", "roic": "19.83%", "f_score": "6", "z_score": "3.28", "p2fv": 0.8883}

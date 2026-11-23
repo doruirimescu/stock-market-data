@@ -1,1 +1,1 @@
-{"ticker": "SPGI", "name": "S&P Global Inc.", "price": "439.57", "as_of": "2026-09-30", "fair_value": "$630.62", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "91", "pe": "27.42", "roic": "10.95%", "f_score": "7", "z_score": "4.63", "p2fv": 0.697}
+{"ticker": "SPGI", "name": "S&P Global Inc.", "price": "450.52", "as_of": "2026-09-30", "fair_value": "$630.24", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "91", "pe": "28.11", "roic": "10.95%", "f_score": "7", "z_score": "4.72", "p2fv": 0.7148}

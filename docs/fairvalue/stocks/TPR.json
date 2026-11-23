@@ -1,1 +1,1 @@
-{"ticker": "TPR", "name": "TAPESTRY, INC.", "price": "120.02", "as_of": "2026-09-26", "fair_value": "$110.28", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "87", "pe": "15.49", "roic": "35.95%", "f_score": "8", "z_score": "3.87", "p2fv": 1.0883}
+{"ticker": "TPR", "name": "TAPESTRY, INC.", "price": "125.75", "as_of": "2026-09-26", "fair_value": "$111.90", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "86", "pe": "16.23", "roic": "35.95%", "f_score": "8", "z_score": "3.98", "p2fv": 1.1238}

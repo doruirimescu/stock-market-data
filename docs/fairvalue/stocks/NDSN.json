@@ -1,1 +1,1 @@
-{"ticker": "NDSN", "name": "NORDSON CORP", "price": "307.22", "as_of": "2026-07-31", "fair_value": "$290.58", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "89", "pe": "31.10", "roic": "12.03%", "f_score": "9", "z_score": "5.76", "p2fv": 1.0573}
+{"ticker": "NDSN", "name": "NORDSON CORP", "price": "322.55", "as_of": "2026-07-31", "fair_value": "$290.88", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "88", "pe": "32.65", "roic": "12.03%", "f_score": "9", "z_score": "5.94", "p2fv": 1.1088}

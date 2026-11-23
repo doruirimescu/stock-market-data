@@ -1,1 +1,1 @@
-{"ticker": "EQT", "name": "EQT Corp", "price": "48.89", "as_of": "2026-09-30", "fair_value": "$56.64", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "11.59", "roic": "7.60%", "f_score": "8", "z_score": "2.21", "p2fv": 0.8632}
+{"ticker": "EQT", "name": "EQT Corp", "price": "48.90", "as_of": "2026-09-30", "fair_value": "$56.70", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "85", "pe": "11.59", "roic": "7.60%", "f_score": "8", "z_score": "2.22", "p2fv": 0.8626}

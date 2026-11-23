@@ -1,1 +1,1 @@
-{"ticker": "NFLX", "name": "NETFLIX INC", "price": "56.73", "as_of": "2026-09-30", "fair_value": "$104.77", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "93", "pe": "16.40", "roic": "25.61%", "f_score": "7", "z_score": "7.97", "p2fv": 0.5415}
+{"ticker": "NFLX", "name": "NETFLIX INC", "price": "57.94", "as_of": "2026-09-30", "fair_value": "$104.86", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "94", "pe": "16.75", "roic": "25.61%", "f_score": "7", "z_score": "8.07", "p2fv": 0.5525}
