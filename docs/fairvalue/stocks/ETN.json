@@ -1,1 +1,1 @@
-{"ticker": "ETN", "name": "Eaton Corp plc", "price": "337.45", "as_of": "2026-09-30", "fair_value": "$452.81", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "89", "pe": "33.71", "roic": "10.02%", "f_score": "4", "z_score": "3.39", "p2fv": 0.7452}
+{"ticker": "ETN", "name": "Eaton Corp plc", "price": "320.07", "as_of": "2026-09-30", "fair_value": "$452.70", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "89", "pe": "31.97", "roic": "10.02%", "f_score": "4", "z_score": "3.28", "p2fv": 0.707}

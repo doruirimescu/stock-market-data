@@ -1,1 +1,1 @@
-{"ticker": "BBY", "name": "BEST BUY CO INC", "price": "99.10", "as_of": "2026-08-01", "fair_value": "$77.37", "verdict": "over", "verdict_text": "Modestly Overvalued", "quality_score": "72", "pe": "16.49", "roic": "14.84%", "f_score": "7", "z_score": "4.27", "p2fv": 1.2809}
+{"ticker": "BBY", "name": "BEST BUY CO INC", "price": "101.58", "as_of": "2026-08-01", "fair_value": "$77.40", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "72", "pe": "16.90", "roic": "14.84%", "f_score": "7", "z_score": "4.29", "p2fv": 1.3124}

@@ -1,1 +1,1 @@
-{"ticker": "APH", "name": "AMPHENOL CORP /DE/", "price": "77.00", "as_of": "2026-09-30", "fair_value": "$93.78", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "96", "pe": "33.48", "roic": "22.36%", "f_score": "4", "z_score": "5.82", "p2fv": 0.8211}
+{"ticker": "APH", "name": "AMPHENOL CORP /DE/", "price": "73.34", "as_of": "2026-09-30", "fair_value": "$93.76", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "95", "pe": "31.89", "roic": "22.36%", "f_score": "4", "z_score": "5.64", "p2fv": 0.7822}

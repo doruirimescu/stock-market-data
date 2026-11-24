@@ -1,1 +1,1 @@
-{"ticker": "CRM", "name": "Salesforce, Inc.", "price": "185.04", "as_of": "2026-07-31", "fair_value": "$376.15", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "93", "pe": "16.94", "roic": "6.65%", "f_score": "5", "z_score": "2.37", "p2fv": 0.4919}
+{"ticker": "CRM", "name": "Salesforce, Inc.", "price": "193.78", "as_of": "2026-07-31", "fair_value": "$376.08", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "92", "pe": "17.75", "roic": "6.65%", "f_score": "5", "z_score": "2.43", "p2fv": 0.5153}

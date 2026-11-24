@@ -1,1 +1,1 @@
-{"ticker": "CEG", "name": "Constellation Energy Corp", "price": "250.29", "as_of": "2026-06-30", "fair_value": "$283.83", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "76", "pe": "24.47", "roic": "4.43%", "f_score": "3", "z_score": "1.51", "p2fv": 0.8818}
+{"ticker": "CEG", "name": "Constellation Energy Corp", "price": "244.54", "as_of": "2026-06-30", "fair_value": "$283.29", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "76", "pe": "23.90", "roic": "4.43%", "f_score": "3", "z_score": "1.49", "p2fv": 0.8632}
