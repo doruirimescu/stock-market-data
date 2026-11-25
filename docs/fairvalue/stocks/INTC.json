@@ -1,1 +1,1 @@
-{"ticker": "INTC", "name": "INTEL CORP", "price": "54.78", "as_of": "2026-09-26", "fair_value": "$33.19", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "58", "pe": "At loss", "roic": "1.01%", "f_score": "6", "z_score": "2.39", "p2fv": 1.6508}
+{"ticker": "INTC", "name": "INTEL CORP", "price": "51.15", "as_of": "2026-09-26", "fair_value": "$33.19", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "58", "pe": "At loss", "roic": "1.01%", "f_score": "6", "z_score": "2.27", "p2fv": 1.5412}

@@ -1,1 +1,1 @@
-{"ticker": "CNC", "name": "CENTENE CORP", "price": "65.43", "as_of": "2026-09-30", "fair_value": "$72.85", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "88", "pe": "22.48", "roic": "1.29%", "f_score": "7", "z_score": "N/A (financial)", "p2fv": 0.8981}
+{"ticker": "CNC", "name": "CENTENE CORP", "price": "65.24", "as_of": "2026-09-30", "fair_value": "$72.41", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "88", "pe": "22.42", "roic": "1.29%", "f_score": "7", "z_score": "N/A (financial)", "p2fv": 0.901}

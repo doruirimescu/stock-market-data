@@ -1,1 +1,1 @@
-{"ticker": "BIIB", "name": "BIOGEN INC.", "price": "267.62", "as_of": "2026-09-30", "fair_value": "$198.27", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "60", "pe": "115.85", "roic": "2.12%", "f_score": "3", "z_score": "3.26", "p2fv": 1.3498}
+{"ticker": "BIIB", "name": "BIOGEN INC.", "price": "260.83", "as_of": "2026-09-30", "fair_value": "$198.27", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "61", "pe": "112.91", "roic": "2.12%", "f_score": "3", "z_score": "3.21", "p2fv": 1.3156}

@@ -1,1 +1,1 @@
-{"ticker": "PEP", "name": "PEPSICO INC", "price": "143.18", "as_of": "2026-09-05", "fair_value": "$163.31", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "81", "pe": "18.01", "roic": "14.28%", "f_score": "9", "z_score": "3.54", "p2fv": 0.8768}
+{"ticker": "PEP", "name": "PEPSICO INC", "price": "145.07", "as_of": "2026-09-05", "fair_value": "$163.23", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "81", "pe": "18.25", "roic": "14.28%", "f_score": "9", "z_score": "3.56", "p2fv": 0.8888}
