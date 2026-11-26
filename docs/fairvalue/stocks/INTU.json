@@ -1,1 +1,1 @@
-{"ticker": "INTU", "name": "INTUIT INC.", "price": "276.08", "as_of": "2026-10-31", "fair_value": "$872.23", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "88", "pe": "15.81", "roic": "15.10%", "f_score": "7", "z_score": "4.56", "p2fv": 0.3165}
+{"ticker": "INTU", "name": "INTUIT INC.", "price": "271.72", "as_of": "2026-10-31", "fair_value": "$872.23", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "88", "pe": "15.56", "roic": "15.10%", "f_score": "7", "z_score": "4.52", "p2fv": 0.3115}

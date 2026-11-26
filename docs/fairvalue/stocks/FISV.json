@@ -1,1 +1,1 @@
-{"ticker": "FISV", "name": "FISERV INC", "price": "59.68", "as_of": "2026-09-30", "fair_value": "$115.39", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "82", "pe": "At loss", "roic": "-3.21%", "f_score": "4", "z_score": "0.72", "p2fv": 0.5172}
+{"ticker": "FISV", "name": "FISERV INC", "price": "59.78", "as_of": "2026-09-30", "fair_value": "$115.39", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "82", "pe": "At loss", "roic": "-3.21%", "f_score": "4", "z_score": "0.73", "p2fv": 0.5181}

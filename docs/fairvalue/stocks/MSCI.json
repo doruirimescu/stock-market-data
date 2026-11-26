@@ -1,1 +1,1 @@
-{"ticker": "MSCI", "name": "MSCI Inc.", "price": "632.93", "as_of": "2026-09-30", "fair_value": "$732.23", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "92", "pe": "33.47", "roic": "29.71%", "f_score": "7", "z_score": "6.35", "p2fv": 0.8644}
+{"ticker": "MSCI", "name": "MSCI Inc.", "price": "633.00", "as_of": "2026-09-30", "fair_value": "$732.23", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "92", "pe": "33.47", "roic": "29.71%", "f_score": "7", "z_score": "6.35", "p2fv": 0.8645}

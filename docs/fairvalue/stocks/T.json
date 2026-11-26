@@ -1,1 +1,1 @@
-{"ticker": "T", "name": "AT&T INC.", "price": "23.27", "as_of": "2026-09-30", "fair_value": "$26.05", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "70", "pe": "12.51", "roic": "4.81%", "f_score": "2", "z_score": "0.81", "p2fv": 0.8934}
+{"ticker": "T", "name": "AT&T INC.", "price": "22.97", "as_of": "2026-09-30", "fair_value": "$26.05", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "70", "pe": "12.35", "roic": "4.81%", "f_score": "2", "z_score": "0.81", "p2fv": 0.8817}

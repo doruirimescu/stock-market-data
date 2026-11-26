@@ -1,1 +1,1 @@
-{"ticker": "FCX", "name": "FREEPORT-MCMORAN INC", "price": "47.26", "as_of": "2026-09-30", "fair_value": "$48.38", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "87", "pe": "At loss", "roic": "10.34%", "f_score": "5", "z_score": "2.50", "p2fv": 0.9767}
+{"ticker": "FCX", "name": "FREEPORT-MCMORAN INC", "price": "48.55", "as_of": "2026-09-30", "fair_value": "$48.40", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "86", "pe": "At loss", "roic": "10.34%", "f_score": "5", "z_score": "2.54", "p2fv": 1.0032}
