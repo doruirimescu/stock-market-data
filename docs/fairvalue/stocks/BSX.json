@@ -1,1 +1,1 @@
-{"ticker": "BSX", "name": "BOSTON SCIENTIFIC CORP", "price": "45.12", "as_of": "2026-09-30", "fair_value": "$111.02", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "83", "pe": "19.04", "roic": "9.63%", "f_score": "8", "z_score": "3.08", "p2fv": 0.4064}
+{"ticker": "BSX", "name": "BOSTON SCIENTIFIC CORP", "price": "45.32", "as_of": "2026-09-30", "fair_value": "$111.02", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "83", "pe": "19.12", "roic": "9.63%", "f_score": "8", "z_score": "3.08", "p2fv": 0.4082}

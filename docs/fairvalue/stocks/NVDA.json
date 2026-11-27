@@ -1,1 +1,1 @@
-{"ticker": "NVDA", "name": "NVIDIA CORP", "price": "149.30", "as_of": "2026-07-26", "fair_value": "$358.89", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "96", "pe": "18.87", "roic": "105.15%", "f_score": "5", "z_score": "28.50", "p2fv": 0.416}
+{"ticker": "NVDA", "name": "NVIDIA CORP", "price": "149.36", "as_of": "2026-07-26", "fair_value": "$358.76", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "96", "pe": "18.88", "roic": "105.15%", "f_score": "5", "z_score": "28.51", "p2fv": 0.4163}

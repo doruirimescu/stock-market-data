@@ -1,1 +1,1 @@
-{"ticker": "XYZ", "name": "Block, Inc.", "price": "76.10", "as_of": "2026-09-30", "fair_value": "$78.39", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "93", "pe": "100.13", "roic": "2.40%", "f_score": "8", "z_score": "\u2013", "p2fv": 0.9708}
+{"ticker": "XYZ", "name": "Block, Inc.", "price": "78.43", "as_of": "2026-09-30", "fair_value": "$78.39", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "90", "pe": "103.19", "roic": "2.40%", "f_score": "8", "z_score": "\u2013", "p2fv": 1.0004}

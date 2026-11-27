@@ -1,1 +1,1 @@
-{"ticker": "FSLR", "name": "FIRST SOLAR, INC.", "price": "147.88", "as_of": "2026-09-30", "fair_value": "$227.07", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "89", "pe": "8.55", "roic": "16.43%", "f_score": "6", "z_score": "4.95", "p2fv": 0.6513}
+{"ticker": "FSLR", "name": "FIRST SOLAR, INC.", "price": "150.79", "as_of": "2026-09-30", "fair_value": "$227.03", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "89", "pe": "8.72", "roic": "16.43%", "f_score": "6", "z_score": "5.01", "p2fv": 0.6642}

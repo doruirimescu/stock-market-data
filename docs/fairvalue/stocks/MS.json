@@ -1,1 +1,1 @@
-{"ticker": "MS", "name": "MORGAN STANLEY", "price": "167.55", "as_of": "2026-09-30", "fair_value": "$183.74", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "84", "pe": "13.29", "roic": "4.02%", "f_score": "4", "z_score": "N/A (financial)", "p2fv": 0.9119}
+{"ticker": "MS", "name": "MORGAN STANLEY", "price": "172.01", "as_of": "2026-09-30", "fair_value": "$183.76", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "82", "pe": "13.64", "roic": "4.02%", "f_score": "4", "z_score": "N/A (financial)", "p2fv": 0.936}

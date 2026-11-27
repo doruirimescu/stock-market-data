@@ -1,1 +1,1 @@
-{"ticker": "ADSK", "name": "Autodesk, Inc.", "price": "246.79", "as_of": "2026-10-31", "fair_value": "$379.99", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "85", "pe": "28.04", "roic": "14.73%", "f_score": "6", "z_score": "\u2013", "p2fv": 0.6495}
+{"ticker": "ADSK", "name": "Autodesk, Inc.", "price": "253.30", "as_of": "2026-10-31", "fair_value": "$379.77", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "86", "pe": "28.78", "roic": "14.73%", "f_score": "6", "z_score": "\u2013", "p2fv": 0.667}

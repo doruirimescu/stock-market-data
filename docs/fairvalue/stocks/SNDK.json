@@ -1,1 +1,1 @@
-{"ticker": "SNDK", "name": "Sandisk Corp", "price": "94.39", "as_of": "2026-10-02", "fair_value": "$124.62", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "93", "pe": "6.01", "roic": "117.47%", "f_score": "6", "z_score": "13.79", "p2fv": 0.7575}
+{"ticker": "SNDK", "name": "Sandisk Corp", "price": "84.08", "as_of": "2026-10-02", "fair_value": "$124.54", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "93", "pe": "5.35", "roic": "117.47%", "f_score": "6", "z_score": "12.87", "p2fv": 0.6751}

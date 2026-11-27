@@ -1,1 +1,1 @@
-{"ticker": "CPRT", "name": "COPART INC", "price": "33.17", "as_of": "2026-07-31", "fair_value": "$53.80", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "90", "pe": "21.40", "roic": "18.77%", "f_score": "6", "z_score": "22.94", "p2fv": 0.6165}
+{"ticker": "CPRT", "name": "COPART INC", "price": "33.29", "as_of": "2026-07-31", "fair_value": "$53.77", "verdict": "under", "verdict_text": "Significantly Undervalued", "quality_score": "90", "pe": "21.48", "roic": "18.77%", "f_score": "6", "z_score": "23.01", "p2fv": 0.6191}

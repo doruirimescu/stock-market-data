@@ -1,1 +1,1 @@
-{"ticker": "GPC", "name": "GENUINE PARTS CO", "price": "123.88", "as_of": "2026-09-30", "fair_value": "$138.38", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "80", "pe": "476.46", "roic": "-0.00%", "f_score": "7", "z_score": "2.21", "p2fv": 0.8952}
+{"ticker": "GPC", "name": "GENUINE PARTS CO", "price": "124.71", "as_of": "2026-09-30", "fair_value": "$138.35", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "79", "pe": "479.65", "roic": "-0.00%", "f_score": "7", "z_score": "2.22", "p2fv": 0.9014}

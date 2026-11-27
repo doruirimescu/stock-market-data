@@ -1,1 +1,1 @@
-{"ticker": "DOW", "name": "DOW INC.", "price": "29.66", "as_of": "2026-09-30", "fair_value": "$36.52", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "68", "pe": "At loss", "roic": "0.81%", "f_score": "6", "z_score": "1.57", "p2fv": 0.8123}
+{"ticker": "DOW", "name": "DOW INC.", "price": "30.17", "as_of": "2026-09-30", "fair_value": "$36.48", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "68", "pe": "At loss", "roic": "0.81%", "f_score": "6", "z_score": "1.58", "p2fv": 0.827}

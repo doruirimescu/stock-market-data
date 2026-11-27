@@ -1,1 +1,1 @@
-{"ticker": "BE", "name": "Bloom Energy Corp", "price": "152.89", "as_of": "2026-09-30", "fair_value": "$52.23", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "73", "pe": "92.66", "roic": "20.61%", "f_score": "6", "z_score": "6.71", "p2fv": 2.9275}
+{"ticker": "BE", "name": "Bloom Energy Corp", "price": "161.95", "as_of": "2026-09-30", "fair_value": "$52.28", "verdict": "over", "verdict_text": "Significantly Overvalued", "quality_score": "74", "pe": "98.15", "roic": "20.61%", "f_score": "6", "z_score": "7.06", "p2fv": 3.098}

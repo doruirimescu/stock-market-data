@@ -1,1 +1,1 @@
-{"ticker": "ANET", "name": "Arista Networks, Inc.", "price": "163.99", "as_of": "2026-09-30", "fair_value": "$192.87", "verdict": "under", "verdict_text": "Modestly Undervalued", "quality_score": "100", "pe": "43.97", "roic": "51.27%", "f_score": "7", "z_score": "16.80", "p2fv": 0.8503}
+{"ticker": "ANET", "name": "Arista Networks, Inc.", "price": "173.96", "as_of": "2026-09-30", "fair_value": "$192.79", "verdict": "", "verdict_text": "Fairly Valued", "quality_score": "100", "pe": "46.64", "roic": "51.27%", "f_score": "7", "z_score": "17.65", "p2fv": 0.9023}
